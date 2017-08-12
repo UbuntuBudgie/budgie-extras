@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+import time
+import subprocess
+import wmovertools as wmt
+import sys
+
+def run_wmover():
+    t_res = 20; res = None; y_area = 5
+    
+    while True:
+        # check/update screen resolution once per 10 seconds
+        if t_res == 20:
+            res2 = wmt.getres()
+            if all([res2, res2 != res]):
+                xres = res2[0]; yres = res2[1]
+                x_area = xres-110
+                res = res2 
+            t_res = 0
+        # master loop
+        time.sleep(0.5)
+        # get the current mouse location
+        data = wmt.mousepos()
+        x = data[0]; y = data[1]
+        if wmt.area(x_area, y_area, xres, yres, x, y):
+            """if mouse is on the right spot,
+               check position of the active window
+            """
+            check_cons = wmt.check_ypos(yres)
+            if check_cons[0]:
+                # call the mover window
+                wmt.callwindow(check_cons[1], xres, yres)
+        t_res = t_res+1
+
+def singlerun():
+    resdata = wmt.getres()
+    wmt.callwindow(
+        wmt.get(["xdotool", "getactivewindow"]),
+        resdata[0],
+        resdata[1],
+        )
+
+if __name__ == "__main__":
+    try:
+        if sys.argv[1] == "-single":
+            singlerun()
+    except IndexError:
+        run_wmover()
+                
+                    
