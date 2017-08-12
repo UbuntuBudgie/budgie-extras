@@ -82,7 +82,7 @@ class InterFace(Gtk.Window):
             content = [
                 "[Desktop Entry]",
                 "Name=WindowMover",
-                'Exec=/bin/bash -c "sleep 10 &&/opt/wmover/wmover/wmover_run"',
+                'Exec=/bin/bash -c "sleep 10 && /opt/wmover/wmover/wmover_run"',
                 "Type=Application",
                 "X-GNOME-Autostart-enabled=true",
                 ]
