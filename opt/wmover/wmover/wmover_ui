@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, Pango
+import getpass
+import os
+import subprocess
+import signal
+   
+class InterFace(Gtk.Window):
+
+    def __init__(self):
+
+        dirlist = setup_dirs()
+        wmover_prefs = dirlist[0]
+        self.config_dir = dirlist[1]
+
+        self.curr_set = wmover_prefs+"/wmover_prefs"
+        self.user = getpass.getuser()
+
+        Gtk.Window.__init__(self, title="Window Mover")
+        maingrid = Gtk.Grid()
+        self.add(maingrid)
+        maingrid.set_border_width(10)
+
+        image = Gtk.Image()
+        image.set_from_file("/opt/wmover/misc/wmover64.png")
+        maingrid.attach(image, 0, 0, 1, 1)
+
+        iconsep = Gtk.Grid()
+        maingrid.attach(iconsep, 1, 0, 1, 1)
+        iconsep.set_border_width(10)
+
+        controlsgrid = Gtk.Grid()
+        maingrid.attach(controlsgrid, 1, 0, 2, 1)
+        maingrid.set_column_homogeneous(True)
+
+        self.check1 = Gtk.CheckButton("Start on login")
+        self.check1.connect("toggled", self.toggle_autostart)
+        self.check1.set_active(self.read_settings())
+        self.check1.set_tooltip_text("Add to Startup Applications")
+        controlsgrid.attach(self.check1, 0, 0, 10, 1)
+
+        switchsep = Gtk.Grid()
+        controlsgrid.attach(switchsep, 0, 1, 1, 1)
+        switchsep.set_border_width(5)
+
+        switch = Gtk.Switch()
+        switch.connect("notify::active", self.toggle_run)
+        checkruns = self.test_ifruns()
+        if checkruns != []:
+            switch.set_active(True)
+        else:
+            switch.set_active(False)
+        switch.set_tooltip_text("Start/Stop Window Mover")
+        controlsgrid.attach(switch, 0, 2, 1, 1)  
+
+        topsep = Gtk.Grid()
+        maingrid.attach(topsep, 0, 1, 1, 1)
+        topsep.set_border_width(0)
+
+        bottomsep = Gtk.Grid()
+        maingrid.attach(bottomsep, 3, 5, 1, 1)
+        bottomsep.set_border_width(0)
+
+        quitbutton = Gtk.Button("_Close", use_underline=True)
+        quitbutton.connect("clicked", self.on_close_clicked)
+        quitbutton.set_size_request(75,20)
+        maingrid.attach(quitbutton, 3, 7, 1, 1)
+
+    def toggle_autostart(self, widget):
+        dtfile = self.config_dir+"/autostart/wmover.desktop"
+        newstate = self.check1.get_active()
+        if newstate == False:
+            new_write = "off"
+            try:
+                os.remove(dtfile)
+            except FileNotFoundEror:
+                pass
+        elif newstate == True:
+            new_write = "on"
+            content = [
+                "[Desktop Entry]",
+                "Name=WindowMover",
+                'Exec=/bin/bash -c "sleep 10 && /opt/wmover/wmover/wmover_run"',
+                "Type=Application",
+                "X-GNOME-Autostart-enabled=true",
+                ]
+            with open(dtfile, "wt") as out:
+                for l in content:
+                    out.write(l+"\n")
+        open(self.curr_set, "wt").write(new_write)
+
+    def toggle_run(self, switch, gparam):
+        runs = switch.get_active()
+        pids = self.test_ifruns()
+        if all([runs == False, len(pids) != 0]):   
+            self.stop_run(pids)
+        elif all([runs == True, len(pids) == 0]):
+            self.start_run()
+
+    def stop_run(self, pids):
+        for pid in pids:
+            os.kill(int(pid), signal.SIGQUIT)
+        subprocess.Popen([
+            "notify-send", "-i", "wmover",
+            "Window Mover", "Window Mover is stopped"
+            ])
+
+    def start_run(self):
+        subprocess.Popen(["/opt/wmover/wmover/wmover_run"])
+        subprocess.Popen([
+            "notify-send", "-i", "wmover",
+            "Window Mover", "Window Mover is running"
+            ])
+                        
+    def test_ifruns(self):
+        return [l.split()[0].strip() for l in subprocess.check_output(
+            ["ps", "-u", self.user, "ww"]
+            ).decode("utf-8").splitlines() if "wmover_run" in l]
+
+    def on_close_clicked(self, button):
+        Gtk.main_quit()
+
+    def read_settings(self):
+        if not os.path.exists(self.curr_set):
+            return False
+        else:
+            curr_startup = open(self.curr_set).read()
+            if "on" in curr_startup:
+                return True
+            else:
+                return False
+
+def setup_dirs():
+    home = os.environ["HOME"]
+    config_dir = home+"/.config"
+    autostart_dir = config_dir+"/autostart"
+    wmover_prefs = config_dir+"/wmover"
+    for dr in [config_dir, autostart_dir, wmover_prefs]:
+        if not os.path.exists(dr):
+            os.makedirs(dr)
+    return [wmover_prefs, config_dir]
+
+def run_interface():
+    window = InterFace()
+    window.connect("delete-event", Gtk.main_quit)
+    window.set_wmclass("Wmover", "wmover")
+    window.set_resizable(False)
+    window.show_all()
+    Gtk.main()
+
+if __name__ == "__main__":
+    run_interface()
