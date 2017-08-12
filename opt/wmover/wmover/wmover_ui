@@ -104,14 +104,14 @@ class InterFace(Gtk.Window):
             os.kill(int(pid), signal.SIGQUIT)
         subprocess.Popen([
             "notify-send", "-i", "wmover",
-            "Window Mover", "WindowMover is stopped"
+            "Window Mover", "Window Mover is stopped"
             ])
 
     def start_run(self):
         subprocess.Popen(["/opt/wmover/wmover/wmover_run"])
         subprocess.Popen([
             "notify-send", "-i", "wmover",
-            "Window Mover", "WindowMover is running"
+            "Window Mover", "Window Mover is running"
             ])
                         
     def test_ifruns(self):
