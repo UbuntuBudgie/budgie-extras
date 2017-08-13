@@ -27,10 +27,14 @@ class Splash(Gtk.Window):
             maingrid.attach(button, n, 0, 1, 1)
             button.modify_font(Pango.FontDescription('Ubuntu 15'))
             button.connect("clicked", self.move_to, subj, n)
+        ###
+        self.connect('key-press-event', self.get_key)
+        ###
         x_size = n_spaces*button_hsize
         self.move(x_res/2-x_size/2, y_res-180)
 
     def move_to(self, button, subj, wspace):
+        # print(button, subj, wspace)
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
         wmt.run(["xdotool", "windowmove", subj, "100", "100"])
         self.stop()
@@ -38,11 +42,18 @@ class Splash(Gtk.Window):
     def stop(self, *args):
         Gtk.main_quit()
 
+    ###
+    def get_key(self, val1, val2 ):
+        wspace = int(Gdk.keyval_name(val2.keyval)) -1
+        print(wspace)
+        self.move_to(None, subj, wspace)
+    ###
+        
 def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider()
     cssProvider.load_from_path(
-        '/opt/wmover/wmover/misc/style.css'
+        '/opt/wmover/misc/style.css'
         )
     screen = Gdk.Screen.get_default()
     styleContext = Gtk.StyleContext()
@@ -61,5 +72,8 @@ def run_moverbar():
     Gtk.main()
 
 if __name__ == "__main__":
-    subj = sys.argv[1]; x_res= int(sys.argv[2]); y_res = int(sys.argv[3])
+    subj = sys.argv[1]
+##    subj = "0x04800fdd" #
+##    x_res = 1280; y_res = 800 #
+    x_res= int(sys.argv[2]); y_res = int(sys.argv[3])
     run_moverbar()
