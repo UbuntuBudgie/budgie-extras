@@ -41,8 +41,12 @@ class Splash(Gtk.Window):
         Gtk.main_quit()
 
     def get_key(self, val1, val2 ):
-        wspace = int(Gdk.keyval_name(val2.keyval)) -1
-        self.move_to(None, subj, wspace)
+        try:
+            wspace = int(Gdk.keyval_name(val2.keyval))-1
+        except ValueError:
+            pass
+        else:
+            self.move_to(None, subj, wspace)
         
 def run_moverbar():
     # get the style from the css file and apply it
@@ -67,6 +71,8 @@ def run_moverbar():
     Gtk.main()
 
 if __name__ == "__main__":
+##    subj = "0x04801857"
+##    x_res = 1280; y_res = 800
     subj = sys.argv[1]
     x_res= int(sys.argv[2]); y_res = int(sys.argv[3])
     run_moverbar()
