@@ -17,9 +17,9 @@ class Splash(Gtk.Window):
         maingrid.set_border_width(0)
         wcontext = self.get_style_context()
         wcontext.add_class("moverwindow")
-        n_spaces = len(wmt.get(["wmctrl", "-d"]).splitlines())
+        self.n_spaces = len(wmt.get(["wmctrl", "-d"]).splitlines())
         # create button- row
-        for n in range(n_spaces):
+        for n in range(self.n_spaces):
             button = Gtk.Button(str(n+1))
             st_cont = button.get_style_context()
             st_cont.add_class("moverbutton")
@@ -28,7 +28,7 @@ class Splash(Gtk.Window):
             button.modify_font(Pango.FontDescription('Ubuntu 15'))
             button.connect("clicked", self.move_to, subj, n)
         self.connect('key-press-event', self.get_key)
-        x_size = n_spaces*button_hsize
+        x_size = self.n_spaces*button_hsize
         self.move(x_res/2-x_size/2, y_res-180)
 
     def move_to(self, button, subj, wspace):
@@ -42,12 +42,15 @@ class Splash(Gtk.Window):
 
     def get_key(self, val1, val2 ):
         try:
-            wspace = int(Gdk.keyval_name(val2.keyval))-1
+            wspace = int(Gdk.keyval_name(val2.keyval))-1           
         except ValueError:
             pass
         else:
-            self.move_to(None, subj, wspace)
-        
+            if wspace not in range(self.n_spaces):
+                pass
+            else:
+                self.move_to(None, subj, wspace)
+
 def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider()
@@ -72,5 +75,6 @@ def run_moverbar():
 
 if __name__ == "__main__":
     subj = sys.argv[1]
-    x_res= int(sys.argv[2]); y_res = int(sys.argv[3])
+    x_res = 1280; y_res = 800
     run_moverbar()
+
