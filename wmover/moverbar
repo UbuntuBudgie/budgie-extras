@@ -75,6 +75,7 @@ def run_moverbar():
 
 if __name__ == "__main__":
     subj = sys.argv[1]
-    x_res = 1280; y_res = 800
+    x_res= int(sys.argv[2])
+    y_res = int(sys.argv[3])
     run_moverbar()
 
