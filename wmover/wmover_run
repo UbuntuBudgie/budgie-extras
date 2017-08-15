@@ -38,12 +38,6 @@ def singlerun(resdata):
         resdata[1],
         )
 
-def singlespace(resdata):
-    wmt.callspacewin(
-        resdata[0],
-        resdata[1],
-        )
-
 if __name__ == "__main__":
     try:
         arg = sys.argv[1]
