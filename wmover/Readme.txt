@@ -5,6 +5,9 @@ Window Mover is an easy way to move windows across workspaces. If a window is dr
 A command to run from a shortcut key, applying the mover on the currently active window:
 /opt/wmover/wmover/wmover_run -single
 
+Instead of moving *a window*, the application can be used to move *the desktop* to another workspace (single run). The command:
+/opt/wmover/wmover/wmover_run -singlespace
+
 Window Mover depends on both wmctrl and xdotool
 
 
