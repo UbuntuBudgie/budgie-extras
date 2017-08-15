@@ -23,6 +23,10 @@ def show_wmclass(wid):
     except (IndexError, AttributeError):
         pass
 
+def get_wsdata():
+    wsdata = get(["wmctrl", "-d"]).splitlines()
+    return(len(wsdata), wsdata.index([l for l in wsdata if "*" in l][0]))
+
 def run(cmd):
     try:
         subprocess.Popen(cmd)
@@ -74,7 +78,7 @@ def callwindow(target, xres, yres):
              "WindowMover", "Please first activate a window."])
     else:
         runwindow(target, xres, yres)
-
+    
 def runwindow(target, xres, yres):
     # run the mover bar
     subprocess.Popen([
@@ -84,6 +88,9 @@ def runwindow(target, xres, yres):
         str(yres),
          ])
     time.sleep(0.5)
+    limit_exist()
+
+def limit_exist():
     # make sure the bar stays on top *and* active, allow 5 seconds
     t = 1
     while True:

@@ -17,17 +17,22 @@ class Splash(Gtk.Window):
         maingrid.set_border_width(0)
         wcontext = self.get_style_context()
         wcontext.add_class("moverwindow")
-        self.n_spaces = len(wmt.get(["wmctrl", "-d"]).splitlines())
+        wsdata = wmt.get_wsdata()
+        self.n_spaces = wsdata[0]; currspace = wsdata[1]
         # create button- row
         for n in range(self.n_spaces):
-            button = Gtk.Button(str(n+1))
+            label = "⬝"+str(n+1)+"⬝" if n == currspace else n+1
+            button = Gtk.Button(label)
             st_cont = button.get_style_context()
             st_cont.add_class("moverbutton")
             button.set_size_request(button_hsize, button_vsize)
             maingrid.attach(button, n, 0, 1, 1)
             button.modify_font(Pango.FontDescription('Ubuntu 15'))
-            button.connect("clicked", self.move_to, subj, n)
-        self.connect('key-press-event', self.get_key)
+            if subj != "none":
+                button.connect("clicked", self.move_to, subj, n)
+            else:
+                button.connect("clicked", self.move_desktop, subj, n)
+        self.connect('key-press-event', self.get_key)  
         x_size = self.n_spaces*button_hsize
         self.move(x_res/2-x_size/2, y_res-180)
 
@@ -35,6 +40,10 @@ class Splash(Gtk.Window):
         # print(button, subj, wspace)
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
         wmt.run(["xdotool", "windowmove", subj, "100", "100"])
+        self.stop()
+
+    def move_desktop(self, button, subj, wspace):
+        wmt.run(["wmctrl", "-s", str(wspace)])
         self.stop()
 
     def stop(self, *args):
@@ -49,8 +58,12 @@ class Splash(Gtk.Window):
             if wspace not in range(self.n_spaces):
                 pass
             else:
-                self.move_to(None, subj, wspace)
-
+                self.move_to(
+                    None, subj, wspace
+                    ) if subj != "none" else self.move_desktop(
+                        None, None, wspace
+                        )
+                                                            
 def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider()

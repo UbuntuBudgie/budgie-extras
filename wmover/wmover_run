@@ -31,18 +31,27 @@ def run_wmover():
                 wmt.callwindow(check_cons[1], xres, yres)
         t_res = t_res+1
 
-def singlerun():
-    resdata = wmt.getres()
+def singlerun(resdata):
     wmt.callwindow(
         wmt.get(["xdotool", "getactivewindow"]),
         resdata[0],
         resdata[1],
         )
 
+def singlespace(resdata):
+    wmt.callspacewin(
+        resdata[0],
+        resdata[1],
+        )
+
 if __name__ == "__main__":
     try:
-        if sys.argv[1] == "-single":
-            singlerun()
+        arg = sys.argv[1]
+        resdata = wmt.getres()
+        if arg == "-single":
+            singlerun(resdata)
+        elif arg == "-singlespace":
+            wmt.runwindow("none", resdata[0], resdata[1])
     except IndexError:
         run_wmover()
                 
