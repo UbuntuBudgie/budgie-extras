@@ -18,10 +18,14 @@ class Splash(Gtk.Window):
         wcontext = self.get_style_context()
         wcontext.add_class("moverwindow")
         wsdata = wmt.get_wsdata()
-        self.n_spaces = wsdata[0]; currspace = wsdata[1]
+        self.n_spaces = wsdata[0]; currspace = wsdata[1]       
         # create button- row
+        if subj == "none":
+            l_char = "◂ "; r_char = " ▸"
+        else:
+            l_char = "•"; r_char = "•"
         for n in range(self.n_spaces):
-            label = "⬝"+str(n+1)+"⬝" if n == currspace else n+1
+            label = l_char+str(n+1)+r_char if n == currspace else n+1
             button = Gtk.Button(label)
             st_cont = button.get_style_context()
             st_cont.add_class("moverbutton")
@@ -34,7 +38,7 @@ class Splash(Gtk.Window):
                 button.connect("clicked", self.move_desktop, subj, n)
         self.connect('key-press-event', self.get_key)  
         x_size = self.n_spaces*button_hsize
-        self.move(x_res/2-x_size/2, y_res-180)
+        self.move(x_res/2-x_size/2, y_res-180)       
 
     def move_to(self, button, subj, wspace):
         # print(button, subj, wspace)
@@ -68,7 +72,7 @@ def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider()
     cssProvider.load_from_path(
-        '/opt/wmover/misc/style.css'
+        '/home/jacob/Bureaublad/budgie-extras-werkversie/wmover/style.css'
         )
     screen = Gdk.Screen.get_default()
     styleContext = Gtk.StyleContext()
@@ -86,7 +90,7 @@ def run_moverbar():
     window.connect("destroy", Gtk.main_quit)
     Gtk.main()
 
-if __name__ == "__main__":
+if __name__ == "__main__":   
     subj = sys.argv[1]
     x_res= int(sys.argv[2])
     y_res = int(sys.argv[3])
