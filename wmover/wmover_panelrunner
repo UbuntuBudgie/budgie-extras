@@ -3,7 +3,7 @@ import subprocess
 import time
 import subprocess
 import psutil
-
+    
 def get_pid():
     try:
         return int(subprocess.check_output([
@@ -26,15 +26,18 @@ def getkey():
         pass
 
 def run_wmover():
+    # give dconf a few seconds to create the key
+    time.sleep(3)
     key = getkey()
     while True:
         time.sleep(3)
         try:
-            if not subprocess.check_output([
+            check = subprocess.check_output([
                 "dconf",
                 "dump",
                 "/com/solus-project/budgie-panel/applets/"+key+"/"
-                ]).decode("utf-8"):
+                ]).decode("utf-8")
+            if not check:
                 break
         except TypeError:
             break
