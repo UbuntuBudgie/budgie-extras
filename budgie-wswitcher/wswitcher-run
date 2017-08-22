@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+import subprocess    
+import os
+import time
+
+"""
+Budgie WallpaperSwitcher
+Author: Jacob Vlijm
+Copyright=Copyright © 2017 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+Copyright (C) 2017  Jacob Vlijm
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+datadir = os.path.join(os.environ["HOME"], ".config/budgie-wswitcher")
+workspace_data = os.path.join(datadir, "wallpaper-data_")
+
+try:
+    os.mkdir(datadir)
+except FileExistsError:
+    pass
+
+key = ["org.gnome.desktop.background", "picture-uri"]
+
+def getwall():
+    return subprocess.check_output([
+        "gsettings", "get", key[0], key[1]
+        ]).decode("utf-8").strip()
+
+def current_ws():
+    # get the current workspace
+    try:
+        wsdata = subprocess.check_output([
+            "wmctrl", "-d"
+            ]).decode("utf-8").splitlines()
+        return [l.split()[0] for l in wsdata if "*" in l][0]
+    except subprocess.CalledProcessError:
+        pass
+
+def wswitcher(curr_ws1, currwall1):
+    while True:
+        time.sleep(1)
+        currwall2 = getwall()
+        curr_ws2 = current_ws() ####
+        if curr_ws2:
+            datafile = workspace_data+curr_ws2
+            if curr_ws2 == curr_ws1:
+                if currwall2 != currwall1:
+                    open(datafile, "wt").write(currwall2)
+            else:
+                if not os.path.exists(datafile):
+                    open(datafile, "wt").write(currwall2)
+                else:
+                    curr_set = open(datafile).read()
+                    command = [
+                        "gsettings", "set", key[0], key[1], str(curr_set)
+                        ]
+                    subprocess.Popen(command)
+            curr_ws1 = curr_ws2
+            currwall1 = getwall()
+
+curr_ws1 = current_ws(); currwall1 = getwall()
+wswitcher(curr_ws1, currwall1)
+    
+
+
