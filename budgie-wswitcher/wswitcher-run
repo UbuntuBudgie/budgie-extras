@@ -8,7 +8,6 @@ Budgie WallpaperSwitcher
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
-Copyright (C) 2017  Jacob Vlijm
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
 Foundation, either version 3 of the License, or any later version. This
