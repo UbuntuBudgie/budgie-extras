@@ -53,16 +53,16 @@ def show_wmclass(wid):
     try:
         return get(["xprop", "-id", wid, "WM_CLASS"]).split("=")[-1].strip()
     except (IndexError, AttributeError):
-        print(wid) ##
+        pass
 
 def get_wmname(wid):
-    # get WM_CLASS from window- id
+    # get WM_NAME from window- id
     try:
         return get([
             "xprop", "-id", wid, "WM_NAME"
             ]).split("=")[-1].strip().strip('"')
     except (IndexError, AttributeError):
-        print(wid) ##
+        pass
 
 def get_menuset(wdata):
     # return valid window-ids and workspaces from wmctrl -l
@@ -90,7 +90,6 @@ def update_winmenu(currdata):
         newmenudata = sorted(newmenudata, key = itemgetter(0,1,2))
         newmenu = []; subspace = []
         for wsp, data in groupby(newmenudata, itemgetter(0)):
-            # wsp = wsp #?
             subspace.append(wsp)
             wlst = [w[1:] for w in list(data)]
             for app, windows in groupby(wlst, itemgetter(0)):
