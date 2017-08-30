@@ -28,15 +28,14 @@ import bhctools as bhc
 
 callset = os.path.join(bhcpath, "bhcsettings")
 panelrunner = os.path.join(bhcpath, "bhc-panelrunner")
+
 class BHCornersWin():
 
     def __init__(self):
 
         self.appbutton = Gtk.Button.new()
         self.appbutton.set_relief(Gtk.ReliefStyle.NONE)
-        icon = Gtk.Image.new_from_file(
-            "/opt/budgie-hotcorners/misc/bhcorners22.png"
-            )
+        icon = Gtk.Image.new_from_icon_name("bhcsettings", Gtk.IconSize.MENU)
         self.appbutton.set_image(icon)
         self.menu = Gtk.Menu()
         self.create_menu()
@@ -89,5 +88,4 @@ class BHCornersApplet(Budgie.Applet):
         self.button = self.app.appbutton
         self.add(self.button)
         self.show_all()
-
 
