@@ -33,6 +33,7 @@ class WMoverApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_file("/opt/wmover/misc/wmover22.png")
+        icon = Gtk.Image.new_from_icon_name("wmover-panel", Gtk.IconSize.MENU)
         self.box.add(icon)        
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
