@@ -47,7 +47,7 @@ class BudgieWSwitcherApplet(Budgie.Applet):
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_file("/opt/budgie-wswitcher/icon/wsw-22.png")
+        icon = Gtk.Image.new_from_icon_name("wsw-panel", Gtk.IconSize.MENU)
         self.box.add(icon)        
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
