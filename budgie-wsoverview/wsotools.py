@@ -29,11 +29,6 @@ ignore = [
     None,
     ]
 
-# iconpaths
-currpath = os.path.dirname(os.path.abspath(__file__))
-iconpath = os.path.join(currpath, "numbers")
-first_icon = os.path.join(iconpath, "1.png")
-
 def get(cmd):
     # just a helper. (re-) try/except for buggy wmctrl
     try:
@@ -71,7 +66,7 @@ def get_menuset(wdata):
 
 def new_icon(currws):
     # arrange icon path from current workspace
-    return os.path.join(iconpath, str(int(currws)+1)+".png")
+    return str(int(currws)+1)+"-wso"
 
 def update_winmenu(currdata):
     newdata = get(["wmctrl", "-l"])

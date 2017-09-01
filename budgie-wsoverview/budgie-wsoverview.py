@@ -41,12 +41,13 @@ class WsOverviewWin(object):
         # general
         self.key = ["org.gnome.desktop.wm.preferences", "num-workspaces"]
         self.mode = modes[mode_index]
-        self.iconpath = wtls.iconpath
-        initial = wtls.first_icon
+
         self.appbutton = Gtk.Button.new()
         self.appbutton.set_relief(Gtk.ReliefStyle.NONE)
-        self.icon = Gtk.Image.new_from_file(initial)
-        self.appbutton.set_image(self.icon) # Yay!!!
+
+        icon = Gtk.Image.new_from_icon_name("1-wso", Gtk.IconSize.MENU)
+        self.appbutton.set_image(icon)
+
         self.menu = Gtk.Menu()
         self.create_menu()
         self.update = Thread(target=self.show_seconds)
@@ -185,8 +186,8 @@ class WsOverviewWin(object):
                 wsdata1 = wsdata2
             # apply possible results
             if set_icon:
-                iconpath = wtls.new_icon(curr_ws)
-                icon = Gtk.Image.new_from_file(iconpath)
+                newic = wtls.new_icon(curr_ws)                
+                icon = Gtk.Image.new_from_icon_name(newic, Gtk.IconSize.MENU)
                 GObject.idle_add(
                     self.appbutton.set_image, icon,
                     priority=GObject.PRIORITY_DEFAULT
@@ -274,6 +275,7 @@ class WsOverviewApplet(Budgie.Applet):
         self.button = self.app.appbutton
         self.add(self.button)
         self.show_all()
+
 
 
 
