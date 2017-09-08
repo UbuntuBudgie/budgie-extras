@@ -31,9 +31,7 @@ def get_pid():
 
 def getkey():
     data = subprocess.check_output([
-        "dconf",
-        "dump",
-        "/com/solus-project/budgie-panel/applets/"
+        "dconf", "dump", dcpath
         ]).decode("utf-8").splitlines()
     try:
         match = [l for l in data if "Budgie Hot Corners" in l][0]
@@ -50,15 +48,14 @@ def run_bhc():
         time.sleep(3)
         try:
             check = subprocess.check_output([
-                "dconf",
-                "dump",
-                "/com/solus-project/budgie-panel/applets/"+key+"/"
+                "dconf", "dump", dcpath+key+"/"
                 ]).decode("utf-8")
             if not check:
                 break
         except TypeError:
             break
 
+dcpath = "/com/solus-project/budgie-panel/applets/"
 pid = get_pid()
 run_bhc()
 psutil.Process(pid).terminate()
