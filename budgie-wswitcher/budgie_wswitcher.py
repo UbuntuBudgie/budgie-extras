@@ -57,7 +57,7 @@ class BudgieWSwitcherApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        subprocess.Popen("/opt/budgie-wswitcher/budgie-wswitcher/wswitcher-panelrunner")
+        subprocess.Popen("/opt/budgie-extras/wswitcher/code/wswitcher_panelrunner")
 
     def	on_press(self, box, arg):
         self.manager.show_popover(self.box)

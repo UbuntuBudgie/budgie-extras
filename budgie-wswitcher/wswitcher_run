@@ -47,7 +47,7 @@ def wswitcher(curr_ws1, currwall1):
     while True:
         time.sleep(1)
         currwall2 = getwall()
-        curr_ws2 = current_ws() ####
+        curr_ws2 = current_ws()
         if curr_ws2:
             datafile = workspace_data+curr_ws2
             if curr_ws2 == curr_ws1:

@@ -3,20 +3,21 @@ import subprocess
 import time
 import subprocess
 import psutil
+
+dcpath = "/com/solus-project/budgie-panel/applets/"
     
 def get_pid():
+    app = "/opt/budgie-extras/wmover/code/wmover_run"
     try:
         return int(subprocess.check_output([
-            "pgrep", "-f", "/opt/wmover/wmover/wmover_run",
+            "pgrep", "-f", app,
             ]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
-        return subprocess.Popen("/opt/wmover/wmover/wmover_run").pid 
+        return subprocess.Popen(app).pid 
 
 def getkey():
     data = subprocess.check_output([
-        "dconf",
-        "dump",
-        "/com/solus-project/budgie-panel/applets/"
+        "dconf", "dump", dcpath,
         ]).decode("utf-8").splitlines()
     try:
         match = [l for l in data if "WindowMover" in l][0]
@@ -32,10 +33,9 @@ def run_wmover():
     while True:
         time.sleep(3)
         try:
+            # ok, ok, this should be fetched with help from wmovertools...
             check = subprocess.check_output([
-                "dconf",
-                "dump",
-                "/com/solus-project/budgie-panel/applets/"+key+"/"
+                "dconf", "dump", dcpath+key+"/",
                 ]).decode("utf-8")
             if not check:
                 break

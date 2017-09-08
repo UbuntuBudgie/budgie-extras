@@ -21,7 +21,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
 import sys
-bhcpath = "/opt/budgie-hotcorners/budgie-hotcorners/"
+bhcpath = "/opt/budgie-extras/budgie-hotcorners/code"
 sys.path.insert(0, bhcpath)
 import os
 import bhctools as bhc

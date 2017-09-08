@@ -72,7 +72,7 @@ def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider()
     cssProvider.load_from_path(
-        '/opt/wmover/misc/style.css'
+        "/opt/budgie-extras/wmover/misc/style.css"
         )
     screen = Gdk.Screen.get_default()
     styleContext = Gtk.StyleContext()

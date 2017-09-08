@@ -6,16 +6,16 @@ import os
 dr = os.path.join(os.environ["HOME"], ".config/budgie-hotcorners")
 # settings file
 settings = os.path.join(dr, "hotc_settings")
+# main script
+app = "/opt/budgie-extras/budgie-hotcorners/code/bhcorners"
 
 def get(cmd):
-    #----------------------
     try:
         return subprocess.check_output(cmd).decode("utf-8").strip()
     except subprocess.CalledProcessError:
         pass
 
 def getres():
-    #----------------------
     # get the resolution from wmctrl
     resdata = get(["wmctrl", "-d"])
     res = [int(n) for n in resdata.split()[3].split("x")] if resdata else None
@@ -23,7 +23,6 @@ def getres():
 
 def mousepos():
     # get mouseposition
-    #----------------------
     try:
         pos = get(["xdotool", "getmouselocation"]).split()
     except AttributeError:

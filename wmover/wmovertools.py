@@ -82,7 +82,7 @@ def callwindow(target, xres, yres):
 def runwindow(target, xres, yres):
     # run the mover bar
     subprocess.Popen([
-        "/opt/wmover/wmover/moverbar",
+        "/opt/budgie-extras/wmover/code/moverbar",
         target,
         str(xres),
         str(yres),

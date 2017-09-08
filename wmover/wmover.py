@@ -23,7 +23,7 @@ class WMover(GObject.GObject, Budgie.Plugin):
             BudgiePanelManager, and is used for lifetime tracking.
         """
         return WMoverApplet(uuid)
-
+    
 
 class WMoverApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
@@ -39,11 +39,10 @@ class WMoverApplet(Budgie.Applet):
         self.hello = Gtk.Label("Window Mover is active")
         self.popover.add(self.hello)        
         self.popover.get_child().show_all()
-
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        subprocess.Popen("/opt/wmover/wmover/wmover_panelrunner")
+        subprocess.Popen("/opt/budgie-extras/wmover/code/wmover_panelrunner")
 
     def	on_press(self, box, arg):
         self.manager.show_popover(self.box)

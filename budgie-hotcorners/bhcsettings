@@ -77,25 +77,20 @@ class SettingsWindow(Gtk.Window):
         subj.set_sensitive(val)
 
     def apply(self, *args):
+        app = bhc.app
         # read set settings, save to file and restart de background script, quit
         b_states = [b.get_active() for b in self.buttons]
         cmds = [c.get_text() for c in self.entries]
         saved_state = list(zip(b_states, cmds))
         open(settings, "wt").write(str(saved_state))
         try:
-            pid = bhc.get([
-                "pgrep",
-                "-f",
-                "/opt/budgie-hotcorners/budgie-hotcorners/bhcorners",
-                ]).splitlines()
+            pid = bhc.get(["pgrep", "-f", app, ]).splitlines()
         except AttributeError:
             pass
         else:
             for p in pid:
                 subprocess.call(["kill", p])
-        subprocess.Popen(
-            "/opt/budgie-hotcorners/budgie-hotcorners/bhcorners",
-            )
+        subprocess.Popen(app)
         Gtk.main_quit()
 
 win = SettingsWindow()
