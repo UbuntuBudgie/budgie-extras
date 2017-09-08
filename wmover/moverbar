@@ -12,6 +12,7 @@ class Splash(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="w_moversplash")
+        self.set_skip_taskbar_hint(True)
         maingrid = Gtk.Grid() 
         self.add(maingrid)
         maingrid.set_border_width(0)
@@ -99,4 +100,3 @@ if __name__ == "__main__":
         x_res= int(sys.argv[2])
         y_res = int(sys.argv[3])
         run_moverbar()
-
