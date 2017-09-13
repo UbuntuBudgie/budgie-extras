@@ -43,7 +43,6 @@ while True:
             if pv.get_valid(w_id):
                 pv.create_preview(w_id, w)
         for w in out:
-            w_id = w[0]
             try:
                 os.remove(pv.setname(w))
             except FileNotFoundError:
