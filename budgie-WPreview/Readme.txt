@@ -1,0 +1,1 @@
+Budgie Window Preview is an expose to show an overview of either all windows (on the current workspace) or only windows of the currently active window's application. Depends on xprintidle, wmctrl, xdotool.
