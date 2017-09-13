@@ -2,7 +2,6 @@
 import subprocess
 import time
 import os
-import gi
 
 previews = os.path.join(os.environ["HOME"], ".budgie-PV")
 
