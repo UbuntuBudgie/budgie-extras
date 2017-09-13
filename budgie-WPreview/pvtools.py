@@ -3,8 +3,6 @@ import subprocess
 import time
 import os
 import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
 
 previews = os.path.join(os.environ["HOME"], ".budgie-PV")
 
