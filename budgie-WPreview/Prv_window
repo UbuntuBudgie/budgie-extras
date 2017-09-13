@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version("Gdk", "3.0")
+from gi.repository import Gtk, Gdk
+import cairo
+import pvtools as pv
+import os
+import subprocess
+import sys
+
+
+pics_path = pv.previews
+area = pv.get_area()
+maxrow = int(area/380)
+
+"""
+Gtk alignment isn't fully according the set margins The deviation below is
+the result of trial & error, fix for 3 columns on small screens.
+"""
+
+deviation = 5 if maxrow == 3 else 0
+wins = [w.split(".") for w in os.listdir(pics_path)]
+wins = [w[:-1] for w in wins if w[-2] == pv.get_ws()]
+
+try:
+    if sys.argv[1] == "current":
+        curr = pv.get_activeclass()
+        wins = [w for w in wins if pv.show_wmclass(w[0]) == curr]
+except IndexError:
+    pass
+
+n_wins = len(wins)
+
+class TestWin(Gtk.Window):
+
+    def __init__(self):
+        
+        Gtk.Window.__init__(self, title="PrVflash")
+        self.set_decorated(False)
+        self.connect("focus-out-event", self.stop)
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_skip_taskbar_hint(True)
+        self.set_focus()
+        # transparency
+        screen = self.get_screen()
+        visual = screen.get_rgba_visual()
+        if all([visual, screen.is_composited()]):
+            self.set_visual(visual)
+        self.set_app_paintable(True)
+        self.connect("draw", self.area_draw)
+        # window border
+        self.props.border_width = 30
+        # main grid
+        self.maingrid = Gtk.Grid()
+        self.add(self.maingrid)
+        # distance between rows 
+        self.maingrid.set_row_spacing(20)      
+        """
+        maingrid -> buttonbox per row -> containing button grid per
+        button+label, set rowspacing in maingrid ^
+        """
+        # window-previews
+        width = 0; row = 0; rowlist = []
+        # create first row
+        self.curr_row = Gtk.Grid()
+        self.curr_row.set_column_spacing(20)
+        self.maingrid.attach(self.curr_row, 0, 0, 1, 1)
+        for i in range(n_wins):
+            # next row if the previous one is filled
+            if width >= maxrow:
+                row = row+1
+                self.curr_row = Gtk.Grid()
+                self.curr_row.set_column_spacing(20)
+                self.maingrid.attach(self.curr_row, 0, row, 1, 1)
+                width = 0
+            # button + styling
+            win = wins[i]; w_id = win[0]
+            button = Gtk.Button()
+            button.connect("clicked", self.activate, w_id)
+            button.set_size_request(280, 180)
+            win_img = Gtk.Image.new_from_file(pv.setname(win))
+            button.set_image(win_img)
+            st_cont = button.get_style_context()
+            st_cont.add_class("moverbutton")
+            # button label + styling
+            nm = pv.get_wmname(w_id)
+            nm = nm if len(nm) < 30 else nm[:27]+"..."
+            win_name = Gtk.Label("◼ "+nm)
+            win_name.set_xalign(0)
+            label_cont = win_name.get_style_context()
+            label_cont.add_class("label")
+            # subgrid per button + label
+            bgrid = Gtk.Grid()
+            bgrid.attach(button, 0,1,1,1)
+            bgrid.attach(win_name, 0,0,1,1)
+            # throw it in the curent row's box
+            self.curr_row.attach(bgrid, i+1, 0, 1, 1)
+            width = width+1
+        last_row = width
+        # add space on the left of the last row if it isn't a full one
+        if all([row != 0, last_row != maxrow]):
+            add = ((maxrow-last_row)*290/2)-(last_row*5)-deviation
+            add = self.spacer(add)
+            self.curr_row.attach(add, 0, 0, 1, 1)
+        self.show_all()
+
+    def activate(self, button, w):
+        subprocess.Popen(["wmctrl", "-ia", w])
+        self.stop()
+
+    def spacer(self, addwidth):
+        # artificial (calculated) stuffing on the left side of the row
+        spacegrid = Gtk.Grid()
+        if addwidth:
+            label1 = Gtk.Label(""); label2 = Gtk.Label("")
+            spacegrid.attach(label1, 0, 0, 1, 1)
+            spacegrid.attach(label2, 1, 0, 1, 1)
+            spacegrid.set_column_spacing(addwidth)
+        return spacegrid
+
+    def stop(self, *args):
+       Gtk.main_quit()
+        
+    def area_draw(self, widget, cr):
+        # set transparent color
+        cr.set_source_rgba(0.2, 0.2, 0.2, 0.8)
+        cr.set_operator(cairo.OPERATOR_SOURCE)
+        cr.paint()
+        cr.set_operator(cairo.OPERATOR_OVER)
+        
+cssProvider = Gtk.CssProvider()
+cssProvider.load_from_path(
+    "/opt/budgie-extras/WPreviews/style.css"
+    )
+scr = Gdk.Screen.get_default()
+styleContext = Gtk.StyleContext()
+styleContext.add_provider_for_screen(
+    scr,
+    cssProvider,
+    Gtk.STYLE_PROVIDER_PRIORITY_USER,
+    )
+
+if wins:
+    TestWin()
+    Gtk.main()

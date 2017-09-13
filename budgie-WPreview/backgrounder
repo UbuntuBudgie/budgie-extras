@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+import time
+import subprocess
+import os
+import pvtools as pv
+
+previews = pv.previews
+ignore = pv.ignore
+
+# clear the preview directory
+pv.empty_dir()
+
+# loop start values
+list1 = []; active1 = None; stay = 0; idle = False; t = 0; pause = 1
+
+def refresh_active(active2, list2):
+    # convert xdotool output to hex for a simple check in "raw" list2
+    win = pv.get_hex(active2)
+    # exception if preview window is in front
+    try:
+        w = [w for w in list2 if w[0] == win][0]
+    except IndexError:
+        pass
+    else:
+        w_id = w[0]
+        pv.create_preview(w_id, w)
+
+while True:
+    time.sleep(pause)
+    ws = pv.get_ws()
+    wlist = pv.get(["wmctrl", "-lG"])
+    if wlist:
+        prelist2 = [
+            l.split() for l in wlist.splitlines() if not "PrVflash" in l
+            ]
+        list2 = [[w[0], w[4], w[5], w[1]] for w in prelist2]
+        new = [w for w in list2 if not w in list1]
+        out = [w for w in list1 if not w in list2]
+        if new:
+            time.sleep(1)
+        for w in new:
+            w_id = w[0]
+            if pv.get_valid(w_id):
+                pv.create_preview(w_id, w)
+        for w in out:
+            w_id = w[0]
+            try:
+                os.remove(pv.setname(w))
+            except FileNotFoundError:
+                pass
+        list1 = list2
+
+    # keep record of active window. update after 5sec in front in a row
+    if not idle:
+        active2 = pv.get(["xdotool", "getactivewindow"])
+        valid = pv.get_valid(active2)
+        """
+        used wmctrl and xdotool system calls break once and a while when performed in a loop
+        """
+        if all([active2, valid]):
+            """
+            if the currently active window is the same for 5 seconds,
+            update its preview.
+            """
+            if active2 == active1:
+                stay = stay+1
+                if stay == 5:
+                    refresh_active(active2, list2)
+                    stay = 0   
+            else:
+                stay = 0
+    """
+    check user activity, stop updating active window if idle for more
+    then 30 sec
+    """
+    if t == 5:
+        curr_idle = int(pv.get("xprintidle"))/1000
+        t = 0
+        if curr_idle > 30:
+            pause = 5
+            idle = True
+        else:
+            pause = 1
+            idle = False
+    t = t+1
+    active1 = active2
+    
+            
+            
+        
+
+ 
+
+    
+
+
