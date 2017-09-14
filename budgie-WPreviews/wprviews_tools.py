@@ -93,10 +93,9 @@ def create_preview(w_id, w):
 
 def setname(window):
     name = "/"+".".join(window)+".jpg"
-    path = os.path.join(previews, name)
+    path = previews+name
     return path
 
-    
 
 
 
