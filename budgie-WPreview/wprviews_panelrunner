@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+import subprocess
+import time
+import subprocess
+import psutil
+import wprviews_tools as pv 
+
+dcpath = "/com/solus-project/budgie-panel/applets/"
+    
+def get_pid():
+    app = "/opt/budgie-extras/wprviews/code/wprviews_backgrounder"
+    try:
+        return int(subprocess.check_output([
+            "pgrep", "-f", app,
+            ]).decode("utf-8").strip())
+    except subprocess.CalledProcessError:
+        return subprocess.Popen(app).pid 
+
+def getkey():
+    data = subprocess.check_output([
+        "dconf", "dump", dcpath,
+        ]).decode("utf-8").splitlines()
+    try:
+        match = [l for l in data if "WindowPreviews" in l][0]
+        watch = data.index(match)-3
+        return data[watch][1:-1]
+    except IndexError:
+        pass
+
+def run_wmover():
+    # give dconf a few seconds to create the key
+    time.sleep(3)
+    key = getkey()
+    while True:
+        time.sleep(3)
+        try:
+            # ok, ok, this should be fetched with help from wmovertools...
+            check = subprocess.check_output([
+                "dconf", "dump", dcpath+key+"/",
+                ]).decode("utf-8")
+            if not check:
+                break
+        except TypeError:
+            break
+
+pid = get_pid()
+run_wmover()
+psutil.Process(pid).terminate()
+pv.empty_dir()
+

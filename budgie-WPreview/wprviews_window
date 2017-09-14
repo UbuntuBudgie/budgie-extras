@@ -4,7 +4,7 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gtk, Gdk
 import cairo
-import pvtools as pv
+import wprviews_tools as pv
 import os
 import subprocess
 import sys
@@ -131,7 +131,7 @@ class TestWin(Gtk.Window):
         
 cssProvider = Gtk.CssProvider()
 cssProvider.load_from_path(
-    "/opt/budgie-extras/WPreviews/style.css"
+    "/opt/budgie-extras/wprviews/misc/style.css"
     )
 scr = Gdk.Screen.get_default()
 styleContext = Gtk.StyleContext()

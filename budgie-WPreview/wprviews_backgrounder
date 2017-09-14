@@ -2,7 +2,7 @@
 import time
 import subprocess
 import os
-import pvtools as pv
+import wprviews_tools as pv
 
 previews = pv.previews
 ignore = pv.ignore
@@ -37,7 +37,7 @@ while True:
         new = [w for w in list2 if not w in list1]
         out = [w for w in list1 if not w in list2]
         if new:
-            time.sleep(1)
+            time.sleep(2)
         for w in new:
             w_id = w[0]
             if pv.get_valid(w_id):
@@ -73,7 +73,10 @@ while True:
     then 30 sec
     """
     if t == 5:
-        curr_idle = int(pv.get("xprintidle"))/1000
+        try:
+            curr_idle = int(pv.get("xprintidle"))/1000
+        except TypeError:
+            curr_idle = 0
         t = 0
         if curr_idle > 30:
             pause = 5

@@ -33,12 +33,15 @@ def get(cmd):
         return subprocess.check_output(cmd).decode("utf-8").strip()
     except (subprocess.CalledProcessError, TypeError):
         pass
-
+    
 def get_ws():
     # get current workspace
-    return [
-        l.split()[0] for l in get(["wmctrl", "-d"]).splitlines() if "*" in l
-        ][0]
+    try:
+        return [l.split()[0] for l in get([
+            "wmctrl", "-d"
+            ]).splitlines() if "*" in l][0]
+    except AttributeError:
+        pass
 
 def empty_dir():
     for w in os.listdir(previews):
@@ -95,6 +98,7 @@ def setname(window):
 
     
   
+print(get_ws())
 
 
 
