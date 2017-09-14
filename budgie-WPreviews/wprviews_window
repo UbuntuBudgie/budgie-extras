@@ -30,7 +30,6 @@ try:
 except IndexError:
     pass
 
-n_wins = len(wins)
 
 class TestWin(Gtk.Window):
 
@@ -142,5 +141,6 @@ styleContext.add_provider_for_screen(
     )
 
 if wins:
+    n_wins = len(wins)
     TestWin()
     Gtk.main()
