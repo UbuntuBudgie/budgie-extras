@@ -2,4 +2,5 @@ Budgie QuickNote is an applet to provide the easiest way to make small notes. Ju
 
 Budgie QuickNote autosaves the text while writing, and comes with a ten- level undo/redo function.
 
-![alt text](http://url/to/img.png)
+![screenshot](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-quicknote/screenshot.png)
+
