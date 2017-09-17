@@ -87,6 +87,8 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.text.connect("key-release-event", self.manage_undo)
         self.text.set_left_margin(20)
         self.text.set_top_margin(20)
+        self.text.set_right_margin(20)
+        self.text.set_bottom_margin(20)
         self.win.add(self.text)
         self.text.set_wrap_mode(Gtk.WrapMode.WORD)
         # buttonbox / buttons
@@ -166,6 +168,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
     	self.manager.register_popover(self.box, self.popover)
 
 cssProvider = Gtk.CssProvider()
+
 cssProvider.load_from_path(
     "/usr/lib/budgie-desktop/plugins/budgie-quicknote/style.css"
     )
