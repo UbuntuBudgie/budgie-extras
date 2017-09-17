@@ -132,23 +132,21 @@ class BudgieQuickNoteApplet(Budgie.Applet):
             text = "Welcome to QuickNote!\n\n"+\
                    "Just replace this text with your "+\
                    "notes. Notes are saved automatically while writing."
+        self.undo_list.append(text)
         return text
 
     def manage_undo(self, *args):
         self.back_index = -1
         newtext = self.get_txt()
-        if self.currtext != newtext:
-            self.undo_list.append(newtext)
-            self.undo_list = self.undo_list[-undo_steps:]
-            open(textfile, "wt").write(newtext)
+        self.undo_list.append(newtext)
+        self.undo_list = self.undo_list[-undo_steps:]
+        open(textfile, "wt").write(newtext)
 
     def undo(self, *args):
-        self.back_index = self.back_index - 1
-        try:
+        n_edits = len(self.undo_list)-1
+        if abs(self.back_index) < n_edits:
+            self.back_index = self.back_index - 1
             reverted = self.undo_list[self.back_index]
-        except IndexError:
-            pass
-        else:
             self.buffer.set_text(reverted)
             open(textfile, "wt").write(reverted)
 
