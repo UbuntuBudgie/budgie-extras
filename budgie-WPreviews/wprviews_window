@@ -9,7 +9,6 @@ import os
 import subprocess
 import sys
 
-
 pics_path = pv.previews
 area = pv.get_area()
 maxrow = int(area/380)
@@ -36,7 +35,8 @@ class TestWin(Gtk.Window):
         
         Gtk.Window.__init__(self, title="PrVflash")
         self.set_decorated(False)
-        self.connect("focus-out-event", self.stop)
+        self.connect("focus-out-event", self.stop)  
+        self.connect('key-press-event', self.get_key)  
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_skip_taskbar_hint(True)
         self.set_focus()
@@ -96,6 +96,10 @@ class TestWin(Gtk.Window):
             self.focussed.grab_focus()
         except AttributeError:
             pass
+
+    def get_key(self, button, val):
+        if Gdk.keyval_name(val.keyval) == "Escape":
+            self.stop()
 
     def create_button(self, win, w_id, active):
         button = Gtk.Button()
