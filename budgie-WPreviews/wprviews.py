@@ -2,6 +2,8 @@ import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
+
+runner = "/opt/budgie-extras/wprviews/code/wprviews_panelrunner"
     
 
 class WPrviews(GObject.GObject, Budgie.Plugin):
@@ -42,10 +44,18 @@ class WPrviewsApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        subprocess.Popen("/opt/budgie-extras/wprviews/code/wprviews_panelrunner")
+        self.check_runs()
 
     def	on_press(self, box, arg):
         self.manager.show_popover(self.box)
+
+    def check_runs(self):
+        try:
+            pid = subprocess.check_output([
+            "pgrep", "-f", runner,
+            ]).deode("utf-8")
+        except subprocess.CalledProcessError:
+            subprocess.Popen(runner)
 
     def do_update_popovers(self, manager):
     	self.manager = manager
