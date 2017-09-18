@@ -24,8 +24,12 @@ comm = str(max_w)+"x"+str(v_size)
 def get_area():
     # get size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
     # _NET_DESKTOP_GEOMETRY ?
-    windata = get("xrandr").split()
-    return int(windata[windata.index("primary")+1].split("x")[0])
+    windata = get("xrandr")
+    if windata:
+        windata =  windata.split()
+        return int(windata[windata.index("primary")+1].split("x")[0])
+    else:
+        return 1800
 
 def get(cmd):
     # just a helper
