@@ -17,7 +17,8 @@ A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
 should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
-    
+
+panelrunner = "/opt/budgie-extras/wswitcher/code/wswitcher_panelrunner"
 
 class BudgieWSwitcher(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -57,7 +58,15 @@ class BudgieWSwitcherApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        subprocess.Popen("/opt/budgie-extras/wswitcher/code/wswitcher_panelrunner")
+        self.check_runs()
+
+    def check_runs(self):
+        try:
+            pid = subprocess.check_output([
+            "pgrep", "-f", panelrunner,
+            ]).decode("utf-8")
+        except subprocess.CalledProcessError:
+            subprocess.Popen(panelrunner)
 
     def	on_press(self, box, arg):
         self.manager.show_popover(self.box)

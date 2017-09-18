@@ -45,7 +45,7 @@ class BHCornersWin():
         try:
             pid = subprocess.check_output([
             "pgrep", "-f", panelrunner,
-            ]).deode("utf-8")
+            ]).decode("utf-8")
         except subprocess.CalledProcessError:
             subprocess.Popen(panelrunner)
         

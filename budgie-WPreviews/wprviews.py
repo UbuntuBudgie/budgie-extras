@@ -53,7 +53,7 @@ class WPrviewsApplet(Budgie.Applet):
         try:
             pid = subprocess.check_output([
             "pgrep", "-f", runner,
-            ]).deode("utf-8")
+            ]).decode("utf-8")
         except subprocess.CalledProcessError:
             subprocess.Popen(runner)
 
