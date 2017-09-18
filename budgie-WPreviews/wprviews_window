@@ -30,7 +30,6 @@ try:
 except IndexError:
     pass
 
-
 class TestWin(Gtk.Window):
 
     def __init__(self):
@@ -65,6 +64,9 @@ class TestWin(Gtk.Window):
         self.curr_row = Gtk.Grid()
         self.curr_row.set_column_spacing(20)
         self.maingrid.attach(self.curr_row, 0, 0, 1, 1)
+        active = pv.get(["xdotool", "getactivewindow"])
+        active = pv.get_hex(active) if active else None
+        self.focussed = None
         for i in range(n_wins):
             # next row if the previous one is filled
             if width >= maxrow:
@@ -78,7 +80,7 @@ class TestWin(Gtk.Window):
             # first see if the window still exists:
             nm = pv.get_wmname(w_id)
             if nm:
-                button = self.create_button(win, w_id)
+                button = self.create_button(win, w_id, active)
                 win_name = self.create_label(nm)
                 bgrid = self.create_buttonset(button, win_name)
                 self.curr_row.attach(bgrid, i+1, 0, 1, 1)
@@ -90,8 +92,12 @@ class TestWin(Gtk.Window):
             add = self.spacer(add)
             self.curr_row.attach(add, 0, 0, 1, 1)
         self.show_all()
+        try:
+            self.focussed.grab_focus()
+        except AttributeError:
+            pass
 
-    def create_button(self, win, w_id):
+    def create_button(self, win, w_id, active):
         button = Gtk.Button()
         button.connect("clicked", self.activate, w_id)
         button.set_size_request(280, 180)
@@ -99,6 +105,8 @@ class TestWin(Gtk.Window):
         button.set_image(win_img)
         st_cont = button.get_style_context()
         st_cont.add_class("moverbutton")
+        if w_id == active:
+            self.focussed = button
         return button
 
     def create_label(self, nm):
