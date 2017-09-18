@@ -39,8 +39,16 @@ class BHCornersWin():
         self.appbutton.set_image(icon)
         self.menu = Gtk.Menu()
         self.create_menu()
-        subprocess.Popen(panelrunner)
+        self.check_runs()
 
+    def check_runs(self):
+        try:
+            pid = subprocess.check_output([
+            "pgrep", "-f", panelrunner,
+            ]).deode("utf-8")
+        except subprocess.CalledProcessError:
+            subprocess.Popen(panelrunner)
+        
     def create_menu(self):
         callsettings = Gtk.MenuItem("Set hot corners")
         callsettings.connect("activate", self.call_settings) 
