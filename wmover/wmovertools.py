@@ -121,6 +121,3 @@ def limit_exist():
             t = 1
         else:
             t = t+1
-        print(t)
-
-##runwindow("none", 1680, 1050) 
