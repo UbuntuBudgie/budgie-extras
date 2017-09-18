@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 import subprocess
 import time
+import os
+
+settings_path = os.path.join(os.environ["HOME"], ".budgie-extras/wmover")
+fpath = os.path.join(settings_path, "busy")
+print(fpath)
+
+try:
+    os.makedirs(settings_path)
+except FileExistsError:
+    pass
 
 # wm_classes to be ignored
 ignore = [
@@ -106,6 +116,11 @@ def limit_exist():
                     break
             except TypeError:
                 pass
-        t = t+1
 
-        
+        if os.path.exists(fpath):
+            t = 1
+        else:
+            t = t+1
+        print(t)
+
+##runwindow("none", 1680, 1050) 

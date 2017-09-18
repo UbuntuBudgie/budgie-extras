@@ -5,15 +5,23 @@ from gi.repository import Gtk, Gdk, Pango
 import subprocess
 import sys
 import wmovertools as wmt
+import os
 
 button_hsize = 80; button_vsize = 50
+
+fpath = wmt.fpath
+
+try:
+    os.remove(fpath)
+except FileNotFoundError:
+    pass
 
 class Splash(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="w_moversplash")
         self.set_skip_taskbar_hint(True)
-        maingrid = Gtk.Grid() 
+        maingrid = Gtk.Grid()
         self.add(maingrid)
         maingrid.set_border_width(0)
         wcontext = self.get_style_context()
@@ -37,6 +45,8 @@ class Splash(Gtk.Window):
                 button.connect("clicked", self.move_to, subj, n)
             else:
                 button.connect("clicked", self.move_desktop, subj, n)
+            button.connect("enter-notify-event", self.test1)
+            button.connect("leave-notify-event", self.test2)
         self.connect('key-press-event', self.get_key)  
         x_size = self.n_spaces*button_hsize
         self.move(x_res/2-x_size/2, y_res-180)       
@@ -46,6 +56,12 @@ class Splash(Gtk.Window):
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
         wmt.run(["xdotool", "windowmove", subj, "100", "100"])
         self.stop()
+
+    def test1(self, *args):
+        open(fpath, "wt").write("")
+
+    def test2(self, *args):
+        os.remove(fpath)
 
     def move_desktop(self, button, subj, wspace):
         wmt.run(["wmctrl", "-s", str(wspace)])
