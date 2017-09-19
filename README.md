@@ -17,3 +17,13 @@ additional enhancements for the user experience
      meson --buildtype plain --prefix=/usr --datadir=/usr/share --sysconfdir=/opt ..
      ninja
      sudo ninja install
+
+## Runtime dependencies
+
+The following packages are required for the plugins to work:
+
+ - wmctrl
+ - xdotool
+ - xprintidle
+ - python3
+ - python3-gi
