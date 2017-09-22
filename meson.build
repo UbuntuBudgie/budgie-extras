@@ -14,9 +14,8 @@ else
 	message('Found python3 binary')
 endif
 dependency('glib-2.0')
-dependency('budgie-1.0', version: '>=2')
 dependency('gobject-introspection-1.0', version: '>=1.51.1')
-dependency('gtk+-3.0', version :'>=3.22')
+dependency('gtk+-3.0', version :'>=3.18')
 
 # Global path variabel
 prefix = get_option('prefix')

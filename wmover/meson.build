@@ -1,6 +1,6 @@
 #gnome = import('gnome')
 
-PLUGIN = 'wprviews'
+PLUGIN = 'wmover'
 
 install_data(
     'WMover.plugin',
