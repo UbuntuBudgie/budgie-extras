@@ -1,0 +1,82 @@
+Source: budgie-extras
+Section: misc
+Priority: extra
+Maintainer: David Mohammed <fossfreedom@ubuntu.com>
+Build-Depends: debhelper (>= 10), python3
+Standards-Version: 4.0.1
+Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
+Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
+Homepage: https://ubuntubudgie.org
+
+Package: budgie-hotcorners-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The hotcorners applet allow user defined commands to be executed
+ when the mouse cursor is pushed into a corner of the main desktop.
+
+Package: budgie-quicknote-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The quicknote applet allows a user to record a text based note.
+ The applet supports multiple undo and redo capabilities.
+
+Package: budgie-previews-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The Previews applet allows a user to record a text based note.
+ The applet supports multiple undo and redo capabilities.
+
+Package: budgie-workspace-overview-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The workspace overview applet allows a user to record a text based note.
+ The applet supports multiple undo and redo capabilities.
+
+Package: budgie-workspace-switcher-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The workspace switcher applet allows a user to record a text based note.
+ The applet supports multiple undo and redo capabilities.
+
+Package: budgie-window-mover-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+ ${misc:Depends}, ${shlibs:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The Window Mover applet allows a user to record a text based note.
+ The applet supports multiple undo and redo capabilities.
+
