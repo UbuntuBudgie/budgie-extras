@@ -5,7 +5,7 @@ from gi.repository import Budgie, GObject, Gtk
 import os
 
 """
-Budgie WallpaperSwitcher
+Budgie QuickNote
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -119,7 +119,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         undo.connect("clicked", self.undo)
         bcontext = undo.get_style_context()
         bcontext.add_class("moverbutton")
-        Gtk.StyleContext.add_provider(rcontext,
+        Gtk.StyleContext.add_provider(bcontext,
                                       provider,
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
