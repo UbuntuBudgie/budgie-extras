@@ -85,9 +85,11 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.maingrid = Gtk.Grid()
         rcontext = self.maingrid.get_style_context()
         rcontext.add_class("moverwindow")
-        Gtk.StyleContext.add_provider(rcontext,
-                                      provider,
-                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        Gtk.StyleContext.add_provider(
+            rcontext,
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+            )
         # the scrolled window
         self.win = Gtk.ScrolledWindow.new()
         self.win.set_size_request(280, 180)
@@ -114,18 +116,30 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         # buttonbox / buttons
         bbox = Gtk.ButtonBox()
         bbox.set_layout(Gtk.ButtonBoxStyle.CENTER)
-        undo = Gtk.Button.new_from_icon_name('edit-undo-symbolic',
-                                             Gtk.IconSize.BUTTON)
+        undo = Gtk.Button.new_from_icon_name(
+            'edit-undo-symbolic',
+            Gtk.IconSize.BUTTON,
+            )
         undo.connect("clicked", self.undo)
         bcontext = undo.get_style_context()
         bcontext.add_class("moverbutton")
-        Gtk.StyleContext.add_provider(bcontext,
-                                      provider,
-                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
+        Gtk.StyleContext.add_provider(
+            bcontext,
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+            )
         undo.set_relief(Gtk.ReliefStyle.NONE)
-        redo = Gtk.Button.new_from_icon_name('edit-redo-symbolic',
-                                             Gtk.IconSize.BUTTON)
+        redo = Gtk.Button.new_from_icon_name(
+            'edit-redo-symbolic',
+            Gtk.IconSize.BUTTON,
+            )
+        redocontext = redo.get_style_context()
+        redocontext.add_class("moverbutton")
+        Gtk.StyleContext.add_provider(
+            redocontext,
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+            )
         redo.connect("clicked", self.redo)
         rcontext = redo.get_style_context()
         rcontext.add_class("moverbutton")
