@@ -5,7 +5,6 @@ PLUGIN = 'budgie-quicknote'
 install_data(
     'BudgieQuickNote.plugin',
     'budgie_quicknote.py',
-    'style.css',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
 )
 

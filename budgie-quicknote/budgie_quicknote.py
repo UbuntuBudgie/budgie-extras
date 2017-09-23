@@ -1,7 +1,7 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gdk, Pango
-import subprocess
+from gi.repository import Budgie, GObject, Gtk
 import os
 
 """
@@ -19,7 +19,8 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-settingsdir = os.path.join(os.environ["HOME"], ".budgie-extras/quicknote")
+settingsdir = os.path.join(os.environ["HOME"],
+                           ".config/budgie-extras/quicknote")
 undo_steps = 11
 
 try:
@@ -28,6 +29,17 @@ except FileExistsError:
     pass
 
 textfile = os.path.join(settingsdir, "quicknote-data")
+
+css_data = """
+.moverwindow {
+    background-color: #404552;
+}
+.moverbutton {
+  color: white;
+  border-radius: 20px;
+  border: 0px;
+}
+"""
 
 
 class BudgieQuickNote(GObject.GObject, Budgie.Plugin):
@@ -42,7 +54,7 @@ class BudgieQuickNote(GObject.GObject, Budgie.Plugin):
         """ Initialisation is important.
         """
         GObject.Object.__init__(self)
-        
+
     def do_get_panel_widget(self, uuid):
         """ This is where the real fun happens. Return a new Budgie.Applet
             instance with the given UUID. The UUID is determined by the
@@ -61,18 +73,26 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         icon = Gtk.Image.new_from_icon_name(
             "budgie-quicknote-panel",
             Gtk.IconSize.MENU,
-            )
-        self.box.add(icon)        
+        )
+
+        provider = Gtk.CssProvider.new()
+        provider.load_from_data(css_data.encode())
+
+        self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         # grid to contain all the stuff
         self.maingrid = Gtk.Grid()
         rcontext = self.maingrid.get_style_context()
         rcontext.add_class("moverwindow")
+        Gtk.StyleContext.add_provider(rcontext,
+                                      provider,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
         # the scrolled window
-        self.win = Gtk.ScrolledWindow.new()        
+        self.win = Gtk.ScrolledWindow.new()
         self.win.set_size_request(280, 180)
-        self.win.set_vexpand(True); self.win.set_hexpand(True)
+        self.win.set_vexpand(True)
+        self.win.set_hexpand(True)
         # main textbuffer
         self.buffer = Gtk.TextBuffer()
         # undo "buffer 1"
@@ -93,16 +113,20 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.text.set_wrap_mode(Gtk.WrapMode.WORD)
         # buttonbox / buttons
         bbox = Gtk.ButtonBox()
-        bbox.set_layout(Gtk.ButtonBoxStyle.CENTER) 
-        undo = Gtk.Button("↺")
+        bbox.set_layout(Gtk.ButtonBoxStyle.CENTER)
+        undo = Gtk.Button.new_from_icon_name('edit-undo-symbolic',
+                                             Gtk.IconSize.BUTTON)
         undo.connect("clicked", self.undo)
-        undo.modify_font(Pango.FontDescription('Ubuntu 16'))
         bcontext = undo.get_style_context()
         bcontext.add_class("moverbutton")
+        Gtk.StyleContext.add_provider(rcontext,
+                                      provider,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
         undo.set_relief(Gtk.ReliefStyle.NONE)
-        redo = Gtk.Button("↻")
+        redo = Gtk.Button.new_from_icon_name('edit-redo-symbolic',
+                                             Gtk.IconSize.BUTTON)
         redo.connect("clicked", self.redo)
-        redo.modify_font(Pango.FontDescription('Ubuntu 16'))
         rcontext = redo.get_style_context()
         rcontext.add_class("moverbutton")
         redo.set_relief(Gtk.ReliefStyle.NONE)
@@ -118,7 +142,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
 
-    def	on_press(self, box, arg):
+    def on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
     def get_txt(self, *args):
@@ -131,8 +155,8 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         try:
             text = open(textfile).read()
         except FileNotFoundError:
-            text = "Welcome to QuickNote!\n\n"+\
-                   "Just replace this text with your "+\
+            text = "Welcome to QuickNote!\n\n" + \
+                   "Just replace this text with your " + \
                    "notes. Notes are saved automatically while writing."
         self.undo_list.append(text)
         return text
@@ -145,7 +169,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         open(textfile, "wt").write(newtext)
 
     def undo(self, *args):
-        n_edits = len(self.undo_list)-1
+        n_edits = len(self.undo_list) - 1
         if abs(self.back_index) < n_edits:
             self.back_index = self.back_index - 1
             reverted = self.undo_list[self.back_index]
@@ -162,23 +186,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
             else:
                 self.buffer.set_text(reverted)
                 open(textfile, "wt").write(reverted)
-            
+
     def do_update_popovers(self, manager):
-    	self.manager = manager
-    	self.manager.register_popover(self.box, self.popover)
-
-cssProvider = Gtk.CssProvider()
-
-cssProvider.load_from_path(
-    "/usr/lib/budgie-desktop/plugins/budgie-quicknote/style.css"
-    )
-screen = Gdk.Screen.get_default()
-styleContext = Gtk.StyleContext()
-styleContext.add_provider_for_screen(
-    screen,
-    cssProvider,
-    Gtk.STYLE_PROVIDER_PRIORITY_USER,
-    )
-
-    
-
+        self.manager = manager
+        self.manager.register_popover(self.box, self.popover)
