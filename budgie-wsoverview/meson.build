@@ -37,3 +37,5 @@ install_data(
     'wsoverview-bpanel.svg',
     install_dir: PIXMAPS_DIR
 )
+
+meson.add_install_script('meson_post_install')

@@ -16,10 +16,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import subprocess
-import time
-import os
-from operator import itemgetter
 from itertools import groupby
+from operator import itemgetter
 
 # wm_classes to be ignored
 ignore = [
@@ -27,7 +25,8 @@ ignore = [
     '"desktop_window", "Nautilus"',
     '"plank", "Plank"',
     None,
-    ]
+]
+
 
 def get(cmd):
     # just a helper. (re-) try/except for buggy wmctrl
@@ -36,12 +35,14 @@ def get(cmd):
     except subprocess.CalledProcessError:
         pass
 
+
 def getspaces(wsdata):
     # get the current workspace and n- spaces from wmctrl -d
     newsrc = wsdata.splitlines()
     n_ws = len(newsrc)
     curr_ws = [l.split()[0] for l in newsrc if "*" in l][0]
     return n_ws, curr_ws
+
 
 def show_wmclass(wid):
     # get WM_CLASS from window- id
@@ -50,23 +51,27 @@ def show_wmclass(wid):
     except (IndexError, AttributeError):
         pass
 
+
 def get_wmname(wid):
     # get WM_NAME from window- id
     try:
         return get([
             "xprop", "-id", wid, "WM_NAME"
-            ]).split("=")[-1].strip().strip('"')
+        ]).split("=")[-1].strip().strip('"')
     except (IndexError, AttributeError):
         pass
+
 
 def get_menuset(wdata):
     # return valid window-ids and workspaces from wmctrl -l
     allwindows = [l.split() for l in wdata.splitlines()]
     return [wid[1] for wid in allwindows if not show_wmclass(wid[0]) in ignore]
 
+
 def new_icon(currws):
     # arrange icon path from current workspace
-    return str(int(currws)+1)+"-wso"
+    return str(int(currws) + 1) + "-wso"
+
 
 def update_winmenu(currdata):
     newdata = get(["wmctrl", "-l"])
@@ -77,13 +82,16 @@ def update_winmenu(currdata):
         test = False
     if all([not test, newdata]):
         for l in [w.split() for w in newdata.splitlines()]:
-            wid = l[0]; wspace = l[1]
-            wname = get_wmname(wid); wmclass = show_wmclass(wid)
+            wid = l[0]
+            wspace = l[1]
+            wname = get_wmname(wid)
+            wmclass = show_wmclass(wid)
             if all([wname, wmclass, wmclass not in ignore]):
                 appname = wmclass.split(",")[-1].strip().strip('"')
                 newmenudata.append([int(wspace), appname, wname, wid])
-        newmenudata = sorted(newmenudata, key = itemgetter(0,1,2))
-        newmenu = []; subspace = []
+        newmenudata = sorted(newmenudata, key=itemgetter(0, 1, 2))
+        newmenu = []
+        subspace = []
         for wsp, data in groupby(newmenudata, itemgetter(0)):
             subspace.append(wsp)
             wlst = [w[1:] for w in list(data)]
