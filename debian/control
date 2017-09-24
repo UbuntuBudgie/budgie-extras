@@ -2,16 +2,19 @@ Source: budgie-extras
 Section: misc
 Priority: extra
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
-Build-Depends: debhelper (>= 10), python3
+Build-Depends:  debhelper (>= 10),
+		python3,
+		meson,
+		dh-python
 Standards-Version: 4.0.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
 Homepage: https://ubuntubudgie.org
 
 Package: budgie-hotcorners-applet
-Architecture: any
+Architecture: all
 Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+ ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -21,9 +24,8 @@ Description: Set of desktop enhancements for the Budgie Desktop.
  when the mouse cursor is pushed into a corner of the main desktop.
 
 Package: budgie-quicknote-applet
-Architecture: any
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+Architecture: all
+Depends: python3, python3-gi, ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -33,9 +35,9 @@ Description: Set of desktop enhancements for the Budgie Desktop.
  The applet supports multiple undo and redo capabilities.
 
 Package: budgie-previews-applet
-Architecture: any
+Architecture: all
 Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+ ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -46,8 +48,7 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 
 Package: budgie-workspace-overview-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+Depends: python3, python3-gi, wmctrl, ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -59,7 +60,7 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 Package: budgie-workspace-switcher-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+ ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -71,7 +72,7 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 Package: budgie-window-mover-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
- ${misc:Depends}, ${shlibs:Depends}
+ ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
