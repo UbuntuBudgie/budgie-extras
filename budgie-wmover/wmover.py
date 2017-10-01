@@ -24,7 +24,8 @@ panelrunner = "/opt/budgie-extras/wmover/code/wmover_panelrunner"
 backgrounder = "/opt/budgie-extras/wmover/code/wmover_run"
 # ---------------------------------------------------
 
-wmover_path = os.path.join(os.environ["HOME"], ".budgie-extras/wmover")
+wmover_path = os.path.join(
+    os.environ["HOME"], ".config", "budgie-extras", "wmover")
 wmover_ismuted = os.path.join(wmover_path, "muted")
 
 try:
