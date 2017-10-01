@@ -8,8 +8,25 @@ import wmovertools as wmt
 import os
 
 button_hsize = 80; button_vsize = 50
-
 fpath = wmt.fpath
+
+css_data = """
+.moverwindow {
+	background-color: #353945;
+	}
+.moverbutton {
+  background-color: #353945;
+  color: #C8C8C8;
+  border-width: 0px;
+  border-color: #858C96;
+  padding: 1px;
+  border-radius: 0px;
+}
+.moverbutton:hover {
+  background-color: shade (@bg_color, 0.4);
+  color: shade (@color, 0.2)
+}
+"""
 
 try:
     os.remove(fpath)
@@ -20,12 +37,12 @@ class Splash(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self, title="w_moversplash")
+        provider = Gtk.CssProvider.new()
+        provider.load_from_data(css_data.encode())
         self.set_skip_taskbar_hint(True)
         maingrid = Gtk.Grid()
         self.add(maingrid)
-        maingrid.set_border_width(0)
-        wcontext = self.get_style_context()
-        wcontext.add_class("moverwindow")
+        maingrid.set_border_width(0)        
         wsdata = wmt.get_wsdata()
         self.n_spaces = wsdata[0]; currspace = wsdata[1]       
         # create button- row
@@ -36,8 +53,9 @@ class Splash(Gtk.Window):
         for n in range(self.n_spaces):
             label = l_char+str(n+1)+r_char if n == currspace else n+1
             button = Gtk.Button(label)
+
             st_cont = button.get_style_context()
-            st_cont.add_class("moverbutton")
+            st_cont.add_class("moverbutton")            
             button.set_size_request(button_hsize, button_vsize)
             maingrid.attach(button, n, 0, 1, 1)
             button.modify_font(Pango.FontDescription('Ubuntu 15'))
@@ -45,22 +63,21 @@ class Splash(Gtk.Window):
                 button.connect("clicked", self.move_to, subj, n)
             else:
                 button.connect("clicked", self.move_desktop, subj, n)
-            button.connect("enter-notify-event", self.test1)
-            button.connect("leave-notify-event", self.test2)
+            button.connect("enter-notify-event", self.busy)
+            button.connect("leave-notify-event", self.free)
         self.connect('key-press-event', self.get_key)  
         x_size = self.n_spaces*button_hsize
         self.move(x_res/2-x_size/2, y_res-180)       
 
     def move_to(self, button, subj, wspace):
-        # print(button, subj, wspace)
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
         wmt.run(["xdotool", "windowmove", subj, "100", "100"])
         self.stop()
 
-    def test1(self, *args):
+    def busy(self, *args):
         open(fpath, "wt").write("")
 
-    def test2(self, *args):
+    def free(self, *args):
         os.remove(fpath)
 
     def move_desktop(self, button, subj, wspace):

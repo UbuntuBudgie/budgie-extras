@@ -3,9 +3,11 @@ import subprocess
 import time
 import os
 
-settings_path = os.path.join(os.environ["HOME"], ".budgie-extras/wmover")
-fpath = os.path.join(settings_path, "busy")
-print(fpath)
+settings_path = os.path.join(
+    os.environ["HOME"], ".config", "budgie-extras", "wmover"
+    )
+
+fpath = "/tmp/wmover_busy"
 
 try:
     os.makedirs(settings_path)
