@@ -2,8 +2,35 @@ import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
+import os
 
+"""
+Budgie Window Mover
+Author: Jacob Vlijm
+Copyright=Copyright © 2017 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+# ------------- change for debian rules -------------
 panelrunner = "/opt/budgie-extras/wmover/code/wmover_panelrunner"
+backgrounder = "/opt/budgie-extras/wmover/code/wmover_run"
+# ---------------------------------------------------
+
+wmover_path = os.path.join(os.environ["HOME"], ".budgie-extras/wmover")
+wmover_ismuted = os.path.join(wmover_path, "muted")
+
+try:
+    os.makedirs(wmover_path)
+except FileExistsError:
+    pass                             
 
 class WMover(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -37,22 +64,58 @@ class WMoverApplet(Budgie.Applet):
         self.box.add(icon)        
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
-        self.hello = Gtk.Label("Window Mover is active")
-        self.popover.add(self.hello)        
+        ismuted = os.path.exists(wmover_ismuted)
+        label = "Window Mover is inactive" if ismuted \
+                else "Window Mover is active"
+        self.toggle = Gtk.ToggleButton.new_with_label(label)
+        self.toggle.set_size_request(210, 20)
+        self.toggle.set_active(not ismuted)
+        self.toggle.connect("clicked", self.switch)      
+        self.popover.add(self.toggle)        
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        self.check_runs()
+        if not ismuted:
+            self.initiate()
 
-    def check_runs(self):
+    def switch(self, button, *args):
+        pids = self.show_procs()
+        if pids:
+            for p in pids:
+                subprocess.Popen(["kill", p])
+            self.toggle.set_label("Window Mover is inactive.")
+            open(wmover_ismuted, "wt").write("")
+        else:
+            subprocess.Popen(panelrunner)    
+            self.toggle.set_label("Window Mover is active")
+            try:
+                os.remove(wmover_ismuted)
+            except FileNotFoundError:
+                pass
+
+    def show_procs(self):
+        pids = [
+            self.check_runs(pname) for pname in [panelrunner, backgrounder]
+            ]
+        return [p for p in pids if p]
+
+    def check_runs(self, pname):
         try:
             pid = subprocess.check_output([
-            "pgrep", "-f", panelrunner,
+            "pgrep", "-f", pname,
             ]).decode("utf-8")
         except subprocess.CalledProcessError:
-            subprocess.Popen(panelrunner)
+            return None
+        else:
+            return pid.strip()
 
+    def initiate(self):
+        pass
+        pids = self.show_procs()
+        if not pids:
+            subprocess.Popen(panelrunner)
+        
     def	on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
