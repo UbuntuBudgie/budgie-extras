@@ -3,11 +3,11 @@ Budgie WindoMover is an application (applet) to quickly move windows to any of t
 Additionally, instead or as an alternative to the applet, the bar can be called from a shortcut. The command: 
 /opt/budgie-extras/wmover/code/wmover_run -single
 
-![drag](https://github.com/UbuntuBudgie/budgie-extras/blob/master/wmover/drag.png)
+![drag](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wmover/drag.png)
 
 To call the bar to move the desktop to another workspace (showing arrows instead of dots on the current workspace):
 /opt/budgie-extras/wmover/code/wmover_run -singlespace
 
-![workspace](https://github.com/UbuntuBudgie/budgie-extras/blob/master/wmover/workspace.png)
+![workspace](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wmover/workspace.png)
 
 
