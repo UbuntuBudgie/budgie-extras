@@ -2,9 +2,10 @@ import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
+import os
 
 """
-Budgie WallpaperSwitcher
+Budgie Wallpaper Switcher
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -18,7 +19,32 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+# ------------- change for debian rules -------------
 panelrunner = "/opt/budgie-extras/wswitcher/code/wswitcher_panelrunner"
+backgrounder = "/opt/budgie-extras/wswitcher/code/wswitcher_run"
+# ---------------------------------------------------
+
+## wswitcher_path = os.path.join(os.environ["HOME"], ".budgie-extras", "wswitcher")
+
+wswitcher_path = os.path.join(
+    os.environ["HOME"],
+    ".config",
+    "budgie-extras",
+    "wswitcher",
+    )
+
+try:
+    os.makedirs(wswitcher_path)
+except FileExistsError:
+    pass
+
+
+wswitcher_ismuted = os.path.join(wswitcher_path, "muted")
+
+try:
+    os.makedirs(wswitcher_path)
+except FileExistsError:
+    pass
 
 class BudgieWSwitcher(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -52,20 +78,55 @@ class BudgieWSwitcherApplet(Budgie.Applet):
         self.box.add(icon)        
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
-        self.hello = Gtk.Label("Wallpaper Switcher is active")
-        self.popover.add(self.hello)        
+        ismuted = os.path.exists(wswitcher_ismuted)
+        label = "Wallpaper Switcher is inactive" if ismuted \
+                else "Wallpaper Switcher is active"
+        self.toggle = Gtk.ToggleButton.new_with_label(label)
+        self.toggle.set_size_request(210, 20)
+        self.toggle.set_active(not ismuted)
+        self.toggle.connect("clicked", self.switch)
+        self.popover.add(self.toggle)        
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        self.check_runs()
+        if not ismuted:
+            self.initiate()
 
-    def check_runs(self):
+    def switch(self, button, *args):
+        pids = self.show_procs()
+        if pids:
+            for p in pids:
+                subprocess.Popen(["kill", p])
+            self.toggle.set_label("Wallpaper Switcher is inactive.")
+            open(wswitcher_ismuted, "wt").write("")
+        else:
+            subprocess.Popen(panelrunner)    
+            self.toggle.set_label("Wallpaper Switcher is active")
+            try:
+                os.remove(wswitcher_ismuted)
+            except FileNotFoundError:
+                pass
+
+    def show_procs(self):
+        pids = [
+            self.check_runs(pname) for pname in [panelrunner, backgrounder]
+            ]
+        return [p for p in pids if p]
+        
+    def check_runs(self, pname):
         try:
             pid = subprocess.check_output([
-            "pgrep", "-f", panelrunner,
+            "pgrep", "-f", pname,
             ]).decode("utf-8")
         except subprocess.CalledProcessError:
+            return None
+        else:
+            return pid.strip()
+               
+    def initiate(self):
+        pids = self.show_procs()
+        if not pids:
             subprocess.Popen(panelrunner)
 
     def	on_press(self, box, arg):

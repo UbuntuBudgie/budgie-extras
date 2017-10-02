@@ -18,11 +18,18 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-datadir = os.path.join(os.environ["HOME"], ".config/budgie-wswitcher")
+datadir = os.path.join(
+    os.environ["HOME"],
+    ".config",
+    "budgie-extras",
+    "wswitcher",
+    "workspaces"
+    )
+
 workspace_data = os.path.join(datadir, "wallpaper-data_")
 
 try:
-    os.mkdir(datadir)
+    os.makedirs(datadir)
 except FileExistsError:
     pass
 
@@ -68,5 +75,6 @@ def wswitcher(curr_ws1, currwall1):
 curr_ws1 = current_ws(); currwall1 = getwall()
 wswitcher(curr_ws1, currwall1)
     
+
 
 
