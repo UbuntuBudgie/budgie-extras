@@ -3,12 +3,38 @@ import subprocess
 import time
 import os
 
-previews = os.path.join(os.environ["HOME"], ".budgie-PV")
+"""
+Budgie Window Previews
+Author: Jacob Vlijm
+Copyright=Copyright © 2017 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
 
-try:
-    os.mkdir(previews)
-except FileExistsError:
-    pass
+dcpath = "/com/solus-project/budgie-panel/applets/"
+
+previews_dir = "/tmp"
+settings_dir = os.path.join(
+    os.environ["HOME"], ".config", "budgie-extras", "previews"
+    )
+
+previews = os.path.join(
+    previews_dir,
+    "window-previews",
+    )
+
+for dr in [previews_dir, previews, settings_dir]: 
+    try:
+        os.makedirs(dr)
+    except FileExistsError:
+        pass
 
 ignore = [
     "= _NET_WM_WINDOW_TYPE_DOCK",
@@ -21,9 +47,20 @@ v_size = 160
 # strings, to be used in the resize- commands
 comm = str(max_w)+"x"+str(v_size)
 
+def getkey():
+    # get the specific dconf path, referring to the applet's key
+    data = subprocess.check_output([
+        "dconf", "dump", dcpath,
+        ]).decode("utf-8").splitlines()
+    try:
+        match = [l for l in data if "Window Previews" in l][0]
+        watch = data.index(match)-3
+        return data[watch][1:-1]
+    except IndexError:
+        pass
+
 def get_area():
-    # get size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
-    # _NET_DESKTOP_GEOMETRY ?
+    # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
     windata = get("xrandr")
     if windata:
         windata =  windata.split()
@@ -87,18 +124,6 @@ def get_wmname(w_id):
     # get WM_NAME from window- id
     return get(["xdotool", "getwindowname", w_id])
        
-def create_preview(w_id, w):
-    # create the actual image
-    output_path = setname(w)
-    subprocess.Popen([
-    "import", "-silent", "-window", w_id, "-trim", 
-    "-resize", comm, output_path,
-     ])
-
-def setname(window):
-    name = "/"+".".join(window)+".jpg"
-    path = previews+name
-    return path
 
 
 

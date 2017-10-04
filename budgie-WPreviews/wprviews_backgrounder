@@ -1,98 +1,172 @@
 #!/usr/bin/env python3
 import time
-import subprocess
 import os
+import subprocess
 import wprviews_tools as pv
 
-previews = pv.previews
-ignore = pv.ignore
+fpath = pv.previews
 
-# clear the preview directory
-pv.empty_dir()
-
-# loop start values
-list1 = []; active1 = None; stay = 0; idle = False; t = 0; pause = 1
-
-def refresh_active(active2, list2):
-    # convert xdotool output to hex for a simple check in "raw" list2
-    win = pv.get_hex(active2)
-    # exception if preview window is in front
+for f in os.listdir(fpath):
     try:
-        w = [w for w in list2 if w[0] == win][0]
-    except IndexError:
+        os.remove(os.path.join(fpath, f))
+    except FileNotFoundError:
         pass
-    else:
-        w_id = w[0]
-        pv.create_preview(w_id, w)
+                  
+# default resize is v_size, unless w exceeds threshold
+max_w = 260
+v_size = 160
+# strings, to be used in the resize- commands
+comm = str(max_w)+"x"+str(v_size)
+
+def update_active(active, ws, id_list):
+    # update currently active window
+    hx_value = pv.get_hex(active) 
+    w_mention = hx_value+"."+ws
+    if w_mention in id_list:
+        # update window
+        create_preview(w_mention)
+
+def remove_preview(wid):
+    file = os.path.join(fpath, wid+".jpg")
+    try:
+        os.remove(file)
+    except FileNotFoundError:
+        pass
+
+def create_preview(w_id):
+    orig_id = w_id.split(".")[0]
+    if pv.get_valid(orig_id):
+        output_path = os.path.join(fpath, w_id+".jpg")
+        subprocess.Popen([
+        "import", "-silent", "-window", orig_id, "-trim", 
+        "-resize", comm, output_path,
+         ])
+    
+wins1 = []
+wins2 = []
+win_ids1 = []
+queue = [[], [], [], [], []]
+active1 = None
+act_t = 1
+idle = False
+cycle = 1
+
+r_timer = 0
+r_index = 0
 
 while True:
-    time.sleep(pause)
-    ws = pv.get_ws()
-    wlist = pv.get(["wmctrl", "-lG"])
-    if wlist:
-        prelist2 = [
-            l.split() for l in wlist.splitlines() if not "PrVflash" in l
-            ]
-        list2 = [[w[0], w[4], w[5], w[1]] for w in prelist2]
-        new = [w for w in list2 if not w in list1]
-        out = [w for w in list1 if not w in list2]
-        if new:
-            time.sleep(2)
-        for w in new:
-            w_id = w[0]
-            if pv.get_valid(w_id):
-                pv.create_preview(w_id, w)
-        for w in out:
-            try:
-                os.remove(pv.setname(w))
-            except FileNotFoundError:
-                pass
-        list1 = list2
-
-    # keep record of active window. update after 5sec in front in a row
-    if not idle:
-        active2 = pv.get(["xdotool", "getactivewindow"])
-        valid = pv.get_valid(active2)
-        """
-        used wmctrl and xdotool system calls break once and a while when performed in a loop
-        """
-        if all([active2, valid]):
-            """
-            if the currently active window is the same for 5 seconds,
-            update its preview.
-            """
-            if active2 == active1:
-                stay = stay+1
-                if stay == 5:
-                    refresh_active(active2, list2)
-                    stay = 0   
-            else:
-                stay = 0
-    """
-    check user activity, stop updating active window if idle for more
-    then 30 sec
-    """
-    if t == 5:
-        try:
-            curr_idle = int(pv.get("xprintidle"))/1000
-        except TypeError:
-            curr_idle = 0
-        t = 0
-        if curr_idle > 30:
-            pause = 5
-            idle = True
-        else:
-            pause = 1
-            idle = False
-    t = t+1
-    active1 = active2
     
-            
-            
+    time.sleep(cycle)
+    
+    # basic routine, create new ones, delete obsolete
+    new_wins = []
+    windata = pv.get(["wmctrl", "-lG"])
+    curr_ws = pv.get_ws()
+    if all([windata, not idle, curr_ws]):
+        wins2 = [
+            w.split() for w in windata.splitlines() \
+            if not any([name in w for name in [
+                "w_moversplash", "PrVflash"
+                ]])
+            ]       
+        for w in wins2:
+            w[0] = ".".join([w[0], w[1]])
+            del w[1:4]
+        win_ids2 = [w[0] for w in wins2]
+        new = [w for w in wins2 if not w in wins1]
+        out = [w for w in wins1 if not w in wins2]
+         
+        for w in new:
+            if w[0] in win_ids1:
+                # doesn't need to be included in queue,
+                # just create (overwrite) preview
+                create_preview(w[0])
+            else:
+                # needs to be created *and* in queue
+                new_wins.append(w[0])
+                # create
+                create_preview(w[0])
+
+        for w in out:
+            if not w[0] in win_ids2:
+                # if windows are in win_ids2, they obviously still exist, but
+                # are changed. No deletion needed, since they are overwritten
+                remove_preview(w[0])
+                
+        """
+        New windows will be placed in queue to refresh after 5 seconds of
+        existence, to make sure not the "half loaded" image will remain.
+        """
+        
+        for i in range(4):
+            queue[i] = queue[i+1]
+        for item in queue[0]:
+            # check existence / refresh
+            if item in win_ids2:
+                # create (overwrite)
+                create_preview(item)
+                
+        queue[4] = new_wins
+
+        """
+        If windows are in front, refresh after every 9 seconds. Also refresh
+        after focus change, *except* if we are dealing with a new window; then
+        the window is recently created anyway, and updated after x seconds.
+        Checking the window for existence in win_ids2 also has the advantage of
+        checking by name. for excluded names, a preview will not be created.
+        """
+        
+        curr_active = pv.get(["xdotool", "getactivewindow"])       
+        if curr_active:
+            active2 = curr_active
+            if active2 != active1:
+                update_active(curr_active, curr_ws, win_ids1)                
+                act_t = 1
+            else:
+                act_t = act_t + 1
+                if act_t % 9 == 0:
+                    update_active(curr_active, curr_ws, win_ids1)
+            active1 = active2
+
+        """
+        The windowlist, as reported in wmctrl -l, shows windows in
+        chronlological order (newest at the bottom). below a section to renew
+        the window images in rotation of that order, in a 15 sec routine, one per
+        time (4 images updated per minute). Brand new images are excluded to
+        prevent unnecessary fuel consumption.
+        """
+        
+        if r_timer == 15:
+            try:
+                r_update = win_ids2[r_index]
+                create_preview(r_update)
+            except IndexError:
+                r_index = 0
+            else:
+                if not r_update in new:
+                    create_preview(r_update)
+            r_index = r_index + 1
+            r_timer = 0
+        r_timer = r_timer + 1
+        wins1 = wins2
+        win_ids1 = win_ids2
+    # If idle for more then 90 seconds ->
+    # slow down checks, stop updating
+    try:
+        idle = int(pv.get("xprintidle"))/1000 > 90
+    except TypeError:
+        pass
+    else:
+        cycle = 5 if idle else 1
+                
+                
+                
         
 
- 
-
+                
+        
+        
+        
     
-
+    
 
