@@ -3,11 +3,11 @@ import subprocess
 import os
 
 # config path
-dr = os.path.join(os.environ["HOME"], ".config/budgie-hotcorners")
+##dr = os.path.join(os.environ["HOME"], ".config/budgie-hotcorners")
+dr = os.path.join(os.environ["HOME"], ".config", "budgie-extras", "hotcorners")
 # settings file
 settings = os.path.join(dr, "hotc_settings")
 # main script
-app = "/opt/budgie-extras/budgie-hotcorners/code/bhcorners"
 
 def get(cmd):
     try:

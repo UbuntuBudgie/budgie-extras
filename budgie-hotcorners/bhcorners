@@ -4,8 +4,60 @@ import time
 import ast
 import bhctools as bhc
 
-# config path/settingsfile
+def watch():
+    t = 0.5
+    n = 0
+    res = None
+    corner1 = None
+    
+    while True:
+        time.sleep(t)
+        # check resolution once per 5 seconds
+        if n == 0:
+            res2 = bhc.getres()
+            if all([res2, res != res2]):
+                res = res2   
+        elif n == 3:
+            try:
+                check = subprocess.check_output([
+                    "dconf", "dump", dcpath+key+"/"
+                    ]).decode("utf-8")
+                if not check:
+                    break
+            except TypeError:
+                break       
+        n = n + 1 if n < 5 else 0
+        # check if mouse is in hotcorner (and wasn't the last time)
+        pos = bhc.mousepos()
+        if pos:
+            corner2 = bhc.get_hot(marge, res)
+            if all([corner2, corner2 != corner1]):
+                try:
+                    action = [a[1] for a in actions if a[0] == corner2-1][0]
+                except IndexError:
+                    pass
+                else:
+                    try:
+                        subprocess.Popen(["/bin/bash", "-c", action])
+                    except subprocess.CalledProcessError:
+                        pass
+            corner1 = corner2
+
+def getkey():
+    data = subprocess.check_output([
+        "dconf", "dump", dcpath
+        ]).decode("utf-8").splitlines()
+    try:
+        match = [l for l in data if "Budgie Hot Corners" in l][0]
+        watch = data.index(match)-3
+        return data[watch][1:-1]
+    except IndexError:
+        pass
+
+
+# config path
 dr = bhc.dr
+# settings file
 settings = bhc.settings
 
 # try read settings, fallback to defaults if it does not exist
@@ -27,37 +79,14 @@ for i in range(len(states)):
 
 # hotcorner = 10 px wide/high
 marge = 10
-# ok, let's start watching the corners
-t = 0.5; n = 0      
-res = None; corner1 = None
 
-while True:
-    time.sleep(t)
-    # check resolution once per 5 seconds
-    if n == 0:
-        res2 = bhc.getres()
-        if all([res2, res != res2]):
-            res = res2
-    n = n + 1 if n < 5 else 0
-    # check if mouse is in hotcorner (and wasn't the last time)
-    pos = bhc.mousepos()
-    if pos:
-        corner2 = bhc.get_hot(marge, res)
-        if all([corner2, corner2 != corner1]):
-            try:
-                action = [a[1] for a in actions if a[0] == corner2-1][0]
-            except IndexError:
-                pass
-            else:
-                try:
-                    subprocess.Popen(["/bin/bash", "-c", action])
-                except subprocess.CalledProcessError:
-                    pass
-        corner1 = corner2
-        
+# give dconf a few seconds to create the key
+dcpath = "/com/solus-project/budgie-panel/applets/"
+time.sleep(3)
+key = getkey()
 
-    
-
+if any(states):
+    watch()
 
 
 
