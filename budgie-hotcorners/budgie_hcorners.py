@@ -1,11 +1,11 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gdk, Pango
+from gi.repository import Budgie, GObject, Gtk
 import subprocess
 import os
 import ast
 from bhctools import get, dr, settings
-
 
 """
 Budgie Hot Corners
@@ -21,7 +21,6 @@ A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
 should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
 
 app = "/usr/lib/budgie-desktop/plugins/budgie-hcorners/bhcorners"
 
@@ -54,7 +53,7 @@ class BudgieHotCorners(GObject.GObject, Budgie.Plugin):
         """ Initialisation is important.
         """
         GObject.Object.__init__(self)
-        
+
     def do_get_panel_widget(self, uuid):
         """ This is where the real fun happens. Return a new Budgie.Applet
             instance with the given UUID. The UUID is determined by the
@@ -65,6 +64,7 @@ class BudgieHotCorners(GObject.GObject, Budgie.Plugin):
 
 class BudgieHotCornersApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
+
     # manager = None
 
     def __init__(self, uuid):
@@ -72,13 +72,14 @@ class BudgieHotCornersApplet(Budgie.Applet):
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(5)
         self.maingrid.set_column_spacing(5)
-        self.buttons = []; self.entries = []
+        self.buttons = []
+        self.entries = []
         corners = ["Top-left", "Top-right", "Bottom-left", "Bottom-right"]
         # create button & entry rows
         for n in range(len(corners)):
             self.entry = Gtk.Entry()
             self.maingrid.attach(self.entry, 1, n, 1, 1)
-            self.entries.append(self.entry)           
+            self.entries.append(self.entry)
             self.button = Gtk.ToggleButton.new_with_label(corners[n])
             self.maingrid.attach(self.button, 0, n, 1, 1)
             self.buttons.append(self.button)
@@ -91,10 +92,10 @@ class BudgieHotCornersApplet(Budgie.Applet):
             curr_entry = self.entries[n]
             curr_entry.set_sensitive(val)
             if entry_data:
-                curr_entry.set_text(entry_data[n])        
-        self.box = Gtk.EventBox()        
-        icon = Gtk.Image.new_from_icon_name("bhcpanel", Gtk.IconSize.MENU) 
-        self.box.add(icon)        
+                curr_entry.set_text(entry_data[n])
+        self.box = Gtk.EventBox()
+        icon = Gtk.Image.new_from_icon_name("bhcpanel", Gtk.IconSize.MENU)
+        self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         self.popover.add(self.maingrid)
@@ -107,12 +108,12 @@ class BudgieHotCornersApplet(Budgie.Applet):
         for entry in self.entries:
             entry.connect("key-release-event", self.update_settings)
         subprocess.Popen(app)
-            
+
     def switch_entry(self, button, n):
         # toggle entry active/inactive
         subj = self.entries[n]
         state = subj.get_sensitive()
-        val = False if state == True else True
+        val = False if state is True else True
         subj.set_sensitive(val)
 
     def update_settings(self, widget, *args):
@@ -130,12 +131,9 @@ class BudgieHotCornersApplet(Budgie.Applet):
                 subprocess.call(["kill", p])
         subprocess.Popen(app)
 
-    def	on_press(self, box, arg):
+    def on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
     def do_update_popovers(self, manager):
-    	self.manager = manager
-    	self.manager.register_popover(self.box, self.popover)
-
-    
-
+        self.manager = manager
+        self.manager.register_popover(self.box, self.popover)

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+import ast
 import subprocess
 import time
-import ast
+
 import bhctools as bhc
 
 """
@@ -19,28 +20,29 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
 def watch():
     t = 0.5
     n = 0
     res = None
     corner1 = None
-    
+
     while True:
         time.sleep(t)
         # check resolution once per 5 seconds
         if n == 0:
             res2 = bhc.getres()
             if all([res2, res != res2]):
-                res = res2   
+                res = res2
         elif n == 3:
             try:
                 check = subprocess.check_output([
-                    "dconf", "dump", dcpath+key+"/"
-                    ]).decode("utf-8")
+                    "dconf", "dump", dcpath + key + "/"
+                ]).decode("utf-8")
                 if not check:
                     break
             except TypeError:
-                break       
+                break
         n = n + 1 if n < 5 else 0
         # check if mouse is in hotcorner (and wasn't the last time)
         pos = bhc.mousepos()
@@ -48,7 +50,7 @@ def watch():
             corner2 = bhc.get_hot(marge, res)
             if all([corner2, corner2 != corner1]):
                 try:
-                    action = [a[1] for a in actions if a[0] == corner2-1][0]
+                    action = [a[1] for a in actions if a[0] == corner2 - 1][0]
                 except IndexError:
                     pass
                 else:
@@ -58,13 +60,14 @@ def watch():
                         pass
             corner1 = corner2
 
+
 def getkey():
     data = subprocess.check_output([
         "dconf", "dump", dcpath
-        ]).decode("utf-8").splitlines()
+    ]).decode("utf-8").splitlines()
     try:
         match = [l for l in data if "Budgie Hot Corners" in l][0]
-        watch = data.index(match)-3
+        watch = data.index(match) - 3
         return data[watch][1:-1]
     except IndexError:
         pass
@@ -102,20 +105,3 @@ key = getkey()
 
 if any(states):
     watch()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
