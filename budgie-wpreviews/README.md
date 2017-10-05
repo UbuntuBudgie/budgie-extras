@@ -2,10 +2,10 @@ Budgie WindowPreviews is an application (applet) to show an overview of windows 
 
 1] to show an overview of all windows on the current workspace: /opt/budgie-extras/wprviews/code/wprviews_window. 
 
-![drag](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-WPreviews/all.png)
+![drag](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wpreviews/all.png)
 
 2] to show an overview of windows of the currently active window: /opt/budgie-extras/wprviews/code/wprviews_window current.
 
-![workspace](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-WPreviews/current.png)
+![workspace](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wpreviews/current.png)
 
 
