@@ -5,7 +5,7 @@ import subprocess
 import psutil
 
 """
-Budgie Wallpaper Switcher
+Budgie WallpaperSwitcher
 Author: Jacob Vlijm
 Copyright © 2017 Ubuntu Budgie Developers
 Website: https://ubuntubudgie.org
@@ -20,7 +20,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
     
 def get_pid():
-    app = "/opt/budgie-extras/wswitcher/code/wswitcher_run"
+    app = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_run"
     try:
         return int(subprocess.check_output([
             "pgrep", "-f", app]).decode("utf-8").strip())

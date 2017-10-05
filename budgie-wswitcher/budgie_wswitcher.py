@@ -5,7 +5,7 @@ import subprocess
 import os
 
 """
-Budgie Wallpaper Switcher
+Budgie WallpaperSwitcher
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -19,12 +19,10 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-# ------------- change for debian rules -------------
-panelrunner = "/opt/budgie-extras/wswitcher/code/wswitcher_panelrunner"
-backgrounder = "/opt/budgie-extras/wswitcher/code/wswitcher_run"
-# ---------------------------------------------------
 
-## wswitcher_path = os.path.join(os.environ["HOME"], ".budgie-extras", "wswitcher")
+panelrunner = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_panelrunner"
+backgrounder = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_run"
+
 
 wswitcher_path = os.path.join(
     os.environ["HOME"],
