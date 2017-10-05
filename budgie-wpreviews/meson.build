@@ -15,7 +15,11 @@ install_data(
 )
 
 install_data(
-    'style.css',
+    'prv_grey.png',
+    'prv_white.png',
+    'grey_x.png',
+    'white_x.png',
+    'white2_x.png',
     install_dir: join_paths(EXTRAS_DIR, PLUGIN, 'misc')
 )
 
@@ -24,5 +28,6 @@ install_data(
     'wprviews_panelrunner',
     'wprviews_tools.py',
     'wprviews_window',
+    'moveto.sh',
     install_dir: join_paths(EXTRAS_DIR, PLUGIN, 'code')
 )

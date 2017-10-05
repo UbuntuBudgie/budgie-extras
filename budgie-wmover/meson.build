@@ -14,10 +14,10 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
-install_data(
-    'style.css',
-    install_dir: join_paths(EXTRAS_DIR, PLUGIN, 'misc')
-)
+#install_data(
+#    'style.css',
+#    install_dir: join_paths(EXTRAS_DIR, PLUGIN, 'misc')
+#)
 
 install_data(
     'wmover_run',

@@ -34,11 +34,11 @@ conf.set('PROJECT_NAME', meson.project_name())
 
 message('Installing applets...')
 
-subdir('budgie-WPreviews')
+subdir('budgie-wpreviews')
 subdir('budgie-wswitcher')
 subdir('budgie-hotcorners')
 subdir('budgie-quicknote')
-subdir('wmover')
+subdir('budgie-wmover')
 subdir('budgie-wsoverview')
 
 #configure_file(
