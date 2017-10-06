@@ -95,16 +95,12 @@ if "current" in args:
     show_allwins = False
     curr = pv.get_activeclass()
     wins = [w for w in wins if pv.show_wmclass(w[0]) == curr]
-    
-# make sure the displayed number of windows matches existing ones; latest update
-wins_update = pv.get(["wmctrl", "-l"])
-if wins_update:
-    wins = [w for w in wins if w[0] in wins_update]
-    
+
 # chek how the windows are spread over the workspaces
 spread = sorted([int(n) for n in [w[-2] for w in wins]])
 # pick only windows of the current workspace. the ws is part of the name
 wins = [w[:-1] for w in wins if w[-2] == currws]
+
 
 class PreviewsWin(Gtk.Window):
 
@@ -446,7 +442,7 @@ def run_previews():
 muted = os.path.exists(os.path.join(pv.settings_dir, "muted"))
 keyexists = pv.getkey()
 
-if all([wins, keyexists, not muted]):
+if all([wins != None, keyexists, not muted]):
     n_wins = len(wins)
     if show_allwins:
         run_previews()
