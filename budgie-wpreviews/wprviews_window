@@ -90,6 +90,10 @@ currws = pv.get_ws()
 deviation = 5 if maxrow == 3 else 0
 # read all windows from the previews folder
 wins = [w.split(".") for w in os.listdir(pics_path)]
+# latest check on recen situation, filter out obsolete wins
+win_update = pv.get(["wmctrl", "-l"])
+if win_update:
+    wins = [w for w in wins if w[0] in win_update]
 # see if only windows of the current wm-class should be picked out
 if "current" in args:
     show_allwins = False
