@@ -3,6 +3,7 @@ gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
 import os
+import wprviews_tools as pv
 
 """
 Budgie Window Previews
@@ -19,10 +20,10 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-# ------------- change for debian rules -------------
-panelrunner = "/opt/budgie-extras/wprviews/code/wprviews_panelrunner"
-backgrounder = "/opt/budgie-extras/wprviews/code/wprviews_backgrounder"
-# ---------------------------------------------------   
+plugin_path = pv.plugin_path
+
+panelrunner = os.path.join(plugin_path, "wprviews_panelrunner")
+backgrounder = os.path.join(plugin_path, "wprviews_backgrounder")
 
 
 settings_dir = os.path.join(
@@ -56,7 +57,7 @@ class WPrviews(GObject.GObject, Budgie.Plugin):
             BudgiePanelManager, and is used for lifetime tracking.
         """
         return WPrviewsApplet(uuid)
-    
+
 
 class WPrviewsApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
@@ -65,7 +66,9 @@ class WPrviewsApplet(Budgie.Applet):
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("wprviews-panel", Gtk.IconSize.MENU)
+        icon = Gtk.Image.new_from_icon_name(
+            "wprviews-panel", Gtk.IconSize.MENU
+            )
         self.box.add(icon)        
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)

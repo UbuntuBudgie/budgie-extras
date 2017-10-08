@@ -5,12 +5,13 @@ gi.require_version("Gdk", "3.0")
 from gi.repository import Gtk, Gdk
 import cairo
 import wprviews_tools as pv
+       # wprviews_tools.py
 import os
 import subprocess
 import sys
 
 """
-Budgie Window Previews
+Budgie WindowPreviews
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -76,7 +77,8 @@ area = pv.get_area()
 maxrow = int(area/380)
 show_allwins = True
 
-button_images = "/opt/budgie-extras/wprviews/misc"
+plugin_path = pv.plugin_path
+button_images = os.path.join(plugin_path, "pics")
 
 """
 Gtk alignment isn't fully according the set margins The deviation below is
@@ -207,12 +209,10 @@ class PreviewsWin(Gtk.Window):
         new_image = Gtk.Image.new_from_file(image)
         target.set_image(new_image)
 
-    def show_other(self, button, nxt):
+    def show_other(self, button, nxt): ####
+        pass
         # call the external script to move to the other workspace
-        subprocess.Popen([
-            "/opt/budgie-extras/wprviews/code/moveto.sh",
-            str(nxt)
-            ])
+        subprocess.Popen((os.path.join(plugin_path, "moveto.sh"), str(nxt)))
 
     def set_crosswspaces(self):
         # create the navigation section
@@ -285,8 +285,8 @@ class PreviewsWin(Gtk.Window):
             self.focussed = button
         return button
 
-    def create_wsbutton(self, index_str, currws):
-        # create the navigation button
+    def create_wsbutton(self, index_str, currws): ####
+        # create the navigation button 
         button = Gtk.Button()       
         wsbutton_cont = button.get_style_context()
         wsbutton_cont.add_class("wsbutton")
@@ -297,8 +297,8 @@ class PreviewsWin(Gtk.Window):
             )
         im_name = "prv_white" if index_str == currws else "prv_grey"
         im = Gtk.Image.new_from_file(
-            "/opt/budgie-extras/wprviews/misc/"+im_name+".png"
-            )
+            os.path.join(button_images, im_name+".png")
+                         )
         button.set_image(im)
         button.set_can_focus(False)
         button.set_relief(Gtk.ReliefStyle.NONE)

@@ -6,7 +6,7 @@ import psutil
 import wprviews_tools as pv 
 
 """
-Budgie Window Previews
+Budgie WindowPreviews
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -20,10 +20,11 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+plugin_path = pv.plugin_path
 dcpath = pv.dcpath
 
 def get_pid():
-    app = "/opt/budgie-extras/wprviews/code/wprviews_backgrounder"
+    app = os.path.join(plugin_path, "wprviews_backgrounder")
     try:
         return int(subprocess.check_output([
             "pgrep", "-f", app,

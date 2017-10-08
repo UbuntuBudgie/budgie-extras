@@ -4,7 +4,7 @@ import time
 import os
 
 """
-Budgie Window Previews
+Budgie WindowPreviews
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -19,6 +19,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 dcpath = "/com/solus-project/budgie-panel/applets/"
+plugin_path = "/usr/lib/budgie-desktop/plugins/budgie-wprviews"
 
 previews_dir = "/tmp"
 settings_dir = os.path.join(

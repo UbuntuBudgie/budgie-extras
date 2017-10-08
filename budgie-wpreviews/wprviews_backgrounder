@@ -92,7 +92,7 @@ while True:
                 # if windows are in win_ids2, they obviously still exist, but
                 # are changed. No deletion needed, since they are overwritten
                 remove_preview(w[0])
-                
+
         """
         New windows will be placed in queue to refresh after 5 seconds of
         existence, to make sure not the "half loaded" image will remain.
