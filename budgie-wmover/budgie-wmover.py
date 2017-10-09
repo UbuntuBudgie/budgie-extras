@@ -3,9 +3,10 @@ gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
 import os
+import wmovertools as wmt
 
 """
-Budgie Window Mover
+Budgie WindowMover
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -19,10 +20,8 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-# ------------- change for debian rules -------------
-panelrunner = "/opt/budgie-extras/wmover/code/wmover_panelrunner"
-backgrounder = "/opt/budgie-extras/wmover/code/wmover_run"
-# ---------------------------------------------------
+panelrunner = os.path.join(wmt.appletpath, "wmover_panelrunner")
+backgrounder = os.path.join(wmt.appletpath, "wmover_run")
 
 wmover_path = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "wmover")

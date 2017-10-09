@@ -4,7 +4,7 @@ import time
 import os
 
 """
-Budgie Window Mover
+Budgie WindowMover
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -23,6 +23,7 @@ settings_path = os.path.join(
     )
 
 fpath = "/tmp/wmover_busy"
+appletpath = "/usr/lib/budgie-desktop/plugins/budgie-wmover"
 
 try:
     os.makedirs(settings_path)
@@ -109,7 +110,7 @@ def callwindow(target, xres, yres):
 def runwindow(target, xres, yres):
     # run the mover bar
     subprocess.Popen([
-        "/opt/budgie-extras/wmover/code/moverbar",
+        "/usr/lib/budgie-desktop/plugins/budgie-wmover/moverbar", #########
         target,
         str(xres),
         str(yres),

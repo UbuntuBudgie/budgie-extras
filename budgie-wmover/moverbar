@@ -8,7 +8,7 @@ import wmovertools as wmt
 import os
 
 """
-Budgie Window Mover
+Budgie WindowMover
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -119,10 +119,8 @@ class Splash(Gtk.Window):
                                                             
 def run_moverbar():
     # get the style from the css file and apply it
-    cssProvider = Gtk.CssProvider()
-    cssProvider.load_from_path(
-        "/opt/budgie-extras/wmover/misc/style.css"
-        )
+    cssProvider = Gtk.CssProvider.new()
+    cssProvider.load_from_data(css_data.encode())    
     screen = Gdk.Screen.get_default()
     styleContext = Gtk.StyleContext()
     styleContext.add_provider_for_screen(
