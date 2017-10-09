@@ -110,7 +110,7 @@ def callwindow(target, xres, yres):
 def runwindow(target, xres, yres):
     # run the mover bar
     subprocess.Popen([
-        "/usr/lib/budgie-desktop/plugins/budgie-wmover/moverbar", #########
+        os.path.join(appletpath, "moverbar"),
         target,
         str(xres),
         str(yres),
