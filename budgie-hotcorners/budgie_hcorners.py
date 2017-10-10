@@ -107,6 +107,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
             button.connect("clicked", self.update_settings)
         for entry in self.entries:
             entry.connect("key-release-event", self.update_settings)
+        self.close_running()
         subprocess.Popen(app)
 
     def switch_entry(self, button, n):
@@ -116,19 +117,21 @@ class BudgieHotCornersApplet(Budgie.Applet):
         val = False if state is True else True
         subj.set_sensitive(val)
 
-    def update_settings(self, widget, *args):
-        b_states = [b.get_active() for b in self.buttons]
-        cmds = [c.get_text() for c in self.entries]
-        saved_state = list(zip(b_states, cmds))
-        open(settings, "wt").write(str(saved_state))
-
+    def close_running(self):
         try:
             pid = get(["pgrep", "-f", app]).splitlines()
         except AttributeError:
             pass
         else:
             for p in pid:
-                subprocess.call(["kill", p])
+                subprocess.call(["kill", p])    
+
+    def update_settings(self, widget, *args):
+        b_states = [b.get_active() for b in self.buttons]
+        cmds = [c.get_text() for c in self.entries]
+        saved_state = list(zip(b_states, cmds))
+        open(settings, "wt").write(str(saved_state))
+        self.close_running()
         subprocess.Popen(app)
 
     def on_press(self, box, arg):
