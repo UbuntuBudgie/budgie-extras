@@ -28,7 +28,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 time_color = clt.hexcolor(clt.read_color(clt.timecolor))
 date_color = clt.hexcolor(clt.read_color(clt.datecolor))
 
-class PreviewsWin(Gtk.Window):
+class ShowTimeWin(Gtk.Window):
 
     def __init__(self):
         
@@ -105,7 +105,7 @@ class PreviewsWin(Gtk.Window):
         cr.set_operator(cairo.OPERATOR_OVER)
 
 def show():
-    PreviewsWin()
+    ShowTimeWin()
     GObject.threads_init()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     Gtk.main()
