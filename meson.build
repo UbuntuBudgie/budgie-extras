@@ -40,6 +40,7 @@ subdir('budgie-hotcorners')
 subdir('budgie-quicknote')
 subdir('budgie-wmover')
 subdir('budgie-wsoverview')
+subdir('budgie-showtime')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',

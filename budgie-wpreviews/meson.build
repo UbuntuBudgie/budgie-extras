@@ -4,7 +4,7 @@ PLUGIN = 'wprviews'
 
 install_data(
     'WPrviews.plugin',
-    'wprviews.py',
+    'budgie-wprviews.py',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
 )
 
