@@ -62,7 +62,6 @@ class ShowTimeWin(Gtk.Window):
         self.timegrid.attach(self.timelabel, 0, 0, 1, 1)
         self.timegrid.attach(self.datelabel, 0, 1, 1, 1)
         self.add(self.timegrid)
-        # create rows
         self.set_textposition()
         self.show_all()
         self.update = Thread(target=self.show_time)

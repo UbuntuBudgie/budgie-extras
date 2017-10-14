@@ -56,7 +56,7 @@ def restart_clock():
     subprocess.Popen(panelrunner)
 
 def get_area():
-    # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
+    # size of the primary screen.
     windata = None
     while not windata:
         try:

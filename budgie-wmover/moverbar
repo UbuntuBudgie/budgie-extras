@@ -68,7 +68,6 @@ class Splash(Gtk.Window):
         for n in range(self.n_spaces):
             label = l_char+str(n+1)+r_char if n == currspace else n+1
             button = Gtk.Button(label)
-
             st_cont = button.get_style_context()
             st_cont.add_class("moverbutton")            
             button.set_size_request(button_hsize, button_vsize)
