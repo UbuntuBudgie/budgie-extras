@@ -13,7 +13,7 @@ Homepage: https://ubuntubudgie.org
 
 Package: budgie-hotcorners-applet
 Architecture: all
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+Depends: python3, python3-gi, wmctrl, xdotool,
  ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
@@ -36,15 +36,14 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 
 Package: budgie-previews-applet
 Architecture: all
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+Depends: python3, python3-gi, wmctrl, xdotool, xprintidle,
  ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
- The Previews applet allows a user to record a text based note.
- The applet supports multiple undo and redo capabilities.
+ The Previews applet shows an overview of windows in an expose like way.
 
 Package: budgie-workspace-overview-applet
 Architecture: any
@@ -54,30 +53,50 @@ Description: Set of desktop enhancements for the Budgie Desktop.
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
- The workspace overview applet allows a user to record a text based note.
- The applet supports multiple undo and redo capabilities.
+ The workspace overview applet allows a user to quickly navigate
+ workspaces using the applet's menu.  Optionally, navigation to any
+ window in any workspace is possible.
 
 Package: budgie-workspace-switcher-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+Depends: python3, python3-gi, wmctrl,
  ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
- The workspace switcher applet allows a user to record a text based note.
- The applet supports multiple undo and redo capabilities.
+ The workspace switcher applet shows a different wallpaper on each of
+ the workspaces. Usage is simple: add the applet to the panel and set
+ wallpapers on each of the workspaces in the way you are used to.
+ The applet will remember what wallpaper was set on each of the
+ workspaces.
 
 Package: budgie-window-mover-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle, 
+Depends: python3, python3-gi, wmctrl, xdotool,
  ${misc:Depends}, ${python3:Depends}
 Description: Set of desktop enhancements for the Budgie Desktop.
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
- The Window Mover applet allows a user to record a text based note.
- The applet supports multiple undo and redo capabilities.
+ The Window Mover applet allows the user to quickly move windows to any
+ of the other workspaces. Just drag a window to the bottom of the screen
+ and a bar will popup, representing the workspaces. Click on
+ any of the numbers (or press the corresponding number on the keyboard)
+ and the window will move to that workspace.
+
+Package: budgie-showtime-applet
+Architecture: any
+Depends: python3, python3-gi, wmctrl,
+ ${misc:Depends}, ${python3:Depends}
+Description: Set of desktop enhancements for the Budgie Desktop.
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The ShowTime applet is a digital desktop clock, showing time and/or
+ date.  Text color of both the displayed time and date can be set
+ separately from the applet's menu
 
