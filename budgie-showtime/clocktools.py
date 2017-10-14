@@ -19,7 +19,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 # paths
 prefspath = os.path.join(
-    os.environ["HOME"], ".config", "budgie-extras", "wallclock"
+    os.environ["HOME"], ".config", "budgie-extras", "showtime"
     )
 
 app_path = "/usr/lib/budgie-desktop/plugins/budgie-showtime"
@@ -34,7 +34,7 @@ timecolor = os.path.join(prefspath, "timecolor")
 datecolor = os.path.join(prefspath, "datecolor")
 mute_time = os.path.join(prefspath, "mute_time")
 mute_date = os.path.join(prefspath, "mute_date")
-clock = os.path.join(app_path, "WallClock")
+clock = os.path.join(app_path, "ShowTime")
 panelrunner = os.path.join(app_path, "bshowtime_panelrunner")
 
 def get(command):
@@ -56,7 +56,7 @@ def restart_clock():
     subprocess.Popen(panelrunner)
 
 def get_area():
-    # size of the primary screen.
+    # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
     windata = None
     while not windata:
         try:

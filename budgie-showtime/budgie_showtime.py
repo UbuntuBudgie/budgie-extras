@@ -158,7 +158,6 @@ class BudgieShowTimeApplet(Budgie.Applet):
             )
 
     def update_color(self):
-        # change/set color of the button
         self.tcolor = clt.hexcolor(clt.read_color(self.tcolorfile))
         self.dcolor = clt.hexcolor(clt.read_color(self.dcolorfile))
         self.color_button(self.d_color, self.dcolor)

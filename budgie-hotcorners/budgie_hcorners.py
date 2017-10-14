@@ -25,7 +25,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 app = "/usr/lib/budgie-desktop/plugins/budgie-hcorners/bhcorners"
 
 try:
-    os.mkdir(dr)
+    os.makedirs(dr)
 except FileExistsError:
     pass
 
