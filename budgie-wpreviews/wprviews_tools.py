@@ -18,6 +18,8 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
+
 dcpath = "/com/solus-project/budgie-panel/applets/"
 plugin_path = "/usr/lib/budgie-desktop/plugins/budgie-wprviews"
 
@@ -30,6 +32,8 @@ previews = os.path.join(
     previews_dir,
     "window-previews",
     )
+
+previews_ismuted = os.path.join(settings_dir, "muted")
 
 for dr in [previews_dir, previews, settings_dir]: 
     try:

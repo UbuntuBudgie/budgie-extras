@@ -6,7 +6,7 @@ import os
 import wprviews_tools as pv
 
 """
-Budgie Window Previews
+Budgie WindowPreviews
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -20,18 +20,19 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+# plugin path
 plugin_path = pv.plugin_path
-
+# panelrunner (wrapper to take care of toggle applet and manage shortcuts)
 panelrunner = os.path.join(plugin_path, "wprviews_panelrunner")
+# backgrounder, maintaining the set of window prevews
 backgrounder = os.path.join(plugin_path, "wprviews_backgrounder")
-
-
+# settings path
 settings_dir = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "previews"
     )
-
-previews_ismuted = os.path.join(settings_dir, "muted")
-
+# file to trigger enabled/disabled from the panelrunner
+previews_ismuted = pv.previews_ismuted
+# make sure the settings dir exist
 try:
     os.makedirs(settings_dir)
 except FileExistsError:
@@ -88,10 +89,9 @@ class WPrviewsApplet(Budgie.Applet):
             self.initiate()
 
     def switch(self, button, *args):
+        # toggle ui & manage trigger file (noticed by panelrunner)
         pids = self.show_procs()
         if pids:
-            for p in pids:
-                subprocess.Popen(["kill", p])
             self.toggle.set_label("Window Previews is inactive.")
             open(previews_ismuted, "wt").write("")
         else:
@@ -103,12 +103,14 @@ class WPrviewsApplet(Budgie.Applet):
                 pass
 
     def show_procs(self):
+        # can be simplified, originally to get pids of multiple procs (names)
         pids = [
-            self.check_runs(pname) for pname in [panelrunner, backgrounder]
+            self.check_runs(pname) for pname in [backgrounder]
             ]
         return [p for p in pids if p]
 
     def check_runs(self, pname):
+        # get the pid of a proc
         try:
             pid = subprocess.check_output([
             "pgrep", "-f", pname,
@@ -119,7 +121,6 @@ class WPrviewsApplet(Budgie.Applet):
             return pid.strip()
 
     def initiate(self):
-        pass
         pids = self.show_procs()
         if not pids:
             subprocess.Popen(panelrunner)
