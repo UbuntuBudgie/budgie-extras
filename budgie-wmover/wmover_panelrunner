@@ -5,6 +5,7 @@ import subprocess
 import psutil
 import os
 import wmovertools as wmt
+from set_keys import change_keys
 
 """
 Budgie Window Mover
@@ -23,6 +24,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 dcpath = "/com/solus-project/budgie-panel/applets/"
 appletpath = wmt.appletpath
+wmover_ismuted = wmt.wmover_ismuted
 
     
 def get_pid():
@@ -52,7 +54,6 @@ def run_wmover():
     while True:
         time.sleep(3)
         try:
-            # ok, ok, this should be fetched with help from wmovertools...
             check = subprocess.check_output([
                 "dconf", "dump", dcpath+key+"/",
                 ]).decode("utf-8")
@@ -60,8 +61,12 @@ def run_wmover():
                 break
         except TypeError:
             break
+        if os.path.exists(wmover_ismuted):
+            break
 
+change_keys("set_custom")
 pid = get_pid()
 run_wmover()
 psutil.Process(pid).terminate()
+change_keys("restore")
 

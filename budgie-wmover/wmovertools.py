@@ -24,6 +24,7 @@ settings_path = os.path.join(
 
 fpath = "/tmp/wmover_busy"
 appletpath = "/usr/lib/budgie-desktop/plugins/budgie-wmover"
+wmover_ismuted = os.path.join(settings_path, "muted")
 
 try:
     os.makedirs(settings_path)

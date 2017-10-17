@@ -4,6 +4,7 @@ from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
 import os
 import wmovertools as wmt
+from set_keys import change_keys
 
 """
 Budgie WindowMover
@@ -22,10 +23,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 panelrunner = os.path.join(wmt.appletpath, "wmover_panelrunner")
 backgrounder = os.path.join(wmt.appletpath, "wmover_run")
-
-wmover_path = os.path.join(
-    os.environ["HOME"], ".config", "budgie-extras", "wmover")
-wmover_ismuted = os.path.join(wmover_path, "muted")
+wmover_path = wmt.settings_path
+wmover_ismuted = wmt.wmover_ismuted
 
 try:
     os.makedirs(wmover_path)
@@ -82,8 +81,6 @@ class WMoverApplet(Budgie.Applet):
     def switch(self, button, *args):
         pids = self.show_procs()
         if pids:
-            for p in pids:
-                subprocess.Popen(["kill", p])
             self.toggle.set_label("Window Mover is inactive.")
             open(wmover_ismuted, "wt").write("")
         else:
@@ -96,7 +93,7 @@ class WMoverApplet(Budgie.Applet):
 
     def show_procs(self):
         pids = [
-            self.check_runs(pname) for pname in [panelrunner, backgrounder]
+            self.check_runs(pname) for pname in [backgrounder]
             ]
         return [p for p in pids if p]
 
