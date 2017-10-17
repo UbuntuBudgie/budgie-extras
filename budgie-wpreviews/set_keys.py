@@ -46,9 +46,8 @@ def get_currnames():
                 "gsettings", "get", key[0]+"."+key[2]+":"+c, "name",
                 ]).decode("utf-8").strip().strip("'")
             if name in shortcut_names:
-                relevant.append(name)
-            else:
-                allnames.append(name)
+                relevant.append(c)
+            allnames.append(c)
         return allnames, relevant
     
 def remove_custom():
@@ -97,7 +96,7 @@ def define_keyboard_shortcut(name, command, shortcut):
     cmd0 = 'gsettings set '+key+' "'+str(current)+'"'
     cmd1 = 'gsettings set '+subkey1+new+" name '"+ name +"'"
     cmd2 = 'gsettings set '+subkey1+new+" command '"+ command +"'"
-    cmd3 = 'gsettings set '+subkey1+new+" binding '"+ shortcut +"'"
+    cmd3 = 'gsettings set '+subkey1+new+" binding '"+ shortcut +"'"              
     for cmd in [cmd0, cmd1, cmd2, cmd3]:
         subprocess.call(["/bin/bash", "-c", cmd])
 
