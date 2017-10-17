@@ -103,7 +103,7 @@ def find_bar():
 def callwindow(target, xres, yres):
     wtype = show_wmclass(target)
     if wtype in ignore:
-        run(["notify-send", "-i", "wmover",
+        run(["notify-send", "-i", "wmover-panel",
              "WindowMover", "Please first activate a window."])
     else:
         runwindow(target, xres, yres)
