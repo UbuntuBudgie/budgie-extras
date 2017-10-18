@@ -30,7 +30,6 @@ css_data = """
 }
 .colorbutton:hover {
   border-color: hexcolor;
-  color: transparent;
   background-color: hexcolor;
   padding: 0px;
   border-width: 1px;
