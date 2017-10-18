@@ -52,6 +52,9 @@ def run_bgrounder():
         if os.path.exists(ismuted):
             break
 
+# make sure gsettings is ready
+time.sleep(5)
+
 change_keys("set_custom")
 pid = get_pid()
 run_bgrounder()
