@@ -27,6 +27,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 time_color = clt.hexcolor(clt.read_color(clt.timecolor))
 date_color = clt.hexcolor(clt.read_color(clt.datecolor))
+posfile = os.path.join(clt.prefspath, "position")
+
 
 class ShowTimeWin(Gtk.Window):
 
@@ -39,7 +41,6 @@ class ShowTimeWin(Gtk.Window):
         self.set_type_hint(Gdk.WindowTypeHint.DOCK)
         self.set_decorated(False) 
         self.connect("destroy", Gtk.main_quit)
-        self.set_position(Gtk.WindowPosition.CENTER)
         self.set_skip_taskbar_hint(True)
         # transparency
         screen = self.get_screen()
@@ -71,8 +72,12 @@ class ShowTimeWin(Gtk.Window):
         self.update.start()
 
     def set_textposition(self):
-        scr = clt.get_area()
-        self.move((scr[0]*0.75)-100, scr[1]*0.75)
+        try:
+            pos = [int(p) for p in open(posfile).readlines()][:2]
+            self.move(pos[0], pos[1])
+        except (FileNotFoundError, ValueError, IndexError):  
+            scr = clt.get_area()
+            self.move((scr[0]*0.75)-100, scr[1]*0.75)
         
     def show_time(self):
         wait = 1
