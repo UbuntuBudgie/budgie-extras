@@ -22,15 +22,18 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 css_data = """
 .colorbutton {
+  border-color: transparent;
   background-color: hexcolor;
-  padding: 2px;
-  border-width: 0px;
+  padding: 0px;
+  border-width: 1px;
   border-radius: 4px;
 }
 .colorbutton:hover {
+  border-color: hexcolor;
+  color: transparent;
   background-color: hexcolor;
   padding: 0px;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 4px;
 }
 """
@@ -74,7 +77,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
         mute_date = clt.mute_date        
         # grid & layout
         maingrid = Gtk.Grid()
-        maingrid.set_row_spacing(10)
+        maingrid.set_row_spacing(12)
         element_hsizer1 = self.h_spacer(13)
         maingrid.attach(element_hsizer1, 0, 0, 1, 7)
         element_hsizer2 = self.h_spacer(25)
@@ -93,7 +96,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
         maingrid.attach(bholder1, 1, 4, 1, 1)
         self.t_color = Gtk.Button()
         self.t_color.connect("clicked", self.pick_color, self.tcolorfile)
-        self.t_color.set_size_request(25, 25)
+        self.t_color.set_size_request(10, 10)
         bholder1.pack_start(self.t_color, False, False, 0)
         timelabel = Gtk.Label(" Set time color")
         bholder1.pack_start(timelabel, False, False, 0)
@@ -102,7 +105,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
         maingrid.attach(bholder2, 1, 5, 1, 1)
         self.d_color = Gtk.Button()
         self.d_color.connect("clicked", self.pick_color, self.dcolorfile)
-        self.d_color.set_size_request(25, 25)
+        self.d_color.set_size_request(10, 10)
         bholder2.pack_start(self.d_color, False, False, 0)
         datelabel = Gtk.Label(" Set date color")
         bholder2.pack_start(datelabel, False, False, 0)
