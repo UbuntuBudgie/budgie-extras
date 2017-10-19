@@ -7,7 +7,7 @@ install_data(
     'budgie_showtime.py',
     'clocktools.py',
     'colorpicker',
-    'WallClock',
+    'ShowTime',
     'bshowtime_panelrunner',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
 )
