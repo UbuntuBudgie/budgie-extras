@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+echo "= pep8 ="
+for i in `find .. -iname '*.py'`; do
+    echo "checking $i"
+    pep8 --ignore W191 --ignore E402 $i 
+done
