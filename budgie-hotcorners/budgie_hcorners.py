@@ -22,7 +22,7 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-app = "/usr/lib/budgie-desktop/plugins/budgie-hcorners/bhcorners"
+app = os.path.dirname(os.path.realpath(__file__)) + "/bhcorners"
 
 try:
     os.makedirs(dr)
