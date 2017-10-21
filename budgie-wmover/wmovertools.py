@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+import os
 import subprocess
 import time
-import os
 
 """
 Budgie WindowMover
@@ -20,7 +20,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 settings_path = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "wmover"
-    )
+)
 
 fpath = "/tmp/wmover_busy"
 appletpath = "/usr/lib/budgie-desktop/plugins/budgie-wmover"
@@ -37,13 +37,15 @@ ignore = [
     '"desktop_window", "Nautilus"',
     '"plank", "Plank"',
     None,
-    ]
+]
+
 
 def get(cmd):
     try:
         return subprocess.check_output(cmd).decode("utf-8")
     except subprocess.CalledProcessError:
         pass
+
 
 def show_wmclass(wid):
     # get WM_CLASS from window- id
@@ -52,15 +54,18 @@ def show_wmclass(wid):
     except (IndexError, AttributeError):
         pass
 
+
 def get_wsdata():
     wsdata = get(["wmctrl", "-d"]).splitlines()
-    return(len(wsdata), wsdata.index([l for l in wsdata if "*" in l][0]))
+    return (len(wsdata), wsdata.index([l for l in wsdata if "*" in l][0]))
+
 
 def run(cmd):
     try:
         subprocess.Popen(cmd)
     except TypeError:
         pass
+
 
 def check_ypos(yres):
     # get active window, check y- position
@@ -70,23 +75,26 @@ def check_ypos(yres):
     except (subprocess.CalledProcessError, TypeError):
         return False, None
     else:
-        ypos = int([
-            l for l in ydata.splitlines() if "Position" in l
-            ][0].split(",")[1].split()[0])
-        return ypos > yres-150, subj.strip()
+        ypos = int([l for l in ydata.splitlines()
+                    if "Position" in l][0].split(",")[1].split()[0])
+        return ypos > yres - 150, subj.strip()
+
 
 def getres():
     # get the resolution from wmctrl
     resdata = get(["wmctrl", "-d"])
     res = [int(n) for n in resdata.split()[3].split("x")] if resdata else None
     return res
-    
+
+
 def area(x_area, y_area, xres, yres, x, y):
     # see if the mouse is in the hotspot
-    center = xres/2; halfwidth = x_area/2
-    x_match = center-halfwidth < x < center+halfwidth
-    y_match = y > yres-y_area        
+    center = xres / 2
+    halfwidth = x_area / 2
+    x_match = center - halfwidth < x < center + halfwidth
+    y_match = y > yres - y_area
     return all([x_match, y_match])
+
 
 def mousepos():
     # get mouseposition
@@ -97,8 +105,10 @@ def mousepos():
     else:
         return int(pos[0].split(":")[1]), int(pos[1].split(":")[1])
 
+
 def find_bar():
     return get(["xdotool", "search", "--class", "wmover"])
+
 
 def callwindow(target, xres, yres):
     wtype = show_wmclass(target)
@@ -107,7 +117,8 @@ def callwindow(target, xres, yres):
              "WindowMover", "Please first activate a window."])
     else:
         runwindow(target, xres, yres)
-    
+
+
 def runwindow(target, xres, yres):
     # run the mover bar
     subprocess.Popen([
@@ -115,9 +126,10 @@ def runwindow(target, xres, yres):
         target,
         str(xres),
         str(yres),
-         ])
+    ])
     time.sleep(0.5)
     limit_exist()
+
 
 def limit_exist():
     # make sure the bar stays on top *and* active, allow 5 seconds
@@ -139,4 +151,4 @@ def limit_exist():
         if os.path.exists(fpath):
             t = 1
         else:
-            t = t+1
+            t = t + 1

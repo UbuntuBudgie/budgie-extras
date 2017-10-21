@@ -1,4 +1,5 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import subprocess
@@ -73,7 +74,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
         self.tcolorfile = clt.timecolor
         self.dcolorfile = clt.datecolor
         mute_time = clt.mute_time
-        mute_date = clt.mute_date        
+        mute_date = clt.mute_date
         # grid & layout
         maingrid = Gtk.Grid()
         maingrid.set_row_spacing(12)
@@ -99,7 +100,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
         bholder1.pack_start(self.t_color, False, False, 0)
         timelabel = Gtk.Label(" Set time color")
         bholder1.pack_start(timelabel, False, False, 0)
-        # 
+
         bholder2 = Gtk.Box()
         maingrid.attach(bholder2, 1, 5, 1, 1)
         self.d_color = Gtk.Button()
@@ -110,7 +111,8 @@ class BudgieShowTimeApplet(Budgie.Applet):
         bholder2.pack_start(datelabel, False, False, 0)
         # and the rest
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("bshowtime-panel", Gtk.IconSize.MENU)
+        icon = Gtk.Image.new_from_icon_name("bshowtime-panel",
+                                            Gtk.IconSize.MENU)
         self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
@@ -121,13 +123,14 @@ class BudgieShowTimeApplet(Budgie.Applet):
         self.box.connect("button-press-event", self.on_press)
         # set colors and run clock
         self.update_color()
-        clt.restart_clock() 
-        
+        clt.restart_clock()
+
     def h_spacer(self, addwidth):
         # horizontal spacer
         spacegrid = Gtk.Grid()
         if addwidth:
-            label1 = Gtk.Label(); label2 = Gtk.Label()
+            label1 = Gtk.Label()
+            label2 = Gtk.Label()
             spacegrid.attach(label1, 0, 0, 1, 1)
             spacegrid.attach(label2, 1, 0, 1, 1)
             spacegrid.set_column_spacing(addwidth)
@@ -142,7 +145,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
                 pass
         else:
             open(file, "wt").write("")
-        clt.restart_clock()     
+        clt.restart_clock()
 
     def set_css(self, hexcol):
         provider = Gtk.CssProvider.new()
@@ -157,19 +160,19 @@ class BudgieShowTimeApplet(Budgie.Applet):
             color_cont,
             provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-            )
+        )
 
     def update_color(self):
         self.tcolor = clt.hexcolor(clt.read_color(self.tcolorfile))
         self.dcolor = clt.hexcolor(clt.read_color(self.dcolorfile))
         self.color_button(self.d_color, self.dcolor)
         self.color_button(self.t_color, self.tcolor)
-        
+
     def pick_color(self, button, f):
         wdata = clt.get(["wmctrl", "-l"])
-        if not "ShowTime - set color" in wdata:
+        if "ShowTime - set color" not in wdata:
             subprocess.Popen([colorpicker, f])
-        
+
     def on_press(self, box, arg):
         self.update_color()
         self.manager.show_popover(self.box)

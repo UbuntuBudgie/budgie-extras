@@ -20,7 +20,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 # paths
 prefspath = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "showtime"
-    )
+)
 
 app_path = "/usr/lib/budgie-desktop/plugins/budgie-showtime"
 
@@ -37,14 +37,17 @@ mute_date = os.path.join(prefspath, "mute_date")
 clock = os.path.join(app_path, "ShowTime")
 panelrunner = os.path.join(app_path, "bshowtime_panelrunner")
 
+
 def get(command):
     try:
         return subprocess.check_output(command).decode("utf-8").strip()
     except subprocess.CalledProcessError:
         pass
 
+
 def get_pid(proc):
     return get(["pgrep", "-f", proc]).splitlines()
+
 
 def restart_clock():
     for proc in [clock, panelrunner]:
@@ -55,18 +58,20 @@ def restart_clock():
             pass
     subprocess.Popen(panelrunner)
 
+
 def get_area():
     # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
     windata = None
     while not windata:
         try:
             windata = get("xrandr").split()
-            xy_data = windata[windata.index("primary")+1].split("x")
+            xy_data = windata[windata.index("primary") + 1].split("x")
             return int(xy_data[0]), int(xy_data[1].split("+")[0])
             break
         except AttributeError:
             pass
         time.sleep(1)
+
 
 def read_color(f):
     try:
@@ -74,10 +79,12 @@ def read_color(f):
     except FileNotFoundError:
         return [65535, 65535, 65535]
 
+
 def write_settings(file, newval):
     subj = os.path.join(prefspath, file)
     open(subj, "wt").write(newval)
 
+
 def hexcolor(rgb):
-    c = [int((int(n)/65535)*255) for n in rgb]
+    c = [int((int(n) / 65535) * 255) for n in rgb]
     return '#%02x%02x%02x' % (c[0], c[1], c[2])
