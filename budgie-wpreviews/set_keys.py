@@ -31,25 +31,28 @@ shortcut_names = ["prv_all", "prv_single"]
 # command (main-) line to run previews
 aw = "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window"
 
+def get(cmd):
+    return subprocess.check_output(cmd).decode("utf-8").strip()
+
 def get_currnames():
     relevant = []
     allnames = []
     try:
-        customs = ast.literal_eval(subprocess.check_output([
-        "gsettings", "get", key[0], key[1],
-        ]).decode("utf-8"))
+        customs = ast.literal_eval(
+            get(["gsettings", "get", key[0], key[1]])
+            )
     except SyntaxError:
         return [], []
     else:
         for c in customs:
-            name = subprocess.check_output([
+            name = get([
                 "gsettings", "get", key[0]+"."+key[2]+":"+c, "name",
-                ]).decode("utf-8").strip().strip("'")
+                ]).strip("'")          
             if name in shortcut_names:
                 relevant.append(c)
             allnames.append(c)
-        return allnames, relevant
-    
+    return allnames, relevant
+   
 def remove_custom():
     customs = get_currnames()[0]
     remove = get_currnames()[1]
@@ -69,19 +72,15 @@ def reset_default():
 def define_keyboard_shortcut(name, command, shortcut):
     # defining keys & strings to be used
     # params example 'open gedit' 'gedit' '<Alt>7'
-    key = "org.gnome.settings-daemon.plugins.media-keys custom-keybindings"
-    subkey1 = key.replace(" ", ".")[:-1]+":"
-    item_s = "/"+key.replace(" ", "/").replace(".", "/")+"/"
+    subkey1 = ".".join([key[0], key[2]])+":"    
+    item_s = "/"+subkey1[:-1]+"s".replace(".", "/")+"/"
     firstname = "custom"
     # get the current list of custom shortcuts
-    get = lambda cmd: subprocess.check_output([
-        "/bin/bash", "-c", cmd
-        ]).decode("utf-8")
-    x = get("gsettings get "+key)
-    if '@as []' in str(x):
+    getcurrent = get(["gsettings", "get", key[0], key[1]])
+    if '@as []' in getcurrent:
        current = []
     else:
-       current = ast.literal_eval(x)
+       current = ast.literal_eval(getcurrent)
     # make sure the additional keybinding mention is no duplicate
     n = 1
     while True:
@@ -93,12 +92,13 @@ def define_keyboard_shortcut(name, command, shortcut):
     # add the new keybinding to the list
     current.append(new)
     # create the shortcut, set the name, command and shortcut key
-    cmd0 = 'gsettings set '+key+' "'+str(current)+'"'
-    cmd1 = 'gsettings set '+subkey1+new+" name '"+ name +"'"
-    cmd2 = 'gsettings set '+subkey1+new+" command '"+ command +"'"
-    cmd3 = 'gsettings set '+subkey1+new+" binding '"+ shortcut +"'"              
-    for cmd in [cmd0, cmd1, cmd2, cmd3]:
-        subprocess.call(["/bin/bash", "-c", cmd])
+    for cmd in ([
+        [key[0], key[1], str(current)],
+        [subkey1+new, "name", name],
+        [subkey1+new, "command", command],
+        [subkey1+new, "binding", shortcut],
+        ]):
+        subprocess.call(["gsettings", "set"]+cmd)
 
 def change_keys(arg):
     # clean up possible duplicates (from unclean stop)
