@@ -1,4 +1,5 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
@@ -29,7 +30,8 @@ wmover_ismuted = wmt.wmover_ismuted
 try:
     os.makedirs(wmover_path)
 except FileExistsError:
-    pass                             
+    pass
+
 
 class WMover(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -43,14 +45,14 @@ class WMover(GObject.GObject, Budgie.Plugin):
         """ Initialisation is important.
         """
         GObject.Object.__init__(self)
-        
+
     def do_get_panel_widget(self, uuid):
         """ This is where the real fun happens. Return a new Budgie.Applet
             instance with the given UUID. The UUID is determined by the
             BudgiePanelManager, and is used for lifetime tracking.
         """
         return WMoverApplet(uuid)
-    
+
 
 class WMoverApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
@@ -60,17 +62,17 @@ class WMoverApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name("wmover-panel", Gtk.IconSize.MENU)
-        self.box.add(icon)        
+        self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         ismuted = os.path.exists(wmover_ismuted)
         label = "Window Mover is inactive" if ismuted \
-                else "Window Mover is active"
+            else "Window Mover is active"
         self.toggle = Gtk.ToggleButton.new_with_label(label)
         self.toggle.set_size_request(210, 20)
         self.toggle.set_active(not ismuted)
-        self.toggle.connect("clicked", self.switch)      
-        self.popover.add(self.toggle)        
+        self.toggle.connect("clicked", self.switch)
+        self.popover.add(self.toggle)
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
@@ -84,7 +86,7 @@ class WMoverApplet(Budgie.Applet):
             self.toggle.set_label("Window Mover is inactive.")
             open(wmover_ismuted, "wt").write("")
         else:
-            subprocess.Popen(panelrunner)    
+            subprocess.Popen(panelrunner)
             self.toggle.set_label("Window Mover is active")
             try:
                 os.remove(wmover_ismuted)
@@ -94,13 +96,13 @@ class WMoverApplet(Budgie.Applet):
     def show_procs(self):
         pids = [
             self.check_runs(pname) for pname in [backgrounder]
-            ]
+        ]
         return [p for p in pids if p]
 
     def check_runs(self, pname):
         try:
             pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+                "pgrep", "-f", pname,
             ]).decode("utf-8")
         except subprocess.CalledProcessError:
             return None
@@ -112,11 +114,10 @@ class WMoverApplet(Budgie.Applet):
         pids = self.show_procs()
         if not pids:
             subprocess.Popen(panelrunner)
-        
-    def	on_press(self, box, arg):
+
+    def on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
     def do_update_popovers(self, manager):
-    	self.manager = manager
-    	self.manager.register_popover(self.box, self.popover)
-
+        self.manager = manager
+        self.manager.register_popover(self.box, self.popover)

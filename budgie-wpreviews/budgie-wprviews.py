@@ -1,6 +1,7 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gdk
+from gi.repository import Budgie, GObject, Gtk
 import subprocess
 import os
 import wprviews_tools as pv
@@ -29,7 +30,7 @@ backgrounder = os.path.join(plugin_path, "wprviews_backgrounder")
 # settings path
 settings_dir = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "previews"
-    )
+)
 # file to trigger enabled/disabled from the panelrunner
 previews_ismuted = pv.previews_ismuted
 # make sure the settings dir exist
@@ -51,7 +52,7 @@ class WPrviews(GObject.GObject, Budgie.Plugin):
         """ Initialisation is important.
         """
         GObject.Object.__init__(self)
-        
+
     def do_get_panel_widget(self, uuid):
         """ This is where the real fun happens. Return a new Budgie.Applet
             instance with the given UUID. The UUID is determined by the
@@ -69,18 +70,18 @@ class WPrviewsApplet(Budgie.Applet):
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name(
             "wprviews-panel", Gtk.IconSize.MENU
-            )
-        self.box.add(icon)        
+        )
+        self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         ismuted = os.path.exists(previews_ismuted)
         label = "Window Previews is inactive" if ismuted \
-                else "Window Previews is active"
+            else "Window Previews is active"
         self.toggle = Gtk.ToggleButton.new_with_label(label)
         self.toggle.set_size_request(210, 20)
         self.toggle.set_active(not ismuted)
-        self.toggle.connect("clicked", self.switch)        
-        self.popover.add(self.toggle)        
+        self.toggle.connect("clicked", self.switch)
+        self.popover.add(self.toggle)
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
@@ -95,7 +96,7 @@ class WPrviewsApplet(Budgie.Applet):
             self.toggle.set_label("Window Previews is inactive.")
             open(previews_ismuted, "wt").write("")
         else:
-            subprocess.Popen(panelrunner)    
+            subprocess.Popen(panelrunner)
             self.toggle.set_label("Window Previews is active")
             try:
                 os.remove(previews_ismuted)
@@ -106,14 +107,14 @@ class WPrviewsApplet(Budgie.Applet):
         # can be simplified, originally to get pids of multiple procs (names)
         pids = [
             self.check_runs(pname) for pname in [backgrounder]
-            ]
+        ]
         return [p for p in pids if p]
 
     def check_runs(self, pname):
         # get the pid of a proc
         try:
             pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+                "pgrep", "-f", pname,
             ]).decode("utf-8")
         except subprocess.CalledProcessError:
             return None
@@ -125,10 +126,9 @@ class WPrviewsApplet(Budgie.Applet):
         if not pids:
             subprocess.Popen(panelrunner)
 
-    def	on_press(self, box, arg):
+    def on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
     def do_update_popovers(self, manager):
-    	self.manager = manager
-    	self.manager.register_popover(self.box, self.popover)
-
+        self.manager = manager
+        self.manager.register_popover(self.box, self.popover)

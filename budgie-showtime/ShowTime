@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import gi
+
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gtk, Gdk, GObject, Pango
@@ -31,15 +32,14 @@ posfile = os.path.join(clt.prefspath, "position")
 
 
 class ShowTimeWin(Gtk.Window):
-
     def __init__(self):
-        
+
         Gtk.Window.__init__(self, title="PrVflash")
-        
+
         # window props, bindings
         self.set_keep_below(True)
         self.set_type_hint(Gdk.WindowTypeHint.DOCK)
-        self.set_decorated(False) 
+        self.set_decorated(False)
         self.connect("destroy", Gtk.main_quit)
         self.set_skip_taskbar_hint(True)
         # transparency
@@ -53,13 +53,15 @@ class ShowTimeWin(Gtk.Window):
         self.timegrid = Gtk.Grid()
         self.timelabel = Gtk.Label("")
         self.datelabel = Gtk.Label("")
-        
+
         self.timelabel.modify_font(Pango.FontDescription('Ubuntu 60'))
-        self.timelabel.modify_fg(Gtk.StateFlags.NORMAL,Gdk.color_parse(time_color))
+        self.timelabel.modify_fg(Gtk.StateFlags.NORMAL,
+                                 Gdk.color_parse(time_color))
         self.timelabel.set_xalign(0)
 
         self.datelabel.modify_font(Pango.FontDescription('Ubuntu 25'))
-        self.datelabel.modify_fg(Gtk.StateFlags.NORMAL,Gdk.color_parse(date_color))
+        self.datelabel.modify_fg(Gtk.StateFlags.NORMAL,
+                                 Gdk.color_parse(date_color))
         self.timegrid.attach(self.timelabel, 0, 0, 1, 1)
         self.timegrid.attach(self.datelabel, 0, 1, 1, 1)
         self.add(self.timegrid)
@@ -75,10 +77,10 @@ class ShowTimeWin(Gtk.Window):
         try:
             pos = [int(p) for p in open(posfile).readlines()][:2]
             self.move(pos[0], pos[1])
-        except (FileNotFoundError, ValueError, IndexError):  
+        except (FileNotFoundError, ValueError, IndexError):
             scr = clt.get_area()
-            self.move((scr[0]*0.75)-100, scr[1]*0.75)
-        
+            self.move((scr[0] * 0.75) - 100, scr[1] * 0.75)
+
     def show_time(self):
         wait = 1
         while True:
@@ -91,17 +93,17 @@ class ShowTimeWin(Gtk.Window):
                     self.timelabel.set_text,
                     timedate[0],
                     priority=GObject.PRIORITY_DEFAULT
-                    )
+                )
             if not mutedate:
                 GObject.idle_add(
                     self.datelabel.set_text,
                     timedate[1],
                     priority=GObject.PRIORITY_DEFAULT
-                    )
+                )
 
     def stop(self, *args):
         Gtk.main_quit()
-        
+
     def area_draw(self, widget, cr):
         # set transparent color
         cr.set_source_rgba(0.2, 0.2, 0.2, 0)
@@ -109,11 +111,13 @@ class ShowTimeWin(Gtk.Window):
         cr.paint()
         cr.set_operator(cairo.OPERATOR_OVER)
 
+
 def show():
     ShowTimeWin()
     GObject.threads_init()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     Gtk.main()
+
 
 mutetime = os.path.exists(clt.mute_time)
 mutedate = os.path.exists(clt.mute_date)

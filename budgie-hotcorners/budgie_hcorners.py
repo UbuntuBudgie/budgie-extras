@@ -124,7 +124,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
             pass
         else:
             for p in pid:
-                subprocess.call(["kill", p])    
+                subprocess.call(["kill", p])
 
     def update_settings(self, widget, *args):
         b_states = [b.get_active() for b in self.buttons]

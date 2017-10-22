@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import subprocess
 import ast
 import os
+import subprocess
 
 """
 Budgie WindowMover
@@ -23,14 +23,16 @@ key = [
     "org.gnome.settings-daemon.plugins.media-keys",
     "custom-keybindings",
     "custom-keybinding",
-    ]
+]
 # the shortcut names to look up in dconf
 shortcut_names = ["wmover_window", "wmover_workspace"]
 # command (main-) line to run previews
 aw = "/usr/lib/budgie-desktop/plugins/budgie-wmover/wmover_run"
 
+
 def get(cmd):
     return subprocess.check_output(cmd).decode("utf-8").strip()
+
 
 def get_currnames():
     relevant = []
@@ -38,45 +40,47 @@ def get_currnames():
     try:
         customs = ast.literal_eval(
             get(["gsettings", "get", key[0], key[1]])
-            )
+        )
     except SyntaxError:
         return [], []
     else:
         for c in customs:
             name = get([
-                "gsettings", "get", key[0]+"."+key[2]+":"+c, "name",
-                ]).replace("'", "")           
+                "gsettings", "get", key[0] + "." + key[2] + ":" + c, "name",
+            ]).replace("'", "")
             if name in shortcut_names:
                 relevant.append(c)
             allnames.append(c)
     return allnames, relevant
-    
+
+
 def remove_custom():
     customs = get_currnames()[0]
     remove = get_currnames()[1]
-    newlist = [item for item in customs if not item in remove]
+    newlist = [item for item in customs if item not in remove]
     subprocess.call([
         "gsettings", "set", key[0], key[1], str(newlist),
-        ])
+    ])
+
 
 def define_keyboard_shortcut(name, command, shortcut):
     # defining keys & strings to be used
     # params example 'open gedit' 'gedit' '<Alt>7'
-    subkey1 = ".".join([key[0], key[2]])+":"    
-    item_s = "/"+subkey1[:-1]+"s".replace(".", "/")+"/"
+    subkey1 = ".".join([key[0], key[2]]) + ":"
+    item_s = "/" + subkey1[:-1] + "s".replace(".", "/") + "/"
     firstname = "custom"
     # get the current list of custom shortcuts
     getcurrent = get(["gsettings", "get", key[0], key[1]])
     if '@as []' in getcurrent:
-       current = []
+        current = []
     else:
-       current = ast.literal_eval(getcurrent)
+        current = ast.literal_eval(getcurrent)
     # make sure the additional keybinding mention is no duplicate
     n = 1
     while True:
-        new = item_s+firstname+str(n)+"/"
+        new = item_s + firstname + str(n) + "/"
         if new in current:
-            n = n+1            
+            n = n + 1
         else:
             break
     # add the new keybinding to the list
@@ -84,18 +88,21 @@ def define_keyboard_shortcut(name, command, shortcut):
     # create the shortcut, set the name, command and shortcut key
     for cmd in ([
         [key[0], key[1], str(current)],
-        [subkey1+new, "name", name],
-        [subkey1+new, "command", command],
-        [subkey1+new, "binding", shortcut],
-        ]):
-        subprocess.call(["gsettings", "set"]+cmd)
+        [subkey1 + new, "name", name],
+        [subkey1 + new, "command", command],
+        [subkey1 + new, "binding", shortcut],
+    ]):
+        subprocess.call(["gsettings", "set"] + cmd)
+
 
 def change_keys(arg):
     # clean up possible duplicates (from unclean stop)
     remove_custom()
     if arg == "set_custom":
         # clean up possible duplicates (from unclean stop)
-        define_keyboard_shortcut("wmover_window", aw+" -single", '<Control><Alt>w')
-        define_keyboard_shortcut("wmover_workspace", aw+" -singlespace", '<Control><Alt>s')
+        define_keyboard_shortcut("wmover_window",
+                                 aw + " -single", '<Control><Alt>w')
+        define_keyboard_shortcut("wmover_workspace",
+                                 aw + " -singlespace", '<Control><Alt>s')
     elif arg == "restore":
         pass

@@ -1,6 +1,7 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gdk
+from gi.repository import Budgie, GObject, Gtk
 import subprocess
 import os
 
@@ -19,23 +20,22 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-
-panelrunner = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_panelrunner"
-backgrounder = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_run"
-
+panelrunner = os.path.dirname(os.path.realpath(__file__)) + \
+    "/wswitcher_panelrunner"
+backgrounder = os.path.dirname(os.path.realpath(__file__)) + \
+    "/wswitcher_run"
 
 wswitcher_path = os.path.join(
     os.environ["HOME"],
     ".config",
     "budgie-extras",
     "wswitcher",
-    )
+)
 
 try:
     os.makedirs(wswitcher_path)
 except FileExistsError:
     pass
-
 
 wswitcher_ismuted = os.path.join(wswitcher_path, "muted")
 
@@ -43,6 +43,7 @@ try:
     os.makedirs(wswitcher_path)
 except FileExistsError:
     pass
+
 
 class BudgieWSwitcher(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -56,7 +57,7 @@ class BudgieWSwitcher(GObject.GObject, Budgie.Plugin):
         """ Initialisation is important.
         """
         GObject.Object.__init__(self)
-        
+
     def do_get_panel_widget(self, uuid):
         """ This is where the real fun happens. Return a new Budgie.Applet
             instance with the given UUID. The UUID is determined by the
@@ -73,17 +74,17 @@ class BudgieWSwitcherApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name("wsw-panel", Gtk.IconSize.MENU)
-        self.box.add(icon)        
+        self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         ismuted = os.path.exists(wswitcher_ismuted)
         label = "Wallpaper Switcher is inactive" if ismuted \
-                else "Wallpaper Switcher is active"
+            else "Wallpaper Switcher is active"
         self.toggle = Gtk.ToggleButton.new_with_label(label)
         self.toggle.set_size_request(210, 20)
         self.toggle.set_active(not ismuted)
         self.toggle.connect("clicked", self.switch)
-        self.popover.add(self.toggle)        
+        self.popover.add(self.toggle)
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
@@ -99,7 +100,7 @@ class BudgieWSwitcherApplet(Budgie.Applet):
             self.toggle.set_label("Wallpaper Switcher is inactive.")
             open(wswitcher_ismuted, "wt").write("")
         else:
-            subprocess.Popen(panelrunner)    
+            subprocess.Popen(panelrunner)
             self.toggle.set_label("Wallpaper Switcher is active")
             try:
                 os.remove(wswitcher_ismuted)
@@ -109,28 +110,27 @@ class BudgieWSwitcherApplet(Budgie.Applet):
     def show_procs(self):
         pids = [
             self.check_runs(pname) for pname in [panelrunner, backgrounder]
-            ]
+        ]
         return [p for p in pids if p]
-        
+
     def check_runs(self, pname):
         try:
             pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+                "pgrep", "-f", pname,
             ]).decode("utf-8")
         except subprocess.CalledProcessError:
             return None
         else:
             return pid.strip()
-               
+
     def initiate(self):
         pids = self.show_procs()
         if not pids:
             subprocess.Popen(panelrunner)
 
-    def	on_press(self, box, arg):
+    def on_press(self, box, arg):
         self.manager.show_popover(self.box)
 
     def do_update_popovers(self, manager):
-    	self.manager = manager
-    	self.manager.register_popover(self.box, self.popover)
-
+        self.manager = manager
+        self.manager.register_popover(self.box, self.popover)

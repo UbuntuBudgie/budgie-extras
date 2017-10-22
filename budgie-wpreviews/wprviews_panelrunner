@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+import os
 import subprocess
 import time
-import subprocess
+
 import psutil
-import os
+
 import wprviews_tools as pv
 from set_keys import change_keys
 
@@ -26,14 +27,16 @@ plugin_path = pv.plugin_path
 dcpath = pv.dcpath
 ismuted = pv.previews_ismuted
 
+
 def get_pid():
     app = os.path.join(plugin_path, "wprviews_backgrounder")
     try:
         return int(subprocess.check_output([
             "pgrep", "-f", app,
-            ]).decode("utf-8").strip())
+        ]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
-        return subprocess.Popen(app).pid 
+        return subprocess.Popen(app).pid
+
 
 def run_bgrounder():
     # give dconf a few seconds to create the key
@@ -43,14 +46,15 @@ def run_bgrounder():
         time.sleep(3)
         try:
             check = subprocess.check_output([
-                "dconf", "dump", dcpath+key+"/",
-                ]).decode("utf-8")
+                "dconf", "dump", dcpath + key + "/",
+            ]).decode("utf-8")
             if not check:
                 break
         except TypeError:
             break
         if os.path.exists(ismuted):
             break
+
 
 # make sure gsettings is ready
 time.sleep(5)
@@ -61,4 +65,3 @@ run_bgrounder()
 psutil.Process(pid).terminate()
 change_keys("restore")
 pv.empty_dir()
-

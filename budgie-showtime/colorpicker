@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import gi
+
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GObject, Gdk
+from gi.repository import Gtk, Gdk
 import clocktools as clt
 import sys
 
@@ -21,8 +22,8 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-class ColorChooser(Gtk.Window):
 
+class ColorChooser(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="ShowTime - set color")
         maingrid = Gtk.Grid()
@@ -39,7 +40,7 @@ class ColorChooser(Gtk.Window):
 
         buttonbox = Gtk.Box()
         maingrid.attach(buttonbox, 0, 1, 1, 1)
-        
+
         choose = Gtk.Button("Choose")
         choose.connect("clicked", self.set_newcolor)
         choose.set_size_request(90, 20)
@@ -53,23 +54,22 @@ class ColorChooser(Gtk.Window):
     def set_newcolor(self, *args):
         newcolor = str(self.color.get_current_color()).split()
         rgb = [
-            s.split("=")[1].replace(",", "").replace(")", "")\
+            s.split("=")[1].replace(",", "").replace(")", "")
             for s in newcolor
-            ]
+        ]
         clt.write_settings(f, "\n".join(rgb))
         clt.restart_clock()
         self.close_window()
-        
+
     def close_window(self, *args):
         Gtk.main_quit()
-        
+
+
 def chooser():
     window = ColorChooser()
     window.connect("destroy", Gtk.main_quit)
     window.show_all()
     Gtk.main()
 
+
 chooser()
-
-
-

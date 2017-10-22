@@ -1,8 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo "= pep8 ="
-for i in `find .. -iname '*.py'`; do
+
+for i in `find . -type f -exec grep -l "env python3" {} \;`; do
+    if [[ $i != *pep8 && $i != *meson* ]]; then
+        echo "checking $i"
+        pep8 --ignore W191 --ignore E402 $i
+    fige
+done
+
+for i in `find . -iname '*.py'`; do
     echo "checking $i"
     pep8 --ignore W191 --ignore E402 $i 
 done

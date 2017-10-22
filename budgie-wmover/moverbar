@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import gi
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Pango
-import subprocess
 import sys
 import wmovertools as wmt
 import os
@@ -22,24 +22,25 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-button_hsize = 80; button_vsize = 50
+button_hsize = 80
+button_vsize = 50
 fpath = wmt.fpath
 
 css_data = """
 .moverwindow {
-	background-color: #353945;
-	}
+    background-color: #353945;
+}
 .moverbutton {
-  background-color: #353945;
-  color: #C8C8C8;
-  border-width: 0px;
-  border-color: #858C96;
-  padding: 1px;
-  border-radius: 0px;
+    background-color: #353945;
+    color: #C8C8C8;
+    border-width: 0px;
+    border-color: #858C96;
+    padding: 1px;
+    border-radius: 0px;
 }
 .moverbutton:hover {
-  background-color: shade (@bg_color, 0.4);
-  color: shade (@color, 0.2)
+    background-color: shade (@bg_color, 0.4);
+    color: shade (@color, 0.2)
 }
 """
 
@@ -48,8 +49,8 @@ try:
 except FileNotFoundError:
     pass
 
-class Splash(Gtk.Window):
 
+class Splash(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="w_moversplash")
         provider = Gtk.CssProvider.new()
@@ -57,19 +58,22 @@ class Splash(Gtk.Window):
         self.set_skip_taskbar_hint(True)
         maingrid = Gtk.Grid()
         self.add(maingrid)
-        maingrid.set_border_width(0)        
+        maingrid.set_border_width(0)
         wsdata = wmt.get_wsdata()
-        self.n_spaces = wsdata[0]; currspace = wsdata[1]       
+        self.n_spaces = wsdata[0]
+        currspace = wsdata[1]
         # create button- row
         if subj == "none":
-            l_char = "◂ "; r_char = " ▸"
+            l_char = "◂ "
+            r_char = " ▸"
         else:
-            l_char = "•"; r_char = "•"
+            l_char = "•"
+            r_char = "•"
         for n in range(self.n_spaces):
-            label = l_char+str(n+1)+r_char if n == currspace else n+1
+            label = l_char + str(n + 1) + r_char if n == currspace else n + 1
             button = Gtk.Button(label)
             st_cont = button.get_style_context()
-            st_cont.add_class("moverbutton")            
+            st_cont.add_class("moverbutton")
             button.set_size_request(button_hsize, button_vsize)
             maingrid.attach(button, n, 0, 1, 1)
             button.modify_font(Pango.FontDescription('Ubuntu 15'))
@@ -79,9 +83,9 @@ class Splash(Gtk.Window):
                 button.connect("clicked", self.move_desktop, subj, n)
             button.connect("enter-notify-event", self.busy)
             button.connect("leave-notify-event", self.free)
-        self.connect('key-press-event', self.get_key)  
-        x_size = self.n_spaces*button_hsize
-        self.move(x_res/2-x_size/2, y_res-180)       
+        self.connect('key-press-event', self.get_key)
+        x_size = self.n_spaces * button_hsize
+        self.move(x_res / 2 - x_size / 2, y_res - 180)
 
     def move_to(self, button, subj, wspace):
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
@@ -101,9 +105,9 @@ class Splash(Gtk.Window):
     def stop(self, *args):
         Gtk.main_quit()
 
-    def get_key(self, val1, val2 ):
+    def get_key(self, val1, val2):
         try:
-            wspace = int(Gdk.keyval_name(val2.keyval))-1           
+            wspace = int(Gdk.keyval_name(val2.keyval)) - 1
         except ValueError:
             pass
         else:
@@ -112,21 +116,22 @@ class Splash(Gtk.Window):
             else:
                 self.move_to(
                     None, subj, wspace
-                    ) if subj != "none" else self.move_desktop(
-                        None, None, wspace
-                        )
-                                                            
+                ) if subj != "none" else self.move_desktop(
+                    None, None, wspace
+                )
+
+
 def run_moverbar():
     # get the style from the css file and apply it
     cssProvider = Gtk.CssProvider.new()
-    cssProvider.load_from_data(css_data.encode())    
+    cssProvider.load_from_data(css_data.encode())
     screen = Gdk.Screen.get_default()
     styleContext = Gtk.StyleContext()
     styleContext.add_provider_for_screen(
         screen,
         cssProvider,
         Gtk.STYLE_PROVIDER_PRIORITY_USER,
-        )
+    )
     window = Splash()
     window.set_decorated(False)
     window.set_resizable(False)
@@ -136,12 +141,13 @@ def run_moverbar():
     window.connect("destroy", Gtk.main_quit)
     Gtk.main()
 
+
 if __name__ == "__main__":
     try:
         subj = sys.argv[1]
     except IndexError:
         pass
     else:
-        x_res= int(sys.argv[2])
+        x_res = int(sys.argv[2])
         y_res = int(sys.argv[3])
         run_moverbar()
