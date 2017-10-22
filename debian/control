@@ -1,8 +1,8 @@
 Source: budgie-extras
 Section: misc
-Priority: extra
+Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
-Build-Depends:  debhelper (>= 10),
+Build-Depends: debhelper (>= 10),
 		python3,
 		meson,
 		dh-python,
@@ -16,7 +16,7 @@ Package: budgie-hotcorners-applet
 Architecture: all
 Depends: python3, python3-gi, wmctrl, xdotool,
  ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet providing hotcorners capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -27,7 +27,7 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 Package: budgie-quicknote-applet
 Architecture: all
 Depends: python3, python3-gi, ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet providing simple notes capability for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -39,7 +39,7 @@ Package: budgie-previews-applet
 Architecture: all
 Depends: python3, python3-gi, wmctrl, xdotool, xprintidle,
  ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet providing window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -49,7 +49,7 @@ Description: Set of desktop enhancements for the Budgie Desktop.
 Package: budgie-workspace-overview-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl, ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet providing quick access to workspaces for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -58,16 +58,16 @@ Description: Set of desktop enhancements for the Budgie Desktop.
  workspaces using the applet's menu.  Optionally, navigation to any
  window in any workspace is possible.
 
-Package: budgie-workspace-switcher-applet
+Package: budgie-workspace-wallpaper-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl,
  ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet providing per workspace wallpaper 
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
- The workspace switcher applet shows a different wallpaper on each of
+ The workspace wallpaper applet shows a different wallpaper on each of
  the workspaces. Usage is simple: add the applet to the panel and set
  wallpapers on each of the workspaces in the way you are used to.
  The applet will remember what wallpaper was set on each of the
@@ -77,7 +77,7 @@ Package: budgie-window-mover-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl, xdotool,
  ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet allows moving windows between workspaces for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -92,7 +92,7 @@ Package: budgie-showtime-applet
 Architecture: any
 Depends: python3, python3-gi, wmctrl,
  ${misc:Depends}, ${python3:Depends}
-Description: Set of desktop enhancements for the Budgie Desktop.
+Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
