@@ -1,7 +1,7 @@
 import gi.repository
 
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk
+from gi.repository import Budgie, GObject, Gtk, Gio
 import subprocess
 import os
 import clocktools as clt
@@ -61,14 +61,11 @@ class BudgieShowTime(GObject.GObject, Budgie.Plugin):
         """
         return BudgieShowTimeApplet(uuid)
 
-
-class BudgieShowTimeApplet(Budgie.Applet):
-    """ Budgie.Applet is in fact a Gtk.Bin """
-
-    # manager = None
-
-    def __init__(self, uuid):
-        Budgie.Applet.__init__(self)
+class BudgieShowTimeSettings(Gtk.Grid):
+    
+    def __init__(self, setting):
+        super().__init__()
+        self.setting = setting
 
         # files & colors
         self.tcolorfile = clt.timecolor
@@ -76,12 +73,11 @@ class BudgieShowTimeApplet(Budgie.Applet):
         mute_time = clt.mute_time
         mute_date = clt.mute_date
         # grid & layout
-        maingrid = Gtk.Grid()
-        maingrid.set_row_spacing(12)
+        self.set_row_spacing(12)
         element_hsizer1 = self.h_spacer(13)
-        maingrid.attach(element_hsizer1, 0, 0, 1, 7)
+        self.attach(element_hsizer1, 0, 0, 1, 7)
         element_hsizer2 = self.h_spacer(25)
-        maingrid.attach(element_hsizer2, 2, 0, 1, 7)
+        self.attach(element_hsizer2, 2, 0, 1, 7)
         # toggle buttons
         self.runtime = Gtk.CheckButton("Show time")
         self.rundate = Gtk.CheckButton("Show date")
@@ -89,41 +85,31 @@ class BudgieShowTimeApplet(Budgie.Applet):
         self.rundate.set_active(not os.path.exists(mute_date))
         self.runtime.connect("toggled", self.toggle_show, mute_time)
         self.rundate.connect("toggled", self.toggle_show, mute_date)
-        maingrid.attach(self.runtime, 1, 1, 1, 1)
-        maingrid.attach(self.rundate, 1, 2, 1, 1)
+        self.attach(self.runtime, 1, 1, 1, 1)
+        self.attach(self.rundate, 1, 2, 1, 1)
         # color buttons & labels
         bholder1 = Gtk.Box()
-        maingrid.attach(bholder1, 1, 4, 1, 1)
+        self.attach(bholder1, 1, 4, 1, 1)
         self.t_color = Gtk.Button()
         self.t_color.connect("clicked", self.pick_color, self.tcolorfile)
         self.t_color.set_size_request(10, 10)
         bholder1.pack_start(self.t_color, False, False, 0)
         timelabel = Gtk.Label(" Set time color")
         bholder1.pack_start(timelabel, False, False, 0)
-
         bholder2 = Gtk.Box()
-        maingrid.attach(bholder2, 1, 5, 1, 1)
+        self.attach(bholder2, 1, 5, 1, 1)
         self.d_color = Gtk.Button()
         self.d_color.connect("clicked", self.pick_color, self.dcolorfile)
         self.d_color.set_size_request(10, 10)
         bholder2.pack_start(self.d_color, False, False, 0)
         datelabel = Gtk.Label(" Set date color")
         bholder2.pack_start(datelabel, False, False, 0)
-        # and the rest
-        self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("bshowtime-panel",
-                                            Gtk.IconSize.MENU)
-        self.box.add(icon)
-        self.add(self.box)
-        self.popover = Budgie.Popover.new(self.box)
-        self.popover.add(maingrid)
-        self.popover.get_child().show_all()
-        self.box.show_all()
-        self.show_all()
-        self.box.connect("button-press-event", self.on_press)
-        # set colors and run clock
+        labelspacer = self.h_spacer(10)
+        self.attach(labelspacer, 1, 6, 1, 1)
+        noicon = Gtk.Label("ShowTime applet runs \nwithout a panel icon")
+        self.attach(noicon, 1, 7, 1, 1)
         self.update_color()
-        clt.restart_clock()
+        self.show_all
 
     def h_spacer(self, addwidth):
         # horizontal spacer
@@ -162,7 +148,7 @@ class BudgieShowTimeApplet(Budgie.Applet):
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
 
-    def update_color(self):
+    def update_color(self, *args):
         self.tcolor = clt.hexcolor(clt.read_color(self.tcolorfile))
         self.dcolor = clt.hexcolor(clt.read_color(self.dcolorfile))
         self.color_button(self.d_color, self.dcolor)
@@ -171,12 +157,24 @@ class BudgieShowTimeApplet(Budgie.Applet):
     def pick_color(self, button, f):
         wdata = clt.get(["wmctrl", "-l"])
         if "ShowTime - set color" not in wdata:
-            subprocess.Popen([colorpicker, f])
+            subprocess = Gio.Subprocess.new([colorpicker, f], 0)
+            subprocess.wait_check_async(None, self.update_color)
+            self.update_color()
+            
+class BudgieShowTimeApplet(Budgie.Applet):
+    """ Budgie.Applet is in fact a Gtk.Bin """
 
-    def on_press(self, box, arg):
-        self.update_color()
-        self.manager.show_popover(self.box)
+    def __init__(self, uuid):
+        Budgie.Applet.__init__(self)
+        self.uuid = uuid
+        clt.restart_clock()
 
-    def do_update_popovers(self, manager):
-        self.manager = manager
-        self.manager.register_popover(self.box, self.popover)
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return BudgieShowTimeSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
