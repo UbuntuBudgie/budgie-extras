@@ -32,7 +32,7 @@ def getkey():
         "dconf", "dump", dcpath,
     ]).decode("utf-8").splitlines()
     try:
-        match = [l for l in data if "Budgie ShowTime" in l][0]
+        match = [l for l in data if "ShowTime" in l][0]
         watch = data.index(match) - 3
         return data[watch][1:-1]
     except IndexError:

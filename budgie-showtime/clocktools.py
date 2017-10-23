@@ -22,7 +22,7 @@ prefspath = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "showtime"
 )
 
-app_path = "/usr/lib/budgie-desktop/plugins/budgie-showtime"
+app_path = os.path.dirname(os.path.abspath(__file__))
 
 try:
     os.makedirs(prefspath)

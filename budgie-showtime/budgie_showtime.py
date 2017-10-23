@@ -2,7 +2,6 @@ import gi.repository
 
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gio
-import subprocess
 import os
 import clocktools as clt
 
@@ -61,8 +60,8 @@ class BudgieShowTime(GObject.GObject, Budgie.Plugin):
         """
         return BudgieShowTimeApplet(uuid)
 
+
 class BudgieShowTimeSettings(Gtk.Grid):
-    
     def __init__(self, setting):
         super().__init__()
         self.setting = setting
@@ -106,7 +105,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
         bholder2.pack_start(datelabel, False, False, 0)
         labelspacer = self.h_spacer(10)
         self.attach(labelspacer, 1, 6, 1, 1)
-        noicon = Gtk.Label("ShowTime applet runs \nwithout a panel icon")
+        noicon = Gtk.Label("Applet runs \nwithout a panel icon")
         self.attach(noicon, 1, 7, 1, 1)
         self.update_color()
         self.show_all
@@ -160,7 +159,8 @@ class BudgieShowTimeSettings(Gtk.Grid):
             subprocess = Gio.Subprocess.new([colorpicker, f], 0)
             subprocess.wait_check_async(None, self.update_color)
             self.update_color()
-            
+
+
 class BudgieShowTimeApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
 
