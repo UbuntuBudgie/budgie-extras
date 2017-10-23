@@ -167,6 +167,9 @@ class BudgieShowTimeApplet(Budgie.Applet):
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.uuid = uuid
+        self.box = Gtk.EventBox()
+        self.add(self.box)
+        self.show_all()
         clt.restart_clock()
 
     def do_get_settings_ui(self):
