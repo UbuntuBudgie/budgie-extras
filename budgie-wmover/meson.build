@@ -8,6 +8,7 @@ install_data(
     'wmover_run',
     'wmovertools.py',
     'wmover_panelrunner',
+    'set_keys.py',
     'moverbar',
 
     install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
