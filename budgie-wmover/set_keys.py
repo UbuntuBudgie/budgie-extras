@@ -27,7 +27,7 @@ key = [
 # the shortcut names to look up in dconf
 shortcut_names = ["wmover_window", "wmover_workspace"]
 # command (main-) line to run previews
-aw = "/usr/lib/budgie-desktop/plugins/budgie-wmover/wmover_run"
+aw = os.path.dirname(os.path.abspath(__file__)) + "/wmover_run"
 
 
 def get(cmd):

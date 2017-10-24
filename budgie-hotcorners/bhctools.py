@@ -3,7 +3,7 @@ import os
 import subprocess
 
 """
-Budgie Hot Corners
+Hot Corners
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org

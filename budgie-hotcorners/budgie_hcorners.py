@@ -8,7 +8,7 @@ import ast
 from bhctools import get, dr, settings
 
 """
-Budgie Hot Corners
+Hot Corners
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -22,7 +22,7 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-app = os.path.dirname(os.path.realpath(__file__)) + "/bhcorners"
+app = os.path.dirname(os.path.abspath(__file__)) + "/bhcorners"
 
 try:
     os.makedirs(dr)

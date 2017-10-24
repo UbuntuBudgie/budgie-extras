@@ -23,7 +23,7 @@ settings_path = os.path.join(
 )
 
 fpath = "/tmp/wmover_busy"
-appletpath = "/usr/lib/budgie-desktop/plugins/budgie-wmover"
+appletpath = os.path.dirname(os.path.abspath(__file__))
 wmover_ismuted = os.path.join(settings_path, "muted")
 
 try:

@@ -20,9 +20,9 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-panelrunner = os.path.dirname(os.path.realpath(__file__)) + \
+panelrunner = os.path.dirname(os.path.abspath(__file__)) + \
     "/wswitcher_panelrunner"
-backgrounder = os.path.dirname(os.path.realpath(__file__)) + \
+backgrounder = os.path.dirname(os.path.abspath(__file__)) + \
     "/wswitcher_run"
 
 wswitcher_path = os.path.join(

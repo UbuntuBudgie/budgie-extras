@@ -21,7 +21,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 def get_pid():
-    app = "/usr/lib/budgie-desktop/plugins/budgie-wswitcher/wswitcher_run"
+    app = os.path.dirname(os.path.abspath(__file__)) + "/wswitcher_run"
     try:
         return int(subprocess.check_output([
             "pgrep", "-f", app]).decode("utf-8").strip())
@@ -34,7 +34,7 @@ def getkey():
         "dconf", "dump", dcpath
     ]).decode("utf-8").splitlines()
     try:
-        match = [l for l in data if "Budgie Wallpaper Switcher" in l][0]
+        match = [l for l in data if "Wallpaper Switcher" in l][0]
         watch = data.index(match) - 3
         return data[watch][1:-1]
     except IndexError:

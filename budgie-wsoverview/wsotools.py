@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Budgie Workspace Overview
+Workspace Overview
 Author: Jacob Vlijm
 Copyright © 2017 Ubuntu Budgie Developers
 Website: https://ubuntubudgie.org

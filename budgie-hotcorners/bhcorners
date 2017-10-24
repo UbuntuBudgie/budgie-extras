@@ -5,7 +5,7 @@ import time
 import bhctools as bhc
 
 """
-Budgie Hot Corners
+Hot Corners
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
@@ -65,7 +65,7 @@ def getkey():
         "dconf", "dump", dcpath
     ]).decode("utf-8").splitlines()
     try:
-        match = [l for l in data if "Budgie Hot Corners" in l][0]
+        match = [l for l in data if "Hot Corners" in l][0]
         watch = data.index(match) - 3
         return data[watch][1:-1]
     except IndexError:

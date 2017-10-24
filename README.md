@@ -10,12 +10,13 @@ additional enhancements for the user experience
  - Workspace Switcher Overview
  - Workspace Switcher
  - Workspace Mover
+ - ShowTime
  
  ## Installation
  
      mkdir build && cd build
-     meson --buildtype plain --prefix=/usr --datadir=/usr/share --sysconfdir=/opt ..
-     ninja
+     meson --buildtype plain --prefix=/usr --datadir=/usr/share ..
+     ninja -v
      sudo ninja install
 
 ## Runtime dependencies

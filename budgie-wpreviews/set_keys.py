@@ -28,7 +28,7 @@ def_key = ["org.gnome.desktop.wm.keybindings", "switch-applications"]
 # the shortcut names to look up in dconf
 shortcut_names = ["prv_all", "prv_single"]
 # command (main-) line to run previews
-aw = "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window"
+aw = os.path.dirname(os.path.abspath(__file__)) + "/wprviews_window"
 
 
 def get(cmd):

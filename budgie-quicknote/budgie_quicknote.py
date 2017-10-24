@@ -5,7 +5,7 @@ from gi.repository import Budgie, GObject, Gtk
 import os
 
 """
-Budgie QuickNote
+QuickNote
 Author: Jacob Vlijm
 Copyright=Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org

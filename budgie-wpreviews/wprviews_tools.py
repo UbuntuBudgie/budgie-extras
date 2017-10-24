@@ -18,7 +18,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 dcpath = "/com/solus-project/budgie-panel/applets/"
-plugin_path = os.path.dirname(os.path.realpath(__file__)) + "/budgie-wprviews"
+plugin_path = os.path.dirname(os.path.abspath(__file__)) + "/budgie-wprviews"
 
 previews_dir = "/tmp"
 settings_dir = os.path.join(
