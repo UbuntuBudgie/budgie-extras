@@ -15,7 +15,7 @@ additional enhancements for the user experience
  ## Installation
  
      mkdir build && cd build
-     meson --buildtype plain --prefix=/usr --datadir=/usr/share ..
+     meson --buildtype plain --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
      ninja -v
      sudo ninja install
 

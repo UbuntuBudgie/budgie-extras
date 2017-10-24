@@ -6,7 +6,6 @@ gi.require_version("Gdk", "3.0")
 from gi.repository import Gtk, Gdk
 import cairo
 import wprviews_tools as pv
-# wprviews_tools.py
 import os
 import subprocess
 import sys
@@ -80,6 +79,7 @@ show_allwins = True
 
 plugin_path = pv.plugin_path
 button_images = os.path.join(plugin_path, "pics")
+button_images = button_images.replace("lib", "share")
 
 """
 Gtk alignment isn't fully according the set margins The deviation below is

@@ -17,16 +17,16 @@ dependency('glib-2.0')
 dependency('gobject-introspection-1.0', version: '>=1.51.1')
 dependency('gtk+-3.0', version :'>=3.18')
 
-# Global path variabel
+# Global path variable
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
-#runnerdir = get_option('sysconfdir')
 
 PLUGINS_INSTALL_DIR = join_paths(libdir, 'budgie-desktop',
 	'plugins')
 PIXMAPS_DIR = join_paths(datadir, 'pixmaps')
-#EXTRAS_DIR = join_paths(runnerdir, meson.project_name())
+PLUGINS_DATA_DIR = join_paths(datadir, 'budgie-desktop',
+	'plugins')
 APPLICATIONS_DIR = join_paths(datadir, 'applications')
 
 conf = configuration_data()
