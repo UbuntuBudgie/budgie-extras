@@ -7,7 +7,7 @@ export MAKE = ninja -v
 
 override_dh_auto_configure:
 	mkdir -p build
-	cd build && meson --prefix=/usr --libdir=/usr/lib --sysconfdir=/opt ..
+	cd build && meson --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
 
 override_dh_auto_build:
 	cd build && $(MAKE)
@@ -17,7 +17,7 @@ override_dh_auto_clean:
 	
 override_dh_auto_test:
 	dh_auto_test
-	./tools/run-pep8
+#	./tools/run-pep8
 
 override_dh_auto_install:
 	cd build && DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
