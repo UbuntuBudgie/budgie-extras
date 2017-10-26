@@ -1,5 +1,4 @@
 import gi.repository
-
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import subprocess
@@ -21,6 +20,20 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+message = """
+The following shortcuts are
+automatically set:
+
+- Alt + Tab
+  (show all windows)
+- Super + Tab
+  (show windows of the
+  active application)
+
+Applet runs without
+a pannel icon
+"""
+
 # plugin path
 plugin_path = pv.plugin_path
 # panelrunner (wrapper to take care of toggle applet and manage shortcuts)
@@ -33,12 +46,25 @@ settings_dir = os.path.join(
 )
 # file to trigger enabled/disabled from the panelrunner
 previews_ismuted = pv.previews_ismuted
+
 # make sure the settings dir exist
 try:
     os.makedirs(settings_dir)
 except FileExistsError:
     pass
 
+
+def check_runs(pname):
+    # get the pid of a proc
+    try:
+        pid = subprocess.check_output([
+            "pgrep", "-f", pname,
+        ]).decode("utf-8")
+    except subprocess.CalledProcessError:
+        return None
+    else:
+        return pid.strip()
+    
 
 class WPrviews(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -61,74 +87,58 @@ class WPrviews(GObject.GObject, Budgie.Plugin):
         return WPrviewsApplet(uuid)
 
 
+class WPrviewsSettings(Gtk.Grid):
+    
+    def __init__(self, setting):
+        
+        super().__init__()
+        
+        self.setting = setting
+        ismuted = os.path.exists(previews_ismuted)
+        # grid & layout
+        explanation = Gtk.Label(message)
+        self.attach(explanation, 0, 1, 1, 1)
+        self.toggle = Gtk.CheckButton.new_with_label(" Run WindowPreviews")
+        self.toggle.set_active(not ismuted)
+        self.toggle.connect("toggled", self.switch)
+        self.attach(self.toggle, 0, 0, 1, 1)
+        self.show_all()
+
+    def switch(self, button, *args):
+        # toggle ui & manage trigger file (noticed by panelrunner)
+        pids = check_runs(backgrounder)
+        if pids:
+            open(previews_ismuted, "wt").write("")
+        else:
+            subprocess.Popen(panelrunner)
+            try:
+                os.remove(previews_ismuted)
+            except FileNotFoundError:
+                pass
+
+
 class WPrviewsApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
     manager = None
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
-        self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name(
-            "wprviews-panel", Gtk.IconSize.MENU
-        )
-        self.box.add(icon)
-        self.add(self.box)
-        self.popover = Budgie.Popover.new(self.box)
+        self.uuid = uuid
         ismuted = os.path.exists(previews_ismuted)
-        label = "Window Previews is inactive" if ismuted \
-            else "Window Previews is active"
-        self.toggle = Gtk.ToggleButton.new_with_label(label)
-        self.toggle.set_size_request(210, 20)
-        self.toggle.set_active(not ismuted)
-        self.toggle.connect("clicked", self.switch)
-        self.popover.add(self.toggle)
-        self.popover.get_child().show_all()
-        self.box.show_all()
-        self.show_all()
-        self.box.connect("button-press-event", self.on_press)
         if not ismuted:
             self.initiate()
 
-    def switch(self, button, *args):
-        # toggle ui & manage trigger file (noticed by panelrunner)
-        pids = self.show_procs()
-        if pids:
-            self.toggle.set_label("Window Previews is inactive.")
-            open(previews_ismuted, "wt").write("")
-        else:
-            subprocess.Popen(panelrunner)
-            self.toggle.set_label("Window Previews is active")
-            try:
-                os.remove(previews_ismuted)
-            except FileNotFoundError:
-                pass
-
-    def show_procs(self):
-        # can be simplified, originally to get pids of multiple procs (names)
-        pids = [
-            self.check_runs(pname) for pname in [backgrounder]
-        ]
-        return [p for p in pids if p]
-
-    def check_runs(self, pname):
-        # get the pid of a proc
-        try:
-            pid = subprocess.check_output([
-                "pgrep", "-f", pname,
-            ]).decode("utf-8")
-        except subprocess.CalledProcessError:
-            return None
-        else:
-            return pid.strip()
-
     def initiate(self):
-        pids = self.show_procs()
+        pids = check_runs(backgrounder)
         if not pids:
             subprocess.Popen(panelrunner)
 
-    def on_press(self, box, arg):
-        self.manager.show_popover(self.box)
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return WPrviewsSettings(self.get_applet_settings(self.uuid))
 
-    def do_update_popovers(self, manager):
-        self.manager = manager
-        self.manager.register_popover(self.box, self.popover)
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
