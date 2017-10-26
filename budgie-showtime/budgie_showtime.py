@@ -1,5 +1,4 @@
 import gi.repository
-
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gio
 import os
@@ -38,6 +37,7 @@ css_data = """
 """
 
 colorpicker = os.path.join(clt.app_path, "colorpicker")
+cpos_file = clt.pos_file
 
 
 class BudgieShowTime(GObject.GObject, Budgie.Plugin):
@@ -104,12 +104,64 @@ class BudgieShowTimeSettings(Gtk.Grid):
         datelabel = Gtk.Label(" Set date color")
         bholder2.pack_start(datelabel, False, False, 0)
         labelspacer = self.h_spacer(10)
-        self.attach(labelspacer, 1, 6, 1, 1)
-        noicon = Gtk.Label("Applet runs \nwithout a panel icon")
-        self.attach(noicon, 1, 7, 1, 1)
+        # checkbox custom position
+        self.setposbutton = Gtk.CheckButton("Set custom position (px)")
+        # setposlable.set_xalign(0)
+        self.attach(self.setposbutton, 1, 12, 1, 1)
+        posholder = Gtk.Box()
+        self.xpos = Gtk.Entry()
+        self.xpos.set_width_chars(4)
+        xpos_label = Gtk.Label("x: ")
+        self.ypos = Gtk.Entry()
+        self.ypos.set_width_chars(4)
+        ypos_label = Gtk.Label(" y: ")
+        self.apply = Gtk.Button("OK")
+        for item in [
+            xpos_label, self.xpos, ypos_label, self.ypos, self.apply,
+            ]:
+            posholder.pack_start(item, False, False, 0)
+        posholder.pack_end(self.apply, False, False, 0)
+        self.attach(posholder, 1, 13, 1, 1)
+        noiconspacer = self.h_spacer(10)
+        noicon = Gtk.Label("Applet runs without a panel icon")
+        self.attach(noiconspacer, 1, 14, 1, 1)
+        self.attach(noicon, 1, 15, 1, 1)
+        self.set_initialstate()
+        self.setposbutton.connect("toggled", self.toggle_cuspos)
+        self.apply.connect("clicked", self.get_xy)
         self.update_color()
-        self.show_all
+        self.show_all()
 
+    def set_initialstate(self):
+        state_data = clt.get_textposition()
+        state = state_data[0]
+        if state:
+            self.xpos.set_text(str(state_data[1]))
+            self.ypos.set_text(str(state_data[2]))  
+        for entr in [self.ypos, self.xpos, self.apply]:
+            entr.set_sensitive(state)
+        self.setposbutton.set_active(state)
+
+    def get_xy(self, button):
+        x = self.xpos.get_text()
+        y = self.ypos.get_text()
+        # check for correct input
+        try:
+            newpos = [str(int(p)) for p in [x, y]]
+            open(cpos_file, "wt").write("\n".join(newpos))
+        except (FileNotFoundError, ValueError, IndexError):
+            pass
+        clt.restart_clock()
+
+    def toggle_cuspos(self, button):
+        newstate = button.get_active()
+        for widget in [self.ypos, self.xpos, self.apply]:
+            widget.set_sensitive(newstate)
+        if newstate is False:
+            self.xpos.set_text("")
+            self.ypos.set_text("")
+            os.remove(cpos_file)
+        
     def h_spacer(self, addwidth):
         # horizontal spacer
         spacegrid = Gtk.Grid()
@@ -167,9 +219,6 @@ class BudgieShowTimeApplet(Budgie.Applet):
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.uuid = uuid
-        self.box = Gtk.EventBox()
-        self.add(self.box)
-        self.show_all()
         clt.restart_clock()
 
     def do_get_settings_ui(self):

@@ -34,6 +34,7 @@ timecolor = os.path.join(prefspath, "timecolor")
 datecolor = os.path.join(prefspath, "datecolor")
 mute_time = os.path.join(prefspath, "mute_time")
 mute_date = os.path.join(prefspath, "mute_date")
+pos_file = os.path.join(prefspath, "position")
 clock = os.path.join(app_path, "ShowTime")
 panelrunner = os.path.join(app_path, "bshowtime_panelrunner")
 
@@ -71,6 +72,20 @@ def get_area():
         except AttributeError:
             pass
         time.sleep(1)
+
+
+def get_textposition():
+    try:
+        pos = [int(p) for p in open(pos_file).readlines()][:2]
+        x = pos[0]
+        y = pos[1]
+        custom = True
+    except (FileNotFoundError, ValueError, IndexError):
+        scr = get_area()
+        x = (scr[0] * 0.75) - 100
+        y = scr[1] * 0.75
+        custom = False
+    return (custom, x, y)
 
 
 def read_color(f):

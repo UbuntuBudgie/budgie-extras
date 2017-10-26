@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import gi
-
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gtk, Gdk, GObject, Pango
@@ -38,7 +37,7 @@ class ShowTimeWin(Gtk.Window):
 
         # window props, bindings
         self.set_keep_below(True)
-        self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+        self.set_type_hint(Gdk.WindowTypeHint.DESKTOP)
         self.set_decorated(False)
         self.connect("destroy", Gtk.main_quit)
         self.set_skip_taskbar_hint(True)
@@ -74,12 +73,8 @@ class ShowTimeWin(Gtk.Window):
         self.update.start()
 
     def set_textposition(self):
-        try:
-            pos = [int(p) for p in open(posfile).readlines()][:2]
-            self.move(pos[0], pos[1])
-        except (FileNotFoundError, ValueError, IndexError):
-            scr = clt.get_area()
-            self.move((scr[0] * 0.75) - 100, scr[1] * 0.75)
+        pos = clt.get_textposition()
+        self.move(pos[1], pos[2])
 
     def show_time(self):
         wait = 1
@@ -121,6 +116,7 @@ def show():
 
 mutetime = os.path.exists(clt.mute_time)
 mutedate = os.path.exists(clt.mute_date)
+
 
 # only run clock if it should actually show something
 if not all([mutetime, mutedate]):
