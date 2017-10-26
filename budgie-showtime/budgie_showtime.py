@@ -117,7 +117,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
         ypos_label = Gtk.Label(" y: ")
         self.apply = Gtk.Button("OK")
         for item in [
-            xpos_label, self.xpos, ypos_label, self.ypos, self.apply,
+            xpos_label, self.xpos, ypos_label, self.ypos,
             ]:
             posholder.pack_start(item, False, False, 0)
         posholder.pack_end(self.apply, False, False, 0)
