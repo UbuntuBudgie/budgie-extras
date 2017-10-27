@@ -2,9 +2,11 @@
 import os
 import subprocess
 import time
-
 import psutil
-
+######
+##import wprviews_tools as pv
+from budgie_wswitcher import wswitcher_ismuted
+######
 """
 Budgie WallpaperSwitcher
 Author: Jacob Vlijm
@@ -19,6 +21,8 @@ A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
 should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
+
+ismuted = wswitcher_ismuted
 
 
 def get_pid():
@@ -55,6 +59,8 @@ def run_wswitcher():
             if not check:
                 break
         except TypeError:
+            break
+        if os.path.exists(ismuted):
             break
 
 
