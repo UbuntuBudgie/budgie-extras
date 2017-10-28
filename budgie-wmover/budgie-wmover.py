@@ -1,11 +1,11 @@
 import gi.repository
-
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gdk
 import subprocess
 import os
 import wmovertools as wmt
 from set_keys import change_keys
+
 
 """
 Budgie WindowMover
@@ -22,15 +22,73 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
 panelrunner = os.path.join(wmt.appletpath, "wmover_panelrunner")
 backgrounder = os.path.join(wmt.appletpath, "wmover_run")
 wmover_path = wmt.settings_path
 wmover_ismuted = wmt.wmover_ismuted
 
+
 try:
     os.makedirs(wmover_path)
 except FileExistsError:
     pass
+
+
+def check_runs(pname):
+    # get the pid of a proc
+    try:
+        pid = subprocess.check_output([
+            "pgrep", "-f", pname,
+        ]).decode("utf-8")
+    except subprocess.CalledProcessError:
+        return None
+    else:
+        return pid.strip()
+
+
+message = """
+The following shortcuts are
+automatically set:
+
+- Ctrl + Alt + w
+  (call the window mover)
+- Ctrl + Alt + s
+  (call the desktop mover)
+
+Applet runs without a pannel
+icon
+"""
+
+
+class WPrviewsSettings(Gtk.Grid):
+    
+    def __init__(self, setting):
+        
+        super().__init__()
+        
+        self.setting = setting
+        ismuted = os.path.exists(wmt.wmover_ismuted)
+        # grid & layout
+        explanation = Gtk.Label(message)
+        self.attach(explanation, 0, 1, 1, 1)
+        self.toggle = Gtk.CheckButton.new_with_label(" Run WindowPreviews")
+        self.toggle.set_active(not ismuted)
+        self.toggle.connect("toggled", self.switch)
+        self.attach(self.toggle, 0, 0, 1, 1)
+        self.show_all()
+
+    def switch(self, button, *args):
+        # toggle ui & manage trigger file (noticed by panelrunner)
+        pids = check_runs(backgrounder)
+        if pids:
+            open(wmover_ismuted, "wt").write("")
+        else:
+            subprocess.Popen(panelrunner)
+            try:
+                os.remove(wmover_ismuted)
+            except FileNotFoundError:
+                pass
 
 
 class WMover(GObject.GObject, Budgie.Plugin):
@@ -60,64 +118,24 @@ class WMoverApplet(Budgie.Applet):
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
+        ismuted = os.path.exists(wmt.wmover_ismuted)
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("wmover-panel", Gtk.IconSize.MENU)
-        self.box.add(icon)
-        self.add(self.box)
-        self.popover = Budgie.Popover.new(self.box)
-        ismuted = os.path.exists(wmover_ismuted)
-        label = "Window Mover is inactive" if ismuted \
-            else "Window Mover is active"
-        self.toggle = Gtk.ToggleButton.new_with_label(label)
-        self.toggle.set_size_request(210, 20)
-        self.toggle.set_active(not ismuted)
-        self.toggle.connect("clicked", self.switch)
-        self.popover.add(self.toggle)
-        self.popover.get_child().show_all()
-        self.box.show_all()
-        self.show_all()
-        self.box.connect("button-press-event", self.on_press)
         if not ismuted:
             self.initiate()
 
-    def switch(self, button, *args):
-        pids = self.show_procs()
-        if pids:
-            self.toggle.set_label("Window Mover is inactive.")
-            open(wmover_ismuted, "wt").write("")
-        else:
-            subprocess.Popen(panelrunner)
-            self.toggle.set_label("Window Mover is active")
-            try:
-                os.remove(wmover_ismuted)
-            except FileNotFoundError:
-                pass
-
-    def show_procs(self):
-        pids = [
-            self.check_runs(pname) for pname in [backgrounder]
-        ]
-        return [p for p in pids if p]
-
-    def check_runs(self, pname):
-        try:
-            pid = subprocess.check_output([
-                "pgrep", "-f", pname,
-            ]).decode("utf-8")
-        except subprocess.CalledProcessError:
-            return None
-        else:
-            return pid.strip()
-
     def initiate(self):
         pass
-        pids = self.show_procs()
+        pids = check_runs(backgrounder)
         if not pids:
             subprocess.Popen(panelrunner)
+        
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return WPrviewsSettings(self.get_applet_settings(self.uuid))
 
-    def on_press(self, box, arg):
-        self.manager.show_popover(self.box)
-
-    def do_update_popovers(self, manager):
-        self.manager = manager
-        self.manager.register_popover(self.box, self.popover)
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
