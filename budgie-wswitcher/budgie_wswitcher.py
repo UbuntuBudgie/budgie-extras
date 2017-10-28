@@ -1,4 +1,5 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import subprocess
@@ -36,6 +37,7 @@ except FileExistsError:
 
 wswitcher_ismuted = os.path.join(wswitcher_path, "muted")
 
+
 def check_runs(pname):
     # get the pid of a proc
     try:
@@ -67,12 +69,11 @@ class BudgieWSwitcher(GObject.GObject, Budgie.Plugin):
         """
         return BudgieWSwitcherApplet(uuid)
 
-    
+
 class BudgieWSwitcherSettings(Gtk.Grid):
-    
     def __init__(self, setting):
-        
-        super().__init__()   
+
+        super().__init__()
         self.setting = setting
         ismuted = os.path.exists(wswitcher_ismuted)
         self.toggle = Gtk.CheckButton.new_with_label(" Run Wallpaper Switcher")
@@ -80,7 +81,7 @@ class BudgieWSwitcherSettings(Gtk.Grid):
         self.toggle.connect("clicked", self.switch)
         self.attach(self.toggle, 0, 0, 1, 1)
         label = Gtk.Label("\nApplet runs without a panle icon")
-        self.attach(label, 0, 1, 1, 1)          
+        self.attach(label, 0, 1, 1, 1)
         self.show_all()
 
     def switch(self, button, *args):

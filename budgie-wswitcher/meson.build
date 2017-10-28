@@ -12,6 +12,5 @@ install_data(
 
 install_data(
     'wsw-bpanel.svg',
-    'wsw-panel.svg',
     install_dir: PIXMAPS_DIR
 )

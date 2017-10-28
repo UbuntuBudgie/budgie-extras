@@ -16,6 +16,5 @@ install_data(
 
 install_data(
     'wmover-bpanel.svg',
-    'wmover-panel.svg',
     install_dir: PIXMAPS_DIR
 )

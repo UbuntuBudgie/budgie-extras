@@ -1,11 +1,10 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gdk
+from gi.repository import Budgie, GObject, Gtk
 import subprocess
 import os
 import wmovertools as wmt
-from set_keys import change_keys
-
 
 """
 Budgie WindowMover
@@ -22,12 +21,10 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-
 panelrunner = os.path.join(wmt.appletpath, "wmover_panelrunner")
 backgrounder = os.path.join(wmt.appletpath, "wmover_run")
 wmover_path = wmt.settings_path
 wmover_ismuted = wmt.wmover_ismuted
-
 
 try:
     os.makedirs(wmover_path)
@@ -62,11 +59,10 @@ icon
 
 
 class WPrviewsSettings(Gtk.Grid):
-    
     def __init__(self, setting):
-        
+
         super().__init__()
-        
+
         self.setting = setting
         ismuted = os.path.exists(wmt.wmover_ismuted)
         # grid & layout
@@ -129,7 +125,7 @@ class WMoverApplet(Budgie.Applet):
         pids = check_runs(backgrounder)
         if not pids:
             subprocess.Popen(panelrunner)
-        
+
     def do_get_settings_ui(self):
         """Return the applet settings with given uuid"""
         return WPrviewsSettings(self.get_applet_settings(self.uuid))

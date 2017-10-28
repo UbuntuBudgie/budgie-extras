@@ -103,7 +103,7 @@ if "current" in args:
     curr = pv.get_activeclass()
     wins = [w for w in wins if pv.show_wmclass(w[0]) == curr]
 
-# chek how the windows are spread over the workspaces
+# check how the windows are spread over the workspaces
 spread = sorted([int(n) for n in [w[-2] for w in wins]])
 # pick only windows of the current workspace. the ws is part of the name
 wins = [w[:-1] for w in wins if w[-2] == currws]

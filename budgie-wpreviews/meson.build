@@ -25,6 +25,5 @@ install_data(
 
 install_data(
     'wprviews-bpanel.svg',
-    'wprviews-panel.svg',
     install_dir: PIXMAPS_DIR
 )

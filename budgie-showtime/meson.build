@@ -13,7 +13,6 @@ install_data(
 )
 
 install_data(
-    'bshowtime-panel.svg',
     'bshowtime-bpanel.svg',
     install_dir: PIXMAPS_DIR
 )

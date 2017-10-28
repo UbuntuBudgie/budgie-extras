@@ -1,4 +1,5 @@
 import gi.repository
+
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gio
 import os
@@ -118,7 +119,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
         self.apply = Gtk.Button("OK")
         for item in [
             xpos_label, self.xpos, ypos_label, self.ypos,
-            ]:
+        ]:
             posholder.pack_start(item, False, False, 0)
         posholder.pack_end(self.apply, False, False, 0)
         self.attach(posholder, 1, 13, 1, 1)
@@ -137,7 +138,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
         state = state_data[0]
         if state:
             self.xpos.set_text(str(state_data[1]))
-            self.ypos.set_text(str(state_data[2]))  
+            self.ypos.set_text(str(state_data[2]))
         for entr in [self.ypos, self.xpos, self.apply]:
             entr.set_sensitive(state)
         self.setposbutton.set_active(state)
@@ -161,7 +162,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
             self.xpos.set_text("")
             self.ypos.set_text("")
             os.remove(cpos_file)
-        
+
     def h_spacer(self, addwidth):
         # horizontal spacer
         spacegrid = Gtk.Grid()
