@@ -8,7 +8,7 @@ additional enhancements for the user experience
  - Hotcorners
  - Quicknote
  - Workspace Switcher Overview
- - Workspace Switcher
+ - Wallpaper Switcher
  - Workspace Mover
  - ShowTime
  
