@@ -131,6 +131,12 @@ def runwindow(target, xres, yres):
     limit_exist()
 
 
+def get_font():
+    key = ["org.gnome.desktop.wm.preferences", "titlebar-font"]
+    fontdata = get(["gsettings", "get", key[0], key[1]])
+    return fontdata.split()[0].strip("'")
+
+
 def limit_exist():
     # make sure the bar stays on top *and* active, allow 5 seconds
     t = 1
