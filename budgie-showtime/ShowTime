@@ -28,6 +28,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 time_color = clt.hexcolor(clt.read_color(clt.timecolor))
 date_color = clt.hexcolor(clt.read_color(clt.datecolor))
 posfile = os.path.join(clt.prefspath, "position")
+font = clt.get_font()
 
 
 class ShowTimeWin(Gtk.Window):
@@ -53,12 +54,12 @@ class ShowTimeWin(Gtk.Window):
         self.timelabel = Gtk.Label("")
         self.datelabel = Gtk.Label("")
 
-        self.timelabel.modify_font(Pango.FontDescription('Ubuntu 60'))
+        self.timelabel.modify_font(Pango.FontDescription(font+" 60"))
         self.timelabel.modify_fg(Gtk.StateFlags.NORMAL,
                                  Gdk.color_parse(time_color))
         self.timelabel.set_xalign(0)
 
-        self.datelabel.modify_font(Pango.FontDescription('Ubuntu 25'))
+        self.datelabel.modify_font(Pango.FontDescription(font+" 25"))
         self.datelabel.modify_fg(Gtk.StateFlags.NORMAL,
                                  Gdk.color_parse(date_color))
         self.timegrid.attach(self.timelabel, 0, 0, 1, 1)
