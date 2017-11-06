@@ -107,7 +107,8 @@ def hexcolor(rgb):
 
 def get_font():
     key = ["org.gnome.desktop.wm.preferences", "titlebar-font"]
-    fontdata = get(["gsettings", "get", key[0], key[1]])
-    return fontdata.split()[0].strip("'")
+    fontdata = get(["gsettings", "get", key[0], key[1]]).strip("'")
+    fdscr = Pango.FontDescription(fontdata)
+    return Pango.FontDescription.get_family(fdscr)
 
     
