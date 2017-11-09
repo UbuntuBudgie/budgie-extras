@@ -111,5 +111,3 @@ def get_font():
     fontdata = get(["gsettings", "get", key[0], key[1]]).strip("'")
     fdscr = Pango.FontDescription(fontdata)
     return Pango.FontDescription.get_family(fdscr)
-
-    
