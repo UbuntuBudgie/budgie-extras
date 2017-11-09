@@ -7,10 +7,7 @@ Build-Depends: debhelper (>= 10),
 		meson,
 		dh-python,
 		pep8,
-		pkg-config,
-		gir1.2-budgie-1.0,
-		gir1.2-glib-2.0,
-		gir1.2-gtk-3.0
+		pkg-config
 Standards-Version: 4.1.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
@@ -18,8 +15,15 @@ Homepage: https://ubuntubudgie.org
 
 Package: budgie-hotcorners-applet
 Architecture: all
-Depends: python3, python3-gi, wmctrl, xdotool,
- ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	xdotool,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet providing hotcorners capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -30,7 +34,13 @@ Description: Applet providing hotcorners capabilities for the Budgie Desktop
 
 Package: budgie-quicknote-applet
 Architecture: all
-Depends: python3, python3-gi, ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet providing simple notes capability for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -41,8 +51,16 @@ Description: Applet providing simple notes capability for the Budgie Desktop
 
 Package: budgie-previews-applet
 Architecture: all
-Depends: python3, python3-gi, wmctrl, xdotool, xprintidle,
- ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	xdotool,
+	xprintidle,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet providing window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -52,7 +70,14 @@ Description: Applet providing window previews capabilities for the Budgie Deskto
 
 Package: budgie-workspace-overview-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl, ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet providing quick access to workspaces for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -64,9 +89,15 @@ Description: Applet providing quick access to workspaces for the Budgie Desktop
 
 Package: budgie-workspace-wallpaper-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl,
- ${misc:Depends}, ${python3:Depends}
-Description: Applet providing per workspace wallpaper 
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet providing per workspace wallpaper
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
@@ -79,8 +110,15 @@ Description: Applet providing per workspace wallpaper
 
 Package: budgie-window-mover-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl, xdotool,
- ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	xdotool,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet allows moving windows between workspaces for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -94,8 +132,14 @@ Description: Applet allows moving windows between workspaces for the Budgie Desk
 
 Package: budgie-showtime-applet
 Architecture: any
-Depends: python3, python3-gi, wmctrl,
- ${misc:Depends}, ${python3:Depends}
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
 Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
