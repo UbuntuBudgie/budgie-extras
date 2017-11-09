@@ -105,6 +105,7 @@ def hexcolor(rgb):
     c = [int((int(n) / 65535) * 255) for n in rgb]
     return '#%02x%02x%02x' % (c[0], c[1], c[2])
 
+
 def get_font():
     key = ["org.gnome.desktop.wm.preferences", "titlebar-font"]
     fontdata = get(["gsettings", "get", key[0], key[1]]).strip("'")
