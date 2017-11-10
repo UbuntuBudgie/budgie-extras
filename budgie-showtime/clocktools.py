@@ -2,6 +2,9 @@
 import os
 import subprocess
 import time
+import gi
+gi.require_version('Pango', '1.0')
+from gi.repository import Pango
 
 """
 Budgie ShowTime
@@ -111,3 +114,5 @@ def get_font():
     fontdata = get(["gsettings", "get", key[0], key[1]]).strip("'")
     fdscr = Pango.FontDescription(fontdata)
     return Pango.FontDescription.get_family(fdscr)
+
+    

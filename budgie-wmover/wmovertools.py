@@ -2,6 +2,9 @@
 import os
 import subprocess
 import time
+import gi
+gi.require_version("Pango", "1.0")
+from gi.repository import Pango
 
 """
 Budgie WindowMover
