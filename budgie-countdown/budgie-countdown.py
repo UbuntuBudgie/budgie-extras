@@ -398,7 +398,7 @@ class CountDownApplet(Budgie.Applet):
                 priority=GObject.PRIORITY_DEFAULT,
                 )
         active = self.runcomm.get_active()
-
+        active = False if not all([active, state]) else True
         GObject.idle_add(
             self.command_entry.set_sensitive, active,
             priority=GObject.PRIORITY_DEFAULT,
