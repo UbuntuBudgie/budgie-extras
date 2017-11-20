@@ -19,7 +19,7 @@ Depends: python3,
 	python3-gi,
 	wmctrl,
 	xdotool,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -36,7 +36,7 @@ Package: budgie-quicknote-applet
 Architecture: all
 Depends: python3,
 	python3-gi,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -56,7 +56,7 @@ Depends: python3,
 	wmctrl,
 	xdotool,
 	xprintidle,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -73,7 +73,7 @@ Architecture: all
 Depends: python3,
 	python3-gi,
 	wmctrl,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -92,7 +92,7 @@ Architecture: all
 Depends: python3,
 	python3-gi,
 	wmctrl,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -114,7 +114,7 @@ Depends: python3,
 	python3-gi,
 	wmctrl,
 	xdotool,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -135,7 +135,7 @@ Architecture: all
 Depends: python3,
 	python3-gi,
 	wmctrl,
-	gir1.2-budgie-1.0,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
@@ -148,4 +148,25 @@ Description: Applet displaying date and time on the Budgie Desktop
  The ShowTime applet is a digital desktop clock, showing time and/or
  date.  Text color of both the displayed time and date can be set
  separately from the applet's menu
+
+Package: budgie-countdown-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	ogg123,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet providing a countdown capability on the Budgie Desktop
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The Countdown applet provides the user the ability to start an
+ action when the countdown reaches 0 seconds. Actions include flashing
+ an icon in the panel, opening a notification window, sounding a
+ bell or running a custom command.
+
 
