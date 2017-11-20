@@ -369,7 +369,7 @@ class CountDownApplet(Budgie.Applet):
         for widget in [
             self.hoursbutton, self.minsbutton, self.secsbutton,
             self.sleep, self.nf_bell, self.runcomm,
-            self.nf_icon, self.nf_message, self.command_entry,
+            self.nf_icon, self.nf_message, self.command_entry, ### fout, entry er uit
             self.hrs_label, self.secs_label, self.mins_label,
             ]:
             widget.set_sensitive(state)
@@ -397,6 +397,10 @@ class CountDownApplet(Budgie.Applet):
                 self.panelgrid.set_row_spacing, 6,
                 priority=GObject.PRIORITY_DEFAULT,
                 )
+        GObject.idle_add(
+            self.command_entry.set_sensitive, state,
+            priority=GObject.PRIORITY_DEFAULT,
+            )
         # patchwork, don't be lazy and make it more elegant
         self.command_entry.set_sensitive(self.runcomm.get_active())
 
