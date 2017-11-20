@@ -83,7 +83,7 @@ class CountDownApplet(Budgie.Applet):
             os.path.join(path, "cr_spacer.png")
             )
         self.panelgrid.attach(spacer_img, 0, 0, 2, 1)
-        self.panelgrid.set_row_spacing(6) # <-- make depend on panel height
+        self.panelgrid.set_row_spacing(10) # <-- make depend on panel height
         # icons
         grey = os.path.join(path, "cr_grey.png")
         green = os.path.join(path, "cr_green.png")
@@ -364,6 +364,7 @@ class CountDownApplet(Budgie.Applet):
             self.minsbutton.get_value()*60,
             self.secsbutton.get_value(),
             ]))
+
     def set_state(self, state, *args):        
         for widget in [
             self.hoursbutton, self.minsbutton, self.secsbutton,
@@ -376,10 +377,26 @@ class CountDownApplet(Budgie.Applet):
             self.context_start.remove_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
             self.context_start.add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
             self.applybutton.set_label("Run")
+            GObject.idle_add(
+                self.panelgrid.remove, self.timer,
+                priority=GObject.PRIORITY_DEFAULT,
+                )
+            GObject.idle_add(
+                self.panelgrid.set_row_spacing, 10,
+                priority=GObject.PRIORITY_DEFAULT,
+                )
         else:
             self.applybutton.set_label("Stop")
             self.context_start.remove_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
             self.context_start.add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
+            GObject.idle_add(
+                self.panelgrid.attach, self.timer, 1, 1, 1, 1,
+                priority=GObject.PRIORITY_DEFAULT,
+                )
+            GObject.idle_add(
+                self.panelgrid.set_row_spacing, 6,
+                priority=GObject.PRIORITY_DEFAULT,
+                )
         # patchwork, don't be lazy and make it more elegant
         self.command_entry.set_sensitive(self.runcomm.get_active())
 
@@ -440,3 +457,4 @@ class CountDownApplet(Budgie.Applet):
     def do_update_popovers(self, manager):
         self.manager = manager
         self.manager.register_popover(self.box, self.popover)
+
