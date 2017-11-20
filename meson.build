@@ -38,6 +38,7 @@ subdir('budgie-quicknote')
 subdir('budgie-wmover')
 subdir('budgie-wsoverview')
 subdir('budgie-showtime')
+subdir('budgie-countdown')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',

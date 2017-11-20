@@ -16,35 +16,33 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+
 import gi
+
 gi.require_version('Budgie', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, GdkPixbuf, Gtk, Gio
+from gi.repository import Budgie, GObject, GdkPixbuf, Gtk
 from threading import Thread
 import time
 import subprocess
 import ast
 
-
 settingspath = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "countdown",
-    )
-
+)
 
 dconf_key = "/org/gnome/settings-daemon/plugins/power/"
 subs = [
     ["ac", "sleep-inactive-ac-type"],
     ["battery", "sleep-inactive-battery-type"],
-    ]
-
+]
 
 try:
     os.makedirs(settingspath)
 except FileExistsError:
     pass
 
-
-#icons
+# icons
 path = "/usr/share/pixmaps"
 
 
@@ -81,9 +79,9 @@ class CountDownApplet(Budgie.Applet):
         # space section. make it depend on panel size?
         spacer_img = Gtk.Image.new_from_file(
             os.path.join(path, "cr_spacer.png")
-            )
+        )
         self.panelgrid.attach(spacer_img, 0, 0, 2, 1)
-        self.panelgrid.set_row_spacing(10) # <-- make depend on panel height
+        self.panelgrid.set_row_spacing(10)  # <-- make depend on panel height
         # icons
         grey = os.path.join(path, "cr_grey.png")
         green = os.path.join(path, "cr_green.png")
@@ -91,9 +89,9 @@ class CountDownApplet(Budgie.Applet):
         red = os.path.join(path, "cr_red.png")
         # pixbuf
         self.iconset = [
-            GdkPixbuf.Pixbuf.new_from_file(ic) for ic in\
+            GdkPixbuf.Pixbuf.new_from_file(ic) for ic in
             [red, yellow, green, grey]
-            ]
+        ]
         # initial icon
         self.seticon = Gtk.Image.new_from_pixbuf(self.iconset[0])
         self.panelgrid.attach(self.seticon, 0, 1, 1, 1)
@@ -104,7 +102,7 @@ class CountDownApplet(Budgie.Applet):
         self.menugrid = Gtk.Grid()
         self.menugrid.set_column_spacing(15)
         self.menugrid.set_row_spacing(5)
-        #left space
+        # left space
         self.menugrid.attach(Gtk.Label(""), 1, 0, 1, 1)
         # hrs
         self.hrs_label = Gtk.Label("Hours: ", xalign=0)
@@ -127,15 +125,15 @@ class CountDownApplet(Budgie.Applet):
         self.secsbutton = Gtk.SpinButton()
         self.secsbutton.set_adjustment(adjustment)
         self.menugrid.attach(self.secsbutton, 2, 4, 1, 1)
-        
+
         for sp in [self.hoursbutton, self.minsbutton, self.secsbutton]:
             sp.set_numeric(True)
             sp.set_update_policy(True)
-            
+
         # prevent pause
         self.sleep = Gtk.CheckButton("Prevent pausing countdown")
         self.menugrid.attach(self.sleep, 1, 6, 2, 1)
-        
+
         sep = Gtk.Separator()
         self.menugrid.attach(sep, 4, 1, 1, 8)
 
@@ -145,7 +143,7 @@ class CountDownApplet(Budgie.Applet):
         # apply
         self.applybutton = Gtk.Button("Run")
         # set style start/stop
-        self.context_start = self.applybutton.get_style_context()        
+        self.context_start = self.applybutton.get_style_context()
         self.applybutton.set_size_request(80, 20)
         self.bbox.pack_end(self.applybutton, False, False, 0)
         self.applybutton.connect("clicked", self.handle_apply)
@@ -160,19 +158,19 @@ class CountDownApplet(Budgie.Applet):
         self.menugrid.attach(self.runcomm, 5, 5, 1, 1)
         self.command_entry = Gtk.Entry()
         self.command_entry.connect("key-release-event", self.update_command)
-        self.menugrid.attach(self.command_entry, 5, 6, 1, 1) 
+        self.menugrid.attach(self.command_entry, 5, 6, 1, 1)
         # button, file, related variable-key
         self.settingsdata = [
             [self.nf_bell, "mute_ringbell", "ringbell"],
             [self.nf_icon, "mute_flashicon", "flashicon"],
-            [self.nf_message, "mute_showwindow","showwindow"],
-            [self.sleep, "mute_nosleep", "keeprun"], 
+            [self.nf_message, "mute_showwindow", "showwindow"],
+            [self.sleep, "mute_nosleep", "keeprun"],
             [self.runcomm, "runcommand", "runcmd"],
-            ]
+        ]
         self.vals = []
         # fetch values for checkbuttons (except command: separate)
         for item in self.settingsdata[:-1]:
-            val = True if self.get_setting(item) == False else False
+            val = True if self.get_setting(item) is False else False
             subj = item[0]
             item[0].set_active(val)
             self.vals.append(val)
@@ -197,9 +195,9 @@ class CountDownApplet(Budgie.Applet):
             "showwindow": self.vals[2],
             "keeprun": self.vals[3],
             "runcmd": self.runcomm.get_active(),
-            }
+        }
         self.countdown, self.span = 0, 0
-        self.cancel = True       
+        self.cancel = True
         # panel
         self.box = Gtk.EventBox()
         self.box.add(self.panelgrid)
@@ -212,16 +210,16 @@ class CountDownApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        
+
         GObject.threads_init()
         # thread
-        self.update = Thread(target = self.run_countdown)
+        self.update = Thread(target=self.run_countdown)
         # daemonize the thread to make the indicator stopable
         self.update.setDaemon(True)
         self.update.start()
         self.seticon.set_from_pixbuf(self.iconset[1])
 
-    def get_setting(self, checkbox, readval = False):
+    def get_setting(self, checkbox, readval=False):
         file = os.path.join(settingspath, checkbox[1])
         exists = os.path.exists(file)
         if exists:
@@ -239,32 +237,32 @@ class CountDownApplet(Budgie.Applet):
         # manage file
         file = os.path.join(settingspath, subject[1])
         if runvar in ["ringbell", "flashicon", "showwindow", "keeprun"]:
-            if newset == False:
+            if newset is False:
                 open(file, "wt").write("")
             else:
                 try:
                     os.remove(file)
                 except FileNotFoundError:
-                    pass           
+                    pass
         elif runvar == "runcmd":
             self.command_entry.set_sensitive(newset)
-            if newset == False:
+            if newset is False:
                 newfile = [False, self.command_entry.get_text()]
                 open(file, "wt").write(str(newfile))
 
     def disable_suspend(self, filename, subkey):
-        key = dconf_key+subkey
+        key = dconf_key + subkey
         currval = subprocess.check_output([
             "dconf", "read", key,
-            ]).decode("utf-8").strip()   
+        ]).decode("utf-8").strip()
         stored = os.path.join(settingspath, filename)
         open(stored, "wt").write(currval)
         subprocess.Popen([
             "dconf", "write", key, "'nothing'",
-            ])
+        ])
 
     def restore_prevset(self, filename, subkey):
-        key = dconf_key+subkey
+        key = dconf_key + subkey
         stored = os.path.join(settingspath, filename)
         try:
             prevset = open(stored).read().strip()
@@ -273,17 +271,17 @@ class CountDownApplet(Budgie.Applet):
         else:
             subprocess.Popen([
                 "dconf", "write", key, prevset,
-                ])
-            
+            ])
+
     def two_dg(self, n):
         n = str(n)
         return "0" + n if len(n) == 1 else n
 
     def calc_timedisplay(self, seconds):
-        hrs = self.two_dg(int(seconds/3600))
-        mins = self.two_dg(int((seconds % 3600)/60))
+        hrs = self.two_dg(int(seconds / 3600))
+        mins = self.two_dg(int((seconds % 3600) / 60))
         secs = self.two_dg(seconds % 60)
-        return "  "+":".join([hrs, mins, secs])
+        return "  " + ":".join([hrs, mins, secs])
 
     def set_label(self, newlabel):
         GObject.idle_add(
@@ -299,10 +297,10 @@ class CountDownApplet(Budgie.Applet):
 
     def lookup_stage(self, countdown):
         return [countdown == 0,
-            0 < countdown <= self.red_time,
-            self.red_time < countdown <= self.yellow_time,
-            self.yellow_time < countdown, 
-            ].index(True)
+                0 < countdown <= self.red_time,
+                self.red_time < countdown <= self.yellow_time,
+                self.yellow_time < countdown,
+                ].index(True)
 
     def end_signal(self):
         flash = self.runvars["flashicon"]
@@ -311,7 +309,7 @@ class CountDownApplet(Budgie.Applet):
         GObject.idle_add(
             self.applybutton.set_sensitive, False,
             priority=GObject.PRIORITY_DEFAULT
-            )
+        )
         # set gsettings if self.runvars[keep_run]
         if self.runvars["keeprun"]:
             for s in subs:
@@ -321,16 +319,16 @@ class CountDownApplet(Budgie.Applet):
                 subprocess.Popen([
                     "zenity", "--info", '--title=CountDown message',
                     "--text=Count Down has ended"
-                    ])
+                ])
             wait = any([flash, ringbell])
             bellcmd = [
                 "ogg123", "-q",
                 "/usr/share/sounds/freedesktop/stereo/complete.oga"
-                ]
+            ]
             if self.runvars["runcmd"]:
                 cmd = self.command_entry.get_text()
                 self.run_command(cmd)
-                
+
             while t < 6:
                 if t % 2 == 0:
                     if ringbell:
@@ -345,11 +343,11 @@ class CountDownApplet(Budgie.Applet):
                 t = t + 1
         for item in [
             self.set_state, self.applybutton.set_sensitive
-            ]:
+        ]:
             GObject.idle_add(
                 item, True,
                 priority=GObject.PRIORITY_DEFAULT,
-                )
+            )
         self.cancel = False
 
     def run_command(self, command):
@@ -360,31 +358,31 @@ class CountDownApplet(Budgie.Applet):
 
     def get_settime(self):
         return int(sum([
-            self.hoursbutton.get_value()*3600,
-            self.minsbutton.get_value()*60,
+            self.hoursbutton.get_value() * 3600,
+            self.minsbutton.get_value() * 60,
             self.secsbutton.get_value(),
-            ]))
+        ]))
 
-    def set_state(self, state, *args):        
+    def set_state(self, state, *args):
         for widget in [
             self.hoursbutton, self.minsbutton, self.secsbutton,
             self.sleep, self.nf_bell, self.runcomm,
             self.nf_icon, self.nf_message, self.command_entry,
             self.hrs_label, self.secs_label, self.mins_label,
-            ]:
+        ]:
             widget.set_sensitive(state)
-        if state == True:
+        if state is True:
             self.context_start.remove_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
             self.context_start.add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
             self.applybutton.set_label("Run")
             GObject.idle_add(
                 self.panelgrid.remove, self.timer,
                 priority=GObject.PRIORITY_DEFAULT,
-                )
+            )
             GObject.idle_add(
                 self.panelgrid.set_row_spacing, 10,
                 priority=GObject.PRIORITY_DEFAULT,
-                )
+            )
         else:
             self.applybutton.set_label("Stop")
             self.context_start.remove_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
@@ -392,17 +390,17 @@ class CountDownApplet(Budgie.Applet):
             GObject.idle_add(
                 self.panelgrid.attach, self.timer, 1, 1, 1, 1,
                 priority=GObject.PRIORITY_DEFAULT,
-                )
+            )
             GObject.idle_add(
                 self.panelgrid.set_row_spacing, 6,
                 priority=GObject.PRIORITY_DEFAULT,
-                )
+            )
         active = self.runcomm.get_active()
         active = False if not all([active, state]) else True
         GObject.idle_add(
             self.command_entry.set_sensitive, active,
             priority=GObject.PRIORITY_DEFAULT,
-            )
+        )
 
     def handle_apply(self, button):
         set_t = self.get_settime()
@@ -432,12 +430,12 @@ class CountDownApplet(Budgie.Applet):
         cmd = self.command_entry.get_text()
         newcmd = [b_state, cmd]
         open(file, "wt").write(str(newcmd))
-        
+
     def run_countdown(self):
         cycle = 9
         self.currstate1 = None
         self.diff = 0
-        
+
         while True:
             time.sleep(1 - self.diff)
             # see where we are in the time stages
@@ -445,7 +443,7 @@ class CountDownApplet(Budgie.Applet):
             if self.currstate2 != self.currstate1:
                 if self.currstate2 == 0:
                     self.end_signal()
-                self.set_newicon(self.iconset[self.currstate2-1])
+                self.set_newicon(self.iconset[self.currstate2 - 1])
             if self.countdown != 0:
                 self.countdown = self.countdown - 1
                 timelabel = self.calc_timedisplay(self.countdown)
@@ -468,5 +466,3 @@ class CountDownApplet(Budgie.Applet):
     def do_update_popovers(self, manager):
         self.manager = manager
         self.manager.register_popover(self.box, self.popover)
-
-
