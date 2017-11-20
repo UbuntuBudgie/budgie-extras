@@ -52,7 +52,7 @@ class CountDown(GObject.GObject, Budgie.Plugin):
     """
 
     # Good manners, make sure we have unique name in GObject type system
-    __gtype_name__ = "WsOverview"
+    __gtype_name__ = "BudgieCountDown"
 
     def __init__(self):
         """ Initialisation is important.
