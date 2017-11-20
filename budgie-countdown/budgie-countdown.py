@@ -159,8 +159,8 @@ class CountDownApplet(Budgie.Applet):
         self.runcomm = Gtk.CheckButton("Run command:")
         self.menugrid.attach(self.runcomm, 5, 5, 1, 1)
         self.command_entry = Gtk.Entry()
-        self.menugrid.attach(self.command_entry, 5, 6, 1, 1)
-        
+        self.command_entry.connect("key-release-event", self.update_command)
+        self.menugrid.attach(self.command_entry, 5, 6, 1, 1) 
         # button, file, related variable-key
         self.settingsdata = [
             [self.nf_bell, "mute_ringbell", "ringbell"],
@@ -397,12 +397,12 @@ class CountDownApplet(Budgie.Applet):
                 self.panelgrid.set_row_spacing, 6,
                 priority=GObject.PRIORITY_DEFAULT,
                 )
+        active = self.runcomm.get_active()
+
         GObject.idle_add(
-            self.command_entry.set_sensitive, state,
+            self.command_entry.set_sensitive, active,
             priority=GObject.PRIORITY_DEFAULT,
             )
-        # patchwork, don't be lazy and make it more elegant
-        self.command_entry.set_sensitive(self.runcomm.get_active())
 
     def handle_apply(self, button):
         set_t = self.get_settime()
@@ -425,6 +425,13 @@ class CountDownApplet(Budgie.Applet):
             if self.runvars["keeprun"]:
                 for s in subs:
                     self.disable_suspend(s[0], s[1])
+
+    def update_command(self, entry, *args):
+        file = os.path.join(settingspath, "runcommand")
+        b_state = self.runcomm.get_active()
+        cmd = self.command_entry.get_text()
+        newcmd = [b_state, cmd]
+        open(file, "wt").write(str(newcmd))
         
     def run_countdown(self):
         cycle = 9
@@ -461,4 +468,5 @@ class CountDownApplet(Budgie.Applet):
     def do_update_popovers(self, manager):
         self.manager = manager
         self.manager.register_popover(self.box, self.popover)
+
 
