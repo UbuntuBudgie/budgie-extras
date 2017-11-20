@@ -11,6 +11,6 @@ The countdown label will be invisible untill the clock starts running.
 
 ![running](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-countdown/running.png)
 
-![idle](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-countdown/idle.png)
+![idle](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-countdown/applet.png)
 
 
