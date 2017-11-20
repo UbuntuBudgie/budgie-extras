@@ -101,8 +101,8 @@ class CountDownApplet(Budgie.Applet):
         self.timer = Gtk.Label("  00:00:00")
         self.panelgrid.attach(self.timer, 1, 1, 1, 1)
         # --- menugrid ---
-        self.menugrid = Gtk.Grid() #
-        self.menugrid.set_column_spacing(15) ###
+        self.menugrid = Gtk.Grid()
+        self.menugrid.set_column_spacing(15)
         self.menugrid.set_row_spacing(5)
         #left space
         self.menugrid.attach(Gtk.Label(""), 1, 0, 1, 1)
