@@ -369,7 +369,7 @@ class CountDownApplet(Budgie.Applet):
         for widget in [
             self.hoursbutton, self.minsbutton, self.secsbutton,
             self.sleep, self.nf_bell, self.runcomm,
-            self.nf_icon, self.nf_message, self.command_entry, ### fout, entry er uit
+            self.nf_icon, self.nf_message, self.command_entry,
             self.hrs_label, self.secs_label, self.mins_label,
             ]:
             widget.set_sensitive(state)
