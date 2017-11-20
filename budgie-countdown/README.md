@@ -6,6 +6,8 @@ The panel icon switches color, depending on remaining time; green, yellow (< 5 m
 
 The countdown label will be invisible untill the clock starts running.
 
+*Budgie CountDown depends on ogg123
+
 
 ![idle](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-countdown/idle.png)
 
