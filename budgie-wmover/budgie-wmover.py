@@ -53,7 +53,11 @@ automatically set:
 - Ctrl + Alt + s
   (call the desktop mover)
 
-Applet runs without a pannel
+Drag the window to the
+bottom of your screen, and the
+window mover appears
+
+Applet runs without a panel
 icon
 """
 
@@ -68,7 +72,7 @@ class WPrviewsSettings(Gtk.Grid):
         # grid & layout
         explanation = Gtk.Label(message)
         self.attach(explanation, 0, 1, 1, 1)
-        self.toggle = Gtk.CheckButton.new_with_label(" Run WindowPreviews")
+        self.toggle = Gtk.CheckButton.new_with_label(" Run Window Mover")
         self.toggle.set_active(not ismuted)
         self.toggle.connect("toggled", self.switch)
         self.attach(self.toggle, 0, 0, 1, 1)

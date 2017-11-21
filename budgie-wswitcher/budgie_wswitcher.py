@@ -80,7 +80,7 @@ class BudgieWSwitcherSettings(Gtk.Grid):
         self.toggle.set_active(not ismuted)
         self.toggle.connect("clicked", self.switch)
         self.attach(self.toggle, 0, 0, 1, 1)
-        label = Gtk.Label("\nApplet runs without a panle icon")
+        label = Gtk.Label("\nApplet runs without a panel icon")
         self.attach(label, 0, 1, 1, 1)
         self.show_all()
 
