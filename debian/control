@@ -23,6 +23,7 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
+	dconf-cli,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet providing hotcorners capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
@@ -60,6 +61,10 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
+	python3-cairo,
+	python3-gi-cairo,
+	dconf-cli,
+	imagemagick,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet providing window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
@@ -96,6 +101,7 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
+	dconf-cli,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet providing per workspace wallpaper
  This is part of a suite of python3 based applets for the Budgie
@@ -118,6 +124,7 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
+	dconf-cli,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet allows moving windows between workspaces for the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
@@ -139,6 +146,8 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	python3-psutil,
+	python3-cairo,
+	python3-gi-cairo,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
@@ -159,6 +168,8 @@ Depends: python3,
 	python3-psutil,
 	vorbis-tools,
 	zenity,
+	dconf-cli,
+	sound-theme-freedesktop,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet providing a countdown capability on the Budgie Desktop
  This is part of a suite of python3 based applets for the Budgie
