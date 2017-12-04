@@ -4,6 +4,7 @@ Language Switcher is an applet to use a different input source (language) per ap
 
 Exceptions can be removed at any time, either from the applet's menu or by setting the application's language, again, with its window in front.
 
+![settings](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-langswitcher/settings.png)
 
 ![applet](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-langswitcher/applet.png)
 
