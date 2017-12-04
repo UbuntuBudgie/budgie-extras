@@ -25,6 +25,7 @@ from threading import Thread
 import time
 import subprocess
 import ast
+import psutil
 
 
 settingspath = os.path.join(
@@ -172,6 +173,10 @@ class LangSwitchApplet(Budgie.Applet):
         else:
             return " ".join(lang)
 
+    def lockscreen_check(self):
+        lockproc = "gnome-screensaver-dialog"
+        return lockproc in (p.name() for p in psutil.process_iter())
+
     def change_ondeflang_select(self, widget):
         """
         change the default language, update settings file and exceptions list
@@ -307,7 +312,15 @@ class LangSwitchApplet(Budgie.Applet):
                 ]
             index = getreadables.index(self.default_lang)
         self.settings.set_uint("current", index)
-               
+
+
+    def lock_state(self, oldlang):
+        while True:
+            time.sleep(1)
+            if not self.lockscreen_check():
+                break
+        self.set_newlang(oldlang)
+                                   
     def watch_yourlanguage(self):
         # fill exceptions (gui) list with data
         self.update_exceptions_gui()
@@ -316,6 +329,10 @@ class LangSwitchApplet(Budgie.Applet):
         activelang1 = self.get_currlangname()
         while True:
             time.sleep(1)
+            # if language is changed during lockstate, revert afterwards
+            if self.lockscreen_check():
+                self.lock_state(self, activelang1)
+                # subloop, revert to previous lang1
             wmclass2 = self.get_activeclass()
             activelang2 = self.get_currlangname()
             # first set a few conditions to act *at all*
@@ -326,12 +343,16 @@ class LangSwitchApplet(Budgie.Applet):
                 classchange = wmclass2 != wmclass1
                 langchange = activelang2 != activelang1
                 if classchange:
-                    self.set_lang_onclasschange(wmclass2, activelang2)
+                    self.set_lang_onclasschange(wmclass2, activelang2) 
                     activelang2 = self.get_currlangname()
                 elif langchange:
                     self.set_exception(activelang2, wmclass2)
-                    self.update_exceptions_gui()
-                    open(lang_datafile, "wt").write(str(self.langdata))                      
+
+                    GObject.idle_add(
+                        self.update_exceptions_gui,
+                        priority=GObject.PRIORITY_DEFAULT,
+                    )
+                    open(lang_datafile, "wt").write(str(self.langdata))
                 wmclass1 = wmclass2
                 activelang1 = activelang2
                 
