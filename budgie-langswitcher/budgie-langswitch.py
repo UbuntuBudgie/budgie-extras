@@ -331,8 +331,7 @@ class LangSwitchApplet(Budgie.Applet):
             time.sleep(1)
             # if language is changed during lockstate, revert afterwards
             if self.lockscreen_check():
-                self.lock_state(self, activelang1)
-                # subloop, revert to previous lang1
+                self.lock_state(activelang1)
             wmclass2 = self.get_activeclass()
             activelang2 = self.get_currlangname()
             # first set a few conditions to act *at all*
@@ -347,7 +346,6 @@ class LangSwitchApplet(Budgie.Applet):
                     activelang2 = self.get_currlangname()
                 elif langchange:
                     self.set_exception(activelang2, wmclass2)
-
                     GObject.idle_add(
                         self.update_exceptions_gui,
                         priority=GObject.PRIORITY_DEFAULT,
