@@ -181,4 +181,23 @@ Description: Applet providing a countdown capability on the Budgie Desktop
  an icon in the panel, opening a notification window, sounding a
  bell or running a custom command.
 
+Package: budgie-langswitcher-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet providing the option to set a different language per application
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The langswitcher applet provides the user the ability to set a 
+ different language per application. Exceptions to the default
+ language can be set by simply choosing a different language with the 
+ application's window in front.
+
 
