@@ -44,7 +44,7 @@ except FileExistsError:
 
 
 # icons
-path = "/usr/share/pixmaps" 
+path = "/usr/share/pixmaps"
 
 
 class LangSwitch(GObject.GObject, Budgie.Plugin):
@@ -85,7 +85,7 @@ class LangSwitchApplet(Budgie.Applet):
         self.panelgrid.set_row_spacing(10)  # <-- make depend on panel height
         self.seticon = Gtk.Image.new_from_icon_name(
             "langswitch_menu", Gtk.IconSize.MENU
-            )
+        )
         self.panelgrid.attach(self.seticon, 0, 1, 1, 1)
         # menugrid
         self.menugrid = Gtk.Grid()
@@ -96,14 +96,14 @@ class LangSwitchApplet(Budgie.Applet):
         # Default language section
         self.menugrid.attach(Gtk.Label(
             "Default language:", xalign=0), 1, 1, 1, 1
-                             )
+        )
         self.langlist_combo = Gtk.ComboBoxText()
         self.langlist_combo.set_entry_text_column(0)
-        self.langlist_combo.set_size_request(185,20)
+        self.langlist_combo.set_size_request(185, 20)
         self.menugrid.attach(self.langlist_combo, 1, 2, 1, 1)
         self.menugrid.attach(
             Gtk.Label("\nExceptions: ", xalign=0), 1, 4, 1, 1
-            )
+        )
         # Exceptions section
         self.exc_combo = Gtk.ComboBoxText()
         self.exc_combo.set_entry_text_column(0)
@@ -111,7 +111,7 @@ class LangSwitchApplet(Budgie.Applet):
         delete_button = Gtk.Button()
         delete_img = self.seticon = Gtk.Image.new_from_icon_name(
             "user-trash-symbolic", Gtk.IconSize.MENU
-            )
+        )
         delete_button.set_image(delete_img)
         self.menugrid.attach(delete_button, 2, 5, 1, 1)
         # end spacer
@@ -132,7 +132,7 @@ class LangSwitchApplet(Budgie.Applet):
             # get the possible existing dict data
             self.langdata = ast.literal_eval(
                 open(lang_datafile).read().strip()
-                )
+            )
         except FileNotFoundError:
             self.langdata = {}
         try:
@@ -142,10 +142,10 @@ class LangSwitchApplet(Budgie.Applet):
             lang_index = self.settings.get_uint("current")
             self.default_lang = self.readable_lang(
                 self.settings.get_value("sources")[lang_index][1]
-                )
+            )
         self.langlist_selection_id = self.langlist_combo.connect(
             "changed", self.change_ondeflang_select,
-            )
+        )
         delete_button.connect("clicked", self.remove_exception)
         self.act_on_gsettingschange()
         self.settings.connect("changed::sources", self.act_on_gsettingschange)
@@ -167,7 +167,7 @@ class LangSwitchApplet(Budgie.Applet):
     def readable_lang(self, lang):
         lang = lang.split("+")
         try:
-            lang[1] = "("+lang[1]+")"    
+            lang[1] = "(" + lang[1] + ")"
         except IndexError:
             return lang[0]
         else:
@@ -186,7 +186,7 @@ class LangSwitchApplet(Budgie.Applet):
         self.clear_deflangkey()
         open(lang_datafile, "wt").write(str(self.langdata))
         self.update_exceptions_gui()
-       
+
     def clear_deflangkey(self):
         """
         if th newly set default language has any exceptions, they should be
@@ -199,7 +199,7 @@ class LangSwitchApplet(Budgie.Applet):
         # find index of default lang dict-item
         sub = [
             self.langdata[k]["readable"] for k in keys
-            ].index(self.default_lang)
+        ].index(self.default_lang)
         key = keys[sub]
         # clear the exceptions list of the default language
         self.langdata[key]["classes"] = []
@@ -246,7 +246,7 @@ class LangSwitchApplet(Budgie.Applet):
         # set the connection again
         self.langlist_selection_id = self.langlist_combo.connect(
             "changed", self.change_ondeflang_select,
-            )
+        )
 
     def act_on_gsettingschange(self, *args):
         """
@@ -256,19 +256,16 @@ class LangSwitchApplet(Budgie.Applet):
         # fetch current languages from gsettings
         self.raw_langlist = [
             item[1] for item in self.settings.get_value("sources")
-            ]
+        ]
         # add new languages
         curr_keys = list(self.langdata.keys())
         for l in self.raw_langlist:
             readable = self.readable_lang(l)
-            if not l in curr_keys:
-                self.langdata[l] = {
-                    "classes":[],
-                    "readable": readable,
-                    }
+            if l not in curr_keys:
+                self.langdata[l] = {"classes": [], "readable": readable}
         # remove obsolete languages + data
         for k in curr_keys:
-            if not k in self.raw_langlist:
+            if k not in self.raw_langlist:
                 del self.langdata[k]
         open(lang_datafile, "wt").write(str(self.langdata))
         self.update_langlist_gui()
@@ -296,23 +293,20 @@ class LangSwitchApplet(Budgie.Applet):
         if curr_exception:
             # if the window is an exception, *and* another language; set lang
             if lang != curr_exception:
-                self.set_newlang(newlang = curr_exception)
+                self.set_newlang(newlang=curr_exception)
         elif self.readable_lang(lang) != self.default_lang:
-            self.set_newlang(default = True)
+            self.set_newlang(default=True)
 
-    def set_newlang(self, newlang = None, default = False):
+    def set_newlang(self, newlang=None, default=False):
         """
         switch source for the currently active window
         """
         if newlang:
             index = self.raw_langlist.index(newlang)
         elif default:
-            getreadables = [
-                self.readable_lang(l) for l in self.raw_langlist
-                ]
+            getreadables = [self.readable_lang(l) for l in self.raw_langlist]
             index = getreadables.index(self.default_lang)
         self.settings.set_uint("current", index)
-
 
     def lock_state(self, oldlang):
         while True:
@@ -320,7 +314,7 @@ class LangSwitchApplet(Budgie.Applet):
             if not self.lockscreen_check():
                 break
         self.set_newlang(oldlang)
-                                   
+
     def watch_yourlanguage(self):
         # fill exceptions (gui) list with data
         self.update_exceptions_gui()
@@ -335,14 +329,14 @@ class LangSwitchApplet(Budgie.Applet):
             wmclass2 = self.get_activeclass()
             activelang2 = self.get_currlangname()
             # first set a few conditions to act *at all*
-            if all([
-                wmclass2, wmclass2 != "raven",
-                wmclass2 != "Wprviews_window", activelang2
-                ]):
+            if all(
+                [wmclass2, wmclass2 != "raven",
+                 wmclass2 != "Wprviews_window",
+                 activelang2]):
                 classchange = wmclass2 != wmclass1
                 langchange = activelang2 != activelang1
                 if classchange:
-                    self.set_lang_onclasschange(wmclass2, activelang2) 
+                    self.set_lang_onclasschange(wmclass2, activelang2)
                     activelang2 = self.get_currlangname()
                 elif langchange:
                     self.set_exception(activelang2, wmclass2)
@@ -353,7 +347,7 @@ class LangSwitchApplet(Budgie.Applet):
                     open(lang_datafile, "wt").write(str(self.langdata))
                 wmclass1 = wmclass2
                 activelang1 = activelang2
-                
+
     def update_exceptions_gui(self):
         self.exc_combo.remove_all()
         keys = list(self.langdata.keys())
@@ -375,12 +369,12 @@ class LangSwitchApplet(Budgie.Applet):
         else:
             self.remove_wmclass(toremove)
             self.update_exceptions_gui()
-            
+
     def set_exception(self, lang, wmclass):
         lang = self.readable_lang(lang)
         # remove possible existing exception
         self.remove_wmclass(wmclass)
-        # add new exception        
+        # add new exception
         keys = list(self.langdata.keys())
         sub = [self.langdata[k]["readable"] for k in keys].index(lang)
         if lang != self.default_lang:
@@ -395,9 +389,9 @@ class LangSwitchApplet(Budgie.Applet):
     def show_wmclass(self, wid):
         # handle special cases
         try:
-            cl = self.get(
-                ["xprop", "-id", wid, "WM_CLASS"]
-                ).split("=")[-1].split(",")[-1].strip().strip('"')
+            cl = self.get([
+                "xprop", "-id", wid, "WM_CLASS"
+            ]).split("=")[-1].split(",")[-1].strip().strip('"')
         except (IndexError, AttributeError):
             pass
         else:
