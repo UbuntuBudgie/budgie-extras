@@ -43,10 +43,6 @@ except FileExistsError:
     pass
 
 
-# icons
-path = "/usr/share/pixmaps"
-
-
 class KeyboardAutoSwitch(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
         Note you must always override Object, and implement Plugin.
@@ -76,17 +72,6 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         # general stuff
         self.key = "org.gnome.desktop.input-sources"
         self.settings = Gio.Settings.new(self.key)
-        # panelgrid
-        self.panelgrid = Gtk.Grid()
-        spacer_img = Gtk.Image.new_from_file(
-            os.path.join(path, "cr_spacer.png")
-        )
-        self.panelgrid.attach(spacer_img, 0, 0, 2, 1)
-        self.panelgrid.set_row_spacing(10)  # <-- make depend on panel height
-        self.seticon = Gtk.Image.new_from_icon_name(
-            "langswitch_menu", Gtk.IconSize.MENU
-        )
-        self.panelgrid.attach(self.seticon, 0, 1, 1, 1)
         # menugrid
         self.menugrid = Gtk.Grid()
         self.menugrid.set_row_spacing(5)
@@ -118,8 +103,11 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         spacer_end = Gtk.Label("")
         self.menugrid.attach(spacer_end, 3, 10, 1, 1)
         # panel
+        self.seticon = Gtk.Image.new_from_icon_name(
+            "langswitch_menu", Gtk.IconSize.MENU
+        )
         self.box = Gtk.EventBox()
-        self.box.add(self.panelgrid)
+        self.box.add(self.seticon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         self.popover.add(self.menugrid)
