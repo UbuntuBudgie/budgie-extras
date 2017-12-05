@@ -12,6 +12,7 @@ additional enhancements for the user experience
  - Workspace Mover
  - ShowTime
  - CountDown
+ - Automatic Keyboard Layout Switcher
  
  ## Installation
  
