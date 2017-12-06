@@ -4,7 +4,7 @@ A count down applet with the following options: ring a bell, flash the (panel) i
 
 The panel icon switches color, depending on remaining time; green, yellow (< 5 minutes left) or red (< 1 minute left).
 
-The countdown label will be invisible untill the clock starts running.
+The countdown label will be invisible until the clock starts running.
 
 *Budgie CountDown depends on ogg123
 
