@@ -13,6 +13,7 @@ additional enhancements for the user experience
  - ShowTime
  - CountDown
  - Automatic Keyboard Layout Switcher
+ - Screen Rotation Lock
  
  ## Installation
  
