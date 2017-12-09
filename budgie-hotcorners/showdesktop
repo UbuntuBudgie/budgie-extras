@@ -98,9 +98,11 @@ else:
         allwins = sorted(toshow + ignored)
         compare = sorted(relevant)
         if allwins == compare:
-            toshow.append(active_w)
+            # toshow.append(active_w)
             for w in toshow:
                 subprocess.Popen(["wmctrl", "-ia", w])
+            time.sleep(0.05)
+            subprocess.Popen(["wmctrl", "-ia", active_w])
             # remove possible previous window data
             for f in [orig_minimized, active_minimized]:
                 try:
