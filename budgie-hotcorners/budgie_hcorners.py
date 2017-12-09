@@ -1,11 +1,13 @@
-import gi.repository
-
-gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk
+#!/usr/bin/env python3
 import subprocess
 import os
 import ast
+import gi
+import gi.repository
+gi.require_version('Budgie', '1.0')
+from gi.repository import Budgie, GObject, Gtk
 from bhctools import get, dr, settings
+
 
 """
 Hot Corners
@@ -22,12 +24,46 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-app = os.path.dirname(os.path.abspath(__file__)) + "/bhcorners"
+
+css_data = """
+.label {
+  padding-bottom: 3px;
+  padding-top: 3px;
+  font-weight: bold;
+}
+"""
+
+
+currpath = os.path.dirname(os.path.abspath(__file__))
+app = os.path.join(currpath, "bhcorners")
+showdesktop = os.path.join(currpath, "showdesktop")
+
+
+defaults = [
+    ["Exposé all windows",
+     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window"],
+    ["Exposé current application",
+     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window" +
+     " current"],
+    ["Budgie Desktop Settings", "budgie-desktop-settings"],
+    ["Show Raven notifications", "xdotool key super+n"],
+    ["Toggle Raven", "xdotool key super+a"],
+    ["Lock screen", "gnome-screensaver-command -l"],
+    ["Show Desktop", showdesktop],
+]
+
+
+currpath = os.path.dirname(os.path.abspath(__file__))
+app = os.path.join(currpath, "bhcorners")
+showdesktop = os.path.join(currpath, "showdesktop")
+
+
 
 try:
     os.makedirs(dr)
 except FileExistsError:
     pass
+
 
 # try read settings file, if it exists
 try:
@@ -36,9 +72,14 @@ except (FileNotFoundError, SyntaxError):
     # if not, drop to defaults (buttons, entries)
     states = [False, False, False, False]
     entry_data = None
+    default_types = [True, True, True, True]
 else:
     states = [d[0] for d in state_data]
     entry_data = [d[1] for d in state_data]
+    check_types = [cmd[1] for cmd in defaults]
+    default_types = [
+        any([cmd in check_types, cmd == ""]) for cmd in entry_data
+    ]
 
 
 class BudgieHotCorners(GObject.GObject, Budgie.Plugin):
@@ -72,27 +113,78 @@ class BudgieHotCornersApplet(Budgie.Applet):
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(5)
         self.maingrid.set_column_spacing(5)
+
+        self.provider = Gtk.CssProvider.new()
+        self.provider.load_from_data(css_data.encode())
+
         self.buttons = []
         self.entries = []
+        self.checks = []
+        self.custom_entries = []
+
         corners = ["Top-left", "Top-right", "Bottom-left", "Bottom-right"]
-        # create button & entry rows
+        self.default_commands = [cmdata[1] for cmdata in defaults]
+        # create headers
+        corner_label = Gtk.Label(" Corner", xalign=0)
+        command_label = Gtk.Label(" Action", xalign=0)
+        custom_label = Gtk.Label(" Custom ", xalign=0)
+        self.maingrid.attach(corner_label, 0, 0, 1, 1)
+        self.maingrid.attach(command_label, 1, 0, 1, 1)
+        self.maingrid.attach(custom_label, 2, 0, 2, 1)
+        for label in [custom_label, command_label, corner_label]:
+            label_cont = label.get_style_context()
+            label_cont.add_class("label")
+            Gtk.StyleContext.add_provider(
+                label_cont,
+                self.provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+               )
+        # create rows
         for n in range(len(corners)):
-            self.entry = Gtk.Entry()
-            self.maingrid.attach(self.entry, 1, n, 1, 1)
-            self.entries.append(self.entry)
+            # active / inactive toggle button
             self.button = Gtk.ToggleButton.new_with_label(corners[n])
-            self.maingrid.attach(self.button, 0, n, 1, 1)
+            self.maingrid.attach(self.button, 0, n + 1, 1, 1)
             self.buttons.append(self.button)
             self.button.connect("clicked", self.switch_entry, n)
+            # new: checkbox
+            spacer = Gtk.Label(" ")
+            self.maingrid.attach(spacer, 2, n + 1, 1, 1)
+            self.custom_checkbox = Gtk.CheckButton()
+            self.maingrid.attach(self.custom_checkbox, 3, n + 1, 1, 1)
+            self.checks.append(self.custom_checkbox)
+            self.custom_checkbox.connect("toggled", self.swap_widgets)
+            # custom
+            self.custom_entry = Gtk.Entry()
+            self.custom_entry.set_size_request(218, 20)
+            self.custom_entries.append([self.custom_entry, 1, n + 1])
+            # dropdown (default)
+            self.entry = self.create_combo(n)
+            self.entries.append([self.entry, 1, n + 1])
+            # attach the corresponding object
+            subject = self.entry if default_types[n] else self.custom_entry
+            self.maingrid.attach(subject, 1, n + 1, 1, 1)
+            # populate entries
+            try:
+                cmd = entry_data[n]
+            except TypeError:
+                pass
+            else:
+                if cmd != "":
+                    try:
+                        subject.set_text(cmd)
+                        self.checks[n].set_active(True)
+                    except AttributeError:
+                        subject.set_active(self.default_commands.index(cmd))
+                        self.checks[n].set_active(False)
+        # set initial values, states, sensitive
         n_items = len(states)
-        # set values
         for n in range(n_items):
             val = states[n]
             self.buttons[n].set_active(val)
-            curr_entry = self.entries[n]
-            curr_entry.set_sensitive(val)
-            if entry_data:
-                curr_entry.set_text(entry_data[n])
+            self.entries[n][0].set_sensitive(val)
+            self.custom_entries[n][0].set_sensitive(val)
+            self.checks[n].set_sensitive(val)
+        # popover stuff
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name("bhcpanel", Gtk.IconSize.MENU)
         self.box.add(icon)
@@ -102,20 +194,52 @@ class BudgieHotCornersApplet(Budgie.Applet):
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
+        # connect widgets
         self.box.connect("button-press-event", self.on_press)
         for button in self.buttons:
             button.connect("clicked", self.update_settings)
-        for entry in self.entries:
-            entry.connect("key-release-event", self.update_settings)
+        for entry in [entry[0] for entry in self.entries]:
+            entry.connect("changed", self.update_settings)
+        for c_entry in [entry[0] for entry in self.custom_entries]:
+            c_entry.connect("key-release-event", self.update_settings)
+        for check in self.checks:
+            check.connect("toggled", self.update_settings)
         self.close_running()
         subprocess.Popen(app)
 
+    def swap_widgets(self, checkbutton):
+        custom_type = checkbutton.get_active()
+        i = self.checks.index(checkbutton)
+        exch = [entr[i] for entr in [self.entries, self.custom_entries]]
+        if custom_type:
+            oldwidget_data = exch[0]
+            newdata = exch[1]
+        else:
+            oldwidget_data = exch[1]
+            newdata = exch[0]
+        self.maingrid.remove(oldwidget_data[0])
+        self.maingrid.attach(
+            newdata[0], newdata[1], newdata[2], 1, 1,
+        )
+        self.maingrid.show_all()
+
+    def create_combo(self, n):
+        command_combo = Gtk.ComboBoxText()
+        command_combo.set_entry_text_column(0)
+        command_combo.set_size_request(200, 20)
+        for cmd in defaults:
+            command_combo.append_text(cmd[0])
+        return command_combo
+
     def switch_entry(self, button, n):
-        # toggle entry active/inactive
-        subj = self.entries[n]
-        state = subj.get_sensitive()
-        val = False if state is True else True
-        subj.set_sensitive(val)
+        # set (custom or not-) entry active / inactive
+        subjects = [
+            self.entries[n][0], self.custom_entries[n][0], self.checks[n],
+        ]
+        state = button.get_active()
+        val = True if state is True else False
+        for sj in subjects:
+            sj.set_sensitive(val)
 
     def close_running(self):
         try:
@@ -128,7 +252,20 @@ class BudgieHotCornersApplet(Budgie.Applet):
 
     def update_settings(self, widget, *args):
         b_states = [b.get_active() for b in self.buttons]
-        cmds = [c.get_text() for c in self.entries]
+        cmds = []
+        for n in range(len(self.custom_entries)):
+            custom = self.checks[n].get_active()
+            if custom:
+                cmds.append(self.custom_entries[n][0].get_text())
+            else:
+                cmd_title = self.entries[n][0].get_active_text()
+                try:
+                    cmds.append(
+                        [item[1] for item in defaults
+                         if item[0] == cmd_title][0]
+                    )
+                except IndexError:
+                    cmds.append("")
         saved_state = list(zip(b_states, cmds))
         open(settings, "wt").write(str(saved_state))
         self.close_running()
