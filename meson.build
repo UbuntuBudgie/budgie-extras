@@ -40,6 +40,7 @@ subdir('budgie-wsoverview')
 subdir('budgie-showtime')
 subdir('budgie-countdown')
 subdir('budgie-keyboard-autoswitch')
+subdir('budgie-rotation-lock')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',
