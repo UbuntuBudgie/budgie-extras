@@ -200,4 +200,27 @@ Description: Applet adding the ability to set a different keyboard layout per ap
  layout can be set by simply choosing a different layout using the
  Keyboard Layout applet.
 
+Package: budgie-rotation-lock-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet to control rotation lock.
+ .
+ The Rotation Lock applet provides the user an easy way to lock or unlock the screen
+ from rotation.
+
+
+
+
+
+
+
+
+
+
+
 
