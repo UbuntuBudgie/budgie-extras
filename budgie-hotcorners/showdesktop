@@ -36,9 +36,8 @@ def get(cmd):
 
 
 def get_currws():
-    return [
-        l.split()[0] for l in get(["wmctrl", "-d"]).splitlines() if "*" in l
-        ][0]
+    return [l.split()[0] for l in get(
+        ["wmctrl", "-d"]).splitlines() if "*" in l][0]
 
 
 def get_valid(w_id):
@@ -51,9 +50,7 @@ def get_valid(w_id):
 
 
 def get_state(w_id):
-    return "window state: Iconic" in get(
-        ["xprop", "-id", w_id, "WM_STATE"]
-        )
+    return "window state: Iconic" in get(["xprop", "-id", w_id, "WM_STATE"])
 
 
 currws = get_currws()

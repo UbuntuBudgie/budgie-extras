@@ -58,7 +58,6 @@ app = os.path.join(currpath, "bhcorners")
 showdesktop = os.path.join(currpath, "showdesktop")
 
 
-
 try:
     os.makedirs(dr)
 except FileExistsError:
@@ -138,7 +137,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
                 label_cont,
                 self.provider,
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-               )
+            )
         # create rows
         for n in range(len(corners)):
             # active / inactive toggle button
