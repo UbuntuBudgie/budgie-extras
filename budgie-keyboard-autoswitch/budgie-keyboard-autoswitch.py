@@ -163,7 +163,10 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
 
     def lockscreen_check(self):
         lockproc = "gnome-screensaver-dialog"
-        return lockproc in (p.name() for p in psutil.process_iter())
+        try:
+            return lockproc in (p.name() for p in psutil.process_iter())
+        except psutil.NoSuchProcess:
+            return False
 
     def change_ondeflang_select(self, widget):
         """
