@@ -213,7 +213,6 @@ class PreviewsWin(Gtk.Window):
         target.set_image(new_image)
 
     def show_other(self, button, nxt):
-        pass
         # call the external script to move to the other workspace
         subprocess.Popen((os.path.join(plugin_path, "moveto.sh"), str(nxt)))
 
