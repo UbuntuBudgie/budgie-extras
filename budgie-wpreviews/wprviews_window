@@ -108,6 +108,7 @@ spread = sorted([int(n) for n in [w[-2] for w in wins]])
 # pick only windows of the current workspace. the ws is part of the name
 wins = [w[:-1] for w in wins if w[-2] == currws]
 
+print (wins)
 
 class PreviewsWin(Gtk.Window):
     def __init__(self):
