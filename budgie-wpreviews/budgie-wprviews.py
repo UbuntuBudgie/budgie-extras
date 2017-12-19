@@ -1,10 +1,11 @@
 import gi.repository
 
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk
+from gi.repository import Budgie, GObject, Gtk, Gio
 import subprocess
 import os
 import wprviews_tools as pv
+import set_keys
 
 """
 Budgie WindowPreviews
@@ -32,7 +33,7 @@ automatically set:
   active application)
 
 Applet runs without
-a pannel icon
+a panel icon
 """
 
 # plugin path
@@ -89,6 +90,8 @@ class WPrviews(GObject.GObject, Budgie.Plugin):
 
 
 class WPrviewsSettings(Gtk.Grid):
+    keybind = GObject.property(type=bool, default=False)
+
     def __init__(self, setting):
 
         super().__init__()
@@ -96,12 +99,27 @@ class WPrviewsSettings(Gtk.Grid):
         self.setting = setting
         ismuted = os.path.exists(previews_ismuted)
         # grid & layout
-        explanation = Gtk.Label(message)
-        self.attach(explanation, 0, 1, 1, 1)
-        self.toggle = Gtk.CheckButton.new_with_label(" Run WindowPreviews")
+        self.toggle = Gtk.CheckButton.new_with_label("Run WindowPreviews")
         self.toggle.set_active(not ismuted)
         self.toggle.connect("toggled", self.switch)
+
         self.attach(self.toggle, 0, 0, 1, 1)
+        keybinding = \
+            Gtk.CheckButton.new_with_label("Disable keyboard shortcuts")
+        self.attach(keybinding, 0, 1, 1, 1)
+        self.settings = \
+            Gio.Settings.new("org.ubuntubudgie.plugins.budgie-wpreviews")
+        self.settings.bind("keybind", self,
+                           'keybind',
+                           Gio.SettingsBindFlags.DEFAULT)
+        keybinding.set_active(self.keybind)
+        keybinding.connect("toggled", self.keybind_toggled)
+
+        self.explanation = None
+        if not self.keybind:
+            self.explanation = Gtk.Label(message)
+            self.attach(self.explanation, 0, 2, 1, 1)
+
         self.show_all()
 
     def switch(self, button, *args):
@@ -115,6 +133,21 @@ class WPrviewsSettings(Gtk.Grid):
                 os.remove(previews_ismuted)
             except FileNotFoundError:
                 pass
+
+    def keybind_toggled(self, button, *args):
+        # keybinding ui (noticed by panelrunner)
+        self.keybind = not self.keybind
+        if self.keybind:
+            set_keys.change_keys('restore')
+        else:
+            set_keys.change_keys('set_custom')
+
+        if not self.explanation:
+            self.explanation = Gtk.Label(message)
+            self.explanation.show()
+            self.attach(self.explanation, 0, 2, 1, 1)
+
+        self.explanation.set_visible(not self.keybind)
 
 
 class WPrviewsApplet(Budgie.Applet):

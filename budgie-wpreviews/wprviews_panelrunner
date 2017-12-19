@@ -7,6 +7,7 @@ import psutil
 
 import wprviews_tools as pv
 from set_keys import change_keys
+from gi.repository import Gio
 
 """
 Budgie WindowPreviews
@@ -59,7 +60,9 @@ def run_bgrounder():
 # make sure gsettings is ready
 time.sleep(5)
 
-change_keys("set_custom")
+settings = Gio.Settings.new("org.ubuntubudgie.plugins.budgie-wpreviews")
+if not settings.get_boolean('keybind'):
+    change_keys("set_custom")
 pid = get_pid()
 run_bgrounder()
 psutil.Process(pid).terminate()
