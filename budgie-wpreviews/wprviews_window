@@ -32,12 +32,17 @@ css_data = """
   background-color: #505050;
   padding: 4px;
   border-radius: 3px;
+  -gtk-icon-effect: none;
+  border-style: solid;
 }
 .windowbutton:hover {
   border-color: white;
   background-color: #505050;
   border-width: 5px;
   padding: 3px;
+  border-radius: 3px;
+  -gtk-icon-effect: highlight;
+  border-style: solid;
 }
 .windowbutton:focus {
   border-color: white;
@@ -278,6 +283,7 @@ class PreviewsWin(Gtk.Window):
         button.set_image(win_img)
         st_cont = button.get_style_context()
         st_cont.add_class("windowbutton")
+        st_cont.remove_class("image-button")
         Gtk.StyleContext.add_provider(
             st_cont,
             self.provider,
