@@ -1,5 +1,17 @@
-budgie-extras (0.3.2-1) artful; urgency=medium
+budgie-extras (0.3.4-0ubuntu1) UNRELEASED; urgency=medium
 
-  * Added Rotation Lock applet
+    Jacob - remember to add new changelog entries via "dch -i" and
+    the version for ubuntu packages always suffix -0ubuntuX
+  * New upstream release
+  * Packaging Changes:
+    - debian/control: new binary packages budgie-rotation-lock-applet,
+      budgie-clockworks-applet
+    - debian/copyright: 2018 year updates
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 11 Dec 2017 14:33:15 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 26 Dec 2017 19:50:19 +0000
+
+budgie-extras (0.3.0-1) unstable; urgency=medium
+
+  * Initial Release (Closes: #883720)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 06 Dec 2017 20:20:57 +0000
