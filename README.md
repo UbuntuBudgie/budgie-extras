@@ -14,6 +14,7 @@ additional enhancements for the user experience
  - CountDown
  - Automatic Keyboard Layout Switcher
  - Screen Rotation Lock
+ - ClockWorks
  
  ## Installation
  
@@ -42,3 +43,7 @@ The following packages are required for the plugins to work:
  - dconf-cli
  - sound-theme-freedesktop
  - imagemagick
+ - python3-pil
+ - python3-svgwrite
+ - python3-cairosvg
+

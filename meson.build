@@ -1,5 +1,5 @@
 project('budgie-extras',
-	version: '0.3.2',
+	version: '0.3.4',
 	meson_version: '>= 0.40.0'
 )
 
@@ -41,6 +41,7 @@ subdir('budgie-showtime')
 subdir('budgie-countdown')
 subdir('budgie-keyboard-autoswitch')
 subdir('budgie-rotation-lock')
+subdir('budgie-clockworks')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',
