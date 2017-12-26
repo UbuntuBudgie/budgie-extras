@@ -38,4 +38,8 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
+install_data('schema/org.ubuntubudgie.plugins.budgie-extras.gschema.xml',
+    install_dir: '/usr/share/glib-2.0/schemas'
+)
+
 meson.add_install_script('meson_post_install')
