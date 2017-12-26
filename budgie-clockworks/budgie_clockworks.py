@@ -1,4 +1,5 @@
 import gi
+
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
 from gi.repository import Gtk, GObject, GdkPixbuf, Budgie, Gio
@@ -10,7 +11,6 @@ import subprocess
 import ast
 import gi.repository
 import cwtools as cw
-
 
 """
 ClockWorks
@@ -27,7 +27,6 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-
 # paths
 home = cw.home
 settingsdir = cw.settingsdir
@@ -36,7 +35,6 @@ mins_path = cw.mins_path
 clock_datafile = cw.clock_datafile
 app_path = os.path.dirname(os.path.abspath(__file__))
 
-
 # make sure directories exist
 for dr in [hrs_path, mins_path]:
     try:
@@ -44,25 +42,21 @@ for dr in [hrs_path, mins_path]:
     except FileExistsError:
         pass
 
-
 hours = []
 minutes = []
 tz_data = cw.tz_data
 settings = cw.settings
 
-
 # create images
 cw.create_set()
 
-
 for n in range(60):
     # hours
-    newhrpath = os.path.join(hrs_path, str(n)+".png")
+    newhrpath = os.path.join(hrs_path, str(n) + ".png")
     hours.append(GdkPixbuf.Pixbuf.new_from_file(newhrpath))
     # minutes
-    newminspath = os.path.join(mins_path, str(n)+".png")
+    newminspath = os.path.join(mins_path, str(n) + ".png")
     minutes.append(GdkPixbuf.Pixbuf.new_from_file(newminspath))
-
 
 css_data = """
 .label {
@@ -71,7 +65,6 @@ css_data = """
   font-weight: bold;
 }
 """
-
 
 colordata = """
 .colorbutton {
@@ -152,7 +145,7 @@ class ClockWorksSettings(Gtk.Grid):
             proc = Gio.Subprocess.new([
                 colorpicker, str(color_index),
                 self.initial_colors[color_index]
-                ], 0)
+            ], 0)
             proc.wait_check_async(None, self.synchronize)
 
     def synchronize(self, *args):
@@ -176,7 +169,7 @@ class ClockWorksSettings(Gtk.Grid):
         provider.load_from_data(
             colordata.replace(
                 "hexcolor", hexcol
-                ).encode())
+            ).encode())
         return provider
 
     def color_button(self, button, hexcol):
@@ -212,7 +205,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
         # maingrid
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(2)
-        self.maingrid.attach(Gtk.Label(" "*10), 0, 0, 1, 1)
+        self.maingrid.attach(Gtk.Label(" " * 10), 0, 0, 1, 1)
         self.maingrid.set_column_spacing(5)
         self.clocklist = {}
         # create initial clock if it does not exists
@@ -281,13 +274,13 @@ class BudgieClockWorksApplet(Budgie.Applet):
         elif sub == "hour":
             cw.create_hours(newcolor)
             for n in range(60):
-                newhrpath = os.path.join(hrs_path, str(n)+".png")
+                newhrpath = os.path.join(hrs_path, str(n) + ".png")
                 hours.append(GdkPixbuf.Pixbuf.new_from_file(newhrpath))
             self.refresh_clocks()
         elif sub == "minute":
             cw.create_minutes(newcolor)
             for n in range(60):
-                newminspath = os.path.join(mins_path, str(n)+".png")
+                newminspath = os.path.join(mins_path, str(n) + ".png")
                 minutes.append(GdkPixbuf.Pixbuf.new_from_file(newminspath))
             self.refresh_clocks()
 
@@ -300,7 +293,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
     def run_search(self, button):
         subprocess.Popen(
             ["xdg-open", "https://www.timeanddate.com/time/map/"]
-            )
+        )
 
     def double_digits(self, t):
         digits = len(t)
@@ -309,16 +302,16 @@ class BudgieClockWorksApplet(Budgie.Applet):
     def convert_offset_tolabel(self, offset):
         if offset != 0:
             prestring = "-" if offset < 0 else "+"
-            set_time_hrs = self.double_digits(str(int(abs(offset)/3600)))
-            set_time_mins = self.double_digits(str(int((offset % 3600)/60)))
+            set_time_hrs = self.double_digits(str(int(abs(offset) / 3600)))
+            set_time_mins = self.double_digits(str(int((offset % 3600) / 60)))
             return prestring + set_time_hrs + ":" + set_time_mins
         else:
             return "00:00"
 
     def convert_label_tooffset(self, label):
         newval = label.split(":")
-        hrs_offset = int(newval[0])*3600
-        mins_offset = int(newval[1])*60
+        hrs_offset = int(newval[0]) * 3600
+        mins_offset = int(newval[1]) * 60
         mins_offset = mins_offset if hrs_offset > 0 else -mins_offset
         return (hrs_offset + mins_offset)
 
@@ -328,7 +321,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
             store_data.append([
                 k, self.clocklist[k]["offset"],
                 self.clocklist[k]["clocklabel"],
-                ])
+            ])
         open(clock_datafile, "wt").write(str(store_data))
 
     def read_datafile(self):
@@ -370,15 +363,15 @@ class BudgieClockWorksApplet(Budgie.Applet):
         offset_down.set_image(
             Gtk.Image.new_from_icon_name(
                 "pan-down-symbolic", Gtk.IconSize.MENU
-                )
             )
+        )
         offset_down.set_relief(Gtk.ReliefStyle.NONE)
         offset_up = Gtk.Button()
         offset_up.set_image(
             Gtk.Image.new_from_icon_name(
                 "pan-up-symbolic", Gtk.IconSize.MENU
-                )
             )
+        )
         offset_up.set_relief(Gtk.ReliefStyle.NONE)
         timezone_time = Gtk.Label(xalign=0.5)
         timezone_time.set_text(self.convert_offset_tolabel(offset))
@@ -421,12 +414,12 @@ class BudgieClockWorksApplet(Budgie.Applet):
             "misc_widgets": [
                 bg, delete_button, trashbox, delete_button, offset_down,
                 offset_up, timezone_time, timezone_box, clockname_label,
-                ],
+            ],
             "offset": offset,
             "clockname_label": clockname_label,
             "clocklabel": clockname,
             "ampm": ampm_label,
-            }
+        }
 
         # save new data to file, refresh interface
         self.save_tofile()
@@ -446,8 +439,8 @@ class BudgieClockWorksApplet(Budgie.Applet):
         # am/pm?
         am = "a.m." if showtime % 86400 < 43200 else "p.m."
         # defining time to find image-indexes, images
-        hour = int((showtime % 43200)/720)
-        minute = int((showtime % 3600)/60)
+        hour = int((showtime % 43200) / 720)
+        minute = int((showtime % 3600) / 60)
         hr_index = 60 - hour if hour != 0 else 0
         min_index = 60 - minute if minute != 0 else 0
         # update images

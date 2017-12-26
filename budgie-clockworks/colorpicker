@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 import gi
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 import cwtools as cw
 import sys
 
-
 color_index = int(sys.argv[1])
 initcolor = sys.argv[2]
 subs = cw.subkeys
 wintitle = "ClockWorks set " + subs[color_index] + " color"
-
 
 """
 ClockWorks
@@ -38,7 +37,7 @@ class ColorChooser(Gtk.Window):
         self.add(maingrid)
         self.color = Gtk.ColorSelection()
         self.color.set_has_palette(False)
-        currc = [n*257 for n in cw.prepare_rgb(initcolor)]
+        currc = [n * 257 for n in cw.prepare_rgb(initcolor)]
         suggested = Gdk.Color(red=currc[0], green=currc[1], blue=currc[2])
         self.color.set_current_color(suggested)
         maingrid.attach(self.color, 0, 0, 1, 1)
@@ -55,7 +54,7 @@ class ColorChooser(Gtk.Window):
 
     def set_newcolor(self, *args):
         newcolor = str(self.color.get_current_color()).split()
-        rgb = [int(int(n)/257) for n in [
+        rgb = [int(int(n) / 257) for n in [
             s.split("=")[1].replace(",", "").replace(")", "")
             for s in newcolor
         ]]

@@ -7,7 +7,6 @@ import gi
 from gi.repository import Gio
 import subprocess
 
-
 """
 ClockWorks
 Author: Jacob Vlijm
@@ -22,7 +21,6 @@ A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
 should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
-
 
 tz_data = [
     "-12:00", "-11:00", "-10:00", "-09:30", "-09:00", "-08:00", "-07:00",
@@ -49,12 +47,10 @@ mins_path = os.path.join(settingsdir, "mins")
 misc_dir = os.path.join(settingsdir, "misc")
 tmp = "/tmp"
 
-
 clock_datafile = os.path.join(settingsdir, "clockdata")
 key = "org.ubuntubudgie.plugins.budgie-clockworks"
 subkeys = ["background", "hour", "minute"]
 settings = Gio.Settings.new(key)
-
 
 # make sure directories exist
 for dr in [hrs_path, mins_path, misc_dir]:
@@ -65,7 +61,7 @@ for dr in [hrs_path, mins_path, misc_dir]:
 
 
 def prepare_rgb(hx):
-    return [int(hx.strip("#")[i:i+2], 16) for i in (0, 2, 4)]
+    return [int(hx.strip("#")[i:i + 2], 16) for i in (0, 2, 4)]
 
 
 def hex2rgb(hx):
@@ -83,7 +79,7 @@ def get_current_colors():
     return [
         settings.get_string(val) for val in [
             "background", "hour", "minute"
-            ]
+        ]
     ]
 
 
@@ -121,7 +117,7 @@ def create_minutes(hx):
     minute.add(minute.line(
         start=(50, 45), end=(50, 10), stroke_width="3",
         stroke=hex2rgb(hx),
-        )
+    )
     )
     minute.save()
     temp_minspng = tmp_min.replace(".svg", ".png")
@@ -129,11 +125,11 @@ def create_minutes(hx):
     # minutes
     min_source = Image.open(temp_minspng)
     for n in range(60):
-        rotate = n*6
-        newminspath = os.path.join(mins_path, str(n)+".png")
+        rotate = n * 6
+        newminspath = os.path.join(mins_path, str(n) + ".png")
         new_min = min_source.rotate(
             rotate, resample=Image.BICUBIC, expand=False
-            )
+        )
         new_min.save(newminspath)
 
 
@@ -145,7 +141,7 @@ def create_hours(hx):
     hr.add(hr.line(
         start=(50, 45), end=(50, 20), stroke_width="3",
         stroke=hex2rgb(hx),
-        )
+    )
     )
     hr.save()
     temp_hrspng = tmp_hr.replace(".svg", ".png")
@@ -153,8 +149,8 @@ def create_hours(hx):
     # hours
     hr_source = Image.open(temp_hrspng)
     for n in range(60):
-        rotate = n*6
-        newhrpath = os.path.join(hrs_path, str(n)+".png")
+        rotate = n * 6
+        newhrpath = os.path.join(hrs_path, str(n) + ".png")
         new_hr = hr_source.rotate(
             rotate, resample=Image.BICUBIC, expand=False
         )
