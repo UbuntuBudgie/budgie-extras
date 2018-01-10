@@ -69,12 +69,28 @@ class BudgieDropBy(GObject.GObject, Budgie.Plugin):
         return BudgieDropByApplet(uuid)
 
 
+class ClockWorksSettings(Gtk.Grid):
+
+    def __init__(self, setting):
+
+        super().__init__()
+        explanation = Gtk.Label(
+            "\n\nThe applet icon will appear when a USB device is connected.",
+            xalign=0,
+        )
+        explanation.set_line_wrap(True)
+        self.attach(explanation, 0, 0, 1, 1)
+        self.show_all()
+
+
 class BudgieDropByApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
     manager = None
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
+        self.connect("destroy", Gtk.main_quit)
         self.box = Gtk.EventBox()
         self.icon = Gtk.Image.new_from_pixbuf(applet_pix[0])
         self.provider = Gtk.CssProvider.new()
@@ -103,6 +119,16 @@ class BudgieDropByApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
+
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return ClockWorksSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
 
     def refresh(self, subject=None, newvol=None):
         # renew the interface
