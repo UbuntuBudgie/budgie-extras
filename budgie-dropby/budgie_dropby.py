@@ -2,7 +2,7 @@
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gio, Peas
+from gi.repository import Budgie, GObject, Gtk, Gio
 import os
 import dropby_tools as db
 import subprocess
@@ -178,10 +178,6 @@ class BudgieDropByApplet(Budgie.Applet):
             vol, Gio.MountMountFlags.NONE, Gio.MountOperation(), None
         )
         self.act_onmount = True
-
-    def get_loaded(self):
-        self.peas = Peas.Engine.get_default()
-        return 'libplacesindicator.so' in self.peas.get_loaded_plugins()
 
     def unmount_volume(self, button, vol):
         Gio.Mount.unmount(vol, Gio.MountUnmountFlags.NONE, None)
