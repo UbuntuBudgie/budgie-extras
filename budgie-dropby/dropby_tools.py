@@ -88,18 +88,13 @@ def get_volumes(allvols):
     relevant = []
     # gather data
     usb_devs = get_usb()
-    # print("usbdevs", usb_devs)
     use_data = get_mounted()
     mounted_devspaths = [d[0] for d in use_data]
     # filter out relevants
     for v in allvols:
-        # print("volume", v)
         # filter out usb devices
         uuid = v.get_uuid()
-        # print(uuid)
         if uuid in usb_devs:
-            # print("yep")
-            # print(uuid, v.get_name())
             devdata = {
                 "volume": v,
                 "name": v.get_name(),
