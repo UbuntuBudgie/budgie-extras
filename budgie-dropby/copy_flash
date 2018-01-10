@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+import sys
+import shutil
+import subprocess
+import os
+
+
+"""
+DropBy
+Author: Jacob Vlijm
+Copyright © 2017-2018 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+
+source = sys.argv[1]
+name = sys.argv[2]
+
+
+def send_notification(message):
+    subprocess.Popen([
+        "notify-send", "-i", "media-flash-symbolic", "Copy result", message
+    ])
+
+
+try:
+    target = subprocess.check_output([
+        "zenity", "--file-selection", "--directory",
+        '--title=Choose a target directory',
+    ]).decode("utf-8").strip()
+except subprocess.CalledProcessError:
+    pass
+else:
+    target = os.path.join(target, name)
+    try:
+        shutil.copytree(source, target, symlinks=True)
+    except FileExistsError:
+        message = "Another copy already exists\nPlease remove it first"
+    except PermissionError:
+        message = "A permission error occurred"
+    except Exception:
+        message = "An unexpected error ocurred"
+    else:
+        message = "Successfully copied " + source + " to " + target
+    send_notification(message)
