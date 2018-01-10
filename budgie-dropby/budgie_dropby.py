@@ -106,12 +106,13 @@ class BudgieDropByApplet(Budgie.Applet):
         for d in get_relevant:
             # get icon
             icon = Gtk.Image.new_from_gicon(d["icon"], Gtk.IconSize.MENU)
-            self.maingrid.attach(icon, 1, pos, 1, 1)
             # get name
             vol_name = d["name"]
             # mark possible new volume
             addition = " *" if d["volume"] == newvol else ""
             namebutton = Gtk.Button(" " + vol_name + addition, xalign=0)
+            namebutton.set_image(icon)
+            namebutton.set_always_show_image(True)
             namebutton.set_relief(Gtk.ReliefStyle.NONE)
             self.maingrid.attach(namebutton, 2, pos, 1, 1)
             # show free space
@@ -155,7 +156,7 @@ class BudgieDropByApplet(Budgie.Applet):
                 namebutton.set_tooltip_text(tooltip)
             pos = pos + 1
         # create headers
-        volume_label = Gtk.Label("    Volume", xalign=0)
+        volume_label = Gtk.Label("  Volume", xalign=0)
         freespace_label = Gtk.Label("    Free", xalign=0)
         self.maingrid.attach(volume_label, 2, 1, 1, 1)
         self.maingrid.attach(freespace_label, 3, 1, 1, 1)
