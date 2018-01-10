@@ -235,3 +235,22 @@ Description: Applet to display clock across multiple time zones
  The Clockwoks applet provides the user to display the current time
  across multiple time zones.
 
+Package: budgie-dropby-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0 | gir1.2-budgie-desktop-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	python3-psutil,
+	python3-pyudev,
+	zenity,
+	${misc:Depends}, ${python3:Depends}
+Description: The DropBy applet pops up in the panel on the occasion 
+ of connecting a usb device. The applet subsequently offers the 
+ option(s) to mount, unmount/eject, and, in case of a flash drive, 
+ to make a local copy of the drive's content. The info shows the free 
+ space on the volume.
+ .
+ The applet is context- sensitive, meaning: it only shows its icon in 
+ the panel if, and as long as, any usb drive is connected.
