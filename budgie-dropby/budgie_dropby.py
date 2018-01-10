@@ -157,7 +157,7 @@ class BudgieDropByApplet(Budgie.Applet):
             pos = pos + 1
         # create headers
         volume_label = Gtk.Label("  Volume", xalign=0)
-        freespace_label = Gtk.Label("    Free", xalign=0)
+        freespace_label = Gtk.Label("    Free   ", xalign=0)
         self.maingrid.attach(volume_label, 2, 1, 1, 1)
         self.maingrid.attach(freespace_label, 3, 1, 1, 1)
         for label in [volume_label, freespace_label]:
