@@ -2,7 +2,7 @@
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gio
+from gi.repository import Budgie, GObject, Gtk, Gio, GdkPixbuf
 import os
 import dropby_tools as db
 import subprocess
@@ -35,6 +35,17 @@ css_data = """
 
 app_path = os.path.dirname(os.path.abspath(__file__))
 copyscript = os.path.join(app_path, "copy_flash")
+applet_pix = []
+applet_pix.append(
+    GdkPixbuf.Pixbuf.new_from_file_at_size(
+        "/usr/share/pixmaps/budgie-dropby-panel.svg", 16, 16
+    )
+)
+applet_pix.append(
+    GdkPixbuf.Pixbuf.new_from_file_at_size(
+        "/usr/share/pixmaps/budgie-dropby-idle.png", 1, 1
+    )
+)
 
 
 class BudgieDropBy(GObject.GObject, Budgie.Plugin):
@@ -65,13 +76,10 @@ class BudgieDropByApplet(Budgie.Applet):
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name(
-            "budgie-dropby-panel",
-            Gtk.IconSize.MENU,
-        )
+        self.icon = Gtk.Image.new_from_pixbuf(applet_pix[0])
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(css_data.encode())
-        self.box.add(icon)
+        self.box.add(self.icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         # grid to contain all the stuff
@@ -102,6 +110,11 @@ class BudgieDropByApplet(Budgie.Applet):
             c.destroy()
         allvols = self.watchdrives.get_volumes()
         get_relevant = db.get_volumes(allvols)
+        # decide if we should show an icon
+        if get_relevant:
+            self.icon.set_from_pixbuf(applet_pix[0])
+        else:
+            self.icon.set_from_pixbuf(applet_pix[1])
         pos = 2
         for d in get_relevant:
             # get icon
