@@ -130,17 +130,7 @@ class BudgieDropByApplet(Budgie.Applet):
         """
         return True
 
-    def refresh(self, subject=None, newvol=None):
-        # renew the interface
-        for c in self.maingrid.get_children():
-            c.destroy()
-        allvols = self.watchdrives.get_volumes()
-        get_relevant = db.get_volumes(allvols)
-        # decide if we should show an icon
-        if get_relevant:
-            self.icon.set_from_pixbuf(applet_pix[0])
-        else:
-            self.icon.set_from_pixbuf(applet_pix[1])
+    def fill_grid(self, get_relevant, newvol):
         pos = 2
         for d in get_relevant:
             # get icon
@@ -208,6 +198,20 @@ class BudgieDropByApplet(Budgie.Applet):
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
             )
         self.set_spacers()
+
+    def refresh(self, subject=None, newvol=None):
+        # empty grid
+        for c in self.maingrid.get_children():
+            c.destroy()
+        # lookup usb drives
+        allvols = self.watchdrives.get_volumes()
+        get_relevant = db.get_volumes(allvols)
+        # decide if we should show or not
+        if get_relevant:
+            self.icon.set_from_pixbuf(applet_pix[0])
+            self.fill_grid(get_relevant, newvol)
+        else:
+            self.icon.set_from_pixbuf(applet_pix[1])
 
     def open_folder(self, *args):
         path = list(args)[-1]
