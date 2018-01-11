@@ -230,7 +230,6 @@ class BudgieDropByApplet(Budgie.Applet):
         Gio.Mount.eject(vol, Gio.MountUnmountFlags.NONE, None)
 
     def copy_flashdrive(self, button, source, name):
-        copyscript = os.path.join(app_path, "copy_flash")
         subprocess.Popen([copyscript, source, name])
 
     def set_spacers(self):
