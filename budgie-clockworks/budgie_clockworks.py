@@ -427,7 +427,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
         self.refresh_clocks(curr_time)
 
     def waitfornext(self):
-        # fetch current epoch and time untill next minute (break time - 1 sec)
+        # fetch current epoch and time until next minute (break time - 1 sec)
         startt = time.time()
         wait = 61 - (int(startt) % 60)
         return startt, wait

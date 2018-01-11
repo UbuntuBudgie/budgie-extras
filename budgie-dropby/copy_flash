@@ -47,7 +47,7 @@ else:
     except PermissionError:
         message = "A permission error occurred"
     except Exception:
-        message = "An unexpected error ocurred"
+        message = "An unexpected error occurred"
     else:
         message = "Successfully copied " + source + " to " + target
     send_notification(message)
