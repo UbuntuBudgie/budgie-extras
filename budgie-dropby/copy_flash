@@ -3,6 +3,7 @@ import sys
 import shutil
 import subprocess
 import os
+import time
 
 
 """
@@ -25,12 +26,63 @@ source = sys.argv[1]
 name = sys.argv[2]
 
 
-def send_notification(message):
+def notify_error(n):
+    err = [
+        "A permission error occurred",
+        "Copying was cancelled",
+        "An unexpected error ocurred",
+        "Successfully copied " + source + " to " + target
+    ]
+    message = err[n]
     subprocess.Popen([
         "notify-send", "-i", "media-flash-symbolic", "Copy result", message
     ])
 
 
+def check_permissions(target):
+    testf = os.path.join(target, ".check")
+    try:
+        open(testf, "wt")
+    except PermissionError:
+        notify_error(0)
+    except Exception:
+        notify_error(2)
+    else:
+        os.remove(testf)
+        return True
+
+
+def cont(source, targetdir):
+    subprocess.Popen(["xdg-open", target])
+    time.sleep(0.5)
+    try:
+        question = subprocess.check_output([
+            "zenity", "--question",
+            "--title", "Directory exists",
+            "--text", "A previous copy exists. Please remove it first.",
+            "--ok-label=Proceed", "--cancel-label=Cancel",
+        ]).decode("utf-8")
+    except subprocess.CalledProcessError:
+        notify_error(1)
+    else:
+        try:
+            shutil.copytree(source, targetdir, symlinks=True)
+        except Exception:
+            notify_error(2)
+        else:
+            notify_error(3)
+
+
+def copy(source, targetdir):
+    try:
+        shutil.copytree(source, targetdir, symlinks=True)
+    except FileExistsError:
+        cont(source, targetdir)
+    except Exception:
+        notify_error(2)
+
+
+# get targeted path
 try:
     target = subprocess.check_output([
         "zenity", "--file-selection", "--directory",
@@ -38,16 +90,9 @@ try:
     ]).decode("utf-8").strip()
 except subprocess.CalledProcessError:
     pass
+# succeeded getting path, check permission
 else:
-    target = os.path.join(target, name)
-    try:
-        shutil.copytree(source, target, symlinks=True)
-    except FileExistsError:
-        message = "Another copy already exists\nPlease remove it first"
-    except PermissionError:
-        message = "A permission error occurred"
-    except Exception:
-        message = "An unexpected error occurred"
-    else:
-        message = "Successfully copied " + source + " to " + target
-    send_notification(message)
+    permission = check_permissions(target)
+    if permission:
+        targetdir = os.path.join(target, name)
+        copy(source, targetdir)
