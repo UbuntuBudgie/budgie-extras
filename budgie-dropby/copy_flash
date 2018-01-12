@@ -26,7 +26,7 @@ source = sys.argv[1]
 name = sys.argv[2]
 
 
-def notify_error(n):
+def notify_result(n):
     err = [
         "A permission error occurred",
         "Copying was cancelled",
@@ -44,9 +44,9 @@ def check_permissions(target):
     try:
         open(testf, "wt")
     except PermissionError:
-        notify_error(0)
+        notify_result(0)
     except Exception:
-        notify_error(2)
+        notify_result(2)
     else:
         os.remove(testf)
         return True
@@ -63,14 +63,14 @@ def cont(source, targetdir):
             "--ok-label=Proceed", "--cancel-label=Cancel",
         ]).decode("utf-8")
     except subprocess.CalledProcessError:
-        notify_error(1)
+        notify_result(1)
     else:
         try:
             shutil.copytree(source, targetdir, symlinks=True)
         except Exception:
-            notify_error(2)
+            notify_result(2)
         else:
-            notify_error(3)
+            notify_result(3)
 
 
 def copy(source, targetdir):
@@ -79,7 +79,9 @@ def copy(source, targetdir):
     except FileExistsError:
         cont(source, targetdir)
     except Exception:
-        notify_error(2)
+        notify_result(2)
+    else:
+        notify_result(3)
 
 
 # get targeted path
