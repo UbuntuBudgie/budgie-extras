@@ -1,6 +1,6 @@
 # budgie-extras
 
-additional enhancements for the user experience
+Additional enhancements for the user experience
 
 ## Plugins: 
 
@@ -15,6 +15,7 @@ additional enhancements for the user experience
  - Automatic Keyboard Layout Switcher
  - Screen Rotation Lock
  - ClockWorks
+ - DropBy
  
  ## Installation
  
@@ -46,4 +47,5 @@ The following packages are required for the plugins to work:
  - python3-pil
  - python3-svgwrite
  - python3-cairosvg
+ - python3-pyudev
 
