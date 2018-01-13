@@ -13,5 +13,6 @@ install_data(
 install_data(
     'budgie-dropby-settings.svg',
     'budgie-dropby-panel.svg',
+    'budgie-dropby-idle.png',
     install_dir: PIXMAPS_DIR
 )
