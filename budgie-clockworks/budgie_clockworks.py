@@ -198,7 +198,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
         self.connect("destroy", Gtk.main_quit)
         self.settings = cw.settings
         icon = Gtk.Image.new_from_icon_name(
-            "budgie-clockworks-panel-symbolic", Gtk.IconSize.MENU
+            "budgie-clockworks-symbolic", Gtk.IconSize.MENU
         )
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(css_data.encode())
