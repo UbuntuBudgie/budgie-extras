@@ -9,7 +9,6 @@ install_data(
 )
 
 install_data(
-    'langswitch_bpanel.svg',
-    'langswitch_menu.svg',
+    'budgie-keyboard-autoswitch-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )

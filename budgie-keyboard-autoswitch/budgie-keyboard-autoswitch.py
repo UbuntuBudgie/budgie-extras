@@ -104,7 +104,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         self.menugrid.attach(spacer_end, 3, 10, 1, 1)
         # panel
         self.seticon = Gtk.Image.new_from_icon_name(
-            "langswitch_menu", Gtk.IconSize.MENU
+            "budgie-keyboard-autoswitch-symbolic", Gtk.IconSize.MENU
         )
         self.box = Gtk.EventBox()
         self.box.add(self.seticon)
