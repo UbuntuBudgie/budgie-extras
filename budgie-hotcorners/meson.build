@@ -12,7 +12,6 @@ install_data(
 )
 
 install_data(
-    'bhcorners-bpanel.svg',
-    'bhcpanel.svg',
+    'budgie-hotcorners-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )

@@ -112,15 +112,12 @@ class BudgieHotCornersApplet(Budgie.Applet):
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(5)
         self.maingrid.set_column_spacing(5)
-
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(css_data.encode())
-
         self.buttons = []
         self.entries = []
         self.checks = []
         self.custom_entries = []
-
         corners = ["Top-left", "Top-right", "Bottom-left", "Bottom-right"]
         self.default_commands = [cmdata[1] for cmdata in defaults]
         # create headers
@@ -185,7 +182,9 @@ class BudgieHotCornersApplet(Budgie.Applet):
             self.checks[n].set_sensitive(val)
         # popover stuff
         self.box = Gtk.EventBox()
-        icon = Gtk.Image.new_from_icon_name("bhcpanel", Gtk.IconSize.MENU)
+        icon = Gtk.Image.new_from_icon_name(
+            "budgie-hotcorners-symbolic", Gtk.IconSize.MENU
+        )
         self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
