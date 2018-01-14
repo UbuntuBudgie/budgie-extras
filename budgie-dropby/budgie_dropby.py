@@ -35,17 +35,6 @@ css_data = """
 
 app_path = os.path.dirname(os.path.abspath(__file__))
 copyscript = os.path.join(app_path, "copy_flash")
-applet_pix = []
-applet_pix.append(
-    GdkPixbuf.Pixbuf.new_from_file_at_size(
-        "/usr/share/pixmaps/budgie-dropby-panel.svg", 16, 16
-    )
-)
-applet_pix.append(
-    GdkPixbuf.Pixbuf.new_from_file_at_size(
-        "/usr/share/pixmaps/budgie-dropby-idle.png", 1, 1
-    )
-)
 
 
 class BudgieDropBy(GObject.GObject, Budgie.Plugin):
@@ -92,7 +81,12 @@ class BudgieDropByApplet(Budgie.Applet):
         self.uuid = uuid
         self.connect("destroy", Gtk.main_quit)
         self.box = Gtk.EventBox()
-        self.icon = Gtk.Image.new_from_pixbuf(applet_pix[0])
+        self.icon = Gtk.Image.new_from_icon_name(
+            "budgie-dropby-symbolic", Gtk.IconSize.MENU
+        )
+        self.idle_icon = Gtk.Image.new_from_icon_name(
+            "budgie-dropby-idle", Gtk.IconSize.MENU
+        )
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(css_data.encode())
         self.box.add(self.icon)
@@ -207,11 +201,14 @@ class BudgieDropByApplet(Budgie.Applet):
         allvols = self.watchdrives.get_volumes()
         get_relevant = db.get_volumes(allvols)
         # decide if we should show or not
+        for c in self.box.get_children():
+            c.destroy()
         if get_relevant:
-            self.icon.set_from_pixbuf(applet_pix[0])
+            self.box.add(self.icon)
             self.fill_grid(get_relevant, newvol)
         else:
-            self.icon.set_from_pixbuf(applet_pix[1])
+            self.box.add(self.idle_icon)
+        self.box.show_all()
 
     def open_folder(self, *args):
         path = list(args)[-1]
