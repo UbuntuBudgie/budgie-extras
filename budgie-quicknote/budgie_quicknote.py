@@ -19,8 +19,10 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-settingsdir = os.path.join(os.environ["HOME"],
-                           ".config/budgie-extras/quicknote")
+settingsdir = os.path.join(
+    os.environ["HOME"], ".config/budgie-extras/quicknote"
+)
+
 undo_steps = 11
 
 try:
@@ -71,13 +73,10 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name(
-            "budgie-quicknote-panel",
-            Gtk.IconSize.MENU,
+            "budgie-quicknote-symbolic", Gtk.IconSize.MENU,
         )
-
         provider = Gtk.CssProvider.new()
         provider.load_from_data(css_data.encode())
-
         self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
