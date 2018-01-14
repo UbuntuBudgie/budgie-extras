@@ -14,6 +14,6 @@ install_data(
     'cr_yellow.png',
     'cr_spacer.png',
     'cr_grey.png',
-    'cr_bpanelicon.svg',
+    'budgie-countdown-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
