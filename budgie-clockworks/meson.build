@@ -11,8 +11,8 @@ install_data(
 )
 
 install_data(
-    'budgie-clockworks-panel.svg',
-    'budgie-clockworks-settings.svg',
+    'budgie-clockworks-panel-symbolic.svg',
+    'budgie-clockworks-settings-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
 
