@@ -30,7 +30,7 @@ def notify_result(n):
     err = [
         "A permission error occurred",
         "Copying was cancelled",
-        "An unexpected error ocurred",
+        "An unexpected error occurred",
         "Successfully copied " + source + " to " + target
     ]
     message = err[n]
