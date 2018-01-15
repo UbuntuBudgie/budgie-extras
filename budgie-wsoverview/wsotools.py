@@ -70,7 +70,7 @@ def get_menuset(wdata):
 
 def new_icon(currws):
     # arrange icon path from current workspace
-    return "ws"+str(int(currws) + 1) + "-symbolic"
+    return "ws" + str(int(currws) + 1) + "-symbolic"
 
 
 def update_winmenu(currdata):
