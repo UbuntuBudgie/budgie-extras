@@ -1,11 +1,16 @@
-budgie-extras (0.3.4-0ubuntu1) UNRELEASED; urgency=medium
+budgie-extras (0.3.6-0ubuntu1) UNRELEASED; urgency=medium
 
-    Jacob - remember to add new changelog entries via "dch -i" and
-    the version for ubuntu packages always suffix -0ubuntuX
+  * New upstream release
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 15 Jan 2018 15:35:17 +0000
+
+budgie-extras (0.3.5-0ubuntu1) artful; urgency=medium
+
   * New upstream release
   * Packaging Changes:
     - debian/control: new binary packages budgie-rotation-lock-applet,
-      budgie-clockworks-applet
+      budgie-clockworks-applet,
+      budgie-dropby-applet
     - debian/copyright: 2018 year updates
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 26 Dec 2017 19:50:19 +0000
