@@ -53,12 +53,12 @@ class BudgieRotationLockApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.box = Gtk.EventBox()
         self.lockicon = Gtk.Image.new_from_icon_name(
-            "budgie-rotation-lock-button",
+            "budgie-rotation-lock-button-symbolic",
             Gtk.IconSize.MENU,
         )
 
         self.unlockicon = Gtk.Image.new_from_icon_name(
-            "budgie-rotation-button",
+            "budgie-rotation-button-symbolic",
             Gtk.IconSize.MENU,
         )
 

@@ -9,7 +9,7 @@ install_data(
 )
 
 install_data(
-    'budgie-rotation-button.svg',
-    'budgie-rotation-lock-button.svg',
+    'budgie-rotation-button-symbolic.svg',
+    'budgie-rotation-lock-button-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
