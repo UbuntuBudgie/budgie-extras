@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VERSION="0.3.4"
+VERSION="0.4.0"
 NAME="budgie-extras"
 git-archive-all.sh --format tar --prefix ${NAME}-${VERSION}/ --verbose -t HEAD ${NAME}-${VERSION}.tar
 xz -9 "${NAME}-${VERSION}.tar"
