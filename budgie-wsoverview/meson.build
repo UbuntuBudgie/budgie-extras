@@ -34,7 +34,7 @@ install_data(
     'numbers/22-wso.svg',
     'numbers/23-wso.svg',
     'numbers/24-wso.svg',
-    'wsoverview-bpanel.svg',
+    'budgie-wsoverview-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
 
