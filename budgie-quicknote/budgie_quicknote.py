@@ -32,17 +32,6 @@ except FileExistsError:
 
 textfile = os.path.join(settingsdir, "quicknote-data")
 
-css_data = """
-.moverwindow {
-    background-color: #404552;
-}
-.moverbutton {
-  color: white;
-  border-radius: 20px;
-  border: 0px;
-}
-"""
-
 
 class BudgieQuickNote(GObject.GObject, Budgie.Plugin):
     """ This is simply an entry point into your Budgie Applet implementation.
@@ -75,20 +64,11 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         icon = Gtk.Image.new_from_icon_name(
             "budgie-quicknote-symbolic", Gtk.IconSize.MENU,
         )
-        provider = Gtk.CssProvider.new()
-        provider.load_from_data(css_data.encode())
         self.box.add(icon)
         self.add(self.box)
         self.popover = Budgie.Popover.new(self.box)
         # grid to contain all the stuff
         self.maingrid = Gtk.Grid()
-        rcontext = self.maingrid.get_style_context()
-        rcontext.add_class("moverwindow")
-        Gtk.StyleContext.add_provider(
-            rcontext,
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-        )
         # the scrolled window
         self.win = Gtk.ScrolledWindow.new()
         self.win.set_size_request(280, 180)
@@ -120,28 +100,12 @@ class BudgieQuickNoteApplet(Budgie.Applet):
             Gtk.IconSize.BUTTON,
         )
         undo.connect("clicked", self.undo)
-        bcontext = undo.get_style_context()
-        bcontext.add_class("moverbutton")
-        Gtk.StyleContext.add_provider(
-            bcontext,
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-        )
         undo.set_relief(Gtk.ReliefStyle.NONE)
         redo = Gtk.Button.new_from_icon_name(
             'edit-redo-symbolic',
             Gtk.IconSize.BUTTON,
         )
-        redocontext = redo.get_style_context()
-        redocontext.add_class("moverbutton")
-        Gtk.StyleContext.add_provider(
-            redocontext,
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-        )
         redo.connect("clicked", self.redo)
-        rcontext = redo.get_style_context()
-        rcontext.add_class("moverbutton")
         redo.set_relief(Gtk.ReliefStyle.NONE)
         bbox.pack_start(undo, False, False, 0)
         bbox.pack_start(redo, False, False, 0)
