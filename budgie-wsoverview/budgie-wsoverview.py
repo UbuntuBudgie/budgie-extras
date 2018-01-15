@@ -44,7 +44,7 @@ class WsOverviewWin(GObject.Object):
         self.appbutton = Gtk.Button.new()
         self.appbutton.set_relief(Gtk.ReliefStyle.NONE)
 
-        icon = Gtk.Image.new_from_icon_name("1-wso", Gtk.IconSize.MENU)
+        icon = Gtk.Image.new_from_icon_name("ws1-symbolic", Gtk.IconSize.MENU)
         self.appbutton.set_image(icon)
 
         self.menu = Gtk.Menu()
