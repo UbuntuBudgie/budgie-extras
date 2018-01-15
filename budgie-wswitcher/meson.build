@@ -11,6 +11,6 @@ install_data(
 )
 
 install_data(
-    'wsw-bpanel.svg',
+    'budgie-wsw-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
