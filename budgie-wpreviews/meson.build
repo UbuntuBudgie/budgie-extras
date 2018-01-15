@@ -24,7 +24,7 @@ install_data(
 )
 
 install_data(
-    'wprviews-bpanel.svg',
+    'budgie-wprviews-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
 
