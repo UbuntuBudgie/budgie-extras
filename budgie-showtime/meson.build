@@ -13,6 +13,6 @@ install_data(
 )
 
 install_data(
-    'bshowtime-bpanel.svg',
+    'budgie-showtime-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
