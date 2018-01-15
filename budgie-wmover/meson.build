@@ -15,6 +15,6 @@ install_data(
 )
 
 install_data(
-    'wmover-symbolic.svg',
+    'budgie-wmover-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
