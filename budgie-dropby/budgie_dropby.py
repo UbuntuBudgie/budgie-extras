@@ -6,6 +6,7 @@ from gi.repository import Budgie, GObject, Gtk, Gio, GdkPixbuf
 import os
 import dropby_tools as db
 import subprocess
+import psutil
 
 
 """
@@ -239,8 +240,17 @@ class BudgieDropByApplet(Budgie.Applet):
             self.maingrid.attach(spacer, c[n][0], c[n][1], 1, 1)
         self.maingrid.show_all()
 
+    def lockscreen_check(self):
+        lockproc = "gnome-screensaver-dialog"
+        try:
+            return lockproc in (p.name() for p in psutil.process_iter())
+        except psutil.NoSuchProcess:
+            return False
+
     def on_event(self, box, *args):
-        self.manager.show_popover(self.box)
+        if not self.lockscreen_check():
+            print("Yo")
+            self.manager.show_popover(self.box)
 
     def on_press(self, box, arg):
         self.refresh()
