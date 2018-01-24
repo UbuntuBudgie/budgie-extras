@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import gi
+gi.require_version('Gdk', '3.0')
+from gi.repository import Gdk
 import os
 import subprocess
 
@@ -23,8 +26,6 @@ dr = os.path.join(os.environ["HOME"], ".config", "budgie-extras", "hotcorners")
 settings = os.path.join(dr, "hotc_settings")
 
 
-# main script
-
 def get(cmd):
     try:
         return subprocess.check_output(cmd).decode("utf-8").strip()
@@ -40,13 +41,7 @@ def getres():
 
 
 def mousepos():
-    # get mouseposition
-    try:
-        pos = get(["xdotool", "getmouselocation"]).split()
-    except AttributeError:
-        return 0, 0
-    else:
-        return int(pos[0].split(":")[1]), int(pos[1].split(":")[1])
+    return Gdk.get_default_root_window().get_pointer()[1:3]
 
 
 def get_hot(marge, res):
