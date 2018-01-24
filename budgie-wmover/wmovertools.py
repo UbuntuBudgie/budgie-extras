@@ -4,7 +4,9 @@ import subprocess
 import time
 import gi
 gi.require_version("Pango", "1.0")
-from gi.repository import Pango
+gi.require_version('Gdk', '3.0')
+from gi.repository import Pango, Gdk
+
 
 """
 Budgie WindowMover
@@ -100,13 +102,7 @@ def area(x_area, y_area, xres, yres, x, y):
 
 
 def mousepos():
-    # get mouseposition
-    try:
-        pos = get(["xdotool", "getmouselocation"]).split()
-    except AttributeError:
-        return 0, 0
-    else:
-        return int(pos[0].split(":")[1]), int(pos[1].split(":")[1])
+    return Gdk.get_default_root_window().get_pointer()[1:3]
 
 
 def find_bar():
