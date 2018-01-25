@@ -27,7 +27,8 @@ settings_path = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "wmover"
 )
 
-fpath = "/tmp/wmover_busy"
+user = os.environ["USER"]
+fpath = "/tmp/" + user + "_wmover_busy"
 appletpath = os.path.dirname(os.path.abspath(__file__))
 wmover_ismuted = os.path.join(settings_path, "muted")
 
