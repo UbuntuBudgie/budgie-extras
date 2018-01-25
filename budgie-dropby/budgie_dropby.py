@@ -249,7 +249,6 @@ class BudgieDropByApplet(Budgie.Applet):
 
     def on_event(self, box, *args):
         if not self.lockscreen_check():
-            print("Yo")
             self.manager.show_popover(self.box)
 
     def on_press(self, box, arg):
