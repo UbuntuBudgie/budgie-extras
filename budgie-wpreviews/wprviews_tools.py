@@ -20,14 +20,15 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 dcpath = "/com/solus-project/budgie-panel/applets/"
 plugin_path = os.path.dirname(os.path.abspath(__file__))
 
-previews_dir = "/tmp"
+user = os.environ["USER"]
+previews_dir = os.path.join("/tmp")
 settings_dir = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "previews"
 )
 
 previews = os.path.join(
     previews_dir,
-    "window-previews",
+    user + "_window-previews",
 )
 
 previews_ismuted = os.path.join(settings_dir, "muted")
