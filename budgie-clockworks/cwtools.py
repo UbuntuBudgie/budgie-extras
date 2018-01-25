@@ -39,21 +39,22 @@ def get(command):
         pass
 
 
-# dirs
+# dirs etc.
 home = os.environ["HOME"]
 settingsdir = os.path.join(home, ".config/budgie-extras/clockworks")
 hrs_path = os.path.join(settingsdir, "hrs")
 mins_path = os.path.join(settingsdir, "mins")
 misc_dir = os.path.join(settingsdir, "misc")
-tmp = "/tmp"
-
+user = os.environ["USER"]
+tmp = "/tmp/" + user
 clock_datafile = os.path.join(settingsdir, "clockdata")
 key = "org.ubuntubudgie.plugins.budgie-clockworks"
 subkeys = ["background", "hour", "minute"]
 settings = Gio.Settings.new(key)
 
+
 # make sure directories exist
-for dr in [hrs_path, mins_path, misc_dir]:
+for dr in [hrs_path, mins_path, misc_dir, tmp]:
     try:
         os.makedirs(dr)
     except FileExistsError:
