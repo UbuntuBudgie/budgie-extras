@@ -1,5 +1,4 @@
 import gi.repository
-
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import subprocess
@@ -25,6 +24,7 @@ panelrunner = os.path.join(wmt.appletpath, "wmover_panelrunner")
 backgrounder = os.path.join(wmt.appletpath, "wmover_run")
 wmover_path = wmt.settings_path
 wmover_ismuted = wmt.wmover_ismuted
+user = wmt.user
 
 try:
     os.makedirs(wmover_path)
@@ -36,7 +36,7 @@ def check_runs(pname):
     # get the pid of a proc
     try:
         pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+            "pgrep", "-f", "-u", user, pname,
         ]).decode("utf-8")
     except subprocess.CalledProcessError:
         return None

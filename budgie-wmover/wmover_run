@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import sys
 import time
-
+import subprocess
 import wmovertools as wmt
+
 
 """
 Budgie WindowMover
@@ -20,6 +21,9 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+user = wmt.user
+
+
 def run_wmover():
     t_res = 20
     res = None
@@ -28,6 +32,9 @@ def run_wmover():
     while True:
         # check/update screen resolution once per 10 seconds
         if t_res == 20:
+            # ...and see if the user is still around
+            if user not in subprocess.check_output("who").decode("utf-8"):
+                break
             res2 = wmt.getres()
             if all([res2, res2 != res]):
                 xres = res2[0]

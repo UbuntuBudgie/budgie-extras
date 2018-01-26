@@ -23,16 +23,18 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
 dcpath = "/com/solus-project/budgie-panel/applets/"
 appletpath = wmt.appletpath
 wmover_ismuted = wmt.wmover_ismuted
+user = wmt.user
 
 
 def get_pid():
     app = os.path.join(appletpath, "wmover_run")
     try:
         return int(subprocess.check_output([
-            "pgrep", "-f", app,
+            "pgrep", "-f", "-u", user, app,
         ]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
         return subprocess.Popen(app).pid
@@ -60,7 +62,8 @@ def run_wmover():
             check = subprocess.check_output([
                 "dconf", "dump", dcpath + key + "/",
             ]).decode("utf-8")
-            if not check:
+            login = user in subprocess.check_output("who").decode("utf-8")
+            if not all([check, login]):
                 break
         except TypeError:
             break
