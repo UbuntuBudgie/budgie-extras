@@ -36,6 +36,8 @@ Applet runs without
 a panel icon
 """
 
+# user
+user = pv.user
 # plugin path
 plugin_path = pv.plugin_path
 # panelrunner (wrapper to take care of toggle applet and manage shortcuts)
@@ -60,7 +62,7 @@ def check_runs(pname):
     # get the pid of a proc
     try:
         pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+            "pgrep", "-f", "-u", pname,
         ]).decode("utf-8")
     except subprocess.CalledProcessError:
         return None

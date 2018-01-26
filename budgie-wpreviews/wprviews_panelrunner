@@ -2,12 +2,11 @@
 import os
 import subprocess
 import time
-
 import psutil
-
 import wprviews_tools as pv
 from set_keys import change_keys
 from gi.repository import Gio
+
 
 """
 Budgie WindowPreviews
@@ -24,16 +23,19 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
 plugin_path = pv.plugin_path
 dcpath = pv.dcpath
 ismuted = pv.previews_ismuted
+# the backgrounder runs per user
+user = pv.user
 
 
 def get_pid():
     app = os.path.join(plugin_path, "wprviews_backgrounder")
     try:
         return int(subprocess.check_output([
-            "pgrep", "-f", app,
+            "pgrep", "-f", "-u", user, app,
         ]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
         return subprocess.Popen(app).pid
@@ -49,7 +51,8 @@ def run_bgrounder():
             check = subprocess.check_output([
                 "dconf", "dump", dcpath + key + "/",
             ]).decode("utf-8")
-            if not check:
+            login = user in subprocess.check_output("who").decode("utf-8")
+            if not all([check, login]):
                 break
         except TypeError:
             break

@@ -2,7 +2,6 @@
 import os
 import subprocess
 import time
-
 import wprviews_tools as pv
 
 """
@@ -22,17 +21,21 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 fpath = pv.previews
 
+
 for f in os.listdir(fpath):
     try:
         os.remove(os.path.join(fpath, f))
     except FileNotFoundError:
         pass
 
+
 # default resize is v_size, unless w exceeds threshold
 max_w = 260
 v_size = 160
 # strings, to be used in the resize- commands
 comm = str(max_w) + "x" + str(v_size)
+# curr user
+user = pv.user
 
 
 def update_active(active, ws, id_list):
@@ -157,6 +160,9 @@ while True:
         """
 
         if r_timer == 15:
+            # once per 15 seconds, also check if user is still around
+            if user not in subprocess.check_output("who").decode("utf-8"):
+                break
             try:
                 r_update = win_ids2[r_index]
                 create_preview(r_update)
