@@ -27,6 +27,8 @@ prefspath = os.path.join(
 )
 
 app_path = os.path.dirname(os.path.abspath(__file__))
+user = os.environ["USER"]
+
 
 try:
     os.makedirs(prefspath)
@@ -51,7 +53,7 @@ def get(command):
 
 
 def get_pid(proc):
-    return get(["pgrep", "-f", proc]).splitlines()
+    return get(["pgrep", "-f", "-u", user, proc]).splitlines()
 
 
 def restart_clock():

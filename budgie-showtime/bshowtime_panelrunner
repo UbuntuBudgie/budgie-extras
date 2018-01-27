@@ -2,10 +2,8 @@
 import os
 import subprocess
 import time
-
 import psutil
-
-from clocktools import app_path
+from clocktools import app_path, user
 
 """
 Budgie ShowTime
@@ -42,7 +40,7 @@ def getkey():
 def get_pid():
     try:
         return int(subprocess.check_output([
-            "pgrep", "-f", app,
+            "pgrep", "-f", "-u", user, app,
         ]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
         return subprocess.Popen(app).pid
