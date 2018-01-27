@@ -21,10 +21,8 @@ from operator import itemgetter
 
 # wm_classes to be ignored
 ignore = [
-    '"budgie-panel", "Budgie-panel"',
-    '"desktop_window", "Nautilus"',
-    '"plank", "Plank"',
-    None,
+    '"budgie-panel", "Budgie-panel"', '"desktop_window", "Nautilus"',
+    '"plank", "Plank"', '"Showtime", "showtime"', None,
 ]
 
 

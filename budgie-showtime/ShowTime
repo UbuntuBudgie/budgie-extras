@@ -38,6 +38,7 @@ class ShowTimeWin(Gtk.Window):
 
         # window props, bindings
         self.set_keep_below(True)
+        self.set_wmclass("Showtime", "showtime")
         self.set_type_hint(Gdk.WindowTypeHint.DESKTOP)
         self.set_decorated(False)
         self.connect("destroy", Gtk.main_quit)
