@@ -1,5 +1,4 @@
 import gi.repository
-
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import subprocess
@@ -20,6 +19,7 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+user = os.environ["USER"]
 plugin_path = os.path.dirname(os.path.abspath(__file__))
 panelrunner = os.path.join(plugin_path, "wswitcher_panelrunner")
 backgrounder = os.path.join(plugin_path, "wswitcher_run")
@@ -42,7 +42,7 @@ def check_runs(pname):
     # get the pid of a proc
     try:
         pid = subprocess.check_output([
-            "pgrep", "-f", pname,
+            "pgrep", "-f", "-u", user, pname,
         ]).decode("utf-8")
     except subprocess.CalledProcessError:
         return None

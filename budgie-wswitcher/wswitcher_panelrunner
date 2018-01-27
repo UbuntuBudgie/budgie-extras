@@ -3,7 +3,7 @@ import os
 import subprocess
 import time
 import psutil
-from budgie_wswitcher import wswitcher_ismuted
+from budgie_wswitcher import wswitcher_ismuted, user
 
 """
 Budgie WallpaperSwitcher
@@ -27,7 +27,7 @@ def get_pid():
     app = os.path.dirname(os.path.abspath(__file__)) + "/wswitcher_run"
     try:
         return int(subprocess.check_output([
-            "pgrep", "-f", app]).decode("utf-8").strip())
+            "pgrep", "-f", "-u", user, app]).decode("utf-8").strip())
     except subprocess.CalledProcessError:
         return subprocess.Popen(app).pid
 
@@ -54,7 +54,8 @@ def run_wswitcher():
             check = subprocess.check_output([
                 "dconf", "dump", dcpath + key + "/"
             ]).decode("utf-8")
-            if not check:
+            login = user in subprocess.check_output("who").decode("utf-8")
+            if not all([check, login]):
                 break
         except TypeError:
             break
