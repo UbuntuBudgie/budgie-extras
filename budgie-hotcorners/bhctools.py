@@ -24,6 +24,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 dr = os.path.join(os.environ["HOME"], ".config", "budgie-extras", "hotcorners")
 # settings file
 settings = os.path.join(dr, "hotc_settings")
+# user, to make sure all procs run per user
+user = os.environ["USER"]
 
 
 def get(cmd):

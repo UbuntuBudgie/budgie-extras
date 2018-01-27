@@ -25,6 +25,7 @@ def watch():
     n = 0
     res = None
     corner1 = None
+    user = bhc.user
 
     while True:
         time.sleep(t)
@@ -34,6 +35,8 @@ def watch():
             if all([res2, res != res2]):
                 res = res2
         elif n == 3:
+            if user not in subprocess.check_output("who").decode("utf-8"):
+                break
             try:
                 check = subprocess.check_output([
                     "dconf", "dump", dcpath + key + "/"

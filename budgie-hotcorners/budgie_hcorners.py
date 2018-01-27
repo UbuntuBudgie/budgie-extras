@@ -6,7 +6,7 @@ import gi
 import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
-from bhctools import get, dr, settings
+from bhctools import get, dr, settings, user
 
 
 """
@@ -241,7 +241,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
 
     def close_running(self):
         try:
-            pid = get(["pgrep", "-f", app]).splitlines()
+            pid = get(["pgrep", "-f", "-u", user, app]).splitlines()
         except AttributeError:
             pass
         else:
