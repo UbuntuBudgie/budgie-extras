@@ -8,8 +8,12 @@ budgie-extras (0.4.1-1) unstable; urgency=medium
       budgie-clockworks-applet,
       budgie-dropby-applet
     - debian/copyright: 2018 year updates
+    - debian/rules remove ninja make rules since debhelper can deal
+      with meson builds
+    - remove not needed debian/files
+    - signing key; move and rename to debian/upstream
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 15 Jan 2018 15:35:17 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 29 Jan 2018 19:50:17 +0000
 
 budgie-extras (0.3.0-1) unstable; urgency=medium
 
