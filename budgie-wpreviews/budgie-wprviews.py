@@ -28,7 +28,7 @@ automatically set:
 
 - Alt + Tab
   (show all windows)
-- Super + Tab
+- Alt + Above_Tab (grave)
   (show windows of the
   active application)
 
@@ -106,14 +106,14 @@ class WPrviewsSettings(Gtk.Grid):
         self.toggle.connect("toggled", self.switch)
 
         self.attach(self.toggle, 0, 0, 1, 1)
-        keybinding = \
-            Gtk.CheckButton.new_with_label("Disable keyboard shortcuts")
+        keybinding = Gtk.CheckButton.new_with_label(
+            "Disable keyboard shortcuts"
+        )
         self.attach(keybinding, 0, 1, 1, 1)
-        self.settings = \
-            Gio.Settings.new("org.ubuntubudgie.plugins.budgie-wpreviews")
-        self.settings.bind("keybind", self,
-                           'keybind',
-                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings = pv.shortc_settings
+        self.settings.bind(
+            "keybind", self, 'keybind', Gio.SettingsBindFlags.DEFAULT
+        )
         keybinding.set_active(self.keybind)
         keybinding.connect("toggled", self.keybind_toggled)
 

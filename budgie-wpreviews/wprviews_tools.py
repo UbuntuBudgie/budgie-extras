@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import os
 import subprocess
+import gi
+gi.require_version('Gdk', '3.0')
+from gi.repository import Gdk, Gio
+
 
 """
 Budgie WindowPreviews
@@ -19,9 +23,11 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 dcpath = "/com/solus-project/budgie-panel/applets/"
 plugin_path = os.path.dirname(os.path.abspath(__file__))
+shortc_settings = Gio.Settings.new("org.ubuntubudgie.plugins.budgie-wpreviews")
+
 
 user = os.environ["USER"]
-previews_dir = os.path.join("/tmp")
+previews_dir = "/tmp"
 settings_dir = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "previews"
 )
@@ -32,6 +38,7 @@ previews = os.path.join(
 )
 
 previews_ismuted = os.path.join(settings_dir, "muted")
+temp_history = os.path.join(previews_dir, user + "_focus_history")
 
 for dr in [previews_dir, previews, settings_dir]:
     try:
@@ -43,6 +50,7 @@ ignore = [
     "= _NET_WM_WINDOW_TYPE_DOCK",
     "= _NET_WM_WINDOW_TYPE_DESKTOP",
 ]
+
 
 # default resize is v_size, unless w exceeds threshold
 max_w = 260
@@ -65,13 +73,10 @@ def getkey():
 
 
 def get_area():
-    # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
-    windata = get("xrandr")
-    if windata:
-        windata = windata.split()
-        return int(windata[windata.index("primary") + 1].split("x")[0])
-    else:
-        return 1800
+    # width of the primary screen.
+    dsp = Gdk.Display().get_default()
+    prim = dsp.get_primary_monitor()
+    return prim.get_geometry().width
 
 
 def get(cmd):

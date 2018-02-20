@@ -89,7 +89,7 @@ while True:
         wins2 = [
             w.split() for w in windata.splitlines()
             if not any([name in w for name in [
-                "w_moversplash", "PrVflash"
+                "w_moversplash", "PrVflash_prvwin"
             ]])
         ]
         for w in wins2:

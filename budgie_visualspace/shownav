@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+import os
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, Gio, Gdk, GObject
+import cairo
+import sys
+import shownav_tools as st
+import subprocess
+import time
+from threading import Thread
+
+
+"""
+VisualSpace
+Author: Jacob Vlijm
+Copyright © 2017-2018 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+
+# targeted workspace
+trg = int(sys.argv[1])
+# initial number of workspaces
+n_ws = int(sys.argv[2])
+# minimum n- spaces
+minspaces = st.visual.get_int("min-nworkspaces")
+# remote control files
+shownav_right = st.shownav_right
+shownav_left = st.shownav_left
+
+
+for f in [shownav_right, shownav_left]:
+    try:
+        os.remove(f)
+    except FileNotFoundError:
+        pass
+
+
+css_data = """
+.windowbutton {
+  border-width: 0px;
+  border-color: #505050;
+  background-color: #505050;
+  padding: 4px;
+  border-radius: 8px;
+}
+.windowbutton_active {
+  border-width: 0px;
+  padding: 4px;
+  border-radius: 8px;
+}
+"""
+
+
+class VisualSpace(Gtk.Window):
+
+    def __init__(self):
+        Gtk.Window.__init__(self, title="ws_visualizer")
+        # window properties
+        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
+        self.stick()
+        self.set_skip_taskbar_hint(True)
+        self.set_keep_above(True)
+        self.set_decorated(False)
+        self.connect("destroy", Gtk.main_quit)
+        self.connect("key-release-event", self.act_on_keyrelease)
+        self.connect("focus-out-event", self.always_above)
+        self.maingrid = Gtk.Grid()
+        self.maingrid.set_column_spacing(4)
+        self.add(self.maingrid)
+        # book-keeping
+        self.buttondata = []
+        self.age = 0
+        # transparency
+        screen = self.get_screen()
+        visual = screen.get_rgba_visual()
+        if all([visual, screen.is_composited()]):
+            self.set_visual(visual)
+        self.set_app_paintable(True)
+        self.connect("draw", self.area_draw)
+        # styling
+        self.provider = Gtk.CssProvider.new()
+        self.provider.load_from_data(css_data.encode())
+        self.set_initial()
+        self.show_all()
+        self.timer = Thread(target=self.wait)
+        self.timer.setDaemon(True)
+        self.timer.start()
+
+    def always_above(self, *args):
+        try:
+            subprocess.Popen(["wmctrl", "-a", "ws_visualizer"])
+        except subprocess.CalledProcessError:
+            pass
+
+    def wait(self):
+        if not self.key_checker():
+            time.sleep(0.4)
+            Gtk.main_quit()
+        else:
+            while True:
+                time.sleep(0.05)
+                self.age = self .age + 1
+                for d in [
+                    [shownav_right, "Right"], [shownav_left, "Left"],
+                ]:
+                    f = d[0]
+                    if os.path.exists(f):
+                        GObject.idle_add(
+                            self.navigate, d[1],
+                            priority=GObject.PRIORITY_DEFAULT
+                        )
+                        os.remove(f)
+
+    def act_on_keyrelease(self, arg, released):
+        key = Gdk.keyval_name(released.keyval)
+        if key in ["Control_L", "Alt_L"]:
+            if self.age < 8:
+                time.sleep(0.4 - (self.age * 0.05))
+            Gtk.main_quit()
+
+    def navigate(self, key):
+        curr_state = self.cleanup() if key == "Left" else st.get_wsdata()
+        curr_ws = curr_state[0]
+        n_ws = curr_state[1]
+        add = 0
+        for b in self.buttondata[n_ws:]:
+            b[0].destroy()
+        self.buttondata = self.buttondata[:n_ws]
+        if key == "Right":
+            nxt = curr_ws + 1
+            if curr_ws == n_ws:
+                st.settings.set_int(st.key, n_ws + 1)
+                newbutton = self.create_button(iscurrent=True)
+                self.maingrid.attach(newbutton, n_ws, 0, 1, 1)
+        elif key == "Left":
+            nxt = max([curr_ws - 1, 1])
+        self.restyle_buttons(nxt + add)
+        target = str(nxt - 1 + add)
+        time.sleep(0.1)
+        subprocess.Popen(["wmctrl", "-s", target])
+        self.resize(10, 10)
+
+    def cleanup(self):
+        wdata = max([
+            int(l.split()[1]) for l in st.get(["wmctrl", "-l"]).splitlines()
+        ])
+        curr_ws = st.get_wsdata()[0]
+        newset = max([wdata + 2, curr_ws, minspaces + 1]) - 1
+        st.settings.set_int(st.key, newset)
+        return [curr_ws, newset]
+
+    def create_button(self, iscurrent=None):
+        # create button + set styling
+        button = Gtk.Button()
+        button.set_size_request(100, 60)
+        buttoncontext = button.get_style_context()
+        buttonrecord = [button, buttoncontext]
+        self.set_style(buttonrecord, iscurrent)
+        # add to database
+        self.buttondata.append([button, buttoncontext])
+        return button
+
+    def restyle_buttons(self, new_current):
+        # remove styling, set new styling
+        n = 0
+        for b in self.buttondata:
+            n = n + 1
+            for cl in [
+                Gtk.STYLE_CLASS_SUGGESTED_ACTION,
+                "windowbutton", "windowbutton_active",
+            ]:
+                b[1].remove_class(cl)
+            iscurrent = True if n == new_current else False
+            self.set_style(b, iscurrent)
+        self.maingrid.show_all()
+
+    def set_style(self, buttonrecord, iscurrent):
+        # per-button set style, depending on being current
+        buttoncontext = buttonrecord[1]
+        if iscurrent:
+            for cl in [
+                "windowbutton_active", Gtk.STYLE_CLASS_SUGGESTED_ACTION,
+            ]:
+                buttoncontext.add_class(cl)
+        elif not iscurrent:
+            buttoncontext.add_class("windowbutton")
+        Gtk.StyleContext.add_provider(
+            buttoncontext, self.provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
+
+    def set_initial(self):
+        # create initial navigator
+        for n in range(n_ws):
+            iscurrent = n + 1 == trg
+            button = self.create_button(iscurrent)
+            self.maingrid.attach(button, n, 0, 1, 1)
+        self.maingrid.show_all()
+
+    def key_checker(self):
+        # check if keys are in a pressed state
+        exclude = ["Button", "Virtual", "pointer"]
+        keyboards = [
+            k for k in subprocess.check_output([
+                "xinput", "--list"
+            ]).decode("utf-8").strip().splitlines()
+            if not any([s in k for s in exclude])
+        ]
+        dev_ids = [[
+            s.split("=")[1] for s in k.split() if "id=" in s
+        ][0] for k in keyboards]
+        pressed = False
+        for d in dev_ids:
+            if "down" in subprocess.check_output([
+                "xinput", "--query-state", d,
+            ]).decode("utf-8"):
+                pressed = True
+                break
+        return pressed
+
+    def area_draw(self, widget, cr):
+        # set transparent
+        cr.set_source_rgba(0.0, 0.0, 0.0, 0.0)
+        cr.set_operator(cairo.OPERATOR_SOURCE)
+        cr.paint()
+        cr.set_operator(cairo.OPERATOR_OVER)
+
+
+VisualSpace()
+GObject.threads_init()
+Gtk.main()
+
+
+# setting .2 sec time out
+subprocess.Popen(os.path.join(st.navpath, "navtrigger.sh"))

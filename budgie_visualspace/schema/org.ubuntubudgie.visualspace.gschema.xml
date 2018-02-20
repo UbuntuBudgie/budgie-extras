@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/visualspace/"
+            id="org.ubuntubudgie.visualspace">
+        <key type="b" name="show-visual">
+            <summary>Set visualization</summary>
+            <description>Whether to use visualization when switching workspaces</description>
+            <default>true</default>
+        </key>
+        <key type="i" name="min-nworkspaces">
+            <summary>Set minimum number of workspaces</summary>
+            <description>The minimum number of workspaces that should be available</description>
+	    <range min="1" max="12"/>
+            <default>4</default>
+        </key>
+    </schema>
+</schemalist>

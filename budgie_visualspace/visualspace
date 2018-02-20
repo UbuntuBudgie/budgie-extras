@@ -1,0 +1,11 @@
+#!/bin/bash
+
+arg=$1
+dr=`dirname $0`
+f=$dr'/space_switcher'
+user=$USER
+
+if ! pgrep -f -u $user $f && ! [ -e '/tmp/'$user'_shownav_busy' ]
+then
+$f $arg
+fi

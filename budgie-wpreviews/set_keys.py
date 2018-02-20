@@ -29,7 +29,7 @@ def_key = ["org.gnome.desktop.wm.keybindings", "switch-applications"]
 # the shortcut names to look up in dconf
 shortcut_names = ["prv_all", "prv_single"]
 # command (main-) line to run previews
-aw = os.path.dirname(os.path.abspath(__file__)) + "/wprviews_window"
+aw = os.path.dirname(os.path.abspath(__file__)) + "/wprv"
 
 
 def get(cmd):
@@ -114,6 +114,8 @@ def change_keys(arg):
         # clean up possible duplicates (from unclean stop)
         clear_default()
         define_keyboard_shortcut("prv_all", aw, '<Alt>Tab')
-        define_keyboard_shortcut("prv_single", aw + " current", '<Super>Tab')
+        define_keyboard_shortcut(
+            "prv_single", aw + " current", '<Super>Above_Tab'
+        )
     elif arg == "restore":
         reset_default()

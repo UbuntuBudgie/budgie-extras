@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+import subprocess
+import os
+import gi
+from gi.repository import Gio
+import shownav_tools as st
+import sys
+import time
+
+
+"""
+VisualSpace
+Author: Jacob Vlijm
+Copyright © 2017-2018 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+
+direction = sys.argv[1]
+# direction = "next"
+navpath = st.navpath
+navigator = st.navigator
+shownav_busy = st.shownav_busy
+shownav_right = st.shownav_right
+shownav_left = st.shownav_left
+
+
+key = st.key
+settings = st.settings
+# show-visual settings
+showvisual = st.visual.get_boolean("show-visual")
+
+
+def initiate_shownav():
+    curr_state = st.get_wsdata()
+    add = 0
+    # current workspace
+    curr = curr_state[0]
+    # n-workspaces
+    n = curr_state[1]
+    # if at the end of the row, add one
+    if all([showvisual, direction == "next", curr == n]):
+        st.settings.set_int(key, n + 1)
+        add = 1
+        time.sleep(0.2)
+    # set target, 1 is minimum
+    target = curr + 1 if direction == "next" else max(curr - 1, 1)
+    # run navigator args = targeted workspace, (most recent) n- workspaces
+    if showvisual:
+        subprocess.Popen([navigator, str(target), str(n + add)])
+    subprocess.Popen(["wmctrl", "-s", str(target - 1)])
+
+
+def remote_control(direction):
+    f = shownav_right if direction == "next" else shownav_left
+    open(f, "wt").write("")
+
+
+if __name__ == "__main__":
+    if not st.get(["pgrep", "-f", "-u", st.user, navigator]):
+        initiate_shownav()
+    else:
+        remote_control(direction)
