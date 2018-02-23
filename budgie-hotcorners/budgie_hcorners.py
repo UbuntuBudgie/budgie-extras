@@ -6,7 +6,7 @@ import gi
 import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
-from bhctools import get, dr, settings, user
+from bhctools import get, dr, settings, user, getkey
 
 
 """
@@ -24,6 +24,10 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
+message = """This option requires the Window Previews applet to run.
+Please activate Window Previews from Budgie Settings > Add applet
+"""
 
 css_data = """
 .label {
@@ -264,6 +268,16 @@ class BudgieHotCornersApplet(Budgie.Applet):
                     )
                 except IndexError:
                     cmds.append("")
+                else:
+                    if all([
+                        "Exposé" in cmd_title, not getkey(),
+                    ]):
+                        img = "budgie-hotcorners-symbolic"
+                        subprocess.Popen([
+                            "notify-send", "-i", img,
+                            "Activate Window Previews",
+                            message,
+                        ])
         saved_state = list(zip(b_states, cmds))
         open(settings, "wt").write(str(saved_state))
         self.close_running()
