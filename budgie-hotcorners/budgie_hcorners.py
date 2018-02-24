@@ -25,9 +25,10 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-message = """This option requires the Window Previews applet to run.
-Please activate Window Previews from Budgie Settings > Add applet
+message = """One of the options requires the Window Previews applet to run.
+Please activate Window Previews from Budgie Settings > Add applet.
 """
+
 
 css_data = """
 .label {
@@ -255,6 +256,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
     def update_settings(self, widget, *args):
         b_states = [b.get_active() for b in self.buttons]
         cmds = []
+        msg = False
         for n in range(len(self.custom_entries)):
             custom = self.checks[n].get_active()
             if custom:
@@ -269,8 +271,12 @@ class BudgieHotCornersApplet(Budgie.Applet):
                 except IndexError:
                     cmds.append("")
                 else:
+                    # send a message if user pick inactive wpreviews
                     if all([
-                        "Exposé" in cmd_title, not getkey(),
+                        "Exposé" in cmd_title,
+                        not getkey(),
+                        not msg,
+                        b_states[n] is True,
                     ]):
                         img = "budgie-hotcorners-symbolic"
                         subprocess.Popen([
@@ -278,6 +284,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
                             "Activate Window Previews",
                             message,
                         ])
+                        msg = True
         saved_state = list(zip(b_states, cmds))
         open(settings, "wt").write(str(saved_state))
         self.close_running()
