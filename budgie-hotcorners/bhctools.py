@@ -28,6 +28,8 @@ settings = os.path.join(dr, "hotc_settings")
 user = os.environ["USER"]
 # keypath
 dcpath = "/com/solus-project/budgie-panel/applets/"
+# pressure- triggerfile
+pressure_trig = os.path.join(dr, "usepressure")
 
 
 def get(cmd):
@@ -43,6 +45,10 @@ def getres():
     prim = dsp.get_primary_monitor()
     geo = prim.get_geometry()
     return [geo.width, geo.height]
+
+
+def get_pressure():
+    return os.path.exists(pressure_trig)
 
 
 def mousepos():

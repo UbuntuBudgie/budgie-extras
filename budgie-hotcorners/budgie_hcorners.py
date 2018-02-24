@@ -6,7 +6,7 @@ import gi
 import gi.repository
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
-from bhctools import get, dr, settings, user, getkey
+import bhctools as bhc
 
 
 """
@@ -64,14 +64,14 @@ showdesktop = os.path.join(currpath, "showdesktop")
 
 
 try:
-    os.makedirs(dr)
+    os.makedirs(bhc.dr)
 except FileExistsError:
     pass
 
 
 # try read settings file, if it exists
 try:
-    state_data = ast.literal_eval(open(settings).read().strip())
+    state_data = ast.literal_eval(open(bhc.settings).read().strip())
 except (FileNotFoundError, SyntaxError):
     # if not, drop to defaults (buttons, entries)
     states = [False, False, False, False]
@@ -107,6 +107,34 @@ class BudgieHotCorners(GObject.GObject, Budgie.Plugin):
         return BudgieHotCornersApplet(uuid)
 
 
+class BudgieHotCornersSettings(Gtk.Grid):
+
+    def __init__(self, setting):
+
+        super().__init__()
+
+        self.setting = setting
+        # grid & layout
+        self.toggle = Gtk.CheckButton.new_with_label("Use pressure")
+        pressure = bhc.get_pressure()
+        self.toggle.set_active(pressure)
+        self.toggle.connect("toggled", self.switch)
+        self.attach(self.toggle, 0, 0, 1, 1)
+        self.show_all()
+
+    def switch(self, button, *args):
+        pressure = bhc.get_pressure()
+        if pressure:
+            try:
+                os.remove(bhc.pressure_trig)
+                self.toggle.set_active(False)
+            except FileNotFoundError:
+                pass
+        else:
+            open(bhc.pressure_trig, "wt").write("")
+            self.toggle.set_active(True)
+
+
 class BudgieHotCornersApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
 
@@ -114,6 +142,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(5)
         self.maingrid.set_column_spacing(5)
@@ -246,7 +275,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
 
     def close_running(self):
         try:
-            pid = get(["pgrep", "-f", "-u", user, app]).splitlines()
+            pid = bhc.get(["pgrep", "-f", "-u", bhc.user, app]).splitlines()
         except AttributeError:
             pass
         else:
@@ -274,7 +303,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
                     # send a message if user pick inactive wpreviews
                     if all([
                         "Exposé" in cmd_title,
-                        not getkey("Window Previews"),
+                        not bhc.getkey("Window Previews"),
                         not msg,
                         b_states[n] is True,
                     ]):
@@ -286,9 +315,19 @@ class BudgieHotCornersApplet(Budgie.Applet):
                         ])
                         msg = True
         saved_state = list(zip(b_states, cmds))
-        open(settings, "wt").write(str(saved_state))
+        open(bhc.settings, "wt").write(str(saved_state))
         self.close_running()
         subprocess.Popen(app)
+
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return BudgieHotCornersSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
 
     def on_press(self, box, arg):
         self.manager.show_popover(self.box)
