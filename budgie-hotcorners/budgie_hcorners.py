@@ -25,7 +25,7 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-message = """One of the options requires the Window Previews applet to run.
+message = """One of the set options requires the Window Previews applet to run.
 Please activate Window Previews from Budgie Settings > Add applet.
 """
 
@@ -274,7 +274,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
                     # send a message if user pick inactive wpreviews
                     if all([
                         "Exposé" in cmd_title,
-                        not getkey(),
+                        not getkey("Window Previews"),
                         not msg,
                         b_states[n] is True,
                     ]):

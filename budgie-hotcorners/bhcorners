@@ -63,22 +63,11 @@ def watch():
             corner1 = corner2
 
 
-def getkey():
-    data = subprocess.check_output([
-        "dconf", "dump", dcpath
-    ]).decode("utf-8").splitlines()
-    try:
-        match = [l for l in data if "Hot Corners" in l][0]
-        watch = data.index(match) - 3
-        return data[watch][1:-1]
-    except IndexError:
-        pass
-
-
 # config path
 dr = bhc.dr
 # settings file
 settings = bhc.settings
+
 
 # try read settings, fallback to defaults if it does not exist
 try:
@@ -90,6 +79,7 @@ else:
     states = [d[0] for d in state_data]
     entry_data = [d[1] for d in state_data]
 
+
 # list actions
 actions = []
 for i in range(len(states)):
@@ -97,13 +87,16 @@ for i in range(len(states)):
     if val:
         actions.append([i, entry_data[i]])
 
+
 # hotcorner = 10 px wide/high
 marge = 10
+
 
 # give dconf a few seconds to create the key
 dcpath = "/com/solus-project/budgie-panel/applets/"
 time.sleep(3)
-key = getkey()
+key = bhc.getkey(string="Hot Corners")
+
 
 if any(states):
     watch()

@@ -26,6 +26,8 @@ dr = os.path.join(os.environ["HOME"], ".config", "budgie-extras", "hotcorners")
 settings = os.path.join(dr, "hotc_settings")
 # user, to make sure all procs run per user
 user = os.environ["USER"]
+# keypath
+dcpath = "/com/solus-project/budgie-panel/applets/"
 
 
 def get(cmd):
@@ -76,12 +78,11 @@ def get_hot(marge, res):
         pass
 
 
-def getkey():
+def getkey(string="Hot Corners"):
     # get the specific dconf path, referring to the applet's key
-    dcpath = "/com/solus-project/budgie-panel/applets/"
     data = get(["dconf", "dump", dcpath]).splitlines()
     try:
-        match = [l for l in data if "Window Previews" in l][0]
+        match = [l for l in data if string in l][0]
         watch = data.index(match) - 3
         return data[watch][1:-1]
     except IndexError:
