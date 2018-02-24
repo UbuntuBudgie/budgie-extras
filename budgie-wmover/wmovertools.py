@@ -87,11 +87,10 @@ def check_ypos(yres):
 
 
 def getres():
-    # width of the primary screen.
-    dsp = Gdk.Display().get_default()
-    prim = dsp.get_primary_monitor()
-    geo = prim.get_geometry()
-    return [geo.width, geo.height]
+    # get the resolution from wmctrl
+    resdata = get(["wmctrl", "-d"])
+    res = [int(n) for n in resdata.split()[3].split("x")] if resdata else None
+    return res
 
 
 def area(x_area, y_area, xres, yres, x, y):
