@@ -5,6 +5,7 @@ import time
 import bhctools as bhc
 import math
 import os
+import sys
 
 
 """
@@ -26,7 +27,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 def watch():
     t = 0.2
     n = 0
-    res = None
+    res = sys.argv[1:]
+    res = [int(res[0]), int(res[1])]
     corner1 = None
     user = bhc.user
     poslist = [(0, 0), (0, 0), (0, 0)]
@@ -35,11 +37,8 @@ def watch():
 
     while True:
         time.sleep(t)
-        # check resolution once per 5 seconds
+        # check pressure settings once per 5 seconds
         if n == 0:
-            res2 = bhc.getres()
-            if all([res2, res != res2]):
-                res = res2
             testpressure = bhc.get_pressure()
         # check if user is in the house, applet in the panel
         elif n == 12:
@@ -50,10 +49,8 @@ def watch():
                     "dconf", "dump", dcpath + key + "/"
                 ]).decode("utf-8")
                 if not check:
-                    print("dconf issue")
                     break
             except TypeError:
-                print("TypeError issue")
                 break
         n = n + 1 if n < 25 else 0
         # get the mouse position

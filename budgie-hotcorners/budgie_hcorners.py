@@ -5,7 +5,8 @@ import ast
 import gi
 import gi.repository
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk
+gi.require_version('Gdk', '3.0')
+from gi.repository import Budgie, GObject, Gtk, Gdk
 import bhctools as bhc
 
 
@@ -214,6 +215,10 @@ class BudgieHotCornersApplet(Budgie.Applet):
             self.entries[n][0].set_sensitive(val)
             self.custom_entries[n][0].set_sensitive(val)
             self.checks[n].set_sensitive(val)
+        # get resolution
+        res = bhc.getres()
+        scr = Gdk.Screen.get_default()
+        scr.connect("size-changed", self.update_settings)
         # popover stuff
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name(
@@ -237,7 +242,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
         for check in self.checks:
             check.connect("toggled", self.update_settings)
         self.close_running()
-        subprocess.Popen(app)
+        subprocess.Popen([app, str(res[0]), str(res[1])])
 
     def swap_widgets(self, checkbutton):
         custom_type = checkbutton.get_active()
@@ -283,6 +288,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
                 subprocess.call(["kill", p])
 
     def update_settings(self, widget, *args):
+        res = bhc.getres()
         b_states = [b.get_active() for b in self.buttons]
         cmds = []
         msg = False
@@ -317,7 +323,7 @@ class BudgieHotCornersApplet(Budgie.Applet):
         saved_state = list(zip(b_states, cmds))
         open(bhc.settings, "wt").write(str(saved_state))
         self.close_running()
-        subprocess.Popen(app)
+        subprocess.Popen([app, str(res[0]), str(res[1])])
 
     def do_get_settings_ui(self):
         """Return the applet settings with given uuid"""
