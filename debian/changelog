@@ -1,4 +1,4 @@
-budgie-extras (0.4.1-1) unstable; urgency=medium
+budgie-extras (0.4.2-1) unstable; urgency=medium
 
   * New upstream release
   * Packaging Changes:
@@ -10,10 +10,11 @@ budgie-extras (0.4.1-1) unstable; urgency=medium
     - debian/copyright: 2018 year updates
     - debian/rules remove ninja make rules since debhelper can deal
       with meson builds
+    - debian/rules check DEB_BUILD_OPTIONS for autotest
     - remove not needed debian/files
     - signing key; move and rename to debian/upstream
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 29 Jan 2018 19:50:17 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 25 Feb 2018 19:50:17 +0000
 
 budgie-extras (0.3.0-1) unstable; urgency=medium
 
