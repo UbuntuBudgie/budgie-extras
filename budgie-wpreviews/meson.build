@@ -3,6 +3,7 @@
 PLUGIN = 'wprviews'
 
 install_data(
+    'wprv',
     'WPrviews.plugin',
     'budgie-wprviews.py',
     'wprviews_backgrounder',
