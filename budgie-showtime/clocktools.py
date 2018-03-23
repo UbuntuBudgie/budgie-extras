@@ -4,7 +4,7 @@ import subprocess
 import time
 import gi
 gi.require_version('Pango', '1.0')
-from gi.repository import Pango
+from gi.repository import Pango, Gdk
 
 """
 Budgie ShowTime
@@ -67,18 +67,12 @@ def restart_clock():
 
 
 def get_area():
-    # size of the primary screen. Too bad we can't use wmctrl. xrandr is slower
-    windata = None
-    while not windata:
-        try:
-            windata = get("xrandr").split()
-            xy_data = windata[windata.index("primary") + 1].split("x")
-            return int(xy_data[0]), int(xy_data[1].split("+")[0])
-            break
-        except AttributeError:
-            pass
-        time.sleep(1)
-
+    # width of the primary screen.
+    dspl = Gdk.Display()
+    dsp = dspl.get_default()
+    prim = dsp.get_primary_monitor()
+    geo = prim.get_geometry()
+    return [geo.width, geo.height]
 
 def get_textposition():
     try:
