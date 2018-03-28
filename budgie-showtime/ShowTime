@@ -78,6 +78,15 @@ class ShowTimeWin(Gtk.Window):
         pos = clt.get_textposition()
         self.move(pos[1], pos[2])
 
+    def check_12hrs(self, timedate):
+        if twelvehrs:
+            time = timedate[0].split(":")
+            hrs = int(time[0])
+            hrs = hrs - 12 if hrs > 12 else hrs
+            newtime = ":".join([str(hrs), time[1]])
+            timedate[0] = newtime
+        return timedate
+
     def show_time(self):
         wait = 1
         while True:
@@ -86,6 +95,7 @@ class ShowTimeWin(Gtk.Window):
             currtime = time.strftime('%H:%M-%d %B %Y')
             timedate = currtime.split("-")
             if not mutetime:
+                timedate = self.check_12hrs(timedate)
                 GObject.idle_add(
                     self.timelabel.set_text,
                     timedate[0],
@@ -118,6 +128,7 @@ def show():
 
 mutetime = os.path.exists(clt.mute_time)
 mutedate = os.path.exists(clt.mute_date)
+twelvehrs = os.path.exists(clt.twelve_hrs)
 
 
 # only run clock if it should actually show something

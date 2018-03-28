@@ -4,6 +4,7 @@ import subprocess
 import time
 import gi
 gi.require_version('Pango', '1.0')
+gi.require_version('Gdk', '3.0')
 from gi.repository import Pango, Gdk
 
 """
@@ -41,6 +42,7 @@ datecolor = os.path.join(prefspath, "datecolor")
 mute_time = os.path.join(prefspath, "mute_time")
 mute_date = os.path.join(prefspath, "mute_date")
 pos_file = os.path.join(prefspath, "position")
+twelve_hrs = os.path.join(prefspath, "twelve_hrs")
 clock = os.path.join(app_path, "ShowTime")
 panelrunner = os.path.join(app_path, "bshowtime_panelrunner")
 
@@ -73,6 +75,7 @@ def get_area():
     prim = dsp.get_primary_monitor()
     geo = prim.get_geometry()
     return [geo.width, geo.height]
+
 
 def get_textposition():
     try:

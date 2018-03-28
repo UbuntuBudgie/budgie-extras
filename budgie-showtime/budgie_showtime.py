@@ -64,82 +64,116 @@ class BudgieShowTime(GObject.GObject, Budgie.Plugin):
 
 class BudgieShowTimeSettings(Gtk.Grid):
     def __init__(self, setting):
+
         super().__init__()
         self.setting = setting
 
         # files & colors
         self.tcolorfile = clt.timecolor
         self.dcolorfile = clt.datecolor
-        mute_time = clt.mute_time
-        mute_date = clt.mute_date
+        self.mute_time = clt.mute_time
+        self.mute_date = clt.mute_date
+        self.twelvehrs = clt.twelve_hrs
         # grid & layout
         self.set_row_spacing(12)
         element_hsizer1 = self.h_spacer(13)
         self.attach(element_hsizer1, 0, 0, 1, 7)
         element_hsizer2 = self.h_spacer(25)
         self.attach(element_hsizer2, 2, 0, 1, 7)
-        # toggle buttons
+        # time section
         self.runtime = Gtk.CheckButton("Show time")
-        self.rundate = Gtk.CheckButton("Show date")
-        self.runtime.set_active(not os.path.exists(mute_time))
-        self.rundate.set_active(not os.path.exists(mute_date))
-        self.runtime.connect("toggled", self.toggle_show, mute_time)
-        self.rundate.connect("toggled", self.toggle_show, mute_date)
         self.attach(self.runtime, 1, 1, 1, 1)
-        self.attach(self.rundate, 1, 2, 1, 1)
-        # color buttons & labels
-        bholder1 = Gtk.Box()
-        self.attach(bholder1, 1, 4, 1, 1)
+        self.twelve_hrs = Gtk.CheckButton("Twelve hours display")
+        self.attach(self.twelve_hrs, 1, 2, 1, 1)
+        # time color
+        self.bholder1 = Gtk.Box()
+        self.attach(self.bholder1, 1, 3, 1, 1)
         self.t_color = Gtk.Button()
         self.t_color.connect("clicked", self.pick_color, self.tcolorfile)
         self.t_color.set_size_request(10, 10)
-        bholder1.pack_start(self.t_color, False, False, 0)
+        self.bholder1.pack_start(self.t_color, False, False, 0)
         timelabel = Gtk.Label(" Set time color")
-        bholder1.pack_start(timelabel, False, False, 0)
-        bholder2 = Gtk.Box()
-        self.attach(bholder2, 1, 5, 1, 1)
+        self.bholder1.pack_start(timelabel, False, False, 0)
+        spacer1 = Gtk.Label("")
+        self.attach(spacer1, 1, 4, 1, 1)
+        # date section
+        self.rundate = Gtk.CheckButton("Show date")
+        self.attach(self.rundate, 1, 5, 1, 1)
+        # date color
+        self.bholder2 = Gtk.Box()
+        self.attach(self.bholder2, 1, 6, 1, 1)
         self.d_color = Gtk.Button()
         self.d_color.connect("clicked", self.pick_color, self.dcolorfile)
         self.d_color.set_size_request(10, 10)
-        bholder2.pack_start(self.d_color, False, False, 0)
+        self.bholder2.pack_start(self.d_color, False, False, 0)
         datelabel = Gtk.Label(" Set date color")
-        bholder2.pack_start(datelabel, False, False, 0)
-        labelspacer = self.h_spacer(10)
+        self.bholder2.pack_start(datelabel, False, False, 0)
+        spacer2 = Gtk.Label("")
+        self.attach(spacer2, 1, 7, 1, 1)
+        # position section
         # checkbox custom position
         self.setposbutton = Gtk.CheckButton("Set custom position (px)")
-        # setposlable.set_xalign(0)
-        self.attach(self.setposbutton, 1, 12, 1, 1)
+        self.attach(self.setposbutton, 1, 8, 1, 1)
+        # position
         posholder = Gtk.Box()
         self.xpos = Gtk.Entry()
         self.xpos.set_width_chars(4)
-        xpos_label = Gtk.Label("x: ")
+        self.xpos_label = Gtk.Label("x: ")
         self.ypos = Gtk.Entry()
         self.ypos.set_width_chars(4)
-        ypos_label = Gtk.Label(" y: ")
+        self.ypos_label = Gtk.Label(" y: ")
         self.apply = Gtk.Button("OK")
         for item in [
-            xpos_label, self.xpos, ypos_label, self.ypos,
+            self.xpos_label, self.xpos, self.ypos_label, self.ypos,
         ]:
             posholder.pack_start(item, False, False, 0)
         posholder.pack_end(self.apply, False, False, 0)
-        self.attach(posholder, 1, 13, 1, 1)
-        noiconspacer = self.h_spacer(10)
+        self.attach(posholder, 1, 9, 1, 1)
+        self.twelve_hrs.set_active(os.path.exists(self.twelvehrs))
+        # set intial states
+        timeshows = not os.path.exists(self.mute_time)
+        dateshows = not os.path.exists(self.mute_date)
+        self.runtime.set_active(timeshows)
+        self.rundate.set_active(dateshows)
+        self.set_timestate(timeshows)
+        self.set_datestate(dateshows)
+        self.runtime.connect("toggled", self.toggle_show, self.mute_time)
+        self.rundate.connect("toggled", self.toggle_show, self.mute_date)
+        self.twelve_hrs.connect("toggled", self.toggle_12, self.twelvehrs)
+        # color buttons & labels
+        distlabel = Gtk.Label("")
+        self.attach(distlabel, 1, 10, 1, 1)
         noicon = Gtk.Label("Applet runs without a panel icon")
-        self.attach(noiconspacer, 1, 14, 1, 1)
-        self.attach(noicon, 1, 15, 1, 1)
+        self.attach(noicon, 1, 11, 1, 1)
         self.set_initialstate()
         self.setposbutton.connect("toggled", self.toggle_cuspos)
         self.apply.connect("clicked", self.get_xy)
         self.update_color()
         self.show_all()
 
+    def set_timestate(self, val=None):
+        val = val if val else not os.path.exists(self.mute_time)
+        for item in [
+            self.twelve_hrs, self.bholder1, self.t_color,
+        ]:
+            item.set_sensitive(val)
+
+    def set_datestate(self, val=None):
+        # could be included in set_timestate but, well...
+        val = val if val else not os.path.exists(self.mute_date)
+        for item in [self.bholder2, self.d_color]:
+            item.set_sensitive(val)
+
     def set_initialstate(self):
+        # set initial state of items in the custom position section
         state_data = clt.get_textposition()
         state = state_data[0]
         if state:
             self.xpos.set_text(str(state_data[1]))
             self.ypos.set_text(str(state_data[2]))
-        for entr in [self.ypos, self.xpos, self.apply]:
+        for entr in [
+            self.ypos, self.xpos, self.apply, self.xpos_label, self.ypos_label
+        ]:
             entr.set_sensitive(state)
         self.setposbutton.set_active(state)
 
@@ -156,12 +190,19 @@ class BudgieShowTimeSettings(Gtk.Grid):
 
     def toggle_cuspos(self, button):
         newstate = button.get_active()
-        for widget in [self.ypos, self.xpos, self.apply]:
+        for widget in [
+            self.ypos, self.xpos, self.xpos_label, self.ypos_label, self.apply
+        ]:
             widget.set_sensitive(newstate)
         if newstate is False:
             self.xpos.set_text("")
             self.ypos.set_text("")
-            os.remove(cpos_file)
+            try:
+                os.remove(cpos_file)
+            except FileNotFoundError:
+                pass
+            else:
+                clt.restart_clock()
 
     def h_spacer(self, addwidth):
         # horizontal spacer
@@ -174,20 +215,44 @@ class BudgieShowTimeSettings(Gtk.Grid):
             spacegrid.set_column_spacing(addwidth)
         return spacegrid
 
-    def toggle_show(self, button, file):
-        newstate = button.get_active()
-        if newstate:
+    def toggle_12(self, button, file):
+        # cannot be included in toggle_show, flipped boolean
+        if not button.get_active():
             try:
                 os.remove(file)
-            except FileNotGoundError:
+            except FileNotFoundError:
                 pass
         else:
             open(file, "wt").write("")
         clt.restart_clock()
 
+    def toggle_show(self, button, file):
+        try:
+            corr_file = [self.mute_time, self.mute_date].index(file)
+        except ValueError:
+            pass
+        newstate = button.get_active()
+        if newstate:
+            try:
+                os.remove(file)
+            except FileNotFoundError:
+                pass
+        else:
+            open(file, "wt").write("")
+        try:
+            if corr_file == 0:
+                self.set_timestate()
+            elif corr_file == 1:
+                self.set_datestate()
+        except UnboundLocalError:
+            pass
+        clt.restart_clock()
+
     def set_css(self, hexcol):
         provider = Gtk.CssProvider.new()
-        provider.load_from_data(css_data.replace("hexcolor", hexcol).encode())
+        provider.load_from_data(
+            css_data.replace("hexcolor", hexcol).encode()
+        )
         return provider
 
     def color_button(self, button, hexcol):
