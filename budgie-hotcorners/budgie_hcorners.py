@@ -59,6 +59,16 @@ defaults = [
 ]
 
 
+optionals = [
+    ["Window Shuffler", "budgie-window-shuffler-toggle"]
+]
+
+
+for opt in optionals:
+    if bhc.executable_exists(opt[1]):
+        defaults.append(opt)
+
+
 currpath = os.path.dirname(os.path.abspath(__file__))
 app = os.path.join(currpath, "bhcorners")
 showdesktop = os.path.join(currpath, "showdesktop")

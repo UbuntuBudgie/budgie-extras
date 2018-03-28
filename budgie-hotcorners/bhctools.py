@@ -4,6 +4,7 @@ gi.require_version('Gdk', '3.0')
 from gi.repository import Gdk
 import os
 import subprocess
+import distutils.spawn
 
 """
 Hot Corners
@@ -50,6 +51,10 @@ def getres(*args):
 
 def get_pressure():
     return os.path.exists(pressure_trig)
+
+
+def executable_exists(ex):
+    return distutils.spawn.find_executable(ex)
 
 
 def mousepos():
