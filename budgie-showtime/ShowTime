@@ -59,12 +59,12 @@ class ShowTimeWin(Gtk.Window):
         self.timelabel.modify_font(Pango.FontDescription(font + " 60"))
         self.timelabel.modify_fg(Gtk.StateFlags.NORMAL,
                                  Gdk.color_parse(time_color))
-        self.timelabel.set_xalign(0)
+        self.timelabel.set_xalign(1)
 
         self.datelabel.modify_font(Pango.FontDescription(font + " 25"))
         self.datelabel.modify_fg(Gtk.StateFlags.NORMAL,
                                  Gdk.color_parse(date_color))
-        self.datelabel.set_xalign(0)
+        self.datelabel.set_xalign(1)
         self.timegrid.attach(self.timelabel, 0, 0, 1, 1)
         self.timegrid.attach(self.datelabel, 0, 1, 1, 1)
         self.add(self.timegrid)
