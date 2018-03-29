@@ -37,6 +37,7 @@ except FileExistsError:
 
 default_pathfile = os.path.join(settingsdir, "quicknote-path")
 default_textfile = os.path.join(settingsdir, "quicknotes")
+biggerwindow_file = os.path.join(settingsdir, "biggerwindow")
 
 
 def get_notesdir():
@@ -74,7 +75,6 @@ class BudgieQuickNoteSettings(Gtk.Grid):
         custom = custom_set[1]
         # path, as entered in custom path
         path = custom_set[2]
-
         # buttons
         self.set_customdir = Gtk.CheckButton("Set a custom directory")
         self.set_root = Gtk.Button("Choose directory")
@@ -87,6 +87,14 @@ class BudgieQuickNoteSettings(Gtk.Grid):
         self.attach(self.dir_entry, 1, 6, 1, 1)
         self.set_customdir.set_active(custom)
         self.set_customdir.connect("toggled", self.toggle_custom)
+        # window size
+        self.biggerwindow = os.path.exists(biggerwindow_file)
+        self.set_customsize = Gtk.CheckButton("Use a bigger window")
+        self.set_customsize.set_active(self.biggerwindow)
+        self.set_customsize.connect("toggled", self.set_biggerwindow)
+        distance = Gtk.Label("\n")
+        self.attach(distance, 1, 8, 1, 1)
+        self.attach(self.set_customsize, 1, 9, 1, 1)
         self.show_all()
 
     def toggle_custom(self, button, val=None):
@@ -101,6 +109,13 @@ class BudgieQuickNoteSettings(Gtk.Grid):
                 os.remove(default_pathfile)
             except FileNotFoundError:
                 pass
+
+    def set_biggerwindow(self, button):
+        newstate = self.set_customsize.get_active()
+        if newstate:
+            open(biggerwindow_file, "wt").write("")
+        else:
+            os.remove(biggerwindow_file)
 
     def get_directory(self, button):
         try:
@@ -154,7 +169,6 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.maingrid = Gtk.Grid()
         # the scrolled window
         self.win = Gtk.ScrolledWindow.new()
-        self.win.set_size_request(280, 180)
         self.win.set_vexpand(True)
         self.win.set_hexpand(True)
         # main textbuffer
@@ -204,6 +218,8 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.box.connect("button-press-event", self.on_press)
 
     def on_press(self, box, arg):
+        winsize = self.get_winsize()
+        self.win.set_size_request(winsize[0], winsize[1])
         self.textfile = get_notesdir()[0]
         starttext = self.set_starttext()
         self.buffer.set_text(starttext)
@@ -224,6 +240,9 @@ class BudgieQuickNoteApplet(Budgie.Applet):
                    "notes. Notes are saved automatically while writing."
         self.undo_list.append(text)
         return text
+
+    def get_winsize(self):
+        return (350, 220) if os.path.exists(biggerwindow_file) else (280, 180)
 
     def manage_undo(self, *args):
         self.back_index = -1
