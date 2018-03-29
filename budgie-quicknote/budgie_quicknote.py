@@ -89,7 +89,7 @@ class BudgieQuickNoteSettings(Gtk.Grid):
         self.set_customdir.connect("toggled", self.toggle_custom)
         # window size
         self.biggerwindow = os.path.exists(biggerwindow_file)
-        self.set_customsize = Gtk.CheckButton("Use a bigger window")
+        self.set_customsize = Gtk.CheckButton("Large QuickNote")
         self.set_customsize.set_active(self.biggerwindow)
         self.set_customsize.connect("toggled", self.set_biggerwindow)
         distance = Gtk.Label("\n")
