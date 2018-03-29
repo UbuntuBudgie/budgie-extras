@@ -1,8 +1,9 @@
 import gi.repository
-
+import subprocess
 gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk
 import os
+
 
 """
 QuickNote
@@ -19,18 +20,98 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+
 settingsdir = os.path.join(
     os.environ["HOME"], ".config/budgie-extras/quicknote"
 )
 
+
 undo_steps = 11
+
 
 try:
     os.makedirs(settingsdir)
 except FileExistsError:
     pass
 
-textfile = os.path.join(settingsdir, "quicknote-data")
+
+default_pathfile = os.path.join(settingsdir, "quicknote-path")
+default_textfile = os.path.join(settingsdir, "quicknotes")
+
+
+def get_notesdir():
+    try:
+        path = open(default_pathfile).read().strip()
+        textfile = os.path.join(path, "quicknotes")
+        custom = True
+    except FileNotFoundError:
+        textfile = default_textfile
+        custom = False
+        path = None
+    else:
+        if not os.path.exists(path):
+            textfile = default_textfile
+            subprocess.Popen([
+                "notify-send",
+                "An error occurred in QuickNote",
+                "The custom directory was not found, " +
+                settingsdir + " will be used for now.",
+            ])
+    return textfile, custom, path
+
+
+class BudgieQuickNoteSettings(Gtk.Grid):
+    def __init__(self, setting):
+
+        super().__init__()
+
+        self.set_row_spacing(12)
+        self.setting = setting
+        custom_set = get_notesdir()
+        # used path (possibly fixed into default if not available)
+        self.notesfile = custom_set[0]
+        # bool, is custom set?
+        custom = custom_set[1]
+        # path, as entered in custom path
+        path = custom_set[2]
+
+        # buttons
+        self.set_customdir = Gtk.CheckButton("Set a custom directory")
+        self.set_root = Gtk.Button("Choose directory")
+        self.dir_entry = Gtk.Entry(editable=False)
+        if custom:
+            self.dir_entry.set_text(path)
+        self.set_root.connect("clicked", self.get_directory)
+        self.attach(self.set_customdir, 1, 3, 1, 1)
+        self.attach(self.set_root, 1, 5, 1, 1)
+        self.attach(self.dir_entry, 1, 6, 1, 1)
+        self.set_customdir.set_active(custom)
+        self.set_customdir.connect("toggled", self.toggle_custom)
+        self.show_all()
+
+    def toggle_custom(self, button, val=None):
+        if not val:
+            val = self.set_customdir.get_active()
+        for item in [self.set_root, self.dir_entry]:
+            item.set_sensitive(val)
+        # not necessarily the same val, now possibly locally defined
+        if not val:
+            self.dir_entry.set_text("")
+            try:
+                os.remove(default_pathfile)
+            except FileNotFoundError:
+                pass
+
+    def get_directory(self, button):
+        try:
+            directory = subprocess.check_output([
+                "zenity", "--file-selection", "--directory",
+            ]).decode("utf-8").strip()
+        except subprocess.CalledProcessError:
+            pass
+        else:
+            self.dir_entry.set_text(directory)
+            open(default_pathfile, "wt").write(directory)
 
 
 class BudgieQuickNote(GObject.GObject, Budgie.Plugin):
@@ -59,7 +140,9 @@ class BudgieQuickNoteApplet(Budgie.Applet):
     manager = None
 
     def __init__(self, uuid):
+
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
         self.box = Gtk.EventBox()
         icon = Gtk.Image.new_from_icon_name(
             "budgie-quicknote-symbolic", Gtk.IconSize.MENU,
@@ -78,6 +161,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.buffer = Gtk.TextBuffer()
         # undo "buffer 1"
         self.undo_list = []
+        self.textfile = get_notesdir()[0]
         self.currtext = self.set_starttext()
         self.back_index = -1
         # initial_text
@@ -120,6 +204,9 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         self.box.connect("button-press-event", self.on_press)
 
     def on_press(self, box, arg):
+        self.textfile = get_notesdir()[0]
+        starttext = self.set_starttext()
+        self.buffer.set_text(starttext)
         self.manager.show_popover(self.box)
 
     def get_txt(self, *args):
@@ -130,7 +217,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
 
     def set_starttext(self):
         try:
-            text = open(textfile).read()
+            text = open(self.textfile).read()
         except FileNotFoundError:
             text = "Welcome to QuickNote!\n\n" + \
                    "Just replace this text with your " + \
@@ -143,7 +230,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
         newtext = self.get_txt()
         self.undo_list.append(newtext)
         self.undo_list = self.undo_list[-undo_steps:]
-        open(textfile, "wt").write(newtext)
+        open(self.textfile, "wt").write(newtext)
 
     def undo(self, *args):
         n_edits = len(self.undo_list) - 1
@@ -151,7 +238,7 @@ class BudgieQuickNoteApplet(Budgie.Applet):
             self.back_index = self.back_index - 1
             reverted = self.undo_list[self.back_index]
             self.buffer.set_text(reverted)
-            open(textfile, "wt").write(reverted)
+            open(self.textfile, "wt").write(reverted)
 
     def redo(self, *args):
         if self.back_index < -1:
@@ -162,8 +249,18 @@ class BudgieQuickNoteApplet(Budgie.Applet):
                 pass
             else:
                 self.buffer.set_text(reverted)
-                open(textfile, "wt").write(reverted)
+                open(self.textfile, "wt").write(reverted)
 
     def do_update_popovers(self, manager):
         self.manager = manager
         self.manager.register_popover(self.box, self.popover)
+
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return BudgieQuickNoteSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
