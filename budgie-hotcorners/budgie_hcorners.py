@@ -47,9 +47,9 @@ showdesktop = os.path.join(currpath, "showdesktop")
 
 defaults = [
     ["Exposé all windows",
-     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window nokeys"],
+     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc nokeys"],
     ["Exposé current application",
-     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window" +
+     "/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc" +
      " current nokeys"],
     ["Budgie Desktop Settings", "budgie-desktop-settings"],
     ["Show Raven notifications", "xdotool key super+n"],
