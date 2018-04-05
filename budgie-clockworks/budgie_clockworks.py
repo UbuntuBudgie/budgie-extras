@@ -500,15 +500,16 @@ class BudgieClockWorksApplet(Budgie.Applet):
         self.save_tofile()
 
     def delete_clock(self, button, clock):
-        # delete the clock; data and all corresponding widgets
-        misc_widgets = self.clocklist[clock]["misc_widgets"]
-        hour_image = self.clocklist[clock]["hour_img"]
-        minute_image = self.clocklist[clock]["minute_img"]
-        ampm_mention = self.clocklist[clock]["ampm"]
-        for w in misc_widgets + [hour_image, minute_image, ampm_mention]:
-            w.destroy()
-        del self.clocklist[clock]
-        self.save_tofile()
+        if len(self.clocklist) > 1:
+            # delete the clock; data and all corresponding widgets
+            misc_widgets = self.clocklist[clock]["misc_widgets"]
+            hour_image = self.clocklist[clock]["hour_img"]
+            minute_image = self.clocklist[clock]["minute_img"]
+            ampm_mention = self.clocklist[clock]["ampm"]
+            for w in misc_widgets + [hour_image, minute_image, ampm_mention]:
+                w.destroy()
+            del self.clocklist[clock]
+            self.save_tofile()
 
     def on_press(self, box, arg):
         self.manager.show_popover(self.box)
