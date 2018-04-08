@@ -25,7 +25,10 @@ key = [
     "custom-keybinding",
 ]
 # the key defining the default shortcut
-def_key = ["org.gnome.desktop.wm.keybindings", "switch-applications"]
+def_keys = [
+    ["org.gnome.desktop.wm.keybindings", "switch-applications"],
+    ["org.gnome.desktop.wm.keybindings", "switch-group"],
+]
 # the shortcut names to look up in dconf
 shortcut_names = ["prv_all", "prv_single"]
 # command (main-) line to run previews
@@ -66,13 +69,16 @@ def remove_custom():
 
 
 def clear_default():
-    # clear the set key so the shortcuts become available
-    subprocess.call(["gsettings", "set", def_key[0], def_key[1], "[]"])
+    for k in def_keys:
+        # clear the set key so the shortcuts become available
+        subprocess.call(["gsettings", "set", k[0], k[1], "[]"])
 
 
 def reset_default():
-    # restore default shortcut
-    subprocess.call(["gsettings", "reset", def_key[0], def_key[1]])
+    for k in def_keys:
+        print(k)
+        # restore default shortcut
+        subprocess.call(["gsettings", "reset", k[0], k[1]])
 
 
 def define_keyboard_shortcut(name, command, shortcut):
@@ -115,7 +121,7 @@ def change_keys(arg):
         clear_default()
         define_keyboard_shortcut("prv_all", aw, '<Alt>Tab')
         define_keyboard_shortcut(
-            "prv_single", aw + " current", '<Super>Above_Tab'
+            "prv_single", aw + " current", '<Alt>grave'
         )
     elif arg == "restore":
         reset_default()
