@@ -12,6 +12,7 @@ install_data(
     'set_keys.py',
     'wprviews_window',
     'moveto.sh',
+    'wprv_hc',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
 )
 
