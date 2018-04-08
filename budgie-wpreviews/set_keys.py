@@ -76,7 +76,6 @@ def clear_default():
 
 def reset_default():
     for k in def_keys:
-        print(k)
         # restore default shortcut
         subprocess.call(["gsettings", "reset", k[0], k[1]])
 
