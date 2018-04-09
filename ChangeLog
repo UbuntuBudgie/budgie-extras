@@ -1,7 +1,10 @@
 v0.4.4 Pretty with all
- - Clockworks should always have one clock
+ - Clockworks should always have at least one clock
  - Window Previews no longer displays multiple times when invoked through hot-corners
- - Window Previews per app display with the correct shortcut key
+ - Window Previews per app display with the correct shortcut key as advertised in settings
+ - Distinguish between a mouse hover and an Alt+Tab by changing the border-style;
+   previously both displayed with the same border-style which caused visual confusion
+ - Don't display dates with a prefix of zero
 v0.4.3 This is timely
  - Bug fix release
    Styling fixes for ShowTime
