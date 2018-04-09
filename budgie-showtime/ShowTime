@@ -90,13 +90,18 @@ class ShowTimeWin(Gtk.Window):
             timedate[0] = newtime
         return timedate
 
+    def fix_leadingzeros(self, currtime):
+        tofix = currtime[1].split()
+        currtime[1] = " ".join([it.lstrip("0") for it in tofix])
+        return currtime
+
     def show_time(self):
         wait = 1
         while True:
             time.sleep(wait)
             wait = 61 - int(time.time()) % 60
             currtime = time.strftime('%H:%M-%d %B %Y')
-            timedate = currtime.split("-")
+            timedate = self.fix_leadingzeros(currtime.split("-"))
             if not mutetime:
                 timedate = self.check_12hrs(timedate)
                 GObject.idle_add(
