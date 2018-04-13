@@ -112,8 +112,8 @@ class WsOverviewWin(GObject.Object):
         applet_modes = Gtk.Menu()
         active = modes.index(self.mode)
         self.mode_index = active
-        self.menulist = ["      " + m for m in modes]
-        self.menulist[active] = "⁕ " + str(modes[active]) + ""
+        self.menulist = ["\t" + m for m in modes]
+        self.menulist[active] = "⁕\t" + str(modes[active]) + ""
         for item in self.menulist:
             md = Gtk.MenuItem(item)
             md.connect('activate', self.set_mode, item)
