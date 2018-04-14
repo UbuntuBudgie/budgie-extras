@@ -33,13 +33,14 @@ def watch():
     user = bhc.user
     poslist = [(0, 0), (0, 0), (0, 0)]
     testpressure = False
-    limit = 220
 
     while True:
         time.sleep(t)
         # check pressure settings once per 5 seconds
         if n == 0:
-            testpressure = bhc.get_pressure()
+            currpressure = bhc.get_pressure()
+            testpressure = currpressure[0]
+            limit = currpressure[1]
         # check if user is in the house, applet in the panel
         elif n == 12:
             if user not in subprocess.check_output("who").decode("utf-8"):

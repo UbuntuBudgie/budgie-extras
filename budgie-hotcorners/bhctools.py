@@ -50,7 +50,16 @@ def getres(*args):
 
 
 def get_pressure():
-    return os.path.exists(pressure_trig)
+    setcustom = os.path.exists(pressure_trig)
+    try:
+        val = int(open(pressure_trig).read().strip())
+    except (FileNotFoundError, ValueError):
+        val = None
+    return setcustom, val
+
+
+def set_pressure(val):
+    open(pressure_trig, "wt").write(val)
 
 
 def executable_exists(ex):

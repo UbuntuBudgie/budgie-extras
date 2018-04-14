@@ -127,23 +127,40 @@ class BudgieHotCornersSettings(Gtk.Grid):
         self.setting = setting
         # grid & layout
         self.toggle = Gtk.CheckButton.new_with_label("Use pressure")
-        pressure = bhc.get_pressure()
+        pressuredata = bhc.get_pressure()
+        pressure = pressuredata[0]
+        pressure_val = pressuredata[1]
         self.toggle.set_active(pressure)
         self.toggle.connect("toggled", self.switch)
         self.attach(self.toggle, 0, 0, 1, 1)
+        self.pressure_slider = Gtk.Scale.new_with_range(
+            Gtk.Orientation.HORIZONTAL, 10, 100, 10
+        )
+        if not pressure:
+            self.pressure_slider.set_sensitive(False)
+            self.pressure_slider.set_value(40)
+        elif pressure_val:
+            self.pressure_slider.set_value(pressuredata[1] / 5)
+        self.pressure_slider.connect("value_changed", self.get_slider)
+        self.attach(self.pressure_slider, 0, 1, 1, 1)
         self.show_all()
 
+    def get_slider(self, slider):
+        val = int(self.pressure_slider.get_value()) * 5
+        bhc.set_pressure(str(val))
+
     def switch(self, button, *args):
-        pressure = bhc.get_pressure()
+        pressure = bhc.get_pressure()[0]
         if pressure:
             try:
                 os.remove(bhc.pressure_trig)
-                self.toggle.set_active(False)
             except FileNotFoundError:
                 pass
+            self.pressure_slider.set_sensitive(False)
         else:
-            open(bhc.pressure_trig, "wt").write("")
-            self.toggle.set_active(True)
+            open(bhc.pressure_trig, "wt").write("200")
+            self.pressure_slider.set_value(40)
+            self.pressure_slider.set_sensitive(True)
 
 
 class BudgieHotCornersApplet(Budgie.Applet):
