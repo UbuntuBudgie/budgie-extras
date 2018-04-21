@@ -247,8 +247,15 @@ class BudgieDropByApplet(Budgie.Applet):
         except psutil.NoSuchProcess:
             return False
 
+    def scrs_active_check(self):
+        return "screensaver is inactive" in subprocess.check_output([
+            "gnome-screensaver-command", "-q"
+        ]).decode("utf-8")
+
     def on_event(self, box, *args):
-        if not self.lockscreen_check():
+        if all([
+            not self.lockscreen_check(), self.scrs_active_check()
+        ]):
             self.manager.show_popover(self.box)
 
     def on_press(self, box, arg):
