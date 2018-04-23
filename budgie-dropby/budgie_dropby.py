@@ -7,6 +7,7 @@ import os
 import dropby_tools as db
 import subprocess
 import psutil
+from threading import Thread
 
 
 """
@@ -95,25 +96,31 @@ class BudgieDropByApplet(Budgie.Applet):
         self.popover = Budgie.Popover.new(self.box)
         # grid to contain all the stuff
         self.maingrid = Gtk.Grid()
-        # setup bindings
-        self.watchdrives = Gio.VolumeMonitor.get()
-        self.triggers = [
-            "volume_added", "volume_removed", "mount_added", "mount_removed",
-        ]
-        for t in self.triggers:
-            self.watchdrives.connect(t, self.refresh)
-        # workaround to only open nautilus on our own action
-        self.act_onmount = False
-        # make the applet pop up on the event of a new volume
-        self.watchdrives.connect("volume_added", self.on_event, self.box)
-        # initial situation
-        self.refresh()
         # throw it in popover
         self.popover.add(self.maingrid)
         self.popover.get_child().show_all()
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
+        # thread
+        GObject.threads_init()
+        self.update = Thread(target=self.setup_watching)
+        # daemonize the thread to make the indicator stopable
+        self.update.setDaemon(True)
+        self.update.start()
+        self.refresh_from_idle()
+
+    def setup_watching(self):
+        self.watchdrives = Gio.VolumeMonitor.get()
+        self.triggers = [
+            "volume_added", "volume_removed", "mount_added", "mount_removed",
+        ]
+        for t in self.triggers:
+            self.watchdrives.connect(t, self.refresh_from_idle)
+        # workaround to only open nautilus on our own action
+        self.act_onmount = False
+        # make the applet pop up on the event of a new volume
+        self.watchdrives.connect("volume_added", self.on_event, self.box)
 
     def do_get_settings_ui(self):
         """Return the applet settings with given uuid"""
@@ -194,6 +201,12 @@ class BudgieDropByApplet(Budgie.Applet):
             )
         self.set_spacers()
 
+    def refresh_from_idle(self, subject=None, newvol=None):
+        GObject.idle_add(
+            self.refresh, subject, newvol,
+            priority=GObject.PRIORITY_DEFAULT,
+        )
+
     def refresh(self, subject=None, newvol=None):
         # empty grid
         for c in self.maingrid.get_children():
@@ -256,10 +269,13 @@ class BudgieDropByApplet(Budgie.Applet):
         if all([
             not self.lockscreen_check(), self.scrs_active_check()
         ]):
-            self.manager.show_popover(self.box)
+            GObject.idle_add(
+                self.manager.show_popover, self.box,
+                priority=GObject.PRIORITY_DEFAULT,
+            )
 
     def on_press(self, box, arg):
-        self.refresh()
+        self.refresh_from_idle()
         self.manager.show_popover(self.box)
 
     def do_update_popovers(self, manager):
