@@ -87,6 +87,7 @@ class BudgieQuickNoteSettings(Gtk.Grid):
         self.attach(self.dir_entry, 1, 6, 1, 1)
         self.set_customdir.set_active(custom)
         self.set_customdir.connect("toggled", self.toggle_custom)
+        self.arr_sensitive()
         # window size
         self.biggerwindow = os.path.exists(biggerwindow_file)
         self.set_customsize = Gtk.CheckButton("Large QuickNote")
@@ -97,12 +98,14 @@ class BudgieQuickNoteSettings(Gtk.Grid):
         self.attach(self.set_customsize, 1, 9, 1, 1)
         self.show_all()
 
-    def toggle_custom(self, button, val=None):
-        if not val:
-            val = self.set_customdir.get_active()
+    def arr_sensitive(self):
+        val = self.set_customdir.get_active()
         for item in [self.set_root, self.dir_entry]:
             item.set_sensitive(val)
-        # not necessarily the same val, now possibly locally defined
+        return val
+
+    def toggle_custom(self, button, val=None):
+        val = self.arr_sensitive()
         if not val:
             self.dir_entry.set_text("")
             try:
