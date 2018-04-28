@@ -84,8 +84,9 @@ class ShowTimeWin(Gtk.Window):
         if twelvehrs:
             time = timedate[0].split(":")
             hrs = int(time[0])
-            add = " PM" if hrs >= 12 else " AM"
+            add = " PM" if 12 <= hrs < 24 else " AM"
             hrs = hrs - 12 if hrs > 12 else hrs
+            hrs = hrs + 12 if hrs < 1 else hrs
             newtime = ":".join([str(hrs), time[1]]) + add
             timedate[0] = newtime
         return timedate
