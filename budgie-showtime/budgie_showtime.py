@@ -130,7 +130,7 @@ class BudgieShowTimeSettings(Gtk.Grid):
         posholder.pack_end(self.apply, False, False, 0)
         self.attach(posholder, 1, 9, 1, 1)
         self.twelve_hrs.set_active(os.path.exists(self.twelvehrs))
-        # set intial states
+        # set initial states
         timeshows = not os.path.exists(self.mute_time)
         dateshows = not os.path.exists(self.mute_date)
         self.runtime.set_active(timeshows)
