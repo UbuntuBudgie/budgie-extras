@@ -16,6 +16,7 @@ Additional enhancements for the user experience
  - Screen Rotation Lock
  - ClockWorks
  - DropBy
+ - Kangaroo
  
  ## Installation
  
