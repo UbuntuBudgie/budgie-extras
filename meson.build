@@ -43,6 +43,7 @@ subdir('budgie-keyboard-autoswitch')
 subdir('budgie-rotation-lock')
 subdir('budgie-clockworks')
 subdir('budgie-dropby')
+subdir('budgie-kangaroo')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',
