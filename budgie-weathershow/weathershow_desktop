@@ -46,7 +46,7 @@ else:
 color = wt.hexcolor(wt.read_color(wt.textcolor))
 transparency = wt.get_transparency()
 # refresh cycle (seconds)
-refresh_time = 5
+refresh_time = 15
 
 
 # lists
@@ -67,7 +67,6 @@ class WeatherShow(Gtk.Window):
         # window props
         self.set_type_hint(Gdk.WindowTypeHint.DESKTOP)
         self.set_keep_below(True)
-        # self.move(pos[0], pos[1])
         self.set_position()
         # transparency
         screen = self.get_screen()
@@ -111,6 +110,8 @@ class WeatherShow(Gtk.Window):
             n = n + 1
         # add wshow to grid
         self.maingrid.attach(self.wshow_grid, 3, 1, 1, 1)
+        # set initial update time
+        self.last_updated = 0
         # add some space at the end
         right_marge = Gtk.Label("\t")
         self.maingrid.attach(right_marge, 10, 0, 1, 1)
@@ -136,7 +137,10 @@ class WeatherShow(Gtk.Window):
         self.refresh()
         while True:
             time.sleep(refresh_time)
-            self.refresh()
+            curr_time = time.time()
+            if curr_time - self.last_updated > 600:
+                self.refresh()
+                self.last_updated = curr_time
 
     def set_icon(self, index):
         self.weather_image.set_from_pixbuf(w_icons[index])
