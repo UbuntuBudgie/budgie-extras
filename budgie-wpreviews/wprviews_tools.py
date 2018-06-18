@@ -83,7 +83,7 @@ def get(cmd):
     # just a helper
     try:
         return subprocess.check_output(cmd).decode("utf-8").strip()
-    except (subprocess.CalledProcessError, TypeError):
+    except (subprocess.CalledProcessError, TypeError, UnicodeDecodeError):
         pass
 
 
