@@ -17,6 +17,13 @@ Additional enhancements for the user experience
  - ClockWorks
  - DropBy
  - Kangaroo
+ - WeatherShow
+ 
+## Standalone
+
+Non-budgie plugins - see the individual components for details
+
+ - Budgie Visualspace
  
  ## Installation
  
@@ -49,4 +56,4 @@ The following packages are required for the plugins to work:
  - python3-svgwrite
  - python3-cairosvg
  - python3-pyudev
-
+ - python3-requests
