@@ -256,7 +256,7 @@ class WeatherShowSettings(Gtk.Grid):
             else:
                 for c in newselection:
                     add = c.split()
-                    newcity = " ".join(add[1:-3]) + ", " + add[-1]
+                    newcity = " ".join(add[1:])
                     code = add[0]
                     newmenuitem = Gtk.MenuItem(newcity)
                     self.citymenu.append(newmenuitem)

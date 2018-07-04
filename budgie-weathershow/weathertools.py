@@ -60,7 +60,7 @@ arrows = [
 
 
 # files / paths
-citylist = os.path.join(prefspath, "cities.txt")
+citylist = os.path.join(app_path, "cities")
 textcolor = os.path.join(prefspath, "textcolor")
 pos_file = os.path.join(prefspath, "position")
 transparency = os.path.join(prefspath, "transparency")
@@ -230,31 +230,12 @@ def get_iconmapping(match):
 
 
 def get_citymatches(cityname):
-    # given a name of a city, return the matches
-    cityname = cityname.lower()
-    matches = []
     try:
-        test = open(citylist)
-        for l in test:
-            if cityname in l.lower():
-                matches.append(l)
-        return [matches, True]
-    except FileNotFoundError:
-        try:
-            return get_textfile(cityname)
-        except Exception:
-            return [[], False]
-
-
-def get_textfile(cityname):
-    # secondary to get_citymatches()
-    # fetches the citylist remotely if not locally present
-    matches = []
-    url = "http://openweathermap.org/help/city_list.txt"
-    data = requests.get(url)
-    if data.status_code == requests.codes.ok:
-        open(citylist, "wt").write(data.text)
-        return get_citymatches(cityname)
+        return [subprocess.check_output(
+            ["grep", cityname.title(), citylist]
+        ).decode("utf-8").strip().splitlines(), True]
+    except Exception:
+        return ["", True]
 
 
 def get_font():

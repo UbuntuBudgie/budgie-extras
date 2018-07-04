@@ -10,6 +10,7 @@ install_data(
     'weathershow.py',
     'weathertools.py',
     'wshow_panelrunner',
+    'cities',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
 )
 
