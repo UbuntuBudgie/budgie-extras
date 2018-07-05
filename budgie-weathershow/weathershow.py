@@ -394,8 +394,9 @@ class WeatherShowApplet(Budgie.Applet):
             for snapshot in all_data:
                 # snapshot = 3hrs shot
                 try:
-                    # get snapshot time
-                    t = snapshot["dt_txt"]
+                    lcltime = time.localtime(snapshot["dt"])
+                    dayminute = (lcltime[3] * 60) + lcltime[4]
+                    t = time.strftime("%Y-%m-%d %H:%M:%S", lcltime)
                 except KeyError:
                     pass
                 else:
@@ -410,8 +411,8 @@ class WeatherShowApplet(Budgie.Applet):
                             minmax[currsnapshot].append(fixed_snapshot["temp"])
                         except KeyError:
                             minmax[currsnapshot] = [fixed_snapshot["temp"]]
-                        # split off 3:00 pm snapshots
-                        if t.endswith("15:00:00"):
+                        # split off somewhere between 12:00am-3:00pm snapshots
+                        if 720 < dayminute <= 900:
                             forecast[currsnapshot] = fixed_snapshot
             # test for None
             for k in minmax.keys():
