@@ -3,7 +3,6 @@ import requests
 import json
 import weathertools as wt
 
-
 """
 Budgie WeatherShow
 Author: Jacob Vlijm
@@ -24,14 +23,21 @@ def get_data(key, city, wtype, lang):
     # data = sky, temp, wind_dir, wind_speed, pressure
     lang = "&lang=" + lang if lang else ""
     try:
-        data = requests.get(
-            "http://api.openweathermap.org/data/2.5/" + wtype + "?id=" +
-            city + "&APPID=" + key + lang
-        )
+        url = "http://api.openweathermap.org/data/2.5/" + wtype + "?id=" + \
+              city + "&APPID=" + key + lang
+
+        proxy_dict = wt.get_proxy_settings()
+
+        if len(proxy_dict) != 0:
+            data = requests.get(url, proxies=proxy_dict)
+        else:
+            data = requests.get(url)
+
         if data.status_code == requests.codes.ok:
             return dict(json.loads(data.text))
         else:
             print("Status returned not ok")
+
     except Exception:
         print("Connection failure or invalid key- or citycode")
 

@@ -4,13 +4,13 @@ import calendar
 import json
 import os
 import gi
+
 gi.require_version("Gdk", "3.0")
 gi.require_version('Pango', '1.0')
 from gi.repository import Gio, Pango, Gdk, GdkPixbuf
 import subprocess
 import time
 import locale
-
 
 """
 Budgie WeatherShow
@@ -27,7 +27,6 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-
 # paths
 prefspath = os.path.join(
     os.environ["HOME"], ".config", "budgie-extras", "weathershow"
@@ -35,14 +34,12 @@ prefspath = os.path.join(
 app_path = os.path.dirname(os.path.abspath(__file__))
 iconpath = os.path.join(app_path, "weather_icons")
 
-
 # icons
 iconset = os.listdir(iconpath)
 iconset.append(os.path.join(app_path, "misc_icons", "weather-error.svg"))
 markers = [item[:4] for item in iconset]
 w_icons = []
 small_icons = []
-
 
 for icon in iconset:
     icon = os.path.join(iconpath, icon)
@@ -53,11 +50,9 @@ for icon in iconset:
         GdkPixbuf.Pixbuf.new_from_file_at_size(icon, 80, 80)
     )
 
-
 arrows = [
     "↓", "↙", "←", "↖", "↑", "↗", "→", "↘", "↓",
 ]
-
 
 # files / paths
 citylist = os.path.join(app_path, "cities")
@@ -72,12 +67,26 @@ user = os.environ["USER"]
 panelrunner = os.path.join(app_path, "wshow_panelrunner")
 fahrenheit = os.path.join(prefspath, "fahrenheit")
 
-
 # make sure the dirs exist
 try:
     os.makedirs(prefspath)
 except FileExistsError:
     pass
+
+
+def get_proxy_settings():
+    proxy_dict = {}
+
+    environ = ['http_proxy', 'https_proxy', 'ftp_proxy']
+
+    for test_var in environ:
+        if test_var in os.environ:
+            proxy_dict[test_var[:-6]] = os.environ[test_var]
+
+    if len(proxy_dict) != len(environ):
+        return {}
+
+    return proxy_dict
 
 
 def convert_temp(temp):
@@ -204,12 +213,18 @@ def hexcolor(rgb):
 def get_weatherdata(key, city, wtype="weather"):
     # get weatherdata: forecast = 5 days / 3hrs, weather = curr
     try:
-        data = requests.get(
-            "http://api.openweathermap.org/data/2.5/" + wtype + "?id=" +
-            city.strip() + "&APPID=" + key
-        )
+        url = "http://api.openweathermap.org/data/2.5/" + wtype + "?id=" + \
+              city.strip() + "&APPID=" + key
+
+        proxy_dict = get_proxy_settings()
+        if len(proxy_dict) != 0:
+            data = requests.get(url, proxies=proxy_dict)
+        else:
+            data = requests.get(url)
+
         if data.status_code == requests.codes.ok:
             return dict(json.loads(data.text))
+
     except Exception:
         pass
 
