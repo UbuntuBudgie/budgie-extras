@@ -55,6 +55,11 @@ def get_pressure():
         val = int(open(pressure_trig).read().strip())
     except (FileNotFoundError, ValueError):
         val = None
+        setcustom = False
+        try:
+            os.remove(pressure_trig)
+        except FileNotFoundError:
+            pass
     return setcustom, val
 
 
