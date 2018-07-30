@@ -46,6 +46,7 @@ subdir('budgie-clockworks')
 subdir('budgie-dropby')
 subdir('budgie-kangaroo')
 subdir('budgie-weathershow')
+subdir('budgie-trash')
 
 #configure_file(
 #	input: meson.project_name() + '.py.in',
