@@ -19,7 +19,7 @@ using Json;
 * <https://www.gnu.org/licenses/>.
 */
 
-namespace SupportingFunctions {
+namespace HCSupport {
 
     /* 
     * Here we keep the (possibly) shared stuff, or general functions, to
@@ -104,7 +104,7 @@ namespace HotCornersApplet {
         public HotCornersSettings(GLib.Settings? settings)
         {
             this.settings = settings;
-            this.hc_settings = SupportingFunctions.get_settings(
+            this.hc_settings = HCSupport.get_settings(
                 "org.ubuntubudgie.plugins.budgie-hotcorners"
             );
             Gtk.Label pressure_label = new Gtk.Label(
@@ -166,7 +166,7 @@ namespace HotCornersApplet {
             indicatorBox.add(this.indicatorIcon);
 
             /* gsettings stuff */
-            this.hc_settings = SupportingFunctions.get_settings(
+            this.hc_settings = HCSupport.get_settings(
                 "org.ubuntubudgie.plugins.budgie-hotcorners"
             );
             populate_dropdown ();
@@ -253,12 +253,12 @@ namespace HotCornersApplet {
                 }
                 else {
                     latest_togglebutton.set_active(true);
-                    bool test = SupportingFunctions.command_isdefault(
+                    bool test = HCSupport.command_isdefault(
                         set_command, this.dropdown_cmdlist
                     );
                     if (test == true) {
                         this.maingrid.attach(command_combo, 1, y_pos, 1, 1);
-                        int combo_index = SupportingFunctions.get_stringindex(
+                        int combo_index = HCSupport.get_stringindex(
                             set_command, this.dropdown_cmdlist
                         );
                         command_combo.active = combo_index;
@@ -305,7 +305,7 @@ namespace HotCornersApplet {
 
         private void update_fromentry(Editable entry) {
             /* reads the entry and edits the corner / commands list */
-            int buttonindex = SupportingFunctions.get_entryindex(
+            int buttonindex = HCSupport.get_entryindex(
                 entry, this.entries
             );
             string new_cmd = entry.get_chars(0, 100);
@@ -319,18 +319,18 @@ namespace HotCornersApplet {
             * the hotcorner/commands list 
             */
             /* corner index */
-            int combo_index = SupportingFunctions.get_cboxindex(
+            int combo_index = HCSupport.get_cboxindex(
                 combo, this.dropdowns
             );
             /* command index */
             int command_index = combo.get_active();
             string new_cmd = dropdown_cmdlist[command_index];
-            int matches_index = SupportingFunctions.get_stringindex(
+            int matches_index = HCSupport.get_stringindex(
                 new_cmd, this.check_commands
             );
             if (matches_index != -1) {
                 string checkname = this.check_applets[matches_index];
-                bool check = SupportingFunctions.check_onapplet(
+                bool check = HCSupport.check_onapplet(
                     "/com/solus-project/budgie-panel/applets/",
                     checkname
                 );
@@ -347,7 +347,7 @@ namespace HotCornersApplet {
             * if custom checkbox is toggled, both GUI and command list changes
             * need to take place
             */
-            int b_index = SupportingFunctions.get_checkbuttonindex(
+            int b_index = HCSupport.get_checkbuttonindex(
                 button, this.cbuttons
             );
             bool active = button.get_active();
@@ -373,7 +373,7 @@ namespace HotCornersApplet {
         private void toggle_corner(ToggleButton button) {
             /* updates GUI if button is toggled, updates commands accordingly */
             bool active = button.get_active();
-            int buttonindex = SupportingFunctions.get_togglebuttonindex(
+            int buttonindex = HCSupport.get_togglebuttonindex(
                 button, this.buttons
             );
             CheckButton currcheck = this.cbuttons[buttonindex];
@@ -555,7 +555,7 @@ namespace HotCornersApplet {
                 t += 1;
                 if (t == 30) {
                     t = 0;
-                    bool check = SupportingFunctions.check_onapplet(
+                    bool check = HCSupport.check_onapplet(
                         "/com/solus-project/budgie-panel/applets/",
                         "HotCorners"
                     );
