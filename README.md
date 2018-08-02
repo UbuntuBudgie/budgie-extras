@@ -18,6 +18,8 @@ Additional enhancements for the user experience
  - DropBy
  - Kangaroo
  - WeatherShow
+ - Trash
+ - App-launcher
  
 ## Standalone
 
@@ -32,9 +34,9 @@ Non-budgie plugins - see the individual components for details
      ninja -v
      sudo ninja install
 
-## Runtime dependencies
+## Build/Runtime dependencies
 
-The following packages are required for the plugins to work:
+The following packages are required for the various Python plugins to work:
 
  - wmctrl
  - xdotool
@@ -57,3 +59,13 @@ The following packages are required for the plugins to work:
  - python3-cairosvg
  - python3-pyudev
  - python3-requests
+ 
+The following packages are required for the various Vala plugins to work:
+ - gobject-introspection
+ - libgtk-3-dev
+ - valac
+ - budgie-core-dev
+ - libbudgie-plugin0
+ - libpeas-dev
+ - libjson-glib-dev
+ 
