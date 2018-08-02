@@ -28,7 +28,7 @@ Install
    # Go to the budgie-trash directory
    cd experimental/budgie-trash
 
-   # Configure the the installation
+   # Configure the installation
    mkdir build && cd build
    meson --buildtype plain --prefix=/usr --libdir=/usr/lib
    ninja
@@ -56,7 +56,7 @@ Changelog
 * class namespaces
 
 ### Changed
-* project language from python to vala
+* project language from Python to Vala
 ### Removed
 
 References
