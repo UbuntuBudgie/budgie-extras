@@ -33,6 +33,14 @@ Non-budgie plugins - see the individual components for details
      meson --buildtype plain --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
      ninja -v
      sudo ninja install
+     
+## Distro's
+
+We love Budgie-Extras to work across as many distro's as possible.  So please let us know if your distro has packaged budgie-extras and how to install.
+
+ - Arch - https://aur.archlinux.org/packages/budgie-extras/
+ - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
+ - Debian - packages are available in Buster named "budgie-insertname-applet" https://goo.gl/R4eF7q
 
 ## Build/Runtime dependencies
 
