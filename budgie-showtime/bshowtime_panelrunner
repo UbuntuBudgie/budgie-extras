@@ -65,4 +65,9 @@ def run_showtime():
 
 pid = get_pid()
 run_showtime()
-psutil.Process(pid).terminate()
+
+
+try:
+    psutil.Process(pid).terminate()
+except psutil.NoSuchProcess:
+    pass

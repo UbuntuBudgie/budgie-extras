@@ -68,6 +68,13 @@ if not settings.get_boolean('keybind'):
     change_keys("set_custom")
 pid = get_pid()
 run_bgrounder()
-psutil.Process(pid).terminate()
+
+
+try:
+    psutil.Process(pid).terminate()
+except psutil.NoSuchProcess:
+    pass
+
+
 change_keys("restore")
 pv.empty_dir()
