@@ -74,5 +74,12 @@ def run_wmover():
 change_keys("set_custom")
 pid = get_pid()
 run_wmover()
-psutil.Process(pid).terminate()
+
+
+try:
+    psutil.Process(pid).terminate()
+except psutil.NoSuchProcess:
+    pass
+
+
 change_keys("restore")

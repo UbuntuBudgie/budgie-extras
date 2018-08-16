@@ -66,4 +66,9 @@ def run_wswitcher():
 dcpath = "/com/solus-project/budgie-panel/applets/"
 pid = get_pid()
 run_wswitcher()
-psutil.Process(pid).terminate()
+
+
+try:
+    psutil.Process(pid).terminate()
+except psutil.NoSuchProcess:
+    pass

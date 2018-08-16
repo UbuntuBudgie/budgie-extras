@@ -67,4 +67,9 @@ def run_weathershow():
 
 pid = get_pid()
 run_weathershow()
-psutil.Process(pid).terminate()
+
+
+try:
+    psutil.Process(pid).terminate()
+except psutil.NoSuchProcess:
+    pass
