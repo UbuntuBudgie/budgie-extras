@@ -16,6 +16,7 @@ else
 endif
 
 # Global path variable
+intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
