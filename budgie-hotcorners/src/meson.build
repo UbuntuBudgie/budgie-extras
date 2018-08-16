@@ -10,7 +10,7 @@ HotCornersSources = [
 ]
 
 HotCornersDependencies = [
-dependency('gtk+-3.0'), 
+dependency('gtk+-3.0'),
 dependency('budgie-1.0'),
 dependency('json-glib-1.0'),
 dependency('gio-2.0'),
@@ -20,24 +20,24 @@ meson.get_compiler('c').find_library('m', required: false)
 ]
 
 HotCornersValaArgs = [
-'--pkg=config', 
-'--vapidir=' + VAPI_DIR, 
+'--pkg=config',
+'--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
 ]
 
 HotCornersCArgs = [
-'-include', 
+'-include',
 'config.h',
 '-lm'
 ]
 
 shared_library(
-    'hotcorners', 
-    HotCornersSources, 
-    dependencies: HotCornersDependencies, 
-    vala_args: HotCornersValaArgs, 
-    c_args: HotCornersCArgs, 
-    install: true, 
+    'hotcorners',
+    HotCornersSources,
+    dependencies: HotCornersDependencies,
+    vala_args: HotCornersValaArgs,
+    c_args: HotCornersCArgs,
+    install: true,
     install_dir: LIB_INSTALL_DIR
 )
 
