@@ -285,7 +285,7 @@ namespace QuickNoteApplet {
             GLib.Object(relative_to: indicatorBox);
             this.indicatorBox = indicatorBox;
             this.indicatorIcon = new Gtk.Image.from_icon_name(
-                "quicknote-applet-symbolic", Gtk.IconSize.MENU
+                "budgie-quicknote-applet-symbolic", Gtk.IconSize.MENU
             );
             indicatorBox.add(this.indicatorIcon);
             Grid maingrid = new Gtk.Grid();
