@@ -14,7 +14,8 @@ Build-Depends: debhelper (>= 11),
 		budgie-core-dev,
 		libbudgie-plugin0,
 		libpeas-dev,
-		libjson-glib-dev
+		libjson-glib-dev,
+		intltool
 Standards-Version: 4.1.4
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
@@ -31,16 +32,21 @@ Description: Applet providing hotcorners capabilities for the Budgie Desktop
  The hotcorners applet allow user defined commands to be executed
  when the mouse cursor is pushed into a corner of the main desktop.
 
+Package: budgie-trash-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Applet allows access to trash capabilities for the Budgie Desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The trash applet allows the user access the desktop trash capabilities
+ from the panel including the ability to delete and restore files stored
+ in the trash folder.
+
 Package: budgie-quicknote-applet
-Architecture: all
-Depends: python3,
-	python3-gi,
-	gir1.2-budgie-1.0,
-	gir1.2-glib-2.0,
-	gir1.2-gtk-3.0,
-	gir1.2-peas-1.0,
-	python3-psutil,
-	${misc:Depends}, ${python3:Depends}
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Applet providing simple notes capability for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -48,6 +54,17 @@ Description: Applet providing simple notes capability for the Budgie Desktop
  .
  The quicknote applet allows a user to record a text based note.
  The applet supports multiple undo and redo capabilities.
+
+Package: budgie-recentlyused-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Applet displays files recently accessed for the Budgie Desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The recentlyused applet displays the users files that have been opened
+ or created within a configurable period of time.
 
 Package: budgie-previews-applet
 Architecture: all
@@ -287,3 +304,39 @@ Description: Applet to allow quick file-browsing
  The kangaroo applet allows for quick & easy browsing, across
  (possibly) many directory layers, without having to do a single mouse
  click.
+
+Package: budgie-app-launcher-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-peas-1.0,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet to provide an alternative means to launch applications
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The app-launcher applet allows the ability to add favorite apps to the
+ panel as well as finding and launching applications.  The list of
+ applications listed can be easily configured to be visible or hidden.
+
+Package: budgie-weathershow-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-peas-1.0,
+	python3-requests,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet to display the weather and forecast
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The weathershow applet displays daily and three hourly weather
+ forecasts on both the desktop and a Popover.

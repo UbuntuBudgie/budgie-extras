@@ -1,12 +1,20 @@
 budgie-extras (0.6.0-0ubuntu1) UNRELEASED; urgency=medium
 
+  * New upstream release
+    - see ChangeLog for details
+    - fix showtime crash on early exit (LP: #1760741)
   * Packaging Changes:
     - debian/control change build-dependencies to build both vala and
       python3 applets
-    - debian/control update descriptions for vala applets
-    - debian/control revise binary dependencies for hotcorners.
+    - debian/control
+      update descriptions for vala applets
+      revise binary dependencies for hotcorners and quicknote
+      change architecture for hotcorners and quicknote to any
+      update BuildDepends to accommodate Vala compilation
+      Add new binary packages for trash, recentlyused, applauncher and weather
+    - debian/rules Add hardening instructions for Vala based applets
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 30 Jul 2018 21:59:35 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 18 Aug 2018 09:59:35 +0100
 
 budgie-extras (0.5.0-1ubuntu2) cosmic; urgency=medium
 
