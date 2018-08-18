@@ -20,6 +20,7 @@ Additional enhancements for the user experience
  - WeatherShow
  - Trash
  - App-launcher
+ - RecentlyUsed
  
 ## Standalone
 
