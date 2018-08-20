@@ -1,14 +1,6 @@
 # Budgie Recently Used applet
 Show recently used items in a menu.
 
-# Install
-Run from the repo's folder:
+![settings](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-recentlyused/budgie_settings.png)
 
-- `mkdir build && cd build`
-
-- `meson --buildtype plain --prefix=/usr --libdir=/usr/lib`
-
-- `ninja`
-
-- `sudo ninja install`
-
+![settings](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-recentlyused/menu.png)
