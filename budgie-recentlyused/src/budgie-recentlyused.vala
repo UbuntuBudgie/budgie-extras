@@ -27,6 +27,7 @@ namespace RecentlyUsedApplet {
 
     public class RecentlyUsedSettings : Gtk.Grid {
         public RecentlyUsedSettings(GLib.Settings? settings) {
+            // spinbutton section (menu length)
             Label spbuttonlabel = new Gtk.Label(
                 "\n" + (_("Show last used")) + ":\n"
             );
@@ -38,6 +39,7 @@ namespace RecentlyUsedApplet {
             this.attach(show_n, 0, 1, 1, 1);
             Label distlabel = new Label("\n");
             this.attach(distlabel, 0, 2, 2, 1);
+            // show tooltips section
             CheckButton set_tooltips = new Gtk.CheckButton.with_label(
                 (_("Show tooltips"))
             );
@@ -46,6 +48,7 @@ namespace RecentlyUsedApplet {
             this.attach(set_tooltips, 0, 3, 2, 1);
             Label distlabel2 = new Label("\n");
             this.attach(distlabel2, 0, 4, 2, 1);
+            // hide path section
             CheckButton set_hidepath = new Gtk.CheckButton.with_label(
                 (_("Hide path in menu"))
             );
@@ -154,6 +157,7 @@ namespace RecentlyUsedApplet {
             int n_relevantitems = 0;
             
             foreach (string s in sortinghelper) {
+                // fill menu with relevant lines of accesible files
                 string showpath = replace(dict[s]);
                 string menuname = getmenuname(showpath);
                 string command = "xdg-open " + "'" + showpath.replace(
@@ -186,6 +190,7 @@ namespace RecentlyUsedApplet {
     
 
         private string getmenuname (string longname) {
+            // read settings, split off filename if set to
             if (hidepath == true) {
                 string[] filedata = longname.split("/");
                 int last = filedata.length - 1;
@@ -213,6 +218,7 @@ namespace RecentlyUsedApplet {
         }
 
         private void openfile (Gtk.MenuItem item) {
+            // read menuitem, look up command in menudata, run it
             string subject = item.get_label();;
             string command = menudata[subject];
             try {
@@ -227,11 +233,13 @@ namespace RecentlyUsedApplet {
         }
 
         private string edit_filestring(string filepath) {
+            // trim the line that contains the file path
             int len = filepath.char_count();
             return filepath[7:len-7];
         }
 
         private void update_menu() {
+            // empty menu, fill with updated content
             var uniques = new HashSet<string> (); //
             recent.destroy();
             showtooltips = rused_settings.get_boolean("showtooltips");
@@ -254,7 +262,7 @@ namespace RecentlyUsedApplet {
                     recent.show_all();
                     this.button.set_popup(recent);
                 } catch (Error e) {
-                    // in case 0f error, simply don't update the menu
+                    // in case of error, simply don't update the menu
                     stderr.printf ("Error: %s\n", e.message);
                 }
             }
@@ -279,7 +287,8 @@ namespace RecentlyUsedApplet {
 public void peas_register_types(TypeModule module){
     /* boilerplate - all modules need this */
     var objmodule = module as Peas.ObjectModule;
-    objmodule.register_extension_type(typeof(
-        Budgie.Plugin), typeof(RecentlyUsedApplet.Plugin)
+    objmodule.register_extension_type(
+        typeof(Budgie.Plugin), 
+        typeof(RecentlyUsedApplet.Plugin)
     );
 }
