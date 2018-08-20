@@ -17,7 +17,6 @@ using Gee;
 * <https://www.gnu.org/licenses/>.
 */
 
-
 namespace RecentlyUsedApplet { 
 
     private GLib.Settings rused_settings;
@@ -27,7 +26,6 @@ namespace RecentlyUsedApplet {
     
 
     public class RecentlyUsedSettings : Gtk.Grid {
-
         public RecentlyUsedSettings(GLib.Settings? settings) {
             Label spbuttonlabel = new Gtk.Label(
                 "\n" + (_("Show last used")) + ":\n"
@@ -82,7 +80,6 @@ namespace RecentlyUsedApplet {
 
 
     public class Applet : Budgie.Applet {
-        
         HashMap<string, string> menudata;
         private File infofile;
         private Gtk.Menu recent;
@@ -136,7 +133,6 @@ namespace RecentlyUsedApplet {
             * access the hashmap items in a sorted order. clumsy, but vala.
             */
             var dict = new HashMap<string, string> ();
-            //var uniques = new HashSet<string> ();
             var sortinghelper = new Gee.ArrayList<string> ();
             var newmenu = new Gtk.Menu();
             // split line, add [3] as key to ArrayLisst for sorting
@@ -153,8 +149,6 @@ namespace RecentlyUsedApplet {
                 // add key/value to dict
                 dict[last_visited] = filepath;			
             }
-            
-
             // now reverse-sort the keys, pick a slice
             sortinghelper.sort((a, b) => - a.collate(b));
             int n_relevantitems = 0;
@@ -167,7 +161,6 @@ namespace RecentlyUsedApplet {
                 ) + "'";
                 File checkexists = File.new_for_path (showpath);
                 bool exists = checkexists.query_exists ();
-                
                 // check if the file exists:
                 Gtk.MenuItem menuitem;
                 string tooltip;
@@ -257,12 +250,11 @@ namespace RecentlyUsedApplet {
                             uniques.add(line);
                         }
                     }
-                    //pass to func
                     recent = get_newmenu(uniques);
                     recent.show_all();
                     this.button.set_popup(recent);
                 } catch (Error e) {
-                    // in case pf error, simply don't update the menu
+                    // in case 0f error, simply don't update the menu
                     stderr.printf ("Error: %s\n", e.message);
                 }
             }
