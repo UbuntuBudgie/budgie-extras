@@ -1,5 +1,5 @@
 # Budgie Recently Used applet
-Show recently used items in a menu.
+Show (Gtk applications') recently used items in a menu.
 
 ![settings](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-recentlyused/budgie-settings.png)
 
