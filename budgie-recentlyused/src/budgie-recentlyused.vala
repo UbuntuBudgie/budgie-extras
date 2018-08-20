@@ -128,7 +128,7 @@ namespace RecentlyUsedApplet {
             show_all();
         }
 
-        public Gtk.Menu get_newmenu () {
+        public Gtk.Menu get_newmenu (HashSet<string> uniques) {
             menudata.clear();
             /* 
             * in vala, we cannot sort a multi dimensional array directly like
@@ -136,75 +136,61 @@ namespace RecentlyUsedApplet {
             * access the hashmap items in a sorted order. clumsy, but vala.
             */
             var dict = new HashMap<string, string> ();
-            var uniques = new HashSet<string> ();
+            //var uniques = new HashSet<string> ();
             var sortinghelper = new Gee.ArrayList<string> ();
             var newmenu = new Gtk.Menu();
-            // get relevant lines;
-            try {
-                if(infofile.query_exists() == true){
-                    var dis = new DataInputStream (infofile.read ());
-                    string line;
-                    // get uniques
-                    while ((line = dis.read_line (null)) != null) {
-                        if (
-                            line.contains("<bookmark href=\"file://") &&
-                            !line.contains("/tmp")
-                        ) {
-                            uniques.add(line);
-                        }
+            // split line, add [3] as key to ArrayLisst for sorting
+            foreach (string l in uniques) {
+                var linedata = new ArrayList<string> ();
+                foreach (string s in l.split("=\"")) {
+                    linedata.add(s);
+                }
+                // determine file and last-visited
+                string filepath = edit_filestring(linedata[1]);
+                string last_visited = linedata[3];
+                // add key to sorting list
+                sortinghelper.add(last_visited);
+                // add key/value to dict
+                dict[last_visited] = filepath;			
+            }
+            
+
+            // now reverse-sort the keys, pick a slice
+            sortinghelper.sort((a, b) => - a.collate(b));
+            int n_relevantitems = 0;
+            
+            foreach (string s in sortinghelper) {
+                string showpath = replace(dict[s]);
+                string menuname = getmenuname(showpath);
+                string command = "xdg-open " + "'" + showpath.replace(
+                        "'", "'\\''"
+                ) + "'";
+                File checkexists = File.new_for_path (showpath);
+                bool exists = checkexists.query_exists ();
+                
+                // check if the file exists:
+                Gtk.MenuItem menuitem;
+                string tooltip;
+                if (exists == true) {
+                    menudata[menuname] = command;
+                    menuitem = new Gtk.MenuItem.with_label(
+                        menuname
+                    );
+                    menuitem.activate.connect(openfile);
+                    tooltip = (_("Open")) +": " + showpath;
+                    newmenu.append(menuitem);
+                    if (showtooltips == true) {
+                        menuitem.set_tooltip_text(tooltip);
                     }
-                    // split line, add [3] as key to ArrayLisst for sorting
-                    foreach (string l in uniques) {
-                        var linedata = new ArrayList<string> ();
-                        foreach (string s in l.split("=\"")) {
-                            linedata.add(s);
-                        }
-                        // determine file and last-visited
-                        string filepath = edit_filestring(linedata[1]);
-                        string last_visited = linedata[3];
-                        // add key to sorting list
-                        sortinghelper.add(last_visited);
-                        // add key/value to dict
-                        dict[last_visited] = filepath;			
-                    }
-                    // now reverse-sort the keys, pick a slice
-                    sortinghelper.sort((a, b) => - a.collate(b));
-                    int n_relevantitems = 0;
-                    foreach (string s in sortinghelper) {
-                        string showpath = replace(dict[s]);
-                        string menuname = getmenuname(showpath);
-                        string command = "xdg-open " + "'" + showpath.replace(
-                             "'", "'\\''"
-                        ) + "'";
-                        File checkexists = File.new_for_path (showpath);
-                        bool exists = checkexists.query_exists ();
-                        
-                        // check if the file exists:
-                        Gtk.MenuItem menuitem;
-                        string tooltip;
-                        if (exists == true) {
-                            menudata[menuname] = command;
-                            menuitem = new Gtk.MenuItem.with_label(
-                                menuname
-                            );
-                            menuitem.activate.connect(openfile);
-                            tooltip = (_("Open")) +": " + showpath;
-                            newmenu.append(menuitem);
-                            if (showtooltips == true) {
-                                menuitem.set_tooltip_text(tooltip);
-                            }
-                            n_relevantitems += 1;
-                            if (n_relevantitems == n_show) {
-                                break;
-                            }
-                        }
+                    n_relevantitems += 1;
+                    if (n_relevantitems == n_show) {
+                        break;
                     }
                 }
-            } catch (Error e) {
-                stderr.printf ("Error: %s\n", e.message);
-            }
+            } 
             return newmenu;
-        }
+        } 
+    
 
         private string getmenuname (string longname) {
             if (hidepath == true) {
@@ -253,14 +239,34 @@ namespace RecentlyUsedApplet {
         }
 
         private void update_menu() {
+            var uniques = new HashSet<string> (); //
             recent.destroy();
             showtooltips = rused_settings.get_boolean("showtooltips");
             hidepath = rused_settings.get_boolean("hidepath");
             n_show = rused_settings.get_int("nitems");
-            recent = get_newmenu();
-            recent.show_all();
-            this.button.set_popup(recent);
-        }
+            if(infofile.query_exists() == true){
+                try {
+                    var dis = new DataInputStream (infofile.read ());
+                    string line;
+                    // get uniques
+                    while ((line = dis.read_line (null)) != null) {
+                        if (
+                            line.contains("<bookmark href=\"file://") &&
+                            !line.contains("/tmp")
+                        ) {
+                            uniques.add(line);
+                        }
+                    }
+                    //pass to func
+                    recent = get_newmenu(uniques);
+                    recent.show_all();
+                    this.button.set_popup(recent);
+                } catch (Error e) {
+                    // in case pf error, simply don't update the menu
+                    stderr.printf ("Error: %s\n", e.message);
+                }
+            }
+        }     
 
         public void initialiseLocaleLanguageSupport(){
             // Initialize gettext
