@@ -84,7 +84,6 @@ namespace RecentlyUsedApplet {
 
     public class Applet : Budgie.Applet {
 
-        HashMap<string, string> menudata;
         private File infofile;
         private Gtk.Menu recent;
         FileMonitor monitor;
@@ -102,8 +101,6 @@ namespace RecentlyUsedApplet {
         }
 
         public Applet() {
-            menudata = new HashMap<string, string> ();
-
             string home = GLib.Environment.get_home_dir();
             string infosrc = home.concat("/.local/share/recently-used.xbel");
             infofile = File.new_for_path(infosrc);
@@ -181,7 +178,7 @@ namespace RecentlyUsedApplet {
                     "'", "'\\''"
                 ) + "'";;
                 // tooltip
-                string tooltip = "Open" +": " + longname; //gettext
+                string tooltip = (_("Open")) +": " + longname;
                 if (showtooltips == true) {
                     newitem.set_tooltip_text(tooltip);
                 }
