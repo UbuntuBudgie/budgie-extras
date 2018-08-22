@@ -104,7 +104,6 @@ namespace RecentlyUsedApplet {
             string home = GLib.Environment.get_home_dir();
             string infosrc = home.concat("/.local/share/recently-used.xbel");
             infofile = File.new_for_path(infosrc);
-
             rused_settings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-recentlyused"
             );
