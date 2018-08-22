@@ -83,6 +83,7 @@ namespace RecentlyUsedApplet {
 
 
     public class Applet : Budgie.Applet {
+
         HashMap<string, string> menudata;
         private File infofile;
         private Gtk.Menu recent;
@@ -102,9 +103,11 @@ namespace RecentlyUsedApplet {
 
         public Applet() {
             menudata = new HashMap<string, string> ();
+
             string home = GLib.Environment.get_home_dir();
             string infosrc = home.concat("/.local/share/recently-used.xbel");
             infofile = File.new_for_path(infosrc);
+
             rused_settings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-recentlyused"
             );
@@ -128,66 +131,76 @@ namespace RecentlyUsedApplet {
             show_all();
         }
 
-        public Gtk.Menu get_newmenu (HashSet<string> uniques) {
-            menudata.clear();
-            /* 
-            * in vala, we cannot sort a multi dimensional array directly like
-            * in python, so we create a map + a key-list, sort the latter to
-            * access the hashmap items in a sorted order. clumsy, but vala.
-            */
-            var dict = new HashMap<string, string> ();
-            var sortinghelper = new Gee.ArrayList<string> ();
-            var newmenu = new Gtk.Menu();
-            // split line, add [3] as key to ArrayLisst for sorting
-            foreach (string l in uniques) {
-                var linedata = new ArrayList<string> ();
-                foreach (string s in l.split("=\"")) {
-                    linedata.add(s);
+        private Gtk.Menu create_menu() {
+            // get relevant lines
+            var dis = new DataInputStream (infofile.read ());
+            string line;
+            var sortlist = new ArrayList<string> ();
+            HashMap<string, string> sortdict = new HashMap<string, string>();
+            while ((line = dis.read_line (null)) != null) {
+                if (
+                    line.contains("<bookmark href=\"file://") &&
+                    !line.contains("/tmp")
+                ) {
+                    string[] subject = line.split("=\"");
+                    string timestamp = subject[3];
+                    // trim file path
+                    string path = replace(subject[1]);
+                    int len = path.char_count();
+                    sortdict[timestamp] = path[0:len-7];
+                    sortlist.add(timestamp);
                 }
-                // determine file and last-visited
-                string filepath = edit_filestring(linedata[1]);
-                string last_visited = linedata[3];
-                // add key to sorting list
-                sortinghelper.add(last_visited);
-                // add key/value to dict
-                dict[last_visited] = filepath;			
             }
-            // now reverse-sort the keys, pick a slice
-            sortinghelper.sort((a, b) => - a.collate(b));
-            int n_relevantitems = 0;
-            
-            foreach (string s in sortinghelper) {
-                // fill menu with relevant lines of accesible files
-                string showpath = replace(dict[s]);
-                string menuname = getmenuname(showpath);
-                string command = "xdg-open " + "'" + showpath.replace(
-                        "'", "'\\''"
-                ) + "'";
-                File checkexists = File.new_for_path (showpath);
-                bool exists = checkexists.query_exists ();
-                // check if the file exists:
-                Gtk.MenuItem menuitem;
-                string tooltip;
-                if (exists == true) {
-                    menudata[menuname] = command;
-                    menuitem = new Gtk.MenuItem.with_label(
-                        menuname
-                    );
-                    menuitem.activate.connect(openfile);
-                    tooltip = (_("Open")) +": " + showpath;
-                    newmenu.append(menuitem);
-                    if (showtooltips == true) {
-                        menuitem.set_tooltip_text(tooltip);
-                    }
-                    n_relevantitems += 1;
-                    if (n_relevantitems == n_show) {
-                        break;
+            // take care of sorting, slice
+            sortlist.sort((a, b) => - a.collate(b));
+            int n = 0;
+            string[] menu_source = {};
+            foreach (string s in sortlist) {
+                string menuitem = sortdict[s];
+                File checkexists = File.new_for_path(menuitem);
+                if (menuitem in menu_source) {
+                }
+                else {
+                    if(checkexists.query_exists() == true) {
+                        menu_source += menuitem;
+                        n += 1;
                     }
                 }
-            } 
+                if (n == n_show) {
+                    break;
+                }
+            }
+            // create menu & menuitems
+            Gtk.Menu newmenu = new Gtk.Menu();
+            foreach (string longname in menu_source) {
+                // menu name
+                string menuname = getmenuname(longname);
+                Gtk.MenuItem newitem = new Gtk.MenuItem.with_label(menuname);
+                // command
+                string command = "xdg-open " + "'" + longname.replace(
+                    "'", "'\\''"
+                ) + "'";;
+                // tooltip
+                string tooltip = "Open" +": " + longname; //gettext
+                if (showtooltips == true) {
+                    newitem.set_tooltip_text(tooltip);
+                }
+                newmenu.append(newitem);
+                // connect AFTER appending to menu please :)
+                newitem.activate.connect (() => {
+                    try {
+                        Process.spawn_command_line_async(command);
+                    }
+                    catch (GLib.SpawnError err) {
+                        /* 
+                        * in case an error occurs, the file most likely is unavailable
+                        * or cannot be opened otherwise. not much use for any action.
+                        */
+                    }
+                });
+            }
             return newmenu;
-        } 
-    
+        }   
 
         private string getmenuname (string longname) {
             // read settings, split off filename if set to
@@ -217,55 +230,15 @@ namespace RecentlyUsedApplet {
             return output;
         }
 
-        private void openfile (Gtk.MenuItem item) {
-            // read menuitem, look up command in menudata, run it
-            string subject = item.get_label();;
-            string command = menudata[subject];
-            try {
-                Process.spawn_command_line_async(command);
-            }
-            catch (GLib.SpawnError err) {
-                /* 
-                * in case an error occurs, the file most likely is unavailable
-                * or cannot be opened otherwise. not much use for any action.
-                */
-            }
-        }
-
-        private string edit_filestring(string filepath) {
-            // trim the line that contains the file path
-            int len = filepath.char_count();
-            return filepath[7:len-7];
-        }
-
         private void update_menu() {
             // empty menu, fill with updated content
-            var uniques = new HashSet<string> (); //
             recent.destroy();
             showtooltips = rused_settings.get_boolean("showtooltips");
             hidepath = rused_settings.get_boolean("hidepath");
             n_show = rused_settings.get_int("nitems");
-            if(infofile.query_exists() == true){
-                try {
-                    var dis = new DataInputStream (infofile.read ());
-                    string line;
-                    // get uniques
-                    while ((line = dis.read_line (null)) != null) {
-                        if (
-                            line.contains("<bookmark href=\"file://") &&
-                            !line.contains("/tmp")
-                        ) {
-                            uniques.add(line);
-                        }
-                    }
-                    recent = get_newmenu(uniques);
-                    recent.show_all();
-                    this.button.set_popup(recent);
-                } catch (Error e) {
-                    // in case of error, simply don't update the menu
-                    stderr.printf ("Error: %s\n", e.message);
-                }
-            }
+            recent = create_menu();
+            recent.show_all();
+            this.button.set_popup(recent);
         }     
 
         public void initialiseLocaleLanguageSupport(){
