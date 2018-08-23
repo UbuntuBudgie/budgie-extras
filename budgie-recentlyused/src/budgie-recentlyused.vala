@@ -22,7 +22,7 @@ namespace RecentlyUsedApplet {
     private GLib.Settings rused_settings;
     private int n_show;
     private bool showtooltips;
-    public bool hidepath;
+    private bool hidepath;
     
 
     public class RecentlyUsedSettings : Gtk.Grid {
