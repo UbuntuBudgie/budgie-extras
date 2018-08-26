@@ -134,10 +134,7 @@ namespace RecentlyUsedApplet {
             var sortlist = new ArrayList<string> ();
             HashMap<string, string> sortdict = new HashMap<string, string>();
             while ((line = dis.read_line (null)) != null) {
-                if (
-                    line.contains("<bookmark href=\"file://") &&
-                    !line.contains("/tmp")
-                ) {
+                if (line.contains("<bookmark href=\"file://")) {
                     string[] subject = line.split("=\"");
                     string timestamp = subject[3];
                     // trim file path
