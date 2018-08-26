@@ -86,8 +86,8 @@ namespace RecentlyUsedApplet {
 
         private File infofile;
         private Gtk.Menu recent;
-        FileMonitor monitor;
-        Gtk.MenuButton button;
+        private FileMonitor monitor;
+        private Gtk.MenuButton button;
         private Gtk.EventBox indicatorBox;
         public string uuid { public set; public get; }
         /* specifically to the settings section */
