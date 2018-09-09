@@ -6,34 +6,7 @@ App Launcher is a Budgie Desktop applet for productivity. This applet lists your
 
 Evo Pop                    |  Arc Design
 :-------------------------:|:-------------------------:
-<img src="https://raw.githubusercontent.com/UbuntuBudgie/experimental/master/budgie-app-launcher/screenshots/screenshot1.gif" width="400"/>  |  <img src="https://raw.githubusercontent.com/UbuntuBudgie/experimental/master/budgie-app-launcher/screenshots/screenshot2.gif" width="400"/>
-
-<br/>
-
-Install
--------
-```bash
-   # Clone or download the repository
-   git clone https://github.com/UbuntuBudgie/experimental.git
-
-   # Go to the budgie-app-launcher directory (first)
-   cd experimental/budgie-app-launcher
-
-   # Configure the the installation
-   mkdir build && cd build
-   meson --buildtype plain --prefix=/usr --libdir=/usr/lib
-
-   # Install
-   sudo ninja install
-
-   # To uninstall
-   sudo ninja uninstall
-
-   # Logout and login after installing the applet.
-   # You can add App Launcher to your panel from Budgie Desktop Settings.
-
-   # Have fun!
-```
+<img src="https://raw.githubusercontent.com/UbuntuBudgie/budgie-extras/master/budgie-app-launcher/screenshots/screenshot1.gif" width="400"/>  |  <img src="https://raw.githubusercontent.com/UbuntuBudgie/budgie-extras/master/budgie-app-launcher/screenshots/screenshot2.gif" width="400"/>
 
 <br/>
 
