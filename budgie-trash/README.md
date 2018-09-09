@@ -6,7 +6,7 @@ Trash is a Budgie Desktop applet for productivity.
 
 Evo Pop                    |  Arc Design
 :-------------------------:|:-------------------------:
-<img src="https://github.com/UbuntuBudgie/experimental/blob/master/budgie-trash/screenshots/screenshot1.gif" width="300"/>  |  <img src="https://github.com/UbuntuBudgie/experimental/blob/master/budgie-trash/screenshots/screenshot2.gif" width="300"/>
+<img src="https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-trash/screenshots/screenshot1.gif" width="300"/>  |  <img src="https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-trash/screenshots/screenshot2.gif" width="300"/>
 
 <br/>
 
@@ -19,34 +19,6 @@ vala
 ```
 <br/>
 
-Install
--------
-```bash
-   # Clone or download the repository
-   git clone https://github.com/UbuntuBudgie/experimental.git
-
-   # Go to the budgie-trash directory
-   cd experimental/budgie-trash
-
-   # Configure the installation
-   mkdir build && cd build
-   meson --buildtype plain --prefix=/usr --libdir=/usr/lib
-   ninja
-
-   # Install
-   sudo ninja install
-
-   # To uninstall
-   sudo ninja uninstall
-
-   # Logout and login after installing the applet.
-   # You can add Trash to your panel from Budgie Desktop Settings.
-
-   # Have fun!
-```
-
-<br/>
-
 Changelog
 -------
 ### Added
@@ -54,10 +26,6 @@ Changelog
 * Listing files
 * Restore file, open file options
 * class namespaces
-
-### Changed
-* project language from Python to Vala
-### Removed
 
 References
 -------
