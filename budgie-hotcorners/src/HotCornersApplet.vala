@@ -31,7 +31,6 @@ namespace HCSupport {
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
-            print(output + "\n");
             if (output == "") {
                 return false;
             }
