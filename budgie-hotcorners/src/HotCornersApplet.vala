@@ -26,6 +26,23 @@ namespace HCSupport {
     * keep the main code clean and readable
     */
 
+    private bool locked () {
+        string cmd = "pgrep -f gnome-screensaver-dialog";
+        string output;
+        try {
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            print(output + "\n");
+            if (output == "") {
+                return false;
+            }
+        } 
+        /* on an occasional exception, just don't run the command */
+        catch (SpawnError e) {
+            return true;
+        }
+        return true;
+    }
+
     private bool check_onapplet(string path, string applet_name) {
         /* check if the applet still runs */
         string cmd = "dconf dump " + path;
@@ -581,7 +598,7 @@ namespace HotCornersApplet {
         private void run_command (int corner) {
             /* execute the command */
             string cmd = this.commands[corner];
-            if (cmd != "") {
+            if (cmd != "" && HCSupport.locked() == false) {
                 try {
                     Process.spawn_command_line_async(cmd);
                 }
