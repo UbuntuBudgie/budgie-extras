@@ -39,7 +39,7 @@ Non-budgie plugins - see the individual components for details
 
 We love Budgie-Extras to work across as many distro's as possible.  So please let us know if your distro has packaged budgie-extras and how to install.
 
- - Arch - https://aur.archlinux.org/packages/budgie-extras/
+ - Arch - https://www.archlinux.org/packages/community/x86_64/budgie-extras/
  - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
  - Debian - packages are available in Buster named "budgie-insertname-applet" https://goo.gl/R4eF7q
 
