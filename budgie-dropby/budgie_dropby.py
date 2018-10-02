@@ -261,9 +261,12 @@ class BudgieDropByApplet(Budgie.Applet):
             return False
 
     def scrs_active_check(self):
-        return "screensaver is inactive" in subprocess.check_output([
-            "gnome-screensaver-command", "-q"
-        ]).decode("utf-8")
+        cmd = ["gnome-screensaver-command", "-t"]
+        try:
+            output = subprocess.check_output(cmd).decode("utf-8")
+            return not any(char.isdigit() for char in output)
+        except Exception:
+            return False
 
     def on_event(self, box, *args):
         if all([
