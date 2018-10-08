@@ -50,10 +50,15 @@ automatically set:
 
 - Ctrl + Alt + w
   (call the window mover)
+  then press the number of
+  the targeted workspace.
+
 - Ctrl + Alt + s
   (call the desktop mover)
+  then press the number of
+  the targeted workspace.
 
-Drag the window to the
+Or: drag the window to the
 bottom of your screen, and the
 window mover appears
 
