@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # This file is part of App Launcher
 
@@ -72,23 +72,33 @@ class AppLauncherApplet(Budgie.Applet):
         self.loadAllApps()
         self.loadAppButtons()
         self.loadPanelButtons()
+        self.vertical = False
+
+    def do_panel_position_changed(self, position):
+        # wait for signal, change orientation if it occurs
+        check_or = any([
+            position == Budgie.PanelPosition(pos) for pos in [8, 16]
+        ])
+        self.vertical = True if check_or else False
+        self.reload_elements()
+
+    def reload_elements(self):
+        # on orientation change of the panel, set applet accordingly
+        self.panelButtonsContainer.destroy()
+        self.panelButtonsContainer = Gtk.VBox() if self.vertical \
+            else Gtk.HBox()
+        self.indicatorBox.add(self.panelButtonsContainer)
+        self.update()
 
     ####################################
     # build START
     ####################################
+
     def buildIndicator(self):
-        panelBox = Gtk.HBox()
-        self.add(panelBox)
-        self.panelButtonsContainer = Gtk.HBox()
-        panelBox.pack_start(self.panelButtonsContainer, False, False, 0)
         self.indicatorBox = Gtk.EventBox()
-        panelBox.pack_start(self.indicatorBox, False, False, 0)
-        self.indicatorIcon = Gtk.Image.new_from_icon_name(
-            "budgie-app-launcher-applet-symbolic", Gtk.IconSize.MENU)
-        self.indicatorBox.add(self.indicatorIcon)
-        self.indicatorBox.connect("button-press-event",
-                                  self.indicatorBoxOnPress)
-        self.indicatorBox.show_all()
+        self.panelButtonsContainer = Gtk.VBox()
+        self.indicatorBox.add(self.panelButtonsContainer)
+        self.add(self.indicatorBox)
 
     def buildPopover(self):
         self.popover = Budgie.Popover.new(self.indicatorBox)
@@ -122,7 +132,6 @@ class AppLauncherApplet(Budgie.Applet):
         titleBox.pack_start(self.searchEntry, True, True, 0)
         self.searchEntry.connect("search-changed", self.searchEntryOnChange)
         self.searchEntry.connect("activate", self.searchEntryOnActivate)
-
         editButton = EditButton("Edit")
         editButton.connect("clicked", self.editButtonOnClick)
         titleBox.pack_end(editButton, False, False, 0)
@@ -541,6 +550,17 @@ class AppLauncherApplet(Budgie.Applet):
         if self.panelButtonsContainer is not None:  # empty allAppsContent
             for panelButton in self.panelButtonsContainer.get_children():
                 panelButton.destroy()
+        # add the applet's button as first item
+        appletbutton = Gtk.Button()
+        applet_icon = Gtk.Image.new_from_icon_name(
+            "budgie-app-launcher-applet-symbolic", Gtk.IconSize.MENU)
+        appletbutton.set_image(applet_icon)
+        appletbutton.set_relief(Gtk.ReliefStyle.NONE)
+        appletbutton.set_size_request(16, 16)
+        self.panelButtonsContainer.add(appletbutton)
+        appletbutton.connect(
+            "button-press-event", self.indicatorBoxOnPress
+        )
         counter = 0
         for app in self.allApps:
             if counter < self.showOnPanel and app.getActive():
