@@ -142,7 +142,6 @@ class AppLauncherApplet(Budgie.Applet):
                                       Gtk.PolicyType.AUTOMATIC)
         self.appButtonsContainer = Gtk.ListBox()
         self.contentScroll.add(self.appButtonsContainer)
-        # self.setMargins(self.contentScroll, 10, 3, 1, 1)
         # self.content.row_activated.connect(on_row_activate)
         self.appButtonsContainer.set_selection_mode(Gtk.SelectionMode.NONE)
         # placeholder in case of no results
@@ -189,7 +188,6 @@ class AppLauncherApplet(Budgie.Applet):
         # page 2 toolbar 2
         page2Toolbar2 = Gtk.HBox()
         page2.pack_start(page2Toolbar2, False, False, 0)
-
         self.deselectButton = SelectButton(False)
         page2Toolbar2.pack_start(self.deselectButton, False, False, 0)
         self.deselectButton.addOnClickMethod(self.deselectButtonOnClick)
@@ -243,10 +241,12 @@ class AppLauncherApplet(Budgie.Applet):
         iconSizeSpinButton = Gtk.SpinButton()
         iconSizeSpinButton.set_adjustment(Gtk.Adjustment(0, 16, 512, 1, 10, 0))
         iconSizeSpinButton.set_value(self.iconSize)
-        page2BottomBarIconSizeContainer.pack_start(iconSizeSpinButton, False,
-                                                   False, 0)
-        iconSizeSpinButton.connect("value-changed",
-                                   self.iconSizeSpinButtonOnValueChange)
+        page2BottomBarIconSizeContainer.pack_start(
+            iconSizeSpinButton, False, False, 0,
+        )
+        iconSizeSpinButton.connect(
+            "value-changed", self.iconSizeSpinButtonOnValueChange,
+        )
 
     def openStackPage1(self):
         self.stack.set_visible_child_name("page1")
@@ -553,10 +553,10 @@ class AppLauncherApplet(Budgie.Applet):
         # add the applet's button as first item
         appletbutton = Gtk.Button()
         applet_icon = Gtk.Image.new_from_icon_name(
-            "budgie-app-launcher-applet-symbolic", Gtk.IconSize.MENU)
+            "budgie-app-launcher-applet-symbolic", Gtk.IconSize.MENU
+        )
         appletbutton.set_image(applet_icon)
         appletbutton.set_relief(Gtk.ReliefStyle.NONE)
-        appletbutton.set_size_request(16, 16)
         self.panelButtonsContainer.add(appletbutton)
         appletbutton.connect(
             "button-press-event", self.indicatorBoxOnPress
