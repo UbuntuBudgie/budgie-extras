@@ -78,4 +78,4 @@ The following packages are required for the various Vala plugins to work:
  - libpeas-dev
  - libjson-glib-dev
  - libgee-0.8-dev
-
+ - libsoup2.4-dev
