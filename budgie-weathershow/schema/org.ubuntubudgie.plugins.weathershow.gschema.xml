@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/weathershow/"
+            id="org.ubuntubudgie.plugins.weathershow">
+        <key type="s" name="key">
+            <summary>OWM key</summary>
+            <description>Open Weather Map key to use</description>
+            <default>"cfd52641f834ca80ed94a28de864bb64"</default>
+        </key>
+        <key type="s" name="citycode">
+            <summary>City code</summary>
+            <description>OWM's city code</description>
+            <default>"2643743"</default>
+        </key>
+        <key type="s" name="tempunit">
+            <summary>Temperature unit</summary>
+            <description>Either Celsius or Fahrenheit</description>
+	    <default>"Celsius"</default>
+        </key>
+        <key type="as" name="textcolor">
+            <summary>Desktop text color</summary>
+            <description>Text color of the applet's desktop representation</description>
+            <default>["255", "255", "255"]</default>
+        </key>
+        <key type="i" name="transparency">
+            <summary>Desktop show transparency</summary>
+            <description>Transparency of the applet's desktop representation</description>
+            <default>100</default>
+	    <range min="0" max="100"/>
+        </key>
+        <key type="i" name="xposition">
+            <summary>X- position of the desktop window</summary>
+            <description>Sets the top-left position of the desktop window</description>
+	    <default>200</default>
+        </key>
+        <key type="i" name="yposition">
+            <summary>Y- position of the desktop window</summary>
+            <description>Sets the top-left position of the desktop window</description>
+	    <default>200</default>
+        </key>
+        <key type="b" name="dynamicicon">
+            <summary>Show dynamic panel icon</summary>
+            <description>Show a dynamically updated panel icon</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="desktopweather">
+            <summary>Show on desktop</summary>
+            <description>Show a dynamically updated report on the desktop</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="forecast">
+            <summary>Show forecast</summary>
+            <description>Show a dynamically updated forecast in the applet's popover</description>
+            <default>true</default>
+        </key>
+    </schema>
+</schemalist>
+
+

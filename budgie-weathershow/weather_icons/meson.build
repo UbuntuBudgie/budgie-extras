@@ -66,5 +66,5 @@ install_data(
     '803n-broken-clouds.svg',
     '804d-overcast-clouds.svg',
     '804n-overcast-clouds.svg',
-    install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN + '/weather_icons')
+    install_dir: join_paths(LIB_INSTALL_DIR, 'weather_icons')
 )
