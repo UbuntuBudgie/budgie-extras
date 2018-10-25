@@ -3,7 +3,15 @@ configurationData.set('PACKAGE_NAME', meson.project_name())
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
-install_data('HotCorners.plugin', install_dir: LIB_INSTALL_DIR)
+
+custom_target('plugin-file-hotcorners',
+    input : 'HotCorners.plugin.in',
+    output : 'HotCorners.plugin',
+    command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
+    install : true,
+    install_dir : LIB_INSTALL_DIR)
+
+#install_data('HotCorners.plugin', install_dir: LIB_INSTALL_DIR)
 
 HotCornersSources = [
 'HotCornersApplet.vala'

@@ -20,6 +20,7 @@ intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
+podir = join_paths(meson.source_root(), 'po')
 
 PLUGINS_INSTALL_DIR = join_paths(libdir, 'budgie-desktop',
 	'plugins')
@@ -33,6 +34,7 @@ conf.set('PROJECT_NAME', meson.project_name())
 
 message('Installing applets...')
 
+subdir('po')
 subdir('budgie-wpreviews')
 subdir('budgie-wswitcher')
 subdir('budgie-hotcorners')
