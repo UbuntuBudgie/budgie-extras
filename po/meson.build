@@ -2,6 +2,11 @@ i18n = import('i18n')
 
 # for i in *.po; do echo "    '$i'," | sed 's/\.po//'; done
 langs = [
+    'ca',
+    'en_GB',
+    'es',
+    'fr',
+    'lt',
     'nl_NL',
 ]
 

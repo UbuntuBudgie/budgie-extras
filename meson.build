@@ -22,6 +22,7 @@ libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
 podir = join_paths(meson.source_root(), 'po')
 
+LOCALE_DIR = join_paths(prefix, get_option('localedir'))
 PLUGINS_INSTALL_DIR = join_paths(libdir, 'budgie-desktop',
 	'plugins')
 PIXMAPS_DIR = join_paths(datadir, 'pixmaps')

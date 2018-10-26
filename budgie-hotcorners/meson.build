@@ -16,7 +16,6 @@ am_cflags = [
 
 add_global_arguments(am_cflags, language: 'c')
 
-LOCALE_DIR = join_paths(prefix, get_option('localedir'))
 PLUGIN = 'budgie-hotcorners'
 VAPI_DIR = join_paths(meson.source_root(),
                       PLUGIN,
@@ -32,7 +31,6 @@ LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN
 message('Installing applet...')
 
 subdir('src')
-subdir('po')
 subdir('icons')
 
 meson.add_install_script('meson_post_install')
