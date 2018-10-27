@@ -1,16 +1,13 @@
 # QuickNote Applet build
 
 configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
+configurationData.set('PACKAGE_NAME', 'budgie-extras')
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 
 PLUGIN='budgie-quicknote'
 applet_quicknote_dir = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
-
-podir='./po'
-subdir('po')
 
 custom_target('plugin-file-quicknote',
     input : 'QuickNoteApplet.plugin.in',

@@ -42,7 +42,6 @@ PIXMAPS_DIR = join_paths(datadir, 'pixmaps')
 message('Installing applet...')
 
 subdir('src')
-subdir('po')
 subdir('weather_icons')
 subdir('icons_for_pixmaps')
 
