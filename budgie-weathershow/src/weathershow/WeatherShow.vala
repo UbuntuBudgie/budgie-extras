@@ -369,8 +369,8 @@ namespace WeatherShowApplet {
             string[] records = file_contents.split(glue);
             int length = records.length;
             string[] keeprecords;
-            if (length > 20) {
-                keeprecords = records[length - 20:length];
+            if (length > 40) {
+                keeprecords = records[length - 40:length];
             }
             else {keeprecords = records;}
             // add new record
