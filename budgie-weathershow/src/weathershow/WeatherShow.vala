@@ -344,6 +344,50 @@ namespace WeatherShowApplet {
             session.send_message (message);
             string output = (string) message.response_body.flatten().data;
             int len_output = output.length;
+
+            // error log
+            /////////////////////////////////////////////////////////
+            // define logfile
+            string loglocation = Environment.get_home_dir() + "/weatherlog";
+            var logfile = File.new_for_path (loglocation);
+            if (!logfile.query_exists ()) {
+                var file_stream = logfile.create (FileCreateFlags.NONE);
+            }
+            // define logtime
+            var logtime = new DateTime.now_local();
+            int hrs = logtime.get_hour();
+            int mins = logtime.get_minute();
+            string pre = "";
+            if (mins < 10) {
+                pre = "0";
+            }
+            string time = @"$hrs:$pre$mins";
+            // read history
+            string glue = "\n==========\n";
+            string file_contents;
+            FileUtils.get_contents(loglocation, out file_contents);
+            string[] records = file_contents.split(glue);
+            int length = records.length;
+            string[] keeprecords;
+            if (length > 20) {
+                keeprecords = records[length - 20:length];
+            }
+            else {keeprecords = records;}
+            // add new record
+            string log_output = wtype + " time: " + time + "\n\n" + output + glue;
+            keeprecords += log_output;
+            string newlog = string.joinv(glue, keeprecords);
+            // delete previous version
+            if (logfile.query_exists ()) {
+                logfile.delete ();
+            }
+            var file_stream = logfile.create (FileCreateFlags.NONE);
+            var data_stream = new DataOutputStream (file_stream);
+            data_stream.put_string (newlog);
+            //////////////////////////////////////////////////////////
+            // end error log */
+
+            
             if (len_output != 0) {
                 return output;
             }
