@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 12:44+0100\n"
+"POT-Creation-Date: 2018-11-13 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:127
+#: budgie-hotcorners/src/HotCornersApplet.vala:129
 msgid "Set pressure (0 = no pressure)"
 msgstr ""
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:207
+#: budgie-hotcorners/src/HotCornersApplet.vala:211
 msgid "Corner"
 msgstr ""
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:211
+#: budgie-hotcorners/src/HotCornersApplet.vala:215
 msgid "Action"
 msgstr ""
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:215
+#: budgie-hotcorners/src/HotCornersApplet.vala:219
 msgid "Custom"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:238
 msgid "Top-left"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:238
 msgid "Top-right"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:238
 msgid "Bottom-left"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:238
 msgid "Bottom-right"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:316
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
 msgid "'Missing applet'"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:317
+#: budgie-hotcorners/src/HotCornersApplet.vala:319
 msgid " 'This command depends on another applet.'"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgid "Hide path in menu"
 msgstr ""
 
 #. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:178
 #: budgie-trash/src/widgets/TrashPopover.vala:79
 #: budgie-trash/src/widgets/MenuRow.vala:52
 msgid "Open"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-quicknote/QuickNoteApplet.vala:197
 msgid "Cancel"
 msgstr ""
 
@@ -104,93 +104,103 @@ msgstr ""
 msgid "Empty Trash"
 msgstr ""
 
-#: budgie-trash/src/helpers/TrashHelper.vala:130
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:111
+msgid "Could not determine original location of "
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:136
 msgid "restored."
 msgstr ""
 
-#: budgie-trash/src/helpers/TrashHelper.vala:136
-msgid "already exist."
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:143
+msgid "already exists."
 msgstr ""
 
 #. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:358
+#: budgie-trash/src/helpers/TrashHelper.vala:369
 msgid "Restore"
 msgstr ""
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:118
 msgid "Monday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:118
 msgid "Tuesday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:118
 msgid "Wednesday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:118
 msgid "Thursday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:119
 msgid "Friday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:119
 msgid "Saturday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:119
 msgid "Sunday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:660
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:685
 msgid "General"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:666
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:691
 msgid "Desktop"
 msgstr ""
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:678
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:703
 msgid "City"
 msgstr ""
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:701
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:726
 msgid "Show on desktop"
 msgstr ""
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:708
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:733
 msgid "Show dynamic panel icon"
 msgstr ""
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:715
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:740
 msgid "Show forecast in popover"
 msgstr ""
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:731
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:756
 msgid "Transparency"
 msgstr ""
 
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:757
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:782
 #: budgie-weathershow/src/get_color/get_color.vala:50
 msgid "Set text color"
 msgstr ""
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:764
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:789
 msgid "Set custom position (px)"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:905
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:926
 msgid "Please enter at least 3 characters"
 msgstr ""
 
@@ -211,32 +221,32 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:47
+#: budgie-quicknote/QuickNoteApplet.vala:46
 msgid "Welcome to QuickNote."
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:48
+#: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Text will be saved automatically while typing."
 msgstr ""
 
 #. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
+#: budgie-quicknote/QuickNoteApplet.vala:139
 msgid "Text area width"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:150
+#: budgie-quicknote/QuickNoteApplet.vala:146
 msgid "Text area height"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:166
+#: budgie-quicknote/QuickNoteApplet.vala:162
 msgid "Set a custom directory"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:179
+#: budgie-quicknote/QuickNoteApplet.vala:175
 msgid "Choose directory"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-quicknote/QuickNoteApplet.vala:197
 msgid "Use"
 msgstr ""
 
