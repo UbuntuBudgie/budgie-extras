@@ -10,25 +10,25 @@
  */
 
 namespace TrashApplet.Models {
- 
-public class CustomFile {
 
-    private GLib.File file;
-    private GLib.FileInfo fileInfo;
+    public class CustomFile {
 
-    public CustomFile(GLib.File file, GLib.FileInfo fileInfo){
-        this.file = file;
-        this.fileInfo = fileInfo;
+        private GLib.File file;
+        private GLib.FileInfo fileInfo;
+
+        public CustomFile (GLib.File file, GLib.FileInfo fileInfo) {
+            this.file     = file;
+            this.fileInfo = fileInfo;
+        }
+
+        public GLib.File getFile () {
+            return this.file;
+        }
+
+        public GLib.FileInfo getFileInfo () {
+            return this.fileInfo;
+        }
+
     }
-
-    public GLib.File getFile(){
-        return this.file;
-    }
-
-    public GLib.FileInfo getFileInfo(){
-        return this.fileInfo;
-    }
-
-}   
 
 }
