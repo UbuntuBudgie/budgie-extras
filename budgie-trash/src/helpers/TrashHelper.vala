@@ -106,9 +106,7 @@ namespace TrashApplet.Helpers {
                 });
 
             } else {
-                // TRANSLATORS: This is referring to a file path for example
-                // "Could not determine original location of /home/budgie/file.txt"
-                showTrashInfoFileNotFoundMessage (_("Could not determine original location of ") + fileDisplayName);
+                showTrashInfoFileNotFoundMessage ("Could not determine original location of " + fileDisplayName);
             }
 
         }
@@ -131,16 +129,13 @@ namespace TrashApplet.Helpers {
                 try {
                     src.move (dest, FileCopyFlags.NONE, null);
                     infoFile.delete ();
-                    // TRANSLATORS: This is referring to a file path for example
-                    // "/home/budgie/file.txt restored"
                     showFileRestoredMessage (destPath + "\n " + _("restored."));
                 } catch (Error e) {
                     print ("Error: %s\n", e.message);
                 }
             } else if (dest.query_exists ()) {
-                // TRANSLATORS: This is referring to a file path for example
-                // "/home/budgie/file.txt already exists"
-                showSameNameFileFoundMessage (destPath + "\n " + _("already exists."));
+
+                showSameNameFileFoundMessage (destPath + "\n " + _("already exist."));
             }
 
         }
