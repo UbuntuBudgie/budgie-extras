@@ -11,8 +11,8 @@
 
 using TrashApplet.Models;
 
-namespace TrashApplet.Helpers { 
-     
+namespace TrashApplet.Helpers {
+
 
 public class TrashHelper {
 
@@ -90,7 +90,7 @@ public class TrashHelper {
                             string destParentPath = destPath.substring(0, fileNameStartIndex);
 
                             destPath = destParentPath + "/" + fileDisplayName;
-              
+
                             restoreFile(infoFile, srcPath, destPath, destParentPath);
                         }
                         //if(line.has_prefix("DeletionDate")){
@@ -104,7 +104,9 @@ public class TrashHelper {
             });
 
         }else{
-            showTrashInfoFileNotFoundMessage("Could not determine original location of " + fileDisplayName);
+                // TRANSLATORS: This is referring to a file path for example
+                // "Could not determine original location of /home/budgie/file.txt"
+                showTrashInfoFileNotFoundMessage (_("Could not determine original location of ") + fileDisplayName);
         }
 
     }
@@ -127,13 +129,16 @@ public class TrashHelper {
             try {
                 src.move(dest, FileCopyFlags.NONE, null);
                 infoFile.delete();
+                // TRANSLATORS: This is referring to a file path for example
+                // "/home/budgie/file.txt restored"
                 showFileRestoredMessage(destPath + "\n " + _("restored."));
             } catch (Error e) {
                 print ("Error: %s\n", e.message);
             }
         }else if(dest.query_exists()){
-
-            showSameNameFileFoundMessage(destPath + "\n " + _("already exist."));
+            // TRANSLATORS: This is referring to a file path for example
+            // "/home/budgie/file.txt already exists"
+            showSameNameFileFoundMessage(destPath + "\n " + _("already exists."));
         }
 
     }
@@ -206,7 +211,7 @@ public class TrashHelper {
         emptyTrashInfoFile();
         emptyTrashFilesFile();
     }
-    
+
     public void emptyTrashInfoFile(){
         if(trashInfoFile.query_exists()){
             try{
@@ -235,7 +240,7 @@ public class TrashHelper {
                     FileInfo fileInfo = enumerator.next_file(null);
 
                     if(fileInfo != null){
-                       
+
                         GLib.File childFile = trashFile.get_child(fileInfo.get_name());
                         moveFileToCacheThenDelete(childFile, fileInfo.get_name());
 
@@ -285,7 +290,7 @@ public class TrashHelper {
         }catch(GLib.Error e){
             print ("Error: %s\n", e.message);
         }
-        
+
     }
 
     public bool isTrashEmpty(){
@@ -356,7 +361,7 @@ public class TrashHelper {
                             destPath = destParentPath + "/" + fileName;
                             //fileButton.set_tooltip_text(destParentPath);
                             restoreButton.set_tooltip_text(_("Restore") + " " + destPath);
-                            
+
                         }
                         if(line.has_prefix("DeletionDate")){
                            string deletionDate = line.slice(13, -1);
