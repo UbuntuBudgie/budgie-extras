@@ -106,7 +106,7 @@ public class TrashHelper {
         }else{
                 // TRANSLATORS: This is referring to a file path for example
                 // "Could not determine original location of /home/budgie/file.txt"
-                showTrashInfoFileNotFoundMessage (_("Could not determine original location of ") + fileDisplayName);
+                showTrashInfoFileNotFoundMessage (_("Could not determine original location of %s").printf(fileDisplayName));
         }
 
     }
@@ -131,14 +131,14 @@ public class TrashHelper {
                 infoFile.delete();
                 // TRANSLATORS: This is referring to a file path for example
                 // "/home/budgie/file.txt restored"
-                showFileRestoredMessage(destPath + "\n " + _("restored."));
+                showFileRestoredMessage(_("%s restored.").printf(destPath));
             } catch (Error e) {
                 print ("Error: %s\n", e.message);
             }
         }else if(dest.query_exists()){
             // TRANSLATORS: This is referring to a file path for example
             // "/home/budgie/file.txt already exists"
-            showSameNameFileFoundMessage(destPath + "\n " + _("already exists."));
+            showSameNameFileFoundMessage(_("%s already exists.").printf(destPath));
         }
 
     }
