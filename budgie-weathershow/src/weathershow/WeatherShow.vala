@@ -351,7 +351,6 @@ namespace WeatherShowApplet {
             file.make_directory_with_parents();
         }
         catch (Error e) {
-            print("don't bother\n");
             /* the directory exists, nothing to be done */
         }
         return GLib.Path.build_filename(fullpath, filename);
