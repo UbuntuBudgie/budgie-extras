@@ -1,58 +1,8 @@
-budgie-extras (0.6.1-1) unstable; urgency=medium
+budgie-extras (0.4.5-0ubuntu1) bionic; urgency=medium
 
-  * New upstream release
-    - see ChangeLog for details
-    - Consolidated release to resync Debian and Ubuntu versions
-  * Packaging Changes:
-    - Bump Standards-Version - no changes required
+  * daily build config
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 18 Sep 2018 13:06:49 +0100
-
-budgie-extras (0.6.0-0ubuntu1) cosmic; urgency=medium
-
-  * New upstream release
-    - see ChangeLog for details
-    - fix showtime crash on early exit (LP: #1760741)
-  * Packaging Changes:
-    - debian/control change build-dependencies to build both vala and
-      python3 applets
-    - debian/control
-      update descriptions for vala applets
-      revise binary dependencies for hotcorners and quicknote
-      change architecture for hotcorners and quicknote to any
-      update BuildDepends to accommodate Vala compilation
-      Add new binary packages for trash, recentlyused, applauncher and weather
-    - debian/rules Add hardening instructions for Vala based applets
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 18 Aug 2018 09:59:35 +0100
-
-budgie-extras (0.5.0-1ubuntu2) cosmic; urgency=medium
-
-  * Bug-fix release
-    - fix hotcorners pressure calculation causing crash of the
-      applet (LP: #1781981)
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 16 Jul 2018 19:55:24 +0100
-
-budgie-extras (0.5.0-1ubuntu1) cosmic; urgency=medium
-
-  * Bug-fix release
-    - fix occasional display issues with previews (LP: #1779766)
-      wpreviews.patch
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 04 Jul 2018 21:52:47 +0100
-
-budgie-extras (0.5.0-1) unstable; urgency=medium
-
-  * New release
-    - Add Kangaroo plugin
-  * Packaging changes
-    - debian/control drop obsolete alternate library for budgie-desktop
-    - debian/control add missing runtime dependency gir1.2-peas-1.0
-    - debian/control bump StandardsVersion no changes required
-    - debian/control add binary package budgie-kangaroo-applet
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 08 May 2018 20:29:07 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 15 Nov 2018 13:22:38 +0000
 
 budgie-extras (0.4.2-1) unstable; urgency=medium
 
