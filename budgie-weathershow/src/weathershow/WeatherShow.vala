@@ -345,6 +345,7 @@ namespace WeatherShowApplet {
             string output = (string) message.response_body.flatten().data;
             int len_output = output.length;
 
+
             // error log
             /////////////////////////////////////////////////////////
             // define logfile
@@ -369,8 +370,8 @@ namespace WeatherShowApplet {
             string[] records = file_contents.split(glue);
             int length = records.length;
             string[] keeprecords;
-            if (length > 40) {
-                keeprecords = records[length - 40:length];
+            if (length > 20) {
+                keeprecords = records[length - 20:length];
             }
             else {keeprecords = records;}
             // add new record
@@ -387,11 +388,17 @@ namespace WeatherShowApplet {
             //////////////////////////////////////////////////////////
             // end error log */
 
-            
-            if (len_output != 0) {
+            string forecast_ok = "cod\":\"200";
+            string weather_ok = "cod\":200";
+
+            if (
+                output.contains(forecast_ok) || output.contains(weather_ok)
+            ) { 
+                print("status ok\n");
                 return output;
             }
             else {
+                print("status not ok\n");
                 return "no data";
             }
         }
