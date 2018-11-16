@@ -87,7 +87,7 @@ namespace QuickNoteApplet {
         if (filepath == "") {
             string homedir = Environment.get_home_dir();
             string settingsdir = ".config/budgie-extras/quicknote";
-            string custompath = GLib.Path.build_path(homedir, settingsdir);
+            string custompath = GLib.Path.build_path("/", homedir, settingsdir);
             File file = File.new_for_path(custompath);
             try {
                 file.make_directory_with_parents();
