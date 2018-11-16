@@ -3,14 +3,18 @@
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Daniel Breuer <daniel3reuer@gmail.com>, 2018
+# Rainer Bode <rainer.uwe.bode@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 12:44+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Daniel Breuer <daniel3reuer@gmail.com>, 2018\n"
+"POT-Creation-Date: 2018-11-14 12:49+0000\n"
+"PO-Revision-Date: 2018-10-26 11:46+0000\n"
+"Last-Translator: Rainer Bode <rainer.uwe.bode@gmail.com>, 2018\n"
 "Language-Team: German (Germany) (https://www.transifex.com/ubuntu-budgie/teams/72251/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,16 +109,29 @@ msgstr "Abbrechen"
 msgid "Empty Trash"
 msgstr "Papierkorb leeren"
 
-#: budgie-trash/src/helpers/TrashHelper.vala:130
-msgid "restored."
-msgstr "Wiederhergestellt"
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "Konnte den ursprünglichen Speicherort von \"%s\" nicht bestimmen."
 
-#: budgie-trash/src/helpers/TrashHelper.vala:136
-msgid "already exist."
-msgstr "Bereits vorhanden"
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr " \"%s\" wiederhergestellt."
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr "\"%s\" existiert schon"
 
 #. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:358
+#: budgie-trash/src/helpers/TrashHelper.vala:363
 msgid "Restore"
 msgstr "Wiederherstellen"
 
@@ -147,51 +164,51 @@ msgstr "Samstag"
 msgid "Sunday"
 msgstr "Sonntag"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:660
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:704
 msgid "General"
 msgstr "Allgemein "
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:666
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:710
 msgid "Desktop"
 msgstr "Arbeitsplatz"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:678
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:722
 msgid "City"
 msgstr "Stadt"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:701
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:745
 msgid "Show on desktop"
 msgstr "Am Arbeitsplatz anzeigen"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:708
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
 msgid "Show dynamic panel icon"
 msgstr "Dynamisches Element-Symbol anzeigen."
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:715
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:759
 msgid "Show forecast in popover"
 msgstr "Vorhersage (im Überlappfenster) anzeigen"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:731
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
 msgid "Transparency"
 msgstr "Transparenz"
 
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:757
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:801
 #: budgie-weathershow/src/get_color/get_color.vala:50
 msgid "Set text color"
 msgstr "Textfarbe festlegen"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:764
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:808
 msgid "Set custom position (px)"
 msgstr "Eigene Position einstellen (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:905
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:949
 msgid "Please enter at least 3 characters"
 msgstr "Bitte mindestens 3 Zeichen eingeben"
 
