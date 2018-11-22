@@ -413,11 +413,9 @@ namespace WeatherShowApplet {
             if (
                 output.contains(forecast_ok) || output.contains(weather_ok)
             ) { 
-                print("status ok\n");
                 return output;
             }
             else {
-                print("status not ok\n");
                 return "no data";
             }
         }
