@@ -176,6 +176,7 @@ namespace WeatherShowApplet {
     private bool show_forecast;
     private string lang;
     private string tempunit;
+    private string windunit;
     private string[] directions;
     private string key;
     private Gtk.Image indicatorIcon;
@@ -533,7 +534,14 @@ namespace WeatherShowApplet {
                 float wspeed = check_numvalue(categories["wind"], "speed");
                 string wspeeddisplay;
                 if (wspeed != 1000) {
-                    wspeeddisplay = wspeed.to_string().concat(" m/sec");
+                    if (windunit == "Miles") {
+                        wspeed = wspeed * (float) 2.237;
+                        double rounded_wspeed = Math.round((double) wspeed);
+                        wspeeddisplay = rounded_wspeed.to_string().concat(" MPH");
+                    } 
+                    else {
+                        wspeeddisplay = wspeed.to_string().concat(" m/sec");
+                    }
                 }
                 else {
                     wspeeddisplay = "";
@@ -794,6 +802,13 @@ namespace WeatherShowApplet {
             tempunit_checkbox.toggled.connect(set_tempunit);
             var spacelabel4 = new Gtk.Label("");
             subgrid_general.attach(spacelabel4, 0, 15, 1, 1);
+            // wind unit
+            var windunit_checkbox = new CheckButton.with_label("Wind speed in MPH");
+            subgrid_general.attach(windunit_checkbox, 0, 15, 1, 1);
+            windunit_checkbox.set_active(get_windstate());
+            windunit_checkbox.toggled.connect(set_windunit);
+            var spacelabel5 = new Gtk.Label("");
+            subgrid_general.attach(spacelabel5, 0, 17, 1, 1);
             // optional settings: show on desktop
             transparency_label = new Gtk.Label(
                 (_("Transparency"))
@@ -1025,6 +1040,12 @@ namespace WeatherShowApplet {
             );
         }
 
+        private bool get_windstate () {
+            return (
+                windunit == "Miles"
+            );
+        }
+
         private void set_tempunit (ToggleButton button) {
             // update gsettings
             bool newsetting = button.get_active();
@@ -1036,6 +1057,19 @@ namespace WeatherShowApplet {
             }
             update_weathershow();
             ws_settings.set_string("tempunit", tempunit);
+        }
+
+        private void set_windunit (ToggleButton button) {
+            // update gsettings
+            bool newsetting = button.get_active();
+            if (newsetting == true) {
+                windunit = "Miles";
+            }
+            else {
+                windunit = "Meters";
+            }
+            update_weathershow();
+            ws_settings.set_string("windunit", windunit);
         }
 
         private void toggle_value(ToggleButton button) {
@@ -1191,6 +1225,10 @@ namespace WeatherShowApplet {
             tempunit = ws_settings.get_string("tempunit");
             ws_settings.changed["tempunit"].connect (() => {
                 tempunit = ws_settings.get_string("tempunit");
+            });
+            windunit = ws_settings.get_string("windunit");
+            ws_settings.changed["windunit"].connect (() => {
+                windunit = ws_settings.get_string("windunit");
             });
             lang = WeatherShowFunctions.get_langmatch();
             key = ws_settings.get_string("key");
