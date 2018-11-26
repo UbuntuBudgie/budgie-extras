@@ -800,8 +800,6 @@ namespace WeatherShowApplet {
             subgrid_general.attach(tempunit_checkbox, 0, 14, 1, 1);
             tempunit_checkbox.set_active(get_tempstate());
             tempunit_checkbox.toggled.connect(set_tempunit);
-            var spacelabel4 = new Gtk.Label("");
-            subgrid_general.attach(spacelabel4, 0, 15, 1, 1);
             // wind unit
             var windunit_checkbox = new CheckButton.with_label("Wind speed in MPH");
             subgrid_general.attach(windunit_checkbox, 0, 15, 1, 1);
