@@ -116,9 +116,11 @@ class ShowTimeWin(Gtk.Window):
         )
 
     def show_time(self):
-        self.call_update(False)
-        time.sleep(10)
-        self.call_update(True)
+        t = 0
+        while t < 20:
+            time.sleep(0.5)
+            self.call_update(True)
+            t = t + 1
         wait = 1
         while True:
             time.sleep(wait)
