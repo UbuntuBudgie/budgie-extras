@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#! /usr/bin/python3
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
@@ -91,31 +91,39 @@ class ShowTimeWin(Gtk.Window):
             timedate[0] = newtime
         return timedate
 
+    def get_currtime(self):
+        return time.strftime('%H:%M-%d %B %Y')
+
     def fix_leadingzeros(self, currtime):
         tofix = currtime[1].split()
         currtime[1] = " ".join([it.lstrip("0") for it in tofix])
         return currtime
 
+    def update_timedisplay(self, currtime, redraw):
+        if redraw:
+            self.queue_draw()
+        timedate = self.fix_leadingzeros(currtime.split("-"))
+        if not mutetime:
+            timedate = self.check_12hrs(timedate)
+            self.timelabel.set_text(timedate[0])
+        if not mutedate:
+            self.datelabel.set_text(timedate[1])
+
+    def call_update(self, redraw):
+        GObject.idle_add(
+            self.update_timedisplay, self.get_currtime(), redraw,
+            priority=GObject.PRIORITY_DEFAULT
+        )
+
     def show_time(self):
+        self.call_update(False)
+        time.sleep(10)
+        self.call_update(True)
         wait = 1
         while True:
             time.sleep(wait)
             wait = 61 - int(time.time()) % 60
-            currtime = time.strftime('%H:%M-%d %B %Y')
-            timedate = self.fix_leadingzeros(currtime.split("-"))
-            if not mutetime:
-                timedate = self.check_12hrs(timedate)
-                GObject.idle_add(
-                    self.timelabel.set_text,
-                    timedate[0],
-                    priority=GObject.PRIORITY_DEFAULT
-                )
-            if not mutedate:
-                GObject.idle_add(
-                    self.datelabel.set_text,
-                    timedate[1],
-                    priority=GObject.PRIORITY_DEFAULT
-                )
+            self.call_update(False)
 
     def stop(self, *args):
         Gtk.main_quit()
