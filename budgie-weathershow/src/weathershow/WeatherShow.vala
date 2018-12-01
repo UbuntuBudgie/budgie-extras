@@ -144,15 +144,13 @@ namespace WeatherShowFunctions {
     private string[] get_matches(string lookfor, string dir) {
         // find matching cities
         File datasrc = File.new_for_path(dir.concat("/cities"));
-        int len_lookfor = lookfor.char_count();
-        string fixed = lookfor.substring(0, 1).up().concat(
-            lookfor.substring(1, len_lookfor - 1).down());
+        string fixed = lookfor.down();
         try {
             var dis = new DataInputStream (datasrc.read ());
             string line;
             string[] matches = {};
             while ((line = dis.read_line (null)) != null) {
-                if (line.contains(fixed)) {
+                if (line.down().contains(fixed)) {
                     matches += line;
                 }
             }
@@ -886,6 +884,11 @@ namespace WeatherShowApplet {
             string[] initline = WeatherShowFunctions.get_matches(
                 initial_citycode, moduledir
             );
+            // fix for change of cityfile (!)
+            if (initline.length == 0) {
+                citycode = "2643743";
+                return "London, GB";
+            }
             return initline[0].split(" ", 2)[1];
         }
 
