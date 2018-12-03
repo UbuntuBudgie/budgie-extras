@@ -502,21 +502,6 @@ namespace HotCornersApplet {
             return {width, height, screen_xpos, screen_ypos};
         }
 
-
-        /* private void check_res_parts() {
-
-            var prim = Gdk.Display.get_default().get_primary_monitor();
-            var geo = prim.get_geometry();
-            height = geo.height;
-            width = geo.width;
-            screen_xpos = geo.x;
-            screen_ypos = geo.y;
-        } */
-
-
-
-
-
         private int check_corner(int xres, int yres, int x_offset, int y_offset, Seat seat) {
             /* see if we are in a corner, if so, which one */
             int x;
