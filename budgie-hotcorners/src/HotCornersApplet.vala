@@ -497,10 +497,27 @@ namespace HotCornersApplet {
             var geo = prim.get_geometry();
             int width = geo.width;
             int height = geo.height;
-            return {width, height};
+            int screen_xpos = geo.x;
+            int screen_ypos = geo.y;
+            return {width, height, screen_xpos, screen_ypos};
         }
 
-        private int check_corner(int xres, int yres, Seat seat) {
+
+        /* private void check_res_parts() {
+
+            var prim = Gdk.Display.get_default().get_primary_monitor();
+            var geo = prim.get_geometry();
+            height = geo.height;
+            width = geo.width;
+            screen_xpos = geo.x;
+            screen_ypos = geo.y;
+        } */
+
+
+
+
+
+        private int check_corner(int xres, int yres, int x_offset, int y_offset, Seat seat) {
             /* see if we are in a corner, if so, which one */
             int x;
             int y;
@@ -511,11 +528,18 @@ namespace HotCornersApplet {
             this.y_arr += y;
             this.y_arr = keepsection(this.y_arr, this.time_steps);
             int n = -1;
+
+            int innerleft = x_offset + this.action_area;
+            int innertop = y_offset + this.action_area;
+            int rightside = x_offset + xres;
+            int bottom = y_offset + yres;
+            int innerbottom = bottom - this.action_area;
+            int innerright = rightside - this.action_area; 
             bool[] tests = {
-                (x < this.action_area && y < this.action_area),
-                (x > xres - this.action_area && y < this.action_area),
-                (x < this.action_area && y > yres - this.action_area),
-                (x > xres - this.action_area && y > yres - this.action_area),
+                (x_offset <= x < innerleft && y_offset <= y < innertop),
+                (innerright < x < rightside && y_offset <= y < innertop),
+                (x_offset <= x < innerleft && innerbottom < y <= bottom),
+                (innerright < x <= rightside && innerbottom < y <= bottom)
             };
             foreach (bool test in tests) {
                 n += 1;
@@ -565,6 +589,9 @@ namespace HotCornersApplet {
             this.y_arr = {0};
             int xres = res[0];
             int yres = res[1];
+            // new args
+            int x_offset = res[2];
+            int y_offset = res[3];
             bool reported = false;
             int t = 0;
             GLib.Timeout.add (50, () => {
@@ -579,7 +606,7 @@ namespace HotCornersApplet {
                         return false;
                     }
                 }
-                int corner = check_corner(xres, yres, seat);
+                int corner = check_corner(xres, yres, x_offset, y_offset, seat);
                 if (corner != -1 && reported == false) {
                     if (check_onpressure() == true) {
                         run_command(corner);
