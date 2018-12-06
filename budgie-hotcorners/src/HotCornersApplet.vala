@@ -314,6 +314,7 @@ namespace HotCornersApplet {
         private void sendwarning () {
             string set_icon = "notify-send -i budgie-hotcorners-symbolic ";
             string header = "'" + (_("Missing applet")) + "'";
+            // WindowPreviews is the name of a Budgie Applet and does not need to be translated
             string body = " '" + (_("Please add WindowPreviews")) + "'";
             string command = set_icon.concat(header, body);
             Process.spawn_command_line_async(command);
