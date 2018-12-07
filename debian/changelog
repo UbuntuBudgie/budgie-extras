@@ -1,19 +1,48 @@
+budgie-extras (0.6.1-4) unstable; urgency=medium
+
+  * Revert clockworks deprecation since package svgwrite v1.2.1 has
+    now been uploaded and the RC issue is now resolved
+  * Packaging Changes
+    - Control: Update description, dependencies and install file
+      for clockworks
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 07 Dec 2018 20:04:15 +0000
+
+budgie-extras (0.6.1-3) unstable; urgency=medium
+
+  * Bug-fix release
+    - Support for clockworks applet has been dropped since it depends
+      upon package svgwrite which FTBFS (v1.1.8).  The RC issue causes
+      budgie-extras to be marked for autoremoval
+  * Packaging Changes
+    - Control: Update description for clockworks
+    - Update clockworks install to just include its README
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 26 Nov 2018 19:41:04 +0000
+
+budgie-extras (0.6.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - patch 0002-Fixed-dropby-not-popping-up.patch
+      Ensure Dropby pops up when a USB device is detected
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 07 Oct 2018 22:54:24 +0100
+
 budgie-extras (0.6.1-1) unstable; urgency=medium
 
   * New upstream release
     - see ChangeLog for details
-    - Consolidated release to resync Debian and Ubuntu versions
+  * Issues Resolved:
+    - fix showtime crash on early exit (LP: #1760741)
+    - fix hotcorners pressure calculation causing crash of the
+      applet (LP: #1781981)
+    - fix occasional display issues with previews (LP: #1779766)
+      wpreviews.patch
+  * Patch 0001-Fix-GPL-license-to-be-project-consistent.patch
+    Apply upstream fix to make QuickNote source copyright
+    consistent with the project
   * Packaging Changes:
     - Bump Standards-Version - no changes required
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 18 Sep 2018 13:06:49 +0100
-
-budgie-extras (0.6.0-0ubuntu1) cosmic; urgency=medium
-
-  * New upstream release
-    - see ChangeLog for details
-    - fix showtime crash on early exit (LP: #1760741)
-  * Packaging Changes:
     - debian/control change build-dependencies to build both vala and
       python3 applets
     - debian/control
@@ -24,23 +53,7 @@ budgie-extras (0.6.0-0ubuntu1) cosmic; urgency=medium
       Add new binary packages for trash, recentlyused, applauncher and weather
     - debian/rules Add hardening instructions for Vala based applets
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 18 Aug 2018 09:59:35 +0100
-
-budgie-extras (0.5.0-1ubuntu2) cosmic; urgency=medium
-
-  * Bug-fix release
-    - fix hotcorners pressure calculation causing crash of the
-      applet (LP: #1781981)
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 16 Jul 2018 19:55:24 +0100
-
-budgie-extras (0.5.0-1ubuntu1) cosmic; urgency=medium
-
-  * Bug-fix release
-    - fix occasional display issues with previews (LP: #1779766)
-      wpreviews.patch
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 04 Jul 2018 21:52:47 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 18 Sep 2018 13:06:49 +0100
 
 budgie-extras (0.5.0-1) unstable; urgency=medium
 
