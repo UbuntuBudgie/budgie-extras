@@ -2,7 +2,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
-from gi.repository import Gtk, GObject, GdkPixbuf, Budgie, Gio
+from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, Budgie, Gio
 import os
 import time
 from threading import Thread
@@ -58,7 +58,7 @@ for n in range(60):
     newminspath = os.path.join(mins_path, str(n) + ".png")
     minutes.append(GdkPixbuf.Pixbuf.new_from_file(newminspath))
 
-css_data = """
+clw_css_data = """
 .label {
   padding-bottom: 5px;
   padding-top: 5px;
@@ -66,19 +66,17 @@ css_data = """
 }
 """
 
-colordata = """
+clw_colordata = """
 .colorbutton {
   border-color: transparent;
-  background-color: hexcolor;
   padding: 0px;
-  border-width: 1px;
+  border-width: 10px;
   border-radius: 4px;
 }
 .colorbutton:hover {
-  border-color: hexcolor;
-  background-color: hexcolor;
+  border-color: transparent;
   padding: 0px;
-  border-width: 1px;
+  border-width: 10px;
   border-radius: 4px;
 }
 """
@@ -118,40 +116,40 @@ class ClockWorksSettings(Gtk.Grid):
         element_hsizer2 = self.h_spacer(25)
         self.attach(element_hsizer2, 2, 0, 1, 7)
         # color buttons & labels
-        self.colorbuttons = []
-        labels = [" Frame color", " Hours color", " Minutes color"]
+        self.clockworks_colorbuttons = []
+        labels = ["Frame color", "Hours color", "Minutes color"]
+        self.initial_colors = [
+            cw.prepare_rgb(hx) for hx in cw.get_current_colors()
+        ]
         for n in range(3):
+            # get color
+            buttoncolor = self.initial_colors[n]
+            color = Gdk.RGBA()
+            color.red = buttoncolor[0] / 255
+            color.green = buttoncolor[1] / 255
+            color.blue = buttoncolor[2] / 255
+            color.alpha = 1
             b_container = Gtk.Box()
             self.attach(b_container, 1, 4 + n, 1, 1)
-            colorbutton = Gtk.Button()
-            self.colorbuttons.append(colorbutton)
-            colorbutton.connect("clicked", self.pick_color, n)
+            colorbutton = Gtk.ColorButton()
+            colorbutton.set_rgba(color)
+            self.set_buttonstyle(colorbutton)
+            self.clockworks_colorbuttons.append(colorbutton)
+            colorbutton.connect("color-set", self.pick_color, n)
             colorbutton.set_size_request(10, 10)
             b_container.pack_start(colorbutton, False, False, 0)
-            label = Gtk.Label(labels[n])
+            label = Gtk.Label("\t" + labels[n])
             b_container.pack_start(label, False, False, 0)
-        self.frame_color = self.colorbuttons[0]
-        self.hrs_color = self.colorbuttons[1]
-        self.mins_color = self.colorbuttons[2]
-        # get initial button colors
-        self.initial_colors = cw.get_current_colors()
-        self.update_color(self.initial_colors)
         self.show_all()
 
     def pick_color(self, button, color_index):
-        wdata = cw.get(["wmctrl", "-l"])
-        if "ClockWorks set " not in wdata:
-            colorpicker = os.path.join(app_path, "colorpicker")
-            proc = Gio.Subprocess.new([
-                colorpicker, str(color_index),
-                self.initial_colors[color_index]
-            ], 0)
-            proc.wait_check_async(None, self.synchronize)
-
-    def synchronize(self, *args):
-        # update interface colors of Budgie settings after color picker
-        currcolors = cw.get_current_colors()
-        self.update_color(currcolors)
+        subs = cw.subkeys
+        newcolor = button.get_rgba()
+        r = round(newcolor.red * 255)
+        g = round(newcolor.green * 255)
+        b = round(newcolor.blue * 255)
+        hx = cw.rgb2hex(r, g, b)
+        cw.save_togsettings(hx, subs[color_index])
 
     def h_spacer(self, addwidth):
         # horizontal spacer
@@ -164,16 +162,10 @@ class ClockWorksSettings(Gtk.Grid):
             spacegrid.set_column_spacing(addwidth)
         return spacegrid
 
-    def set_css(self, hexcol):
+    def set_buttonstyle(self, button):
         provider = Gtk.CssProvider.new()
         provider.load_from_data(
-            colordata.replace(
-                "hexcolor", hexcol
-            ).encode())
-        return provider
-
-    def color_button(self, button, hexcol):
-        provider = self.set_css(hexcol)
+            clw_colordata.encode())
         color_cont = button.get_style_context()
         color_cont.add_class("colorbutton")
         Gtk.StyleContext.add_provider(
@@ -181,11 +173,6 @@ class ClockWorksSettings(Gtk.Grid):
             provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
-
-    def update_color(self, colors, *args):
-        self.color_button(self.frame_color, colors[0])
-        self.color_button(self.hrs_color, colors[1])
-        self.color_button(self.mins_color, colors[2])
 
 
 class BudgieClockWorksApplet(Budgie.Applet):
@@ -201,7 +188,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
             "budgie-clockworks-symbolic", Gtk.IconSize.MENU
         )
         self.provider = Gtk.CssProvider.new()
-        self.provider.load_from_data(css_data.encode())
+        self.provider.load_from_data(clw_css_data.encode())
         # maingrid
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(2)
