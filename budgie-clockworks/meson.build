@@ -6,7 +6,6 @@ install_data(
     'BudgieClockWorks.plugin',
     'cwtools.py',
     'budgie_clockworks.py',
-    'colorpicker',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
 )
 
