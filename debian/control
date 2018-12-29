@@ -16,15 +16,28 @@ Build-Depends: debhelper (>= 11),
 		libpeas-dev,
 		libjson-glib-dev,
 		libgee-0.8-dev,
-		intltool
+		intltool,
+		libsoup2.4-dev
 Standards-Version: 4.2.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
 Homepage: https://ubuntubudgie.org
 
+Package: budgie-extras-common
+Architecture: any
+Depends: ${misc:Depends}
+Description: Shared component of budgie-extras applets
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The shared component provides for capabilities that are utilised between
+ budgie-extra applets.
+
 Package: budgie-hotcorners-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet providing hotcorners capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -35,7 +48,8 @@ Description: Applet providing hotcorners capabilities for the Budgie Desktop
 
 Package: budgie-trash-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet allows access to trash capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -47,7 +61,8 @@ Description: Applet allows access to trash capabilities for the Budgie Desktop
 
 Package: budgie-quicknote-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet providing simple notes capability for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -58,7 +73,8 @@ Description: Applet providing simple notes capability for the Budgie Desktop
 
 Package: budgie-recentlyused-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet displays files recently accessed for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -325,15 +341,9 @@ Description: Applet to provide an alternative means to launch applications
  applications listed can be easily configured to be visible or hidden.
 
 Package: budgie-weathershow-applet
-Architecture: all
-Depends: python3,
-	python3-gi,
-	gir1.2-budgie-1.0,
-	gir1.2-glib-2.0,
-	gir1.2-gtk-3.0,
-	gir1.2-peas-1.0,
-	python3-requests,
-	${misc:Depends}, ${python3:Depends}
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet to display the weather and forecast
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.

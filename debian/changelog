@@ -5,8 +5,15 @@ budgie-extras (0.7.0-1) unstable; urgency=medium
   * Packaging Changes
     - remove unneeded clockworks doc
     - drop existing patchset since now included in the new release
-    - Control: budgie-weather-applet and budgie-showtime-applet build
+    - Control: budgie-weather-applet build
       and runtime dependencies updated due to python to Vala rewrite
+    - Control: Add budgie-extras-common build together with dependency
+      updates for several applets where they share the extras common
+      component
+    - Control: several build install changes where budgie-extras-common
+      now replaces individual component installations
+    - Copyright: updates due to extra licensing for the release
+      including year change
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 29 Dec 2018 19:53:05 +0000
 
