@@ -30,7 +30,7 @@ namespace WeatherShowFunctions {
 
     private string get_langmatch () {
         // look up the language match from OWM, if it exists. default to EN if not
-        string set_lang = GLib.Environment.get_variable("LANGUAGE").split(":")[0];
+        string set_lang = GLib.Environment.get_variable("LANG").split("_")[0];
         string[] langcodes = {
             "ar", "bg", "ca", "cz", "de", "el", "en", "fa", "fi", "fr", "gl", "hr",
             "hu", "it", "ja", "kr", "la", "lt", "mk", "nl", "pl", "pt", "ro", "ru",
