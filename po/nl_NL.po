@@ -5,15 +5,17 @@
 # 
 # Translators:
 # David Mohammed <fossfreedom@ubuntu.com>, 2018
+# Rients Bootsma <rainmachine@hotmail.com>, 2018
+# Jacob Vlijm <vlijm@planet.nl>, 2018
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-14 12:49+0000\n"
+"POT-Creation-Date: 2018-12-06 12:57+0000\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
-"Last-Translator: David Mohammed <fossfreedom@ubuntu.com>, 2018\n"
+"Last-Translator: Jacob Vlijm <vlijm@planet.nl>, 2018\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,12 +59,14 @@ msgid "Bottom-right"
 msgstr "Rechtsonder"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:316
-msgid "'Missing applet'"
-msgstr "'Applet ontbreekt'"
+msgid "Missing applet"
+msgstr "Applet ontbreekt"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:317
-msgid " 'This command depends on another applet.'"
-msgstr " 'Deze opdracht is afhankelijk van een ontbrekende applet'"
+#. WindowPreviews is the name of a Budgie Applet and does not need to be
+#. translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
+msgid "Please add WindowPreviews"
+msgstr "Voeg WindoPreviews toe aan het panel"
 
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
@@ -88,15 +92,15 @@ msgstr "Open"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:87
 msgid "Empty"
-msgstr ""
+msgstr "Leeg"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:117
 msgid "Empty all items from the Trash?"
-msgstr ""
+msgstr "Alle items verwijderen uit de Prullenmand?"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:126
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Alle items in de Prullenmand worden definitief verwijderd."
 
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -106,33 +110,33 @@ msgstr "Annuleer"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:147
 msgid "Empty Trash"
-msgstr ""
+msgstr "Prullenmand Legen"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "Could not determine original location of /home/budgie/file.txt"
 #: budgie-trash/src/helpers/TrashHelper.vala:109
 #, c-format
 msgid "Could not determine original location of %s"
-msgstr ""
+msgstr "Kon de originele locatie van %s niet bepalen"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt restored"
 #: budgie-trash/src/helpers/TrashHelper.vala:134
 #, c-format
 msgid "%s restored."
-msgstr ""
+msgstr "%s hersteld."
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt already exists"
 #: budgie-trash/src/helpers/TrashHelper.vala:141
 #, c-format
 msgid "%s already exists."
-msgstr ""
+msgstr "%s bestaat al."
 
 #. fileButton.set_tooltip_text(destParentPath);
 #: budgie-trash/src/helpers/TrashHelper.vala:363
 msgid "Restore"
-msgstr ""
+msgstr "Herstel"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:121
@@ -163,53 +167,53 @@ msgstr "Zaterdag"
 msgid "Sunday"
 msgstr "Zondag"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:704
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:734
 msgid "General"
 msgstr "Algemeen"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:710
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:740
 msgid "Desktop"
-msgstr "Bureau"
+msgstr "Bureaublad"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:722
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
 msgid "City"
 msgstr "Plaats"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:745
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
 msgid "Show on desktop"
-msgstr "Op het bureaublad"
+msgstr "Toon op bureaublad"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:782
 msgid "Show dynamic panel icon"
-msgstr "In het werkbalk icoon"
+msgstr "Toon werkbalk icoon"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:759
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:789
 msgid "Show forecast in popover"
 msgstr "Voorspelling in popup venster"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:810
 msgid "Transparency"
 msgstr "Transparantie"
 
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:801
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:836
 #: budgie-weathershow/src/get_color/get_color.vala:50
 msgid "Set text color"
 msgstr "Kies tekstleur"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:808
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "Set custom position (px)"
 msgstr "Aangepaste positie (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:949
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:989
 msgid "Please enter at least 3 characters"
-msgstr ""
+msgstr "Vul minimaal 3 karakters in"
 
 #. spinbuttons - labels
 #: budgie-weathershow/src/get_color/get_color.vala:64
@@ -239,11 +243,11 @@ msgstr "Text die u hier typt wordt automatisch bewaard."
 #. Gtk stuff, widgets etc. here
 #: budgie-quicknote/QuickNoteApplet.vala:143
 msgid "Text area width"
-msgstr "Textvak breedte."
+msgstr "Textvak breedte"
 
 #: budgie-quicknote/QuickNoteApplet.vala:150
 msgid "Text area height"
-msgstr "Textvak hoogte."
+msgstr "Textvak hoogte"
 
 #: budgie-quicknote/QuickNoteApplet.vala:166
 msgid "Set a custom directory"
@@ -251,7 +255,7 @@ msgstr "Aangepaste bestandslocatie"
 
 #: budgie-quicknote/QuickNoteApplet.vala:179
 msgid "Choose directory"
-msgstr "Kies"
+msgstr "Kies locatie"
 
 #: budgie-quicknote/QuickNoteApplet.vala:201
 msgid "Use"
@@ -259,20 +263,20 @@ msgstr "Kies"
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
-msgstr ""
+msgstr "Hotcorner acties instellen"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
-msgstr ""
+msgstr "Toon recent gebruikte items"
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
-msgstr ""
+msgstr "Prullenmand"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
-msgstr ""
+msgstr "Toon weer & voorspelling"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
-msgstr ""
+msgstr "Snelle & Handige Notities"

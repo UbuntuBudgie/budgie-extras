@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-14 12:49+0000\n"
+"POT-Creation-Date: 2018-12-06 12:57+0000\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
 "Last-Translator: Moo, 2018\n"
 "Language-Team: Lithuanian (https://www.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
@@ -57,12 +57,14 @@ msgid "Bottom-right"
 msgstr "Apatinis dešinysis"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:316
-msgid "'Missing applet'"
-msgstr "\"Trūkstama programėlė\""
+msgid "Missing applet"
+msgstr "Trūksta programėlės"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:317
-msgid " 'This command depends on another applet.'"
-msgstr "\"Ši komanda priklauso nuo kitos programėlės.\""
+#. WindowPreviews is the name of a Budgie Applet and does not need to be
+#. translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
+msgid "Please add WindowPreviews"
+msgstr "Pridėkite WindowPreviews"
 
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
@@ -113,21 +115,21 @@ msgstr "Išvalyti šiukšlinę"
 #: budgie-trash/src/helpers/TrashHelper.vala:109
 #, c-format
 msgid "Could not determine original location of %s"
-msgstr ""
+msgstr "Nepavyko nustatyti pradinės %s vietos"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt restored"
 #: budgie-trash/src/helpers/TrashHelper.vala:134
 #, c-format
 msgid "%s restored."
-msgstr ""
+msgstr "%s atkurtas."
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt already exists"
 #: budgie-trash/src/helpers/TrashHelper.vala:141
 #, c-format
 msgid "%s already exists."
-msgstr ""
+msgstr "%s jau yra."
 
 #. fileButton.set_tooltip_text(destParentPath);
 #: budgie-trash/src/helpers/TrashHelper.vala:363
@@ -163,51 +165,51 @@ msgstr "Šeštadienis"
 msgid "Sunday"
 msgstr "Sekmadienis"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:704
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:734
 msgid "General"
 msgstr "Bendra"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:710
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:740
 msgid "Desktop"
 msgstr "Darbalaukis"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:722
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
 msgid "City"
 msgstr "Miestas"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:745
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
 msgid "Show on desktop"
 msgstr "Rodyti darbalaukyje"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:782
 msgid "Show dynamic panel icon"
 msgstr "Rodyti dinaminę skydelio piktogramą"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:759
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:789
 msgid "Show forecast in popover"
 msgstr "Rodyti orų prognozę išskleidžiamajame lange"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:810
 msgid "Transparency"
 msgstr "Permatomumas"
 
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:801
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:836
 #: budgie-weathershow/src/get_color/get_color.vala:50
 msgid "Set text color"
 msgstr "Nustatyti teksto spalvą"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:808
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "Set custom position (px)"
 msgstr "Nustatyti tinkintą pozicija (piks.)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:949
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:989
 msgid "Please enter at least 3 characters"
 msgstr "Įveskite bent 3 simbolius"
 
