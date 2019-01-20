@@ -4,7 +4,7 @@ using GLib.Math;
 using Json;
 using Gee;
 
-/* 
+/*
 * WeatherShowII
 * Author: Jacob Vlijm
 * Copyright © 2017-2019 Ubuntu Budgie Developers
@@ -13,7 +13,7 @@ using Gee;
 * under the terms of the GNU General Public License as published by the Free
 * Software Foundation, either version 3 of the License, or any later version.
 * This program is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 * more details. You should have received a copy of the GNU General Public
 * License along with this program.  If not, see
@@ -30,16 +30,18 @@ namespace WeatherShowFunctions {
 
     private string get_langmatch () {
         // look up the language match from OWM, if it exists. default to EN if not
-        string set_lang = GLib.Environment.get_variable("LANGUAGE").split(":")[0];
+        string [] lang_names = GLib.Intl.get_language_names();
         string[] langcodes = {
             "ar", "bg", "ca", "cz", "de", "el", "en", "fa", "fi", "fr", "gl", "hr",
             "hu", "it", "ja", "kr", "la", "lt", "mk", "nl", "pl", "pt", "ro", "ru",
             "se", "sk", "sl", "es", "tr", "ua", "vi", "zh_cn", "zh_tw"
         };
         string default_lang = "en";
-        foreach (string l in langcodes) {
-            if (l == set_lang || l == set_lang.split("_")[0]) {
-                return l;
+        foreach (string set_lang in lang_names) {
+            foreach (string l in langcodes) {
+                if (set_lang != "C" && (l == set_lang || l == set_lang.split("_")[0])) {
+                    return l;
+                }
             }
         }
         return default_lang;
@@ -51,7 +53,7 @@ namespace WeatherShowFunctions {
         try {
             GLib.Process.spawn_command_line_sync(cmd_check, out output);
             if (output == "") {
-                return false;  
+                return false;
             }
         }
         catch (SpawnError e) {
@@ -90,20 +92,20 @@ namespace WeatherShowFunctions {
 
     private string find_mappedid (string icon_id) {
 
-        /* 
-        * OWM's icon codes are a bit oversimplified; different weather 
-        * types are pushed into one icon. the data ("id") however offers a 
+        /*
+        * OWM's icon codes are a bit oversimplified; different weather
+        * types are pushed into one icon. the data ("id") however offers a
         * much more detailed set of weather types/codes, which can be used to
-        * set an improved icon mapping. below my own (again) simplification 
+        * set an improved icon mapping. below my own (again) simplification
         * of the extended set of weather codes, which is kind of the middle
         * between the two.
         */
         string[,] replacements = {
-            {"221", "212"}, {"231", "230"}, {"232", "230"}, {"301", "300"}, 
-            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"314", "313"}, 
-            {"502", "501"}, {"503", "501"}, {"504", "501"}, {"522", "521"}, 
-            {"531", "521"}, {"622", "621"}, {"711", "701"}, {"721", "701"}, 
-            {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"}, 
+            {"221", "212"}, {"231", "230"}, {"232", "230"}, {"301", "300"},
+            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"314", "313"},
+            {"502", "501"}, {"503", "501"}, {"504", "501"}, {"522", "521"},
+            {"531", "521"}, {"622", "621"}, {"711", "701"}, {"721", "701"},
+            {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"},
             {"762", "701"}
         };
         int lenrep = replacements.length[0];
@@ -118,7 +120,7 @@ namespace WeatherShowFunctions {
     private string weekday (int day) {
         // get weekday by index
         string[] days = {
-            (_("Monday")), (_("Tuesday")), (_("Wednesday")), (_("Thursday")), 
+            (_("Monday")), (_("Tuesday")), (_("Wednesday")), (_("Thursday")),
             (_("Friday")), (_("Saturday")), (_("Sunday"))
         };
         return days[day - 1];
@@ -157,9 +159,9 @@ namespace WeatherShowFunctions {
             return matches;
         }
         catch (Error e) {
-            /* 
+            /*
             * on each refresh, the file is deleted by the applet
-            * just wait for next signal. 
+            * just wait for next signal.
             */
             return {};
         }
@@ -167,7 +169,7 @@ namespace WeatherShowFunctions {
 }
 
 
-namespace WeatherShowApplet { 
+namespace WeatherShowApplet {
     private GLib.Settings ws_settings;
     private bool show_ondesktop;
     private bool dynamic_icon;
@@ -206,12 +208,12 @@ namespace WeatherShowApplet {
         var weather_obj = new GetWeatherdata();
         WeatherShowApplet.get_weather(weather_obj);
     }
-    
+
     private void get_weather (GetWeatherdata weather_obj) {
-        /* 
+        /*
         * this is the comprehensive function to get the current weather
         * called sub sections are the forecast, which only runs if the popover
-        * is set to show, and the current situation, only called if desktop 
+        * is set to show, and the current situation, only called if desktop
         * show is set.
         */
 
@@ -300,7 +302,7 @@ namespace WeatherShowApplet {
                             popover_mastergrid.attach(popoverstack, 1, 0, 1, 1);
                         }
                         popoverstack.set_visible_child_name("forecast0");
-                        currgrid.show_all(); 
+                        currgrid.show_all();
                         popover_mastergrid.show_all();
                         n_fc = 0;
                     }
@@ -394,7 +396,7 @@ namespace WeatherShowApplet {
 
         private string fetch_fromsite (string wtype, string city) {
             /* fetch data from OWM */
-            string website = "http://api.openweathermap.org/data/2.5/"; 
+            string website = "http://api.openweathermap.org/data/2.5/";
             string langstring = "&".concat("lang=", lang);
             string url = website.concat(
                 wtype, "?id=", city, "&APPID=", key, "&", langstring
@@ -411,7 +413,7 @@ namespace WeatherShowApplet {
 
             if (
                 output.contains(forecast_ok) || output.contains(weather_ok)
-            ) { 
+            ) {
                 return output;
             }
             else {
@@ -452,8 +454,8 @@ namespace WeatherShowApplet {
             /*
             * single record; current situation. panel icon is updated
             * directly from within this function.
-            * returned output is only used for the optionally written 
-            * textfile in /temp from get_weather, called by the loop in 
+            * returned output is only used for the optionally written
+            * textfile in /temp from get_weather, called by the loop in
             * Applet().
             */
             var parser = new Json.Parser ();
@@ -467,7 +469,7 @@ namespace WeatherShowApplet {
             string daynight = check_stringvalue(map["weather"], "icon").to_string();
             string add_daytime = get_dayornight(daynight);
             /*
-            * if (unlikely) the icon field does not exist, but the id does: 
+            * if (unlikely) the icon field does not exist, but the id does:
             * fallback to day version to prevent breaking
             */
             /* get cityline (exists anyway) */
@@ -485,7 +487,7 @@ namespace WeatherShowApplet {
             string humiddisplay = get_humidity(map);
             /* combined */
             string[] collected = {
-                id, add_daytime, citydisplay, skydisplay, tempdisplay, 
+                id, add_daytime, citydisplay, skydisplay, tempdisplay,
                 wspeeddisplay.concat(" ", wdirectiondisplay), humiddisplay
             };
             /* optional dynamic panel icon is set from here directly */
@@ -510,7 +512,7 @@ namespace WeatherShowApplet {
         }
 
         public string get_current () {
-            /* 
+            /*
             * get "raw" data. if successful, create new data, else create
             * empty lines in the output array.
             */
@@ -536,7 +538,7 @@ namespace WeatherShowApplet {
                         wspeed = wspeed * (float) 2.237;
                         double rounded_wspeed = Math.round((double) wspeed);
                         wspeeddisplay = rounded_wspeed.to_string().concat(" MPH");
-                    } 
+                    }
                     else {
                         wspeeddisplay = wspeed.to_string().concat(" m/sec");
                     }
@@ -679,7 +681,7 @@ namespace WeatherShowApplet {
     public class WeatherShowSettings : Gtk.Grid {
 
         /* Budgie Settings -section */
-        private CheckButton[] cbuttons; 
+        private CheckButton[] cbuttons;
         private string[] add_args;
         private string css_template;
         private string css_data2;
@@ -706,7 +708,7 @@ namespace WeatherShowApplet {
         private string[] city_menurefs;
         private string[] city_menucodes;
         private bool edit_citymenu;
- 
+
         public WeatherShowSettings(GLib.Settings? settings) {
             // css
             css_template = """
@@ -767,7 +769,7 @@ namespace WeatherShowApplet {
             citymenu = new Gtk.Menu();
             var spacelabel1 = new Gtk.Label("");
             subgrid_general.attach(spacelabel1, 0, 2, 1, 1);
-            // set language 
+            // set language
             var spacelabel2 = new Gtk.Label("");
             subgrid_general.attach(spacelabel2, 0, 5, 1, 1);
             // show on desktop
@@ -862,11 +864,11 @@ namespace WeatherShowApplet {
             subgrid_desktop.attach(posholder, 0, 51, 1, 1);
             button_desktop.set_sensitive(show_ondesktop);
             cbuttons = {
-                ondesktop_checkbox, dynamicicon_checkbox, 
+                ondesktop_checkbox, dynamicicon_checkbox,
                 forecast_checkbox, setposbutton
             };
             add_args = {
-                "desktopweather", "dynamicicon", "forecast", 
+                "desktopweather", "dynamicicon", "forecast",
                 ""
             };
             set_initialpos();
@@ -1018,7 +1020,7 @@ namespace WeatherShowApplet {
             currmarker_label1.set_text("⸻");
             currmarker_label2.set_text("");
         }
-        
+
         private void on_button_desktop_clicked(Button button) {
             // update page underline
             stack.set_visible_child_name("Page2");
@@ -1032,7 +1034,7 @@ namespace WeatherShowApplet {
                 if (cbuttons[i] == button) {
                     return i;
                 }
-            } return -1; 
+            } return -1;
         }
 
         private bool get_tempstate () {
@@ -1078,7 +1080,7 @@ namespace WeatherShowApplet {
             bool newsetting = button.get_active();
             int val_index = get_buttonarg(button);
             string currsetting = add_args[val_index];
-            /* 
+            /*
             * ok, not a beauty-queen, but a patch to prevent an extra
             * function:
             */
@@ -1126,7 +1128,7 @@ namespace WeatherShowApplet {
         }
     }
 
-    
+
     public class WeatherShowPopover : Budgie.Popover {
 
         private Gtk.EventBox indicatorBox;
@@ -1142,7 +1144,7 @@ namespace WeatherShowApplet {
             templabel = new Label("");
             container.pack_start(indicatorIcon, false, false, 0);
             container.pack_end(templabel, false, false, 0);
-            // build up the popover to contain the pages, 
+            // build up the popover to contain the pages,
             // created in get_weather
             popover_mastergrid = new Gtk.Grid();
             popover_mastergrid.set_column_spacing(30);
@@ -1184,7 +1186,7 @@ namespace WeatherShowApplet {
                 int newindex = fc_stackindex - 1;
                 popoverstack.set_visible_child_name(fc_stacknames[newindex]);
                 fc_stackindex = newindex;
-            }          
+            }
         }
     }
 
@@ -1196,7 +1198,7 @@ namespace WeatherShowApplet {
         private unowned Budgie.PopoverManager? manager = null;
         public string uuid { public set; public get; }
         Thread<bool> update_thread;
-        
+
 
         public override bool supports_settings() {
             return true;
@@ -1236,16 +1238,16 @@ namespace WeatherShowApplet {
             show_ondesktop = ws_settings.get_boolean("desktopweather");
             ws_settings.changed["desktopweather"].connect (() => {
                 show_ondesktop = ws_settings.get_boolean("desktopweather");
-            }); 
-            
+            });
+
             citycode = ws_settings.get_string("citycode");
             ws_settings.changed["citycode"].connect (() => {
                 citycode = ws_settings.get_string("citycode");
-            }); 
+            });
             dynamic_icon = ws_settings.get_boolean("dynamicicon");
             ws_settings.changed["dynamicicon"].connect (() => {
                 dynamic_icon = ws_settings.get_boolean("dynamicicon");
-            }); 
+            });
             show_forecast = ws_settings.get_boolean("forecast");
             ws_settings.changed["forecast"].connect (() => {
                 show_forecast = ws_settings.get_boolean("forecast");
@@ -1313,7 +1315,7 @@ namespace WeatherShowApplet {
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
-            } 
+            }
             // on an occasional exception, don't break the loop
             catch (SpawnError e) {
                 return true;
