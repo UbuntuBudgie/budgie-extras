@@ -3,7 +3,7 @@ using Gdk;
 using GLib.Math;
 using Json;
 
-/* 
+/*
 * HotCornersII
 * Author: Jacob Vlijm
 * Copyright © 2017-2019 Ubuntu Budgie Developers
@@ -12,7 +12,7 @@ using Json;
 * under the terms of the GNU General Public License as published by the Free
 * Software Foundation, either version 3 of the License, or any later version.
 * This program is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 * more details. You should have received a copy of the GNU General Public
 * License along with this program.  If not, see
@@ -21,7 +21,7 @@ using Json;
 
 namespace HCSupport {
 
-    /* 
+    /*
     * Here we keep the (possibly) shared stuff, or general functions, to
     * keep the main code clean and readable
     */
@@ -34,7 +34,7 @@ namespace HCSupport {
             if (output == "") {
                 return false;
             }
-        } 
+        }
         /* on an occasional exception, just don't run the command */
         catch (SpawnError e) {
             return true;
@@ -48,7 +48,7 @@ namespace HCSupport {
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
-        } 
+        }
         /* on an occasional exception, don't break the loop */
         catch (SpawnError e) {
             return true;
@@ -105,7 +105,7 @@ namespace HCSupport {
 }
 
 
-namespace HotCornersApplet { 
+namespace HotCornersApplet {
 
     public class HotCornersSettings : Gtk.Grid {
         /* Budgie Settings -section */
@@ -157,7 +157,7 @@ namespace HotCornersApplet {
         private int[] y_arr;
         private int pressure;
         private GLib.Settings hc_settings;
-        private int time_steps; 
+        private int time_steps;
         private bool include_pressure;
         /* GUI stuff */
         private Grid maingrid;
@@ -241,7 +241,7 @@ namespace HotCornersApplet {
                 this.maingrid.attach(latest_togglebutton, 0, y_pos, 1, 1);
                 /* create entries */
                 var latest_entry = new Entry();
-                this.entries += latest_entry;  
+                this.entries += latest_entry;
                 latest_entry.set_size_request(220, 20);
                 /* create dropdown */
                 var command_combo = new ComboBoxText();
@@ -331,9 +331,9 @@ namespace HotCornersApplet {
         }
 
         private void get_fromcombo (ComboBox combo) {
-            /* 
+            /*
             * reads the chosen command from the ComboBoxText and updates
-            * the hotcorner/commands list 
+            * the hotcorner/commands list
             */
             /* corner index */
             int combo_index = HCSupport.get_cboxindex(
@@ -358,7 +358,7 @@ namespace HotCornersApplet {
             this.commands[combo_index] = new_cmd;
             this.hc_settings.set_strv("commands", this.commands);
         }
-        
+
         private void act_on_checkbuttontoggle(ToggleButton button) {
             /*
             * if custom checkbox is toggled, both GUI and command list changes
@@ -369,19 +369,19 @@ namespace HotCornersApplet {
             );
             bool active = button.get_active();
             string newcmd = "";
-            if (active) { 
+            if (active) {
                 Entry new_source = this.entries[b_index];
                 this.maingrid.attach(new_source, 1, b_index + 1, 1, 1);
                 this.maingrid.remove(this.dropdowns[b_index]);
-                new_source.set_text("");               
+                new_source.set_text("");
             }
-            else { 
+            else {
                 this.maingrid.remove(this.entries[b_index]);
                 ComboBox newsource = this.dropdowns[b_index];
                 newsource.set_active(0);
                 this.maingrid.attach(newsource, 1, b_index + 1, 1, 1);
                 newcmd = this.dropdown_cmdlist[0];
-            }   
+            }
             this.commands[b_index] = newcmd;
             this.hc_settings.set_strv("commands", this.commands);
             this.show_all();
@@ -423,7 +423,7 @@ namespace HotCornersApplet {
         }
 
         private void populate_dropdown () {
-            /* 
+            /*
             * reads the default dropdown commands/names and populates
             * the dropdown menu
             */
@@ -478,8 +478,8 @@ namespace HotCornersApplet {
         }
 
         private int[] keepsection(int[] arr_in, int lastn) {
-            /* 
-            * the last <n> positions will be kept in mind, 
+            /*
+            * the last <n> positions will be kept in mind,
             * to decide on pressure
             */
             int[] temparr = {};
@@ -489,7 +489,7 @@ namespace HotCornersApplet {
                 temparr = arr_in[remove:currlen];
                 return temparr;
             }
-            return arr_in;    
+            return arr_in;
         }
 
         private int[] check_res() {
@@ -520,7 +520,7 @@ namespace HotCornersApplet {
             int rightside = x_offset + xres;
             int bottom = y_offset + yres;
             int innerbottom = bottom - this.action_area;
-            int innerright = rightside - this.action_area; 
+            int innerright = rightside - this.action_area;
             bool[] tests = {
                 (x_offset <= x < innerleft && y_offset <= y < innertop),
                 (innerright < x < rightside && y_offset <= y < innertop),
@@ -615,7 +615,7 @@ namespace HotCornersApplet {
                     Process.spawn_command_line_async(cmd);
                 }
                 catch (GLib.SpawnError err) {
-                    /* 
+                    /*
                     * in case an error occurs, the command most likely is
                     * incorrect not much use for any action
                     */

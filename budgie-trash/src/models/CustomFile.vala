@@ -10,7 +10,7 @@
  */
 
 namespace TrashApplet.Models {
- 
+
 public class CustomFile {
 
     private GLib.File file;
@@ -29,6 +29,6 @@ public class CustomFile {
         return this.fileInfo;
     }
 
-}   
+}
 
 }

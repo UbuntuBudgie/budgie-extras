@@ -2,7 +2,7 @@ using Gtk;
 using Cairo;
 using Gdk;
 
-/* 
+/*
 * WeatherShowII
 * Author: Jacob Vlijm
 * Copyright © 2017-2019 Ubuntu Budgie Developers
@@ -11,7 +11,7 @@ using Gdk;
 * under the terms of the GNU General Public License as published by the Free
 * Software Foundation, either version 3 of the License, or any later version.
 * This program is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 * more details. You should have received a copy of the GNU General Public
 * License along with this program.  If not, see
@@ -71,7 +71,7 @@ public class DesktopWeather : Gtk.Window {
             bool newval = desktop_settings.get_boolean("desktopweather");
             if (newval == false) {
                 Gtk.main_quit();
-            }    
+            }
         });
         desktop_settings.changed["textcolor"].connect (() => {
             update_style();
@@ -85,7 +85,7 @@ public class DesktopWeather : Gtk.Window {
             bool newval = desktop_settings.get_boolean("desktopweather");
             if (newval == false) {
                 Gtk.main_quit();
-            }    
+            }
         });
         css_data = get_css();
         int transparency = 100 - desktop_settings.get_int("transparency");
@@ -133,7 +133,7 @@ public class DesktopWeather : Gtk.Window {
         ctx.set_source_rgba(0, 0, 0, new_transp);
         ctx.set_operator(Cairo.Operator.SOURCE);
         ctx.paint();
-        ctx.set_operator(Cairo.Operator.OVER); 
+        ctx.set_operator(Cairo.Operator.OVER);
         return false;
     }
 
@@ -169,7 +169,7 @@ public class DesktopWeather : Gtk.Window {
             case(2): bigfont = "37"; smallfont = "22"; break;
             case(3): bigfont = "50"; smallfont = "32"; break;
         }
-        return temp_css.replace("bigfont", bigfont).replace("smallfont", smallfont); 
+        return temp_css.replace("bigfont", bigfont).replace("smallfont", smallfont);
     }
 
     private int get_stringindex (string s, string[] arr) {
@@ -208,9 +208,9 @@ public class DesktopWeather : Gtk.Window {
             }
         }
         catch (Error e) {
-            /* 
+            /*
             * on each refresh, the file is deleted by the applet
-            * just wait for next signal. 
+            * just wait for next signal.
             */
         }
     }
@@ -227,20 +227,20 @@ public class DesktopWeather : Gtk.Window {
     }
 
     private string find_mappedid (string ? icon_id = null) {
-        /* 
-        * OWM's icon codes are a bit oversimplified; different weather 
-        * types are pushed into one icon. the data ("id") however offers a 
+        /*
+        * OWM's icon codes are a bit oversimplified; different weather
+        * types are pushed into one icon. the data ("id") however offers a
         * much more detailed set of weather types/codes, which can be used to
-        * set an improved icon mapping. below my own (again) simplification 
+        * set an improved icon mapping. below my own (again) simplification
         * of the extended set of weather codes, which is kind of the middle
         * between the two.
         */
         string[,] replacements = {
-            {"221", "212"}, {"231", "230"}, {"232", "230"}, {"301", "300"}, 
-            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"314", "313"}, 
-            {"502", "501"}, {"503", "501"}, {"504", "501"}, {"522", "521"}, 
-            {"531", "521"}, {"622", "621"}, {"711", "701"}, {"721", "701"}, 
-            {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"}, 
+            {"221", "212"}, {"231", "230"}, {"232", "230"}, {"301", "300"},
+            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"314", "313"},
+            {"502", "501"}, {"503", "501"}, {"504", "501"}, {"522", "521"},
+            {"531", "521"}, {"622", "621"}, {"711", "701"}, {"721", "701"},
+            {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"},
             {"762", "701"}
         };
         int lenrep = replacements.length[0];
@@ -258,8 +258,8 @@ public class DesktopWeather : Gtk.Window {
             "usr/lib/budgie-desktop/plugins",
             "/budgie-weathershow/weather_icons"
         );
-        iconnames = {}; 
-        iconpixbufs_1 = {}; 
+        iconnames = {};
+        iconpixbufs_1 = {};
         iconpixbufs_2 = {};
         iconpixbufs_3 = {};
         try {

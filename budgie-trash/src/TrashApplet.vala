@@ -1,8 +1,8 @@
 /*
  * This file is part of UbuntuBudgie
- * 
+ *
  * Copyright © 2018-2019 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -16,9 +16,9 @@ using TrashApplet.Models;
 namespace TrashApplet{
 
 public class Plugin : Budgie.Plugin, Peas.ExtensionBase{
-    
+
     public Budgie.Applet get_panel_widget(string uuid){
-    
+
         return new Applet();
     }
 
@@ -37,10 +37,10 @@ public class Applet : Budgie.Applet{
         // Indicator box on Panel
         indicatorBox = new Gtk.EventBox();
         add(indicatorBox);
-       
+
         // Popover
         popover = new TrashPopover(indicatorBox);
-        
+
         // On Press indicatorBox
         indicatorBox.button_press_event.connect((e)=> {
             popover.update();
@@ -85,6 +85,6 @@ public void peas_register_types(TypeModule module){
     // boilerplate - all modules need this
     var objmodule = module as Peas.ObjectModule;
     objmodule.register_extension_type(typeof(Budgie.Plugin), typeof(TrashApplet.Plugin));
-    
+
 
 }

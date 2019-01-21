@@ -2,7 +2,7 @@ using Gtk;
 using Gee;
 using Math;
 
-/* 
+/*
 * WeatherShowII
 * Author: Jacob Vlijm
 * Copyright © 2017-2019 Ubuntu Budgie Developers
@@ -11,7 +11,7 @@ using Math;
 * under the terms of the GNU General Public License as published by the Free
 * Software Foundation, either version 3 of the License, or any later version.
 * This program is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 * more details. You should have received a copy of the GNU General Public
 * License along with this program.  If not, see
@@ -98,8 +98,8 @@ public class ColorPicker : Gtk.Window {
 
         GLib.Timeout.add (40, () => {
             Gdk.RGBA newcolor = color.get_rgba();
-            red2 = newcolor.red; 
-            green2 = newcolor.green; 
+            red2 = newcolor.red;
+            green2 = newcolor.green;
             blue2 = newcolor.blue;
             bool test = !(red2 == red1 && green2 == green1 && blue2 == blue1);
             if (test == true) {
@@ -120,7 +120,7 @@ public class ColorPicker : Gtk.Window {
         string[] new_arr = {};
         int[] newcolor = get_newcolor();
         foreach (int c in newcolor) {
-            new_arr += c.to_string(); 
+            new_arr += c.to_string();
         }
         settings.set_strv("textcolor", new_arr);
         Gtk.main_quit();
@@ -148,9 +148,9 @@ public class ColorPicker : Gtk.Window {
     private void get_fromrgbspins (SpinButton button) {
         int[] ncolor = get_newcolor();
         Gdk.RGBA setcolor = Gdk.RGBA () {
-            red = ncolor[0]/255.0, 
-            green = ncolor[1]/255.0, 
-            blue = ncolor[2]/255.0, 
+            red = ncolor[0]/255.0,
+            green = ncolor[1]/255.0,
+            blue = ncolor[2]/255.0,
             alpha = 1
         };
         color.set_rgba(setcolor);

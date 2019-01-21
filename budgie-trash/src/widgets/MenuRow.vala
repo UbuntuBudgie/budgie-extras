@@ -12,8 +12,8 @@
 using TrashApplet.Helpers;
 using TrashApplet.Models;
 
- namespace TrashApplet.Widgets { 
-     
+ namespace TrashApplet.Widgets {
+
 
  public class MenuRow : Gtk.Box {
 

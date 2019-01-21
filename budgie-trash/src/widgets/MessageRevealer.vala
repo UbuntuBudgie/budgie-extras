@@ -2,14 +2,14 @@
  * This file is part of UbuntuBudgie
  *
  * Copyright © 2018-2019 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  */
 
-namespace TrashApplet.Widgets { 
+namespace TrashApplet.Widgets {
 
 public class MessageRevealer : Gtk.Revealer
 {

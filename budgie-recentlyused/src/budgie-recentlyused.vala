@@ -1,7 +1,7 @@
 using Gtk;
 using Gee;
 
-/* 
+/*
 * RecentlyUsed
 * Author: Jacob Vlijm
 * Copyright © 2017-2019 Ubuntu Budgie Developers
@@ -10,20 +10,20 @@ using Gee;
 * under the terms of the GNU General Public License as published by the Free
 * Software Foundation, either version 3 of the License, or any later version.
 * This program is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 * more details. You should have received a copy of the GNU General Public
 * License along with this program.  If not, see
 * <https://www.gnu.org/licenses/>.
 */
 
-namespace RecentlyUsedApplet { 
+namespace RecentlyUsedApplet {
 
     private GLib.Settings rused_settings;
     private int n_show;
     private bool showtooltips;
     private bool hidepath;
-    
+
 
     public class RecentlyUsedSettings : Gtk.Grid {
         public RecentlyUsedSettings(GLib.Settings? settings) {
@@ -185,7 +185,7 @@ namespace RecentlyUsedApplet {
                         Process.spawn_command_line_async(command);
                     }
                     catch (GLib.SpawnError err) {
-                        /* 
+                        /*
                         * in case an error occurs, the file most likely is unavailable
                         * or cannot be opened otherwise. not much use for any action.
                         */
@@ -193,7 +193,7 @@ namespace RecentlyUsedApplet {
                 });
             }
             return newmenu;
-        }   
+        }
 
         private string getmenuname (string longname) {
             // read settings, split off filename if set to
@@ -232,7 +232,7 @@ namespace RecentlyUsedApplet {
             recent = create_menu();
             recent.show_all();
             this.button.set_popup(recent);
-        }     
+        }
 
         public void initialiseLocaleLanguageSupport(){
             // Initialize gettext
@@ -254,7 +254,7 @@ public void peas_register_types(TypeModule module){
     /* boilerplate - all modules need this */
     var objmodule = module as Peas.ObjectModule;
     objmodule.register_extension_type(
-        typeof(Budgie.Plugin), 
+        typeof(Budgie.Plugin),
         typeof(RecentlyUsedApplet.Plugin)
     );
 }

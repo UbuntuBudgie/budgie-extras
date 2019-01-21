@@ -13,8 +13,8 @@ using TrashApplet.Widgets;
 using TrashApplet.Helpers;
 using TrashApplet.Models;
 
-namespace TrashApplet.Widgets { 
- 
+namespace TrashApplet.Widgets {
+
 public class TrashPopover : Budgie.Popover {
 
     private const string PAGE_1 = "page1";
@@ -41,7 +41,7 @@ public class TrashPopover : Budgie.Popover {
 
     public TrashPopover(Gtk.EventBox indicatorBox) {
         Object(relative_to: indicatorBox);
-    
+
         set_default_size(popoverWidth, popoverHeight); // popover size
         set_resizable(false);
         initTrashHelper();
@@ -112,7 +112,7 @@ public class TrashPopover : Budgie.Popover {
         //Page1 Content
         Gtk.Box titlesContainer =new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
         page2.set_center_widget(titlesContainer);
-        
+
         Gtk.Label dialogTitleLabel = new Gtk.Label("");
         dialogTitleLabel.set_markup(_("Empty all items from the Trash?"));
         // dialogTitleLabel.set_halign(Gtk.Align.CENTER);
@@ -230,8 +230,8 @@ public class TrashPopover : Budgie.Popover {
     //[signal callbacks END]
 
     //[update START]
-    public void update(){ 
-        openStackPage1();  
+    public void update(){
+        openStackPage1();
         if(trashHelper.isTrashEmpty()){
             emptyButton.set_sensitive(false);
             updateIndicatorIcon(TrashHelper.TRASH_EMPTY);
