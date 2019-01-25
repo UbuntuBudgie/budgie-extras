@@ -66,5 +66,6 @@ install_data(
     '803n-broken-clouds.svg',
     '804d-overcast-clouds.svg',
     '804n-overcast-clouds.svg',
+    'error_icon.svg',
     install_dir: join_paths(LIB_INSTALL_DIR, 'weather_icons')
 )

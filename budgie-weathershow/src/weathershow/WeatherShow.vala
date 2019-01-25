@@ -28,6 +28,23 @@ namespace WeatherShowFunctions {
         return settings;
     }
 
+    private int escape_missingicon(
+        string loglocation, string iconname, string[] iconnames
+        ) {
+        write_tofile(loglocation, "icon not found: ".concat(iconname));
+        return get_stringindex("erro", iconnames);
+    }
+
+    private void write_tofile(string path, string data) {
+        File datasrc = File.new_for_path(path);
+        if (datasrc.query_exists ()) {
+            datasrc.delete ();
+        }
+        var file_stream = datasrc.create (FileCreateFlags.NONE);
+        var data_stream = new DataOutputStream (file_stream);
+        data_stream.put_string (data);
+    }
+
     private string get_langmatch () {
         // look up the language match from OWM, if it exists. default to EN if not
         string [] lang_names = GLib.Intl.get_language_names();
@@ -274,17 +291,24 @@ namespace WeatherShowApplet {
                     currgrid.attach(timelabel, n_fc, 2, 1, 1);
                     var daylabel = new Gtk.Label(day);
                     currgrid.attach(daylabel, n_fc, 1, 1, 1);
-
-
                     // process the produced weather data (string), calc. icon
                     string[] labelsrc = result_forecast[stamp].split("\n");
                     string iconname = WeatherShowFunctions.find_mappedid(
                         labelsrc[0]
                         ).concat(labelsrc[1]
                     );
+                    // here we need an exception handler!
                     int ic_index =  WeatherShowFunctions.get_stringindex(
                         iconname, iconnames
                     );
+                    if (ic_index == -1) {
+                        string loglocation = create_dirs_file(
+                            ".config/budgie-extras", "icon_error"
+                        );
+                        ic_index = WeatherShowFunctions.escape_missingicon(
+                            loglocation, iconname, iconnames
+                        );
+                    }
                     // add to subgrid, set snapshot icon
                     int line_index = 4;
                     foreach (string l in labelsrc[2:6]) {
@@ -498,6 +522,14 @@ namespace WeatherShowApplet {
                 int icon_index = WeatherShowFunctions.get_stringindex(
                     mapped_id.concat(add_daytime) , iconnames
                 );
+                if (icon_index == -1) {
+                    string loglocation = create_dirs_file(
+                        ".config/budgie-extras", "icon_error"
+                    );
+                    icon_index = WeatherShowFunctions.escape_missingicon(
+                        loglocation, add_daytime, iconnames
+                    );
+                }
                 Idle.add ( () => {
                     Pixbuf pbuf = iconpixbufs[icon_index];
                     indicatorIcon.set_from_pixbuf(pbuf);
