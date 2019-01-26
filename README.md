@@ -43,7 +43,7 @@ the options described in meson_options.txt i.e. use `-Dbuild-all=false -Dbuild-a
 e.g. to build just the hotcorners and weathershow applets
 
      mkdir build && cd build
-     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weather=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
+     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
      ninja -v
      sudo ninja install
 

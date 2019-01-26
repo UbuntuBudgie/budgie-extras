@@ -17,9 +17,6 @@ am_cflags = [
 add_global_arguments(am_cflags, language: 'c')
 
 PLUGIN = 'budgie-hotcorners'
-VAPI_DIR = join_paths(meson.source_root(),
-                      PLUGIN,
-                      'vapi')
 
 install_data('schema/org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
