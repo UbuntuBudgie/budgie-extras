@@ -2,7 +2,7 @@
 
 Additional enhancements for the user experience
 
-## Plugins: 
+## Plugins:
 
  - Window Previews
  - Hotcorners
@@ -21,20 +21,32 @@ Additional enhancements for the user experience
  - Trash
  - App-launcher
  - RecentlyUsed
- 
+
 ## Standalone
 
 Non-budgie plugins - see the individual components for details
 
  - Budgie Visualspace
- 
+
  ## Installation
- 
+
+ By default all applets are compiled and installed:
+
      mkdir build && cd build
      meson --buildtype plain --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
      ninja -v
      sudo ninja install
-     
+
+If individual applets (or groups of applets) are to be compiled and installed use
+the options described in meson_options.txt i.e. use `-Dbuild-all=false -Dbuild-appletoption=true`
+
+e.g. to build just the hotcorners and weathershow applets
+
+     mkdir build && cd build
+     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weather=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
+     ninja -v
+     sudo ninja install
+
 ## Distro's
 
 We love Budgie-Extras to work across as many distro's as possible.  So please let us know if your distro has packaged budgie-extras and how to install.
@@ -68,7 +80,7 @@ The following packages are required for the various Python plugins to work:
  - python3-cairosvg
  - python3-pyudev
  - python3-requests
- 
+
 The following packages are required for the various Vala plugins to work:
  - gobject-introspection
  - libgtk-3-dev
