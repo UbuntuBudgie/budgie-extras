@@ -81,6 +81,11 @@ if build_all == true or build_countdown == true
 	subdir('budgie-countdown')
 endif
 
+build_clockworks = get_option('build-clockworks')
+if build_all == true or build_clockworks == true
+	subdir('budgie-clockworks')
+endif
+
 build_keyboard_autoswitch = get_option('build-keyboard-autoswitch')
 if build_all == true or build_keyboard_autoswitch == true
 	subdir('budgie-keyboard-autoswitch')
