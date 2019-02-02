@@ -38,7 +38,7 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
-install_data('schema/org.ubuntubudgie.plugins.budgie-extras.gschema.xml',
+install_data('schema/org.ubuntubudgie.plugins.budgie-wsoverview.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
 )
 
