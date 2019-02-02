@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk, GObject
+from threading import Thread
+import time
+import subprocess
+import sys
+import cairo
+
+"""
+Budgie TakeaBreak
+Author: Jacob Vlijm
+Copyright © 2017-2019 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+
+class Splash(Gtk.Window):
+
+    def __init__(self):
+
+        tab_css = """
+        .label {
+          color: white;
+          padding-bottom: 0px;
+          font-size: 50px;
+        }
+        .seconds {
+          color: green;
+          padding-bottom: 0px;
+          font-size: 50px;
+        }
+        """
+
+        Gtk.Window.__init__(self, title="Take a Break countdown")
+        maingrid = Gtk.Grid()
+        maingrid.set_column_spacing(40)
+        self.add(maingrid)
+        self.duration = int(sys.argv[1])
+        # transparency & style
+        self.provider = Gtk.CssProvider.new()
+        self.provider.load_from_data(tab_css.encode())
+        screen = self.get_screen()
+        visual = screen.get_rgba_visual()
+        if all([visual, screen.is_composited()]):
+            self.set_visual(visual)
+        self.set_app_paintable(True)
+        self.connect("draw", self.area_draw)
+        maingrid.set_border_width(40)
+        self.label = Gtk.Label("Time to take a break!")
+        self.label.set_width_chars(18)
+        self.set_textstyle("label", self.label)
+        maingrid.attach(self.label, 1, 0, 1, 1)
+        self.timelabel = Gtk.Label("")
+        self.timelabel.set_width_chars(3)
+        self.set_textstyle("seconds", self.timelabel)
+        maingrid.attach(self.timelabel, 2, 0, 1, 1)
+        Thread(target=self.timer).start()
+
+    def area_draw(self, widget, cr):
+        # set transparent color
+        cr.set_source_rgba(0.1, 0.1, 0.1, 0.9)
+        cr.set_operator(cairo.OPERATOR_SOURCE)
+        cr.paint()
+        cr.set_operator(cairo.OPERATOR_OVER)
+
+    def set_textstyle(self, stclass, widget):
+        st_cont = widget.get_style_context()
+        st_cont.add_class(stclass)
+        Gtk.StyleContext.add_provider(
+            st_cont,
+            self.provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
+
+    def timer(self):
+        duration = self.duration
+        while True:
+            time.sleep(1)
+            duration = duration - 1
+            GObject.idle_add(
+                self.timelabel.set_text,
+                str(duration),
+                priority=GObject.PRIORITY_DEFAULT
+            )
+            if duration % 5 == 0:
+                try:
+                    subprocess.Popen([
+                        "wmctrl", "-a", "Take a Break countdown",
+                    ])
+                except subprocess.CalledProcessError:
+                    pass
+            if duration <= 0:
+                self.label.set_text("Back to work...")
+                try:
+                    subprocess.Popen([
+                        "wmctrl", "-a", "Take a Break countdown",
+                    ])
+                    w_list = subprocess.check_output(
+                        ["wmctrl", "-lp"]
+                    ).decode("utf-8")
+                    splashpid = [l.split()[2] for l in w_list.splitlines()
+                                 if "Take a Break countdown" in l][0]
+                    time.sleep(2)
+                    subprocess.Popen(["kill", splashpid])
+                except (IndexError, subprocess.CalledProcessError):
+                    pass
+                break
+
+
+def splashwindow():
+    window = Splash()
+    window.set_decorated(False)
+    window.set_resizable(False)
+    window.set_position(Gtk.WindowPosition.CENTER)
+    window.show_all()
+    Gtk.main()
+
+
+splashwindow()

@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+import gi.repository
+from gi.repository import Gio
+import subprocess
+import time
+import os
+
+
+"""
+Budgie TakeaBreak
+Author: Jacob Vlijm
+Copyright © 2017-2019 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+
+dcpath = "/com/solus-project/budgie-panel/applets/"
+tab_key = "org.ubuntubudgie.plugins.takeabreak"
+user = os.environ["USER"]
+tab_settings = Gio.Settings.new(tab_key)
+# get current settings
+awaketime = tab_settings.get_int("awaketime") * 60
+sleeptime = tab_settings.get_int("sleeptime") * 60
+mode = tab_settings.get_string("mode")
+notify_msg = tab_settings.get_boolean("showmessage")
+notify_time = 15
+from_unidle = tab_settings.get_boolean("smartresume")
+message = "Break in " + str(notify_time) + " seconds"
+tabcountdown_path = os.path.dirname(os.path.abspath(__file__))
+
+
+def getkey():
+    # get the specific dconf path, referring to the applet's key
+    data = subprocess.check_output([
+        "dconf", "dump", dcpath,
+    ]).decode("utf-8").splitlines()
+    try:
+        match = [l for l in data if "Take a Break" in l][0]
+        return True
+    except IndexError:
+        return False
+
+
+def get_idle():
+    return int(subprocess.check_output(["xprintidle"]).decode("utf-8"))
+
+
+def idle_sleep():
+    curr_idle1 = get_idle()
+    while True:
+        time.sleep(3)
+        curr_idle2 = get_idle()
+        if curr_idle2 <= curr_idle1:
+            break
+        else:
+            curr_idle1 = curr_idle2
+
+
+def write_nextbreak():
+    next_break = time.time() + awaketime
+    open("/tmp/nextbreak_" + user, "wt").write(str(next_break))
+
+
+def take_a_break():
+    get = subprocess.check_output(["xrandr"]).decode("utf-8").split()
+    screens = [get[i - 1] for i in range(len(get)) if get[i] == "connected"]
+    if mode == "message":
+        command = tabcountdown_path + "/message_window"
+        subprocess.Popen([command, str(sleeptime)])
+    else:
+        for scr in screens:
+            if mode == "rotate":
+                subprocess.call([
+                    "xrandr", "--output", scr, "--rotate", "inverted"
+                ])
+            elif mode == "dim":
+                subprocess.call([
+                    "xrandr", "--output", scr, "--brightness", "0.1"
+                ])
+            elif mode == "lock":
+                subprocess.Popen([
+                    "gnome-screensaver-command", "-l"
+                ])
+    time.sleep(sleeptime)
+    for scr in screens:
+        subprocess.Popen([
+            "gnome-screensaver-command", "-d"
+        ])
+        time.sleep(2)
+        if mode == "rotate":
+            subprocess.call([
+                "xrandr", "--output", scr, "--rotate", "normal"
+            ])
+            time.sleep(0.2)
+        elif mode == "dim":
+            subprocess.call([
+                "xrandr", "--output", scr, "--brightness", "1"
+            ])
+            time.sleep(0.2)
+    if from_unidle:
+        idle_sleep()
+
+
+if from_unidle:
+    idle_sleep()
+
+
+while True:
+    # in case the applet is removed, just quit on next un- sleep
+    if not getkey():
+        break
+    write_nextbreak()
+    time.sleep(awaketime - notify_time)
+    if not getkey():
+        break
+    if notify_msg:
+        subprocess.Popen([
+            "notify-send", "-i", "takeabreak-symbolic",
+            "Take a break", message,
+        ])
+    if not getkey():
+        break
+    time.sleep(notify_time)
+    if not getkey():
+        break
+    take_a_break()

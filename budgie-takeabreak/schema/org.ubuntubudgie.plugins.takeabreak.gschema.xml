@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/takeabreak/"
+            id="org.ubuntubudgie.plugins.takeabreak">
+        <key type="i" name="awaketime">
+            <summary>Time before break</summary>
+            <description>The work time, in minutes, before the break should start</description>
+	    <default>50</default>
+        </key>
+        <key type="i" name="sleeptime">
+            <summary>Break time</summary>
+            <description>The time the break lasts</description>
+	    <default>10</default>
+        </key>
+        <key type="s" name="mode">
+            <summary>Break mode</summary>
+            <description>What should happen during break</description>
+            <default>"dim"</default>
+        </key>
+        <key type="b" name="showmessage">
+            <summary>Show message before break</summary>
+            <description>Show a notification 15 seconds before the break starts</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="paused">
+            <summary>Wether TakeaBreak is paused </summary>
+            <description>Set if TakeaBreak is interupted or should run</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="smartresume">
+            <summary>Only start if not idle</summary>
+            <description>Start the new working time only if and after the computer is not idle</description>
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>
+
+
