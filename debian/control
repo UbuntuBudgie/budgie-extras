@@ -18,9 +18,15 @@ Build-Depends: debhelper (>= 11),
 		libgee-0.8-dev,
 		intltool,
 		libsoup2.4-dev
+<<<<<<< HEAD
 Standards-Version: 4.2.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
+=======
+Standards-Version: 4.3.0
+Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian-launchpad
+Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian-launchpad
+>>>>>>> f1fdc3b... Add takeabreak packaging + overview schema fix
 Homepage: https://ubuntubudgie.org
 
 Package: budgie-extras-common
@@ -351,3 +357,22 @@ Description: Applet to display the weather and forecast
  .
  The weathershow applet displays daily and three hourly weather
  forecasts on both the desktop and a Popover.
+
+Package: budgie-takeabreak-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-peas-1.0,
+	xprintidle,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet to prompt when to take-a-break for a set period of time
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The take-a-break applet monitors how long a desktop is being used
+ and at a configurable time period suggests when to take a break
+ from working.
