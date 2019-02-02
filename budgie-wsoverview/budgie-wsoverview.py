@@ -34,7 +34,9 @@ class WsOverviewWin(GObject.Object):
     def __init__(self):
 
         GObject.Object.__init__(self)
-        settings = Gio.Settings.new("org.ubuntubudgie.plugins.budgie-wsoverview")
+        settings = Gio.Settings.new(
+            "org.ubuntubudgie.plugins.budgie-wsoverview"
+        )
         settings.bind("ws-overview-index", self,
                       'mode_index',
                       Gio.SettingsBindFlags.DEFAULT)
