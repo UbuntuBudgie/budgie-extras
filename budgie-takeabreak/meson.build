@@ -16,7 +16,7 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
-install_data('org.ubuntubudgie.plugins.takeabreak.gschema.xml',
+install_data('schema/org.ubuntubudgie.plugins.takeabreak.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
 )
 

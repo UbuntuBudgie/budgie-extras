@@ -21,6 +21,7 @@ Additional enhancements for the user experience
  - Trash
  - App-launcher
  - RecentlyUsed
+ - Take-A-Break
 
 ## Standalone
 

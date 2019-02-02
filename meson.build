@@ -125,3 +125,8 @@ build_recentlyused = get_option('build-recentlyused')
 if build_all == true or build_recentlyused == true
 	subdir('budgie-recentlyused')
 endif
+
+build_takeabreak = get_option('build-takeabreak')
+if build_all == true or build_takeabreak == true
+	subdir('budgie-takeabreak')
+endif

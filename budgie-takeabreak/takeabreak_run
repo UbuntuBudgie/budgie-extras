@@ -123,7 +123,7 @@ while True:
         break
     if notify_msg:
         subprocess.Popen([
-            "notify-send", "-i", "takeabreak-symbolic",
+            "notify-send", "-t", "8000", "-i", "takeabreak-symbolic",
             "Take a break", message,
         ])
     if not getkey():
