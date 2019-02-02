@@ -1,0 +1,180 @@
+Description: Resolve weathershow related issues
+ This patch fixes weathershow problems:
+ 1. OWM can occasionally issue new icons in its data
+    which causes the applet & budgie-session to crash.
+Author: Jacob-Vlijm <vlijm@planet.nl>
+Origin: upstream, commits 625f99c6d7b166e85a9285f9aee2b247d6a1f63f
+ f94b7b1b535820be30df835cea124e23d3f519bf
+Forwarded: not-needed
+Reviewed-By: David Mohammed <fossfreedom@ubuntu.com>
+Last-Update: 2019-02-02
+
+--- budgie-extras-0.7.1.orig/budgie-weathershow/src/weathershow/WeatherShow.vala
++++ budgie-extras-0.7.1/budgie-weathershow/src/weathershow/WeatherShow.vala
+@@ -28,6 +28,23 @@ namespace WeatherShowFunctions {
+         return settings;
+     }
+ 
++    private int escape_missingicon(
++        string loglocation, string iconname, string[] iconnames
++        ) {
++        write_tofile(loglocation, "icon not found: ".concat(iconname));
++        return get_stringindex("erro", iconnames);
++    }
++
++    private void write_tofile(string path, string data) {
++        File datasrc = File.new_for_path(path);
++        if (datasrc.query_exists ()) {
++            datasrc.delete ();
++        }
++        var file_stream = datasrc.create (FileCreateFlags.NONE);
++        var data_stream = new DataOutputStream (file_stream);
++        data_stream.put_string (data);
++    }
++
+     private string get_langmatch () {
+         // look up the language match from OWM, if it exists. default to EN if not
+         string [] lang_names = GLib.Intl.get_language_names();
+@@ -102,12 +119,14 @@ namespace WeatherShowFunctions {
+         */
+         string[,] replacements = {
+             {"221", "212"}, {"231", "230"}, {"232", "230"}, {"301", "300"},
+-            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"314", "313"},
++            {"302", "300"}, {"310", "300"}, {"312", "311"}, {"321", "314"},
+             {"502", "501"}, {"503", "501"}, {"504", "501"}, {"522", "521"},
+             {"531", "521"}, {"622", "621"}, {"711", "701"}, {"721", "701"},
+             {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"},
+             {"762", "701"}
+         };
++        // 314 - 313 was removed from mapping on 25 january 2019.
++        // It has its own icon! 321 -> 314 was added
+         int lenrep = replacements.length[0];
+         for (int i=0; i < lenrep; i++) {
+             if (icon_id == replacements[i, 0]) {
+@@ -272,17 +291,24 @@ namespace WeatherShowApplet {
+                     currgrid.attach(timelabel, n_fc, 2, 1, 1);
+                     var daylabel = new Gtk.Label(day);
+                     currgrid.attach(daylabel, n_fc, 1, 1, 1);
+-
+-
+                     // process the produced weather data (string), calc. icon
+                     string[] labelsrc = result_forecast[stamp].split("\n");
+                     string iconname = WeatherShowFunctions.find_mappedid(
+                         labelsrc[0]
+                         ).concat(labelsrc[1]
+                     );
++                    // here we need an exception handler!
+                     int ic_index =  WeatherShowFunctions.get_stringindex(
+                         iconname, iconnames
+                     );
++                    if (ic_index == -1) {
++                        string loglocation = create_dirs_file(
++                            ".config/budgie-extras", "icon_error"
++                        );
++                        ic_index = WeatherShowFunctions.escape_missingicon(
++                            loglocation, iconname, iconnames
++                        );
++                    }
+                     // add to subgrid, set snapshot icon
+                     int line_index = 4;
+                     foreach (string l in labelsrc[2:6]) {
+@@ -496,6 +522,14 @@ namespace WeatherShowApplet {
+                 int icon_index = WeatherShowFunctions.get_stringindex(
+                     mapped_id.concat(add_daytime) , iconnames
+                 );
++                if (icon_index == -1) {
++                    string loglocation = create_dirs_file(
++                        ".config/budgie-extras", "icon_error"
++                    );
++                    icon_index = WeatherShowFunctions.escape_missingicon(
++                        loglocation, add_daytime, iconnames
++                    );
++                }
+                 Idle.add ( () => {
+                     Pixbuf pbuf = iconpixbufs[icon_index];
+                     indicatorIcon.set_from_pixbuf(pbuf);
+--- /dev/null
++++ budgie-extras-0.7.1/budgie-weathershow/weather_icons/error_icon.svg
+@@ -0,0 +1,73 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<svg
++   xmlns:dc="http://purl.org/dc/elements/1.1/"
++   xmlns:cc="http://creativecommons.org/ns#"
++   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
++   xmlns:svg="http://www.w3.org/2000/svg"
++   xmlns="http://www.w3.org/2000/svg"
++   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
++   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
++   id="svg8"
++   version="1.1"
++   viewBox="0 0 79.374998 79.375002"
++   height="300"
++   width="300"
++   sodipodi:docname="error_icon.svg"
++   inkscape:version="0.92.3 (2405546, 2018-03-11)">
++  <sodipodi:namedview
++     pagecolor="#ffffff"
++     bordercolor="#666666"
++     borderopacity="1"
++     objecttolerance="10"
++     gridtolerance="10"
++     guidetolerance="10"
++     inkscape:pageopacity="0"
++     inkscape:pageshadow="2"
++     inkscape:window-width="1920"
++     inkscape:window-height="1010"
++     id="namedview9"
++     showgrid="false"
++     inkscape:zoom="0.78666667"
++     inkscape:cx="-49.465435"
++     inkscape:cy="181.62037"
++     inkscape:window-x="0"
++     inkscape:window-y="34"
++     inkscape:window-maximized="1"
++     inkscape:current-layer="svg8" />
++  <defs
++     id="defs2" />
++  <metadata
++     id="metadata5">
++    <rdf:RDF>
++      <cc:Work
++         rdf:about="">
++        <dc:format>image/svg+xml</dc:format>
++        <dc:type
++           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
++        <dc:title />
++      </cc:Work>
++    </rdf:RDF>
++  </metadata>
++  <rect
++     style="fill:#999999;stroke-width:0.14262244"
++     id="rect12-6-7"
++     width="62.46492"
++     height="7.5873566"
++     x="25.439209"
++     y="-2.9938626"
++     ry="2.6358638"
++     transform="matrix(0.70888429,0.70532479,-0.70888429,0.70532479,0,0)"
++     inkscape:transform-center-x="-112.42454"
++     inkscape:transform-center-y="-65.004202" />
++  <rect
++     style="fill:#999999;stroke-width:0.14262244"
++     id="rect12-6-7-6"
++     width="62.46492"
++     height="7.5873566"
++     x="-30.717918"
++     y="-60.462036"
++     ry="2.635864"
++     transform="matrix(-0.7053248,0.70888429,-0.7053248,-0.70888429,0,0)"
++     inkscape:transform-center-x="-65.004202"
++     inkscape:transform-center-y="112.42455" />
++</svg>
+--- budgie-extras-0.7.1.orig/budgie-weathershow/weather_icons/meson.build
++++ budgie-extras-0.7.1/budgie-weathershow/weather_icons/meson.build
+@@ -66,5 +66,6 @@ install_data(
+     '803n-broken-clouds.svg',
+     '804d-overcast-clouds.svg',
+     '804n-overcast-clouds.svg',
++    'error_icon.svg',
+     install_dir: join_paths(LIB_INSTALL_DIR, 'weather_icons')
+ )
