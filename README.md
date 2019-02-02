@@ -81,6 +81,7 @@ The following packages are required for the various Python plugins to work:
  - python3-cairosvg
  - python3-pyudev
  - python3-requests
+ - xprintidle
 
 The following packages are required for the various Vala plugins to work:
  - gobject-introspection
