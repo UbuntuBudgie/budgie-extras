@@ -37,7 +37,8 @@ Description: Shared component of budgie-extras applets
 Package: budgie-hotcorners-applet
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
- budgie-extras-common
+ budgie-extras-common,
+ dconf-cli
 Description: Applet providing hotcorners capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -186,6 +187,7 @@ Depends: python3,
 	python3-psutil,
 	python3-cairo,
 	python3-gi-cairo,
+	dconf-cli,
 	${misc:Depends}, ${python3:Depends}
 Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
@@ -343,7 +345,8 @@ Description: Applet to provide an alternative means to launch applications
 Package: budgie-weathershow-applet
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
- budgie-extras-common
+ budgie-extras-common,
+ dconf-cli
 Description: Applet to display the weather and forecast
  This is part of a suite of python3 based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
