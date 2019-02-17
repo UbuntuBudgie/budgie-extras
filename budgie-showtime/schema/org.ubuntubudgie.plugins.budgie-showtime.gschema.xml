@@ -29,7 +29,7 @@
         </key>
         <key type="i" name="xposition">
             <summary>X- position of the desktop window</summary>
-            <description>Sets the top-left position of the desktop window, -1 sets to default (bottom-right)</description>
+            <description>Sets the X position, if y is also -1, x=1 positions to the left and x=2 positions to the right</description>
 	    <default>1</default>
         </key>
         <key type="i" name="datefontsize">
@@ -44,12 +44,12 @@
         </key>
         <key type="i" name="yposition">
             <summary>Y- position of the desktop window</summary>
-            <description>Sets the top-left position of the desktop window, -1 sets to default (bottom-right)</description>
+            <description>Sets the Y position, -1 sets to default (bottom left or right)</description>
 	    <default>-1</default>
         </key>
         <key type="b" name="twelvehrs">
             <summary>Use 12 hrs time format</summary>
-            <description>Wheter to display time in 12 hrs format</description>
+            <description>Display time in 12hr format</description>
             <default>false</default>
         </key>
         <key type="b" name="showdate">
@@ -59,12 +59,12 @@
         </key>
         <key type="b" name="leftalign">
             <summary>Desktop text alignment</summary>
-            <description>Wether text should be aligned on the left side</description>
+            <description>Text should be aligned on the left side (true)</description>
             <default>true</default>
         </key>
         <key type="b" name="draggable">
             <summary>draggable by Super + drag</summary>
-            <description>Whether the window can be dragged temporarily by Super + drag</description>
+            <description>The window can be dragged temporarily by Super + drag</description>
             <default>false</default>
         </key>
     </schema>
