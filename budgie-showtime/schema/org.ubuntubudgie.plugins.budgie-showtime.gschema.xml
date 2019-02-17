@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/budgie-showtime/"
+            id="org.ubuntubudgie.plugins.budgie-showtime">
+        <key type="s" name="dateformat">
+            <summary>Custom date format</summary>
+            <description>Optional dateformat. Use string formatting conform the -date- command</description>
+            <default>""</default>
+        </key>
+        <key type="s" name="timefont">
+            <summary>Font for desktop time</summary>
+            <description>The font, showing on the desktop's time representation</description>
+            <default>"Sans"</default>
+        </key>
+        <key type="s" name="datefont">
+            <summary>Font for desktop date</summary>
+            <description>The font, showing on the desktop's date representation</description>
+            <default>"Sans"</default>
+        </key>
+        <key type="as" name="timecolor">
+            <summary>Color of the displayed time</summary>
+            <description>Text color of the applet's desktop representation</description>
+            <default>["255", "255", "255"]</default>
+        </key>
+        <key type="as" name="datecolor">
+            <summary>Color of the displayed time</summary>
+            <description>Text color of the applet's desktop representation</description>
+            <default>["255", "255", "255"]</default>
+        </key>
+        <key type="i" name="xposition">
+            <summary>X- position of the desktop window</summary>
+            <description>Sets the top-left position of the desktop window, -1 sets to default (bottom-right)</description>
+	    <default>1</default>
+        </key>
+        <key type="i" name="datefontsize">
+            <summary>Fontsize for date</summary>
+            <description>The fontsize of the desktop data representation</description>
+	    <default>35</default>
+        </key>
+        <key type="i" name="timefontsize">
+            <summary>Fontsize for time</summary>
+            <description>The fontsize of the desktop time representation</description>
+	    <default>91</default>
+        </key>
+        <key type="i" name="yposition">
+            <summary>Y- position of the desktop window</summary>
+            <description>Sets the top-left position of the desktop window, -1 sets to default (bottom-right)</description>
+	    <default>-1</default>
+        </key>
+        <key type="b" name="twelvehrs">
+            <summary>Use 12 hrs time format</summary>
+            <description>Wheter to display time in 12 hrs format</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="showdate">
+            <summary>Show the date on the desktop</summary>
+            <description>Show a dynamically updated forecast in the applet's popover</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="leftalign">
+            <summary>Desktop text alignment</summary>
+            <description>Wether text should be aligned on the left side</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="draggable">
+            <summary>draggable by Super + drag</summary>
+            <description>Whether the window can be dragged temporarily by Super + drag</description>
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>

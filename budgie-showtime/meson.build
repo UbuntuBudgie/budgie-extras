@@ -1,18 +1,32 @@
-#gnome = import('gnome')
+am_cflags = [
+    '-fstack-protector',
+    '-pedantic',
+    '-Wstrict-prototypes',
+    '-Wundef',
+    '-Werror-implicit-function-declaration',
+    '-Wformat',
+    '-Wformat-security',
+    '-Werror=format-security',
+    '-Wconversion',
+    '-Wunused-variable',
+    '-Wunreachable-code',
+    '-Wall',
+    '-W',
+]
+
+#add_global_arguments(am_cflags, language: 'c')
 
 PLUGIN = 'budgie-showtime'
 
-install_data(
-    'BudgieShowTime.plugin',
-    'budgie_showtime.py',
-    'clocktools.py',
-    'colorpicker',
-    'ShowTime',
-    'bshowtime_panelrunner',
-    install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
+install_data('schema/org.ubuntubudgie.plugins.budgie-showtime.gschema.xml',
+    install_dir: '/usr/share/glib-2.0/schemas'
 )
 
-install_data(
-    'budgie-showtime-symbolic.svg',
-    install_dir: PIXMAPS_DIR
-)
+LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
+
+message('Installing applet...')
+
+subdir('src')
+subdir('icons')
+
+meson.add_install_script('meson_post_install')
