@@ -84,7 +84,7 @@ namespace  ShowTime {
             dateformat = get_dateformat();
             appearance = new ShowTimeappearance();
             // window
-            this.title = "desktop_showtime";
+            this.title = "Showtime";
             this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
             //this.stick();
             this.destroy.connect(Gtk.main_quit);
@@ -189,7 +189,7 @@ namespace  ShowTime {
             string showmins = fix_mins(mins);
             // hrs to double digits
             if (twelvehrs) {
-                add = " ".concat("AM"); //translate!!
+                add = " ".concat(_("AM");
                 if (hrs > 12) {
                     newhrs = hrs - 12;
                 }
@@ -197,7 +197,7 @@ namespace  ShowTime {
                     newhrs = hrs + 12;
                 }
                 if (12 <= hrs < 24) {
-                    add = " ".concat("PM");
+                    add = " ".concat(_("PM"));
                 }
             }
             string hrs_display = fix_mins(newhrs);
