@@ -10,12 +10,12 @@
         <key type="s" name="timefont">
             <summary>Font for desktop time</summary>
             <description>The font, showing on the desktop's time representation</description>
-            <default>"Sawasdee"</default>
+            <default>"Sans"</default>
         </key>
         <key type="s" name="datefont">
             <summary>Font for desktop date</summary>
             <description>The font, showing on the desktop's date representation</description>
-            <default>"Sawasdee"</default>
+            <default>"Sans"</default>
         </key>
         <key type="as" name="timecolor">
             <summary>Color of the displayed time</summary>
@@ -44,8 +44,8 @@
         </key>
         <key type="i" name="linespacing">
             <summary>Bottom margin of the time label</summary>
-            <description>Distance between time- and date label</description>
-	    <default>-20</default>
+            <description>Distance (px) between time and date label (negative value reduces the spacing)</description>
+	    <default>0</default>
         </key>
         <key type="i" name="yposition">
             <summary>Y- position of the desktop window</summary>
