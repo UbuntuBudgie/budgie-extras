@@ -12,6 +12,8 @@ namespace  ShowTime {
         private string css_template = """
         .timelabel {
             font-size: bigfontpx;
+            margin-bottom: Linespacingpx;
+            margin-right: 10px;
             color: xxx-xxx-xxx;
             font-family: "Timefont";
         }
@@ -24,6 +26,7 @@ namespace  ShowTime {
 
         public void get_css (Gdk.Screen screen) {
             string[] tcolor = showtime_settings.get_strv("timecolor");
+            string linespacing = showtime_settings.get_int("linespacing").to_string();
             string[] dcolor = showtime_settings.get_strv("datecolor");
             string bigfont = showtime_settings.get_int("timefontsize").to_string();
             string smallfont = showtime_settings.get_int("datefontsize").to_string();
@@ -41,6 +44,8 @@ namespace  ShowTime {
                 "Timefont", fontfamily_time
             ).replace(
                 "Datefont", fontfamily_date
+            ).replace(
+                "Linespacing", linespacing
             );
 
             // set / update time label
@@ -104,7 +109,7 @@ namespace  ShowTime {
             string[] bind = {
                 "datecolor", "datefont", "datefontsize", "leftalign",
                 "showdate", "timecolor", "timefont", "timefontsize",
-                "twelvehrs", "xposition", "yposition"
+                "twelvehrs", "xposition", "yposition", "linespacing"
             };
             foreach (string s in bind) {
                 showtime_settings.changed[s].connect(update_appearance);
