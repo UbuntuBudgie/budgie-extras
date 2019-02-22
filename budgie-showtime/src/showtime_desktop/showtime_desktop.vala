@@ -200,6 +200,7 @@ namespace  ShowTime {
                 if (hrs > 12) {newhrs = hrs - 12;}
                 else if (hrs < 1) {newhrs = hrs + 12;}
                 if (12 <= hrs < 24) {add = " ".concat("PM");}
+                return @"$newhrs:$showmins$add";
             }
             string hrs_display = fix_mins(newhrs);
             return @"$hrs_display:$showmins$add";
