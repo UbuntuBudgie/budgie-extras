@@ -196,10 +196,10 @@ namespace  ShowTime {
             string showmins = fix_mins(mins);
             // hrs to double digits
             if (twelvehrs) {
-                add = " ".concat("AM");
+                add = " ".concat(_("AM"));
                 if (hrs > 12) {newhrs = hrs - 12;}
                 else if (hrs < 1) {newhrs = hrs + 12;}
-                if (12 <= hrs < 24) {add = " ".concat("PM");}
+                if (12 <= hrs < 24) {add = " ".concat(_("PM"));}
                 return @"$newhrs:$showmins$add";
             }
             string hrs_display = fix_mins(newhrs);
