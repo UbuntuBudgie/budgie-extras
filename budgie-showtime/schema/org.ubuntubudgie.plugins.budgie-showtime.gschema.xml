@@ -7,40 +7,30 @@
             <description>Optional dateformat. Use string formatting conform the -date- command</description>
             <default>""</default>
         </key>
-        <key type="s" name="timefont">
-            <summary>Font for desktop time</summary>
-            <description>The font, showing on the desktop's time representation</description>
-            <default>"Sans"</default>
+        <key type="s" name="datefontcolor">
+            <summary>Color of the displayed time</summary>
+            <description>Text color of the applet's desktop representation</description>
+            <default>"#FFFFFF"</default>
+        </key>
+        <key type="s" name="timefontcolor">
+            <summary>Color of the displayed time</summary>
+            <description>Text color of the applet's desktop representation</description>
+            <default>"#FFFFFF"</default>
         </key>
         <key type="s" name="datefont">
-            <summary>Font for desktop date</summary>
-            <description>The font, showing on the desktop's date representation</description>
-            <default>"Sans"</default>
+            <summary>Font and fontstyle for desktop date</summary>
+            <description>The font and fontstyle, showing on the desktop's date representation</description>
+            <default>"Sans 20"</default>
         </key>
-        <key type="as" name="timecolor">
-            <summary>Color of the displayed time</summary>
-            <description>Text color of the applet's desktop representation</description>
-            <default>["255", "255", "255"]</default>
-        </key>
-        <key type="as" name="datecolor">
-            <summary>Color of the displayed time</summary>
-            <description>Text color of the applet's desktop representation</description>
-            <default>["255", "255", "255"]</default>
+        <key type="s" name="timefont">
+            <summary>Font and fontstyle for desktop time</summary>
+            <description>The font and fontstyle, showing on the desktop's time representation</description>
+            <default>"Sans 50"</default>
         </key>
         <key type="i" name="xposition">
             <summary>X- position of the desktop window</summary>
             <description>Sets the X position, if y is also -1, x=1 positions to the left and x=2 positions to the right</description>
 	    <default>1</default>
-        </key>
-        <key type="i" name="datefontsize">
-            <summary>Fontsize for date</summary>
-            <description>The fontsize of the desktop data representation</description>
-	    <default>35</default>
-        </key>
-        <key type="i" name="timefontsize">
-            <summary>Fontsize for time</summary>
-            <description>The fontsize of the desktop time representation</description>
-	    <default>91</default>
         </key>
         <key type="i" name="linespacing">
             <summary>Bottom margin of the time label</summary>

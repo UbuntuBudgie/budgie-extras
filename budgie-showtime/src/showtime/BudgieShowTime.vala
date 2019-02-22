@@ -1,5 +1,6 @@
 using Gtk;
 using Gdk;
+using Math;
 
 /*
 * BudgieShowTimeII
@@ -29,10 +30,11 @@ namespace BudgieShowTimeApplet {
         Button dragbutton;
         CheckButton leftalign;
         CheckButton twelve_hrs;
-        Gtk.SpinButton timefont;
-        Gtk.SpinButton datefont;
+        Gtk.FontButton timefontbutton;
+        Gtk.FontButton datefontbutton;
         Gtk.ColorButton timecolor;
         Gtk.ColorButton datecolor;
+        Gtk.SpinButton linespacing;
         GLib.Settings showtime_settings;
         Label draghint;
         string position;
@@ -42,29 +44,23 @@ namespace BudgieShowTimeApplet {
         public BudgieShowTimeSettings(GLib.Settings? settings) {
 
             this.settings = settings;
-
             // translated strings
             position = (_("Position"));
             dragposition = (_("Drag position"));
             fixposition = (_("Save position"));
-
             string stsettings_css = """
             .st_header {
                 font-weight: bold;
             }
             """;
-
             string dragtext = (_(
                 "Enable Super + drag to set time position. Click ´Save position´ to save."
             ));
-
             showtime_settings =  new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-showtime"
             );
-
             var screen = this.get_screen();
             // window content
-            //var grid = new Gtk.Grid ();
             this.set_row_spacing(10);
             var position_header = new Gtk.Label(position);
             position_header.xalign = 0;
@@ -74,28 +70,26 @@ namespace BudgieShowTimeApplet {
             dragbutton.set_tooltip_text(dragtext);
             dragbutton.set_label(_("Drag position"));
             this.attach(dragbutton, 0, 2, 1, 1);
-            //
             draghint = new Gtk.Label("");
             this.attach(draghint, 0, 4, 1, 1);
             // time font settings
             var time_header = new Gtk.Label(_("Time font, size & color"));
             time_header.xalign = 0;
             this.attach(time_header, 0, 5, 10, 1);
-            timefont = new Gtk.SpinButton.with_range (10, 255, 1);
-            this.attach(timefont, 0, 6, 1, 1);
+            timefontbutton = new FontButton();
+            this.attach(timefontbutton, 0, 6, 1, 1);
             var spacelabel2 = new Gtk.Label("");
             this.attach(spacelabel2, 1, 6, 1, 1);
             timecolor = new Gtk.ColorButton();
             this.attach(timecolor, 2, 6, 1, 1);
             var spacelabel3 = new Gtk.Label("");
             this.attach(spacelabel3, 1, 7, 1, 1);
-
             // date font settings
             var date_header = new Gtk.Label(_("Date font, size & color"));
             date_header.xalign = 0;
             this.attach(date_header, 0, 10, 10, 1);
-            datefont = new Gtk.SpinButton.with_range (10, 255, 1);
-            this.attach(datefont, 0, 11, 1, 1);
+            datefontbutton = new FontButton();
+            this.attach(datefontbutton, 0, 11, 1, 1);
             var spacelabel4 = new Gtk.Label("");
             this.attach(spacelabel4, 1, 11, 1, 1);
             datecolor = new Gtk.ColorButton();
@@ -112,7 +106,12 @@ namespace BudgieShowTimeApplet {
             this.attach(twelve_hrs, 0, 22, 10, 1);
             var spacelabel6 = new Gtk.Label("\n");
             this.attach(spacelabel6, 1, 23, 1, 1);
-
+            linespacing = new Gtk.SpinButton.with_range (-50, 50, 1);
+            this.attach(linespacing, 0, 30, 2, 1);
+            var spacelabel10 = new Gtk.Label("  ");
+            this.attach(spacelabel10, 5, 30, 1, 1);
+            var spinlabel = new Gtk.Label(_("Linespacing"));
+            this.attach(spinlabel, 6, 30, 2, 1);
             // Set style on headers
             position_header.get_style_context().add_class("st_header");
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
@@ -135,15 +134,34 @@ namespace BudgieShowTimeApplet {
             this.show_all();
         }
 
+        private void set_newlinespacing (SpinButton button, string setting) {
+            // get current settings from button, set gsetings
+            int newval = (int)button.get_value();
+            showtime_settings.set_int(setting, newval);
+        }
+
         private void set_initialvals () {
             // fetch current settings, set widgets
-            set_initialdrag();;
-            set_initialcolor(timecolor, "timecolor");
-            set_initialcolor(datecolor, "datecolor");
-            set_initialfontsize(timefont, "timefontsize");
-            set_initialfontsize(datefont, "datefontsize");
+            set_initiallinespacing(linespacing, "linespacing");
+            set_initialdrag();
+            set_initialcolor(timecolor, "timefontcolor");
+            set_initialcolor(datecolor, "datefontcolor");
             set_initialcheck(leftalign, "leftalign");
             set_initialcheck(twelve_hrs, "twelvehrs");
+            set_initialfont(timefontbutton, "timefont");
+            set_initialfont(datefontbutton, "datefont");
+        }
+
+        private void set_initialfont (FontButton button, string setting) {
+            // color to show on the button
+            string currval = showtime_settings.get_string(setting);
+            button.set_font(currval);
+        }
+
+        private void set_initiallinespacing (SpinButton button, string setting) {
+            // color to show on the button
+            int currval = showtime_settings.get_int(setting);
+            button.set_value(currval);
         }
 
         private void set_initialcheck (CheckButton button, string setting) {
@@ -154,18 +172,21 @@ namespace BudgieShowTimeApplet {
 
         private void connect_widgets () {
             // as the name sais
+            linespacing.value_changed.connect (() => {
+                set_newlinespacing(linespacing, "linespacing");
+            });
             dragbutton.clicked.connect(toggle_drag);
-            timefont.value_changed.connect (() => {
-                set_newfontsize(timefont, "timefontsize");
-            });
-            datefont.value_changed.connect (() => {
-                set_newfontsize(datefont, "datefontsize");
-            });
             timecolor.color_set.connect (() => {
-                set_newcolor(timecolor, "timecolor");
+                set_hexcolor(timecolor, "timefontcolor");
             });
             datecolor.color_set.connect (() => {
-                set_newcolor(datecolor, "datecolor");
+                set_hexcolor(datecolor, "datefontcolor");
+            });
+            timefontbutton.font_set.connect (() => {
+                set_newfont(timefontbutton, "timefont");
+            });
+            datefontbutton.font_set.connect (() => {
+                set_newfont(datefontbutton, "datefont");
             });
             leftalign.toggled.connect (() => {
                 toggle_value(leftalign, "leftalign");
@@ -175,45 +196,32 @@ namespace BudgieShowTimeApplet {
             });
         }
 
+        private void set_hexcolor(ColorButton button, string setting) {
+            Gdk.RGBA c = button.get_rgba();
+            string s =
+            "#%02x%02x%02x"
+            .printf((uint)(Math.round(c.red*255)),
+                    (uint)(Math.round(c.green*255)),
+                    (uint)(Math.round(c.blue*255))).up();
+            stdout.printf("%s\n", s);
+            showtime_settings.set_string(setting, s);
+        }
+
+        private void set_newfont(FontButton button, string newfont) {
+            showtime_settings.set_string(newfont, button.get_font());
+        }
+
         private void toggle_value (CheckButton button, string setting) {
             // toggle callback
             bool newval = button.get_active();
             showtime_settings.set_boolean(setting, newval);
         }
 
-        private void set_newcolor (ColorButton button, string setting) {
-            // color buttons callback
-            RGBA newval = button.get_rgba();
-            string[] rgb = {
-                ((int)(newval.red * 255)).to_string(),
-                ((int)(newval.green * 255)).to_string(),
-                ((int)(newval.blue * 255)).to_string()
-            };
-            showtime_settings.set_strv(setting, rgb);
-        }
-
         private void set_initialcolor (ColorButton button, string setting) {
             // get current settings from gsetting, set button color
-            string[] currset = showtime_settings.get_strv(setting);
-            RGBA currcolor = Gdk.RGBA () {
-                red = int.parse(currset[0]) / 255.0,
-                green = int.parse(currset[1]) / 255.0,
-                blue = int.parse(currset[2]) / 255.0,
-                alpha = 1
-            };
+            Gdk.RGBA currcolor = Gdk.RGBA();
+            currcolor.parse(showtime_settings.get_string(setting));
             button.set_rgba(currcolor);
-        }
-
-        private void set_newfontsize (SpinButton button, string setting) {
-            // get current settings from button, set gsetings
-            int newval = (int)button.get_value();
-            showtime_settings.set_int(setting, newval);
-        }
-
-        private void set_initialfontsize (SpinButton button, string setting) {
-            // get current settings from gsettinsg, set spinbutton
-            int fontsize = showtime_settings.get_int(setting);
-            button.set_value(fontsize);
         }
 
         private void set_initialdrag () {
@@ -249,7 +257,6 @@ namespace BudgieShowTimeApplet {
             return new Applet();
         }
     }
-
 
     public class Applet : Budgie.Applet {
 

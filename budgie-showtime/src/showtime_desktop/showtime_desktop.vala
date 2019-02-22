@@ -5,69 +5,72 @@ using Cairo;
 
 namespace  ShowTime {
 
+    private string timefontcolor;
+    private string datefontcolor;
+    private int linespacing;
     private Label timelabel;
     private Label datelabel;
     GLib.Settings showtime_settings;
+
+
     private class ShowTimeappearance {
-        private string css_template = """
-        .timelabel {
-            font-size: bigfontpx;
-            margin-bottom: Linespacingpx;
-            margin-right: 10px;
-            color: xxx-xxx-xxx;
-            font-family: "Timefont";
-        }
-        .datelabel {
-            font-size: smallfontpx;
-            color: yyy-yyy-yyy;
-            font-family: "Datefont";
-        }
-        """;
 
-        public void get_css (Gdk.Screen screen) {
-            string[] tcolor = showtime_settings.get_strv("timecolor");
-            string linespacing = showtime_settings.get_int("linespacing").to_string();
-            string[] dcolor = showtime_settings.get_strv("datecolor");
-            string bigfont = showtime_settings.get_int("timefontsize").to_string();
-            string smallfont = showtime_settings.get_int("datefontsize").to_string();
-            string fontfamily_time = showtime_settings.get_string("timefont");
-            string fontfamily_date = showtime_settings.get_string("datefont");
-            string showtime_css = css_template.replace(
-                "xxx-xxx-xxx", "rgb(".concat(string.joinv(", ", tcolor), ")")
-            ).replace(
-                "yyy-yyy-yyy", "rgb(".concat(string.joinv(", ", dcolor), ")")
-            ).replace(
-                "bigfont", bigfont
-            ).replace(
-                "smallfont", smallfont
-            ).replace(
-                "Timefont", fontfamily_time
-            ).replace(
-                "Datefont", fontfamily_date
-            ).replace(
-                "Linespacing", linespacing
-            );
+        public void get_appearance (Gdk.Screen screen) {
+            // get font properties: color
+            timefontcolor = showtime_settings.get_string("timefontcolor");
+            datefontcolor = showtime_settings.get_string("datefontcolor");
+            // get font properties: font & size
+            string timeprops = showtime_settings.get_string("timefont");
+            string dateprops = showtime_settings.get_string("datefont");
+            // set fonts
+            var timefont = new Pango.FontDescription().from_string(timeprops);
+            var datefont = new Pango.FontDescription().from_string(dateprops);
+            Pango.Context t = timelabel.get_pango_context();
+            Pango.Context d = datelabel.get_pango_context();
+            t.set_font_description(timefont);
+            d.set_font_description(datefont);;
+            timelabel.set_margin_end (10);
+            get_spacing(screen);
+        }
 
+        public void get_spacing (Gdk.Screen screen) {
+            string linespacing_css = """
+            .linespacing {
+              margin-bottom: <bspac>px;
+            }
+            """.replace( "<bspac>", linespacing.to_string());
             // set / update time label
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            timelabel.get_style_context().remove_class("timelabel");
-            datelabel.get_style_context().remove_class("datelabel");
+            timelabel.get_style_context().remove_class("linespacing");
 
             try {
-                css_provider.load_from_data(showtime_css);
+                css_provider.load_from_data(linespacing_css);
                 Gtk.StyleContext.add_provider_for_screen(
                     screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
                 );
-                timelabel.get_style_context().add_class("timelabel");
-                datelabel.get_style_context().add_class("datelabel");
+                timelabel.get_style_context().add_class("linespacing");
             }
             catch (Error e) {
                 // not much to be done
                 print("Error loading css data\n");
             }
         }
-    }
 
+        public void get_hexcolor(
+            string currtime, string currdate
+        ) {
+            timelabel.set_markup (
+                "<span foreground=\"" +
+                timefontcolor + "\">" + currtime +
+                "</span>"
+            );
+            datelabel.set_markup (
+                "<span foreground=\"" +
+                datefontcolor + "\">" + currdate +
+                "</span>"
+            );
+        }
+    }
 
     public class TimeWindow : Gtk.Window {
         int next_time;
@@ -75,7 +78,7 @@ namespace  ShowTime {
         bool showdate;
         string dateformat;
         ShowTimeappearance appearance;
-        bool skip_update = false;
+        bool skip_update;
         int root_x;
         int root_y;
 
@@ -91,34 +94,32 @@ namespace  ShowTime {
             // window
             this.title = "Showtime";
             this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
-            //this.stick();
+            this.resizable = false;
             this.destroy.connect(Gtk.main_quit);
             this.set_decorated(false);
-            var screen = this.get_screen();
+            screen = this.get_screen();
             var maingrid = new Grid();
             timelabel = new Label("");
             datelabel = new Label("");
             // position
             set_windowposition();
-            //root_x = showtime_settings.get_int("xposition");
-            //root_y = showtime_settings.get_int("yposition");
-            //this.move(root_x, root_y);
             maingrid.attach(timelabel, 0, 0, 1, 1);
             maingrid.attach(datelabel, 0, 1, 1, 1);
             this.add(maingrid);
             string[] bind = {
-                "datecolor", "datefont", "datefontsize", "leftalign",
-                "showdate", "timecolor", "timefont", "timefontsize",
-                "twelvehrs", "xposition", "yposition", "linespacing"
+                "leftalign", "showdate", "twelvehrs", "xposition",
+                "yposition", "linespacing", "timefontcolor", "linespacing",
+                "datefontcolor", "timefont", "datefont"
             };
             foreach (string s in bind) {
                 showtime_settings.changed[s].connect(update_appearance);
             }
             showtime_settings.changed["draggable"].connect(update_positionsettings);
             update_appearance();
-            appearance.get_css(screen);
-            bool skip_update = true;
-            //update_positionsettings ();
+            appearance.get_appearance(screen);
+            // surpass on initiation
+            skip_update = true;
+            update_positionsettings ();
             skip_update = false;
             // transparency
             this.set_app_paintable(true);
@@ -128,6 +129,7 @@ namespace  ShowTime {
             this.show_all();
             new Thread<bool> ("oldtimer", run_time);
         }
+
         private void set_windowposition () {
             root_x = showtime_settings.get_int("xposition");
             root_y = showtime_settings.get_int("yposition");
@@ -144,7 +146,7 @@ namespace  ShowTime {
         }
 
         private int[] check_res() {
-            /* see what is the resolution on the primary monitor */
+            // see what is the resolution on the primary monitor
             var prim = Gdk.Display.get_default().get_primary_monitor();
             var geo = prim.get_geometry();
             int width = geo.width;
@@ -195,15 +197,9 @@ namespace  ShowTime {
             // hrs to double digits
             if (twelvehrs) {
                 add = " ".concat("AM");
-                if (hrs > 12) {
-                    newhrs = hrs - 12;
-                }
-                else if (hrs < 1) {
-                    newhrs = hrs + 12;
-                }
-                if (12 <= hrs < 24) {
-                    add = " ".concat("PM");
-                }
+                if (hrs > 12) {newhrs = hrs - 12;}
+                else if (hrs < 1) {newhrs = hrs + 12;}
+                if (12 <= hrs < 24) {add = " ".concat("PM");}
             }
             string hrs_display = fix_mins(newhrs);
             return @"$hrs_display:$showmins$add";
@@ -211,9 +207,7 @@ namespace  ShowTime {
 
         private string get_dateformat () {
             string date_fmt = showtime_settings.get_string("dateformat");
-            if (date_fmt == "") {
-                return read_dateformat();
-            }
+            if (date_fmt == "") {return read_dateformat();}
             return date_fmt;
         }
 
@@ -237,14 +231,14 @@ namespace  ShowTime {
                 return builder.str;
             }
             catch (Error e) {
-                return ""; // fallback to default (edit!!)
+                return "";
             }
         }
 
         private void update_positionsettings () {
             bool draggable = showtime_settings.get_boolean("draggable");
             if (draggable) {
-                this.set_type_hint(Gdk.WindowTypeHint.NORMAL);
+                this.set_type_hint(Gdk.WindowTypeHint.NORMAL);;
             }
             else if (!skip_update) {
                 this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
@@ -267,31 +261,28 @@ namespace  ShowTime {
             timelabel.xalign = al;
             datelabel.xalign = al;
             // showdate
+            linespacing = showtime_settings.get_int("linespacing");
             showdate = showtime_settings.get_boolean("showdate");
             twelvehrs = showtime_settings.get_boolean("twelvehrs");
-            appearance.get_css(screen);
+            appearance.get_appearance(screen);
             update_interface();
         }
 
         private void update_interface () {
             var now = new DateTime.now_local();
-            // get_localtime(now), now.format(dateformat)
-            timelabel.set_label(get_localtime(now));
             string datestring = now.format(dateformat);
-            if (!showdate) {
-                datestring = "";
-            }
-            datelabel.set_label(datestring);
+            if (!showdate) {datestring = "";}
+            appearance.get_hexcolor(get_localtime(now), datestring);
         }
 
         private bool check_onapplet () {
-            /* check if the applet still runs */
+            // check if the applet still runs
             string cmd = "dconf dump /com/solus-project/budgie-panel/applets/";
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
             }
-            /* on an occasional exception, don't break the loop */
+            // on an occasional exception, don't break the loop
             catch (SpawnError e) {
                 return true;
             }
@@ -301,9 +292,7 @@ namespace  ShowTime {
 
         private int convert_remainder_topositive (double subj, double rem) {
             // Math.remainder possibly gives a negative output, seems silly
-            if (rem < 0) {
-                return (int)(subj + rem);
-            }
+            if (rem < 0) {return (int)(subj + rem);}
             return (int)rem;
         }
 
@@ -362,5 +351,4 @@ namespace  ShowTime {
         new TimeWindow();
         Gtk.main();
     }
-
 }
