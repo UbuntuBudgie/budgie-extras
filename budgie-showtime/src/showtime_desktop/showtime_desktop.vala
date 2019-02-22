@@ -28,7 +28,7 @@ namespace  ShowTime {
             Pango.Context t = timelabel.get_pango_context();
             Pango.Context d = datelabel.get_pango_context();
             t.set_font_description(timefont);
-            d.set_font_description(datefont);;
+            d.set_font_description(datefont);
             timelabel.set_margin_end (10);
             get_spacing(screen);
         }
@@ -238,7 +238,7 @@ namespace  ShowTime {
         private void update_positionsettings () {
             bool draggable = showtime_settings.get_boolean("draggable");
             if (draggable) {
-                this.set_type_hint(Gdk.WindowTypeHint.NORMAL);;
+                this.set_type_hint(Gdk.WindowTypeHint.NORMAL);
             }
             else if (!skip_update) {
                 this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
