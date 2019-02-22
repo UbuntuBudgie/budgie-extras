@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 13:46+0000\n"
+"POT-Creation-Date: 2019-02-22 21:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,208 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr ""
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-weathershow/src/get_color/get_color.vala:88
+msgid "Cancel"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr ""
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:48
+msgid "Position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:49
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:71
+msgid "Drag position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:50
+msgid "Save position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:57
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+
+#. time font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:76
+msgid "Time font, size & color"
+msgstr ""
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:88
+msgid "Date font, size & color"
+msgstr ""
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:100
+msgid "Miscellaneous"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:103
+msgid "Left align text"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:105
+msgid "Use 12hr time format"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:113
+msgid "Linespacing"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:245
+msgid "Super + drag"
+msgstr ""
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:199
+msgid "AM"
+msgstr ""
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:202
+msgid "PM"
+msgstr ""
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr ""
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr ""
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr ""
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+msgid "Open"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr ""
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:363
+msgid "Restore"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:127
+msgid "Set pressure (0 = no pressure)"
+msgstr ""
+
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:207
+msgid "Corner"
+msgstr ""
+
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:211
+msgid "Action"
+msgstr ""
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:215
+msgid "Custom"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:233
+msgid "Top-left"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:233
+msgid "Top-right"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:233
+msgid "Bottom-left"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:233
+msgid "Bottom-right"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:316
+msgid "Missing applet"
+msgstr ""
+
+#. WindowPreviews is the name of a Budgie Applet and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
+msgid "Please add WindowPreviews"
+msgstr ""
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
@@ -38,12 +240,6 @@ msgstr ""
 
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Cancel"
 msgstr ""
 
 #. get weekday by index
@@ -117,218 +313,22 @@ msgstr ""
 msgid "Please enter at least 3 characters"
 msgstr ""
 
-#. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:48
-msgid "Position"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:49
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:71
-msgid "Drag position"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:50
-msgid "Save position"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:57
-msgid ""
-"Enable Super + drag to set time position. Click ´Save position´ to save."
-msgstr ""
-
-#. time font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:76
-msgid "Time font, size & color"
-msgstr ""
-
-#. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:88
-msgid "Date font, size & color"
-msgstr ""
-
-#. miscellaneous section
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:100
-msgid "Miscellaneous"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:103
-msgid "Left align text"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:105
-msgid "Use 12hr time format"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:113
-msgid "Linespacing"
-msgstr ""
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:245
-msgid "Super + drag"
-msgstr ""
-
-#. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:199
-msgid "AM"
-msgstr ""
-
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:202
-msgid "PM"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:127
-msgid "Set pressure (0 = no pressure)"
-msgstr ""
-
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:207
-msgid "Corner"
-msgstr ""
-
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:211
-msgid "Action"
-msgstr ""
-
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:215
-msgid "Custom"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Top-left"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Top-right"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Bottom-left"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Bottom-right"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:316
-msgid "Missing applet"
-msgstr ""
-
-#. WindowPreviews is the name of a Budgie Applet and does not need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:318
-msgid "Please add WindowPreviews"
-msgstr ""
-
-#. tooltip
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-msgid "Open"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr ""
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr ""
-
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr ""
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr ""
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr ""
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
-msgid "Set hotcorner actions"
-msgstr ""
-
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
 msgstr ""
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
+#: budgie-trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
 msgstr ""
