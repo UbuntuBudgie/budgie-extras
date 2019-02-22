@@ -104,14 +104,14 @@ namespace BudgieShowTimeApplet {
             this.attach(leftalign, 0, 21, 10, 1);
             twelve_hrs = new Gtk.CheckButton.with_label(_("Use 12hr time format"));
             this.attach(twelve_hrs, 0, 22, 10, 1);
-            var spacelabel6 = new Gtk.Label("\n");
+            var spacelabel6 = new Gtk.Label("");
             this.attach(spacelabel6, 1, 23, 1, 1);
+            Gtk.Box linespacebox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
+            this.attach(linespacebox, 0, 30, 3, 1);
             linespacing = new Gtk.SpinButton.with_range (-50, 50, 1);
-            this.attach(linespacing, 0, 30, 2, 1);
-            var spacelabel10 = new Gtk.Label("  ");
-            this.attach(spacelabel10, 5, 30, 1, 1);
+            linespacebox.pack_start(linespacing, false, false, 0);
             var spinlabel = new Gtk.Label(_("Linespacing"));
-            this.attach(spinlabel, 6, 30, 2, 1);
+            linespacebox.pack_start(spinlabel, false, false, 0);
             // Set style on headers
             position_header.get_style_context().add_class("st_header");
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
@@ -203,7 +203,6 @@ namespace BudgieShowTimeApplet {
             .printf((uint)(Math.round(c.red*255)),
                     (uint)(Math.round(c.green*255)),
                     (uint)(Math.round(c.blue*255))).up();
-            stdout.printf("%s\n", s);
             showtime_settings.set_string(setting, s);
         }
 
