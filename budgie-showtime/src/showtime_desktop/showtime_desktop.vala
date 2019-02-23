@@ -213,7 +213,11 @@ namespace  ShowTime {
         }
 
         private string read_dateformat () {
-            string[] date_data = {"%a", "%e", "%b"};
+            string[] date_data = {
+                "%a", "%A", "%-a", "%-A", "%_a", "%_A",
+                "%e", "%-e", "%_e", "%d", "%-d", "%_d",
+                "%b", "%-b", "%_b", "%h", "%-h", "%_h"
+            };
             string[] full_data = {"%A", "%e", "%B"};
             string cmd = "locale date_fmt";
             string output = "";
@@ -223,9 +227,10 @@ namespace  ShowTime {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
                 string[] output_data = output.split(" ");
                 foreach (string s in output_data) {
-                    int index = get_stringindex(date_data, s);
+                    int index = get_stringindex(date_data, s.replace(",", ""));
                     if (index != -1) {
-                        match = full_data[index];
+                        int corr = (int)(index/6);
+                        match = full_data[corr];
                         builder.append (match).append (" ");
                     }
                 }
