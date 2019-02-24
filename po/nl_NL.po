@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-06 12:57+0000\n"
+"POT-Creation-Date: 2019-02-22 21:32+0000\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
 "Last-Translator: Jacob Vlijm <vlijm@planet.nl>, 2018\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
@@ -22,6 +22,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Welkom bij QuickNote."
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "Text die u hier typt wordt automatisch bewaard."
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Textvak breedte"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Textvak hoogte"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Aangepaste bestandslocatie"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Kies locatie"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-weathershow/src/get_color/get_color.vala:88
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Kies"
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:48
+msgid "Position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:49
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:71
+msgid "Drag position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:50
+msgid "Save position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:57
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+
+#. time font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:76
+msgid "Time font, size & color"
+msgstr ""
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:88
+msgid "Date font, size & color"
+msgstr ""
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:100
+msgid "Miscellaneous"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:103
+msgid "Left align text"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:105
+msgid "Use 12hr time format"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:113
+msgid "Linespacing"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:245
+msgid "Super + drag"
+msgstr ""
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:199
+msgid "AM"
+msgstr ""
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:202
+msgid "PM"
+msgstr ""
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Toon de laatste"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Toon tooltips"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Verberg bestandslocatie"
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+msgid "Open"
+msgstr "Open"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Leeg"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Alle items verwijderen uit de Prullenmand?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Alle items in de Prullenmand worden definitief verwijderd."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Prullenmand Legen"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "Kon de originele locatie van %s niet bepalen"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr "%s hersteld."
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr "%s bestaat al."
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:363
+msgid "Restore"
+msgstr "Herstel"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:127
 msgid "Set pressure (0 = no pressure)"
@@ -68,152 +226,11 @@ msgstr "Applet ontbreekt"
 msgid "Please add WindowPreviews"
 msgstr "Voeg WindoPreviews toe aan het panel"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Toon de laatste"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Toon tooltips"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Verberg bestandslocatie"
-
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Open"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Leeg"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Alle items verwijderen uit de Prullenmand?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle items in de Prullenmand worden definitief verwijderd."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Cancel"
-msgstr "Annuleer"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Prullenmand Legen"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "Kon de originele locatie van %s niet bepalen"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr "%s hersteld."
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr "%s bestaat al."
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr "Herstel"
-
-#. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Monday"
-msgstr "Maandag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Tuesday"
-msgstr "Dinsdag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Wednesday"
-msgstr "Woensdag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Thursday"
-msgstr "Donderdag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Friday"
-msgstr "Vrijdag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Saturday"
-msgstr "Zaterdag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Sunday"
-msgstr "Zondag"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:734
-msgid "General"
-msgstr "Algemeen"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:740
-msgid "Desktop"
-msgstr "Bureaublad"
-
-#. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
-msgid "City"
-msgstr "Plaats"
-
-#. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
-msgid "Show on desktop"
-msgstr "Toon op bureaublad"
-
-#. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:782
-msgid "Show dynamic panel icon"
-msgstr "Toon werkbalk icoon"
-
-#. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:789
-msgid "Show forecast in popover"
-msgstr "Voorspelling in popup venster"
-
-#. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:810
-msgid "Transparency"
-msgstr "Transparantie"
-
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:836
 #: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
 msgid "Set text color"
 msgstr "Kies tekstleur"
-
-#. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
-msgid "Set custom position (px)"
-msgstr "Aangepaste positie (px)"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:989
-msgid "Please enter at least 3 characters"
-msgstr "Vul minimaal 3 karakters in"
 
 #. spinbuttons - labels
 #: budgie-weathershow/src/get_color/get_color.vala:64
@@ -232,38 +249,80 @@ msgstr "Blauw"
 msgid "Choose"
 msgstr "Kies"
 
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Welkom bij QuickNote."
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Monday"
+msgstr "Maandag"
 
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "Text die u hier typt wordt automatisch bewaard."
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Tuesday"
+msgstr "Dinsdag"
 
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Textvak breedte"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Wednesday"
+msgstr "Woensdag"
 
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Textvak hoogte"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Thursday"
+msgstr "Donderdag"
 
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Aangepaste bestandslocatie"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Friday"
+msgstr "Vrijdag"
 
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Kies locatie"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Saturday"
+msgstr "Zaterdag"
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Kies"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Sunday"
+msgstr "Zondag"
 
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
-msgid "Set hotcorner actions"
-msgstr "Hotcorner acties instellen"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+msgid "General"
+msgstr "Algemeen"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+msgid "Desktop"
+msgstr "Bureaublad"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+msgid "City"
+msgstr "Plaats"
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+msgid "Show on desktop"
+msgstr "Toon op bureaublad"
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "Show dynamic panel icon"
+msgstr "Toon werkbalk icoon"
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+msgid "Show forecast in popover"
+msgstr "Voorspelling in popup venster"
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+msgid "Transparency"
+msgstr "Transparantie"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+msgid "Set custom position (px)"
+msgstr "Aangepaste positie (px)"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+msgid "Please enter at least 3 characters"
+msgstr "Vul minimaal 3 karakters in"
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
+msgstr "Snelle & Handige Notities"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
@@ -273,10 +332,10 @@ msgstr "Toon recent gebruikte items"
 msgid "Trash"
 msgstr "Prullenmand"
 
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr "Hotcorner acties instellen"
+
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Toon weer & voorspelling"
-
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
-msgstr "Snelle & Handige Notities"

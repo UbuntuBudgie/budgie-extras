@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-06 12:57+0000\n"
+"POT-Creation-Date: 2019-02-22 21:32+0000\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2018\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -21,6 +21,165 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Us donem la benvinguda al QuickNote."
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "El text es desarà automàticament mentre escriviu."
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Amplada de l'àrea del text"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Alçada de l'àrea del text"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Estableix un directori personalitzat"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Trieu un directori"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-weathershow/src/get_color/get_color.vala:88
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Ús"
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:48
+msgid "Position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:49
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:71
+msgid "Drag position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:50
+msgid "Save position"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:57
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+
+#. time font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:76
+msgid "Time font, size & color"
+msgstr ""
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:88
+msgid "Date font, size & color"
+msgstr ""
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:100
+msgid "Miscellaneous"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:103
+msgid "Left align text"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:105
+msgid "Use 12hr time format"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:113
+msgid "Linespacing"
+msgstr ""
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:245
+msgid "Super + drag"
+msgstr ""
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:199
+msgid "AM"
+msgstr ""
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:202
+msgid "PM"
+msgstr ""
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Mostra'n l'últim ús"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Mostra els indicadors de funció"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Amaga el camí al menú"
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+msgid "Open"
+msgstr "Obre"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Buida"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Voleu buidar la paperera?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+"Se suprimiran permanentment tots els elements que hi ha a la paperera."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Buida la paperera"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "No s'ha pogut determinar la ubicació original de %s"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr "%s s'ha restaurat."
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr "%s ja existeix."
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:363
+msgid "Restore"
+msgstr "Restaura"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:127
 msgid "Set pressure (0 = no pressure)"
@@ -67,153 +226,11 @@ msgstr ""
 msgid "Please add WindowPreviews"
 msgstr ""
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Mostra'n l'últim ús"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Mostra els indicadors de funció"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Amaga el camí al menú"
-
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Obre"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Buida"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Voleu buidar la paperera?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-"Se suprimiran permanentment tots els elements que hi ha a la paperera."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Buida la paperera"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "No s'ha pogut determinar la ubicació original de %s"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr "%s s'ha restaurat."
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr "%s ja existeix."
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr "Restaura"
-
-#. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Monday"
-msgstr "dilluns"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Tuesday"
-msgstr "dimarts"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Wednesday"
-msgstr "dimecres"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:121
-msgid "Thursday"
-msgstr "dijous"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Friday"
-msgstr "divendres"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Saturday"
-msgstr "dissabte"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:122
-msgid "Sunday"
-msgstr "diumenge"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:734
-msgid "General"
-msgstr "General"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:740
-msgid "Desktop"
-msgstr "Escriptori"
-
-#. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:752
-msgid "City"
-msgstr "Ciutat"
-
-#. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:775
-msgid "Show on desktop"
-msgstr "Mostra a l'escriptori"
-
-#. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:782
-msgid "Show dynamic panel icon"
-msgstr "Mostra la icona de plafó dinàmic"
-
-#. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:789
-msgid "Show forecast in popover"
-msgstr "Mostra la previsió meteorològica en una finestreta emergent"
-
-#. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:810
-msgid "Transparency"
-msgstr "Transparència"
-
 #. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:836
 #: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
 msgid "Set text color"
 msgstr "Estableix el color del text"
-
-#. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
-msgid "Set custom position (px)"
-msgstr "Estableix-ne una posició personalitzada (px)"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:989
-msgid "Please enter at least 3 characters"
-msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
 #. spinbuttons - labels
 #: budgie-weathershow/src/get_color/get_color.vala:64
@@ -232,38 +249,80 @@ msgstr "Blau"
 msgid "Choose"
 msgstr "Trieu"
 
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Us donem la benvinguda al QuickNote."
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Monday"
+msgstr "dilluns"
 
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "El text es desarà automàticament mentre escriviu."
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Tuesday"
+msgstr "dimarts"
 
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Amplada de l'àrea del text"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Wednesday"
+msgstr "dimecres"
 
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Alçada de l'àrea del text"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Thursday"
+msgstr "dijous"
 
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Estableix un directori personalitzat"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Friday"
+msgstr "divendres"
 
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Trieu un directori"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Saturday"
+msgstr "dissabte"
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Ús"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Sunday"
+msgstr "diumenge"
 
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
-msgid "Set hotcorner actions"
-msgstr "Estableix les accions dels cantons actius"
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+msgid "General"
+msgstr "General"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+msgid "Desktop"
+msgstr "Escriptori"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+msgid "City"
+msgstr "Ciutat"
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+msgid "Show on desktop"
+msgstr "Mostra a l'escriptori"
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "Show dynamic panel icon"
+msgstr "Mostra la icona de plafó dinàmic"
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+msgid "Show forecast in popover"
+msgstr "Mostra la previsió meteorològica en una finestreta emergent"
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+msgid "Transparency"
+msgstr "Transparència"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+msgid "Set custom position (px)"
+msgstr "Estableix-ne una posició personalitzada (px)"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+msgid "Please enter at least 3 characters"
+msgstr "Si us plau, escriviu com a mínim 3 caràcters."
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
+msgstr "Notes ràpides i fàcils"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
@@ -273,10 +332,10 @@ msgstr "Mostra els elements utilitzats recentment"
 msgid "Trash"
 msgstr "Paperera"
 
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr "Estableix les accions dels cantons actius"
+
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Mostra el temps i la previsió meteorològica"
-
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
-msgstr "Notes ràpides i fàcils"
