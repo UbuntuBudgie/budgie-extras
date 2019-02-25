@@ -37,7 +37,6 @@ namespace BudgieShowTimeApplet {
         Gtk.SpinButton linespacing;
         GLib.Settings showtime_settings;
         Label draghint;
-        string position;
         string dragposition;
         string fixposition;
 
@@ -45,14 +44,9 @@ namespace BudgieShowTimeApplet {
 
             this.settings = settings;
             // translated strings
-            position = (_("Position"));
             dragposition = (_("Drag position"));
             fixposition = (_("Save position"));
-            string stsettings_css = """
-            .st_header {
-                font-weight: bold;
-            }
-            """;
+            string stsettings_css = ".st_header {font-weight: bold;}";
             string dragtext = (_(
                 "Enable Super + drag to set time position. Click ´Save position´ to save."
             ));
@@ -62,38 +56,42 @@ namespace BudgieShowTimeApplet {
             var screen = this.get_screen();
             // window content
             this.set_row_spacing(10);
-            var position_header = new Gtk.Label(position);
+            var position_header = new Gtk.Label(_("Position"));
             position_header.xalign = 0;
             this.attach(position_header, 0, 0, 10, 1);
             // drag button
+            var dragbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            this.attach(dragbox, 0, 1, 2, 1);
             dragbutton = new Gtk.Button();
             dragbutton.set_tooltip_text(dragtext);
             dragbutton.set_label(_("Drag position"));
-            this.attach(dragbutton, 0, 2, 1, 1);
+            dragbutton.set_size_request(150, 10);
+            dragbox.pack_start(dragbutton, false, false, 0);
             draghint = new Gtk.Label("");
-            this.attach(draghint, 0, 4, 1, 1);
-            // time font settings
+            draghint.xalign = (float)0.5;
+            this.attach(draghint, 0, 2, 2, 1);
+            // time font settings -> boxed!!
             var time_header = new Gtk.Label(_("Time font, size & color"));
             time_header.xalign = 0;
-            this.attach(time_header, 0, 5, 10, 1);
+            this.attach(time_header, 0, 6, 10, 1);
+            var timebox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            this.attach(timebox, 0, 7, 10, 1);
             timefontbutton = new FontButton();
-            this.attach(timefontbutton, 0, 6, 1, 1);
-            var spacelabel2 = new Gtk.Label("");
-            this.attach(spacelabel2, 1, 6, 1, 1);
+            timebox.pack_start(timefontbutton, false, false, 0);
             timecolor = new Gtk.ColorButton();
-            this.attach(timecolor, 2, 6, 1, 1);
+            timebox.pack_start(timecolor, false, false, 0);
             var spacelabel3 = new Gtk.Label("");
-            this.attach(spacelabel3, 1, 7, 1, 1);
+            this.attach(spacelabel3, 1, 8, 1, 1);
             // date font settings
             var date_header = new Gtk.Label(_("Date font, size & color"));
             date_header.xalign = 0;
             this.attach(date_header, 0, 10, 10, 1);
+            var datebox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            this.attach(datebox, 0, 11, 10, 1);
             datefontbutton = new FontButton();
-            this.attach(datefontbutton, 0, 11, 1, 1);
-            var spacelabel4 = new Gtk.Label("");
-            this.attach(spacelabel4, 1, 11, 1, 1);
+            datebox.pack_start(datefontbutton, false, false, 0);
             datecolor = new Gtk.ColorButton();
-            this.attach(datecolor, 2, 11, 1, 1);
+            datebox.pack_start(datecolor, false, false, 0);
             var spacelabel5 = new Gtk.Label("");
             this.attach(spacelabel5, 1, 12, 1, 1);
             // miscellaneous section
@@ -113,7 +111,6 @@ namespace BudgieShowTimeApplet {
             var spinlabel = new Gtk.Label(_("Linespacing"));
             linespacebox.pack_start(spinlabel, false, false, 0);
             // Set style on headers
-            position_header.get_style_context().add_class("st_header");
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
             try {
                 css_provider.load_from_data(stsettings_css);
