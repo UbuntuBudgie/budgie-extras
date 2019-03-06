@@ -82,6 +82,7 @@ The following packages are required for the various Python plugins to work:
  - python3-pyudev
  - python3-requests
  - xprintidle
+ - notofonts
 
 The following packages are required for the various Vala plugins to work:
  - gobject-introspection
