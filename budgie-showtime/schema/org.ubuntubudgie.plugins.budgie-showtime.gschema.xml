@@ -10,7 +10,7 @@
             id="org.ubuntubudgie.plugins.budgie-showtime">
         <key type="s" name="dateformat">
             <summary>Custom date format</summary>
-            <description>Optional dateformat. Use string formatting conform the -date- command</description>
+            <description>Optional dateformat. Use string formatting conform https://valadoc.org/glib-2.0/GLib.DateTime.format.html</description>
             <default>""</default>
         </key>
         <key type="s" name="datefontcolor">
@@ -69,8 +69,6 @@
             <description>If selected, the window sets to a default position</description>
             <default>true</default>
         </key>
-
-
         <key type="b" name="draggable">
             <summary>draggable by Super + drag</summary>
             <description>The window can be dragged temporarily by Super + drag</description>
