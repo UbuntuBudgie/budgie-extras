@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 21:32+0000\n"
+"POT-Creation-Date: 2019-03-08 21:35+0000\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
 "Last-Translator: Jacob Vlijm <vlijm@planet.nl>, 2019\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
@@ -59,63 +59,69 @@ msgid "Use"
 msgstr "Kies"
 
 #. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:48
-msgid "Position"
-msgstr "Positie"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:49
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:71
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:54
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:77
 msgid "Drag position"
 msgstr "Sleep positie"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:50
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:55
 msgid "Save position"
 msgstr "Sla op"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:57
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:58
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
 msgstr ""
 "Gebruik de Super toets en sleep de tijdweergave naar de gewenste positie. "
 "Klik vervolgens op \"Sla op\" om de positie te bewaren."
 
-#. time font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:76
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:66
+msgid "Position & anchor"
+msgstr "Positie & verankering"
+
+#. automatic positioning
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:70
+msgid "Automatic"
+msgstr "Automatisch"
+
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:110
 msgid "Time font, size & color"
 msgstr "Tijd - font kleur en grootte"
 
 #. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:88
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:122
 msgid "Date font, size & color"
 msgstr "Datum - font kleur en grootte"
 
 #. miscellaneous section
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:100
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:134
 msgid "Miscellaneous"
 msgstr "Diverse instellingen"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:103
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:137
 msgid "Left align text"
 msgstr "Lijn tekst links uit"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:105
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:139
 msgid "Use 12hr time format"
 msgstr "12-uursnotatie"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:113
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:147
 msgid "Linespacing"
 msgstr "Regelafstand"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:245
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:394
 msgid "Super + drag"
 msgstr "Super + slepen"
 
 #. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:199
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:227
 msgid "AM"
 msgstr "VM"
 
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:202
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:230
 msgid "PM"
 msgstr "NM"
 
@@ -226,7 +232,7 @@ msgstr "Applet ontbreekt"
 #. translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:318
 msgid "Please add WindowPreviews"
-msgstr "Voeg WindoPreviews toe aan het panel"
+msgstr "Voeg WindowPreviews toe aan het panel"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
