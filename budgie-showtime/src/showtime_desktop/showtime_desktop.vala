@@ -241,25 +241,32 @@ namespace  ShowTime {
         }
 
         private string read_dateformat () {
-            string[] date_data = {
-                "%a", "%A", "%-a", "%-A", "%_a", "%_A",
-                "%e", "%-e", "%_e", "%d", "%-d", "%_d",
-                "%b", "%-b", "%_b", "%h", "%-h", "%_h"
+            string[] monthvars = {
+                "%B", "%-b", "%_b", "%h", "%-h", "%_h", "%b"
             };
-            string[] full_data = {"%A", "%e", "%B"};
+            string[] daynamevars = {
+                "%A", "%a", "%-a", "%-A", "%_a", "%_A"
+            };
+            string[] monthdayvars = {
+                "%e", "%-e", "%_e", "%d", "%-d", "%_d"
+            };
             string cmd = "locale date_fmt";
             string output = "";
-            string match = "";
             try {
                 StringBuilder builder = new StringBuilder ();
                 GLib.Process.spawn_command_line_sync(cmd, out output);
                 string[] output_data = output.split(" ");
                 foreach (string s in output_data) {
-                    int index = get_stringindex(date_data, s.replace(",", ""));
-                    if (index != -1) {
-                        int corr = (int)(index/6);
-                        match = full_data[corr];
-                        builder.append (match).append (" ");
+                    // make it a function? nah, we're lazy
+                    string lookforstr = s.replace(",", "");
+                    if (get_stringindex(monthvars, lookforstr) != -1) {
+                        builder.append (monthvars[0]).append (" ");
+                    }
+                    else if (get_stringindex(daynamevars, lookforstr) != -1) {
+                        builder.append (daynamevars[0]).append (" ");
+                    }
+                    else if (get_stringindex(monthdayvars, lookforstr) != -1) {
+                        builder.append (monthdayvars[0]).append (" ");
                     }
                 }
                 return builder.str;
