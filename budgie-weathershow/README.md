@@ -4,7 +4,7 @@ WeatherShowII is a completely rewritten version of the existing python WeatherSh
 The applet includes many technical improvements under the hood. Weather forecast now has its own thread, therefore the panel should not suffer in any way from possible possible delays or issues in fetching the forecast (e.g. in case of network- related problems). Furthermore, the applet adapts (in three steps) to the monitor's size, for better scaling on high resolutions.
 
 # N.B.
-WeatherShow uses an OWM key with permission to UbuntuBudgie developers. Please don't copy!
+WeatherShow uses an OWM key with permission of Open Weather Map. Permission was granted to UbuntuBudgie developers. Please don't copy!
 
 # Install
 1. Remove possible previous versions of WeatherShow(!)
