@@ -26,7 +26,7 @@
             <summary>Command list dropdown menu</summary>
             <description>The default list of commands/names in the dropdown menu</description>
             <default>[
-	    "{'command': '/usr/share/budgie-desktop/showdesktop/showdesktop', 'name': 'Show Desktop'}",
+	    "{'command': 'xdotool key Super_L+d', 'name': 'Show Desktop'}",
             "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc nokeys', 'name': 'Exposé all windows'}", 
             "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc current nokeys', 'name': 'Exposé current application'}",
             "{'command': 'budgie-desktop-settings', 'name':'Budgie Desktop Settings'}", 
