@@ -4,6 +4,8 @@ import subprocess
 import time
 import psutil
 from budgie_wswitcher import wswitcher_ismuted, user
+import getkeys
+
 
 """
 Budgie WallpaperSwitcher
@@ -33,15 +35,7 @@ def get_pid():
 
 
 def getkey():
-    data = subprocess.check_output([
-        "dconf", "dump", dcpath
-    ]).decode("utf-8").splitlines()
-    try:
-        match = [l for l in data if "Wallpaper Switcher" in l][0]
-        watch = data.index(match) - 3
-        return data[watch][1:-1]
-    except IndexError:
-        pass
+    return getkeys.by_subval(dcpath,'name',"'Wallpaper Switcher'")
 
 
 def run_wswitcher():
