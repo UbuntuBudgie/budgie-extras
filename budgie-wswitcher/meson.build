@@ -5,6 +5,7 @@ PLUGIN = 'wswitcher'
 install_data(
     'BudgieWSwitcher.plugin',
     'budgie_wswitcher.py',
+    'getkeys.py',
     'wswitcher_run',
     'wswitcher_panelrunner',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)

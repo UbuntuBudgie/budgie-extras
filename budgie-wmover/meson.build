@@ -5,6 +5,7 @@ PLUGIN = 'wmover'
 install_data(
     'WMover.plugin',
     'budgie-wmover.py',
+    'getkeys.py',
     'wmover_run',
     'wmovertools.py',
     'wmover_panelrunner',

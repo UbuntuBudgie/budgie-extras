@@ -6,6 +6,7 @@ install_data(
     'wprv',
     'WPrviews.plugin',
     'budgie-wprviews.py',
+    'getkeys.py',
     'wprviews_backgrounder',
     'wprviews_panelrunner',
     'wprviews_tools.py',
