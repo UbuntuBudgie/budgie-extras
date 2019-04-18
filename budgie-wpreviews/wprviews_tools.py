@@ -4,6 +4,7 @@ import subprocess
 import gi
 gi.require_version('Gdk', '3.0')
 from gi.repository import Gdk, Gio
+import getkeys
 
 
 """
@@ -60,16 +61,7 @@ comm = str(max_w) + "x" + str(v_size)
 
 
 def getkey():
-    # get the specific dconf path, referring to the applet's key
-    data = subprocess.check_output([
-        "dconf", "dump", dcpath,
-    ]).decode("utf-8").splitlines()
-    try:
-        match = [l for l in data if "Window Previews" in l][0]
-        watch = data.index(match) - 3
-        return data[watch][1:-1]
-    except IndexError:
-        pass
+    return getkeys.by_subval(dcpath,'name',"'Window Previews'")
 
 
 def get_area():

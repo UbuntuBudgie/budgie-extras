@@ -4,6 +4,7 @@ from gi.repository import Gio
 import subprocess
 import time
 import os
+import getkeys
 
 
 """
@@ -38,15 +39,7 @@ tabcountdown_path = os.path.dirname(os.path.abspath(__file__))
 
 
 def getkey():
-    # get the specific dconf path, referring to the applet's key
-    data = subprocess.check_output([
-        "dconf", "dump", dcpath,
-    ]).decode("utf-8").splitlines()
-    try:
-        match = [l for l in data if "Take a Break" in l][0]
-        return True
-    except IndexError:
-        return False
+    return getkeys.by_subval(dcpath,'name',"'Take a Break'")
 
 
 def get_idle():
