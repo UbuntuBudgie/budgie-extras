@@ -11,7 +11,7 @@
         <key type="as" name="commands">
             <summary>Command list</summary>
             <description>The list of set commands, t-left, t-right, b-left, b-right</description>
-            <default>['', '', 'gnome-screensaver-command -l', '/usr/share/budgie-desktop/showdesktop/showdesktop']</default>
+            <default>['', '', 'gnome-screensaver-command -l', 'xdotool key Super_L+d']</default>
         </key>
         <key type="as" name="appletdependencies">
             <summary>Check if another applet runs if the command depends on it</summary>
