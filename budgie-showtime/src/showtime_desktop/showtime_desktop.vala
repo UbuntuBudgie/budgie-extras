@@ -199,10 +199,10 @@ namespace  ShowTime {
             return false;
         }
 
-        private int get_stringindex (string[] arr, string lookfor) {
+        private int get_containingindex (string[] arr, string lookfor) {
             // get index of string in list
             for (int i=0; i < arr.length; i++) {
-                if(lookfor == arr[i]) return i;
+                if(lookfor.contains(arr[i])) return i;
             }
             return -1;
         }
@@ -258,14 +258,13 @@ namespace  ShowTime {
                 string[] output_data = output.split(" ");
                 foreach (string s in output_data) {
                     // make it a function? nah, we're lazy
-                    string lookforstr = s.replace(",", "");
-                    if (get_stringindex(monthvars, lookforstr) != -1) {
+                    if (get_containingindex(monthvars, s) != -1) {
                         builder.append (monthvars[0]).append (" ");
                     }
-                    else if (get_stringindex(daynamevars, lookforstr) != -1) {
+                    else if (get_containingindex(daynamevars, s) != -1) {
                         builder.append (daynamevars[0]).append (" ");
                     }
-                    else if (get_stringindex(monthdayvars, lookforstr) != -1) {
+                    else if (get_containingindex(monthdayvars, s) != -1) {
                         builder.append (monthdayvars[0]).append (" ");
                     }
                 }
