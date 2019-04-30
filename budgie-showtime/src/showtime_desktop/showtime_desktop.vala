@@ -72,17 +72,20 @@ namespace  ShowTime {
 
     public class TimeWindow : Gtk.Window {
         int next_time;
+        int screenNumber;
         bool twelvehrs;
         string dateformat;
         ShowTimeappearance appearance;
         bool bypass;
 
-        public TimeWindow () {
+        public TimeWindow (int screenNumber) {
+            this.screenNumber = screenNumber;
             // define stuff
             bypass = false;
             showtime_settings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-showtime"
             );
+
             dateformat = get_dateformat();
             appearance = new ShowTimeappearance();
             // window
@@ -148,8 +151,8 @@ namespace  ShowTime {
             int setx;
             int sety;
             string anchor;
-            bool autopostition = showtime_settings.get_boolean("autoposition");
-            if (autopostition) {
+            bool autoposition = showtime_settings.get_boolean("autoposition");
+            if (autoposition) {
                 int[] newpos = get_default_right();
                 setx = newpos[0];
                 sety = newpos[1];
@@ -180,9 +183,8 @@ namespace  ShowTime {
         }
 
         private int[] check_res() {
-            // see what is the resolution on the primary monitor
-            var prim = Gdk.Display.get_default().get_primary_monitor();
-            var geo = prim.get_geometry();
+            var monitor = Gdk.Display.get_default().get_monitor(this.screenNumber);
+            var geo = monitor.get_geometry();
             int width = geo.width;
             int height = geo.height;
             int screen_xpos = geo.x;
@@ -378,7 +380,10 @@ namespace  ShowTime {
 
     public static void main (string[] args) {
         Gtk.init(ref args);
-        new TimeWindow();
+        var numberOfScreens = Gdk.Display.get_default().get_n_monitors();
+        for (int nS = 0; nS < numberOfScreens; nS++) {
+            new TimeWindow(nS);
+        }
         Gtk.main();
     }
 }
