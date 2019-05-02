@@ -406,7 +406,8 @@ namespace BudgieShowTimeApplet {
     }
 
     public class Applet : Budgie.Applet {
-
+        GLib.Settings text_scaling;
+        string winpath;
         public string uuid { public set; public get; }
         public override bool supports_settings()
         {
@@ -448,9 +449,32 @@ namespace BudgieShowTimeApplet {
         }
 
         public Applet() {
+            // window
+            winpath = moduledir.concat("/showtime_desktop");
+            //settings to act on (restart window)
+            text_scaling = new GLib.Settings(
+                "org.gnome.desktop.interface"
+            );
+            text_scaling.changed["text-scaling-factor"].connect(restart_window);
             // call desktop window
-            open_window(moduledir.concat("/showtime_desktop"));
+            open_window(winpath);
             initialiseLocaleLanguageSupport();
+        }
+
+        private void restart_window() {
+            try {
+                Process.spawn_command_line_async(
+                    "pkill -f ".concat(winpath));
+            }
+            catch (SpawnError e) {
+                /* nothing to be done */
+            }
+            open_window(winpath);
+        }
+
+        private void shout () {
+            //restart window
+            print("Blab\n");
         }
 
         public void initialiseLocaleLanguageSupport() {
