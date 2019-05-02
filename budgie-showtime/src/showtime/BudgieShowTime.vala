@@ -406,7 +406,7 @@ namespace BudgieShowTimeApplet {
     }
 
     public class Applet : Budgie.Applet {
-        
+
         GLib.Settings text_scaling;
         string winpath;
         public string uuid { public set; public get; }
@@ -464,8 +464,10 @@ namespace BudgieShowTimeApplet {
 
         private void restart_window() {
             try {
-                Process.spawn_command_line_async(
-                    "pkill -f ".concat(winpath));
+                string output;
+                Process.spawn_command_line_sync(
+                    "pkill -f ".concat(winpath), null
+                );
             }
             catch (SpawnError e) {
                 /* nothing to be done */
