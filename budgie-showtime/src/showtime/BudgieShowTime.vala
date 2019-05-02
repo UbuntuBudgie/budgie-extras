@@ -406,6 +406,7 @@ namespace BudgieShowTimeApplet {
     }
 
     public class Applet : Budgie.Applet {
+        
         GLib.Settings text_scaling;
         string winpath;
         public string uuid { public set; public get; }
@@ -470,11 +471,6 @@ namespace BudgieShowTimeApplet {
                 /* nothing to be done */
             }
             open_window(winpath);
-        }
-
-        private void shout () {
-            //restart window
-            print("Blab\n");
         }
 
         public void initialiseLocaleLanguageSupport() {
