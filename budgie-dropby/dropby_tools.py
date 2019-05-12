@@ -60,7 +60,12 @@ def get_mounted():
     relevant = []
     mounted = psutil.disk_partitions(all=False)
     for v in mounted:
-        usage = psutil.disk_usage(v.mountpoint)
+        usage=None
+        try:
+            usage = psutil.disk_usage(v.mountpoint)
+        except PermissionError:
+            continue
+
         dev = v.device
         # mountpoint is relevant for possible actions
         mpoint = v.mountpoint
