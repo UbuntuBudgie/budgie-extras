@@ -469,7 +469,6 @@ namespace BudgieShowTimeApplet {
 
         private void restart_window() {
             try {
-                string output;
                 Process.spawn_command_line_sync(
                     "pkill -f ".concat(winpath), null
                 );
