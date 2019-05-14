@@ -408,7 +408,6 @@ namespace BudgieShowTimeApplet {
     public class Applet : Budgie.Applet {
 
         GLib.Settings text_scaling;
-        GLib.Settings gtk_theme;
         string winpath;
         public string uuid { public set; public get; }
         public override bool supports_settings()
