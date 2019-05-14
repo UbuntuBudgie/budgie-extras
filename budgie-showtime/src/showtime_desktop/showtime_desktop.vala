@@ -76,6 +76,7 @@ namespace  ShowTime {
         string dateformat;
         ShowTimeappearance appearance;
         bool bypass;
+        GLib.Settings text_scaling;
 
         public TimeWindow () {
             // define stuff
@@ -120,6 +121,16 @@ namespace  ShowTime {
             this.configure_event.connect(setcondition);
             showtime_settings.changed["autoposition"].connect(set_windowposition); ////
             new Thread<bool> ("oldtimer", run_time);
+
+            text_scaling = new GLib.Settings(
+                "org.gnome.desktop.interface"
+            );
+            string[] restart_keys = {
+                "text-scaling-factor", "font-name"
+            };
+            foreach (string s in restart_keys) {
+                text_scaling.changed[s].connect_after(update_appearance_delay);
+            };
         }
 
         private bool setcondition () {
@@ -285,6 +296,12 @@ namespace  ShowTime {
             }
         }
 
+        private void update_appearance_delay() {
+            Gdk.threads_add_timeout( 10, () => {
+                update_appearance();
+                return GLib.Source.REMOVE;
+            } );
+        }
         private void update_appearance () {
             // text align
             int al = 1;
