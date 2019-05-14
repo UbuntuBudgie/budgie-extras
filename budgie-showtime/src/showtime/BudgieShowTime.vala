@@ -408,6 +408,7 @@ namespace BudgieShowTimeApplet {
     public class Applet : Budgie.Applet {
 
         GLib.Settings text_scaling;
+        GLib.Settings gtk_theme;
         string winpath;
         public string uuid { public set; public get; }
         public override bool supports_settings()
@@ -456,7 +457,12 @@ namespace BudgieShowTimeApplet {
             text_scaling = new GLib.Settings(
                 "org.gnome.desktop.interface"
             );
-            text_scaling.changed["text-scaling-factor"].connect(restart_window);
+            string[] restart_keys = {
+                "text-scaling-factor", "gtk-theme"
+            };
+            foreach (string s in restart_keys) {
+                text_scaling.changed[s].connect(restart_window);
+            };
             // call desktop window
             open_window(winpath);
             initialiseLocaleLanguageSupport();
