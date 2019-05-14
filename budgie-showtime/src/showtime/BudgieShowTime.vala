@@ -457,10 +457,10 @@ namespace BudgieShowTimeApplet {
                 "org.gnome.desktop.interface"
             );
             string[] restart_keys = {
-                "text-scaling-factor", "gtk-theme"
+                "text-scaling-factor", "font-name"
             };
             foreach (string s in restart_keys) {
-                text_scaling.changed[s].connect(restart_window);
+                text_scaling.changed[s].connect_after(restart_window);
             };
             // call desktop window
             open_window(winpath);
