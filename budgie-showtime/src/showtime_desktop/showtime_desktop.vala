@@ -297,9 +297,9 @@ namespace  ShowTime {
         }
 
         private void update_appearance_delay() {
-            Gdk.threads_add_timeout( 10, () => {
+            GLib.Timeout.add( 25, () => {
                 update_appearance();
-                return GLib.Source.REMOVE;
+                return false;
             } );
         }
         private void update_appearance () {
