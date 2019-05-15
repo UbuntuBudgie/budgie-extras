@@ -297,7 +297,7 @@ namespace  ShowTime {
         }
 
         private void update_appearance_delay() {
-            GLib.Timeout.add( 25, () => {
+            GLib.Timeout.add( 50, () => {
                 update_appearance();
                 return false;
             } );

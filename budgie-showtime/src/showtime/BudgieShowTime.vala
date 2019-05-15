@@ -457,18 +457,6 @@ namespace BudgieShowTimeApplet {
             initialiseLocaleLanguageSupport();
         }
 
-        private void restart_window() {
-            try {
-                Process.spawn_command_line_sync(
-                    "pkill -f ".concat(winpath), null
-                );
-            }
-            catch (SpawnError e) {
-                /* nothing to be done */
-            }
-            open_window(winpath);
-        }
-
         public void initialiseLocaleLanguageSupport() {
             // Initialize gettext
             GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
