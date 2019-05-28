@@ -1,6 +1,24 @@
 using Gtk;
 using Math;
 using Cairo;
+using Wnck;
+
+
+/*
+* BudgieShowTimeII
+* Author: Jacob Vlijm
+* Copyright © 2017-2019 Ubuntu Budgie Developers
+* Website=https://ubuntubudgie.org
+* This program is free software: you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the Free
+* Software Foundation, either version 3 of the License, or any later version.
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details. You should have received a copy of the GNU General Public
+* License along with this program.  If not, see
+* <https://www.gnu.org/licenses/>.
+*/
 
 
 namespace  ShowTime {
@@ -11,6 +29,10 @@ namespace  ShowTime {
     private Label timelabel;
     private Label datelabel;
     GLib.Settings showtime_settings;
+    bool subwindow;
+    string win_name;
+    int[] custom_posargs;
+
     private class ShowTimeappearance {
 
         public void get_appearance (Gdk.Screen screen) {
@@ -40,7 +62,6 @@ namespace  ShowTime {
             // set / update time label
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
             timelabel.get_style_context().remove_class("linespacing");
-
             try {
                 css_provider.load_from_data(linespacing_css);
                 Gtk.StyleContext.add_provider_for_screen(
@@ -77,22 +98,36 @@ namespace  ShowTime {
         ShowTimeappearance appearance;
         bool bypass;
         GLib.Settings text_scaling;
+        bool close_onnew;
 
         public TimeWindow () {
+            close_onnew = false;
             // define stuff
             bypass = false;
+            // on allmonitors settings change, kill window
             showtime_settings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-showtime"
             );
+            showtime_settings.changed["allmonitors"].connect(kill_onallmonitorschange);
+            // same on resolution/connect monitor change; easier to recreate than move
+            screen = this.get_screen();
+            screen.monitors_changed.connect(() => {
+                print("quiiting on monitors- change\n");
+                Gtk.main_quit();
+            });
+            // ...and quit on creation of similarly named window
+            unowned Wnck.Screen scr = Wnck.Screen.get_default();
+            scr.window_opened.connect(watchwins);
+            // ok, finally we can start off with the real work
             dateformat = get_dateformat();
             appearance = new ShowTimeappearance();
             // window
-            this.title = "Showtime";
+            this.title = win_name;
             this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
             this.resizable = false;
             this.destroy.connect(Gtk.main_quit);
             this.set_decorated(false);
-            screen = this.get_screen();
+
             var maingrid = new Grid();
             timelabel = new Label("");
             datelabel = new Label("");
@@ -119,9 +154,8 @@ namespace  ShowTime {
             this.show_all();
             set_windowposition();
             this.configure_event.connect(setcondition);
-            showtime_settings.changed["autoposition"].connect(set_windowposition); ////
+            showtime_settings.changed["autoposition"].connect(set_windowposition);
             new Thread<bool> ("oldtimer", run_time);
-
             text_scaling = new GLib.Settings(
                 "org.gnome.desktop.interface"
             );
@@ -131,6 +165,25 @@ namespace  ShowTime {
             foreach (string s in restart_keys) {
                 text_scaling.changed[s].connect_after(update_appearance_delay);
             };
+        }
+
+        private void kill_onallmonitorschange () {
+            if (subwindow) {
+                print("quitting on allmonitors settings change\n");
+                Gtk.main_quit();
+            }
+        }
+
+        private void watchwins (Wnck.Window newwin) {;
+            // watch new windows, self-sacrifice if a new one appears
+            if (newwin.get_name() == win_name) {
+                // surpass killing on self-generated signal...
+                if (close_onnew) {
+                    print("quiiting on window replace\n");
+                    Gtk.main_quit();
+                }
+                close_onnew = true;
+            }
         }
 
         private bool setcondition () {
@@ -159,8 +212,13 @@ namespace  ShowTime {
             int setx;
             int sety;
             string anchor;
-            bool autopostition = showtime_settings.get_boolean("autoposition");
-            if (autopostition) {
+            // if position arguments were given, surpass calculating
+            if (subwindow) {
+                setx = custom_posargs[0];
+                sety = custom_posargs[1];
+                anchor = "se";
+            }
+            else if (showtime_settings.get_boolean("autoposition")) {
                 int[] newpos = get_default_right();
                 setx = newpos[0];
                 sety = newpos[1];
@@ -395,6 +453,12 @@ namespace  ShowTime {
 
     public static void main (string[] args) {
         Gtk.init(ref args);
+        win_name = "Showtime";
+        if (args.length == 4) {
+            subwindow = true;
+            win_name = "Showtime_".concat(args[1]);
+            custom_posargs = {int.parse(args[2]), int.parse(args[3])};
+        }
         new TimeWindow();
         Gtk.main();
     }

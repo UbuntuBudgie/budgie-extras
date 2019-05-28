@@ -8,6 +8,7 @@ BudgieShowTimeSources = [
 ]
 
 BudgieShowTimeDependencies = [
+dependency('libwnck-3.0'),
 dependency('gtk+-3.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
@@ -21,7 +22,8 @@ BudgieShowTimeValaArgs = [
 BudgieShowTimeCArgs = [
 '-include',
 'config.h',
-'-lm'
+'-lm',
+'-DWNCK_I_KNOW_THIS_IS_UNSTABLE'
 ]
 
 executable(

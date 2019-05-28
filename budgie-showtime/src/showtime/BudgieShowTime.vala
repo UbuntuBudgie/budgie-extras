@@ -3,6 +3,7 @@ using Gdk;
 using Math;
 using Wnck;
 
+
 /*
 * BudgieShowTimeII
 * Author: Jacob Vlijm
@@ -23,6 +24,63 @@ using Wnck;
 namespace BudgieShowTimeApplet {
 
     private string moduledir;
+    private int n_monitors;
+    GLib.Settings showtime_settings;
+    string winpath;
+    Gdk.Display gdkdisplay;
+    bool surpass_primary;
+
+    private void create_windows (
+        Gdk.Display? gdkdisplay = null, bool? surpass_primary = null
+    ) {
+        if (gdkdisplay == null) {
+            gdkdisplay = Gdk.Display.get_default();
+        }
+        n_monitors = gdkdisplay.get_n_monitors();
+        Gdk.Monitor[] monitors = {};
+        bool allmonitors = showtime_settings.get_boolean("allmonitors");
+        for (int i=0; i < n_monitors; i++) {
+            monitors += gdkdisplay.get_monitor(i);
+        }
+
+        foreach (Gdk.Monitor m in monitors) {
+            if (m.is_primary())  {
+                // primary: window is autonoumous
+                if (surpass_primary != true) {
+                    open_window();
+                }
+            }
+            else if (allmonitors) {
+                // secundary showtime windows are set according to args
+                Rectangle geo = m.get_geometry();
+                int xpos = geo.x + geo.width - 150;
+                int ypos = geo.y + geo.height - 150;
+                open_window (
+                    m.get_model(),
+                    xpos.to_string(),
+                    ypos.to_string()
+                );
+            }
+        }
+        surpass_primary = false;
+    }
+
+    private void open_window(
+        string? wname = null, string? xpos = null, string? ypos = null
+        ) {
+        // call the desktop showtime window
+        string cmd = winpath;
+        if (wname != null) {
+            cmd = winpath.concat(" ", wname, " ", xpos, " ", ypos);
+        }
+        try {
+            Process.spawn_command_line_async(cmd);
+        }
+        catch (SpawnError e) {
+            /* nothing to be done */
+        }
+    }
+
 
     public class BudgieShowTimeSettings : Gtk.Grid {
 
@@ -39,15 +97,29 @@ namespace BudgieShowTimeApplet {
         Gtk.ColorButton timecolor;
         Gtk.ColorButton datecolor;
         Gtk.SpinButton linespacing;
-        GLib.Settings showtime_settings;
         Label draghint;
         string dragposition;
         string fixposition;
         Grid anchorgrid;
         CheckButton autopos;
+        CheckButton allmonitors;
         Label spinlabel;
+        Gdk.Screen gdkscreen;
+
 
         public BudgieShowTimeSettings(GLib.Settings? settings) {
+            // Gdk.Screen / Display stuff
+            gdkscreen = Gdk.Screen.get_default();
+            gdkscreen.monitors_changed.connect(() => {
+                n_monitors = gdkdisplay.get_n_monitors();
+                bool newsensitive = true;
+                if (n_monitors == 1) {
+                    newsensitive = false;
+                    allmonitors.set_active(false);
+                }
+                allmonitors.set_sensitive(newsensitive);
+                create_windows(gdkdisplay);
+            });
 
             this.settings = settings;
             // translated strings
@@ -57,9 +129,7 @@ namespace BudgieShowTimeApplet {
             string dragtext = (_(
                 "Enable Super + drag to set time position. Click ´Save position´ to save."
             ));
-            showtime_settings =  new GLib.Settings(
-                "org.ubuntubudgie.plugins.budgie-showtime"
-            );
+
             var screen = this.get_screen();
             // window content
             this.set_row_spacing(10);
@@ -67,10 +137,12 @@ namespace BudgieShowTimeApplet {
             position_header.xalign = 0;
             this.attach(position_header, 0, 0, 10, 1);
             // automatic positioning
+            var positionbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            this.attach(positionbox, 0, 1, 10, 1);
             autopos = new CheckButton.with_label((_("Automatic")));
-            // first get setting
-            autopos.toggled.connect(toggle_autopos);
-            this.attach(autopos, 0, 1, 10, 1);
+            allmonitors = new CheckButton.with_label((_("On all monitors")));
+            positionbox.pack_start(autopos, false, false, 0);
+            positionbox.pack_start(allmonitors, false, false, 0);
             // drag button
             dragbutton = new Gtk.Button();
             dragbutton.set_tooltip_text(dragtext);
@@ -78,7 +150,6 @@ namespace BudgieShowTimeApplet {
             dragbutton.set_size_request(150, 10);
             draghint = new Gtk.Label("");
             draghint.xalign = (float)0.5;
-            //this.attach(draghint, 0, 2, 2, 1);
             // anchor section
             anchorgrid = new Gtk.Grid();
             var leftspace = new Gtk.Label("\t");
@@ -242,6 +313,14 @@ namespace BudgieShowTimeApplet {
             set_initialfont(timefontbutton, "timefont");
             set_initialfont(datefontbutton, "datefont");
             set_initialautopos();
+            set_initialallmonitors();
+        }
+
+        public void set_initialallmonitors () {
+            bool newval = showtime_settings.get_boolean("allmonitors");
+            allmonitors.set_active(newval);
+            bool newautopos = showtime_settings.get_boolean("autoposition");
+            allmonitors.set_sensitive(newautopos);
         }
 
         public void set_initialautopos () {
@@ -270,6 +349,10 @@ namespace BudgieShowTimeApplet {
 
         private void connect_widgets () {
             // as the name sais
+            autopos.toggled.connect(toggle_autopos);
+            allmonitors.toggled.connect(toggle_allmonitors);
+
+
             linespacing.value_changed.connect (() => {
                 set_newlinespacing(linespacing, "linespacing");
             });
@@ -307,8 +390,16 @@ namespace BudgieShowTimeApplet {
             }
         }
 
+        private void toggle_allmonitors (ToggleButton button) {
+            bool val = button.get_active();
+            showtime_settings.set_boolean("allmonitors", val);
+            create_windows(gdkdisplay, surpass_primary = true);
+        }
+
         private void toggle_autopos (ToggleButton button) {
             bool val = button.get_active();
+            bool curr_allmons = allmonitors.get_active();
+            // check if new value is false
             if (!val) {
                 /*
                 if automatic is switched off start off from the current
@@ -320,7 +411,17 @@ namespace BudgieShowTimeApplet {
                 showtime_settings.set_int("xposition", newx);
                 showtime_settings.set_int("yposition", newy);
                 showtime_settings.set_string("anchor", "se");
+                // turns out we need to make it conditional, else it is
+                // registered as a value change
+                if (curr_allmons) {
+                    showtime_settings.set_boolean("allmonitors", false);
+                }
+                allmonitors.set_active(false);
             }
+            else {
+                create_windows(gdkdisplay, surpass_primary = true); ///////////////////////////
+            }
+            allmonitors.set_sensitive(val);
             anchorbuttons[2].set_active(true);
             anchorgrid.set_sensitive(!val);
             showtime_settings.set_boolean("autoposition", val);
@@ -396,6 +497,7 @@ namespace BudgieShowTimeApplet {
         }
     }
 
+
     public class Plugin : Budgie.Plugin, Peas.ExtensionBase {
 
         public Budgie.Applet get_panel_widget(string uuid) {
@@ -405,9 +507,10 @@ namespace BudgieShowTimeApplet {
         }
     }
 
+
     public class Applet : Budgie.Applet {
 
-        string winpath;
+        // string winpath;
         public string uuid { public set; public get; }
         public override bool supports_settings()
         {
@@ -418,42 +521,13 @@ namespace BudgieShowTimeApplet {
             return new BudgieShowTimeSettings(this.get_applet_settings(uuid));
         }
 
-        private void open_window(string path) {
-            // call the desktop showtime window
-            bool win_exists = check_onwindow(path);
-            if (!win_exists) {
-                try {
-                    Process.spawn_command_line_async(path);
-                }
-                catch (SpawnError e) {
-                    /* nothing to be done */
-                }
-            }
-        }
-
-        private bool check_onwindow(string path) {
-            // check if the desktop window exists
-            string cmd_check = "pgrep -f " + path;
-            string output;
-            try {
-                GLib.Process.spawn_command_line_sync(cmd_check, out output);
-                if (output == "") {
-                    return false;
-                }
-            }
-            catch (SpawnError e) {
-                /* let's say it always works */
-               return false;
-            }
-            return true;
-        }
-
         public Applet() {
-            // window
+            showtime_settings =  new GLib.Settings(
+                "org.ubuntubudgie.plugins.budgie-showtime"
+            );
+            gdkdisplay = Gdk.Display.get_default();
             winpath = moduledir.concat("/showtime_desktop");
-
-            // call desktop window
-            open_window(winpath);
+            create_windows(gdkdisplay);
             initialiseLocaleLanguageSupport();
         }
 
