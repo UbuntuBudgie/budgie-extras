@@ -112,7 +112,6 @@ namespace  ShowTime {
             // same on resolution/connect monitor change; easier to recreate than move
             screen = this.get_screen();
             screen.monitors_changed.connect(() => {
-                print("quiiting on monitors- change\n");
                 Gtk.main_quit();
             });
             // ...and quit on creation of similarly named window
@@ -169,7 +168,6 @@ namespace  ShowTime {
 
         private void kill_onallmonitorschange () {
             if (subwindow) {
-                print("quitting on allmonitors settings change\n");
                 Gtk.main_quit();
             }
         }
@@ -179,7 +177,6 @@ namespace  ShowTime {
             if (newwin.get_name() == win_name) {
                 // surpass killing on self-generated signal...
                 if (close_onnew) {
-                    print("quiiting on window replace\n");
                     Gtk.main_quit();
                 }
                 close_onnew = true;

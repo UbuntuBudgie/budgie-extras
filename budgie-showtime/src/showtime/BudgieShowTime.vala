@@ -419,9 +419,14 @@ namespace BudgieShowTimeApplet {
                 allmonitors.set_active(false);
             }
             else {
-                create_windows(gdkdisplay, surpass_primary = true); ///////////////////////////
+                create_windows(gdkdisplay, surpass_primary = true);
             }
-            allmonitors.set_sensitive(val);
+            if (n_monitors != 1) {
+                allmonitors.set_sensitive(val);
+            }
+            else {
+                allmonitors.set_sensitive(false);
+            }
             anchorbuttons[2].set_active(true);
             anchorgrid.set_sensitive(!val);
             showtime_settings.set_boolean("autoposition", val);
