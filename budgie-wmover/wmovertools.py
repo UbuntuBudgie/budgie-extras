@@ -157,9 +157,7 @@ def limit_exist():
 
         if os.path.exists(fpath):
             t = 1
-            try:
-                os.remove(fpath)
-            except FileNotFoundError:
-                pass
+            print("removing")
+            os.remove(fpath)
         else:
             t = t + 1

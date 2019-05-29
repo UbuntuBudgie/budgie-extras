@@ -8,11 +8,12 @@ import subprocess
 
 
 def by_subval(dcpath, subkey, value):
+
     # get the specific dconf path, referring to the applet's key
     last_key = None
-    for line in subprocess.check_output([
-        "dconf", "dump", dcpath
-    ]).decode("utf-8").splitlines():
+    for line in subprocess.check_output(
+        ["dconf", "dump", dcpath]
+    ).decode("utf-8").splitlines():
         line = line.strip()
 
         # look for a key
