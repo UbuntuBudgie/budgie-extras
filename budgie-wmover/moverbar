@@ -83,7 +83,6 @@ class Splash(Gtk.Window):
             else:
                 button.connect("clicked", self.move_desktop, subj, n)
             button.connect("enter-notify-event", self.busy)
-            button.connect("leave-notify-event", self.free)
         self.connect('key-press-event', self.get_key)
         x_size = self.n_spaces * button_hsize
         self.move(x_res / 2 - x_size / 2, y_res - 180)
@@ -96,9 +95,6 @@ class Splash(Gtk.Window):
     def busy(self, *args):
         open(fpath, "wt").write("")
 
-    def free(self, *args):
-        os.remove(fpath)
-
     def move_desktop(self, button, subj, wspace):
         wmt.run(["wmctrl", "-s", str(wspace)])
         self.stop()
@@ -107,10 +103,12 @@ class Splash(Gtk.Window):
         Gtk.main_quit()
 
     def get_key(self, val1, val2):
+        readvalue = Gdk.keyval_name(val2.keyval)
         try:
-            wspace = int(Gdk.keyval_name(val2.keyval)) - 1
+            wspace = int(readvalue) - 1
         except ValueError:
-            pass
+            if readvalue in ["Left", "Right"]:
+                self.busy()
         else:
             if wspace not in range(self.n_spaces):
                 pass

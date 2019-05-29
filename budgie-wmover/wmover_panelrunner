@@ -43,7 +43,7 @@ def get_pid():
 
 
 def getkey():
-    return getkeys.by_subval(dcpath,'name',"'Window Mover'")
+    return getkeys.by_subval(dcpath, 'name', "'Window Mover'")
 
 
 def run_wmover():
