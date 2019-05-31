@@ -20,6 +20,15 @@ using Wnck;
 * <https://www.gnu.org/licenses/>.
 */
 
+/*
+Note:
+if showtime window exists on primary -> don't recreate on primary, but make
+it move to the right position (set_position()) from within the window.
+so:
+- no action from applet
+- move window from itself
+*/
+
 
 namespace BudgieShowTimeApplet {
 
@@ -29,6 +38,33 @@ namespace BudgieShowTimeApplet {
     string winpath;
     Gdk.Display gdkdisplay;
     bool surpass_primary;
+
+    private bool onprimary_exists () {
+        int[] wincheck = getwindata();
+        foreach (int n in wincheck) {
+            if (n != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int[] getwindata () {
+        int x;
+        int y;
+        int wth;
+        int hth;
+        unowned Wnck.Screen scr = Wnck.Screen.get_default();
+        scr.force_update();
+        unowned List<Wnck.Window> wins = scr.get_windows();
+        foreach (Wnck.Window w in wins) {
+            if (w.get_name() == "Showtime") {
+                w.get_geometry(out x, out y, out wth, out hth);
+                return {x, y, wth, hth};
+            }
+        }
+        return {0, 0, 0, 0};
+    }
 
     private void create_windows (
         Gdk.Display? gdkdisplay = null, bool? surpass_primary = null
@@ -46,7 +82,7 @@ namespace BudgieShowTimeApplet {
         foreach (Gdk.Monitor m in monitors) {
             if (m.is_primary())  {
                 // primary: window is autonoumous
-                if (surpass_primary != true) {
+                if (surpass_primary != true && !onprimary_exists()) {
                     open_window();
                 }
             }
@@ -277,23 +313,6 @@ namespace BudgieShowTimeApplet {
             showtime_settings.set_string("anchor", curr_anchor);
             showtime_settings.set_int("xposition", newx);
             showtime_settings.set_int("yposition", newy);
-        }
-
-        private int[] getwindata () {
-            int x;
-            int y;
-            int wth;
-            int hth;
-            unowned Wnck.Screen scr = Wnck.Screen.get_default();
-            scr.force_update();
-            unowned List<Wnck.Window> wins = scr.get_windows();
-            foreach (Wnck.Window w in wins) {
-                if (w.get_name() == "Showtime") {
-                    w.get_geometry(out x, out y, out wth, out hth);
-                    return {x, y, wth, hth};
-                }
-            }
-            return {0, 0, 0, 0};
         }
 
         private void set_newlinespacing (SpinButton button, string setting) {

@@ -20,6 +20,15 @@ using Wnck;
 * <https://www.gnu.org/licenses/>.
 */
 
+/*
+Note:
+if showtime window exists on primary -> don't recreate on primary, but make
+it move to the right position (set_position()) from within the window.
+so:
+- no action from applet
+- move window from itself
+*/
+
 
 namespace  ShowTime {
 
@@ -112,7 +121,7 @@ namespace  ShowTime {
             // same on resolution/connect monitor change; easier to recreate than move
             screen = this.get_screen();
             screen.monitors_changed.connect(() => {
-                Gtk.main_quit();
+                consider_toleave();
             });
             // ...and quit on creation of similarly named window
             unowned Wnck.Screen scr = Wnck.Screen.get_default();
@@ -166,9 +175,18 @@ namespace  ShowTime {
             };
         }
 
-        private void kill_onallmonitorschange () {
+        private void consider_toleave() {
             if (subwindow) {
                 Gtk.main_quit();
+            }
+            else {
+                set_windowposition();
+            }
+        }
+
+        private void kill_onallmonitorschange () {
+            if (subwindow) {
+                consider_toleave();
             }
         }
 
@@ -177,7 +195,7 @@ namespace  ShowTime {
             if (newwin.get_name() == win_name) {
                 // surpass killing on self-generated signal...
                 if (close_onnew) {
-                    Gtk.main_quit();
+                    consider_toleave();
                 }
                 close_onnew = true;
             }
