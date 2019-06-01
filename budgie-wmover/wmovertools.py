@@ -83,22 +83,26 @@ def check_ypos(yres):
     else:
         ypos = int([l for l in ydata.splitlines()
                     if "Position" in l][0].split(",")[1].split()[0])
-        return ypos > yres - 150, subj.strip()
+        return ypos > yres - 300, subj.strip()
 
 
 def getres():
-    # get the resolution from wmctrl
-    resdata = get(["wmctrl", "-d"])
-    res = [int(n) for n in resdata.split()[3].split("x")] if resdata else None
-    return res
+    dsp = Gdk.Display.get_default()
+    prim = dsp.get_primary_monitor()
+    geo = prim.get_geometry()
+    xoffset = geo.x
+    yoffset = geo.y
+    width = geo.width
+    height = geo.height
+    return (width, height, xoffset, yoffset)
 
 
-def area(x_area, y_area, xres, yres, x, y):
+def area(x_area, y_area, xres, yres, x, y, xoffset, yoffset):
     # see if the mouse is in the hotspot
     center = xres / 2
     halfwidth = x_area / 2
-    x_match = center - halfwidth < x < center + halfwidth
-    y_match = y > yres - y_area
+    x_match = center + xoffset - halfwidth < x < center + xoffset + halfwidth
+    y_match = y > yres + yoffset - y_area
     return all([x_match, y_match])
 
 
@@ -110,22 +114,24 @@ def find_bar():
     return get(["xdotool", "search", "--class", "wmover"])
 
 
-def callwindow(target, xres, yres):
+def callwindow(target, xres, yres, xoffset, yoffset):
     wtype = show_wmclass(target)
     if wtype in ignore:
         run(["notify-send", "-i", "wmover-panel",
              "WindowMover", "Please first activate a window."])
     else:
-        runwindow(target, xres, yres)
+        runwindow(target, xres, yres, xoffset, yoffset)
 
 
-def runwindow(target, xres, yres):
+def runwindow(target, xres, yres, xoffset, yoffset):
     # run the mover bar
     subprocess.Popen([
         os.path.join(appletpath, "moverbar"),
         target,
         str(xres),
         str(yres),
+        str(xoffset),
+        str(yoffset),
     ])
     time.sleep(0.5)
     limit_exist()

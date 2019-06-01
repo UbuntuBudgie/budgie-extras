@@ -85,11 +85,13 @@ class Splash(Gtk.Window):
             button.connect("enter-notify-event", self.busy)
         self.connect('key-press-event', self.get_key)
         x_size = self.n_spaces * button_hsize
-        self.move(x_res / 2 - x_size / 2, y_res - 180)
+        self.move((x_res / 2 - x_size / 2) + xoffset, y_res - 180 + yoffset)
 
     def move_to(self, button, subj, wspace):
         wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
-        wmt.run(["xdotool", "windowmove", subj, "100", "100"])
+        targetx = str(100 + xoffset)
+        targety = str(100 + yoffset)
+        wmt.run(["xdotool", "windowmove", subj, targetx, targety])
         self.stop()
 
     def busy(self, *args):
@@ -149,4 +151,6 @@ if __name__ == "__main__":
     else:
         x_res = int(sys.argv[2])
         y_res = int(sys.argv[3])
+        xoffset = int(sys.argv[4])
+        yoffset = int(sys.argv[5])
         run_moverbar()

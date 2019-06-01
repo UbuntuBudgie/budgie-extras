@@ -30,17 +30,10 @@ def run_wmover():
     y_area = 5
 
     while True:
-        # check/update screen resolution once per 10 seconds
         if t_res == 20:
-            # ...and see if the user is still around
+            # see if the user is still around
             if user not in subprocess.check_output("who").decode("utf-8"):
                 break
-            res2 = wmt.getres()
-            if all([res2, res2 != res]):
-                xres = res2[0]
-                yres = res2[1]
-                x_area = xres - 110
-                res = res2
             t_res = 0
         # master loop
         time.sleep(0.5)
@@ -48,34 +41,37 @@ def run_wmover():
         data = wmt.mousepos()
         x = data[0]
         y = data[1]
-        if wmt.area(x_area, y_area, xres, yres, x, y):
+        if wmt.area(x_area, y_area, xres, yres, x, y, xoffset, yoffset):
             """if mouse is on the right spot,
                check position of the active window
             """
             check_cons = wmt.check_ypos(yres)
             if check_cons[0]:
                 # call the mover window
-                wmt.callwindow(check_cons[1], xres, yres)
+                wmt.callwindow(check_cons[1], xres, yres, xoffset, yoffset)
         t_res = t_res + 1
 
 
-def singlerun(resdata):
+def singlerun():
     target = wmt.get(["xdotool", "getactivewindow"])
     if target:
-        wmt.callwindow(
-            target,
-            resdata[0],
-            resdata[1],
-        )
+        wmt.callwindow(target, xres, yres, xoffset, yoffset)
 
 
 if __name__ == "__main__":
+    resdata = wmt.getres()
+    xres = resdata[0]
+    yres = resdata[1]
+    xoffset = resdata[2]
+    yoffset = resdata[3]
+    x_area = xres - 110
     try:
         arg = sys.argv[1]
-        resdata = wmt.getres()
         if arg == "-single":
-            singlerun(resdata)
+            singlerun()
         elif arg == "-singlespace":
-            wmt.runwindow("none", resdata[0], resdata[1])
+            wmt.runwindow("none", xres, yres, xoffset, yoffset)
+
     except IndexError:
+        print("run continuously")
         run_wmover()
