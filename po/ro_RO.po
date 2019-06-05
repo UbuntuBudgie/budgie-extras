@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 21:35+0000\n"
+"POT-Creation-Date: 2019-06-05 12:14+0100\n"
 "PO-Revision-Date: 2018-10-26 11:46+0000\n"
 "Last-Translator: Vasile Marian, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/ubuntu-budgie/teams/72251/ro_RO/)\n"
@@ -20,170 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Bine ati venit la QuickNote."
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "Textul va fii salvat automat cand tastati."
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Latimea ariei textului"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Inaltime ariei textului"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Selecteaza un director personalizat"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Alege un director"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-weathershow/src/get_color/get_color.vala:88
-msgid "Cancel"
-msgstr "Anuleaza"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Utilizeaza"
-
-#. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:54
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:77
-msgid "Drag position"
-msgstr "Trage pozitia"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:55
-msgid "Save position"
-msgstr "Salveaza pozitia"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:58
-msgid ""
-"Enable Super + drag to set time position. Click ´Save position´ to save."
-msgstr ""
-
-#. window content
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:66
-msgid "Position & anchor"
-msgstr "Pozitioneaza & ancoreaza"
-
-#. automatic positioning
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:70
-msgid "Automatic"
-msgstr "Automat"
-
-#. time font settings -> boxed!!
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:110
-msgid "Time font, size & color"
-msgstr "Fontul, marimea & culoarea orei"
-
-#. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:122
-msgid "Date font, size & color"
-msgstr "Fontul, marimea & culoarea datei"
-
-#. miscellaneous section
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:134
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:137
-msgid "Left align text"
-msgstr "Text aliniat la stanga"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:139
-msgid "Use 12hr time format"
-msgstr "Utilizeaza formatul de 12 ore pentru ceas"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:147
-msgid "Linespacing"
-msgstr "Spatiul dintre linii"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:394
-msgid "Super + drag"
-msgstr "Super + treage"
-
-#. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:227
-msgid "AM"
-msgstr "inainte de amiaza"
-
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:230
-msgid "PM"
-msgstr "dupa amiaza"
-
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Arata-l pe ultimul utilizat"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Arata ponturile"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Ascunde calea in meniu"
-
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-msgid "Open"
-msgstr "Deschide"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Goleste"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Goleste toate articolele din cosul de gunoi?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Toate articolele din cosul de gunoi vor fii sterse definitiv."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Goleste cosul de gunoi"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr ""
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr "Restabileste"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:127
 msgid "Set pressure (0 = no pressure)"
@@ -230,28 +66,75 @@ msgstr "Applet lipsa"
 msgid "Please add WindowPreviews"
 msgstr "Te rog adauga WindowsPreviews"
 
-#. window props
-#: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
-msgid "Set text color"
-msgstr "Seteaza culoarea textului"
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Arata-l pe ultimul utilizat"
 
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "Rosu"
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Arata ponturile"
 
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "Verde"
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Ascunde calea in meniu"
 
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "Albastru"
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-trash/src/widgets/MenuRow.vala:52
+msgid "Open"
+msgstr "Deschide"
 
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "Alege"
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Goleste"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Goleste toate articolele din cosul de gunoi?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Toate articolele din cosul de gunoi vor fii sterse definitiv."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Cancel"
+msgstr "Anuleaza"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Goleste cosul de gunoi"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr ""
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:363
+msgid "Restore"
+msgstr "Restabileste"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
@@ -315,6 +198,12 @@ msgstr "Afisati prognoza in popup"
 msgid "Transparency"
 msgstr "Transparenta"
 
+#. window props
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/get_color/get_color.vala:50
+msgid "Set text color"
+msgstr "Seteaza culoarea textului"
+
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:879
 msgid "Set custom position (px)"
@@ -324,9 +213,123 @@ msgstr "Setati pozitia personalizata (px)"
 msgid "Please enter at least 3 characters"
 msgstr "Te rog introdu cel putin 3 caractere"
 
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
-msgstr "Adnotari Rapide & Usoare"
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "Rosu"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "Verde"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "Albastru"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "Alege"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Bine ati venit la QuickNote."
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "Textul va fii salvat automat cand tastati."
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Latimea ariei textului"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Inaltime ariei textului"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Selecteaza un director personalizat"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Alege un director"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Utilizeaza"
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
+msgid "Drag position"
+msgstr "Trage pozitia"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
+msgid "Save position"
+msgstr "Salveaza pozitia"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
+msgid "Position & anchor"
+msgstr "Pozitioneaza & ancoreaza"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
+msgid "Automatic"
+msgstr "Automat"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
+msgid "On all monitors"
+msgstr ""
+
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+msgid "Time font, size & color"
+msgstr "Fontul, marimea & culoarea orei"
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+msgid "Date font, size & color"
+msgstr "Fontul, marimea & culoarea datei"
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+msgid "Left align text"
+msgstr "Text aliniat la stanga"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+msgid "Use 12hr time format"
+msgstr "Utilizeaza formatul de 12 ore pentru ceas"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+msgid "Linespacing"
+msgstr "Spatiul dintre linii"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+msgid "Super + drag"
+msgstr "Super + treage"
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:311
+msgid "AM"
+msgstr "inainte de amiaza"
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:314
+msgid "PM"
+msgstr "dupa amiaza"
+
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr "Seteaza actiunile colturi fierbinti"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
@@ -336,10 +339,10 @@ msgstr "Arata articolele utilizate recent"
 msgid "Trash"
 msgstr "Cosul de gunoi"
 
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
-msgid "Set hotcorner actions"
-msgstr "Seteaza actiunile colturi fierbinti"
-
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Arata vremea & previziuni meteorologice"
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
+msgstr "Adnotari Rapide & Usoare"
