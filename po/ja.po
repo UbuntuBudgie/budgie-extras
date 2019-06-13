@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Moo, 2019
+# Ryo Nakano, 2019
 # 
 #, fuzzy
 msgid ""
@@ -13,338 +13,336 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-05 12:14+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Moo, 2019\n"
-"Language-Team: Lithuanian (https://www.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
+"Last-Translator: Ryo Nakano, 2019\n"
+"Language-Team: Japanese (https://www.transifex.com/ubuntu-budgie/teams/72251/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lt\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:127
 msgid "Set pressure (0 = no pressure)"
-msgstr "Nustatyti spaudimą (0 = jokio spaudimo)"
+msgstr ""
 
 #. Corner label
 #: budgie-hotcorners/src/HotCornersApplet.vala:207
 msgid "Corner"
-msgstr "Kampas"
+msgstr "コーナー"
 
 #. Action label
 #: budgie-hotcorners/src/HotCornersApplet.vala:211
 msgid "Action"
-msgstr "Veiksmas"
+msgstr "アクション"
 
 #. Custom label
 #: budgie-hotcorners/src/HotCornersApplet.vala:215
 msgid "Custom"
-msgstr "Tinkintas"
+msgstr "カスタム"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:233
 msgid "Top-left"
-msgstr "Viršutinis kairysis"
+msgstr "左上"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:233
 msgid "Top-right"
-msgstr "Viršutinis dešinysis"
+msgstr "右上"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:233
 msgid "Bottom-left"
-msgstr "Apatinis kairysis"
+msgstr "左下"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:233
 msgid "Bottom-right"
-msgstr "Apatinis dešinysis"
+msgstr "右下"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:316
 msgid "Missing applet"
-msgstr "Trūksta programėlės"
+msgstr "不足しているアプレット"
 
 #. WindowPreviews is the name of a Budgie Applet and does not need to be
 #. translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:318
 msgid "Please add WindowPreviews"
-msgstr "Pridėkite WindowPreviews"
+msgstr "ウィンドウプレビューを追加してください"
 
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
 msgid "Show last used"
-msgstr "Rodyti paskiausiai naudotus"
+msgstr "最後に使用したものを表示"
 
 #. show tooltips section
 #: budgie-recentlyused/src/budgie-recentlyused.vala:44
 msgid "Show tooltips"
-msgstr "Rodyti paaiškinimus"
+msgstr "ツールチップを表示"
 
 #. hide path section
 #: budgie-recentlyused/src/budgie-recentlyused.vala:53
 msgid "Hide path in menu"
-msgstr "Slėpti kelią meniu"
+msgstr "メニューのパスを非表示"
 
 #. tooltip
 #: budgie-recentlyused/src/budgie-recentlyused.vala:177
 #: budgie-trash/src/widgets/TrashPopover.vala:79
 #: budgie-trash/src/widgets/MenuRow.vala:52
 msgid "Open"
-msgstr "Atverti"
+msgstr "開く"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:87
 msgid "Empty"
-msgstr "Išvalyti"
+msgstr "空"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:117
 msgid "Empty all items from the Trash?"
-msgstr "Išvalyti visus elementus iš šiukšlinės?"
+msgstr "ゴミ箱のすべての項目を空にしますか？"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:126
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Visi elementai šiukšlinėje bus negrįžtamai ištrinti."
+msgstr "ゴミ箱のすべての項目は完全に削除されます。"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-weathershow/src/get_color/get_color.vala:88
 #: budgie-quicknote/QuickNoteApplet.vala:201
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "キャンセル"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:147
 msgid "Empty Trash"
-msgstr "Išvalyti šiukšlinę"
+msgstr "ゴミ箱を空にする"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "Could not determine original location of /home/budgie/file.txt"
 #: budgie-trash/src/helpers/TrashHelper.vala:109
 #, c-format
 msgid "Could not determine original location of %s"
-msgstr "Nepavyko nustatyti pradinės %s vietos"
+msgstr "%s の元の場所を検出できませんでした"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt restored"
 #: budgie-trash/src/helpers/TrashHelper.vala:134
 #, c-format
 msgid "%s restored."
-msgstr "%s atkurtas."
+msgstr "%s を元に戻しました。"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt already exists"
 #: budgie-trash/src/helpers/TrashHelper.vala:141
 #, c-format
 msgid "%s already exists."
-msgstr "%s jau yra."
+msgstr "%s はすでに存在しています。"
 
 #. fileButton.set_tooltip_text(destParentPath);
 #: budgie-trash/src/helpers/TrashHelper.vala:363
 msgid "Restore"
-msgstr "Atkurti"
+msgstr "元に戻す"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
 msgid "Monday"
-msgstr "Pirmadienis"
+msgstr "月曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
 msgid "Tuesday"
-msgstr "Antradienis"
+msgstr "火曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
 msgid "Wednesday"
-msgstr "Trečiadienis"
+msgstr "水曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
 msgid "Thursday"
-msgstr "Ketvirtadienis"
+msgstr "木曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:143
 msgid "Friday"
-msgstr "Penktadienis"
+msgstr "金曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:143
 msgid "Saturday"
-msgstr "Šeštadienis"
+msgstr "土曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:143
 msgid "Sunday"
-msgstr "Sekmadienis"
+msgstr "日曜日"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:770
 msgid "General"
-msgstr "Bendra"
+msgstr "一般"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:776
 msgid "Desktop"
-msgstr "Darbalaukis"
+msgstr "デスクトップ"
 
 #. set city section
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:788
 msgid "City"
-msgstr "Miestas"
+msgstr "市町村"
 
 #. show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:811
 msgid "Show on desktop"
-msgstr "Rodyti darbalaukyje"
+msgstr "デスクトップに表示"
 
 #. dynamic icon
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:818
 msgid "Show dynamic panel icon"
-msgstr "Rodyti dinaminę skydelio piktogramą"
+msgstr "動的なパネルアイコンを表示"
 
 #. forecast
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "Show forecast in popover"
-msgstr "Rodyti orų prognozę išskleidžiamajame lange"
+msgstr "ポップオーバーに天気予報を表示"
 
 #. optional settings: show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:846
 msgid "Transparency"
-msgstr "Permatomumas"
+msgstr "透明度"
 
 #. window props
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:872
 #: budgie-weathershow/src/get_color/get_color.vala:50
 msgid "Set text color"
-msgstr "Nustatyti teksto spalvą"
+msgstr "テキストの色を設定"
 
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:879
 msgid "Set custom position (px)"
-msgstr "Nustatyti tinkintą pozicija (piks.)"
+msgstr "任意の位置を設定 (px)"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
 msgid "Please enter at least 3 characters"
-msgstr "Įveskite bent 3 simbolius"
+msgstr "最低 3 文字を入力してください"
 
 #. spinbuttons - labels
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Red"
-msgstr "Raudona"
+msgstr "赤"
 
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Green"
-msgstr "Žalia"
+msgstr "緑"
 
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Blue"
-msgstr "Mėlyna"
+msgstr "青"
 
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
-msgstr "Pasirinkti"
+msgstr "選択"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
-msgstr "Sveiki atvykę į Greitąsias pastabas."
+msgstr "QuickNote へようこそ。"
 
 #: budgie-quicknote/QuickNoteApplet.vala:48
 msgid "Text will be saved automatically while typing."
-msgstr "Rašant, tekstas bus automatiškai įrašomas."
+msgstr "文字列は入力中に自動的に保存されます。"
 
 #. Gtk stuff, widgets etc. here
 #: budgie-quicknote/QuickNoteApplet.vala:143
 msgid "Text area width"
-msgstr "Teksto srities plotis"
+msgstr "テキスト領域の幅"
 
 #: budgie-quicknote/QuickNoteApplet.vala:150
 msgid "Text area height"
-msgstr "Teksto srities aukštis"
+msgstr "テキスト領域の高さ"
 
 #: budgie-quicknote/QuickNoteApplet.vala:166
 msgid "Set a custom directory"
-msgstr "Nustatyti tinkintą katalogą"
+msgstr "任意のディレクトリを設定"
 
 #: budgie-quicknote/QuickNoteApplet.vala:179
 msgid "Choose directory"
-msgstr "Pasirinkti katalogą"
+msgstr "ディレクトリを選択"
 
 #: budgie-quicknote/QuickNoteApplet.vala:201
 msgid "Use"
-msgstr "Naudoti"
+msgstr "使う"
 
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:162
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:185
 msgid "Drag position"
-msgstr "Vilkti vietą"
+msgstr "位置をドラッグ"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:163
 msgid "Save position"
-msgstr "Įrašyti vietą"
+msgstr "位置を保存"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:166
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
 msgstr ""
-"Įjungti Super + vilkimą, norint nustatyti laiko vietą. Norėdami įrašyti, "
-"spustelėkite \"Įrašyti vietą\"."
 
 #. window content
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:172
 msgid "Position & anchor"
-msgstr "Vieta ir prieraišas"
+msgstr "位置とアンカー"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:178
 msgid "Automatic"
-msgstr "Automatinė"
+msgstr "自動"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:179
 msgid "On all monitors"
-msgstr "Visuose vaizduokliuose"
+msgstr "すべてのモニター"
 
 #. time font settings -> boxed!!
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:217
 msgid "Time font, size & color"
-msgstr "Laiko šriftas, dydis ir spalva"
+msgstr "時刻のフォント、フォントサイズ、フォントの色"
 
 #. date font settings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:229
 msgid "Date font, size & color"
-msgstr "Datos šriftas, dydis ir spalva"
+msgstr "日付のフォント、フォントサイズ、フォントの色"
 
 #. miscellaneous section
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:241
 msgid "Miscellaneous"
-msgstr "Įvairūs"
+msgstr "その他"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:244
 msgid "Left align text"
-msgstr "Lygiuoti tekstą kairėje"
+msgstr "テキストを左寄せにする"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:246
 msgid "Use 12hr time format"
-msgstr "Naudoti 12 val. laiko formatą"
+msgstr "12時間制の時刻表記を使う"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:254
 msgid "Linespacing"
-msgstr "Tarpas tarp eilučių"
+msgstr "行間"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:519
 msgid "Super + drag"
-msgstr "Super + vilkti"
+msgstr "スーパーキー + ドラッグ"
 
 #. hrs to double digits
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:311
 msgid "AM"
-msgstr "AM (priešpiet)"
+msgstr "午前"
 
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:314
 msgid "PM"
-msgstr "PM (popiet)"
+msgstr "午後"
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
-msgstr "Nustatyti karštųjų kampų veiksmus"
+msgstr "ホットコーナーのアクションを設定"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
-msgstr "Rodyti paskiausiai naudotus elementus"
+msgstr "最近使用した項目を表示"
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
-msgstr "Šiukšlinė"
+msgstr "ゴミ箱"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
-msgstr "Rodyti orus ir orų prognozę"
+msgstr "天気と天気予報を表示"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
-msgstr "Greitos ir lengvos pastabos"
+msgstr "Quick & Easy Notes"
