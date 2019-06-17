@@ -135,7 +135,6 @@ namespace  ShowTime {
             this.resizable = false;
             this.destroy.connect(Gtk.main_quit);
             this.set_decorated(false);
-
             var maingrid = new Grid();
             timelabel = new Label("");
             datelabel = new Label("");
@@ -223,7 +222,14 @@ namespace  ShowTime {
             return {width, height};
         }
 
+        public int getscale () {
+            var prim = Gdk.Display.get_default().get_primary_monitor();
+            int scaling = prim.get_scale_factor();
+            return scaling;
+        }
+
         public void set_windowposition () {
+            int scale = getscale();
             int setx;
             int sety;
             string anchor;
@@ -240,9 +246,17 @@ namespace  ShowTime {
                 anchor = "se";
             }
             else {
+                /* N.B.
+                Gdk detects incorrect resolution when scaling is other than 100%.
+                This leads to errors -unless- the window moves itself, directly
+                counting with the incorrect resolution. move() makes the exact
+                same mistake, which then eliminates the first.
+                When windowposition is set from real position though (gsettings)
+                we need to compensate, by multiplying by 1/scale.
+                */
                 anchor = showtime_settings.get_string("anchor");
-                setx = showtime_settings.get_int("xposition");
-                sety = showtime_settings.get_int("yposition");
+                setx = showtime_settings.get_int("xposition") / scale;
+                sety = showtime_settings.get_int("yposition") / scale;
             }
             int[] winsize = get_windowsize();
             int usedx = setx;
