@@ -108,8 +108,6 @@ namespace HCSupport {
 
 namespace HotCornersApplet {
 
-    int serial = 0;
-
     public class HotCornersSettings : Gtk.Grid {
         /* Budgie Settings -section */
         GLib.Settings? settings = null;
@@ -507,7 +505,7 @@ namespace HotCornersApplet {
             return {width, height, screen_xpos, screen_ypos};
         }
 
-        private int check_corner(int xres, int yres, int x_offset, int y_offset, Seat seat, int serial) {
+        private int check_corner(int xres, int yres, int x_offset, int y_offset, Seat seat) {
             /* see if we are in a corner, if so, which one */
             int x;
             int y;
@@ -525,16 +523,6 @@ namespace HotCornersApplet {
             int bottom = y_offset + yres;
             int innerbottom = bottom - this.action_area;
             int innerright = rightside - this.action_area;
-
-            
-            
-            if (serial == 0) {
-                print(@"numbers: $innerleft, $innerright, $innertop, $innerbottom, $x, $y\n");
-            }
-
-            
-
-
             bool[] tests = {
                 (x_offset <= x < innerleft && y_offset <= y < innertop), // topleft
                 (innerright < x <= rightside && y_offset <= y < innertop), // topright
@@ -578,7 +566,6 @@ namespace HotCornersApplet {
         }
 
         private int watch_loop(string[] ? args = null) {
-            serial = 0;
             Gdk.init(ref args);
             Gdk.Seat seat = Gdk.Display.get_default().get_default_seat();
             int[] res = check_res();
@@ -596,13 +583,6 @@ namespace HotCornersApplet {
             bool reported = false;
             int t = 0;
             GLib.Timeout.add (50, () => {
-                serial += 1;
-                if (serial == 100) {
-                    serial = 0;
-                }
-                
-
-
                 t += 1;
                 if (t == 30) {
                     t = 0;
@@ -614,7 +594,7 @@ namespace HotCornersApplet {
                         return false;
                     }
                 }
-                int corner = check_corner(xres, yres, x_offset, y_offset, seat, serial);
+                int corner = check_corner(xres, yres, x_offset, y_offset, seat);
                 if (corner != -1 && reported == false) {
                     if (check_onpressure() == true) {
                         run_command(corner);
