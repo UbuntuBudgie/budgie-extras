@@ -148,8 +148,10 @@ public class DesktopWeather : Gtk.Window {
     }
 
     private void set_windowpos () {
-        int xpos = desktop_settings.get_int("xposition");
-        int ypos = desktop_settings.get_int("yposition");
+        var prim = Gdk.Display.get_default().get_primary_monitor();
+        int currscale = prim.get_scale_factor();
+        int xpos = desktop_settings.get_int("xposition") / currscale;
+        int ypos = desktop_settings.get_int("yposition") / currscale;
         this.move(xpos, ypos);
     }
 
