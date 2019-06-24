@@ -130,3 +130,8 @@ build_takeabreak = get_option('build-takeabreak')
 if build_all == true or build_takeabreak == true
 	subdir('budgie-takeabreak')
 endif
+
+build_extrasdaemon = get_option('build-extrasdaemon')
+if build_all == true or build_extrasdaemon == true
+	subdir('budgie-extras-daemon')
+endif
