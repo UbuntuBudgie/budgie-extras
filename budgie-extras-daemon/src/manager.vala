@@ -6,17 +6,18 @@ namespace BudgieExtras
 /**
  * Main lifecycle management, handle all the various session and GTK+ bits
  */
-public class ServiceManager : GLib.Object
+public class KeybinderManager : GLib.Object
 {
     /**
-     * Construct a new ServiceManager and initialiase appropriately
+     * Construct a new KeybinderManager and initialiase appropriately
      */
-    public ServiceManager(bool replace)
+    public KeybinderManager(bool replace)
     {
- 
+        // Global key bindings
+        Keybinder.init ();
     }
 
  
-} /* End ServiceManager */
+} /* End KeybinderManager */
 
 } /* End namespace BudgieExtras */

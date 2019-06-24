@@ -8,26 +8,6 @@ const GLib.OptionEntry[] options = {
     { null }
 };
 
-namespace BudgieExtras {
-
-    bool setup = false;
-    bool spammed = false;
-
-    void DaemonNameLost(DBusConnection conn, string name)
-    {
-        warning("budgie-extras-daemon lost d-bus name %s", name);
-        if (!spammed) {
-            if (setup) {
-                message("Replaced existing budgie-extras-daemon");
-            } else {
-                message("Another instance of budgie-extras-daemon is running. Use --replace");
-            }
-            spammed = true;
-        }
-        Gtk.main_quit();
-    }
-}
-
 /**
  * Main entry for the daemon
  */
@@ -35,7 +15,7 @@ public static int main(string[] args) {
     Gtk.init(ref args);
     OptionContext ctx;
 
-    BudgieExtras.ServiceManager? manager = null;
+    BudgieExtras.KeybinderManager? manager = null;
 
     ctx = new OptionContext("- Budgie Extras Daemon");
     ctx.set_help_enabled(true);
@@ -49,9 +29,7 @@ public static int main(string[] args) {
         return 0;
     }
 
-    manager = new BudgieExtras.ServiceManager(replace);
-    // Global key bindings
-    Keybinder.init ();
+    manager = new BudgieExtras.KeybinderManager(replace);
 
     /* Enter main loop */
     Gtk.main();

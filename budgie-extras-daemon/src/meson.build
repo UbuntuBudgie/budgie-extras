@@ -36,12 +36,11 @@ ExtrasDaemonCArgs = [
 '-lm'
 ]
 
-shared_library(
-    'ExtrasDaemon',
-    ExtrasDaemonSources,
+executable(
+    'budgie-extras-daemon', ExtrasDaemonSources,
     dependencies: ExtrasDaemonDependencies,
     vala_args: ExtrasDaemonValaArgs,
     c_args: ExtrasDaemonCArgs,
     install: true,
-    install_dir: join_paths(prefix, get_option('bin'))
+    install_dir: join_paths(prefix, get_option('bindir'))
 )
