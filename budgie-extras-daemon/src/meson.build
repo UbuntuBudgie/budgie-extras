@@ -9,7 +9,7 @@ custom_target('desktop-file-daemon',
     output : 'budgie-extras-daemon.desktop',
     command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
     install : true,
-    install_dir : join_paths(datadir, 'applications'))
+    install_dir : get_option('sysconfdir'))
 
 ExtrasDaemonSources = [
 'main.vala',
@@ -43,5 +43,5 @@ shared_library(
     vala_args: ExtrasDaemonValaArgs,
     c_args: ExtrasDaemonCArgs,
     install: true,
-    install_dir: LIB_INSTALL_DIR
+    install_dir: join_paths(prefix, get_option('bin'))
 )
