@@ -1,0 +1,295 @@
+#!/usr/bin/env python3
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version("Gdk", "3.0")
+from gi.repository import Gtk, Gio, Gdk
+import dropby_tools as db
+import subprocess
+import os
+import psutil
+
+
+dropby_css = """
+.label {
+  padding-bottom: 7px;
+  padding-top: 0px;
+  font-weight: bold;
+}
+"""
+
+
+class WatchVolumes:
+
+    def __init__(self):
+        # setup watching connections
+        self.watchdrives = Gio.VolumeMonitor.get()
+        triggers = [
+            "volume_added", "volume_removed", "mount_added", "mount_removed",
+        ]
+        for t in triggers:
+            self.watchdrives.connect(t, self.actonconnect, t)
+        # workaround to only open nautilus on our own action
+        self.act_onmount = False
+        # setup css
+        self.provider = Gtk.CssProvider.new()
+        self.provider.load_from_data(dropby_css.encode())
+        self.newwin = None
+
+        app_path = os.path.dirname(os.path.abspath(__file__))
+        self.copyscript = os.path.join(app_path, "copy_flash")
+        self.start_timer = os.path.join(app_path, "checkonwin")
+        self.timer = "/tmp/keepdropbywin"
+        # setup watching trigger (uncomment below lines if)
+        infofile = Gio.File.new_for_path("/tmp")
+        monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
+        monitor.connect("changed", self.actonfile)
+        Gtk.main()
+
+    def actonfile(self, arg1, arg2, arg3, event):
+        # ok, let's replace once dbus is a fact
+        trigger = "/tmp/call_dropby"
+        if all([
+            event == Gio.FileMonitorEvent.CREATED,
+            os.path.exists(trigger)
+        ]):
+            os.remove(trigger)
+            self.actonconnect()
+
+    def process_check(self, process):
+        try:
+            pid = subprocess.check_output([
+                "pgrep", "-f", process
+            ]).decode("utf-8")
+            return True
+        except subprocess.CalledProcessError:
+            return False
+
+    def process_kill(self, procname):
+        try:
+            subprocess.call(["pkill", "-f", procname])
+        except subprocess.CalledProcessError:
+            pass
+
+    def getridofwindow(self, *args):
+        # since we are keeping Gtk.main
+        try:
+            self.newwin.destroy()
+            self.newwin = None
+        except AttributeError:
+            pass
+        try:
+            os.remove(self.timer)
+        except FileNotFoundError:
+            pass
+        self.process_kill(self.start_timer)
+
+    def busy(self, arg1, arg2):
+        open(self.timer, "wt").write("")
+
+    def outofajob(self, arg1, arg2):
+        try:
+            os.remove(self.timer)
+        except FileNotFoundError:
+            pass
+
+    def create_win(self, subject=None, newvol=None):
+        window = Gtk.Window()
+        window.connect("enter-notify-event", self.busy)
+        window.connect("leave-notify-event", self.outofajob)
+        window.set_title("dropby_popup")
+        window.set_skip_taskbar_hint(True)
+        window.set_keep_above(True)
+        window.set_decorated(False)
+        self.maingrid = Gtk.Grid()
+        window.add(self.maingrid)
+        window.connect("destroy", self.getridofwindow)
+        self.process_kill(self.start_timer)
+        subprocess.Popen(self.start_timer)
+        return window
+
+    def create_label(self, text):
+        label = Gtk.Label()
+        label.set_text(text)
+        label.set_xalign(0)
+        label.connect("enter-notify-event", self.busy)
+        return label
+
+    def create_button(self, text=None, icon=None):
+        button = Gtk.Button()
+        if text:
+            button.set_label(text)
+        if icon:
+            button.set_image(icon)
+        button.set_relief(Gtk.ReliefStyle.NONE)
+        button.connect("enter-notify-event", self.busy)
+        return button
+
+    def fill_grid(self, get_relevant, newvol):
+        pos = 2
+        for d in get_relevant:
+            vol_name = d["name"]
+            # namebutton
+            addition = " *" if d["volume"] == newvol else " "
+            namebutton = self.create_button(
+                text=vol_name + addition,
+                icon=Gtk.Image.new_from_gicon(d["icon"], Gtk.IconSize.MENU),
+            )
+            namebutton.set_always_show_image(True)
+            namebox = Gtk.Box()
+            namebox.pack_start(namebutton, False, False, 0)
+            self.maingrid.attach(namebox, 2, pos, 1, 1)
+            # show free space
+            freespace = self.create_label(d["free"])
+            self.maingrid.attach(freespace, 3, pos, 1, 1)
+            # set gui attributes for mounted volumes
+            if d["ismounted"]:
+                mount = d["ismounted"]
+                vol_path = d["volume_path"]
+                if all([mount == newvol, self.act_onmount]):
+                    self.open_folder(vol_path)
+                    self.act_onmount = False
+                eject_button = self.create_button(
+                    icon=Gtk.Image.new_from_icon_name(
+                        "media-eject-symbolic", Gtk.IconSize.MENU
+                    )
+                )
+                self.maingrid.attach(eject_button, 6, pos, 1, 1)
+                if d["flashdrive"]:
+                    spacer = self.create_label("\t")
+                    self.maingrid.attach(spacer, 4, pos, 1, 1)
+                    tooltip = "Eject"
+                    eject_button.connect("clicked", self.eject_volume, mount)
+                    cp_button = self.create_button(
+                        icon=Gtk.Image.new_from_icon_name(
+                            "media-floppy-symbolic", Gtk.IconSize.MENU
+                        )
+                    )
+                    cp_button.set_tooltip_text("Make a local copy")
+                    cp_button.connect(
+                        "clicked", self.copy_flashdrive, vol_path, vol_name,
+                    )
+                    self.maingrid.attach(cp_button, 5, pos, 1, 1)
+                else:
+                    tooltip = "Unmount"
+                    eject_button.connect("clicked", self.unmount_volume, mount)
+                eject_button.set_tooltip_text(tooltip)
+                namebutton.set_tooltip_text("Open " + vol_path)
+                namebutton.connect("clicked", self.open_folder, vol_path)
+            else:
+                namebutton.connect("clicked", self.mount_volume, d["volume"])
+                tooltip = "Mount and open " + vol_name
+                namebutton.set_tooltip_text(tooltip)
+            pos = pos + 1
+        # create headers
+        volume_label = self.create_label("Volume")
+        freespace_label = self.create_label("Free\t")
+        self.maingrid.attach(volume_label, 1, 1, 2, 1)
+        self.maingrid.attach(freespace_label, 3, 1, 1, 1)
+        # reserve space for icons
+        iconreserved = Gtk.Label()
+        iconreserved.set_text("\t" * 3)
+        self.maingrid.attach(iconreserved, 4, 1, 10, 1)
+        # set style
+        for label in [volume_label, freespace_label]:
+            label_cont = label.get_style_context()
+            label_cont.add_class("label")
+            Gtk.StyleContext.add_provider(
+                label_cont,
+                self.provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+            )
+        self.set_spacers()
+
+    def set_spacers(self):
+        """
+        lazy choice to set borders
+        """
+        spacers = [[0, 0], [0, 100], [100, 100]]
+        n = 0
+        for sp in spacers:
+            self.maingrid.attach(
+                self.create_label(text="\t"), sp[0], sp[1], 1, 1
+            )
+        exitbutton = Gtk.Button()
+        exitbutton.set_image(
+            Gtk.Image.new_from_icon_name(
+                "exit-dropby-symbolic", Gtk.IconSize.BUTTON,
+            )
+        )
+        exitbutton.set_relief(Gtk.ReliefStyle.NONE)
+        self.maingrid.attach(exitbutton, 100, 0, 1, 1)
+        exitbutton.connect("clicked", self.getridofwindow)
+        self.maingrid.show_all()
+
+    def set_position(self, newwin):
+        dsp = Gdk.Display.get_default().get_primary_monitor().get_geometry()
+        try:
+            win_size = newwin.get_size()
+        except AttributeError:
+            pass
+        else:
+            winw = win_size.width
+            winh = win_size.height
+            # bottom-right
+            newwin.move(
+                dsp.x + dsp.width - win_size.width - 80,
+                dsp.y + dsp.height - 80 - winh
+            )
+            self.newwin.show_all()
+
+    def update_existing(self, newvol):
+        # once/if popup exists, populate
+        allvols = self.watchdrives.get_volumes()
+        get_relevant = db.get_volumes(allvols)
+        if get_relevant:
+            self.fill_grid(get_relevant, newvol)
+        else:
+            self.getridofwindow()
+
+    def actonconnect(self, subject=None, newvol=None, trigger=None):
+        # if popup exists, update info
+        if not self.checkonapplet():
+            Gtk.main_quit()
+        elif self.newwin:
+            self.getridofwindow()
+            self.newwin = self.create_win(subject, newvol)
+            self.update_existing(newvol)
+            # possibly, if no items to show, newwin was destroyed after all ^
+            # optimize please
+            if self.newwin:
+                self.set_position(self.newwin)
+        # only create new popup on mount or connect
+        elif trigger in ["volume_added", "mount_added", None]:
+            self.newwin = self.create_win(subject, newvol)
+            self.update_existing(newvol)
+            self.set_position(self.newwin)
+
+    def open_folder(self, *args):
+        path = list(args)[-1]
+        subprocess.Popen(["xdg-open", path])
+
+    def mount_volume(self, button, vol):
+        Gio.Volume.mount(
+            vol, Gio.MountMountFlags.NONE, Gio.MountOperation(), None,
+        )
+        self.act_onmount = True
+
+    def checkonapplet(self):
+        cmd = ["dconf", "dump", "/com/solus-project/budgie-panel/applets/"]
+        try:
+            return "DropBy" in subprocess.check_output(
+                cmd).decode("utf-8")
+        except subprocess.CalledProcessError:
+            return True
+
+    def unmount_volume(self, button, vol):
+        Gio.Mount.unmount(vol, Gio.MountUnmountFlags.NONE, None)
+
+    def eject_volume(self, button, vol):
+        Gio.Mount.eject(vol, Gio.MountUnmountFlags.NONE, None)
+
+    def copy_flashdrive(self, button, source, name):
+        subprocess.Popen([self.copyscript, source, name])
+
+
+WatchVolumes()
