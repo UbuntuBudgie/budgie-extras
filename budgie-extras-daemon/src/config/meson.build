@@ -5,13 +5,7 @@
 configurationData = configuration_data()
 configurationData.set('DATADIR', join_paths(prefix, get_option('datadir'), daemon_name))
 configurationData.set('SYSCONFDIR', join_paths(get_option('sysconfdir'), daemon_name))
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
-
-# Create config.h
-configurationData = configuration_data()
-configurationData.set('DATADIR', join_paths(prefix, get_option('datadir'), daemon_name))
-configurationData.set('SYSCONFDIR', join_paths(get_option('sysconfdir'), daemon_name))
+configurationData.set('DAEMONNAME', daemon_name)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 

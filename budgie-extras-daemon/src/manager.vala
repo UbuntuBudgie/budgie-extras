@@ -15,7 +15,9 @@ public class KeybinderManager : GLib.Object
     {
         // Global key bindings
         Keybinder.init ();
-        message("path %s", BudgieExtras.SYSCONFDIR);
+        message("syspath %s", BudgieExtras.SYSCONFDIR);
+        message("datapath %s", BudgieExtras.DATADIR);
+        message("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);
     }
 
  
