@@ -45,3 +45,8 @@ executable(
     install: true,
     install_dir: join_paths(prefix, get_option('bindir'))
 )
+
+install_data(
+    join_paths('.', 'examplebde', 'example.bde'),
+    install_dir: join_paths(prefix, get_option('datadir'), daemon_name, 'bde')
+)
