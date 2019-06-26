@@ -15,6 +15,7 @@ public class KeybinderManager : GLib.Object
     {
         // Global key bindings
         Keybinder.init ();
+        message("path %s", BudgieExtras.SYSCONFDIR);
     }
 
  
