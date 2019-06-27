@@ -48,5 +48,5 @@ executable(
 
 install_data(
     join_paths('.', 'examplebde', 'example.bde'),
-    install_dir: join_paths(prefix, get_option('datadir'), daemon_name, 'bde')
+    install_dir: join_paths(prefix, get_option('datadir'), daemon_name)
 )

@@ -12,6 +12,7 @@ public class BDEFile
     private string settings_path = null;
     private string settings_key = null;
     private string command_action = null;
+
     /**
     * location: full path to file with .bde extension
     */
@@ -55,14 +56,14 @@ public class BDEFile
             }
 
             if (!todo) return;
-        
+
         }
         catch (GLib.Error e)
         {
             message("BDE File: %s", e.message);
             return;
         }
-        
+
         //  got this file so the bde file must be valid
         valid_file = true;
     }
@@ -77,6 +78,17 @@ public class BDEFile
         if (valid_file) return key_shortcut;
 
         return "";
+    }
+
+    public void callback (string keystring)
+    {
+
+    }
+    public bool connect()
+    {
+        if (!valid_file) return false;
+
+        return Keybinder.bind_full(key_shortcut, this.callback);
     }
 }
 
@@ -141,8 +153,14 @@ public class KeybinderManager : GLib.Object
             catch (GLib.Error e) {
                 message("enumerator next file %s", e.message);
             }
+        }
 
-
+        HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
+        string shortcut;
+        BDEFile bdefile;
+        while (iter.next(out shortcut, out bdefile))
+        {
+            bdefile.connect();
         }
     }
 
