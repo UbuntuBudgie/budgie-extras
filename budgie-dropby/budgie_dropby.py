@@ -69,6 +69,8 @@ class BudgieDropByApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.uuid = uuid
         self.connect("destroy", Gtk.main_quit)
+        app_path = os.path.dirname(os.path.abspath(__file__))
+        self.winpath = os.path.join(app_path, "dropover")
         self.box = Gtk.EventBox()
         self.box.connect("button-press-event", self.create_trigger)
         self.icon = Gtk.Image.new_from_icon_name(
@@ -77,19 +79,26 @@ class BudgieDropByApplet(Budgie.Applet):
         self.idle_icon = Gtk.Image.new_from_icon_name(
             "budgie-dropby-idle", Gtk.IconSize.MENU
         )
-        app_path = os.path.dirname(os.path.abspath(__file__))
-        subprocess.Popen(os.path.join(app_path, "dropover"))
         self.scr = Wnck.Screen.get_default()
         self.box.add(self.icon)
         self.add(self.box)
         self.box.show_all()
         self.show_all()
         self.setup_watching()
+        self.start_dropover()
         self.refresh_from_idle()
 
     def create_trigger(self, *args):
         if not self.check_winexists():
             open("/tmp/call_dropby", "wt").write("")
+
+    def start_dropover(self):
+        try:
+            pid = subprocess.check_output(
+                ["pgrep", "-f", self.winpath]
+            )
+        except subprocess.CalledProcessError:
+            subprocess.Popen(self.winpath)
 
     def check_winexists(self):
         wins = self.scr.get_windows()

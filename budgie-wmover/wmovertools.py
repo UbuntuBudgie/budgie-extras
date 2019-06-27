@@ -75,15 +75,20 @@ def run(cmd):
 
 def check_ypos(yres):
     # get active window, check y- position
+    name = None
     try:
         subj = get(["xdotool", "getactivewindow"])
         ydata = get(["xdotool", "getwindowgeometry", subj])
+        name = get(["xdotool", "getwindowname", subj])
     except (subprocess.CalledProcessError, TypeError):
         return False, None
     else:
-        ypos = int([l for l in ydata.splitlines()
-                    if "Position" in l][0].split(",")[1].split()[0])
-        return ypos > yres - 300, subj.strip()
+        if name not in ["dropby_popup"]:
+            ypos = int(
+                [l for l in ydata.splitlines()
+                 if "Position" in l][0].split(",")[1].split()[0]
+            )
+            return ypos > yres - 300, subj.strip()
 
 
 def getres():
@@ -163,7 +168,6 @@ def limit_exist():
 
         if os.path.exists(fpath):
             t = 1
-            print("removing")
             os.remove(fpath)
         else:
             t = t + 1
