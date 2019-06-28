@@ -64,7 +64,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
           margin-top: 10px;
           margin-left: 30px;
         }
-        """   
+        """
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(timer_css.encode())
         # setup general stuff
@@ -105,7 +105,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         # convert time format from seconds to h:m:s
         m, s = divmod(s, 60)
         h, m = divmod(m, 60)
-        return "%d:%02d:%02d" % (h, m, s)
+        return "%02d:%02d:%02d" % (h, m, s)
 
     def act_on_change(self, screen, workspace):
         self.workspaces = screen.get_workspaces()
@@ -121,7 +121,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
                 "time": curr_spent,
                 "custom_name": "workspace: " + str(key + 1)
             }
-        self.workspace_data[key]["time"] = curr_spent + span         
+        self.workspace_data[key]["time"] = curr_spent + span
         self.starttime = currtime
         open(self.logfile, "wt").write(str(self.workspace_data))
 
@@ -141,7 +141,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
             self.provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
-    
+
     def show_result(self, *args):
         self.maingrid.destroy()
         self.maingrid = Gtk.Grid()
@@ -198,7 +198,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         currws = self.scr.get_active_workspace()
         self.act_on_change(self.scr, currws)
         self.show_result()
-        
+
     def update_customname(self, entry, key):
         newname = entry.get_text()
         self.workspace_data[key]["custom_name"] = newname
