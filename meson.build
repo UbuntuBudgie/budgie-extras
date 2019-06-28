@@ -130,3 +130,8 @@ build_takeabreak = get_option('build-takeabreak')
 if build_all == true or build_takeabreak == true
 	subdir('budgie-takeabreak')
 endif
+
+build_workspacestopwatch = get_option('build-workspacestopwatch')
+if build_all == true or build_workspacestopwatch == true
+	subdir('budgie-workspace-stopwatch')
+endif
