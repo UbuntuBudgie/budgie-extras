@@ -23,16 +23,18 @@ public class BDEFile
             keyfile.load_from_file(location, KeyFileFlags.NONE);
 
             string group = "Daemon";
-
+            message("before has_group");
             if (!keyfile.has_group(group)) return;
 
             bool todo = false;
+            message("before shortcut");
             if (!keyfile.has_key(group, "shortcut")) return;
 
             key_shortcut = keyfile.get_string(group, "shortcut");
-
+            message("key shortcut %s", key_shortcut);
             if (key_shortcut == null || key_shortcut == "") return;
 
+            message("checking path, key-name");
             if (keyfile.has_key(group, "path") &&
                 keyfile.has_key(group, "key-name"))
             {
@@ -82,11 +84,26 @@ public class BDEFile
 
     public void callback (string keystring)
     {
+        message("callback");
+        if (this.command_action != "")
+        {
+            message("command_action");
+            try
+            {
+                Process.spawn_command_line_async(this.command_action);
+            }
+            catch (GLib.SpawnError e)
+            {
+                message("Failed to spawn %s", this.command_action);
+            }
 
+        }
     }
     public bool connect()
     {
         if (!valid_file) return false;
+
+        message("bind %s", key_shortcut);
 
         return Keybinder.bind_full(key_shortcut, this.callback);
     }
@@ -121,6 +138,8 @@ public class KeybinderManager : GLib.Object
         {
             File file = File.new_for_path(path);
 
+            if (!file.query_exists()) continue;
+
             FileEnumerator enumerator = null;
             try {
                 enumerator = file.enumerate_children (
@@ -145,6 +164,7 @@ public class KeybinderManager : GLib.Object
 
                         if (bfile.is_valid())
                         {
+                            message("valid %s", bfile.get_shortcut());
                             shortcuts[bfile.get_shortcut()] = bfile;
                         }
                     }
