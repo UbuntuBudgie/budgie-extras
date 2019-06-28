@@ -85,7 +85,7 @@ public class BDEFile
     public void callback (string keystring)
     {
         message("callback");
-        if (this.command_action != "")
+        if (this.command_action != null && this.command_action != "")
         {
             message("command_action");
             try
@@ -97,6 +97,13 @@ public class BDEFile
                 message("Failed to spawn %s", this.command_action);
             }
 
+        }
+
+        if (this.settings_path !=null && this.settings_path != "")
+        {
+            Settings settings = new Settings(settings_path);
+            bool val = settings.get_boolean(settings_key);
+            settings.set_boolean(settings_key, !val);
         }
     }
     public bool connect()
