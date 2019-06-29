@@ -111,7 +111,7 @@ public class BDEFile
         if (!valid_file) return false;
 
         message("bind %s", key_shortcut);
-
+        Keybinder.unbind_all(key_shortcut);
         return Keybinder.bind_full(key_shortcut, this.callback);
     }
 }
