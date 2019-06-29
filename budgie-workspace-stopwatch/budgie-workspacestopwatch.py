@@ -167,6 +167,10 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
             self.set_widgetstyle(label, "label")
         n = 2
         for k in sorted(self.workspace_data.keys()):
+            if n - 2 == self.workspaces.index(currws):
+                bullet = Gtk.Label()
+                bullet.set_text("⮕ ")
+                self.maingrid.attach(bullet, 1, n, 1, 1)
             entry = Gtk.Entry()
             entry.set_text(self.workspace_data[k]["custom_name"])
             entry.connect("changed", self.update_customname, k)
@@ -182,9 +186,8 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
             self.maingrid.attach(timelabel, 4, n, 1, 1)
             n = n + 1
         resetbutton = Gtk.Button.new_with_label("Reset")
-        # resetbutton.can_focus(False)
         resetbutton.grab_focus()
-        resetbutton.connect("clicked", self.reset_all)
+        resetbutton.connect("clicked", self.reset_data)
         self.set_widgetstyle(resetbutton, "button")
         self.maingrid.attach(
             resetbutton, 4, 99, 1, 1
@@ -193,10 +196,16 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.maingrid.show_all()
         self.popover.show_all()
 
-    def reset_all(self, button):
-        self.workspace_data = {}
-        currws = self.scr.get_active_workspace()
-        self.act_on_change(self.scr, currws)
+    def reset_data(self, button):
+        self.workspaces = self.scr.get_workspaces()
+        todeletekeys = []
+        for k in self.workspace_data.keys():
+            if k >= len(self.workspaces):
+                todeletekeys.append(k)
+            else:
+                self.workspace_data[k]["time"] = 0
+        for k in todeletekeys:
+            del self.workspace_data[k]
         self.show_result()
 
     def update_customname(self, entry, key):
