@@ -61,7 +61,7 @@ comm = str(max_w) + "x" + str(v_size)
 
 
 def getkey():
-    return getkeys.by_subval(dcpath,'name',"'Window Previews'")
+    return getkeys.by_subval(dcpath, 'name', "'Window Previews'")
 
 
 def get_area():

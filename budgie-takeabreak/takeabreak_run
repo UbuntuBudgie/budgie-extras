@@ -39,7 +39,7 @@ tabcountdown_path = os.path.dirname(os.path.abspath(__file__))
 
 
 def getkey():
-    return getkeys.by_subval(dcpath,'name',"'Take a Break'")
+    return getkeys.by_subval(dcpath, 'name', "'Take a Break'")
 
 
 def get_idle():
