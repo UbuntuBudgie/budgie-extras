@@ -23,18 +23,18 @@ public class BDEFile
             keyfile.load_from_file(location, KeyFileFlags.NONE);
 
             string group = "Daemon";
-            message("before has_group");
+            debug("before has_group");
             if (!keyfile.has_group(group)) return;
 
             bool todo = false;
-            message("before shortcut");
+            debug("before shortcut");
             if (!keyfile.has_key(group, "shortcut")) return;
 
             key_shortcut = keyfile.get_string(group, "shortcut");
-            message("key shortcut %s", key_shortcut);
+            debug("key shortcut %s", key_shortcut);
             if (key_shortcut == null || key_shortcut == "") return;
 
-            message("checking path, key-name");
+            debug("checking path, key-name");
             if (keyfile.has_key(group, "path") &&
                 keyfile.has_key(group, "key-name"))
             {
@@ -84,10 +84,10 @@ public class BDEFile
 
     public void callback (string keystring)
     {
-        message("callback");
+        debug("callback");
         if (this.command_action != null && this.command_action != "")
         {
-            message("command_action");
+            debug("command_action");
             try
             {
                 Process.spawn_command_line_async(this.command_action);
@@ -110,7 +110,7 @@ public class BDEFile
     {
         if (!valid_file) return false;
 
-        message("bind %s", key_shortcut);
+        debug("bind %s", key_shortcut);
         Keybinder.unbind_all(key_shortcut);
         return Keybinder.bind_full(key_shortcut, this.callback);
     }
@@ -122,16 +122,20 @@ public class BDEFile
 public class KeybinderManager : GLib.Object
 {
     private HashTable<string, BDEFile> shortcuts = null;
+    BudgieExtras.DbusManager? dbus;
     /**
      * Construct a new KeybinderManager and initialiase appropriately
      */
     public KeybinderManager(bool replace)
     {
+        dbus = new BudgieExtras.DbusManager();
+        dbus.setup_dbus(replace);
+
         // Global key bindings
         Keybinder.init ();
-        message("syspath %s", BudgieExtras.SYSCONFDIR);
-        message("datapath %s", BudgieExtras.DATADIR);
-        message("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);
+        debug("syspath %s", BudgieExtras.SYSCONFDIR);
+        debug("datapath %s", BudgieExtras.DATADIR);
+        debug("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);
 
         shortcuts = new HashTable<string, BDEFile>(str_hash, str_equal);
 
@@ -165,13 +169,13 @@ public class KeybinderManager : GLib.Object
             try {
                 while (enumerator != null && ((info = enumerator.next_file (null)) != null)) {
                     if (info.get_file_type () == FileType.REGULAR) {
-                        message ("%s\n", info.get_name ());
+                        debug ("%s\n", info.get_name ());
 
                         BDEFile bfile = new BDEFile(path + "/" + info.get_name());
 
                         if (bfile.is_valid())
                         {
-                            message("valid %s", bfile.get_shortcut());
+                            debug("valid %s", bfile.get_shortcut());
                             shortcuts[bfile.get_shortcut()] = bfile;
                         }
                     }

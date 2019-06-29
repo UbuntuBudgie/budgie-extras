@@ -8,6 +8,26 @@ const GLib.OptionEntry[] options = {
     { null }
 };
 
+namespace BudgieExtras {
+
+    bool setup = false;
+    bool spammed = false;
+
+    void DaemonNameLost(DBusConnection conn, string name)
+    {
+        warning("budgie-extras-daemon lost d-bus name %s", name);
+        if (!spammed) {
+            if (setup) {
+                message("Replaced existing budgie-extras-daemon");
+            } else {
+                message("Another instance of budgie-extras-daemon is running. Use --replace");
+            }
+            spammed = true;
+        }
+        Gtk.main_quit();
+    }
+}
+
 /**
  * Main entry for the daemon
  */
@@ -25,7 +45,7 @@ public static int main(string[] args) {
     try {
         ctx.parse(ref args);
     } catch (Error e) {
-        stderr.printf("Error: %s\n", e.message);
+        message("Error: %s\n", e.message);
         return 0;
     }
 
