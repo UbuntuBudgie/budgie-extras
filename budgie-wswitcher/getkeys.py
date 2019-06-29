@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 import subprocess
 
-# attempts to find a given key via dconf, in the given dcpath,
-#   that has the given subkey and given value.
-# returns None if a key cannot be found
-def by_subval(dcpath,subkey,value):
 
+# attempts to find a given key via dconf, in the given dcpath,
+# that has the given subkey and given value.
+# returns None if a key cannot be found
+def by_subval(dcpath, subkey, value):
     # get the specific dconf path, referring to the applet's key
     last_key = None
-    for line in subprocess.check_output(["dconf","dump",dcpath,]).decode("utf-8").splitlines():
+    for line in subprocess.check_output(["dconf",
+                                         "dump",
+                                         dcpath,
+                                         ]).decode("utf-8").splitlines():
         line = line.strip()
 
         # look for a key
