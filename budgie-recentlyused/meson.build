@@ -15,9 +15,6 @@ am_cflags = [
 ]
 
 PLUGIN = 'budgie-recentlyused'
-VAPI_DIR = join_paths(meson.source_root(),
-                      PLUGIN,
-                      'vapi')
 
 install_data('schema/org.ubuntubudgie.plugins.budgie-recentlyused.gschema.xml',
    install_dir: '/usr/share/glib-2.0/schemas'

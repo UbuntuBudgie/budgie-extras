@@ -131,10 +131,10 @@ if build_all == true or build_takeabreak == true
 	subdir('budgie-takeabreak')
 endif
 
-#build_extrasdaemon = get_option('build-extrasdaemon')
-#if build_all == true or build_extrasdaemon == true
-#	subdir('budgie-extras-daemon')
-#endif
+build_extrasdaemon = get_option('build-extrasdaemon')
+if build_all == true or build_extrasdaemon == true
+	subdir('budgie-extras-daemon')
+endif
 
 build_workspacestopwatch = get_option('build-workspacestopwatch')
 if build_all == true or build_workspacestopwatch == true

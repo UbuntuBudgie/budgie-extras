@@ -21,9 +21,6 @@ datadir = join_paths(prefix, get_option('datadir'))
 
 LOCALE_DIR = join_paths(prefix, get_option('localedir'))
 PLUGIN = 'budgie-weathershow'
-VAPI_DIR = join_paths(meson.source_root(),
-                      PLUGIN,
-                      'vapi')
 
 LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 

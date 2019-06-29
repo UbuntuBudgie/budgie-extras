@@ -23,9 +23,6 @@ datadir = join_paths(prefix, get_option('datadir'))
 
 LOCALE_DIR = join_paths(prefix, get_option('localedir'))
 PLUGIN = 'budgie-trash'
-VAPI_DIR = join_paths(meson.source_root(), 
-                      PLUGIN,
-                      'vapi')
 
 PIXMAPS_DIR = join_paths(datadir, 'pixmaps')
 
