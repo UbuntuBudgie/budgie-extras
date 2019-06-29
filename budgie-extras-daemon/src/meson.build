@@ -12,16 +12,14 @@ subdir('config')
 
 ExtrasDaemonSources = [
 'main.vala',
-'manager.vala'
+'manager.vala',
+'dbus.vala'
 ]
 
 ExtrasDaemonDependencies = [
 dependency('gtk+-3.0'),
-dependency('gio-2.0'),
-dependency('gdk-3.0'),
 dependency('keybinder-3.0'),
-link_libconfig,
-meson.get_compiler('c').find_library('m', required: false)
+link_libconfig
 ]
 
 ExtrasDaemonValaArgs = [
@@ -50,3 +48,5 @@ install_data(
     join_paths('.', 'examplebde', 'example.bde'),
     install_dir: join_paths(prefix, get_option('datadir'), daemon_name)
 )
+
+install_man('budgie-extras-daemon.1')

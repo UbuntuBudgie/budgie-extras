@@ -122,11 +122,15 @@ public class BDEFile
 public class KeybinderManager : GLib.Object
 {
     private HashTable<string, BDEFile> shortcuts = null;
+    BudgieExtras.DbusManager? dbus;
     /**
      * Construct a new KeybinderManager and initialiase appropriately
      */
     public KeybinderManager(bool replace)
     {
+        dbus = new BudgieExtras.DbusManager();
+        dbus.setup_dbus(replace);
+
         // Global key bindings
         Keybinder.init ();
         message("syspath %s", BudgieExtras.SYSCONFDIR);
