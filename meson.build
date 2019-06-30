@@ -140,3 +140,8 @@ build_workspacestopwatch = get_option('build-workspacestopwatch')
 if build_all == true or build_workspacestopwatch == true
 	subdir('budgie-workspace-stopwatch')
 endif
+
+build_quickchar = get_option('build-quickchar')
+if build_all == true or build_quickchar == true
+	subdir('budgie-quickchar')
+endif
