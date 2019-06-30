@@ -18,8 +18,9 @@ Build-Depends: debhelper (>= 11),
 		libgee-0.8-dev,
 		intltool,
 		libsoup2.4-dev,
-		libwnck-3-dev
-Standards-Version: 4.1.1
+		libwnck-3-dev,
+		libkeybinder-3.0-dev
+Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian-launchpad
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian-launchpad
 Homepage: https://ubuntubudgie.org
@@ -365,3 +366,52 @@ Description: Applet to prompt when to take-a-break for a set period of time
  The take-a-break applet monitors how long a desktop is being used
  and at a configurable time period suggests when to take a break
  from working.
+
+Package: budgie-extras-daemon
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Extras daemon for budgie-extras capabilities
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ Budgie-Extras-Daemon provides both global keybinding and D-Bus functionality
+ for various extras applets and applications.
+
+Package: quickchar
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-wnck-3.0,
+	python3-pyperclip,
+	python3-xlib,
+	${misc:Depends}, ${python3:Depends}
+Recommends: budgie-extras-daemon
+Description: GUI to find and choose locale characters
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
+ .
+ Quickly find and choose the equivalent locale character for an ascii
+ character.
+ .
+ Quickchar can be used on most desktop environments invoked by a shortcut key.
+
+Package: budgie-workspace-stopwatch-applet
+Architecture: all
+Depends: python3,
+	python3-gi,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-wnck-3.0,
+	${misc:Depends}, ${python3:Depends}
+Description: Workspace usage tracker for the budgie desktop
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
+ .
+ Workspace Stopwatch Applet keeps track of usage per workspace,
+ i.e. to find out how much minutes/hours were actually spent on a job.
+ Workspaces can be freely named, custom names and all data are remembered.
