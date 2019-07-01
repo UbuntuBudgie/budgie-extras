@@ -75,6 +75,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.load_data()
         currws = self.scr.get_active_workspace()
         self.starttime = time.time()
+        self.last_logged = self.starttime
         self.act_on_change(self.scr, currws)
         GLib.timeout_add_seconds(30, self.update_log)
         self.maingrid = Gtk.Grid()
@@ -93,7 +94,14 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.box.connect("button-press-event", self.on_press)
 
     def update_log(self):
+        self.newlogged = time.time()
+        if self.newlogged - self.last_logged > 35:
+            currws = self.scr.get_active_workspace()
+            self.starttime = time.time()
+            self.act_on_change(self.scr, currws)     
         open(self.logfile, "wt").write(str(self.workspace_data))
+        self.last_logged = self.newlogged
+        return True
 
     def load_data(self):
         try:
