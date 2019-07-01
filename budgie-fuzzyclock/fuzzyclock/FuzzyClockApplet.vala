@@ -46,9 +46,9 @@ public class FuzzyClockApplet : Budgie.Applet
         "%s o'Clock",
         "Five past %s",
         "Ten past %s",
-        "Quarter past %s",
-        "Twenty past %s",
-        "Twenty-five past %s",
+        "Quarter after %s",
+        "Twenty after %s",
+        "Twenty-five after %s",
         "Half past %s",
         "Twenty-five 'til %s",
         "Twenty 'til %s",
@@ -325,7 +325,6 @@ public class FuzzyClockApplet : Budgie.Applet
         }
     }
 
-
     /**
      * Update the date if necessary
      */
@@ -352,31 +351,6 @@ public class FuzzyClockApplet : Budgie.Applet
     }
 
     /**
-     * Update the seconds if necessary
-     */
-    protected void update_seconds()
-    {
-        if (!check_seconds.get_active()) {
-            return;
-        }
-        string ftime;
-        if (this.orient == Gtk.Orientation.HORIZONTAL) {
-            ftime = "";
-        } else {
-            ftime = "<big>%S</big>";
-        }
-
-        // Prevent unnecessary redraws
-        var old = date_label.get_label();
-        var ctime = time.format(ftime);
-        if (old == ctime) {
-            return;
-        }
-
-        seconds_label.set_markup(ctime);
-    }
-
-    /**
      * This is called once every second, updating the time
      */
     protected bool update_clock()
@@ -398,55 +372,16 @@ public class FuzzyClockApplet : Budgie.Applet
         if (rule == 12) // Use the OCLOCK rule
             rule = 0;
 
-
-        // Prevent unnecessary redraws
-        var old = clock.get_label();
-        var ctime = rules[rule].printf(hours[hour]);
-        if (old == ctime) {
-            return true;
-        }
-
-        clock.set_markup(ctime);
-        this.queue_draw();
-
-        return true;
-    }
-
-    protected bool update_clock_old()
-    {
-        time = new DateTime.now_local();
-        string format;
-
-
-        if (ampm) {
-            format = "%l:%M";
-        } else {
-            format = "%H:%M";
-        }
-
-        if (orient == Gtk.Orientation.HORIZONTAL) {
-            if (check_seconds.get_active()) {
-                format += ":%S";
-            }
-        }
-
-        if (ampm) {
-            format += " %p";
-        }
-
         string ftime;
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
-            ftime = " %s ".printf(format);
+            ftime = " %s ".printf(rules[rule]);
         } else {
-            ftime = " <small>%s</small> ".printf(format);
+            ftime = " <small>%s</small> ".printf(rules[rule]);
         }
-
-        this.update_date();
-        this.update_seconds();
 
         // Prevent unnecessary redraws
         var old = clock.get_label();
-        var ctime = time.format(ftime);
+        var ctime = ftime.printf(hours[hour]);
         if (old == ctime) {
             return true;
         }
