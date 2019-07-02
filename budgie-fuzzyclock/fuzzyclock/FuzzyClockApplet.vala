@@ -28,40 +28,51 @@ public const string CALENDAR_MIME = "text/calendar";
 public class FuzzyClockApplet : Budgie.Applet
 {
     protected const string[] hours = {
-        "Twelve",
-        "One",
-        "Two",
-        "Three",
-        "Four",
-        "Five",
-        "Six",
-        "Seven",
-        "Eight",
-        "Nine",
-        "Ten",
-        "Eleven"
+        "midnight",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "noon",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty",
+        "twenty-one",
+        "twenty-two",
+        "twenty-three",
     };
 
     protected const string[] rules = {
-        "%s o'Clock",
-        "Five past %s",
-        "Ten past %s",
-        "Quarter after %s",
-        "Twenty after %s",
-        "Twenty-five after %s",
-        "Half past %s",
-        "Twenty-five 'til %s",
-        "Twenty 'til %s",
-        "Quarter 'til %s",
-        "Ten 'til %s",
-        "Five 'til %s",
+        "%s-ish",
+        "a bit past %s",
+        "ten past %s",
+        "quarter after %s",
+        "twenty past %s",
+        "almost half-past %s",
+        "half-past %s",
+        "twenty-five 'til %s",
+        "twenty 'til %s",
+        "quarter 'til %s",
+        "ten 'til %s",
+        "almost %s",
     };
 
     protected Gtk.EventBox widget;
     protected Gtk.Box layout;
     protected Gtk.Label clock;
     protected Gtk.Label date_label;
-    protected Gtk.Label seconds_label;
 
     protected bool ampm = false;
 
@@ -73,7 +84,6 @@ public class FuzzyClockApplet : Budgie.Applet
     AppInfo? calprov = null;
     Gtk.Button cal_button;
     Gtk.CheckButton clock_format;
-    Gtk.CheckButton check_seconds;
     Gtk.CheckButton check_date;
     ulong check_id;
 
@@ -128,7 +138,6 @@ public class FuzzyClockApplet : Budgie.Applet
         } else {
             this.orient = Gtk.Orientation.HORIZONTAL;
         }
-        this.seconds_label.set_text("");
         this.layout.set_orientation(this.orient);
         this.update_clock();
     }
@@ -146,19 +155,12 @@ public class FuzzyClockApplet : Budgie.Applet
         layout.margin = 0;
         layout.border_width = 0;
 
-        seconds_label = new Gtk.Label("");
-        seconds_label.get_style_context().add_class("dim-label");
-        layout.pack_start(seconds_label, false, false, 0);
-        seconds_label.no_show_all = true;
-        seconds_label.hide();
-
         date_label = new Gtk.Label("");
         layout.pack_start(date_label, false, false, 0);
         date_label.no_show_all = true;
         date_label.hide();
 
         clock.valign = Gtk.Align.CENTER;
-        seconds_label.valign = Gtk.Align.CENTER;
         date_label.valign = Gtk.Align.CENTER;
 
         settings = new Settings("org.gnome.desktop.interface");
@@ -201,12 +203,6 @@ public class FuzzyClockApplet : Budgie.Applet
         settings.bind("clock-show-date", check_date, "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
         settings.bind("clock-show-date", date_label, "visible", SettingsBindFlags.DEFAULT);
 
-        check_seconds = new Gtk.CheckButton.with_label(_("Show seconds"));
-        check_seconds.get_child().set_property("margin-start", 8);
-
-        settings.bind("clock-show-seconds", check_seconds, "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
-        settings.bind("clock-show-seconds", seconds_label, "visible", SettingsBindFlags.DEFAULT);
-
         clock_format = new Gtk.CheckButton.with_label(_("Use 24 hour time"));
         clock_format.get_child().set_property("margin-start", 8);
 
@@ -222,7 +218,6 @@ public class FuzzyClockApplet : Budgie.Applet
         menu.pack_start(sub_button, false, false, 0);
         menu.pack_start(new Gtk.Separator(Gtk.Orientation.HORIZONTAL), false, false, 2);
         menu.pack_start(check_date, false, false, 0);
-        menu.pack_start(check_seconds, false, false, 0);
         menu.pack_start(clock_format, false, false, 0);
         stack.add_named(menu, "prefs");
 
@@ -318,7 +313,6 @@ public class FuzzyClockApplet : Budgie.Applet
                 this.update_clock();
                 SignalHandler.unblock((void*)this.clock_format, this.check_id);
                 break;
-            case "clock-show-seconds":
             case "clock-show-date":
                 this.update_clock();
                 break;
@@ -335,7 +329,7 @@ public class FuzzyClockApplet : Budgie.Applet
         }
         string ftime;
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
-            ftime = "%x";
+            ftime = "- %a, %b %d";
         } else {
             ftime = "<small>%b %d</small>";
         }
@@ -360,16 +354,16 @@ public class FuzzyClockApplet : Budgie.Applet
         int minute = now.get_minute();
         int rule = (int)Math.floor((minute + 2) / 5); // Round minutes
 
-        if (hour >= 12) // 0-23 to 0 to 11
-            hour -= 12;
+        if (ampm && hour >= 13)
+            hour -= 12; // 13-23 becomes 0-11
 
         if (rule > 6) // "To" the next hour
             hour += 1;
 
-        if (hour == 12)
-            hour = 0;
+        if (hour == 24)
+            hour = 0;  // 24 - becomes 0
 
-        if (rule == 12) // Use the OCLOCK rule
+        if (rule == 12) // Use the -ish rule
             rule = 0;
 
         string ftime;
@@ -379,6 +373,7 @@ public class FuzzyClockApplet : Budgie.Applet
             ftime = " <small>%s</small> ".printf(rules[rule]);
         }
 
+        this.update_date();
         // Prevent unnecessary redraws
         var old = clock.get_label();
         var ctime = ftime.printf(hours[hour]);
