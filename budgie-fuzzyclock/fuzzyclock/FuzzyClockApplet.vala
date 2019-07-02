@@ -239,7 +239,7 @@ public class FuzzyClockApplet : Budgie.Applet
             return Gdk.EVENT_STOP;
         });
 
-        Timeout.add_seconds_full(GLib.Priority.LOW, 1, update_clock);
+        Timeout.add_seconds_full(GLib.Priority.LOW, 30, update_clock);
 
         settings.changed.connect(on_settings_change);
 
