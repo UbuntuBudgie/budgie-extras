@@ -1,12 +1,18 @@
 /*
- * This file is part of budgie-desktop
+ * This file is part of budgie-extras
  *
- * Copyright © 2014-2019 Budgie Desktop Developers
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ * Copyright © 2019 Ubuntu Budgie Developers
+ * Author: Adam Dyess
+ * Website=https://ubuntubudgie.org
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or any later version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details. You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
 
 public class FuzzyClockPlugin : Budgie.Plugin, Peas.ExtensionBase
@@ -15,7 +21,6 @@ public class FuzzyClockPlugin : Budgie.Plugin, Peas.ExtensionBase
     {
         return new FuzzyClockApplet();
     }
-
 }
 
 enum ClockFormat {
@@ -28,44 +33,122 @@ public const string CALENDAR_MIME = "text/calendar";
 public class FuzzyClockApplet : Budgie.Applet
 {
     protected string[] hours = {
+        // TRANSLATORS: This is referring to the spoken time of day at 00:00:00
         _("midnight"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 01:00:00
         _("one"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 02:00:00
         _("two"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 03:00:00
         _("three"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 04:00:00
         _("four"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 05:00:00
         _("five"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 06:00:00
         _("six"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 07:00:00
         _("seven"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 08:00:00
         _("eight"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 09:00:00
         _("nine"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 10:00:00
         _("ten"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 11:00:00
         _("eleven"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 12:00:00
         _("noon"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 13:00:00
         _("thirteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 14:00:00
         _("fourteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 15:00:00
         _("fifteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 16:00:00
         _("sixteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 17:00:00
         _("seventeen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 18:00:00
         _("eighteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 19:00:00
         _("nineteen"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 20:00:00
         _("twenty"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 21:00:00
         _("twenty-one"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 22:00:00
         _("twenty-two"),
+
+        // TRANSLATORS: This is referring to the spoken time of day at 23:00:00
         _("twenty-three"),
     };
 
+    // TRANSLATORS: These format strings reference the above hour string
+    //              This is the fun part of fuzzy-clock, feel free to
+    //              be inventive within your language
     protected string[] rules = {
+        // TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
         _("%s-ish"),
+
+        // TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
         _("a bit past %s"),
+
+        // TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
         _("ten past %s"),
+
+        // TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
         _("quarter after %s"),
+
+        // TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
         _("twenty past %s"),
+
+        // TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
         _("almost half-past %s"),
+
+        // TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
         _("half-past %s"),
+
+        // TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+        // WARNING -- the hour now reflects the upcoming hour, not the current hour
         _("twenty-five 'til %s"),
+
+        // TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+        // WARNING -- the hour now reflects the upcoming hour, not the current hour
         _("twenty 'til %s"),
+
+        // TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+        // WARNING -- the hour now reflects the upcoming hour, not the current hour
         _("quarter 'til %s"),
+
+        // TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+        // WARNING -- the hour now reflects the upcoming hour, not the current hour
         _("ten 'til %s"),
+
+        // TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+        // WARNING -- the hour now reflects the upcoming hour, not the current hour
         _("almost %s"),
     };
 
@@ -91,7 +174,9 @@ public class FuzzyClockApplet : Budgie.Applet
 
     private unowned Budgie.PopoverManager? manager = null;
 
-    // Make a fancy button with a direction indicator
+    /**
+     * Helper to create fancy button with a direction indicator
+     */
     Gtk.Button new_directional_button(string label_str, Gtk.PositionType arrow_direction)
     {
         var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -122,6 +207,9 @@ public class FuzzyClockApplet : Budgie.Applet
         return button;
     }
 
+    /**
+     * Helper to create new dropdown buttons
+     */
     Gtk.Button new_plain_button(string label_str)
     {
         Gtk.Button ret = new Gtk.Button.with_label(label_str);
@@ -131,6 +219,9 @@ public class FuzzyClockApplet : Budgie.Applet
         return ret;
     }
 
+    /**
+     * Updates the orientation if the panel changes positions
+     */
     public override void panel_position_changed(Budgie.PanelPosition position)
     {
         if (position == Budgie.PanelPosition.LEFT || position == Budgie.PanelPosition.RIGHT) {
@@ -142,6 +233,9 @@ public class FuzzyClockApplet : Budgie.Applet
         this.update_clock();
     }
 
+    /**
+     * Main initialization of the Applet
+     */
     public FuzzyClockApplet()
     {
         widget = new Gtk.EventBox();
@@ -180,7 +274,10 @@ public class FuzzyClockApplet : Budgie.Applet
         var menu = new Gtk.Box(Gtk.Orientation.VERTICAL, 1);
         menu.border_width = 6;
 
-        var time_button = this.new_plain_button(_("Time and date settings"));
+        // TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+        var time_button = this.new_plain_button(_("Date and Time settings"));
+
+        // TRANSLATORS: This Button Links to Gnome 'Calendar' application
         cal_button = this.new_plain_button(_("Calendar"));
         time_button.clicked.connect(on_date_activate);
         cal_button.clicked.connect(on_cal_activate);
@@ -188,6 +285,8 @@ public class FuzzyClockApplet : Budgie.Applet
         // menu page 1
         menu.pack_start(time_button, false, false, 0);
         menu.pack_start(cal_button, false, false, 0);
+
+        // TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
         var sub_button = this.new_directional_button(_("Preferences"), Gtk.PositionType.RIGHT);
         sub_button.clicked.connect(()=> { stack.set_visible_child_name("prefs"); });
         menu.pack_end(sub_button, false, false, 2);
@@ -198,11 +297,14 @@ public class FuzzyClockApplet : Budgie.Applet
         menu = new Gtk.Box(Gtk.Orientation.VERTICAL, 1);
         menu.border_width = 6;
 
+        // TRANSLATORS: When this checkbox is enabled the current date will be displayed
         check_date = new Gtk.CheckButton.with_label(_("Show date"));
         check_date.get_child().set_property("margin-start", 8);
         settings.bind("clock-show-date", check_date, "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
         settings.bind("clock-show-date", date_label, "visible", SettingsBindFlags.DEFAULT);
 
+        // TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+        //              When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
         clock_format = new Gtk.CheckButton.with_label(_("Use 24 hour time"));
         clock_format.get_child().set_property("margin-start", 8);
 
@@ -213,6 +315,7 @@ public class FuzzyClockApplet : Budgie.Applet
         });
 
         // pack page2
+        // TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
         sub_button = this.new_directional_button(_("Preferences"), Gtk.PositionType.LEFT);
         sub_button.clicked.connect(()=> { stack.set_visible_child_name("root"); });
         menu.pack_start(sub_button, false, false, 0);
@@ -261,12 +364,18 @@ public class FuzzyClockApplet : Budgie.Applet
         show_all();
     }
 
+    /**
+     * This is called to when the calendar app is updated/changed
+     */
     void update_cal()
     {
         calprov = AppInfo.get_default_for_type(CALENDAR_MIME, false);
         cal_button.set_sensitive(calprov != null);
     }
 
+    /**
+     * This is called to launch Date and Time Settings app
+     */
     void on_date_activate()
     {
         this.popover.hide();
@@ -282,6 +391,9 @@ public class FuzzyClockApplet : Budgie.Applet
         }
     }
 
+    /**
+     * This is called to launch calendar app when user selects from drop-down
+     */
     void on_cal_activate()
     {
         this.popover.hide();
@@ -302,6 +414,9 @@ public class FuzzyClockApplet : Budgie.Applet
         manager.register_popover(widget, popover);
     }
 
+    /**
+     * This is called when any of the preferences are changed
+     */
     protected void on_settings_change(string key)
     {
         switch (key) {
@@ -328,10 +443,18 @@ public class FuzzyClockApplet : Budgie.Applet
             return;
         }
         string ftime;
+        // TRANSLATORS:  you may wish to visit this site for format string help
+        // https://valadoc.org/glib-2.0/GLib.DateTime.format.html
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
-            ftime = "- %a, %b %d";
+            // TRANSLATORS: Horizontal Date prints "- <DayAbbr>, <MonAbbr> <DayNum>"
+            //              You may wish to localize for a more common formatting
+            //              Opt for spoken words over numerical values
+            ftime = _("- %a, %b %d");
         } else {
-            ftime = "<small>%b %d</small>";
+            // TRANSLATORS: Vertical Date prints "<MonAbbr> <DayNum>"
+            //              You may wish to localize for a more common formatting
+            //              Opt for spoken words over numerical values
+            ftime = "<small>" + _("%b %d") + "</small>";
         }
 
         // Prevent unnecessary redraws
@@ -345,7 +468,7 @@ public class FuzzyClockApplet : Budgie.Applet
     }
 
     /**
-     * This is called once every second, updating the time
+     * This is called once thirty-seconds, updating the displayed time
      */
     protected bool update_clock()
     {
