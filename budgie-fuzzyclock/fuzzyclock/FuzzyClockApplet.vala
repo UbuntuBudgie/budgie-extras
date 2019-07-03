@@ -352,19 +352,16 @@ public class FuzzyClockApplet : Budgie.Applet
         var now = new DateTime.now_local();
         int hour = now.get_hour();
         int minute = now.get_minute();
-        int rule = (int)Math.floor((minute + 2) / 5); // Round minutes
+        int rule = (int)Math.floor((minute + 2) / 5) % 12; // Round minutes
 
-        if (ampm && hour >= 13)
-            hour -= 12; // 13-23 becomes 0-11
+        if (ampm && hour >= 13) // 13-23 becomes 0-12
+            hour -= 12;
 
-        if (rule > 6) // "To" the next hour
+        if (rule > 6)           // after the half-hour
             hour += 1;
 
-        if (hour == 24)
-            hour = 0;  // 24 - becomes 0
-
-        if (rule == 12) // Use the -ish rule
-            rule = 0;
+        if (hour >= 24)         // rollover 24 hours
+            hour = 0;
 
         string ftime;
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
@@ -374,6 +371,7 @@ public class FuzzyClockApplet : Budgie.Applet
         }
 
         this.update_date();
+
         // Prevent unnecessary redraws
         var old = clock.get_label();
         var ctime = ftime.printf(hours[hour]);
