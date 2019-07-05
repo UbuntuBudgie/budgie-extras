@@ -477,14 +477,13 @@ public class FuzzyClockApplet : Budgie.Applet
         int minute = now.get_minute();
         int rule = (int)Math.floor((minute + 2) / 5) % 12; // Round minutes
 
-        if (ampm && hour >= 13) // 13-23 becomes 0-12
-            hour -= 12;
-
         if (rule > 6)           // after the half-hour
             hour += 1;
 
-        if (hour >= 24)         // rollover 24 hours
+        if (hour >= 24)              // between 23:35 and 00:00
             hour = 0;
+        else if (ampm && hour >= 13) // 13:00-23:00 becomes 1-12
+            hour -= 12;
 
         string ftime;
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
