@@ -190,7 +190,15 @@ public class BDEFile
             if (overlay_path != null && bind_key)
             {
                 settings = new Settings(overlay_path);
-                settings.set_string(overlay_key, "");
+                // we expect either an array or a string for the overlay key
+                var val = settings.get_value(overlay_key);
+                if (val.get_type_string() == "as") {
+                    settings.set_strv(overlay_key, {""});
+                }
+                else
+                {
+                    settings.set_string(overlay_key, "");
+                }
             }
         }
         else bind_key = true;
