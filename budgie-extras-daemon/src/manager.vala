@@ -32,7 +32,7 @@ public class BDEFile
     private string overlay_key = null;
 
     bool parse_gsettings(string group, 
-                         string name, ref string key_path, ref string key_name){
+                         string name, ref string? key_path, ref string? key_name){
         debug("checking name %s", name);
         bool return_val = true;
 
@@ -41,13 +41,19 @@ public class BDEFile
             {
                 var toggle = keyfile.get_string(group, name);
                 toggle = toggle.down().strip();
+                string[] split_path = null;
                 if (toggle.contains("gsettings ")) {
-                    key_path = toggle.split("gsettings ")[1];
+                    split_path = toggle.split(" ");
+                    if (split_path.length != 3)
+                    {
+                        return_val = false;
+                    }
                 }
 
-                if (settings_path != null && settings_path.contains(" "))
+                if (split_path != null && split_path.length == 3)
                 {
-                    key_name = settings_path.split(" ")[1];
+                    key_path = split_path[1];
+                    key_name = split_path[2];
                 }
 
                 if (key_path == null ||
@@ -95,6 +101,7 @@ public class BDEFile
             if (parse_gsettings(group, "toggle", ref settings_path, ref settings_key))
             {
                 todo = true;
+                debug("todo %s %s", settings_path, settings_key);
             }
 
             parse_gsettings(group, "onlyactivate", ref activate_path, ref activate_key);
@@ -134,7 +141,7 @@ public class BDEFile
 
     public void callback (string keystring)
     {
-        debug("callback");
+        debug("callback %s", keystring);
         if (this.command_action != null && this.command_action != "")
         {
             debug("command_action");
@@ -149,8 +156,9 @@ public class BDEFile
 
         }
 
-        if (this.settings_path !=null && this.settings_path != "")
+        if (this.settings_path != null && this.settings_path != "")
         {
+            debug("toggle");
             Settings settings = new Settings(settings_path);
             bool val = settings.get_boolean(settings_key);
             settings.set_boolean(settings_key, !val);
@@ -158,8 +166,9 @@ public class BDEFile
     }
     public bool connect()
     {
+        debug("1");
         if (!valid_file) return false;
-
+        debug("2");
         debug("bind %s", key_shortcut);
 
         bool bind_key = false;
@@ -184,9 +193,11 @@ public class BDEFile
                 settings.set_string(overlay_key, "");
             }
         }
+        else bind_key = true;
 
         if (bind_key)
         {
+            debug("3 %s", key_shortcut);
             return_val = Keybinder.bind_full(key_shortcut, this.callback);
         }
         return return_val;
