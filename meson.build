@@ -145,3 +145,8 @@ build_quickchar = get_option('build-quickchar')
 if build_all == true or build_quickchar == true
 	subdir('budgie-quickchar')
 endif
+
+build_fuzzyclock = get_option('build-fuzzyclock')
+if build_all == true or build_fuzzyclock == true
+	subdir('budgie-fuzzyclock')
+endif
