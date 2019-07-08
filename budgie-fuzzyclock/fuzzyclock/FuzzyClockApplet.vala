@@ -475,12 +475,15 @@ public class FuzzyClockApplet : Budgie.Applet
         var now = new DateTime.now_local();
         int hour = now.get_hour();
         int minute = now.get_minute();
-        int rule = (int)Math.floor((minute + 2) / 5) % 12; // Round minutes
+        int rule = (int)Math.floor((minute + 2) / 5); // Round minutes
 
-        if (rule > 6)           // after the half-hour
+        if (rule > 6)           // xx:30 -> xx:59
             hour += 1;
 
-        if (hour >= 24)              // between 23:35 and 00:00
+        if (rule >= 12)         // roll-over rule when it reaches 12
+            rule = 0;
+
+        if (hour >= 24)         // between 23:35 and 00:00
             hour = 0;
         else if (ampm && hour >= 13) // 13:00-23:00 becomes 1-12
             hour -= 12;
