@@ -415,3 +415,13 @@ Description: Workspace usage tracker for the budgie desktop
  Workspace Stopwatch Applet keeps track of usage per workspace,
  i.e. to find out how much minutes/hours were actually spent on a job.
  Workspaces can be freely named, custom names and all data are remembered.
+
+Package: budgie-fuzzyclock-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Show the time in a fuzzy way
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ Displays the time in a 'spoken' format such as five past six.
