@@ -98,7 +98,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         if self.newlogged - self.last_logged > 35:
             currws = self.scr.get_active_workspace()
             self.starttime = time.time()
-            self.act_on_change(self.scr, currws)     
+            self.act_on_change(self.scr, currws)
         open(self.logfile, "wt").write(str(self.workspace_data))
         self.last_logged = self.newlogged
         return True
