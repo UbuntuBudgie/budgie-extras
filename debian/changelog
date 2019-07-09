@@ -1,3 +1,21 @@
+budgie-extras (0.9.0-1) UNRELEASED; urgency=medium
+
+  * New release
+    - See ChangeLog
+  * Packaging Changes
+    - Control: Add packaging for takeabreak applet
+    - Control: add libwnck-3-dev and libkeybinder-3.0-dev
+      as build dependencies
+    - Control: swap python dependencies for ShowTime to vala based
+      dependencies, architecture changed to any
+    - Control: Add new packages for budgie-extras-daemon,
+      budgie-fuzzyclock-applet, budgie-quickchar, budgie-takeabreak-applet
+      and budgie-workspace-stopwatch-applet
+    - Drop all patches since they have been incorporated
+      into the new release
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 09 Jul 2019 22:09:58 +0100
+
 budgie-extras (0.7.1-3) unstable; urgency=medium
 
   * Bug-fix release (LP: #1815310)
