@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-05 12:14+0100\n"
+"POT-Creation-Date: 2019-07-08 19:27+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2019\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -22,245 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:127
-msgid "Set pressure (0 = no pressure)"
-msgstr "Estableix la pressió (0 = sense pressió)"
-
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:207
-msgid "Corner"
-msgstr "Cantó"
-
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:211
-msgid "Action"
-msgstr "Acció"
-
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:215
-msgid "Custom"
-msgstr "Personalitzada"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Top-left"
-msgstr "A dalt a l'esquerra"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Top-right"
-msgstr "A dalt a la dreta"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Bottom-left"
-msgstr "A baix a l'esquerra"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
-msgid "Bottom-right"
-msgstr "A baix a la dreta"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:316
-msgid "Missing applet"
-msgstr "Falta una miniaplicació"
-
-#. WindowPreviews is the name of a Budgie Applet and does not need to be
-#. translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:318
-msgid "Please add WindowPreviews"
-msgstr "Si us plau, afegiu WindowPreviews."
-
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Mostra'n l'últim ús"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Mostra els indicadors de funció"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Amaga el camí al menú"
-
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Obre"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Buida"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Voleu buidar la paperera?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-"Se suprimiran permanentment tots els elements que hi ha a la paperera."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Buida la paperera"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "No s'ha pogut determinar la ubicació original de %s"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr "%s s'ha restaurat."
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr "%s ja existeix."
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr "Restaura"
-
-#. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
-msgid "Monday"
-msgstr "dilluns"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
-msgid "Tuesday"
-msgstr "dimarts"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
-msgid "Wednesday"
-msgstr "dimecres"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
-msgid "Thursday"
-msgstr "dijous"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
-msgid "Friday"
-msgstr "divendres"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
-msgid "Saturday"
-msgstr "dissabte"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
-msgid "Sunday"
-msgstr "diumenge"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
-msgid "General"
-msgstr "General"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
-msgid "Desktop"
-msgstr "Escriptori"
-
-#. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
-msgid "City"
-msgstr "Ciutat"
-
-#. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
-msgid "Show on desktop"
-msgstr "Mostra a l'escriptori"
-
-#. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
-msgid "Show dynamic panel icon"
-msgstr "Mostra la icona de plafó dinàmic"
-
-#. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
-msgid "Show forecast in popover"
-msgstr "Mostra la previsió meteorològica en una finestreta emergent"
-
-#. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
-msgid "Transparency"
-msgstr "Transparència"
-
-#. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
-#: budgie-weathershow/src/get_color/get_color.vala:50
-msgid "Set text color"
-msgstr "Estableix el color del text"
-
-#. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
-msgid "Set custom position (px)"
-msgstr "Estableix-ne una posició personalitzada (px)"
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
-msgid "Please enter at least 3 characters"
-msgstr "Si us plau, escriviu com a mínim 3 caràcters."
-
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "Vermell"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "Verd"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "Blau"
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "Trieu"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Us donem la benvinguda al QuickNote."
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "El text es desarà automàticament mentre escriviu."
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Amplada de l'àrea del text"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Alçada de l'àrea del text"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Estableix un directori personalitzat"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Trieu un directori"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Ús"
 
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:162
@@ -324,30 +85,506 @@ msgid "Super + drag"
 msgstr "Súper + arrossega"
 
 #. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:311
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
 msgid "AM"
 msgstr "AM"
 
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:314
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
 msgid "PM"
 msgstr "PM"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:128
+msgid "Set pressure (0 = no pressure)"
+msgstr "Estableix la pressió (0 = sense pressió)"
+
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:209
+msgid "Corner"
+msgstr "Cantó"
+
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:213
+msgid "Action"
+msgstr "Acció"
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:217
+msgid "Custom"
+msgstr "Personalitzada"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
+msgid "Top-left"
+msgstr "A dalt a l'esquerra"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
+msgid "Top-right"
+msgstr "A dalt a la dreta"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
+msgid "Bottom-left"
+msgstr "A baix a l'esquerra"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
+msgid "Bottom-right"
+msgstr "A baix a la dreta"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
+msgid "Missing applet"
+msgstr "Falta una miniaplicació"
+
+#. WindowPreviews is the name of a Budgie Applet and does not need to be
+#. translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:320
+msgid "Please add WindowPreviews"
+msgstr "Si us plau, afegiu WindowPreviews."
+
+#. tooltip
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+msgid "Open"
+msgstr "Obre"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Buida"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Voleu buidar la paperera?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+"Se suprimiran permanentment tots els elements que hi ha a la paperera."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Buida la paperera"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:109
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "No s'ha pogut determinar la ubicació original de %s"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:134
+#, c-format
+msgid "%s restored."
+msgstr "%s s'ha restaurat."
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:141
+#, c-format
+msgid "%s already exists."
+msgstr "%s ja existeix."
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:363
+msgid "Restore"
+msgstr "Restaura"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:39
+msgid "midnight"
+msgstr "mitjanit"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:42
+msgid "one"
+msgstr "una"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:45
+msgid "two"
+msgstr "dues"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:48
+msgid "three"
+msgstr "tres"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:51
+msgid "four"
+msgstr "quatre"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:54
+msgid "five"
+msgstr "cinc"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:57
+msgid "six"
+msgstr "sis"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:60
+msgid "seven"
+msgstr "set"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:63
+msgid "eight"
+msgstr "vuit"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:66
+msgid "nine"
+msgstr "nou"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:69
+msgid "ten"
+msgstr "deu"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:72
+msgid "eleven"
+msgstr "onze"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:75
+msgid "noon"
+msgstr "migdia"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:78
+msgid "thirteen"
+msgstr "tretze"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:81
+msgid "fourteen"
+msgstr "catorze"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:84
+msgid "fifteen"
+msgstr "quinze"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:87
+msgid "sixteen"
+msgstr "setze"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:90
+msgid "seventeen"
+msgstr "disset"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:93
+msgid "eighteen"
+msgstr "divuit"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:96
+msgid "nineteen"
+msgstr "dinou"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:99
+msgid "twenty"
+msgstr "vint"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:102
+msgid "twenty-one"
+msgstr "vint-i-una"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:105
+msgid "twenty-two"
+msgstr "vint-i-dues"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:108
+msgid "twenty-three"
+msgstr "vint-i-tres"
+
+#. TRANSLATORS: These format strings reference the above hour string
+#. This is the fun part of fuzzy-clock, feel free to
+#. be inventive within your language
+#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:116
+#, c-format
+msgid "%s-ish"
+msgstr "Més o menys %s "
+
+#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:119
+#, c-format
+msgid "a bit past %s"
+msgstr "les %s tocades"
+
+#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:122
+#, c-format
+msgid "ten past %s"
+msgstr "les %s i deu"
+
+#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:125
+#, c-format
+msgid "quarter after %s"
+msgstr "Passa un quart de les %s"
+
+#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:128
+#, c-format
+msgid "twenty past %s"
+msgstr "Passen vint minuts de les %s"
+
+#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:131
+#, c-format
+msgid "almost half-past %s"
+msgstr "Gairebé passa mitja hora de les %s"
+
+#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:134
+#, c-format
+msgid "half-past %s"
+msgstr "Passa mitja hora de les%s"
+
+#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:138
+#, c-format
+msgid "twenty-five 'til %s"
+msgstr "Falten uns 25 minuts per a les %s"
+
+#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:142
+#, c-format
+msgid "twenty 'til %s"
+msgstr "Falten uns 20 minuts per a les %s"
+
+#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:146
+#, c-format
+msgid "quarter 'til %s"
+msgstr "Falta un quart per a les %s"
+
+#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:150
+#, c-format
+msgid "ten 'til %s"
+msgstr "Falten 10 minuts per a les %s"
+
+#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:154
+#, c-format
+msgid "almost %s"
+msgstr "Gairebé les %s"
+
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:338
+msgid "Date and Time settings"
+msgstr "Paràmetres de l'hora i la data"
+
+#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:341
+msgid "Calendar"
+msgstr "Calendari"
+
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#. pack page2
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:350
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:379
+msgid "Preferences"
+msgstr "Preferències"
+
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:361
+msgid "Show date"
+msgstr "Mostra la data"
+
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.vala:368
+msgid "Use 24 hour time"
+msgstr "Usa un rellotge de 24 hores."
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Mostra'n l'últim ús"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Mostra els indicadors de funció"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Amaga el camí al menú"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Us donem la benvinguda al QuickNote."
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "El text es desarà automàticament mentre escriviu."
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Amplada de l'àrea del text"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Alçada de l'àrea del text"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Estableix un directori personalitzat"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Trieu un directori"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Ús"
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+msgid "Set text color"
+msgstr "Estableix el color del text"
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "Vermell"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "Verd"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "Blau"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "Trieu"
+
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Monday"
+msgstr "dilluns"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Tuesday"
+msgstr "dimarts"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Wednesday"
+msgstr "dimecres"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+msgid "Thursday"
+msgstr "dijous"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Friday"
+msgstr "divendres"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Saturday"
+msgstr "dissabte"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+msgid "Sunday"
+msgstr "diumenge"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+msgid "General"
+msgstr "General"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+msgid "Desktop"
+msgstr "Escriptori"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+msgid "City"
+msgstr "Ciutat"
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+msgid "Show on desktop"
+msgstr "Mostra a l'escriptori"
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "Show dynamic panel icon"
+msgstr "Mostra la icona de plafó dinàmic"
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+msgid "Show forecast in popover"
+msgstr "Mostra la previsió meteorològica en una finestreta emergent"
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+msgid "Transparency"
+msgstr "Transparència"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+msgid "Set custom position (px)"
+msgstr "Estableix-ne una posició personalitzada (px)"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+msgid "Please enter at least 3 characters"
+msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "Estableix les accions dels cantons actius"
 
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr "Mostra els elements utilitzats recentment"
-
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
 msgstr "Paperera"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
-msgstr "Mostra el temps i la previsió meteorològica"
+#: budgie-fuzzyclock/fuzzyclock/FuzzyClockApplet.plugin.in.h:1
+msgid "Time of day in fuzzy way"
+msgstr "Hora del dia aproximada"
+
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
+msgstr "Mostra els elements utilitzats recentment"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
 msgstr "Notes ràpides i fàcils"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr "Mostra el temps i la previsió meteorològica"
