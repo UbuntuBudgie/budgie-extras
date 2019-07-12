@@ -30,8 +30,9 @@ public class BDEFile
     private string activate_key = null;
     private string overlay_path = null;
     private string overlay_key = null;
+    private string name = "";
 
-    bool parse_gsettings(string group, 
+    bool parse_gsettings(string group,
                          string name, ref string? key_path, ref string? key_name){
         debug("checking name %s", name);
         bool return_val = true;
@@ -115,6 +116,10 @@ public class BDEFile
                 todo = true;
             }
 
+            if (keyfile.has_key(group, "name")) {
+                name = keyfile.get_string(group, "name");
+            }
+
             if (!todo) return;
         }
         catch (GLib.Error e)
@@ -137,6 +142,11 @@ public class BDEFile
         if (valid_file) return key_shortcut;
 
         return "";
+    }
+
+    public string get_name()
+    {
+        return name.down().strip();
     }
 
     public void callback (string keystring)
@@ -219,12 +229,39 @@ public class KeybinderManager : GLib.Object
 {
     private HashTable<string, BDEFile> shortcuts = null;
     BudgieExtras.DbusManager? dbus;
+
+    /**
+     * Get the shortcut string for a bde file with the key_name
+     */
+    public bool get_shortcut(string key_name, out string shortcut)
+    {
+        shortcut = "";
+        if (key_name == null || key_name == "") {
+            return false;
+        }
+        HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
+        BDEFile bdefile;
+        string compare = key_name.down().strip();
+
+        while (iter.next(out shortcut, out bdefile))
+        {
+            string found = bdefile.get_name();
+
+            if (found != "" && found == compare)
+            {
+                shortcut = bdefile.get_shortcut();
+                return true;
+            }
+        }
+
+        return false;
+    }
     /**
      * Construct a new KeybinderManager and initialiase appropriately
      */
     public KeybinderManager(bool replace)
     {
-        dbus = new BudgieExtras.DbusManager();
+        dbus = new BudgieExtras.DbusManager(this);
         dbus.setup_dbus(replace);
 
         // Global key bindings

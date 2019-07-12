@@ -33,12 +33,14 @@ public const string EXTRAS_DBUS_OBJECT_PATH = "/org/ubuntubudgie/extrasdaemon";
  * applets/apps over dbus
  */
 [DBus (name = "org.UbuntuBudgie.ExtrasDaemon")]
-public class DbusManager
+public class DbusManager : Object
 {
-    [DBus (visible = false)]
-    public DbusManager()
-    {
+    KeybinderManager keybinder;
 
+    [DBus (visible = false)]
+    public DbusManager(KeybinderManager km)
+    {
+        keybinder = km;
     }
 
     /**
@@ -55,6 +57,24 @@ public class DbusManager
             on_bus_acquired, ()=> {}, BudgieExtras.DaemonNameLost);
     }
 
+    /**
+     * Find the shortcut key string for the bde file name key
+     */
+    public string GetShortcut(string key_name) {
+        string shortcut = "";
+
+        var ret = keybinder.get_shortcut(key_name, out shortcut);
+
+        if (ret)
+        {
+            debug("output %s", shortcut);
+            return shortcut;
+        }
+
+        debug("nothing to return");
+        return "";
+
+    }
     /**
      * Acquired EXTRAS_DBUS_NAME, register ourselves on the bus
      */
