@@ -66,6 +66,14 @@ Install from source code:
 ```
 <br/>
 
+# Usage
+
+The Gnome Settings Daemon's color plugin causes some unexpected brightness changes when resuming from suspend or copying and pasting a folder etc. 
+To avoid this you can remove the Gnome Settings Daemon's color plugin from autostart. 
+To do this you can find a checkbox  in the Budgie Desktop Settings app under Advanced Brightness Controller applet settings.
+
+<br/>
+
 # Development Cheatsheet
 
 [How to hack the budgie desktop on ubuntu](https://discourse.ubuntubudgie.org/t/how-to-hack-the-budgie-desktop-on-ubuntu/574)

@@ -1,6 +1,6 @@
 /*
  * AdvancedBrightnessController 
- * This file is part of UbuntuBudgie
+ * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
  * 
