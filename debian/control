@@ -418,10 +418,23 @@ Description: Workspace usage tracker for the budgie desktop
 
 Package: budgie-fuzzyclock-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Show the time in a fuzzy way
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
  The applets can be used individually or as a set.
  .
  Displays the time in a 'spoken' format such as five past six.
+
+Package: budgie-brightness-controller-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Applet to control the brightness of the screen
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
+ .
+ The brightness controller applet allows controlling of the screen
+ levels via xrandr (fallback) or via gnome-settings-daemon (if available)
