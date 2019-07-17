@@ -3,7 +3,12 @@ configurationData.set('PACKAGE_NAME', 'budgie-extras')
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
-install_data('advancedbrightnesscontroller.plugin', install_dir: LIB_INSTALL_DIR)
+custom_target('plugin-brightness',
+    input : 'brightnesscontroller.plugin.in',
+    output : 'brightnesscontroller.plugin',
+    command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
+    install : true,
+    install_dir : LIB_INSTALL_DIR)
 
 AppletSources = [
 'Applet.vala',
@@ -52,7 +57,7 @@ AppletCArgs = [
 'config.h'
 ]
 
-shared_library('advancedbrightnesscontroller', 
+shared_library('brightnesscontroller', 
 AppletSources, 
 dependencies: AppletDependencies, 
 vala_args: AppletValaArgs, 

@@ -1,5 +1,5 @@
 /*
- * AdvancedBrightnessController 
+ * BrightnessController 
  * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
@@ -12,7 +12,7 @@
  * (at your option) any later version.
  */
 
-namespace AdvancedBrightnessController.Widgets
+namespace BrightnessController.Widgets
 {
 public class IndicatorButton : Gtk.EventBox 
 {
@@ -20,7 +20,7 @@ public class IndicatorButton : Gtk.EventBox
 
     public IndicatorButton() 
     {
-        indicatorIcon = new Gtk.Image.from_icon_name("budgie-advanced-brightness-controller-1-symbolic", Gtk.IconSize.MENU);
+        indicatorIcon = new Gtk.Image.from_icon_name("budgie-brightness-controller-1-symbolic", Gtk.IconSize.MENU);
         add(indicatorIcon);
         show_all();
     }

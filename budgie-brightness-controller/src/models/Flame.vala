@@ -1,5 +1,5 @@
 /*
- * AdvancedBrightnessController 
+ * BrightnessController 
  * This file is part of UbuntuBudgie
  * 
  * Author: Serdar ŞEN github.com/serdarsen
@@ -12,7 +12,7 @@
  * (at your option) any later version.
  */
  
-namespace AdvancedBrightnessController.Models 
+namespace BrightnessController.Models 
 {
 public class Flame
 {

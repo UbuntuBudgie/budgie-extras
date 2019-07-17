@@ -1,5 +1,5 @@
 /*
- * AdvancedBrightnessController 
+ * BrightnessController 
  * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
@@ -13,11 +13,11 @@
  * (at your option) any later version.
  */
 
-using AdvancedBrightnessController.Helpers;
-using AdvancedBrightnessController.Widgets;
-using AdvancedBrightnessController.Models;
+using BrightnessController.Helpers;
+using BrightnessController.Widgets;
+using BrightnessController.Models;
 
-namespace AdvancedBrightnessController.Widgets
+namespace BrightnessController.Widgets
 {
 public class Popover : Budgie.Popover 
 {
