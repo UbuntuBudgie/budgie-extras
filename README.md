@@ -24,6 +24,7 @@ Additional enhancements for the user experience
  - Take-A-Break
  - Workspace Stopwatch
  - Fuzzy Clock
+ - Advanced Brightness Controller
 
 ## Standalone
 
