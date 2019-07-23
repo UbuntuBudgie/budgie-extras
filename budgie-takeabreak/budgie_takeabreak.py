@@ -118,7 +118,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
 
         skip_explainlabel = Gtk.Label()
         skip_explainlabel.set_text(
-            "\n*On lockscreen, effects are skipped."
+            "\n*On screen-lock, effects are ignored"
         )
         maingrid.attach(skip_explainlabel, 0, 11, 2, 1)
         self.show_all()
