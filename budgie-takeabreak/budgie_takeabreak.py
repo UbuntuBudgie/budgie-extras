@@ -95,7 +95,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
         # sep below  section
         maingrid.attach(Gtk.Label("\n"), 0, 8, 1, 1)
         # option label
-        breaktime_label = Gtk.Label("Effect:\n", xalign=0)
+        breaktime_label = Gtk.Label("Effect*:\n", xalign=0)
         maingrid.attach(breaktime_label, 0, 9, 1, 1)
         # dropdown
         self.effect_options = [
@@ -115,6 +115,12 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
         command_combo.connect("changed", self.update_setting, "mode")
         maingrid.attach(effect_box, 0, 10, 2, 1)
         effect_box.pack_start(command_combo, False, True, 0)
+
+        skip_explainlabel = Gtk.Label()
+        skip_explainlabel.set_text(
+            "\n*On lockscreen, effects are skipped."
+        )
+        maingrid.attach(skip_explainlabel, 0, 11, 2, 1)
         self.show_all()
 
     def update_setting(self, widget, setting):
@@ -145,7 +151,6 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         self.icon.set_from_icon_name(
             "takeabreak-symbolic", Gtk.IconSize.MENU
         )
-
         self.box = Gtk.EventBox()
         self.box.add(self.icon)
         self.add(self.box)
