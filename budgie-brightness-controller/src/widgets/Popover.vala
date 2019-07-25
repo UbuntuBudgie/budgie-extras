@@ -4,7 +4,6 @@
  * 
  * Author: Serdar ŞEN github.com/serdarsen
  * 
- * Copyright © 2015-2017 Budgie Desktop Developers
  * Copyright © 2018-2019 Ubuntu Budgie Developers
  * 
  * This program is free software; you can redistribute it and/or modify
