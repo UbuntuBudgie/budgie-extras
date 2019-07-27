@@ -266,6 +266,7 @@ public class KeybinderManager : GLib.Object
 
         // Global key bindings
         Keybinder.init ();
+        Keybinder.set_use_cooked_accelerators(false);
         debug("syspath %s", BudgieExtras.SYSCONFDIR);
         debug("datapath %s", BudgieExtras.DATADIR);
         debug("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);
