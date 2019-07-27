@@ -1,8 +1,8 @@
-# Advanced Brightness Controller 
+# Brightness Controller 
 
 <br/>  
 
-Advanced Brightness Controller is a Budgie Desktop applet for productivity.
+Brightness Controller is a Budgie Desktop applet for productivity.
 
 <br/>
 <br/>  
@@ -25,25 +25,6 @@ vala
 
 <br/>
 
-# Uninstall
-
-```bash
-# Remove the applet from budgie desktop panel
-# Unilstall icon
-  sudo rm /usr/share/pixmaps/budgie-advanced-brightness-controller-1-symbolic.svg
-# Unilstall config
-  sudo rm -rf ~/.config/budgie-advanced-brightness-controller
-# Uninstall source
-  sudo rm -rf /usr/lib/budgie-desktop/plugins/budgie-advanced-brightness-controller
-```
-
-<br/>
-
-# Install
-
-Install From Budgie Applets app in Ubuntu Budgie
-
-or
 
 Install from source code:
 
@@ -53,7 +34,7 @@ Install from source code:
 # Move into budgie-extras dir
   cd  budgie-extras
 # Build  
-  meson --buildtype plain -Dbuild-all=false -Dbuild-advanced-brightness-controller=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
+  meson --buildtype plain -Dbuild-all=false -Dbuild-brightness-controller=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
 # Compile
   ninja -v
 # Install  
@@ -62,7 +43,7 @@ Install from source code:
   budgie-panel --replace & 
 # or without terminal output  
   nohup budgie-panel --reset --replace &
-# Add Advanced Brightness Controller to your panel from Budgie Desktop Settings   
+# Add Brightness Controller to your panel from Budgie Desktop Settings   
 ```
 <br/>
 

@@ -5,6 +5,7 @@ import subprocess
 import time
 import os
 import getkeys
+import psutil
 
 
 """
@@ -106,6 +107,14 @@ if from_unidle:
     idle_sleep()
 
 
+def lockscreen_check():
+    lockproc = "gnome-screensaver-dialog"
+    try:
+        return lockproc in (p.name() for p in psutil.process_iter())
+    except psutil.NoSuchProcess:
+        return False
+
+
 while True:
     # in case the applet is removed, just quit on next un- sleep
     if not getkey():
@@ -124,4 +133,8 @@ while True:
     time.sleep(notify_time)
     if not getkey():
         break
-    take_a_break()
+    test = lockscreen_check()
+    if test:
+        time.sleep(sleeptime)
+    else:
+        take_a_break()

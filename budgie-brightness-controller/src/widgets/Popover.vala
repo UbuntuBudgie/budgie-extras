@@ -1,10 +1,9 @@
 /*
- * AdvancedBrightnessController 
+ * BrightnessController 
  * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
  * 
- * Copyright © 2015-2017 Budgie Desktop Developers
  * Copyright © 2018-2019 Ubuntu Budgie Developers
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -13,11 +12,11 @@
  * (at your option) any later version.
  */
 
-using AdvancedBrightnessController.Helpers;
-using AdvancedBrightnessController.Widgets;
-using AdvancedBrightnessController.Models;
+using BrightnessController.Helpers;
+using BrightnessController.Widgets;
+using BrightnessController.Models;
 
-namespace AdvancedBrightnessController.Widgets
+namespace BrightnessController.Widgets
 {
 public class Popover : Budgie.Popover 
 {

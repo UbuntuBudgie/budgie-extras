@@ -14,18 +14,7 @@ am_cflags = [
     '-W'
 ]
 
-add_global_arguments(am_cflags, language: 'c')
-
-# Global path variable
-prefix = get_option('prefix')
-libdir = join_paths(prefix, get_option('libdir'))
-datadir = join_paths(prefix, get_option('datadir'))
-
-LOCALE_DIR = join_paths(prefix, get_option('localedir'))
-PLUGIN = 'budgie-advanced-brightness-controller'
-
-PIXMAPS_DIR = join_paths(datadir, 'pixmaps')
-
+PLUGIN = 'budgie-brightness-controller'
 LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
 DEPENDENCY_GNOME_SETTINGS_DAEMON = dependency('gnome-settings-daemon', version: '>=3.28.0')

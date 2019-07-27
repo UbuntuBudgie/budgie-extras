@@ -151,7 +151,7 @@ if build_all == true or build_fuzzyclock == true
 	subdir('budgie-fuzzyclock')
 endif
 
-build_advanced_brightness_controller = get_option('build-advanced-brightness-controller')
-if build_all == true or build_advanced_brightness_controller == true
-	subdir('budgie-advanced-brightness-controller')
+build_brightness_controller = get_option('build-brightness-controller')
+if build_all == true or build_brightness_controller == true
+	subdir('budgie-brightness-controller')
 endif

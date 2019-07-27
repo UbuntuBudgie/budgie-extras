@@ -1,5 +1,5 @@
 /*
- * AdvancedBrightnessController 
+ * BrightnessController 
  * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
@@ -12,10 +12,10 @@
  * (at your option) any later version.
  */
 
-using AdvancedBrightnessController.Widgets;
-using AdvancedBrightnessController.Helpers;
+using BrightnessController.Widgets;
+using BrightnessController.Helpers;
 
-namespace AdvancedBrightnessController
+namespace BrightnessController
 { 
 public class Applet : Budgie.Applet
 {
@@ -142,5 +142,5 @@ public void peas_register_types(TypeModule module)
 {
     // boilerplate - all modules need this
     var objmodule = module as Peas.ObjectModule;
-    objmodule.register_extension_type(typeof(Budgie.Plugin), typeof(AdvancedBrightnessController.Plugin));
+    objmodule.register_extension_type(typeof(Budgie.Plugin), typeof(BrightnessController.Plugin));
 }

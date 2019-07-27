@@ -1,6 +1,6 @@
 /*
- * AdvancedBrightnessController 
- * This file is part of UbuntuBudgie
+ * BrightnessController 
+ * This file is part of budgie-extras
  * 
  * Author: Serdar ŞEN github.com/serdarsen
  * 
@@ -12,28 +12,21 @@
  * (at your option) any later version.
  */
  
-namespace AdvancedBrightnessController.Models 
+namespace BrightnessController.Models 
 {
-public class Dim : Flame
+public class Light : Flame
 {
-    public double Blue {get; set;}
-
     public string MaxBrightnessText 
     {
-        owned get{return DoubleToString(MaxBrightness, "%.1f");}
+        owned get{return DoubleToString(MaxBrightness, "%.0f");}
     }
 
     public string BrightnessText 
     {
-        owned get{return DoubleToString(Brightness, "%.1f");}
+        owned get{return DoubleToString(Brightness, "%.0f");}
     }
 
-    public string BlueText
-    {
-        owned get{return DoubleToString(Blue, "%.1f");}
-    }
-
-    public Dim()
+    public Light()
     {
     }
 }

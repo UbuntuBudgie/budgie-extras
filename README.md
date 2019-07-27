@@ -24,7 +24,7 @@ Additional enhancements for the user experience
  - Take-A-Break
  - Workspace Stopwatch
  - Fuzzy Clock
- - Advanced Brightness Controller
+ - Brightness Controller
 
 ## Standalone
 
@@ -104,4 +104,5 @@ The following packages are required for the various Vala plugins to work:
  - libgee-0.8-dev
  - libsoup2.4-dev
  - libwnck-3-dev
- - libkeybinder-3.0-dev 
+ - libkeybinder-3.0-dev
+ - gnome-settings-daemon-dev
