@@ -29,6 +29,7 @@ tab_key = "org.ubuntubudgie.plugins.takeabreak"
 user = os.environ["USER"]
 tab_settings = Gio.Settings.new(tab_key)
 # get current settings
+auto_unlock = tab_settings.get_boolean("unlockafterbreak")
 awaketime = tab_settings.get_int("awaketime") * 60
 sleeptime = tab_settings.get_int("sleeptime") * 60
 mode = tab_settings.get_string("mode")
@@ -85,9 +86,10 @@ def take_a_break():
                 ])
     time.sleep(sleeptime)
     for scr in screens:
-        subprocess.Popen([
-            "gnome-screensaver-command", "-d"
-        ])
+        if auto_unlock:
+            subprocess.Popen([
+                "gnome-screensaver-command", "-d"
+            ])
         time.sleep(2)
         if mode == "rotate":
             subprocess.call([
@@ -133,8 +135,5 @@ while True:
     time.sleep(notify_time)
     if not getkey():
         break
-    test = lockscreen_check()
-    if test:
-        time.sleep(sleeptime)
     else:
         take_a_break()
