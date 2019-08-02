@@ -104,7 +104,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
         # sep below  section
         maingrid.attach(Gtk.Label("\n"), 0, 9, 1, 1)
         # option label
-        breaktime_label = Gtk.Label("Effect*:\n", xalign=0)
+        breaktime_label = Gtk.Label("Effect:\n", xalign=0)
         maingrid.attach(breaktime_label, 0, 10, 1, 1)
         # dropdown
         self.effect_options = [
