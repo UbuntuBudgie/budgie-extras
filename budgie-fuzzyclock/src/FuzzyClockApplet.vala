@@ -512,7 +512,10 @@ public class FuzzyClockApplet : Budgie.Applet
 
         // Prevent unnecessary redraws
         var old = date_label.get_label();
+
+        time = new DateTime.now_local();
         var ctime = time.format(ftime);
+
         if (old == ctime) {
             return;
         }
