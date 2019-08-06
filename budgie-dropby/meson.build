@@ -15,6 +15,6 @@ install_data(
 install_data(
     'budgie-dropby-symbolic.svg',
     'budgie-dropby-idle.png',
-    'exit-dropby-symbolic.svg',
+    'budgie-dropby-exit-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
