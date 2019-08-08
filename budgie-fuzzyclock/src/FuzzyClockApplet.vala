@@ -38,11 +38,13 @@ public class FuzzyClockRule
      * Format string rules
      *      one for each of 12 text formats
      */
-    public FuzzyClockRule(string format, string offset)
+    public FuzzyClockRule(string rule_text)
     {
-        int label_len = "offsetxx=".char_count();
-        this.format = format;
-        this.hour_offset = int.parse(offset.substring(label_len));
+        string[] rule_texts = rule_text.split("|");
+        this.format = rule_texts[0];
+        if (rule_texts.length > 0) {
+            this.hour_offset = int.parse(rule_texts[1]);
+        }
     }
 }
 
@@ -144,46 +146,46 @@ public class FuzzyClockApplet : Budgie.Applet
     //  In some languages this only applies on the quarter hour marks
     //  to compensate for this, each rule will given an offset written as a translatable-string
     //  the english is provided as the default, but a language can alter the offset of any rule
-    //  by using "offset<2-digit-rule>=<offset-value>" where
-    //       rule identifies which bucket
-    //       offset-value    an integer value (- or +) to increment or decrement the hour
+    //  by using "<language-text>|<offset-value>" where
+    //       language-text   includes a single '%s' where the hours[] text will be placed
+    //       offset-value    an integer value to adjust the hour
 
     protected FuzzyClockRule[] rules = {
         // TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
-        new FuzzyClockRule(_("%s-ish"), _("offset00=0")),
+        new FuzzyClockRule(_("%s-ish|0")),
 
         // TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
-        new FuzzyClockRule(_("a bit past %s"), _("offset01=0")),
+        new FuzzyClockRule(_("a bit past %s|0")),
 
         // TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
-        new FuzzyClockRule(_("ten past %s"), _("offset02=0")),
+        new FuzzyClockRule(_("ten past %s|0")),
 
         // TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
-        new FuzzyClockRule(_("quarter after %s"), _("offset03=0")),
+        new FuzzyClockRule(_("quarter after %s|0")),
 
         // TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-        new FuzzyClockRule(_("twenty past %s"), _("offset04=0")),
+        new FuzzyClockRule(_("twenty past %s|0")),
 
         // TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-        new FuzzyClockRule(_("almost half-past %s"), _("offset05=0")),
+        new FuzzyClockRule(_("almost half-past %s|0")),
 
         // TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-        new FuzzyClockRule(_("half-past %s"), _("offset06=0")),
+        new FuzzyClockRule(_("half-past %s|0")),
 
         // TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two' by using offset=1
-        new FuzzyClockRule(_("twenty-five 'til %s"), _("offset07=1")),
+        new FuzzyClockRule(_("twenty-five 'til %s|+1")),
 
         // TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two' by using offset=1
-        new FuzzyClockRule(_("twenty 'til %s"), _("offset08=1")),
+        new FuzzyClockRule(_("twenty 'til %s|+1")),
 
         // TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two' by using offset=1
-        new FuzzyClockRule(_("quarter 'til %s"), _("offset09=1")),
+        new FuzzyClockRule(_("quarter 'til %s|+1")),
 
         // TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two' by using offset=1
-        new FuzzyClockRule(_("ten 'til %s"), _("offset10=1")),
+        new FuzzyClockRule(_("ten 'til %s|+1")),
 
         // TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two' by using offset=1
-        new FuzzyClockRule(_("almost %s"), _("offset11=1")),
+        new FuzzyClockRule(_("almost %s|+1")),
     };
 
     protected Gtk.EventBox widget;
