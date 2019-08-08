@@ -26,6 +26,57 @@ public class BDEFile
     private string settings_path = null;
     private string settings_key = null;
     private string command_action = null;
+    private string activate_path = null;
+    private string activate_key = null;
+    private string overlay_path = null;
+    private string overlay_key = null;
+    private string name = "";
+
+    bool parse_gsettings(string group,
+                         string name, ref string? key_path, ref string? key_name){
+        debug("checking name %s", name);
+        bool return_val = true;
+
+        try {
+            if (keyfile.has_key(group, name))
+            {
+                var toggle = keyfile.get_string(group, name);
+                toggle = toggle.down().strip();
+                string[] split_path = null;
+                if (toggle.contains("gsettings ")) {
+                    split_path = toggle.split(" ");
+                    if (split_path.length != 3)
+                    {
+                        return_val = false;
+                    }
+                }
+
+                if (split_path != null && split_path.length == 3)
+                {
+                    key_path = split_path[1];
+                    key_name = split_path[2];
+                }
+
+                if (key_path == null ||
+                    key_name == null ||
+                    key_path == "" ||
+                    key_name == "")
+                {
+                    key_name=null;
+                    key_path=null;
+
+                    return_val = false;
+                    debug("invalid gsettings value");
+                }
+                debug("found key_name %s, key_path %s", key_name, key_path);
+            }
+        }
+        catch (KeyFileError e)
+        {
+            message("key error %s: %s", name, e.message);
+        }
+        return return_val;
+    }
 
     /**
     * location: full path to file with .bde extension
@@ -48,20 +99,14 @@ public class BDEFile
             debug("key shortcut %s", key_shortcut);
             if (key_shortcut == null || key_shortcut == "") return;
 
-            debug("checking path, key-name");
-            if (keyfile.has_key(group, "path") &&
-                keyfile.has_key(group, "key-name"))
+            if (parse_gsettings(group, "toggle", ref settings_path, ref settings_key))
             {
-                settings_path = keyfile.get_string(group, "path");
-                settings_key = keyfile.get_string(group, "key-name");
-
-                if (settings_path == null ||
-                    settings_key == null ||
-                    settings_path == "" ||
-                    settings_key == "") return;
-
                 todo = true;
+                debug("todo %s %s", settings_path, settings_key);
             }
+
+            parse_gsettings(group, "onlyactivate", ref activate_path, ref activate_key);
+            parse_gsettings(group, "overlay", ref overlay_path, ref overlay_key);
 
             if (keyfile.has_key(group, "command")) {
                 command_action =  keyfile.get_string(group, "command");
@@ -71,8 +116,11 @@ public class BDEFile
                 todo = true;
             }
 
-            if (!todo) return;
+            if (keyfile.has_key(group, "name")) {
+                name = keyfile.get_string(group, "name");
+            }
 
+            if (!todo) return;
         }
         catch (GLib.Error e)
         {
@@ -96,9 +144,14 @@ public class BDEFile
         return "";
     }
 
+    public string get_name()
+    {
+        return name.down().strip();
+    }
+
     public void callback (string keystring)
     {
-        debug("callback");
+        debug("callback %s", keystring);
         if (this.command_action != null && this.command_action != "")
         {
             debug("command_action");
@@ -113,8 +166,9 @@ public class BDEFile
 
         }
 
-        if (this.settings_path !=null && this.settings_path != "")
+        if (this.settings_path != null && this.settings_path != "")
         {
+            debug("toggle");
             Settings settings = new Settings(settings_path);
             bool val = settings.get_boolean(settings_key);
             settings.set_boolean(settings_key, !val);
@@ -122,11 +176,49 @@ public class BDEFile
     }
     public bool connect()
     {
+        debug("1");
         if (!valid_file) return false;
-
+        debug("2");
         debug("bind %s", key_shortcut);
+
+        bool bind_key = false;
+        bool return_val = false;
+
         Keybinder.unbind_all(key_shortcut);
-        return Keybinder.bind_full(key_shortcut, this.callback);
+
+        if (activate_path != null)
+        {
+            Settings settings = new Settings(activate_path);
+            bind_key = settings.get_boolean(activate_key);
+
+            if (overlay_path != null && !bind_key)
+            {
+                settings = new Settings(overlay_path);
+                settings.reset(overlay_key);
+            }
+
+            if (overlay_path != null && bind_key)
+            {
+                settings = new Settings(overlay_path);
+                // we expect either an array or a string for the overlay key
+                var val = settings.get_value(overlay_key);
+                if (val.get_type_string() == "as") {
+                    settings.set_strv(overlay_key, {""});
+                }
+                else
+                {
+                    settings.set_string(overlay_key, "");
+                }
+            }
+        }
+        else bind_key = true;
+
+        if (bind_key)
+        {
+            debug("3 %s", key_shortcut);
+            return_val = Keybinder.bind_full(key_shortcut, this.callback);
+        }
+        return return_val;
     }
 }
 
@@ -137,16 +229,44 @@ public class KeybinderManager : GLib.Object
 {
     private HashTable<string, BDEFile> shortcuts = null;
     BudgieExtras.DbusManager? dbus;
+
+    /**
+     * Get the shortcut string for a bde file with the key_name
+     */
+    public bool get_shortcut(string key_name, out string shortcut)
+    {
+        shortcut = "";
+        if (key_name == null || key_name == "") {
+            return false;
+        }
+        HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
+        BDEFile bdefile;
+        string compare = key_name.down().strip();
+
+        while (iter.next(out shortcut, out bdefile))
+        {
+            string found = bdefile.get_name();
+
+            if (found != "" && found == compare)
+            {
+                shortcut = bdefile.get_shortcut();
+                return true;
+            }
+        }
+
+        return false;
+    }
     /**
      * Construct a new KeybinderManager and initialiase appropriately
      */
     public KeybinderManager(bool replace)
     {
-        dbus = new BudgieExtras.DbusManager();
+        dbus = new BudgieExtras.DbusManager(this);
         dbus.setup_dbus(replace);
 
         // Global key bindings
         Keybinder.init ();
+        Keybinder.set_use_cooked_accelerators(false);
         debug("syspath %s", BudgieExtras.SYSCONFDIR);
         debug("datapath %s", BudgieExtras.DATADIR);
         debug("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);

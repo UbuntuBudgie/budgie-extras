@@ -1,10 +1,9 @@
 # Fuzzy Clock Applet build
 
 configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
+configurationData.set('PACKAGE_NAME', 'budgie-extras')
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configurationData.set_quoted('GETTEXT_PACKAGE', meson.project_version())
-add_global_arguments('-DGETTEXT_PACKAGE="budgie-desktop"', language: 'c')
+configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 custom_target('plugin-fuzzy-clock',
     input : 'FuzzyClockApplet.plugin.in',
@@ -25,14 +24,23 @@ dependency('libpeas-gtk-1.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
+FuzzyValaArgs = [
+'--pkg=config',
+'--vapidir=' + VAPI_DIR,
+'--target-glib=2.38',
+]
+
+FuzzyCArgs = [
+'-include',
+'config.h',
+'-lm'
+]
+
 shared_library(
     'fuzzyclock', fuzzy_applet_sources,
     dependencies: fuzzy_applet_deps ,
     install: true,
-    vala_args: [
-        '--pkg', 'libpeas-1.0',
-        '--pkg', 'gio-unix-2.0',
-        '--pkg', 'gtk+-3.0',
-    ],
+    vala_args: FuzzyValaArgs,
+    c_args: FuzzyCArgs,
     install_dir: LIB_INSTALL_DIR,
 )

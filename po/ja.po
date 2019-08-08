@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-05 12:14+0100\n"
+"POT-Creation-Date: 2019-07-17 21:24+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Ryo Nakano, 2019\n"
 "Language-Team: Japanese (https://www.transifex.com/ubuntu-budgie/teams/72251/ja/)\n"
@@ -21,70 +21,123 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:127
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
+msgid "Drag position"
+msgstr "位置をドラッグ"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
+msgid "Save position"
+msgstr "位置を保存"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
+msgid "Position & anchor"
+msgstr "位置とアンカー"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
+msgid "Automatic"
+msgstr "自動"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
+msgid "On all monitors"
+msgstr "すべてのモニター"
+
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+msgid "Time font, size & color"
+msgstr "時刻のフォント、フォントサイズ、フォントの色"
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+msgid "Date font, size & color"
+msgstr "日付のフォント、フォントサイズ、フォントの色"
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
+msgid "Miscellaneous"
+msgstr "その他"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+msgid "Left align text"
+msgstr "テキストを左寄せにする"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+msgid "Use 12hr time format"
+msgstr "12時間制の時刻表記を使う"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+msgid "Linespacing"
+msgstr "行間"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+msgid "Super + drag"
+msgstr "スーパーキー + ドラッグ"
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
+msgid "AM"
+msgstr "午前"
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
+msgid "PM"
+msgstr "午後"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:128
 msgid "Set pressure (0 = no pressure)"
 msgstr ""
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:207
+#: budgie-hotcorners/src/HotCornersApplet.vala:209
 msgid "Corner"
 msgstr "コーナー"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:211
+#: budgie-hotcorners/src/HotCornersApplet.vala:213
 msgid "Action"
 msgstr "アクション"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:215
+#: budgie-hotcorners/src/HotCornersApplet.vala:217
 msgid "Custom"
 msgstr "カスタム"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
 msgid "Top-left"
 msgstr "左上"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
 msgid "Top-right"
 msgstr "右上"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
 msgid "Bottom-left"
 msgstr "左下"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:233
+#: budgie-hotcorners/src/HotCornersApplet.vala:235
 msgid "Bottom-right"
 msgstr "右下"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:316
+#: budgie-hotcorners/src/HotCornersApplet.vala:318
 msgid "Missing applet"
 msgstr "不足しているアプレット"
 
 #. WindowPreviews is the name of a Budgie Applet and does not need to be
 #. translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:318
+#: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "ウィンドウプレビューを追加してください"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "最後に使用したものを表示"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "ツールチップを表示"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "メニューのパスを非表示"
-
 #. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
-#: budgie-trash/src/widgets/TrashPopover.vala:79
 #: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-recentlyused/src/budgie-recentlyused.vala:177
 msgid "Open"
 msgstr "開く"
 
@@ -101,8 +154,8 @@ msgid "All items in the Trash will be permanently deleted."
 msgstr "ゴミ箱のすべての項目は完全に削除されます。"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-weathershow/src/get_color/get_color.vala:88
 #: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -135,6 +188,327 @@ msgstr "%s はすでに存在しています。"
 #: budgie-trash/src/helpers/TrashHelper.vala:363
 msgid "Restore"
 msgstr "元に戻す"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:39
+msgid "midnight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:42
+msgid "one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:45
+msgid "two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:48
+msgid "three"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:51
+msgid "four"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:54
+msgid "five"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:57
+msgid "six"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:60
+msgid "seven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:63
+msgid "eight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:66
+msgid "nine"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:69
+msgid "ten"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:72
+msgid "eleven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:75
+msgid "noon"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:78
+msgid "thirteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:81
+msgid "fourteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:84
+msgid "fifteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:87
+msgid "sixteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:90
+msgid "seventeen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:93
+msgid "eighteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:96
+msgid "nineteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:99
+msgid "twenty"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:102
+msgid "twenty-one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:105
+msgid "twenty-two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:108
+msgid "twenty-three"
+msgstr ""
+
+#. TRANSLATORS: These format strings reference the above hour string
+#. This is the fun part of fuzzy-clock, feel free to
+#. be inventive within your language
+#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
+#, c-format
+msgid "%s-ish"
+msgstr ""
+
+#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
+#, c-format
+msgid "a bit past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
+#, c-format
+msgid "ten past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
+#, c-format
+msgid "quarter after %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
+#, c-format
+msgid "twenty past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
+#, c-format
+msgid "almost half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:134
+#, c-format
+msgid "half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:138
+#, c-format
+msgid "twenty-five 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:142
+#, c-format
+msgid "twenty 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:146
+#, c-format
+msgid "quarter 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:150
+#, c-format
+msgid "ten 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+#. WARNING -- the hour now reflects the upcoming hour, not the current hour
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
+#, c-format
+msgid "almost %s"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:338
+msgid "Date and Time settings"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:341
+msgid "Calendar"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#. pack page2
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:350
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:379
+msgid "Preferences"
+msgstr ""
+
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:361
+msgid "Show date"
+msgstr ""
+
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:368
+msgid "Use 24 hour time"
+msgstr ""
+
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:88
+msgid "Dim"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:90
+#: budgie-brightness-controller/src/widgets/Popover.vala:144
+msgid "Brightness"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:92
+msgid "Temperature"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:142
+msgid "Light"
+msgstr ""
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "最後に使用したものを表示"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "ツールチップを表示"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "メニューのパスを非表示"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "QuickNote へようこそ。"
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "文字列は入力中に自動的に保存されます。"
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "テキスト領域の幅"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "テキスト領域の高さ"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "任意のディレクトリを設定"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "ディレクトリを選択"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "使う"
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+msgid "Set text color"
+msgstr "テキストの色を設定"
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "赤"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "緑"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "青"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "選択"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:142
@@ -198,12 +572,6 @@ msgstr "ポップオーバーに天気予報を表示"
 msgid "Transparency"
 msgstr "透明度"
 
-#. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
-#: budgie-weathershow/src/get_color/get_color.vala:50
-msgid "Set text color"
-msgstr "テキストの色を設定"
-
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:879
 msgid "Set custom position (px)"
@@ -213,136 +581,30 @@ msgstr "任意の位置を設定 (px)"
 msgid "Please enter at least 3 characters"
 msgstr "最低 3 文字を入力してください"
 
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "赤"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "緑"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "青"
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "選択"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "QuickNote へようこそ。"
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "文字列は入力中に自動的に保存されます。"
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "テキスト領域の幅"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "テキスト領域の高さ"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "任意のディレクトリを設定"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "ディレクトリを選択"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "使う"
-
-#. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
-msgid "Drag position"
-msgstr "位置をドラッグ"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
-msgid "Save position"
-msgstr "位置を保存"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
-msgid ""
-"Enable Super + drag to set time position. Click ´Save position´ to save."
-msgstr ""
-
-#. window content
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
-msgid "Position & anchor"
-msgstr "位置とアンカー"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
-msgid "Automatic"
-msgstr "自動"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
-msgid "On all monitors"
-msgstr "すべてのモニター"
-
-#. time font settings -> boxed!!
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
-msgid "Time font, size & color"
-msgstr "時刻のフォント、フォントサイズ、フォントの色"
-
-#. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
-msgid "Date font, size & color"
-msgstr "日付のフォント、フォントサイズ、フォントの色"
-
-#. miscellaneous section
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
-msgid "Miscellaneous"
-msgstr "その他"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
-msgid "Left align text"
-msgstr "テキストを左寄せにする"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
-msgid "Use 12hr time format"
-msgstr "12時間制の時刻表記を使う"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
-msgid "Linespacing"
-msgstr "行間"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
-msgid "Super + drag"
-msgstr "スーパーキー + ドラッグ"
-
-#. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:311
-msgid "AM"
-msgstr "午前"
-
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:314
-msgid "PM"
-msgstr "午後"
-
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "ホットコーナーのアクションを設定"
-
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr "最近使用した項目を表示"
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
-msgstr "天気と天気予報を表示"
+#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
+msgid "Time of day in fuzzy way"
+msgstr ""
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr ""
+
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
+msgstr "最近使用した項目を表示"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
 msgstr "Quick & Easy Notes"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr "天気と天気予報を表示"

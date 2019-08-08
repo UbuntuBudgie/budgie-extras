@@ -22,12 +22,17 @@ Additional enhancements for the user experience
  - App-launcher
  - RecentlyUsed
  - Take-A-Break
+ - Workspace Stopwatch
+ - Fuzzy Clock
+ - Brightness Controller
 
 ## Standalone
 
 Non-budgie plugins - see the individual components for details
 
  - Budgie Visualspace
+ - Budgie Extras Daemon
+ - Budgie Quickchar
 
  ## Installation
 
@@ -72,6 +77,7 @@ The following packages are required for the various Python plugins to work:
  - gir1.2-budgie-1.0
  - gir1.2-gtk-3.0
  - gir1.2-glib-2.0
+ - gir1.2-wnck-3.0
  - python3-psutil
  - dconf-cli
  - sound-theme-freedesktop
@@ -83,14 +89,20 @@ The following packages are required for the various Python plugins to work:
  - python3-requests
  - xprintidle
  - notofonts
+ - python3-pyperclip
+ - python3-xlib
 
 The following packages are required for the various Vala plugins to work:
  - gobject-introspection
  - libgtk-3-dev
  - valac
+ - meson
  - budgie-core-dev
  - libbudgie-plugin0
  - libpeas-dev
  - libjson-glib-dev
  - libgee-0.8-dev
  - libsoup2.4-dev
+ - libwnck-3-dev
+ - libkeybinder-3.0-dev
+ - gnome-settings-daemon-dev

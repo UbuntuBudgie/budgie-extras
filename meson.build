@@ -150,3 +150,8 @@ build_fuzzyclock = get_option('build-fuzzyclock')
 if build_all == true or build_fuzzyclock == true
 	subdir('budgie-fuzzyclock')
 endif
+
+build_brightness_controller = get_option('build-brightness-controller')
+if build_all == true or build_brightness_controller == true
+	subdir('budgie-brightness-controller')
+endif

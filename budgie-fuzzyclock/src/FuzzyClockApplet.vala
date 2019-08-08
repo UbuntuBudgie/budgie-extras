@@ -32,6 +32,8 @@ public const string CALENDAR_MIME = "text/calendar";
 
 public class FuzzyClockApplet : Budgie.Applet
 {
+    string date_format = "";
+
     protected string[] hours = {
         // TRANSLATORS: This is referring to the spoken time of day at 00:00:00
         _("midnight"),
@@ -226,11 +228,67 @@ public class FuzzyClockApplet : Budgie.Applet
     {
         if (position == Budgie.PanelPosition.LEFT || position == Budgie.PanelPosition.RIGHT) {
             this.orient = Gtk.Orientation.VERTICAL;
+            if (position == Budgie.PanelPosition.RIGHT) {
+                clock.set_angle(270);
+                date_label.set_angle(270);
+            }
+            else {
+                clock.set_angle(90);
+                date_label.set_angle(90);
+            }
         } else {
             this.orient = Gtk.Orientation.HORIZONTAL;
+            clock.set_angle(0);
+            date_label.set_angle(0);
         }
         this.layout.set_orientation(this.orient);
         this.update_clock();
+    }
+
+    // get index of string in list
+    private int get_containingindex (string[] arr, string lookfor) {
+        for (int i=0; i < arr.length; i++) {
+            if(lookfor.contains(arr[i])) return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Taken from showtime - calculate the locale dateformat
+     */
+    private string read_dateformat () {
+        string[] monthvars = {
+            "%B", "%-b", "%_b", "%h", "%-h", "%_h", "%b"
+        };
+        string[] daynamevars = {
+            "%A", "%a", "%-a", "%-A", "%_a", "%_A"
+        };
+        string[] monthdayvars = {
+            "%e", "%-e", "%_e", "%d", "%-d", "%_d"
+        };
+        string cmd = "locale date_fmt";
+        string output = "";
+        try {
+            StringBuilder builder = new StringBuilder ();
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            string[] output_data = output.split(" ");
+            foreach (string s in output_data) {
+                // make it a function? nah, we're lazy
+                if (get_containingindex(monthvars, s) != -1) {
+                    builder.append (monthvars[0]).append (" ");
+                }
+                else if (get_containingindex(daynamevars, s) != -1) {
+                    builder.append (daynamevars[0]).append (" ");
+                }
+                else if (get_containingindex(monthdayvars, s) != -1) {
+                    builder.append (monthdayvars[0]).append (" ");
+                }
+            }
+            return builder.str;
+        }
+        catch (Error e) {
+            return "";
+        }
     }
 
     /**
@@ -253,6 +311,8 @@ public class FuzzyClockApplet : Budgie.Applet
         layout.pack_start(date_label, false, false, 0);
         date_label.no_show_all = true;
         date_label.hide();
+
+        date_format = read_dateformat();
 
         clock.valign = Gtk.Align.CENTER;
         date_label.valign = Gtk.Align.CENTER;
@@ -443,23 +503,19 @@ public class FuzzyClockApplet : Budgie.Applet
             return;
         }
         string ftime;
-        // TRANSLATORS:  you may wish to visit this site for format string help
-        // https://valadoc.org/glib-2.0/GLib.DateTime.format.html
+
         if (this.orient == Gtk.Orientation.HORIZONTAL) {
-            // TRANSLATORS: Horizontal Date prints "- <DayAbbr>, <MonAbbr> <DayNum>"
-            //              You may wish to localize for a more common formatting
-            //              Opt for spoken words over numerical values
-            ftime = _("- %a, %b %d");
+            ftime = date_format;
         } else {
-            // TRANSLATORS: Vertical Date prints "<MonAbbr> <DayNum>"
-            //              You may wish to localize for a more common formatting
-            //              Opt for spoken words over numerical values
-            ftime = "<small>" + _("%b %d") + "</small>";
+            ftime = "<small>" + date_format + "</small>";
         }
 
         // Prevent unnecessary redraws
         var old = date_label.get_label();
+
+        time = new DateTime.now_local();
         var ctime = time.format(ftime);
+
         if (old == ctime) {
             return;
         }

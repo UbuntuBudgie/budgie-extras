@@ -92,11 +92,20 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
             "After a break, start count down when user is active"
         )
         maingrid.attach(smartres, 0, 7, 4, 1)
+        # automatically unlock checkbox
+        autounlock = Gtk.CheckButton("Automatically unlock after break")
+        autounlock_set = tab_settings.get_boolean("unlockafterbreak")
+        autounlock.set_active(autounlock_set)
+        autounlock.connect("toggled", self.update_setting, "unlockafterbreak")
+        autounlock.set_tooltip_text(
+            "After a break, automatically unlock screen"
+        )
+        maingrid.attach(autounlock, 0, 8, 4, 1)
         # sep below  section
-        maingrid.attach(Gtk.Label("\n"), 0, 8, 1, 1)
+        maingrid.attach(Gtk.Label("\n"), 0, 9, 1, 1)
         # option label
         breaktime_label = Gtk.Label("Effect:\n", xalign=0)
-        maingrid.attach(breaktime_label, 0, 9, 1, 1)
+        maingrid.attach(breaktime_label, 0, 10, 1, 1)
         # dropdown
         self.effect_options = [
             ["rotate", "Screen upside down"],
@@ -113,7 +122,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
             command_combo.append_text(cmd[1])
         command_combo.set_active(effect_index)
         command_combo.connect("changed", self.update_setting, "mode")
-        maingrid.attach(effect_box, 0, 10, 2, 1)
+        maingrid.attach(effect_box, 0, 11, 2, 1)
         effect_box.pack_start(command_combo, False, True, 0)
         self.show_all()
 
@@ -121,7 +130,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
         if setting in ["awaketime", "sleeptime"]:
             newval = int(widget.get_value())
             tab_settings.set_int(setting, newval)
-        elif setting in ["showmessage", "smartresume"]:
+        elif setting in ["showmessage", "smartresume", "unlockafterbreak"]:
             newval = widget.get_active()
             tab_settings.set_boolean(setting, newval)
         elif setting == "mode":
@@ -145,7 +154,6 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         self.icon.set_from_icon_name(
             "takeabreak-symbolic", Gtk.IconSize.MENU
         )
-
         self.box = Gtk.EventBox()
         self.box.add(self.icon)
         self.add(self.box)
