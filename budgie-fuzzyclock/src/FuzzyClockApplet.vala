@@ -33,7 +33,7 @@ public const string CALENDAR_MIME = "text/calendar";
 public class FuzzyClockRule
 {
     public string format = "";
-    public int hour_offset = 0;
+    public int64 hour_offset = 0;
     /**
      * Format string rules
      *      one for each of 12 text formats
@@ -42,8 +42,8 @@ public class FuzzyClockRule
     {
         string[] rule_texts = rule_text.split("|");
         this.format = rule_texts[0];
-        if (rule_texts.length > 0) {
-            this.hour_offset = int.parse(rule_texts[1]);
+        if (rule_texts.length > 1) {
+            int64.try_parse(rule_texts[1], out this.hour_offset);
         }
     }
 }
@@ -126,65 +126,64 @@ public class FuzzyClockApplet : Budgie.Applet
         _("twenty-three"),
     };
 
-    // TRANSLATORS: These format strings reference the above hour string
+    // TRANSLATORS: These format strings reference the above hour strings
     //              This is the fun part of fuzzy-clock, feel free to
     //              be inventive within your language
     //
     // the format rules are divided into 12 buckets
-    // each bucket contains a rule for displaying the time
-    //     * the 'rounded-hour mode'
-    //           the first half hour inclusively references the previous hour numeral
-    //           the second half hour references the next hour numeral
-    //  since this presents a problem for some languages, where
-    //  it is more natural in some languages to reference the future hour numeral
+    // each bucket contains a rule for displaying the time within an hour
+    // This presents a problem for some languages, where it is more natural
+    // to reference the future hour numeral
     //
     //  English Example:
-    //       "quarter after one"  --> "quarter to 2"
-    //       "half-past one"      --> "half to 2"
-    //       "quarter til two"    --> "three-quarters to 2"
+    //       "quarter after one"  --> "1:15"
+    //       "half-past one"      --> "1:30"
+    //       "quarter til two"    --> "2:45"
     //
-    //  In some languages this only applies on the quarter hour marks
-    //  to compensate for this, each rule will given an offset written as a translatable-string
-    //  the english is provided as the default, but a language can alter the offset of any rule
-    //  by using "<language-text>|<offset-value>" where
-    //       language-text   includes a single '%s' where the hours[] text will be placed
-    //       offset-value    an integer value to adjust the hour
+    //  To satisfy the need for a future hour each rule can include a 'forward-hour offset'
+    //  the english is provided as the default, but any language can change the offset to fit
+    //  by using "<language-text>|+1" to indicate this rule needs use of the forward hour
 
     protected FuzzyClockRule[] rules = {
         // TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
-        new FuzzyClockRule(_("%s-ish|0")),
+        new FuzzyClockRule(_("%s-ish")),
 
         // TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
-        new FuzzyClockRule(_("a bit past %s|0")),
+        new FuzzyClockRule(_("a bit past %s")),
 
         // TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
-        new FuzzyClockRule(_("ten past %s|0")),
+        new FuzzyClockRule(_("ten past %s")),
 
         // TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
-        new FuzzyClockRule(_("quarter after %s|0")),
+        new FuzzyClockRule(_("quarter after %s")),
 
         // TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-        new FuzzyClockRule(_("twenty past %s|0")),
+        new FuzzyClockRule(_("twenty past %s")),
 
         // TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-        new FuzzyClockRule(_("almost half-past %s|0")),
+        new FuzzyClockRule(_("almost half-past %s")),
 
         // TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-        new FuzzyClockRule(_("half-past %s|0")),
+        new FuzzyClockRule(_("half-past %s")),
 
-        // TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two' by using offset=1
+        // TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+        // +1 '%s' will be replaced with the upcoming hour
         new FuzzyClockRule(_("twenty-five 'til %s|+1")),
 
-        // TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two' by using offset=1
+        // TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+        // +1 '%s' will be replaced with the upcoming hour
         new FuzzyClockRule(_("twenty 'til %s|+1")),
 
-        // TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two' by using offset=1
+        // TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+        // +1 '%s' will be replaced with the upcoming hour
         new FuzzyClockRule(_("quarter 'til %s|+1")),
 
-        // TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two' by using offset=1
+        // TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+        // +1 '%s' will be replaced with the upcoming hour
         new FuzzyClockRule(_("ten 'til %s|+1")),
 
-        // TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two' by using offset=1
+        // TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+        // +1 '%s' will be replaced with the upcoming hour
         new FuzzyClockRule(_("almost %s|+1")),
     };
 
@@ -563,7 +562,7 @@ public class FuzzyClockApplet : Budgie.Applet
     protected bool update_clock()
     {
         var now = new DateTime.now_local();
-        int hour = now.get_hour();
+        int64 hour = now.get_hour();
         int minute = now.get_minute();
         int rule = (int)Math.floor((minute + 2) / 5); // Round minutes
 
