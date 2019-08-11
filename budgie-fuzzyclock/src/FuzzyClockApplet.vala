@@ -32,19 +32,23 @@ public const string CALENDAR_MIME = "text/calendar";
 
 public class FuzzyClockRule
 {
+    protected const string back_hour = "%-s";
     protected const string fwd_hour = "%+s";
     public string format = "";
-    public int64 hour_offset = 0;
+    public int hour_offset = 0;
     /**
      * Format string rules
      *      one for each of 12 text formats
      */
-    public FuzzyClockRule(string rule_text, int64 hour_offset)
+    public FuzzyClockRule(string rule_text, int hour_offset)
     {
-        this.format = rule_text.replace(fwd_hour, "%s");
+        this.format = rule_text.replace(fwd_hour, "%s").replace(back_hour, "%s");
         this.hour_offset = hour_offset;
         if (rule_text.contains(fwd_hour)) {
             this.hour_offset = hour_offset + 1;
+        }
+        else if (rule_text.contains(back_hour)) {
+            this.hour_offset = hour_offset - 1;
         }
     }
 }
@@ -144,51 +148,73 @@ public class FuzzyClockApplet : Budgie.Applet
 
     protected FuzzyClockRule[] rules = {
         // TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %s, the hour replacement is this current hour
         new FuzzyClockRule(_("%s-ish"), 0),
 
         // TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("a bit past %s"), 0),
 
         // TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("ten past %s"), 0),
 
         // TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("quarter after %s"), 0),
 
         // TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("twenty past %s"), 0),
 
         // TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("almost half-past %s"), 0),
 
         // TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+        // by using %-s, you can influence the hour replacement backward one hour
+        // by using %s, the hour replacement is this current hour
         // by using %+s, you can influence the hour replacement forward one hour
         new FuzzyClockRule(_("half-past %s"), 0),
 
         // TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %-s, the hour replacement is this current hour
+        // by using %s, the hour replacement is the next hour
+        // by using %+s, you can influence the hour replacement 2 hours forward
         new FuzzyClockRule(_("twenty-five 'til %s"), 1),
 
         // TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %-s, the hour replacement is this current hour
+        // by using %s, the hour replacement is the next hour
+        // by using %+s, you can influence the hour replacement 2 hours forward
         new FuzzyClockRule(_("twenty 'til %s"), 1),
 
         // TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %-s, the hour replacement is this current hour
+        // by using %s, the hour replacement is the next hour
+        // by using %+s, you can influence the hour replacement 2 hours forward
         new FuzzyClockRule(_("quarter 'til %s"), 1),
 
         // TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %-s, the hour replacement is this current hour
+        // by using %s, the hour replacement is the next hour
+        // by using %+s, you can influence the hour replacement 2 hours forward
         new FuzzyClockRule(_("ten 'til %s"), 1),
 
         // TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
-        // by using %+s, you can influence the hour replacement forward one hour
+        // by using %-s, the hour replacement is this current hour
+        // by using %s, the hour replacement is the next hour
+        // by using %+s, you can influence the hour replacement 2 hours forward
         new FuzzyClockRule(_("almost %s"), 1),
     };
 
@@ -567,7 +593,7 @@ public class FuzzyClockApplet : Budgie.Applet
     protected bool update_clock()
     {
         var now = new DateTime.now_local();
-        int64 hour = now.get_hour();
+        int hour = now.get_hour();
         int minute = now.get_minute() + 2;           // Fuzz the minutes
         int rule = (int)Math.floor(minute / 5) % 12; // Round minutes so they fit into one of 12 rules
 
@@ -578,7 +604,9 @@ public class FuzzyClockApplet : Budgie.Applet
         // if the rule wants the next hour
         hour += rules[rule].hour_offset;
 
-        if (hour >= 24)              // Day hour-rollover
+        if (hour < 0)                // Negative Hour
+            hour += 24;
+        else if (hour >= 24)         // End of Day hour-rollover
             hour -= 24;
         else if (ampm && hour >= 13) // AM|PM hour rollover
             hour -= 12;
