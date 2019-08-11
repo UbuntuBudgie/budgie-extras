@@ -46,7 +46,6 @@ public class FuzzyClockRule
         if (rule_text.contains(fwd_hour)) {
             this.hour_offset = hour_offset + 1;
         }
-        warning("%s(%d)", this.format, (int)this.hour_offset);
     }
 }
 
