@@ -129,17 +129,14 @@ public class FuzzyClockApplet : Budgie.Applet
     // TRANSLATORS: These format strings reference the above hour strings
     //              This is the fun part of fuzzy-clock, feel free to
     //              be inventive within your language
-    //
     // the format rules are divided into 12 buckets
     // each bucket contains a rule for displaying the time within an hour
     // This presents a problem for some languages, where it is more natural
     // to reference the future hour numeral
-    //
-    //  English Example:
+    // English Example:
     //       "quarter after one"  --> "1:15"
     //       "half-past one"      --> "1:30"
     //       "quarter til two"    --> "2:45"
-    //
     //  To satisfy the need for a future hour each rule can include a 'forward-hour offset'
     //  the english is provided as the default, but any language can change the offset to fit
     //  by using "<language-text>|+1" to indicate this rule needs use of the forward hour
@@ -563,17 +560,19 @@ public class FuzzyClockApplet : Budgie.Applet
     {
         var now = new DateTime.now_local();
         int64 hour = now.get_hour();
-        int minute = now.get_minute();
-        int rule = (int)Math.floor((minute + 2) / 5); // Round minutes
+        int minute = now.get_minute() + 2;           // Fuzz the minutes
+        int rule = (int)Math.floor(minute / 5) % 12; // Round minutes so they fit into one of 12 rules
 
+        // if the rounding of the minutes puts us in the next hour
+        if (minute >= 60)
+            hour += 1;
+
+        // if the rule wants the next hour
         hour += rules[rule].hour_offset;
 
-        if (rule >= 12)         // roll-over rule when it reaches 12
-            rule = 0;
-
-        if (hour >= 24)         // between 23:35 and 00:00
-            hour = 0;
-        else if (ampm && hour >= 13) // 13:00-23:00 becomes 1-12
+        if (hour >= 24)              // Day hour-rollover
+            hour -= 24;
+        else if (ampm && hour >= 13) // AM|PM hour rollover
             hour -= 12;
 
         string ftime;
