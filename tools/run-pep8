@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+set -e
 
 echo "= pycodestyle ="
 
@@ -10,15 +10,14 @@ command -v pycodestyle >/dev/null 2>&1 || {
   echo >&2 "$ pip install pycodestyle";
   exit 1;
 }
-alias FIND="find . -type f"
-for i in $(${FIND} -exec grep -l "env python3" {} \;); do
+for i in $(find . -type f -exec grep -l "env python3" {} \;); do
     if [[ $i != *pep8 && $i != *meson* && $i != *venv* ]]; then
         echo "checking $i"
         pycodestyle --ignore W191 --ignore E402 $i
     fi
 done
 
-for i in $(${FIND} -iname '*.py'); do
+for i in $(find . -type f -iname '*.py'); do
     if [[ $i != *venv* ]]; then
         echo "checking $i:"
         pycodestyle --ignore W191 --ignore E402 $i
