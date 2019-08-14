@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 12),
 		python3,
 		meson,
 		dh-python,
-		pycodestyle,
+		pep8,
 		pkg-config,
 		gobject-introspection,
 		libgtk-3-dev,
@@ -89,24 +89,27 @@ Description: Applet displays files recently accessed for the Budgie Desktop
 
 Package: budgie-previews-applet
 Architecture: all
-Section: oldlibs
-Depends: budgie-previews
-	${misc:Depends}
-Description: Window previews for the Budgie Desktop - transitional package
- This package is here to ensure smooth upgrades.  It can be removed
- when you see fit.
-
-Package: budgie-previews
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Breaks: budgie-previews-applet (<= 0.9.0)
-Replaces: budgie-preview-applet (<= 0.9.0)
-Description: Window previews for the Budgie Desktop
- This is part of a suite of python3 and Vala based applets & mini-apps
- created for the Budgie Desktop that provide additional user orientated
- capabilities. These can be used individually or as a set.
+Depends: python3,
+	python3-gi,
+	wmctrl,
+	xdotool,
+	xprintidle,
+	gir1.2-budgie-1.0,
+	gir1.2-glib-2.0,
+	gir1.2-gtk-3.0,
+	gir1.2-peas-1.0,
+	python3-psutil,
+	python3-cairo,
+	python3-gi-cairo,
+	dconf-cli,
+	imagemagick,
+	${misc:Depends}, ${python3:Depends}
+Description: Applet providing window previews capabilities for the Budgie Desktop
+ This is part of a suite of python3 based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
  .
- The Previews mini app shows an overview of windows in an expose like way.
+ The Previews applet shows an overview of windows in an expose like way.
 
 Package: budgie-workspace-overview-applet
 Architecture: all
