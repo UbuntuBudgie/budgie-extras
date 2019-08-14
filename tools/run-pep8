@@ -1,16 +1,25 @@
 #!/bin/bash
 set -e
 
-echo "= pep8 ="
+echo "= pycodestyle ="
 
-for i in `find . -type f -exec grep -l "env python3" {} \;`; do
-    if [[ $i != *pep8 && $i != *meson* ]]; then
+command -v pycodestyle >/dev/null 2>&1 || {
+  echo >&2 "I require pycodestyle but it's not installed.  Aborting.";
+  echo >&2 "$ virtualenv -p python3 venv";
+  echo >&2 "$ . venv/bin/activate";
+  echo >&2 "$ pip install pycodestyle";
+  exit 1;
+}
+for i in $(find . -type f -exec grep -l "env python3" {} \;); do
+    if [[ $i != *pep8 && $i != *meson* && $i != *venv* ]]; then
         echo "checking $i"
-        pep8 --ignore W191 --ignore E402 $i
+        pycodestyle --ignore W191 --ignore E402 $i
     fi
 done
 
-for i in `find . -iname '*.py'`; do
-    echo "checking $i"
-    pep8 --ignore W191 --ignore E402 $i 
+for i in $(find . -type f -iname '*.py'); do
+    if [[ $i != *venv* ]]; then
+        echo "checking $i:"
+        pycodestyle --ignore W191 --ignore E402 $i
+    fi
 done
