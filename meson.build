@@ -43,11 +43,6 @@ message('Installing applets...')
 build_all = get_option('build-all')
 subdir('po')
 
-build_wpreviews = get_option('build-wpreviews')
-if build_all == true or build_wpreviews == true
-  subdir('budgie-wpreviews')
-endif
-
 build_wswitcher = get_option('build-wswitcher')
 if build_all == true or build_wswitcher == true
 	subdir('budgie-wswitcher')
@@ -56,6 +51,11 @@ endif
 build_hotcorners = get_option('build-hotcorners')
 if build_all == true or build_hotcorners == true
 	subdir('budgie-hotcorners')
+endif
+
+build_wpreviews = get_option('build-wpreviews')
+if build_all == true or build_wpreviews == true
+  subdir('budgie-wpreviews')
 endif
 
 build_quicknote = get_option('build-quicknote')
