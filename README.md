@@ -4,7 +4,6 @@ Additional enhancements for the user experience
 
 ## Plugins:
 
- - Window Previews
  - Hotcorners
  - Quicknote
  - Workspace Switcher Overview
@@ -33,13 +32,14 @@ Non-budgie plugins - see the individual components for details
  - Budgie Visualspace
  - Budgie Extras Daemon
  - Budgie Quickchar
+ - Budgie Window Previews
 
  ## Installation
 
  By default all applets are compiled and installed:
 
      mkdir build && cd build
-     meson --buildtype plain --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
+     meson --buildtype plain --prefix=/usr --libdir=/usr/lib
      ninja -v
      sudo ninja install
 
@@ -49,7 +49,7 @@ the options described in meson_options.txt i.e. use `-Dbuild-all=false -Dbuild-a
 e.g. to build just the hotcorners and weathershow applets
 
      mkdir build && cd build
-     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib --datadir=/usr/share ..
+     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
      ninja -v
      sudo ninja install
 
