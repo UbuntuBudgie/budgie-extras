@@ -4,7 +4,7 @@ substprog = find_program('subst.py')
 mytarget1 = custom_target('preview_allbackward',
   output : 'preview_allbackward.bde',
   input : 'preview_allbackward.bde.in',
-  command : [substprog, '@INPUT@', BDE_LOC, '@OUTPUT@'],
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : BDE_LOC
 )
@@ -12,7 +12,7 @@ mytarget1 = custom_target('preview_allbackward',
 mytarget2 = custom_target('preview_allforward',
   output : 'preview_allforward.bde',
   input : 'preview_allforward.bde.in',
-  command : [substprog, '@INPUT@', BDE_LOC, '@OUTPUT@'],
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : BDE_LOC
 )
@@ -20,7 +20,7 @@ mytarget2 = custom_target('preview_allforward',
 mytarget3 = custom_target('preview_currentbackward',
   output : 'preview_curentbackward.bde',
   input : 'preview_currentbackward.bde.in',
-  command : [substprog, '@INPUT@', BDE_LOC, '@OUTPUT@'],
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : BDE_LOC
 )
@@ -28,7 +28,7 @@ mytarget3 = custom_target('preview_currentbackward',
 mytarget4 = custom_target('preview_currentforward',
   output : 'preview_currentforward.bde',
   input : 'preview_currentforward.bde.in',
-  command : [substprog, '@INPUT@', BDE_LOC, '@OUTPUT@'],
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : BDE_LOC
 )
