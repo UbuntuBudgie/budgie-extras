@@ -20,6 +20,8 @@ intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
+sysconfdir = get_option('sysconfdir')
+
 podir = join_paths(meson.source_root(), 'po')
 
 LOCALE_DIR = join_paths(prefix, get_option('localedir'))

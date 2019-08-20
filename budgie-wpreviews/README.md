@@ -1,11 +1,39 @@
-Budgie WindowPreviews is an application (applet) to show an overview of windows in an expose- like way. After the applet is added to the panel, two commands can be run from shortcuts. 
+# Setup
 
-1] to show an overview of all windows on the current workspace: /usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window 
+- compile `previews_triggers.vala `
+- compile `window_daemon.vala`
+- compile `previews_creator.vala`
+- copy folder `pics` to the same location as the executable `alttab_runner.vala`
+- install the gschema
 
-![drag](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wpreviews/all.png)
-
-2] to show an overview of windows of the currently active window: /usr/lib/budgie-desktop/plugins/budgie-wprviews/wprviews_window current.
-
-![workspace](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wpreviews/current.png)
+- Run both `window_daemon` and `previews_creator`
+- Set previews to show windows from all workspaces or only current in the key `/org/ubuntubudgie/plugins/budgie-wpreviews/allworkspaces`
 
 
+Create shortcuts
+- all applications / browse forward: Alt + Tab -> `preview_triggers`
+- all applications / browse backward: Alt + Shift + Tab -> `preview_triggers previous`
+- current application / browse forward: Alt + above-Tab -> `preview_triggers current`
+- all applications / browse backward: Alt + Shift + above-Tab -> `preview_triggers current previous`
+
+*Alt_L is needed as modifier, to trigger closing previews
+
+# Run from hotcorners
+- `preview_triggers`
+
+or 
+
+- `preview_triggers current`
+
+- Press Escape to close
+
+- run the daemon `alttab_runner`
+
+# Still to fix
+- Let's find out
+
+# Still to do.
+- 
+
+# Possible tweaks/improvements
+- n-columns is currently taken from primary monitor, make it more sophisticated?

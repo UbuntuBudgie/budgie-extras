@@ -2,10 +2,15 @@
 <schemalist>
     <schema path="/org/ubuntubudgie/plugins/budgie-wpreviews/"
             id="org.ubuntubudgie.plugins.budgie-wpreviews">
-        <key type="b" name="keybind">
+        <key type="b" name="allworkspaces">
+            <summary>Show windows from all workspaces</summary>
+            <description>Whether to show windows from all workspaces</description>
             <default>false</default>
-            <summary>Disable keybinding</summary>
-            <description>Do not create the keybinding to activate previews</description>
+        </key>
+        <key type="b" name="enable-previews">
+            <summary>Enable Previews</summary>
+            <description>Whether to enable window previews</description>
+            <default>true</default>
         </key>
     </schema>
 </schemalist>

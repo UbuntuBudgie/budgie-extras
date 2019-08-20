@@ -9,6 +9,4 @@ schemadir = os.path.join(os.environ["MESON_INSTALL_PREFIX"],
 if not os.environ.get("DESTDIR"):
     print("Compiling gsettings schemas...")
     subprocess.call(["glib-compile-schemas", schemadir])
-# print("Update icon cache...")
-# subprocess.call(["gtk-update-icon-cache",
-# "-f", "/usr/share/icons/hicolor"])
+
