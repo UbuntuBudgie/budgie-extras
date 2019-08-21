@@ -88,28 +88,17 @@ Description: Applet displays files recently accessed for the Budgie Desktop
  or created within a configurable period of time.
 
 Package: budgie-previews-applet
-Architecture: all
-Depends: python3,
-	python3-gi,
-	wmctrl,
-	xdotool,
-	xprintidle,
-	gir1.2-budgie-1.0,
-	gir1.2-glib-2.0,
-	gir1.2-gtk-3.0,
-	gir1.2-peas-1.0,
-	python3-psutil,
-	python3-cairo,
-	python3-gi-cairo,
-	dconf-cli,
-	imagemagick,
-	${misc:Depends}, ${python3:Depends}
+Architecture: any
+Depends: budgie-extras-daemon,
+  ${misc:Depends}, ${shlibs:Depends}
 Description: Applet providing window previews capabilities for the Budgie Desktop
- This is part of a suite of python3 based applets for the Budgie
- Desktop that provide additional user orientated capabilities.
- The applets can be used individually or as a set.
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
  .
- The Previews applet shows an overview of windows in an expose like way.
+ budgie-previews can be used on most desktop environments.
+ .
+ Previews shows an overview of windows in an expose like way.
 
 Package: budgie-workspace-overview-applet
 Architecture: all
