@@ -31,8 +31,8 @@ Non-budgie plugins - see the individual components for details
 
  - Budgie Visualspace
  - Budgie Extras Daemon
- - Budgie Quickchar
- - Budgie Window Previews
+ - Budgie Quickchar (needs the extras daemon as a runtime dependency)
+ - Budgie Window Previews (needs the extras daemon as a runtime dependency)
 
  ## Installation
 
