@@ -65,7 +65,9 @@ We love Budgie-Extras to work across as many distro's as possible.  So please le
 
 ## Build/Runtime dependencies
 
-The following packages are required for the various Python plugins to work:
+Use the debian/control file on the debian branch to understand the build and runtime package dependencies for each applet.
+
+Overall, the following packages are required for the various Python plugins to work:
 
  - wmctrl
  - xdotool
