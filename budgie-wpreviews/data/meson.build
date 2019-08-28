@@ -18,7 +18,7 @@ mytarget2 = custom_target('preview_allforward',
 )
 
 mytarget3 = custom_target('preview_currentbackward',
-  output : 'preview_curentbackward.bde',
+  output : 'preview_currentbackward.bde',
   input : 'preview_currentbackward.bde.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
@@ -28,6 +28,22 @@ mytarget3 = custom_target('preview_currentbackward',
 mytarget4 = custom_target('preview_currentforward',
   output : 'preview_currentforward.bde',
   input : 'preview_currentforward.bde.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+mytarget3a = custom_target('preview_currentbackward_grave',
+  output : 'preview_currentbackward_grave.bde',
+  input : 'preview_currentbackward_grave.bde.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+mytarget4a = custom_target('preview_currentforward_grave',
+  output : 'preview_currentforward_grave.bde',
+  input : 'preview_currentforward_grave.bde.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : BDE_LOC
