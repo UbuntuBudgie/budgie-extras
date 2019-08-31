@@ -17,18 +17,15 @@
             <summary>Check if another applet runs if the command depends on it</summary>
             <description>Default commands possibly call another applet which needs to run
             These are command - corresponding applet combinations</description>
-            <default>[
-            "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc nokeys', 'name': 'Window Previews'}",
-            "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc current nokeys', 'name': 'Window Previews'}"
-            ]</default>
+            <default>[]</default>
         </key>
         <key type="as" name="dropdown">
             <summary>Command list dropdown menu</summary>
             <description>The default list of commands/names in the dropdown menu</description>
             <default>[
 	    "{'command': 'xdotool key Super_L+d', 'name': 'Show Desktop'}",
-            "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc nokeys', 'name': 'Exposé all windows'}", 
-            "{'command': '/usr/lib/budgie-desktop/plugins/budgie-wprviews/wprv_hc current nokeys', 'name': 'Exposé current application'}",
+            "{'command': '/usr/lib/budgie-previews/previews_triggers', 'name': 'Exposé all windows'}", 
+            "{'command': '/usr/lib/budgie-previews/previews_triggers current', 'name': 'Exposé current application'}",
             "{'command': 'budgie-desktop-settings', 'name':'Budgie Desktop Settings'}", 
             "{'command': 'gnome-screensaver-command -l', 'name': 'Lock screen'}",
     	    "{'command': 'xdotool key super+n', 'name': 'Show Raven notifications'}", 
