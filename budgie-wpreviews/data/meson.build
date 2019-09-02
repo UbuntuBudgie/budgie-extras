@@ -72,7 +72,7 @@ APP_LOC=join_paths(datadir, 'applications')
 mytarget7 = custom_target('previewscontrols',
   output : 'previewscontrols.desktop',
   input : 'previewscontrols.desktop.in',
-  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
   install_dir : APP_LOC
 )
