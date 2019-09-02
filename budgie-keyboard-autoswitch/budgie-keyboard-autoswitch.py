@@ -118,9 +118,12 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         # initiate
         try:
             # get the possible existing dict data
-            self.langdata = ast.literal_eval(
-                open(lang_datafile).read().strip()
-            )
+            f = open(lang_datafile)
+            val = f.read()
+            if val == "":
+                raise FileNotFoundError
+            self.langdata = ast.literal_eval(val.strip())
+
         except FileNotFoundError:
             self.langdata = {}
         try:
