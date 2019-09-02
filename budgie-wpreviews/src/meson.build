@@ -1,3 +1,8 @@
+configurationData = configuration_data()
+configurationData.set('PACKAGE_NAME', meson.project_name())
+configurationData.set('LOCALE_DIR', LOCALE_DIR)
+configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
+
 
 BudgiePreviewCreatorSources = [
 'previews_creator.vala'
@@ -24,12 +29,16 @@ dependency('gdk-x11-3.0')
 ]
 
 BudgiePreviewValaArgs = [
-'--target-glib=2.38'
+'--target-glib=2.38',
+'--pkg=config',
+'--vapidir=' + VAPI_DIR
 ]
 
 
 BudgiePreviewCArgs = [
-'-DWNCK_I_KNOW_THIS_IS_UNSTABLE'
+'-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
+'-include',
+'config.h'
 ]
 
 LIB_INSTALL_DIR = join_paths(prefix, libdir, application_id)
