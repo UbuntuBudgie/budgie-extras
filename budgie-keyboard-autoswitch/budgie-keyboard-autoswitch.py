@@ -26,6 +26,7 @@ import time
 import subprocess
 import ast
 import psutil
+import dbus
 
 
 settingspath = os.path.join(
@@ -140,6 +141,11 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         delete_button.connect("clicked", self.remove_exception)
         self.act_on_gsettingschange()
         self.settings.connect("changed::sources", self.act_on_gsettingschange)
+
+        # Use dbus connection to check for the screensaver activity
+        self.bus = dbus.SessionBus()
+        self.session = self.bus.get_object("org.gnome.ScreenSaver", "/")
+
         # thread
         GObject.threads_init()
         # thread
@@ -165,11 +171,8 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
             return " ".join(lang)
 
     def lockscreen_check(self):
-        lockproc = "gnome-screensaver-dialog"
-        try:
-            return lockproc in (p.name() for p in psutil.process_iter())
-        except psutil.NoSuchProcess:
-            return False
+        val = self.session.get_dbus_method('GetActive')
+        return val()
 
     def change_ondeflang_select(self, widget):
         """
