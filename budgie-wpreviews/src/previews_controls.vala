@@ -25,20 +25,20 @@ namespace PreviewsControls {
 
         public ControlsWindow () {
             this.set_position(Gtk.WindowPosition.CENTER);
-            this.title = "Previews Controls";
+            this.title = _("Previews Control");
             maingrid = new Gtk.Grid();
             this.add(maingrid);
             set_margins();
             var toggle_previews = new Gtk.CheckButton.with_label(
-                "Run Previews"
+                _("Run Previews")
             );
             var toggle_allworkspaces = new Gtk.CheckButton.with_label(
-                "Show windows of all workspaces"
+                _("Show windows of all workspaces")
             );
             var ok_button = new Button.with_label("Close");
             ok_button.clicked.connect(Gtk.main_quit);
 
-            var instruct = new Label("Logout/Login for changes to take effect");
+            var instruct = new Label(_("Logout/Login for changes to take effect"));
             var empty = new Label("");
 
             maingrid.attach(toggle_previews, 1, 1, 1, 1);
