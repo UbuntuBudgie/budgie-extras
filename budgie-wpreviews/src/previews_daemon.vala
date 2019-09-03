@@ -99,6 +99,33 @@ namespace NewPreviews {
         }
         """;
 
+        private string[] get_devices() {
+            // get the fixed section of the function
+            string output = "";
+            try {
+                GLib.Process.spawn_command_line_sync(
+                    "/usr/bin/xinput --list", out output
+                );
+            }
+            catch (Error e) {
+                //simply pass, nothing bad will happen on a single failure
+            }
+            string[] keyboard_data = output.split("\n");
+            string[] valid = {};
+            foreach (string s in keyboard_data) {
+                    if (
+                        !s.contains("Button") && 
+                        !s.contains("Virtual") && 
+                        !s.contains("pointer") &&
+                        s.contains("id")) {
+                            //device ids to check
+                            string tocheck = s.split("=")[1].split("\t")[0];
+                            valid += tocheck;
+                    }
+                }
+                return valid;
+            }
+            
 
         private Grid create_hspacer(int extend = 0) {
             // last row needs to be positioned, add to all boxes,
@@ -259,6 +286,35 @@ namespace NewPreviews {
         }
 
         public PreviewsWindow () {
+
+            /*
+            safety" procedure to make sure the window doesn't stick on
+            reversed release Alt-Tab
+            */
+            string[] devices = get_devices();
+            GLib.Timeout.add (100, () => {
+                bool pressed = false;
+                foreach (string s in devices) {
+                    string output = "";
+                    try {
+                        GLib.Process.spawn_command_line_sync(
+                            "/usr/bin/xinput --query-state " + s, out output
+                        );
+                    }
+                    catch (Error e) {
+                        // just pass
+                    }
+                    pressed = output.contains("down");
+                    if (pressed) {
+                        break;
+                    }
+                }
+                if (!pressed) {
+                    currbuttons[currtilindex].clicked();
+                    return false;
+                }
+                return true;
+            });
             // if nothing to show
             no_windows = true;
             this.set_default_size(200, 150);
