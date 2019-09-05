@@ -34,9 +34,13 @@ namespace NewPreviews {
     File triggerdir;
     File nexttrigger;
     File allappstrigger;
+    /////
     File allappstriggerhotc;
+    File currapptriggerhotc;/////
     bool allappshotc_trigger;
+    bool currapphotc_trigger;
     bool prev_winexists;
+    /////
     File previoustrigger;
     File triggercurrent;
     bool ignore;
@@ -292,7 +296,7 @@ namespace NewPreviews {
             safety" procedure to make sure the window doesn't stick on
             reversed release Alt-Tab
             */
-            if (!allappshotc_trigger) {
+            if (!allappshotc_trigger && !currapphotc_trigger) {
                 string[] devices = get_devices();
                 GLib.Timeout.add (100, () => {
                     bool pressed = false;
@@ -544,17 +548,22 @@ namespace NewPreviews {
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
         if (event == FileMonitorEvent.CREATED) {
+
+
             bool allapps_trigger = allappstrigger.query_exists();
             bool onlycurrent_trigger = triggercurrent.query_exists();
             allappshotc_trigger = allappstriggerhotc.query_exists();
+            currapphotc_trigger = currapptriggerhotc.query_exists();
+            // ok, I am lazy
             delete_file(allappstriggerhotc);
-            print(@"winexists: $prev_winexists\n");
-            if (allappshotc_trigger && prev_winexists) {
+            delete_file(currapptriggerhotc);
+            bool fromhotcorner = allappshotc_trigger || currapphotc_trigger;
+            if (fromhotcorner && prev_winexists) {
                 previews_window.destroy();
                 cleanup();
             }
             else if (
-                allapps_trigger || onlycurrent_trigger || allappshotc_trigger
+                allapps_trigger || onlycurrent_trigger || allappshotc_trigger || currapphotc_trigger
             ) {
                 if (!ignore) {
                     if (allapps_trigger || allappshotc_trigger)  {
@@ -600,6 +609,9 @@ namespace NewPreviews {
         );
         allappstriggerhotc = File.new_for_path(
             "/tmp/".concat(user, "_prvtrigger_all_hotcorner")
+        );
+        currapptriggerhotc = File.new_for_path(
+            "/tmp/".concat(user, "_prvtrigger_curr_hotcorner")
         );
         nexttrigger = File.new_for_path(
             "/tmp/".concat(user, "_nexttrigger")
