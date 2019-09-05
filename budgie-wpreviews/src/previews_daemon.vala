@@ -34,13 +34,11 @@ namespace NewPreviews {
     File triggerdir;
     File nexttrigger;
     File allappstrigger;
-    /////
     File allappstriggerhotc;
-    File currapptriggerhotc;/////
+    File currapptriggerhotc;
     bool allappshotc_trigger;
     bool currapphotc_trigger;
     bool prev_winexists;
-    /////
     File previoustrigger;
     File triggercurrent;
     bool ignore;
