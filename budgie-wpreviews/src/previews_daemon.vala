@@ -34,6 +34,9 @@ namespace NewPreviews {
     File triggerdir;
     File nexttrigger;
     File allappstrigger;
+    File allappstriggerhotc;
+    bool allappshotc_trigger;
+    bool prev_winexists;
     File previoustrigger;
     File triggercurrent;
     bool ignore;
@@ -114,8 +117,8 @@ namespace NewPreviews {
             string[] valid = {};
             foreach (string s in keyboard_data) {
                     if (
-                        !s.contains("Button") && 
-                        !s.contains("Virtual") && 
+                        !s.contains("Button") &&
+                        !s.contains("Virtual") &&
                         !s.contains("pointer") &&
                         s.contains("id")) {
                             //device ids to check
@@ -125,7 +128,6 @@ namespace NewPreviews {
                 }
                 return valid;
             }
-            
 
         private Grid create_hspacer(int extend = 0) {
             // last row needs to be positioned, add to all boxes,
@@ -286,35 +288,37 @@ namespace NewPreviews {
         }
 
         public PreviewsWindow () {
-
             /*
             safety" procedure to make sure the window doesn't stick on
             reversed release Alt-Tab
             */
-            string[] devices = get_devices();
-            GLib.Timeout.add (100, () => {
-                bool pressed = false;
-                foreach (string s in devices) {
-                    string output = "";
-                    try {
-                        GLib.Process.spawn_command_line_sync(
-                            "/usr/bin/xinput --query-state " + s, out output
-                        );
+            if (!allappshotc_trigger) {
+                string[] devices = get_devices();
+                GLib.Timeout.add (100, () => {
+                    bool pressed = false;
+                    foreach (string s in devices) {
+                        string output = "";
+                        try {
+                            GLib.Process.spawn_command_line_sync(
+                                "/usr/bin/xinput --query-state " + s, out output
+                            );
+                        }
+                        catch (Error e) {
+                            // just pass
+                        }
+                        pressed = output.contains("down");
+                        if (pressed) {
+                            break;
+                        }
                     }
-                    catch (Error e) {
-                        // just pass
+                    if (!pressed) {
+                        currbuttons[currtilindex].clicked();
+                        return false;
                     }
-                    pressed = output.contains("down");
-                    if (pressed) {
-                        break;
-                    }
-                }
-                if (!pressed) {
-                    currbuttons[currtilindex].clicked();
-                    return false;
-                }
-                return true;
-            });
+                    return true;
+                });
+            }
+
             // if nothing to show
             no_windows = true;
             this.set_default_size(200, 150);
@@ -439,6 +443,7 @@ namespace NewPreviews {
                 reversed_buttons[1].grab_focus();
             }
             this.title = "PreviewsWindow";
+            prev_winexists = true;
             this.add(maingrid);
         }
 
@@ -482,8 +487,10 @@ namespace NewPreviews {
     private void cleanup () {
         // remove trigger files
         delete_file(allappstrigger);
+        delete_file(allappstriggerhotc);
         delete_file(triggercurrent);
         ignore = false;
+        prev_winexists = false;
     }
 
     private bool close_onrelease(Gdk.EventKey k) {
@@ -535,30 +542,39 @@ namespace NewPreviews {
         }
     }
 
-    private void actonfile() {
-        bool allapps_trigger = allappstrigger.query_exists();
-        bool onlycurrent_trigger = triggercurrent.query_exists();
-        if (
-            allapps_trigger || onlycurrent_trigger
-        ) {
-            if (!ignore) {
-                if (allapps_trigger) {
-                    allapps = true;
-                }
-                else {
-                    allapps = false;
-                }
-                previews_window = new PreviewsWindow();
-                previews_window.destroy.connect(cleanup);
-                previews_window.key_release_event.connect(close_onrelease);
-                previews_window.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
-                previews_window.show_all();
+    private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
+        if (event == FileMonitorEvent.CREATED) {
+            bool allapps_trigger = allappstrigger.query_exists();
+            bool onlycurrent_trigger = triggercurrent.query_exists();
+            allappshotc_trigger = allappstriggerhotc.query_exists();
+            delete_file(allappstriggerhotc);
+            print(@"winexists: $prev_winexists\n");
+            if (allappshotc_trigger && prev_winexists) {
+                previews_window.destroy();
+                cleanup();
             }
-            ignore = true;
-        }
-        else {
-            previews_window.destroy();
-            ignore = false;
+            else if (
+                allapps_trigger || onlycurrent_trigger || allappshotc_trigger
+            ) {
+                if (!ignore) {
+                    if (allapps_trigger || allappshotc_trigger)  {
+                        allapps = true;
+                    }
+                    else {
+                        allapps = false;
+                    }
+                    previews_window = new PreviewsWindow();
+                    previews_window.destroy.connect(cleanup);
+                    previews_window.key_release_event.connect(close_onrelease);
+                    previews_window.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
+                    previews_window.show_all();
+                }
+                ignore = true;
+            }
+            else {
+                previews_window.destroy();
+                ignore = false;
+            }
         }
     }
 
@@ -581,6 +597,9 @@ namespace NewPreviews {
         triggerdir = File.new_for_path("/tmp");
         allappstrigger = File.new_for_path(
             "/tmp/".concat(user, "_prvtrigger_all")
+        );
+        allappstriggerhotc = File.new_for_path(
+            "/tmp/".concat(user, "_prvtrigger_all_hotcorner")
         );
         nexttrigger = File.new_for_path(
             "/tmp/".concat(user, "_nexttrigger")
@@ -615,7 +634,7 @@ namespace NewPreviews {
         wnck_scr.active_workspace_changed.connect(update_currws);
         update_currws();
         wnck_scr.window_opened.connect(raise_previewswin);
-        // prevent cold start (no clue why, but it works)
+        // prevent cold start (not sure why, but it works)
         previews_window = new PreviewsWindow();
         previews_window.destroy();
         z_list = wnck_scr.get_windows_stacked();

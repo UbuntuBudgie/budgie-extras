@@ -21,6 +21,8 @@ namespace previews_triggers {
     possible args:
     - "current" (show only current apps)
     - "previous" (go one tile reverse)
+    - "hotcorners" (don't close previews window if no key pressed)
+
 
     this executable first creates a trigger file -allappstrigger- if no arg is
     set, or -triggercurrent- if the arg "current" is set. this file will
@@ -49,14 +51,19 @@ namespace previews_triggers {
         File triggercurrent = File.new_for_path(
             "/tmp/".concat(user, "_prvtrigger_current")
         );
-
+        File allappstriggerhotc = File.new_for_path(
+            "/tmp/".concat(user, "_prvtrigger_all_hotcorner")
+        );
         File trg = nexttrigger;
-        if (allappstrigger.query_exists() || triggercurrent.query_exists()) {
-            trg = nexttrigger;
-            if (check_args (args, "previous")) {
-                trg = previoustrigger;
-            }
+        if (check_args (args, "hotcorners")) {
+            trg = allappstriggerhotc;
         }
+        else if (allappstrigger.query_exists() || triggercurrent.query_exists()) {
+                trg = nexttrigger;
+                if (check_args (args, "previous")) {
+                    trg = previoustrigger;
+                }
+            }
         else {
             trg = allappstrigger;
             if (check_args(args, "current")) {
