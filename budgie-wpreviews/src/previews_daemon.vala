@@ -491,6 +491,7 @@ namespace NewPreviews {
         delete_file(allappstrigger);
         delete_file(allappstriggerhotc);
         delete_file(triggercurrent);
+        delete_file(currapptriggerhotc);
         ignore = false;
         prev_winexists = false;
     }
@@ -546,15 +547,10 @@ namespace NewPreviews {
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
         if (event == FileMonitorEvent.CREATED) {
-
-
             bool allapps_trigger = allappstrigger.query_exists();
             bool onlycurrent_trigger = triggercurrent.query_exists();
             allappshotc_trigger = allappstriggerhotc.query_exists();
             currapphotc_trigger = currapptriggerhotc.query_exists();
-            // ok, I am lazy
-            delete_file(allappstriggerhotc);
-            delete_file(currapptriggerhotc);
             bool fromhotcorner = allappshotc_trigger || currapphotc_trigger;
             if (fromhotcorner && prev_winexists) {
                 previews_window.destroy();
@@ -563,6 +559,10 @@ namespace NewPreviews {
             else if (
                 allapps_trigger || onlycurrent_trigger || allappshotc_trigger || currapphotc_trigger
             ) {
+
+                if (allappshotc_trigger || currapphotc_trigger) {
+                    cleanup();
+                }
                 if (!ignore) {
                     if (allapps_trigger || allappshotc_trigger)  {
                         allapps = true;
