@@ -118,7 +118,6 @@ class VisualSpace(Gtk.Window):
             pass
 
     def check_keys(self):
-        print("yay")
         if self.key_checker():
 
             return True
