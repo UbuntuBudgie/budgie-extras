@@ -42,4 +42,4 @@ subdir('src')
 subdir('weather_icons')
 subdir('icons_for_pixmaps')
 
-meson.add_install_script('meson_post_install')
+meson.add_install_script('meson_post_install.py')

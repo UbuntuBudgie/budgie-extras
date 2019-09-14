@@ -14,3 +14,5 @@ subdir('quickchar/data')
 install_data('quickchar/schema/org.ubuntubudgie.quickchar.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
 )
+
+meson.add_install_script('meson_post_install.py')
