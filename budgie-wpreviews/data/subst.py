@@ -28,7 +28,7 @@ with open(outputfile + staging, 'w') as file:
 
 if args == 5:
     subprocess.run(['intltool-merge',
-        '--desktop-style',
-        podir,
-        outputfile + staging,
-        outputfile])
+                    '--desktop-style',
+                    podir,
+                    outputfile + staging,
+                    outputfile])
