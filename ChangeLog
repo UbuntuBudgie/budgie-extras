@@ -1,3 +1,14 @@
+v0.10.1 Lets get stuck in...
+ - Fix visualspace window being displayed when releasing ctrl/alt after arrow keys
+ - Correctly integrate hotcorners with window previews
+ - Prevent window previews staying open if release alt+tab at the same time
+ - Reduce budgie panel CPU usage with keyboard auto-switch applet
+ - Add missing translation support for Window Previews menu
+ - Cope with Alt Above Tab keyboards using "dead_grave" instead of "grave"
+ - Fix for crash with keyboard auto-switch with malformed config file
+ - Rework quickchar startup control to ensure paste from app works everytime
+ - Better guidance for how to build the project
+ - Lots of translation updates
 v0.10.0 peek-a-boo
  - Window previews rewritten in vala - faster with per workspace/all workspaces and shift
    backwards controls

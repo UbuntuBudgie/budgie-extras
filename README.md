@@ -93,7 +93,6 @@ Overall, the following packages are required for the various Python plugins to w
  - python3-requests
  - xprintidle
  - notofonts
- - python3-pyperclip
  - python3-xlib
 
 The following packages are required for the various Vala plugins to work:
