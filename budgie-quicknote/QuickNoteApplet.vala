@@ -306,6 +306,8 @@ namespace QuickNoteApplet {
             win = new Gtk.ScrolledWindow (null, null);
             maingrid.attach(win, 0, 0, 1, 1);
             view = new TextView ();
+            //view.populate_popup.connect(disable_popup);
+            view.button_press_event.connect(disable_popup);
             view.set_left_margin(20);
             view.set_top_margin(20);
             view.set_right_margin(20);
@@ -334,6 +336,15 @@ namespace QuickNoteApplet {
             // make sure no weird stuff happens on hoover sideways
             set_content();
             maingrid.show_all();
+        }
+
+        private bool disable_popup (Gdk.Event event) {
+            uint test;
+            event.get_button(out test);
+            if ((int)test == 3) {
+                return true;
+            }
+            return false;
         }
     }
 
