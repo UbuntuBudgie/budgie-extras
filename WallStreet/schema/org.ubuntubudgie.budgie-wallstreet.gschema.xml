@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/budgie-wallstreet/"
+            id="org.ubuntubudgie.budgie-wallstreet">
+        <key type="i" name="switchinterval">
+            <summary>Interval between wallpaper switches</summary>
+            <description>Time, in seconds, between wallpaper switches</description>
+	    <default>300</default>
+        </key>
+        <key type="b" name="runwallstreet">
+            <summary>Run WallStreet</summary>
+            <description>Wether WallStreet should run or not</description>
+            <default>false</default>
+        </key>
+        <key type="s" name="wallpaperfolder">
+            <summary>Folder with wallpapers</summary>
+            <description>The folder WallStrret should use to find the wallpapers</description>
+            <default>"/usr/share/backgrounds/budgie"</default>
+        </key>
+    </schema>
+</schemalist>
