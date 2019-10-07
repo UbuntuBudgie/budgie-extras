@@ -34,7 +34,7 @@ namespace WallpaperRunner {
         public ControlsWindow () {
             // window props
             this.set_position(Gtk.WindowPosition.CENTER);
-            this.title = "WallStreet Control";
+            this.title = (_("WallStreet Control"));
             var maingrid = new Gtk.Grid();
             this.add(maingrid);
             set_margins(maingrid);
@@ -44,11 +44,11 @@ namespace WallpaperRunner {
             ).get_string();
             // togglebuttons
             var toggle_wprunner = new Gtk.CheckButton.with_label(
-                "Run WallStreet"
+                (_("Run WallStreet"))
             );
             maingrid.attach(toggle_wprunner, 1, 1, 1, 1);
             var toggle_defaultwalls = new Gtk.CheckButton.with_label(
-                "Use default wallpapers"
+                (_("Use default wallpapers"))
             );
             maingrid.attach(toggle_defaultwalls, 1, 2, 1, 1);
             // spacer
@@ -58,7 +58,7 @@ namespace WallpaperRunner {
             Box box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             maingrid.attach(box, 1, 4, 99, 1);
             set_customtwalls = new Gtk.Button.with_label(
-                "Browse"
+                (_("Browse"))
             );
             set_customtwalls.clicked.connect(get_directory);
             box.pack_start(set_customtwalls, false, false, 10);
@@ -71,27 +71,27 @@ namespace WallpaperRunner {
             var empty = new Label("");
             maingrid.attach(empty, 1, 10, 1, 1);
             // time settings section
-            var time_label = new Label("\nChange wallpaper every:\n");
+            var time_label = new Label("\n" + (_("Change interval")) + "\n");
             time_label.set_xalign(0);
             maingrid.attach(time_label, 1, 11, 1, 1);
             var timegrid = new Gtk.Grid();
             maingrid.attach(timegrid, 1, 12, 2, 3);
-            var hours_label = new Label("Hours\t");
+            var hours_label = new Label((_("Hours")) + "\t");
             hours_label.set_xalign(0);
             timegrid.attach(hours_label, 0, 0, 1, 1);
             hours_spin = new Gtk.SpinButton.with_range(0, 24, 1);
             timegrid.attach(hours_spin, 1, 0, 1, 1);
-            var minutes_label = new Label("Minutes\t");
+            var minutes_label = new Label((_("Minutes")) + "\t");
             minutes_label.set_xalign(0);
             timegrid.attach(minutes_label, 0, 1, 1, 1);
             minutes_spin = new Gtk.SpinButton.with_range(0, 59, 1);
             timegrid.attach(minutes_spin, 1, 1, 1, 1);
-            var seconds_label = new Label("Seconds\t");
+            var seconds_label = new Label((_("Seconds")) + "\t");
             seconds_label.set_xalign(0);
             timegrid.attach(seconds_label, 0, 2, 1, 1);
             seconds_spin = new Gtk.SpinButton.with_range(0, 59, 1);
             timegrid.attach(seconds_spin, 1, 2, 1, 1);
-            var ok_button = new Button.with_label("Close");
+            var ok_button = new Button.with_label((_("Close")));
             maingrid.attach(ok_button, 99, 99, 1, 1);
             ok_button.clicked.connect(Gtk.main_quit);
             this.destroy.connect(Gtk.main_quit);
@@ -180,8 +180,8 @@ namespace WallpaperRunner {
         private void get_directory (Button button) {
             // filechooser to set new wallpaper dir
             Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
-                "Select a directory", null, Gtk.FileChooserAction.SELECT_FOLDER,
-                "Cancel", Gtk.ResponseType.CANCEL, "Use",
+                (_("Select a directory")), null, Gtk.FileChooserAction.SELECT_FOLDER,
+                (_("Cancel")), Gtk.ResponseType.CANCEL, (_("Use")),
                 Gtk.ResponseType.ACCEPT
                 );
                 if (chooser.run () == Gtk.ResponseType.ACCEPT) {
