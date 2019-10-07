@@ -91,7 +91,6 @@ Overall, the following packages are required for the various Python plugins to w
  - python3-cairosvg
  - python3-pyudev
  - python3-requests
- - xprintidle
  - notofonts
  - python3-xlib
 
