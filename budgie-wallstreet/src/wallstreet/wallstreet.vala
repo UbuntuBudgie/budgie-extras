@@ -81,13 +81,13 @@ namespace WallStreet {
 
     private string[] walls(string directory) {
         // get wallpapers from dir
-        string[] somestrings = {};
+        string[] images = {};
         try {
             var dr = Dir.open(directory);
             string ? filename = null;
             while ((filename = dr.read_name()) != null) {
               string addpic = Path.build_filename(directory, filename);
-              somestrings += addpic;
+              images += addpic;
             }
         } catch (FileError err) {
             // on error (dir not found), reset wallpaperfolder
@@ -95,6 +95,6 @@ namespace WallStreet {
             settings.reset("wallpaperfolder");
             return {""};
         }
-        return somestrings;
+        return images;
     }
 }
