@@ -193,7 +193,7 @@ namespace WallpaperRunner {
         }
     }
 
-    public static void main (string[] args) {
+    public static int main (string[] args) {
         Gtk.init(ref args);
         wallstreet_settings = new GLib.Settings(
             "org.ubuntubudgie.budgie-wallstreet"
@@ -201,5 +201,6 @@ namespace WallpaperRunner {
         var controls = new ControlsWindow();
         controls.show_all();
         Gtk.main();
+        return 0;
     }
 }

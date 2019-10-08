@@ -18,7 +18,7 @@ namespace wallstreet {
 
     Settings settings;
 
-    public static void main (string[] args) {
+    public static int main (string[] args) {
 
         // loop
         MainLoop wallstreetloop = new MainLoop();
@@ -76,6 +76,7 @@ namespace wallstreet {
             return true;
         });
         wallstreetloop.run();
+        return 0;
     }
 
     private string[] walls(string directory) {
