@@ -36,7 +36,7 @@ settings = Gio.Settings.new(path)
 
 
 # visualspace settings
-visual = Gio.Settings.new("org.ubuntubudgie.visualspace")
+visual = Gio.Settings.new("org.ubuntubudgie.budgie-visualspace")
 
 
 def get(cmd):

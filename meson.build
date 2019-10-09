@@ -157,3 +157,8 @@ build_brightness_controller = get_option('build-brightness-controller')
 if build_all == true or build_brightness_controller == true
 	subdir('budgie-brightness-controller')
 endif
+
+build_visualspace = get_option('build-visualspace')
+if build_all == true or build_visualspace == true
+	subdir('budgie-visualspace')
+endif

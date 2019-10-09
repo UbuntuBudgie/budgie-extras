@@ -27,9 +27,9 @@ Additional enhancements for the user experience
 
 ## Standalone
 
-Non-budgie plugins - see the individual components for details
+budgie mini-apps - see the individual components for details
 
- - Budgie Visualspace
+ - Budgie Visualspace (needs the extras daemon as a runtime dependency)
  - Budgie Extras Daemon
  - Budgie Quickchar (needs the extras daemon as a runtime dependency)
  - Budgie Window Previews (needs the extras daemon as a runtime dependency)
