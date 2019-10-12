@@ -117,6 +117,11 @@ namespace WallStreetControls {
             toggle_wprunner.set_active(
                 wallstreet_settings.get_boolean("runwallstreet")
             );
+            toggle_wprunner.toggled.connect(manage_wprunnersettings);
+        }
+
+        private void manage_wprunnersettings (ToggleButton button) {
+            wallstreet_settings.set_boolean("runwallstreet", button.get_active());
         }
 
         private void manage_direntry (ToggleButton button) {
