@@ -162,3 +162,8 @@ build_visualspace = get_option('build-visualspace')
 if build_all == true or build_visualspace == true
 	subdir('budgie-visualspace')
 endif
+
+build_wallstreet = get_option('build-wallstreet')
+if build_all == true or build_wallstreet == true
+	subdir('budgie-wallstreet')
+endif
