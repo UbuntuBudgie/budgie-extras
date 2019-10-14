@@ -247,28 +247,22 @@ class WatchVolumes:
             self.getridofwindow()
 
     def actonconnect(self, subject=None, newvol=None, trigger=None):
-        removable = False
-        try:
-            removable = newvol.get_drive().is_media_removable()
-        except Exception:
-            pass
-        if removable:
-            # if popup exists, update info
-            if not self.checkonapplet():
-                Gtk.main_quit()
-            elif self.newwin:
-                self.getridofwindow()
-                self.newwin = self.create_win(subject, newvol)
-                self.update_existing(newvol)
-                # possibly, if no items to show,
-                # newwin was destroyed after all ^
-                if self.newwin:
-                    self.set_position(self.newwin)
-            # only create new popup on mount or connect
-            elif trigger in ["volume_added", "mount_added", None]:
-                self.newwin = self.create_win(subject, newvol)
-                self.update_existing(newvol)
+        # if popup exists, update info
+        if not self.checkonapplet():
+            Gtk.main_quit()
+        elif self.newwin:
+            self.getridofwindow()
+            self.newwin = self.create_win(subject, newvol)
+            self.update_existing(newvol)
+            # possibly, if no items to show,
+            # newwin was destroyed after all ^
+            if self.newwin:
                 self.set_position(self.newwin)
+        # only create new popup on mount or connect
+        elif trigger in ["volume_added", "mount_added", None]:
+            self.newwin = self.create_win(subject, newvol)
+            self.update_existing(newvol)
+            self.set_position(self.newwin)
 
     def open_folder(self, *args):
         path = list(args)[-1]
