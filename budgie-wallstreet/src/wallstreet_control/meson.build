@@ -25,7 +25,7 @@ WallstreetControlCArgs = [
 ]
 
 executable(
-    'WallstreetControl', WallstreetControlSources,
+    'wallstreet_control', WallstreetControlSources,
     dependencies: WallstreetControlDependencies,
     install: true,
     vala_args: WallstreetControlValaArgs,
