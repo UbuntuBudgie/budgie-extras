@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-02 20:40+0100\n"
+"POT-Creation-Date: 2019-10-16 10:35+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Guilherme Berbet <amendobobo.gc@gmail.com>, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/ubuntu-budgie/teams/72251/pt_BR/)\n"
@@ -23,6 +23,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:37
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr ""
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:48
+msgid "Run WallStreet"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Use default wallpapers"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:62
+msgid "Browse"
+msgstr ""
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:75
+msgid "Change interval"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:80
+msgid "Hours"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:85
+msgid "Minutes"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Seconds"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Close"
+msgstr ""
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:189
+msgid "Select a directory"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:190
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:190
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Usar"
 
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:162
@@ -174,12 +231,6 @@ msgstr "Esvaziar todos os itens do Lixo?"
 #: budgie-trash/src/widgets/TrashPopover.vala:126
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Todos os itens no Lixo serão excluídos permanentemente."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:147
 msgid "Empty Trash"
@@ -518,10 +569,6 @@ msgstr "Definir um diretório personalizado"
 #: budgie-quicknote/QuickNoteApplet.vala:179
 msgid "Choose directory"
 msgstr "Escolha um diretorio"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Usar"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
