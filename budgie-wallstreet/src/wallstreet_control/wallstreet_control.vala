@@ -21,7 +21,7 @@ program.  If not, see <https://www.gnu.org/licenses/>.
 namespace WallStreetControls {
 
     GLib.Settings wallstreet_settings;
-    
+
     class ControlsWindow : Gtk.Window {
 
         SpinButton hours_spin;
@@ -32,8 +32,8 @@ namespace WallStreetControls {
         Button set_customtwalls;
 
         public ControlsWindow () {
-            // window props
             this.set_position(Gtk.WindowPosition.CENTER);
+            // define the name of the application
             this.title = (_("WallStreet Control"));
             var maingrid = new Gtk.Grid();
             this.add(maingrid);
@@ -42,7 +42,8 @@ namespace WallStreetControls {
             default_folder = wallstreet_settings.get_default_value(
                 "wallpaperfolder"
             ).get_string();
-            // togglebuttons
+
+            // instruction to autostart the application
             var toggle_wprunner = new Gtk.CheckButton.with_label(
                 (_("Run WallStreet"))
             );
@@ -139,8 +140,8 @@ namespace WallStreetControls {
         }
 
         private void get_time () {
-            /* 
-            convert hrs/mins/secs to plain seconds, 
+            /*
+            convert hrs/mins/secs to plain seconds,
             update time interval setting
             */
             int hrs = (int)hours_spin.get_value();
