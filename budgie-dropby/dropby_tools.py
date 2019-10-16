@@ -43,11 +43,11 @@ def get_usb():
     allvols = udev_context.list_devices(subsystem='block')
     for v in allvols:
         try:
-            uuid = v['ID_FS_UUID']
-        except KeyError:
+            uuid = v.get('ID_FS_UUID')
+        except Exception:
             pass
         else:
-            if "usb" in v["DEVPATH"]:
+            if all(["usb" in v.get("DEVPATH"), uuid]):
                 relevant.append(uuid)
     return relevant
 
