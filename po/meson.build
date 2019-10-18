@@ -3,11 +3,23 @@ i18n = import('i18n')
 # for i in *.po; do echo "    '$i'," | sed 's/\.po//'; done
 langs = [
     'ca',
+    'da',
+    'de_DE',
     'en_GB',
+    'eo',
     'es',
     'fr',
+    'hu',
+    'it',
+    'ja',
     'lt',
+    'ms_MY',
     'nl_NL',
+    'pl',
+    'pt_BR',
+    'pt_PT',
+    'ro_RO',
+    'tr',
 ]
 
 # Stole this from gnome-twitch, ty TingPing

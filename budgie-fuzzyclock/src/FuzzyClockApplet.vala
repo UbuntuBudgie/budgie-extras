@@ -342,6 +342,7 @@ public class FuzzyClockApplet : Budgie.Applet
      */
     public FuzzyClockApplet()
     {
+        initialiseLocaleLanguageSupport();
         widget = new Gtk.EventBox();
         layout = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 2);
 
@@ -468,6 +469,22 @@ public class FuzzyClockApplet : Budgie.Applet
         popover.get_child().show_all();
 
         show_all();
+    }
+
+    /**
+     * Ensure translations are displayed correctly
+     * according to the locale
+     */
+    public void initialiseLocaleLanguageSupport() {
+        // Initialize gettext
+        GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+        GLib.Intl.bindtextdomain(
+            Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+        );
+        GLib.Intl.bind_textdomain_codeset(
+            Config.GETTEXT_PACKAGE, "UTF-8"
+        );
+        GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
     }
 
     /**
