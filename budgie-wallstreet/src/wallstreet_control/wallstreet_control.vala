@@ -32,6 +32,7 @@ namespace WallStreetControls {
         Button set_customtwalls;
 
         public ControlsWindow () {
+            initialiseLocaleLanguageSupport();
             this.set_position(Gtk.WindowPosition.CENTER);
             // define the name of the application
             this.title = (_("WallStreet Control"));
@@ -120,6 +121,23 @@ namespace WallStreetControls {
             );
             toggle_wprunner.toggled.connect(manage_wprunnersettings);
         }
+
+        /**
+         * Ensure translations are displayed correctly
+         * according to the locale
+         */
+        public void initialiseLocaleLanguageSupport() {
+            // Initialize gettext
+            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+            GLib.Intl.bindtextdomain(
+                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+            );
+            GLib.Intl.bind_textdomain_codeset(
+                Config.GETTEXT_PACKAGE, "UTF-8"
+            );
+            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
+        }
+
 
         private void manage_wprunnersettings (ToggleButton button) {
             wallstreet_settings.set_boolean("runwallstreet", button.get_active());
