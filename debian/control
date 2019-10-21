@@ -434,3 +434,15 @@ Description: Applet to control the brightness of the screen
  .
  The brightness controller applet allows controlling of the screen
  levels via xrandr (fallback) or via gnome-settings-daemon (if available)
+
+Package: budgie-wallstreet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Change wallpaper from a folder on a schedule
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
+ .
+ Wallstreet allows for a directory of pictures to be shown on
+ a schedule.
