@@ -8,7 +8,7 @@ Budgie WallStreet is a mini-app to switch wallpapers on regular intervalls. Opti
 By default, the default set of wallpepers is rotated.
 
 
-![switch1](https://github.com/UbuntuBudgie/budgie-extras/blob/master/wallstreet/wallstreetcontrol.png)
+![control](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-wallstreet/wallstreetcontrol.png)
 
 
 
