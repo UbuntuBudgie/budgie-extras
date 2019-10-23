@@ -91,11 +91,21 @@ Description: Applet displays files recently accessed for the Budgie Desktop
  or created within a configurable period of time.
 
 Package: budgie-previews-applet
+Architecture: all
+Section: oldlibs
+Depends: ${misc:Depends},
+ budgie-previews
+Description: transitional package
+ This is a transitional package. It can safely be removed.
+
+Package: budgie-previews
 Architecture: any
 Depends: budgie-extras-daemon,
   ${misc:Depends}, ${shlibs:Depends},
   xprintidle
-Description: Applet providing window previews capabilities for the Budgie Desktop
+Replaces: budgie-preview-applet (<< 0.10.1+201910221917~)
+Breaks: budgie-previews-applet (<< 0.10.1+201910221917~)
+Description: Provides window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
  capabilities. These can be used individually or as a set.
