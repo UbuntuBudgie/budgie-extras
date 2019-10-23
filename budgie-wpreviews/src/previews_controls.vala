@@ -86,7 +86,7 @@ namespace PreviewsControls {
     public static void main (string[] args) {
         Gtk.init(ref args);
         prvsettings = new GLib.Settings(
-            "org.ubuntubudgie.plugins.budgie-wpreviews"
+            "org.ubuntubudgie.budgie-wpreviews"
         );
         var controls = new ControlsWindow();
         controls.show_all();

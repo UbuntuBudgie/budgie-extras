@@ -6,7 +6,7 @@ pkgdatadir = join_paths(libdir, application_id)
 subdir('src')
 subdir('data')
 
-install_data('schema/org.ubuntubudgie.plugins.budgie-wpreviews.gschema.xml',
+install_data('schema/org.ubuntubudgie.budgie-wpreviews.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
 )
 

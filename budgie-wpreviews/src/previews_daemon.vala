@@ -596,7 +596,7 @@ namespace NewPreviews {
     private void windowdaemon(string[] args) {
         filepath = get_filepath (args[0]);
         GLib.Settings previews_settings = new GLib.Settings(
-            "org.ubuntubudgie.plugins.budgie-wpreviews"
+            "org.ubuntubudgie.budgie-wpreviews"
         );
         allworkspaces = previews_settings.get_boolean("allworkspaces");
         previews_settings.changed.connect (() => {

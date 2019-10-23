@@ -7,7 +7,7 @@
 - install the gschema
 
 - Run both `window_daemon` and `previews_creator`
-- Set previews to show windows from all workspaces or only current in the key `/org/ubuntubudgie/plugins/budgie-wpreviews/allworkspaces`
+- Set previews to show windows from all workspaces or only current in the key `/org/ubuntubudgie/budgie-wpreviews/allworkspaces`
 
 
 Create shortcuts
