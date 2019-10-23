@@ -153,16 +153,17 @@ namespace NewPreviews {
             currbuttons = newbuttons;
         }
 
-        private void set_closebuttonimg(Button button, string path) {
+        private void set_closebuttonimg(Button button, string icon_name) {
             // we don't like repeating
-            var newimage = new Gtk.Image.from_file(path);
+            var newimage = new Gtk.Image.from_icon_name(
+                "budgie_wpreviews_" + icon_name,
+                Gtk.IconSize.BUTTON);
             button.set_image(newimage);
         }
 
         private Grid makebuttongrid(
             string imgpath, Image appicon, string windowname, Wnck.Window w
             ) {
-            string picspath = filepath.concat("/pics");
             var subgrid = new Gtk.Grid();
             subgrid.set_row_spacing(0);
             // window image button
@@ -196,31 +197,31 @@ namespace NewPreviews {
             actionbar.pack_start(wname, false, false, 10);
             // close X button and its behavior
             var closebutton = new Gtk.Button();
-            set_closebuttonimg(closebutton, picspath.concat("/grey_x.png"));
+            set_closebuttonimg(closebutton, "grey_x");
             closebutton.set_relief(Gtk.ReliefStyle.NONE);
             closebutton.set_can_focus(false);
             closebutton.enter_notify_event.connect (() => {
-                set_closebuttonimg(closebutton, picspath.concat(
-                    "/white2_x.png"
-                ));
+                set_closebuttonimg(closebutton,
+                    "white2"
+                );
                 return false;
             });
             closebutton.leave_notify_event.connect (() => {
-                set_closebuttonimg(closebutton, picspath.concat(
-                    "/grey_x.png"
-                ));
+                set_closebuttonimg(closebutton,
+                    "grey_x"
+                );
                 return false;
             });
             button.enter_notify_event.connect (() => {
-                set_closebuttonimg(closebutton, picspath.concat(
-                    "/white_x.png"
-                ));
+                set_closebuttonimg(closebutton,
+                    "white_x"
+                );
                 return false;
             });
             button.leave_notify_event.connect (() => {
-                set_closebuttonimg(closebutton, picspath.concat(
-                    "/grey_x.png"
-                ));
+                set_closebuttonimg(closebutton,
+                    "grey_x"
+                );
                 return false;
             });
             actionbar.pack_end(closebutton, false, false, 0);

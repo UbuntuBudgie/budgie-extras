@@ -79,10 +79,10 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
-install_data('pics/grey_x.png',
-    'pics/prv_grey.png',
-    'pics/prv_white.png',
-    'pics/white2_x.png',
-    'pics/white_x.png',
-    install_dir: join_paths(libdir, application_id, 'pics')
+install_data('pics/budgie_wpreviews_grey_x.png',
+    'pics/budgie_wpreviews_prv_grey.png',
+    'pics/budgie_wpreviews_prv_white.png',
+    'pics/budgie_wpreviews_white2_x.png',
+    'pics/budgie_wpreviews_white_x.png',
+    install_dir: PIXMAPS_DIR
 )
