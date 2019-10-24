@@ -53,7 +53,7 @@ namespace WallStreet {
         // pick up from previously last wallpaper on startup:
         string wallpaperfolder = settings.get_string("wallpaperfolder"); 
         string[] getlist = walls(wallpaperfolder);
-        int currindex = get_initialwallpaperindex() + 1;
+        int currindex = get_initialwallpaperindex(getlist) + 1;
         
         GLib.Timeout.add_seconds(1, ()=> {
             // check interval & folder settings once per 5 sec
@@ -118,12 +118,12 @@ namespace WallStreet {
         } return -1;
     }
 
-    private int get_initialwallpaperindex () {
+    private int get_initialwallpaperindex (string[] gotlist) {
         currwall = wallpapersettings.get_string("picture-uri").replace(
             "file:///", ""
         );
         string wallpaperfolder = settings.get_string("wallpaperfolder");
-        int currindex = get_stringindex(currwall, walls(wallpaperfolder));
+        int currindex = get_stringindex(currwall, gotlist);
         if (currindex == -1) {
             currindex = 0;
         }
