@@ -14,32 +14,52 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/*
+dir does not exist -> default folder (need set directory again to fix)
+file is invalid -> black background
+file does not exist -> black background *
+no files in set dir -> set to default wallpaper *
+*/
+
 namespace WallStreet {
 
     Settings settings;
+    Settings wallpapersettings;
+    Settings locksettings;
+    int n_images;
+    string currwall;
+    bool lockscreen_sync;
 
     public static int main (string[] args) {
 
         // loop
         MainLoop wallstreetloop = new MainLoop();
         // background / mini-app gsettings
-        Settings wallpapersettings = new Settings(
+        wallpapersettings = new Settings(
             "org.gnome.desktop.background"
         );
         settings = new Settings(
             "org.ubuntubudgie.budgie-wallstreet"
         );
+        locksettings = new Settings(
+            "org.gnome.desktop.screensaver"
+        );
         // loop initial stuff
-        int currindex = 0; // wallpaper index from list
         int curr_seconds = 0; // cycle
         int checkseconds = 0; // check
         int? switchinterval = null;
-        string? wallpaperfolder = null;
-        string[]? getlist = null;
+        bool randomwall = false;
+        lockscreen_sync = false;
+        // pick up from previously last wallpaper on startup:
+        string wallpaperfolder = settings.get_string("wallpaperfolder"); 
+        string[] getlist = walls(wallpaperfolder);
+        int currindex = get_initialwallpaperindex() + 1;
         
         GLib.Timeout.add_seconds(1, ()=> {
             // check interval & folder settings once per 5 sec
             if (checkseconds == 0) {
+                randomwall = settings.get_boolean("random");
+                lockscreen_sync = settings.get_boolean("lockscreensync");
                 switchinterval = settings.get_int("switchinterval");
                 string previouswalls = wallpaperfolder;
                 wallpaperfolder = settings.get_string("wallpaperfolder");
@@ -47,10 +67,8 @@ namespace WallStreet {
                 if (wallpaperfolder != previouswalls) {
                     getlist = walls(wallpaperfolder);
                     currindex = 0;
-                    string currwall = getlist[currindex];
-                    wallpapersettings.set_string(
-                        "picture-uri", "file:///" + currwall
-                    );
+                    currwall = getlist[currindex];
+                    set_wallpaper(currwall);
                 }
             }
             // check every n-seconds (5)
@@ -60,15 +78,19 @@ namespace WallStreet {
             }
             // after switchinterval, change wallpaper
             if (curr_seconds >= switchinterval) {
-                string currwall = getlist[currindex];
-                wallpapersettings.set_string(
-                    "picture-uri", "file:///" + currwall
-                );
+                if (randomwall) {
+                    int random_int = Random.int_range(0,n_images);
+                    currwall = getlist[random_int];
+                }
+                else {
+                    currwall = getlist[currindex];
+                }
+                set_wallpaper(currwall);
                 currindex += 1;
                 curr_seconds = 0;
             }
             // after loop cycle, refresh list and start over
-            if (currindex == getlist.length) {
+            if (currindex == n_images) {
                 currindex = 0;
                 getlist = walls(wallpaperfolder);
             }
@@ -77,6 +99,35 @@ namespace WallStreet {
         });
         wallstreetloop.run();
         return 0;
+    }
+
+    private void set_wallpaper (string newwall) {
+        wallpapersettings.set_string(
+            "picture-uri", "file:///" + newwall
+        );
+        if (lockscreen_sync) {
+            locksettings.set_string(
+                "picture-uri", "file:///" + newwall
+            );
+        }
+    }
+
+    private int get_stringindex (string s, string[] arr) {
+        for (int i=0; i < arr.length; i++) {
+            if(s == arr[i]) return i;
+        } return -1;
+    }
+
+    private int get_initialwallpaperindex () {
+        currwall = wallpapersettings.get_string("picture-uri").replace(
+            "file:///", ""
+        );
+        string wallpaperfolder = settings.get_string("wallpaperfolder");
+        int currindex = get_stringindex(currwall, walls(wallpaperfolder));
+        if (currindex == -1) {
+            currindex = 0;
+        }
+        return currindex;
     }
 
     private string[] walls(string directory) {
@@ -94,6 +145,12 @@ namespace WallStreet {
             stderr.printf(err.message);
             settings.reset("wallpaperfolder");
             return {""};
+        }
+        n_images = images.length;
+        if (n_images == 0) {
+            string onlywall = settings.get_string("fallbackwallpaper");
+            n_images = 1;
+            return {onlywall};
         }
         return images;
     }

@@ -30,6 +30,9 @@ namespace WallStreetControls {
         Entry dir_entry;
         string default_folder;
         Button set_customtwalls;
+        ToggleButton toggle_random;
+        ToggleButton toggle_synclockscreen;
+        ToggleButton toggle_wprunner;
 
         public ControlsWindow () {
             initialiseLocaleLanguageSupport();
@@ -43,22 +46,30 @@ namespace WallStreetControls {
             default_folder = wallstreet_settings.get_default_value(
                 "wallpaperfolder"
             ).get_string();
-
             // instruction to autostart the application
-            var toggle_wprunner = new Gtk.CheckButton.with_label(
+            toggle_wprunner = new Gtk.CheckButton.with_label(
                 (_("Run WallStreet"))
             );
             maingrid.attach(toggle_wprunner, 1, 1, 1, 1);
+            toggle_random = new Gtk.CheckButton.with_label(
+                (_("Use random"))
+            );
+            maingrid.attach(toggle_random, 1, 2, 1, 1);
+
+            toggle_synclockscreen = new Gtk.CheckButton.with_label(
+                (_("Sync lock-sreen"))
+            );
+            maingrid.attach(toggle_synclockscreen, 1, 3, 1, 1);
             var toggle_defaultwalls = new Gtk.CheckButton.with_label(
                 (_("Use default wallpapers"))
             );
-            maingrid.attach(toggle_defaultwalls, 1, 2, 1, 1);
+            maingrid.attach(toggle_defaultwalls, 1, 4, 1, 1);
             // spacer
             var givemesomespace = new Gtk.Label("");
-            maingrid.attach(givemesomespace, 1, 3, 1, 1);
+            maingrid.attach(givemesomespace, 1, 10, 1, 1);
             // custom folder section
             Box box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            maingrid.attach(box, 1, 4, 99, 1);
+            maingrid.attach(box, 1, 11, 99, 1);
             set_customtwalls = new Gtk.Button.with_label(
                 (_("Browse"))
             );
@@ -71,13 +82,13 @@ namespace WallStreetControls {
             box.pack_start(new Label("\t"), false, false, 0);
             // spacer
             var empty = new Label("");
-            maingrid.attach(empty, 1, 10, 1, 1);
+            maingrid.attach(empty, 1, 12, 1, 1);
             // time settings section
             var time_label = new Label("\n" + (_("Change interval")) + "\n");
             time_label.set_xalign(0);
-            maingrid.attach(time_label, 1, 11, 1, 1);
+            maingrid.attach(time_label, 1, 13, 1, 1);
             var timegrid = new Gtk.Grid();
-            maingrid.attach(timegrid, 1, 12, 2, 3);
+            maingrid.attach(timegrid, 1, 14, 2, 3);
             var hours_label = new Label((_("Hours")) + "\t");
             hours_label.set_xalign(0);
             timegrid.attach(hours_label, 0, 0, 1, 1);
@@ -119,7 +130,17 @@ namespace WallStreetControls {
             toggle_wprunner.set_active(
                 wallstreet_settings.get_boolean("runwallstreet")
             );
-            toggle_wprunner.toggled.connect(manage_wprunnersettings);
+            toggle_wprunner.toggled.connect(manage_boolean);
+            // fetch toggle_random
+            toggle_random.set_active(
+                wallstreet_settings.get_boolean("random")
+            );
+            toggle_random.toggled.connect(manage_boolean);
+            // fetch toggle_synclockscreen
+            toggle_synclockscreen.set_active(
+                wallstreet_settings.get_boolean("lockscreensync")
+            );
+            toggle_synclockscreen.toggled.connect(manage_boolean); ///////////////////////////////
         }
 
         /**
@@ -138,9 +159,22 @@ namespace WallStreetControls {
             GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
 
-
-        private void manage_wprunnersettings (ToggleButton button) {
-            wallstreet_settings.set_boolean("runwallstreet", button.get_active());
+        private void manage_boolean (ToggleButton button) {
+            if (button == toggle_random) {
+                wallstreet_settings.set_boolean(
+                    "random", button.get_active()
+                );
+            }
+            else if (button == toggle_synclockscreen) {
+                wallstreet_settings.set_boolean(
+                    "lockscreensync", button.get_active()
+                );
+            }
+            else if (button == toggle_wprunner) {
+                wallstreet_settings.set_boolean(
+                    "runwallstreet", button.get_active()
+                );
+            }
         }
 
         private void manage_direntry (ToggleButton button) {

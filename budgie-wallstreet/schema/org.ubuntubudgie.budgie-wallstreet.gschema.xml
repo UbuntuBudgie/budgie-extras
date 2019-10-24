@@ -12,10 +12,27 @@
             <description>Whether WallStreet should run. When ticked, WallStreet also autostarts on logon</description>
             <default>false</default>
         </key>
+        <key type="b" name="random">
+            <summary>Use random</summary>
+            <description>Whether to use random wallpapers from the set directory or not</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="lockscreensync">
+            <summary>Include lockscreen</summary>
+            <description>Whether WallStreet should also set the wallpaper for lockscreen</description>
+            <default>false</default>
+        </key>
         <key type="s" name="wallpaperfolder">
             <summary>Folder with wallpapers</summary>
             <description>The default folder that WallStreet should use to find the wallpapers</description>
             <default>"/usr/share/backgrounds/budgie"</default>
         </key>
+
+        <key type="s" name="fallbackwallpaper">
+            <summary>The backround to set in case of an errors</summary>
+            <description>In case there are no files in the used folder, a fallback image will be used</description>
+            <default>"/usr/share/backgrounds/budgie/ubuntu_budgie_wallpaper1.jpg"</default>
+        </key>
+
     </schema>
 </schemalist>
