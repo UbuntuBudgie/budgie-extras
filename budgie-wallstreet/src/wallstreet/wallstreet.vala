@@ -17,7 +17,6 @@ program.  If not, see <https://www.gnu.org/licenses/>.
 /*
 dir does not exist -> default folder (need set directory again to fix)
 file is invalid -> black background
-file does not exist -> black background *
 no files in set dir -> set to default wallpaper *
 */
 
@@ -29,6 +28,10 @@ namespace WallStreet {
     int n_images;
     string currwall;
     bool lockscreen_sync;
+    FileMonitor walldir_monitor;
+    string[] getlist;
+    int currindex;
+    string wallpaperfolder;
 
     public static int main (string[] args) {
 
@@ -51,9 +54,12 @@ namespace WallStreet {
         bool randomwall = false;
         lockscreen_sync = false;
         // pick up from previously last wallpaper on startup:
-        string wallpaperfolder = settings.get_string("wallpaperfolder"); 
-        string[] getlist = walls(wallpaperfolder);
-        int currindex = get_initialwallpaperindex(getlist) + 1;
+        wallpaperfolder = settings.get_string("wallpaperfolder"); 
+        getlist = walls(wallpaperfolder);
+        currindex = get_initialwallpaperindex(getlist) + 1;
+        // initiate FileMonitor
+        walldir_monitor = getwallmonitor(wallpaperfolder);
+        walldir_monitor.changed.connect(rescan_currdir);
         
         GLib.Timeout.add_seconds(1, ()=> {
             // check interval & folder settings once per 5 sec
@@ -65,10 +71,7 @@ namespace WallStreet {
                 wallpaperfolder = settings.get_string("wallpaperfolder");
                 // on change, scan new folder, start from 0, set first image
                 if (wallpaperfolder != previouswalls) {
-                    getlist = walls(wallpaperfolder);
-                    currindex = 0;
-                    currwall = getlist[currindex];
-                    set_wallpaper(currwall);
+                    update_wallpaperlist();
                 }
             }
             // check every n-seconds (5)
@@ -90,15 +93,25 @@ namespace WallStreet {
                 curr_seconds = 0;
             }
             // after loop cycle, refresh list and start over
-            if (currindex == n_images) {
+            if (currindex >= n_images) {
                 currindex = 0;
-                getlist = walls(wallpaperfolder);
             }
             curr_seconds += 1;
             return true;
         });
         wallstreetloop.run();
         return 0;
+    }
+
+    private FileMonitor? getwallmonitor (string directory) {
+        File triggerdir = File.new_for_path(directory);
+        try {
+            walldir_monitor = triggerdir.monitor(FileMonitorFlags.NONE, null);
+            return walldir_monitor;
+        }
+        catch (Error e) {
+            return null;
+        }
     }
 
     private void set_wallpaper (string newwall) {
@@ -110,6 +123,21 @@ namespace WallStreet {
                 "picture-uri", "file:///" + newwall
             );
         }
+    }
+
+    private void rescan_currdir () {
+        getlist = walls(wallpaperfolder);
+        currindex = get_initialwallpaperindex(getlist);
+    }
+
+    private void update_wallpaperlist () {
+        // scan wallpapers on gsettings dir change
+        walldir_monitor = getwallmonitor(wallpaperfolder);
+        walldir_monitor.changed.connect(rescan_currdir);
+        getlist = walls(wallpaperfolder);
+        currindex = 0;
+        currwall = getlist[currindex];
+        set_wallpaper(currwall);
     }
 
     private int get_stringindex (string s, string[] arr) {
