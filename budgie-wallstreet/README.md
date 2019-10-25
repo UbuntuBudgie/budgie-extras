@@ -4,6 +4,8 @@ Budgie WallStreet is a mini-app to switch wallpapers on regular intervalls. Opti
 
 - set a custom folder with wallpapers to rotate
 - set time interval in hours/minutes/seconds
+- use random order
+- synchronize lock-screen wallpaper
 
 By default, the default set of wallpepers is rotated.
 
