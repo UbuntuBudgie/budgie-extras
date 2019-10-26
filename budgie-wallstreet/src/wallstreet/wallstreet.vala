@@ -101,10 +101,8 @@ namespace WallStreet {
     }
 
     private void update_settings (string path) {
-        print(@"$path\n");
         switch (path) {
             case "wallpaperfolder":
-                print("change folder\n");
                 wallpaperfolder = settings.get_string("wallpaperfolder");
                 update_wallpaperlist();
                 break;
