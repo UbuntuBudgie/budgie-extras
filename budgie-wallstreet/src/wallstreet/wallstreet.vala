@@ -1,4 +1,3 @@
-
 /*
 Budgie WallStreet
 Author: Jacob Vlijm
@@ -32,11 +31,16 @@ namespace WallStreet {
     string[] getlist;
     int currindex;
     string wallpaperfolder;
+    int curr_seconds;
+    int switchinterval;
+    bool randomwall;
+
 
     public static int main (string[] args) {
 
-        // loop
+        // mainloop
         MainLoop wallstreetloop = new MainLoop();
+
         // background / mini-app gsettings
         wallpapersettings = new Settings(
             "org.gnome.desktop.background"
@@ -47,42 +51,35 @@ namespace WallStreet {
         locksettings = new Settings(
             "org.gnome.desktop.screensaver"
         );
-        // loop initial stuff
-        int curr_seconds = 0; // cycle
-        int checkseconds = 0; // check
-        int? switchinterval = null;
-        bool randomwall = false;
-        lockscreen_sync = false;
-        // pick up from previously last wallpaper on startup:
-        wallpaperfolder = settings.get_string("wallpaperfolder"); 
+
+        // wait for settings change
+        settings.changed.connect(update_settings);
+
+        // fetch initial settings values
+        switchinterval = settings.get_int("switchinterval");
+        wallpaperfolder = settings.get_string("wallpaperfolder");
+        randomwall = settings.get_boolean("random");
+        lockscreen_sync = settings.get_boolean("lockscreensync");
+
+        // loop start at zero
+        curr_seconds = 0;
+
+        // pick up from previously set wallpaper on startup (if in list):
         getlist = walls(wallpaperfolder);
-        currindex = get_initialwallpaperindex(getlist) + 1;
+        currindex = get_initialwallpaperindex(getlist);
+        set_wallpaper(getlist[currindex]);
+        currindex += 1;
+
         // initiate FileMonitor
         walldir_monitor = getwallmonitor(wallpaperfolder);
         walldir_monitor.changed.connect(rescan_currdir);
-        
+
         GLib.Timeout.add_seconds(1, ()=> {
-            // check interval & folder settings once per 5 sec
-            if (checkseconds == 0) {
-                randomwall = settings.get_boolean("random");
-                lockscreen_sync = settings.get_boolean("lockscreensync");
-                switchinterval = settings.get_int("switchinterval");
-                string previouswalls = wallpaperfolder;
-                wallpaperfolder = settings.get_string("wallpaperfolder");
-                // on change, scan new folder, start from 0, set first image
-                if (wallpaperfolder != previouswalls) {
-                    update_wallpaperlist();
-                }
-            }
-            // check every n-seconds (5)
-            checkseconds += 1;
-            if (checkseconds == 5) {
-                checkseconds = 0;
-            }
+
             // after switchinterval, change wallpaper
             if (curr_seconds >= switchinterval) {
                 if (randomwall) {
-                    int random_int = Random.int_range(0,n_images);
+                    int random_int = Random.int_range(0, n_images);
                     currwall = getlist[random_int];
                 }
                 else {
@@ -92,7 +89,7 @@ namespace WallStreet {
                 currindex += 1;
                 curr_seconds = 0;
             }
-            // after loop cycle, refresh list and start over
+            // after loop cycle, start over
             if (currindex >= n_images) {
                 currindex = 0;
             }
@@ -101,6 +98,26 @@ namespace WallStreet {
         });
         wallstreetloop.run();
         return 0;
+    }
+
+    private void update_settings (string path) {
+        print(@"$path\n");
+        switch (path) {
+            case "wallpaperfolder":
+                print("change folder\n");
+                wallpaperfolder = settings.get_string("wallpaperfolder");
+                update_wallpaperlist();
+                break;
+            case "switchinterval":
+                switchinterval = settings.get_int("switchinterval");
+                break;
+            case "random":
+                randomwall = settings.get_boolean("random");
+                break;
+            case "lockscreensync":
+                lockscreen_sync = settings.get_boolean("lockscreensync");
+                break;
+        }
     }
 
     private FileMonitor? getwallmonitor (string directory) {
@@ -136,6 +153,7 @@ namespace WallStreet {
         walldir_monitor.changed.connect(rescan_currdir);
         getlist = walls(wallpaperfolder);
         currindex = 0;
+        curr_seconds = 0;
         currwall = getlist[currindex];
         set_wallpaper(currwall);
     }
@@ -150,12 +168,12 @@ namespace WallStreet {
         currwall = wallpapersettings.get_string("picture-uri").replace(
             "file:///", ""
         );
-        string wallpaperfolder = settings.get_string("wallpaperfolder");
-        int currindex = get_stringindex(currwall, gotlist);
-        if (currindex == -1) {
-            currindex = 0;
+        wallpaperfolder = settings.get_string("wallpaperfolder");
+        int index = get_stringindex(currwall, gotlist);
+        if (index == -1) {
+            index = 0;
         }
-        return currindex;
+        return index;
     }
 
     private string[] walls(string directory) {
