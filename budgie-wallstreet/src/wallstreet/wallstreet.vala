@@ -154,6 +154,7 @@ namespace WallStreet {
         curr_seconds = 0;
         currwall = getlist[currindex];
         set_wallpaper(currwall);
+        currindex += 1;
     }
 
     private int get_stringindex (string s, string[] arr) {
@@ -163,10 +164,10 @@ namespace WallStreet {
     }
 
     private int get_initialwallpaperindex (string[] gotlist) {
+        // on start, see if we can pick up wallpaper index from where we were
         currwall = wallpapersettings.get_string("picture-uri").replace(
             "file:///", ""
         );
-        wallpaperfolder = settings.get_string("wallpaperfolder");
         int index = get_stringindex(currwall, gotlist);
         if (index == -1) {
             index = 0;
