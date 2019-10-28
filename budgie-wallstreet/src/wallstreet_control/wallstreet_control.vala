@@ -33,13 +33,15 @@ namespace WallStreetControls {
         ToggleButton toggle_random;
         ToggleButton toggle_synclockscreen;
         ToggleButton toggle_wprunner;
+        Grid maingrid;
+        string runinstruction;
 
         public ControlsWindow () {
             initialiseLocaleLanguageSupport();
             this.set_position(Gtk.WindowPosition.CENTER);
             // define the name of the application
             this.title = (_("WallStreet Control"));
-            var maingrid = new Gtk.Grid();
+            maingrid = new Gtk.Grid();
             this.add(maingrid);
             set_margins(maingrid);
             // misc
@@ -47,10 +49,12 @@ namespace WallStreetControls {
                 "wallpaperfolder"
             ).get_string();
             // instruction to autostart the application
+
+            runinstruction = (_("Run WallStreet"));
             toggle_wprunner = new Gtk.CheckButton.with_label(
-                (_("Run WallStreet"))
+                runinstruction
             );
-            maingrid.attach(toggle_wprunner, 1, 1, 1, 1);
+            maingrid.attach(toggle_wprunner, 1, 1, 100, 1);
             toggle_random = new Gtk.CheckButton.with_label(
                 (_("Use random"))
             );
@@ -140,7 +144,7 @@ namespace WallStreetControls {
             toggle_synclockscreen.set_active(
                 wallstreet_settings.get_boolean("lockscreensync")
             );
-            toggle_synclockscreen.toggled.connect(manage_boolean); ///////////////////////////////
+            toggle_synclockscreen.toggled.connect(manage_boolean);
         }
 
         /**
@@ -171,10 +175,59 @@ namespace WallStreetControls {
                 );
             }
             else if (button == toggle_wprunner) {
+                bool newsetting = button.get_active();
                 wallstreet_settings.set_boolean(
-                    "runwallstreet", button.get_active()
+                    "runwallstreet", newsetting
                 );
+                if (newsetting) {
+                    check_firstrunwarning();
+                }
+                else {
+                    toggle_wprunner.set_label(runinstruction);
+                }
             }
+        }
+
+        private void check_firstrunwarning() {
+            /*
+            / 0.1 dec after gsettings change check if process is running
+            / if not -> show message in label
+            */
+            GLib.Timeout.add(100, () => {
+                bool runs = processruns("/budgie-wallstreet/wallstreet");
+                if (!runs) {
+                    toggle_wprunner.set_label(
+                        runinstruction + "\t" + (_(
+                            "Please log out/in to initialize"
+                        ))
+                    );
+                }
+                return false;
+            });
+        }
+
+        private bool processruns (string application) {
+            string cmd = "pgrep -f " + application;
+            string output;
+            try {
+                GLib.Process.spawn_command_line_sync(cmd, out output);
+                if (output != "") {
+                    // remove trailing \n, does not count
+                    string[] pids = output[0:output.length-1].split("\n");
+                    int n_pids = pids.length;
+                    if (n_pids >= 2) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+            /* on an (unlikely to happen) exception, show the message */
+            catch (SpawnError e) {
+                return false;
+            }
+            return false;
         }
 
         private void manage_direntry (ToggleButton button) {
