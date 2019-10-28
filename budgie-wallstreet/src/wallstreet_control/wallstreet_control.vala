@@ -55,12 +55,12 @@ namespace WallStreetControls {
             );
             maingrid.attach(toggle_wprunner, 1, 1, 100, 1);
             toggle_random = new Gtk.CheckButton.with_label(
-                (_("Use random"))
+                (_("Use random wallpaper"))
             );
             maingrid.attach(toggle_random, 1, 2, 1, 1);
 
             toggle_synclockscreen = new Gtk.CheckButton.with_label(
-                (_("Sync lock-sreen"))
+                (_("Sync to lock-screen"))
             );
             maingrid.attach(toggle_synclockscreen, 1, 3, 1, 1);
             var toggle_defaultwalls = new Gtk.CheckButton.with_label(
