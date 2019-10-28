@@ -33,7 +33,6 @@ namespace WallStreetControls {
         ToggleButton toggle_random;
         ToggleButton toggle_synclockscreen;
         ToggleButton toggle_wprunner;
-        Grid maingrid;
         string runinstruction;
 
         public ControlsWindow () {
@@ -41,7 +40,7 @@ namespace WallStreetControls {
             this.set_position(Gtk.WindowPosition.CENTER);
             // define the name of the application
             this.title = (_("WallStreet Control"));
-            maingrid = new Gtk.Grid();
+            var maingrid = new Gtk.Grid();
             this.add(maingrid);
             set_margins(maingrid);
             // misc
