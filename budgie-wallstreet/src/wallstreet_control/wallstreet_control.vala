@@ -234,7 +234,9 @@ namespace WallStreetControls {
             toggle_customwall_widgets(active);
             if (active) {
                 dir_entry.set_text("");
-                wallstreet_settings.set_string("wallpaperfolder", default_folder);
+                wallstreet_settings.set_string(
+                    "wallpaperfolder", default_folder
+                );
             }
         }
 
@@ -290,7 +292,8 @@ namespace WallStreetControls {
         private void get_directory (Button button) {
             // filechooser to set new wallpaper dir
             Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
-                (_("Select a directory")), null, Gtk.FileChooserAction.SELECT_FOLDER,
+                (_("Select a directory")),
+                null, Gtk.FileChooserAction.SELECT_FOLDER,
                 (_("Cancel")), Gtk.ResponseType.CANCEL, (_("Use")),
                 Gtk.ResponseType.ACCEPT
                 );
