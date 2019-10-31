@@ -5,7 +5,7 @@ PLUGIN = 'budgie-dropby'
 install_data(
     'BudgieDropBy.plugin',
     'dropby_tools.py',
-    'budgie_dropby.py',
+    'budgie_dropby.py',dradrd dilo k kam ho jqte
     'copy_flash',
     'checkonwin',
     'dropover',
