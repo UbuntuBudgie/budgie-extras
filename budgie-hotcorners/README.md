@@ -1,14 +1,9 @@
 # Budgie HotCornersII
-This is the new Vala-based applet
+Hotcorners offers the option to set corner actions, both from preset and custom commands. Pressure can be set from Budgie Settings. This is the new Vala-based hotcorners applet.
 
-# Install
-Run from the repo's folder:
+![options](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-hotcorners/options.png)
 
-- `mkdir build && cd build`
+![options](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-hotcorners/pressure.png)
 
-- `meson --buildtype plain --prefix=/usr --libdir=/usr/lib`
 
-- `ninja`
-
-- `sudo ninja install`
 
