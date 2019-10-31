@@ -22,6 +22,8 @@ namespace PreviewsControls {
     class ControlsWindow : Gtk.Window {
 
         Grid maingrid;
+        ToggleButton toggle_previews;
+        Label instruct;
 
         public ControlsWindow () {
             this.set_position(Gtk.WindowPosition.CENTER);
@@ -29,7 +31,7 @@ namespace PreviewsControls {
             maingrid = new Gtk.Grid();
             this.add(maingrid);
             set_margins();
-            var toggle_previews = new Gtk.CheckButton.with_label(
+            toggle_previews = new Gtk.CheckButton.with_label(
                 _("Run Previews")
             );
             var toggle_allworkspaces = new Gtk.CheckButton.with_label(
@@ -38,7 +40,8 @@ namespace PreviewsControls {
             var ok_button = new Button.with_label("Close");
             ok_button.clicked.connect(Gtk.main_quit);
 
-            var instruct = new Label(_("Logout/Login for changes to take effect"));
+            instruct = new Label("");
+            instruct.set_xalign(0);
             var empty = new Label("");
 
             maingrid.attach(toggle_previews, 1, 1, 1, 1);
@@ -48,8 +51,16 @@ namespace PreviewsControls {
 
             toggle_previews.set_active(get_currsetting("enable-previews"));
             toggle_allworkspaces.set_active(get_currsetting("allworkspaces"));
+
             toggle_previews.toggled.connect ( () => {
                 update_settings(toggle_previews, "enable-previews");
+                bool newactive = toggle_previews.get_active();
+                if (newactive) {
+                    check_firstrunwarning();
+                }
+                else {
+                    instruct.set_label(_(""));
+                }
             });
             toggle_allworkspaces.toggled.connect ( () => {
                 update_settings(toggle_allworkspaces, "allworkspaces");
@@ -57,6 +68,37 @@ namespace PreviewsControls {
 
             maingrid.attach(ok_button, 99, 99, 1, 1);
             this.destroy.connect(Gtk.main_quit);
+        }
+
+        private void check_firstrunwarning() {
+            /*
+            / 0.1 dec after gsettings change check if process is running
+            / if not -> show message in label
+            */
+            GLib.Timeout.add(100, () => {
+                bool daemonruns = procruns("previews_creator");
+                bool creatorruns = procruns("previews_daemon");
+                if (!daemonruns || !creatorruns) {
+                    instruct.set_label(_("Please log out/in to initialize"));
+                }
+                return false;
+            });
+        }
+
+        private bool procruns (string processname) {
+            string cmd = @"pgrep -f $processname";
+            string output;
+            try {
+                GLib.Process.spawn_command_line_sync(cmd, out output);
+                if (output == "") {
+                    return false;
+                }
+            }
+            /* on an unlike to happen exception, return true */
+            catch (SpawnError e) {
+                return true;
+            }
+            return true;
         }
 
         private bool get_currsetting (string key) {
