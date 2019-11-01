@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-16 10:35+0100\n"
+"POT-Creation-Date: 2019-10-28 22:26+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Moo, 2019\n"
 "Language-Team: Lithuanian (https://www.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
@@ -22,58 +22,70 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:37
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
 #: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
 msgid "WallStreet Control"
 msgstr ""
 
 #. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:48
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
 msgid "Run WallStreet"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
 msgid "Use default wallpapers"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:62
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
 msgid "Browse"
 msgstr ""
 
 #. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:75
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
 msgid "Change interval"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:80
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
 msgid "Hours"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:85
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
 msgid "Minutes"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
 msgid "Seconds"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
 msgid "Close"
 msgstr ""
 
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr ""
+
 #. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:189
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
 msgid "Select a directory"
 msgstr ""
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:190
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:190
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 #: budgie-quicknote/QuickNoteApplet.vala:201
 msgid "Use"
 msgstr "Naudoti"
@@ -475,26 +487,26 @@ msgstr ""
 
 #. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
 #. and Time'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:384
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr ""
 
 #. TRANSLATORS: This Button Links to Gnome 'Calendar' application
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:387
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
 msgid "Calendar"
 msgstr "Kalendorius"
 
 #. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
 #. pack page2
 #. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:396
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:425
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
 msgid "Preferences"
 msgstr "Nuostatos"
 
 #. TRANSLATORS: When this checkbox is enabled the current date will be
 #. displayed
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:407
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Rodyti datą"
 
@@ -502,7 +514,7 @@ msgstr "Rodyti datą"
 #. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
 #. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
 #. ...
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:414
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr ""
 
