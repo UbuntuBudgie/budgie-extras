@@ -59,7 +59,7 @@ namespace VisualSpaceApplet {
             ButtonBox ws_managebox = new ButtonBox(Gtk.Orientation.HORIZONTAL);
             // related to optional auto-workspaces
             ws_managebox.set_layout(Gtk.ButtonBoxStyle.CENTER);
-            CheckButton autobutton = new CheckButton.with_label((_("Auto"));
+            CheckButton autobutton = new CheckButton.with_label(_("Auto"));
             bool autospace = visualspace_settings.get_boolean("autospaces");
             autobutton.set_active(autospace);
             nspaces_down = new Button.from_icon_name(
