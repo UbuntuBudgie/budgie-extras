@@ -456,3 +456,17 @@ Description: Change wallpaper from a folder on a schedule
  .
  Wallstreet allows for a directory of pictures to be shown on
  a schedule.
+
+Package: budgie-visualspace-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Show and manage windows in workspaces for the Budgie Desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The visualspace applet shows as a stylish compact workspace on the budgie
+ panel.  Choosing windows in the applet popup moves to the workspace
+ where the window is located and gives it focus.
+ The number of Workspace can also be changed though the applet popup.
