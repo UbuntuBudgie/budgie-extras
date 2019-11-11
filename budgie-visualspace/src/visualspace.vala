@@ -57,8 +57,11 @@ namespace VisualSpaceApplet {
             Grid supergrid = new Gtk.Grid();
             // buttonbox & elements, holding top section
             ButtonBox ws_managebox = new ButtonBox(Gtk.Orientation.HORIZONTAL);
-            // related to optional auto-workspaces
+
             ws_managebox.set_layout(Gtk.ButtonBoxStyle.CENTER);
+            /*
+                TRANSLATORS: automatic dynamic workspace control
+             */
             CheckButton autobutton = new CheckButton.with_label(_("Auto"));
             bool autospace = visualspace_settings.get_boolean("autospaces");
             autobutton.set_active(autospace);
