@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 22:26+0000\n"
+"POT-Creation-Date: 2019-11-11 22:18+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Moo, 2019\n"
 "Language-Team: Lithuanian (https://www.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
@@ -70,6 +70,7 @@ msgid "Close"
 msgstr ""
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+#: budgie-wpreviews/src/previews_controls.vala:82
 msgid "Please log out/in to initialize"
 msgstr ""
 
@@ -160,21 +161,22 @@ msgstr "AM (priešpiet)"
 msgid "PM"
 msgstr "PM (popiet)"
 
-#: budgie-wpreviews/src/previews_controls.vala:28
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:65
+msgid "Auto"
+msgstr ""
+
+#: budgie-wpreviews/src/previews_controls.vala:30
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
 msgstr ""
 
-#: budgie-wpreviews/src/previews_controls.vala:33
+#: budgie-wpreviews/src/previews_controls.vala:35
 msgid "Run Previews"
 msgstr ""
 
-#: budgie-wpreviews/src/previews_controls.vala:36
+#: budgie-wpreviews/src/previews_controls.vala:38
 msgid "Show windows of all workspaces"
-msgstr ""
-
-#: budgie-wpreviews/src/previews_controls.vala:41
-msgid "Logout/Login for changes to take effect"
 msgstr ""
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:128
@@ -672,6 +674,10 @@ msgstr "Nustatyti tinkintą pozicija (piks.)"
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
 msgid "Please enter at least 3 characters"
 msgstr "Įveskite bent 3 simbolius"
+
+#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
+msgid "Workspace indicator and window list"
+msgstr ""
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"

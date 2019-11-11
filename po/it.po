@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Giuseppe Pignataro <rogepix@gmail.com>, 2019
 # Nicola Gentile <nikkognt@gmail.com>, 2019
+# Giuseppe Pignataro <rogepix@gmail.com>, 2019
 # Silvia M <cabinstewardess@outlook.com>, 2019
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 22:26+0000\n"
+"POT-Creation-Date: 2019-11-11 22:18+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Silvia M <cabinstewardess@outlook.com>, 2019\n"
 "Language-Team: Italian (https://www.transifex.com/ubuntu-budgie/teams/72251/it/)\n"
@@ -72,6 +72,7 @@ msgid "Close"
 msgstr "Chiudi"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+#: budgie-wpreviews/src/previews_controls.vala:82
 msgid "Please log out/in to initialize"
 msgstr ""
 
@@ -162,22 +163,23 @@ msgstr "AM"
 msgid "PM"
 msgstr "PM"
 
-#: budgie-wpreviews/src/previews_controls.vala:28
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:65
+msgid "Auto"
+msgstr ""
+
+#: budgie-wpreviews/src/previews_controls.vala:30
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
 msgstr "Anteprime controlli"
 
-#: budgie-wpreviews/src/previews_controls.vala:33
+#: budgie-wpreviews/src/previews_controls.vala:35
 msgid "Run Previews"
 msgstr "Anteprime avvii"
 
-#: budgie-wpreviews/src/previews_controls.vala:36
+#: budgie-wpreviews/src/previews_controls.vala:38
 msgid "Show windows of all workspaces"
 msgstr "Mostra finestre di tutti gli spazi di lavoro"
-
-#: budgie-wpreviews/src/previews_controls.vala:41
-msgid "Logout/Login for changes to take effect"
-msgstr "Logout/Login per rendere effettive le modifiche"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:128
 msgid "Set pressure (0 = no pressure)"
@@ -675,6 +677,10 @@ msgstr "Imposta la posizione personalizzata (px)"
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
 msgid "Please enter at least 3 characters"
 msgstr "Si prega di inserire almeno 3 caratteri"
+
+#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
+msgid "Workspace indicator and window list"
+msgstr ""
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
