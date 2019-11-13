@@ -24,13 +24,14 @@ Additional enhancements for the user experience
  - Workspace Stopwatch
  - Fuzzy Clock
  - Brightness Controller
+ - Visualspace
 
 ## Standalone
 
 budgie mini-apps - see the individual components for details
 
- - Budgie Visualspace (needs the extras daemon as a runtime dependency)
  - Budgie Extras Daemon
+ - Budgie Wallstreet
  - Budgie Quickchar (needs the extras daemon as a runtime dependency)
  - Budgie Window Previews (needs the extras daemon as a runtime dependency)
 
