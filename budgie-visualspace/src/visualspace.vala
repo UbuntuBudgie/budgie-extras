@@ -319,18 +319,19 @@ namespace VisualSpaceApplet {
         Label label = new Label("");
         bool usevertical;
 
-        public override void panel_position_changed(Budgie.PanelPosition position) {
+        public override void panel_position_changed(
+            Budgie.PanelPosition position
+        ) {
             if (
                 position == Budgie.PanelPosition.LEFT ||
                 position == Budgie.PanelPosition.RIGHT
             ) {
                 usevertical = true;
-                update_appearance();
             }
             else {
                 usevertical = false;
-                update_appearance();
             }
+            update_appearance();
         }
 
         private void update_appearance () {
