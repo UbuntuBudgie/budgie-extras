@@ -327,6 +327,10 @@ namespace VisualSpaceApplet {
                 usevertical = true;
                 update_appearance();
             }
+            else {
+                usevertical = false;
+                update_appearance();
+            }
         }
 
         private void update_appearance () {
