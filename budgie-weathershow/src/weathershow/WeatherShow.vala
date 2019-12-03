@@ -1322,6 +1322,18 @@ namespace WeatherShowApplet {
             update_thread = new Thread<bool>.try ("oldtimer", run_periodiccheck);
         }
 
+        public override void panel_position_changed(
+            Budgie.PanelPosition position
+        ) {
+            if ( position == Budgie.PanelPosition.LEFT ||
+                 position == Budgie.PanelPosition.RIGHT ) {
+                container.set_orientation(Gtk.Orientation.VERTICAL);
+            }
+            else {
+                container.set_orientation(Gtk.Orientation.HORIZONTAL);
+            }
+        }
+
         private bool run_periodiccheck () {
             var currtime1 = new DateTime.now_utc();
             while (true) {
