@@ -202,7 +202,7 @@ namespace NewPreviews {
             closebutton.set_can_focus(false);
             closebutton.enter_notify_event.connect (() => {
                 set_closebuttonimg(closebutton,
-                    "white2"
+                    "white2_x"
                 );
                 return false;
             });
