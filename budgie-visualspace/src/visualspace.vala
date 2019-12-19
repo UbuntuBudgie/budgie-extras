@@ -27,10 +27,16 @@ namespace VisualSpaceApplet {
     private GLib.Settings visualspace_settings;
     private Gdk.Screen gdkscreen;
     private string fontspacing_css;
+    Gdk.X11.Window timestamp_window;
+
+    private uint get_now() {
+        // timestamp
+        return Gdk.X11.get_server_time(timestamp_window);
+    }
 
     public class VisualSpacePopover : Budgie.Popover {
 
-        Gdk.X11.Window timestamp_window;
+        // Gdk.X11.Window timestamp_window;
         private ScrolledWindow scrollwin;
         private Gtk.EventBox indicatorBox;
         private Grid maingrid;
@@ -97,13 +103,12 @@ namespace VisualSpaceApplet {
 
             // linespacing_topspacelabel
             Label topspace1 = new Gtk.Label("");
-            Label topspace2 = new Gtk.Label("");
+            //  Label topspace2 = new Gtk.Label("");
             set_spacing(gdkscreen, topspace1, "linespacing_top");
-            set_spacing(gdkscreen, topspace2, "linespacing_bottom");
             supergrid.attach(scrollwin, 0, 10, 1, 1);
             supergrid.attach(ws_managebox, 0, 1, 1, 1);
             supergrid.attach(topspace1, 0, 0, 1, 1);
-            supergrid.attach(topspace2, 0, 3, 1, 1);
+            //  supergrid.attach(topspace2, 0, 3, 1, 1);
             // throw all stuff at each other
             scrollwin.add(maingrid);
             this.add(supergrid);
@@ -127,6 +132,8 @@ namespace VisualSpaceApplet {
         //      visualspace_settings.set_boolean("autospaces", newval);
         //      set_widgets_sensitive(!newval);
         //  }
+
+
 
         private void add_onespace (string edit) {
             // prevent exceeding 8, due to hardcoded max- nspaces in budgie-wm
@@ -158,11 +165,6 @@ namespace VisualSpaceApplet {
                 int new_nspaces = mutter_ws_settings.get_int("num-workspaces");
                 nspaces_show.set_text(@"$new_nspaces");
             }
-        }
-
-        private uint get_now() {
-            // timestamp
-            return Gdk.X11.get_server_time(timestamp_window);
         }
 
         private Button create_spacebutton (int currsubj, int n_spaces) {
@@ -218,13 +220,7 @@ namespace VisualSpaceApplet {
                 header.set_size_request(260, 0);
                 // lazy layout
                 spacegrid.attach(header, 2, 0, 10, 1);
-                spacegrid.attach(new Label(" "), 1, 1, 1, 1);
-
-                if (i > 0) {
-                    spacegrid.attach(new Label(""), 0, 1, 1, 1);
-                }
                 spacegrid.attach(new Label(""), 0, 100, 1, 1);
-
                 spacegrids += spacegrid;
                 grids_rows += 0;
             }
@@ -363,10 +359,7 @@ namespace VisualSpaceApplet {
             // misc stuff we are using
             fontspacing_css = """
             .fontspacing {letter-spacing: 3px; font-size: 12px;}
-            .fontspacing_vertical {font-size: 12px;}
-            .linespacing_top {margin-top: -12px;}
-            .linespacing_bottom {margin-top: -12px;}
-            .plusminus {font-size: 24px; font-weight: bold;}
+            .linespacing_top {margin-top: 10px;}
             """;
             gdkscreen = this.get_screen();
             wnckscr = Wnck.Screen.get_default();
@@ -400,9 +393,37 @@ namespace VisualSpaceApplet {
             indicatorBox.add(label);
             update_appearance();
             wnckscr.active_workspace_changed.connect(update_appearance);
+            // workspace-scrolling
+            indicatorBox.add_events(Gdk.EventMask.SCROLL_MASK);
+            indicatorBox.scroll_event.connect(movealong_workspaces);
             wnckscr.workspace_created.connect(update_appearance);
             wnckscr.workspace_destroyed.connect(update_appearance);
             show_all();
+        }
+
+        private bool movealong_workspaces (Gdk.EventScroll scrollevent) {
+            // manage scrolling
+            int curractive = wnckscr.get_active_workspace().get_number();
+            int nspaces = mutter_ws_settings.get_int(
+                "num-workspaces"
+            );
+            int newspace = -1;
+            Gdk.ScrollDirection upordown = scrollevent.direction;
+            if (upordown == Gdk.ScrollDirection.UP) {
+                if (curractive < nspaces - 1) {
+                    newspace = curractive + 1;
+                }
+            }
+            else if (upordown == Gdk.ScrollDirection.DOWN) {
+                if (curractive > 0) {
+                    newspace = curractive - 1;
+                }
+            }
+            if (newspace != -1) {
+                Wnck.Workspace new_ws = wnckscr.get_workspace(newspace);
+                new_ws.activate(get_now());
+            }
+            return false;
         }
 
         public override void update_popovers(Budgie.PopoverManager? manager)
