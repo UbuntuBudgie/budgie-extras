@@ -36,7 +36,6 @@ namespace VisualSpaceApplet {
 
     public class VisualSpacePopover : Budgie.Popover {
 
-        // Gdk.X11.Window timestamp_window;
         private ScrolledWindow scrollwin;
         private Gtk.EventBox indicatorBox;
         private Grid maingrid;
@@ -103,12 +102,10 @@ namespace VisualSpaceApplet {
 
             // linespacing_topspacelabel
             Label topspace1 = new Gtk.Label("");
-            //  Label topspace2 = new Gtk.Label("");
             set_spacing(gdkscreen, topspace1, "linespacing_top");
             supergrid.attach(scrollwin, 0, 10, 1, 1);
             supergrid.attach(ws_managebox, 0, 1, 1, 1);
             supergrid.attach(topspace1, 0, 0, 1, 1);
-            //  supergrid.attach(topspace2, 0, 3, 1, 1);
             // throw all stuff at each other
             scrollwin.add(maingrid);
             this.add(supergrid);
@@ -292,7 +289,6 @@ namespace VisualSpaceApplet {
                 produce_content ();
                 maingrid.show_all();
                 scrollwin.show_all();
-                // this.show_all();
                 return false;
             });
         }
