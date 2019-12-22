@@ -23,13 +23,13 @@ for file in `find . -name "*.py" -or -name "*.vala"`; do
     fi
 done
 
-#for file in `find src -name "*.ui"`; do
-#    if [[ `grep -F "translatable=\"yes\"" $file` ]]; then
-#        do_intltool gettext/glade $file
-#        do_gettext ${file}.h --add-comments --keyword=N_:1
-#        rm $file.h
-#    fi
-#done
+for file in `find . -name "*.ui"`; do
+    if [[ `grep -F "translatable=\"yes\"" $file` ]]; then
+        do_intltool gettext/glade $file
+        do_gettext ${file}.h --add-comments --keyword=N_:1
+        rm $file.h
+    fi
+done
 
 for file in `find . -name "*.in"`; do
     if [[ `grep -E "^_*" $file` ]]; then
