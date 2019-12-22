@@ -20,7 +20,16 @@ Build-Depends: debhelper (>= 11),
 		libsoup2.4-dev,
 		libwnck-3-dev,
 		libkeybinder-3.0-dev,
-		gnome-settings-daemon-dev
+		gnome-settings-daemon-dev,
+		
+		libgranite-dev,
+ 		libgdk-pixbuf2.0-dev,
+ 		libglib2.0-dev (>= 2.57),
+ 		libgnome-desktop-3-dev,
+ 		libgnome-menu-3-dev,
+ 		libzeitgeist-2.0-dev,
+ 		libappstream-dev,
+ 		cmake
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
@@ -103,8 +112,8 @@ Architecture: any
 Depends: budgie-extras-daemon,
   ${misc:Depends}, ${shlibs:Depends},
   xprintidle
-Replaces: budgie-preview-applet (<< 0.10.1+201910221917~)
-Breaks: budgie-previews-applet (<< 0.10.1+201910221917~)
+Replaces: budgie-preview-applet (<< 0.4.5+201910221917~)
+Breaks: budgie-previews-applet (<< 0.4.5+201910221917~)
 Description: Provides window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
@@ -456,3 +465,41 @@ Description: Change wallpaper from a folder on a schedule
  .
  Wallstreet allows for a directory of pictures to be shown on
  a schedule.
+
+Package: budgie-visualspace-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Show and manage windows in workspaces for the Budgie Desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The visualspace applet shows as a stylish compact workspace on the budgie
+ panel.  Choosing windows in the applet popup moves to the workspace
+ where the window is located and gives it focus.
+ The number of Workspace can also be changed though the applet popup.
+
+Package: budgie-applications-menu
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, gnome-menus
+Suggests: zeitgeist
+Description: Stylish Applications Menu for Budgie-Desktop
+ Budgie-Desktop is a GTK+ based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ The application-menu is a stylish panel applet that displays applications
+ in different views - grid and list. Weblinks typed into the search bar
+ can be opened in your default browser. Applications that have additional
+ desktop options show via a right-click menu. Applications with associated
+ actions show those actions are additional searchable entries.
+ .
+ With the optional zeitgeist package search entries learn your menu actions
+ and results are automatically biased to allow you to find and execute
+ applications quickly.
+ .
+ Variety of options are available including grid sizing and displaying a
+ powerstrip. 
