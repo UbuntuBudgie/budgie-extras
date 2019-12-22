@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Yuanning Zuo <zuoy@rose-hulman.edu>, 2019
+# David Mohammed <foss.freedom@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 22:18+0000\n"
+"POT-Creation-Date: 2019-12-22 23:32+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Yuanning Zuo <zuoy@rose-hulman.edu>, 2019\n"
+"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/ubuntu-budgie/teams/72251/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,6 +81,7 @@ msgid "Select a directory"
 msgstr ""
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -160,7 +162,7 @@ msgid "PM"
 msgstr "下午"
 
 #. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:65
+#: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
 
@@ -220,6 +222,208 @@ msgstr "缺失应用"
 #. translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "运行命令…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "在浏览器中打开 %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "将 %s 发送到 %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "用浏览器打开此链接"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "链接"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "用浏览器打链接"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "在您的电脑中搜索和运行应用程序。"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:320
+#, c-format
+msgid "Open with %s"
+msgstr "使用 %s 打开"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "使用 %s 打开选中项"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "计算器"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "计算基本的数学表达式。"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "计算插件尚未安装"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "执行 '%s'"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "运行命令"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "查找或执行任意命令。"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "尝试更改搜索内容。"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
+#, c-format
+msgid "No Results for “%s”"
+msgstr "未找到与 “%s” 相关的结果"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+msgid "Suspend"
+msgstr "挂起"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+msgid "Restart"
+msgstr "重启"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+msgid "Lock"
+msgstr "锁定"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+msgid "Logout"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "从 Dock 移除"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "固定至 Dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "文本"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "应用程序"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "文件"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "操作"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "搜索"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "联系人"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "网络"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+msgid "Settings"
+msgstr "设置"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "应用操作"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "其它"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "运行"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "运行程序、操作或脚本"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "在终端中运行"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "在终端中运行程序或命令"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "复制到剪贴板"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "复制选中内容到剪贴板"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
+msgid "View as Grid"
+msgstr "网格视图"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
+msgid "View by Category"
+msgstr "分类视图"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
+msgid "Search Apps"
+msgstr "搜索应用"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
+msgid "Clear all"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
+msgid "Open and search apps"
+msgstr "打开并搜索应用"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
 msgstr ""
 
 #. tooltip
@@ -673,12 +877,42 @@ msgstr ""
 msgid "Please enter at least 3 characters"
 msgstr ""
 
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
+msgid "Menu Icon"
+msgstr ""
+
+#. Number of rows for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
+msgid "Grid Rows"
+msgstr ""
+
+#. Number of columns for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
+msgid "Grid Columns"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
+msgid "Show Menu Label"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
+msgid "Menu Label"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Power-strip"
+msgstr ""
+
 #: budgie-visualspace/src/VisualSpace.plugin.in.h:1
 msgid "Workspace indicator and window list"
 msgstr ""
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
 msgstr ""
 
 #: budgie-trash/src/Trash.plugin.in.h:1

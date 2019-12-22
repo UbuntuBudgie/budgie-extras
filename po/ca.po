@@ -8,15 +8,16 @@
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Víctor Pont <victor@pont.cat>, 2019
 # Davidmp <medipas@gmail.com>, 2019
+# David Mohammed <foss.freedom@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 22:18+0000\n"
+"POT-Creation-Date: 2019-12-22 23:32+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>, 2019\n"
+"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,6 +84,7 @@ msgid "Select a directory"
 msgstr "Seleccioneu un diectori"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -165,7 +167,7 @@ msgid "PM"
 msgstr "PM"
 
 #. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:65
+#: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Automàtic"
 
@@ -226,6 +228,208 @@ msgstr "Falta una miniaplicació"
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "Si us plau, afegiu WindowPreviews."
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Executa aquesta ordre…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Obre %s al navegador per defecte"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Obre %s amb %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Obre aquest enllaç amb el navegador per defecte"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Enllaç"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Obre l'enllaç al navegador per defecte"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Cerqueu i executeu aplicacions l'ordinador."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:320
+#, c-format
+msgid "Open with %s"
+msgstr "Obre amb %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Obre la selecció actual amb %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Calculadora"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Calcula expressions bàsiques."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "El bc no està instal·lat"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Executa «%s»"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Executa una ordre"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Trobeu i executeu ordres arbitràries."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Proveu de canviar els termes de la cerca."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Cap resultat per a “%s”"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Atura"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+msgid "Suspend"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+msgid "Restart"
+msgstr "Reinicia"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+msgid "Lock"
+msgstr "Bloqueja"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+msgid "Logout"
+msgstr "Surt"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Suprimeix de l'acobla_dor"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Afegeix a l'acobla_dor"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Text"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Aplicacions"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Fitxers"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Accions"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Cerca"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Contactes"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Internet"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+msgid "Settings"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Accions de l'aplicació"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Altres"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Executa"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Executa una aplicació, una acció o un script"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Executa en un terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Executa l'aplicació o l'ordre en un terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Copia al porta-retalls"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Copia la selecció al porta-retalls"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
+msgid "View as Grid"
+msgstr "Visualitza com a graella"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
+msgid "View by Category"
+msgstr "Visualitza per categories"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
+msgid "Search Apps"
+msgstr "Cerca aplicacions"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
+msgid "Clear all"
+msgstr "Neteja-ho tot"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
+msgid "Open and search apps"
+msgstr "Cerqueu i obriu aplicacions"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Establiu la icona del menú des d'un fitxer."
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Fitxers d'imatge"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Qualsevol fitxer"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Establiu-ne la icona."
 
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
@@ -681,6 +885,32 @@ msgstr "Estableix-ne una posició personalitzada (px)"
 msgid "Please enter at least 3 characters"
 msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
+msgid "Menu Icon"
+msgstr "Icona del menú"
+
+#. Number of rows for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
+msgid "Grid Rows"
+msgstr ""
+
+#. Number of columns for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
+msgid "Grid Columns"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
+msgid "Show Menu Label"
+msgstr "Mostra l'etiqueta del menú."
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
+msgid "Menu Label"
+msgstr "Etiqueta del menú"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Power-strip"
+msgstr ""
+
 #: budgie-visualspace/src/VisualSpace.plugin.in.h:1
 msgid "Workspace indicator and window list"
 msgstr "Indicador de l'espai de treball i llista de finestres"
@@ -688,6 +918,10 @@ msgstr "Indicador de l'espai de treball i llista de finestres"
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "Estableix les accions dels cantons actius"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr ""
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"

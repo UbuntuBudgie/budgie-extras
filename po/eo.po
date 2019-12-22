@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Benjamin Piller <benpiller@gmail.com>, 2019
+# David Mohammed <foss.freedom@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 22:18+0000\n"
+"POT-Creation-Date: 2019-12-22 23:32+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Benjamin Piller <benpiller@gmail.com>, 2019\n"
+"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
 "Language-Team: Esperanto (https://www.transifex.com/ubuntu-budgie/teams/72251/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,6 +81,7 @@ msgid "Select a directory"
 msgstr ""
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -162,7 +164,7 @@ msgid "PM"
 msgstr "ptm."
 
 #. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:65
+#: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
 
@@ -223,6 +225,208 @@ msgstr "Apleto mankas"
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "Bonvolu aldoni WindowPreviews"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Lanĉi ĉi komandon…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Malfermi %s en la apriora foliumilo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Malfermi %s en %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Malfermi ĉi ligilon en la apriora foliumilo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Ligilo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Malfermi la ligilon en la apriora foliumilo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Serĉi kaj lanĉi aplikaĵojn ĉe via komputilo."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:320
+#, c-format
+msgid "Open with %s"
+msgstr "Malfermi per %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Malfermi la aktivan elektaĵon per %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Kalkulilo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Kalkuli simplajn esprimojn."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "bc ne estas instalita"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Lanĉi „%s“"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Lanĉi komandon"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Trovi kaj lanĉi arbitran komandon."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Provu ŝangi la serĉatajn vortojn."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Neniu rezultato por „%s“"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Malŝalti"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+msgid "Suspend"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+msgid "Restart"
+msgstr "Restartigi"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+msgid "Lock"
+msgstr "Ŝlosi"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+msgid "Logout"
+msgstr "Elsaluti"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Forigi el _Butonbreto"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Aldoni al _Butonbreto"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Teksto"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Aplikaĵoj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Dosieroj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Agoj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Serĉi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Kontaktoj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Interreto"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+msgid "Settings"
+msgstr "Agordoj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Aplikaĵaj agoj"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Lanĉi"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Lanĉi aplikaĵon, agon aŭ komandon"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Lanĉi en la Terminalo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Lanĉi aplikaĵon aŭ komandon en la terminalo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Kopii en la tondujo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Kopii elektaĵon en la tondujo"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
+msgid "View as Grid"
+msgstr "Prezenti laŭ krado"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
+msgid "View by Category"
+msgstr "Prezenti laŭ kategorioj"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
+msgid "Search Apps"
+msgstr "Serĉi aplikaĵojn"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
+msgid "Clear all"
+msgstr "Forviŝi ĉion"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
+msgid "Open and search apps"
+msgstr "Malfermi kaj serĉi aplikaĵojn"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Preni menuan piktogramon el dosiero"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Bildaj dosieroj"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Iu ajn dosiero"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Ŝalti piktogramon"
 
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
@@ -496,7 +700,7 @@ msgstr ""
 #. TRANSLATORS: This Button Links to Gnome 'Calendar' application
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendaro"
 
 #. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
 #. pack page2
@@ -504,13 +708,13 @@ msgstr ""
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
 msgid "Preferences"
-msgstr ""
+msgstr "Agordoj"
 
 #. TRANSLATORS: When this checkbox is enabled the current date will be
 #. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
-msgstr ""
+msgstr "Montri daton"
 
 #. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
 #. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
@@ -518,7 +722,7 @@ msgstr ""
 #. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
-msgstr ""
+msgstr "Uzi 24-horan tempon"
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
@@ -535,7 +739,7 @@ msgstr ""
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:91
 msgid "Temperature"
-msgstr ""
+msgstr "Temperaturo"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:141
 msgid "Light"
@@ -675,6 +879,32 @@ msgstr "Agordi individuan pozicion (px)"
 msgid "Please enter at least 3 characters"
 msgstr "Bonvolu enigi almenaŭ 3 karakterojn"
 
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
+msgid "Menu Icon"
+msgstr "Menua piktogramo"
+
+#. Number of rows for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
+msgid "Grid Rows"
+msgstr ""
+
+#. Number of columns for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
+msgid "Grid Columns"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
+msgid "Show Menu Label"
+msgstr "Montri menuan etikedon"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
+msgid "Menu Label"
+msgstr "Menua etikedo"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Power-strip"
+msgstr ""
+
 #: budgie-visualspace/src/VisualSpace.plugin.in.h:1
 msgid "Workspace indicator and window list"
 msgstr ""
@@ -682,6 +912,10 @@ msgstr ""
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "Agordi angulajn agojn"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr ""
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
