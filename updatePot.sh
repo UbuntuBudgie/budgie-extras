@@ -15,7 +15,11 @@ touch budgie-extras.po
 
 for file in `find . -name "*.py" -or -name "*.vala"`; do
     if [[ `grep -F "_(\"" $file` ]]; then
-        do_gettext $file --add-comments
+        grep -q "$file" POTFILES.skip
+        if [[ $? != 0 ]]; then
+            echo $file
+            do_gettext $file --add-comments
+        fi
     fi
 done
 
