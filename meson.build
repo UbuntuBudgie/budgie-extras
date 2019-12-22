@@ -167,3 +167,8 @@ build_wallstreet = get_option('build-wallstreet')
 if build_all == true or build_wallstreet == true
 	subdir('budgie-wallstreet')
 endif
+
+build_applications_menu = get_option('build-applications-menu')
+if build_all == true or build_applications_menu == true
+	subdir('budgie-applications-menu')
+endif

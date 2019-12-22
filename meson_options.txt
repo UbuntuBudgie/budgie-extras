@@ -24,3 +24,5 @@ option('build-fuzzyclock', type: 'boolean', value: false, description: 'Build fu
 option('build-brightness-controller', type: 'boolean', value: false, description: 'Build brightness controller applet')
 option('build-visualspace', type: 'boolean', value: false, description: 'Build visualspace miniapp')
 option('build-wallstreet', type: 'boolean', value: false, description: 'Build wallstreet miniapp')
+option('build-applications-menu', type: 'boolean', value: false, description: 'Build applications-menu applet')
+option('with-zeitgeist', type : 'boolean', value : 'true', description : 'Add Zeitgeist support')
