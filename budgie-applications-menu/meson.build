@@ -7,22 +7,11 @@ asresources = gnome.compile_resources(
     c_name: 'as'
 )
 
-add_project_arguments(
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-    language: 'c'
-)
-
-# Global path variable
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
 
 LOCALE_DIR = join_paths(prefix, get_option('localedir'))
-
-add_project_arguments(
-    '-DPKGDATADIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'), 'wingpanel')),
-    language: 'c'
-)
 
 glib_dep = dependency('glib-2.0')
 gee_dep = dependency('gee-0.8')

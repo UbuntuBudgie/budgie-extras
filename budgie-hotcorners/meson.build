@@ -14,8 +14,6 @@ am_cflags = [
     '-W',
 ]
 
-add_global_arguments(am_cflags, language: 'c')
-
 PLUGIN = 'budgie-hotcorners'
 
 install_data('schema/org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml',
