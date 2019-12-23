@@ -21,15 +21,15 @@ Build-Depends: debhelper (>= 11),
 		libwnck-3-dev,
 		libkeybinder-3.0-dev,
 		gnome-settings-daemon-dev,
-		
 		libgranite-dev,
  		libgdk-pixbuf2.0-dev,
- 		libglib2.0-dev (>= 2.57),
+ 		libglib2.0-dev (>= 2.56),
  		libgnome-desktop-3-dev,
  		libgnome-menu-3-dev,
  		libzeitgeist-2.0-dev,
  		libappstream-dev,
- 		cmake
+ 		cmake,
+		libplank-dev
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
