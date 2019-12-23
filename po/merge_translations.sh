@@ -8,6 +8,16 @@ for i in *.po ; do
         echo "merging $i"
         msgcat -o $i $i ../budgie-applications-menu/applications-menu/po/$i  
         msgmerge -U $i budgie-extras.pot
+    else
+        echo "not found $i lets check the generic language is available"
+        
+        PART=$(echo $i | cut -d'_' -f 1)
+        PART="${PART}.po"
+        if test -f ../budgie-applications-menu/applications-menu/po/$PART; then
+            echo "merging $PART"
+            msgcat -o $i $i ../budgie-applications-menu/applications-menu/po/$PART  
+            msgmerge -U $i budgie-extras.pot
+        fi
     fi
 done
 
@@ -19,6 +29,16 @@ for i in *.po ; do
         echo "merging $i"
         msgcat -o $i $i budgie-translations/$i
         msgmerge -U $i budgie-extras.pot
+    else
+        echo "not found $i lets check the generic language is available"
+        
+        PART=$(echo $i | cut -d'_' -f 1)
+        PART="${PART}.po"
+        if test -f budgie-translations/$PART; then
+            echo "merging $PART"
+            msgcat -o $i $i budgie-translations/$PART  
+            msgmerge -U $i budgie-extras.pot
+        fi
     fi
 done
 # cleanup
