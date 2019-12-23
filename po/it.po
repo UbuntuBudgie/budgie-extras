@@ -7,15 +7,16 @@
 # Nicola Gentile <nikkognt@gmail.com>, 2019
 # Giuseppe Pignataro <rogepix@gmail.com>, 2019
 # Silvia M <cabinstewardess@outlook.com>, 2019
+# David Mohammed <foss.freedom@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-11 22:18+0000\n"
+"POT-Creation-Date: 2019-12-22 23:32+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Silvia M <cabinstewardess@outlook.com>, 2019\n"
+"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
 "Language-Team: Italian (https://www.transifex.com/ubuntu-budgie/teams/72251/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,6 +83,7 @@ msgid "Select a directory"
 msgstr "Scegli una directory"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -164,7 +166,7 @@ msgid "PM"
 msgstr "PM"
 
 #. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:65
+#: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
 
@@ -225,6 +227,208 @@ msgstr "Applet mancante"
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "Aggiungi le anteprime delle finestre"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Esegui questo comando…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Apri %s nel browser Internet predefinito"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Apri %s in %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Apri questo collegamento nel browser Internet predefinito"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Collegamento"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Apri collegamento nel browser predefinito"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Cerca ed esegui applicazioni nel tuo computer."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:320
+#, c-format
+msgid "Open with %s"
+msgstr "Apri con %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Apre la selezione corrente usando %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Calcolatrice"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Calcola espressioni di base."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "bc non è installato"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Esegui '%s'"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Esegui comando"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Trova ed esegui comandi arbitrari."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Prova a modificare i termini di ricerca."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Nessun risultato per \"%s\""
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Spegni"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+msgid "Suspend"
+msgstr "Sospendi"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+msgid "Restart"
+msgstr "Riavvia"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+msgid "Lock"
+msgstr "Blocca"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+msgid "Logout"
+msgstr "Esci"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Rimuovi dalla _dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Aggiungi alla _dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Testo"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Applicazioni"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "File"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Azioni"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Cerca"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Contatti"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Internet"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Azioni delle applicazioni"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Altro"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Esegui"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Esegui un'applicazione, un'azione o uno script"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Esegui nel terminale"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Esegui applicazione o comando nel terminale"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Copia negli appunti"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Copia la selezione negli appunti"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
+msgid "View as Grid"
+msgstr "Visualizza come griglia"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
+msgid "View by Category"
+msgstr "Visualizza per categoria"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
+msgid "Search Apps"
+msgstr "Cerca applicazioni"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
+msgid "Clear all"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
+msgid "Open and search apps"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Imposta l'icona del menu da file"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "File immagine"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Qualsiasi file"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Imposta icona"
 
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
@@ -678,6 +882,32 @@ msgstr "Imposta la posizione personalizzata (px)"
 msgid "Please enter at least 3 characters"
 msgstr "Si prega di inserire almeno 3 caratteri"
 
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
+msgid "Menu Icon"
+msgstr "Icona menu"
+
+#. Number of rows for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
+msgid "Grid Rows"
+msgstr ""
+
+#. Number of columns for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
+msgid "Grid Columns"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
+msgid "Show Menu Label"
+msgstr "Mostra Etichetta Menu"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
+msgid "Menu Label"
+msgstr "Etichetta Menu"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Power-strip"
+msgstr ""
+
 #: budgie-visualspace/src/VisualSpace.plugin.in.h:1
 msgid "Workspace indicator and window list"
 msgstr ""
@@ -685,6 +915,10 @@ msgstr ""
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "Imposta le azioni hotcorner"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr ""
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
