@@ -4,7 +4,7 @@ project('budgie-extras',
 	meson_version: '>= 0.40.0'
 )
 
-#i18n = import('i18n')
+i18n = import('i18n')
 python = import('python3')
 
 message('Looking for dependencies')
@@ -15,12 +15,24 @@ else
 	message('Found python3 binary')
 endif
 
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
+
+add_global_arguments(am_cflags, language: 'c')
+
 # Global path variable
 intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
 sysconfdir = get_option('sysconfdir')
+
+add_project_arguments(
+    '-DPKGDATADIR="@0@"'.format(join_paths(get_option('prefix'), get_option('libdir'), 'wingpanel')),
+    language: 'c'
+)
 
 podir = join_paths(meson.source_root(), 'po')
 
@@ -42,6 +54,11 @@ message('Installing applets...')
 
 build_all = get_option('build-all')
 subdir('po')
+
+build_applications_menu = get_option('build-applications-menu')
+if build_all == true or build_applications_menu == true
+	subdir('budgie-applications-menu')
+endif
 
 build_wswitcher = get_option('build-wswitcher')
 if build_all == true or build_wswitcher == true
@@ -166,9 +183,4 @@ endif
 build_wallstreet = get_option('build-wallstreet')
 if build_all == true or build_wallstreet == true
 	subdir('budgie-wallstreet')
-endif
-
-build_applications_menu = get_option('build-applications-menu')
-if build_all == true or build_applications_menu == true
-	subdir('budgie-applications-menu')
 endif
