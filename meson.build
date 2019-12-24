@@ -20,6 +20,7 @@ add_project_arguments(
     language: 'c'
 )
 
+am_cflags = []
 add_global_arguments(am_cflags, language: 'c')
 
 # Global path variable
