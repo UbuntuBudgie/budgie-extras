@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+git submodule init
+git submodule update
+
 VERSION="0.10.1"
 NAME="budgie-extras"
 git-archive-all.sh --format tar --prefix ${NAME}-${VERSION}/ --verbose -t HEAD ${NAME}-${VERSION}.tar
