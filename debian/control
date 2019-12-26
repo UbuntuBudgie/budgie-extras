@@ -482,7 +482,8 @@ Description: Show and manage windows in workspaces for the Budgie Desktop
 
 Package: budgie-applications-menu-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, gnome-menus
+Depends: ${misc:Depends}, ${shlibs:Depends}, gnome-menus,
+ budgie-extras-common
 Suggests: zeitgeist
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
