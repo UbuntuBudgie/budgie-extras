@@ -185,3 +185,8 @@ build_wallstreet = get_option('build-wallstreet')
 if build_all == true or build_wallstreet == true
 	subdir('budgie-wallstreet')
 endif
+
+build_network_manager = get_option('build-network-manager')
+if build_all == true or build_network_manager == true
+	subdir('budgie-network-manager')
+endif
