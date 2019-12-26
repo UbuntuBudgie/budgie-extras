@@ -1,53 +1,27 @@
-# #-#-#-#-#  tr.po (slingshot)  #-#-#-#-#
-# #-#-#-#-#  tr.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Emre JILTA <jilta.e@gmail.com>, 2019
 # Bengünur <bengunur2@gmail.com>, 2019
 # David Mohammed <foss.freedom@gmail.com>, 2019
-#
-# #-#-#-#-#  tr.po (slingshot)  #-#-#-#-#
-# Turkish translation for slingshot
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the slingshot package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
-# #-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the budgie-desktop package.
-#
-# Translators:
-# Demiray Muhterem <mdemiray@msn.com>, 2015-2017
-# Egemen Metin Turan <emturan@gmail.com>, 2016
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Budgie Desktop\n"
+"Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-22 23:32+0000\n"
-"PO-Revision-Date: 2019-09-10 13:03+0000\n"
-"Last-Translator: Abdulkadir Furkan Şanlı <abdulkadirfsanli@protonmail.com>\n"
-"Language-Team: Turkish <http://translate.getsol.us/projects/budgie-desktop/"
-"translations/tr/>\n"
-"Language: tr\n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
+"Language-Team: Turkish (https://www.transifex.com/ubuntu-budgie/teams/72251/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"#-#-#-#-#  tr.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
-"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 3.8\n"
 
 #. define the name of the application
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
@@ -112,13 +86,8 @@ msgstr ""
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#, fuzzy
 msgid "Cancel"
-msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"İptal\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Vazgeç"
+msgstr "İptal"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 #: budgie-quicknote/QuickNoteApplet.vala:201
@@ -193,9 +162,7 @@ msgstr "ÖÖ"
 msgid "PM"
 msgstr "ÖS"
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -252,7 +219,8 @@ msgstr "Alt-sağ"
 msgid "Missing applet"
 msgstr "Applet bulunmuyor"
 
-#. WindowPreviews is the name of a Budgie Applet and does not need to be translated
+#. WindowPreviews is the name of a Budgie Applet and does not need to be
+#. translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "Lütfen WindowPreviews'ı ekleyin"
@@ -336,22 +304,12 @@ msgid "Shutdown"
 msgstr "Kapat"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
-#, fuzzy
 msgid "Suspend"
 msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"Askıya Al\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Askıya al"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
-#, fuzzy
 msgid "Restart"
 msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"Yeniden Başlat\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Yeniden başlat"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
 msgid "Lock"
@@ -663,24 +621,30 @@ msgid "quarter after %s"
 msgstr "%s'ı çeyrek geçiyor"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "%s'ı yirmi geçiyor"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "%s'ı neredeyse yarım geçecek"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -726,7 +690,8 @@ msgstr "%s'a on var"
 msgid "almost %s"
 msgstr "neredeyse %s "
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Tarih ve Saat ayarları"
@@ -741,29 +706,22 @@ msgstr "Takvim"
 #. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
-#, fuzzy
 msgid "Preferences"
-msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"Tercih\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Tercihler"
+msgstr "Tercih"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Tarihi göster"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
-#, fuzzy
 msgid "Use 24 hour time"
-msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"24 saatlik zaman formatını kullan\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"24 saat kullan"
+msgstr "24 saatlik zaman formatını kullan"
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
@@ -908,13 +866,8 @@ msgstr "Popover'da tahmini göster"
 
 #. optional settings: show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:846
-#, fuzzy
 msgid "Transparency"
-msgstr ""
-"#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-"Şeffaflık\n"
-"#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-"Saydamlık"
+msgstr "Şeffaflık"
 
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:879
@@ -986,1031 +939,3 @@ msgstr "Hızlı ve Kolay Notlar"
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Hava durumu ve tahmini göster"
-
-#, fuzzy
-#~ msgid "Hibernate"
-#~ msgstr ""
-#~ "#-#-#-#-#  tr.po (slingshot)  #-#-#-#-#\n"
-#~ "Hazırda Beklet\n"
-#~ "#-#-#-#-#  tr.po (Budgie Desktop)  #-#-#-#-#\n"
-#~ "Hazırda beklet"
-
-#~ msgid "Log out"
-#~ msgstr "Oturumu kapat"
-
-#~ msgid "Restart device"
-#~ msgstr "Cihazı yeniden başlat"
-
-#~ msgid "Power Off"
-#~ msgstr "Kapat"
-
-#~ msgid "Change background"
-#~ msgstr "Arka fonu değiştir"
-
-#~ msgid "Displays"
-#~ msgstr "Ekranlar"
-
-#~ msgid "Turned on Caffeine Boost"
-#~ msgstr "Kafein Takviyesi açıldı"
-
-#~ msgid "Turned off Caffeine Boost"
-#~ msgstr "Kafein Takviyesi kapatıldı"
-
-#~ msgid "Will turn off in a minute"
-#~ msgstr "Bir dakika içinde kapanacak"
-
-#~ msgid "Will turn off in %d minutes"
-#~ msgstr "%d dakika içinde kapanacak"
-
-#~ msgid "Caffeine Mode"
-#~ msgstr "Kafein Modu"
-
-#~ msgid "Applets"
-#~ msgstr "Uygulamalar"
-
-#~ msgid "Notifications"
-#~ msgstr "Bildirimler"
-
-#~ msgid "No apps are currently playing audio."
-#~ msgstr "Şu an hiçbir uygulama ses çalmıyor."
-
-#~ msgid "Play some music"
-#~ msgstr "Müzik çal"
-
-#~ msgid "Nothing to see here"
-#~ msgstr "Burada görülecek bir şey yok"
-
-#~ msgid "%u unread notifications"
-#~ msgstr "%u okunmamış bildirim"
-
-#~ msgid "1 unread notification"
-#~ msgstr "1 okunmamış bildirim"
-
-#~ msgid "No unread notifications"
-#~ msgstr "Okunmamış bildirim yok"
-
-#~ msgid "No new notifications"
-#~ msgstr "Yeni bildirim yok"
-
-#~ msgid "Apps"
-#~ msgstr "Uygulamalar"
-
-#~ msgid "Devices"
-#~ msgstr "Cihazlar"
-
-#~ msgid "Battery fully charged."
-#~ msgstr "Pil tamamen doldu."
-
-#~ msgid "Unknown"
-#~ msgstr "Bilinmeyen"
-
-#~ msgid "Battery charging"
-#~ msgstr "Pil doluyor"
-
-#~ msgid "Battery remaining"
-#~ msgstr "Kalan pil"
-
-#~ msgid "Show battery percentage"
-#~ msgstr "Pil yüzdesini göster"
-
-#~ msgid "Power settings"
-#~ msgstr "Güç ayarları"
-
-#~ msgid "Bluetooth Settings"
-#~ msgstr "Bluetooth Ayarları"
-
-#~ msgid "Send Files"
-#~ msgstr "Dosya Gönder"
-
-#~ msgid "Bluetooth Airplane Mode"
-#~ msgstr "Bluetooth Uçak Modu"
-
-#~ msgid "Bluetooth is disabled"
-#~ msgstr "Bluetooth devre dışı"
-
-#~ msgid "Bluetooth is active"
-#~ msgstr "Bluetooth etkin"
-
-#~ msgid "Connected to %d device"
-#~ msgid_plural "Connected to %d devices"
-#~ msgstr[0] "%d aygıtına bağlı"
-#~ msgstr[1] "%d aygıtına bağlandı"
-
-#~ msgid "Sound settings"
-#~ msgstr "Ses ayarları"
-
-#~ msgid "Launch New Instance"
-#~ msgstr "Yeni Örnek Başlat"
-
-#~ msgid "Close All Windows"
-#~ msgstr "Bütün Pencereleri Kapat"
-
-#~ msgid "Always On Top"
-#~ msgstr "Daima Üstte"
-
-#~ msgid "Maximize"
-#~ msgstr "Büyült"
-
-#~ msgid "Minimize"
-#~ msgstr "Tam Küçült"
-
-#~ msgid "Unfavorite"
-#~ msgstr "Favorilerden Çıkar"
-
-#~ msgid "Favorite"
-#~ msgstr "Favorilere Ekle"
-
-#~ msgid "Move To Workspace %i"
-#~ msgstr "Çalışma Alanına Al: %i"
-
-#~ msgid "Unmaximize"
-#~ msgstr "Küçült"
-
-#~ msgid "Close Window"
-#~ msgstr "Pencereyi Kapat"
-
-#~ msgid "Show Window Controls"
-#~ msgstr "Pencere Kontrollerini Göster"
-
-#~ msgid "All"
-#~ msgstr "Tümü"
-
-#~ msgid "Sorry, no items found"
-#~ msgstr "Üzgünüz, hiçbir öge bulunamadı"
-
-#~ msgid "Caps lock is active"
-#~ msgstr "Caps lock etkin"
-
-#~ msgid "Caps lock is not active"
-#~ msgstr "Caps lock etkin değil"
-
-#~ msgid "Num lock is active"
-#~ msgstr "Num lock etkin"
-
-#~ msgid "Num lock is not active"
-#~ msgstr "Num lock etkin değil"
-
-#~ msgid "Time and date settings"
-#~ msgstr "Zaman ve tarih ayarları"
-
-#~ msgid "Show seconds"
-#~ msgstr "Saniyeyi göster"
-
-#~ msgid "Toggle the desktop"
-#~ msgstr "Masaüstüne geçiş"
-
-#~ msgid "Rename"
-#~ msgstr "Yeniden adlandır"
-
-#~ msgid "Remove"
-#~ msgstr "Kaldır"
-
-#~ msgid "Timer (minutes)"
-#~ msgstr "Kronometre (dakika)"
-
-#~ msgid "User"
-#~ msgstr "Kullanıcı"
-
-#~ msgid "Places"
-#~ msgstr "Konumlar"
-
-#~ msgid "Nothing to display right now"
-#~ msgstr "Görüntülenecek bir şey yok"
-
-#~ msgid "Mount some drives"
-#~ msgstr "Sürücü bağla"
-
-#~ msgid "Enable more sections"
-#~ msgstr "Daha fazla bölüm etkinleştir"
-
-#~ msgid "Open \"%s\""
-#~ msgstr "\"%s\" aç"
-
-#~ msgid "Volume is in use by other processes"
-#~ msgstr "Birim diğer işlemler tarafından kullanılıyor"
-
-#~ msgid "Operation aborted"
-#~ msgstr "İşlem durduruldu"
-
-#~ msgid "Type your password"
-#~ msgstr "Şifrenizi yazın"
-
-#~ msgid "Removable devices"
-#~ msgstr "Çıkarılabilir cihazlar"
-
-#~ msgid "Local volumes"
-#~ msgstr "Yerel birimler"
-
-#~ msgid "Network folders"
-#~ msgstr "Ağ klasörleri"
-
-#~ msgid "Mount and open \"%s\""
-#~ msgstr "\"%s\" bağla ve aç"
-
-#~ msgid "Eject"
-#~ msgstr "Çıkar"
-
-#~ msgid "Enter the encryption passphrase to unlock this volume"
-#~ msgstr "Bu birimin kilidini açmak için şifreleme parolasını girin"
-
-#~ msgid "You can now safely remove"
-#~ msgstr "Şimdi güvenli bir şekilde çıkarabilirsiniz:"
-
-#~ msgid "The password you entered is incorrect"
-#~ msgstr "Girdiğiniz parola yanlış"
-
-#~ msgid "An unknown error occurred while attempting to mount this volume"
-#~ msgstr "Bu birimi bağlamaya çalışırken bilinmeyen bir hata oluştu"
-
-#~ msgid "Unmount"
-#~ msgstr "Kaldır"
-
-#~ msgid "Unknown Device"
-#~ msgstr "Bilinmeyen Cihaz"
-
-#~ msgid "Error while ejecting device"
-#~ msgstr "Cihaz çıkarılırken hata oluştu"
-
-#~ msgid "Error while unmounting volume"
-#~ msgstr "Birim kaldırılırken hata oluştu"
-
-#~ msgid "Authentication failed"
-#~ msgstr "Doğrulama başarısız"
-
-#~ msgid "Group:"
-#~ msgstr "Grup:"
-
-#~ msgid "Appearance"
-#~ msgstr "Görünüm"
-
-#~ msgid "Panels"
-#~ msgstr "Paneller"
-
-#~ msgid "Session"
-#~ msgstr "Oturum"
-
-#~ msgid "Budgie Desktop Settings"
-#~ msgstr "Budgie Masaüstü Ayarları"
-
-#~ msgid "Create new panel"
-#~ msgstr "Yeni panel oluştur"
-
-#~ msgid "Remove this panel from the screen"
-#~ msgstr "Ekrandan bu paneli kaldırın"
-
-#~ msgid "Top Dock"
-#~ msgstr "Üst Dock"
-
-#~ msgid "Right Dock"
-#~ msgstr "Sağ Dock"
-
-#~ msgid "Left Dock"
-#~ msgstr "Sol Dock"
-
-#~ msgid "Bottom Dock"
-#~ msgstr "Alt Dock"
-
-#~ msgid "Top Panel"
-#~ msgstr "Üst Panel"
-
-#~ msgid "Right Panel"
-#~ msgstr "Sağ Panel"
-
-#~ msgid "Left Panel"
-#~ msgstr "Sol Panel"
-
-#~ msgid "Bottom Panel"
-#~ msgstr "Alt Panel"
-
-#~ msgid "Top"
-#~ msgstr "Üst"
-
-#~ msgid "Right"
-#~ msgstr "Sağ"
-
-#~ msgid "Left"
-#~ msgstr "Sol"
-
-#~ msgid "Bottom"
-#~ msgstr "Alt"
-
-#~ msgid "Always"
-#~ msgstr "Daima"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dinamik"
-
-#~ msgid "None"
-#~ msgstr "Yok"
-
-#~ msgid "Intelligent"
-#~ msgstr "Akıllı"
-
-#~ msgid "Never"
-#~ msgstr "Asla"
-
-#~ msgid "Position"
-#~ msgstr "Konum"
-
-#~ msgid "Set the edge of the screen that this panel will stay on"
-#~ msgstr "Panelin duracağı ekran kenarını ayarla"
-
-#~ msgid "Size"
-#~ msgstr "Boyut"
-
-#~ msgid ""
-#~ "Set the size (width or height, depending on orientation) of this panel"
-#~ msgstr ""
-#~ "Bu panelin boyutunu (genişliğini veya yüksekliğini, hizalamaya bağlı "
-#~ "olarak) ayarlayın"
-
-#~ msgid "Automatically hide"
-#~ msgstr "Otomatik olarak gizle"
-
-#~ msgid "When set, this panel will hide from view to maximize screen estate"
-#~ msgstr ""
-#~ "Ayarlandığında, bu panel ekran alanını en üst düzeye çıkarmak için "
-#~ "görünümden gizlenir"
-
-#~ msgid "Control when this panel should have a solid background"
-#~ msgstr "Bu panelin ne zaman saydam bir arka fona sahip olacağını kontrol et"
-
-#~ msgid "Shadow"
-#~ msgstr "Gölge"
-
-#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
-#~ msgstr "Opak paneller için ideal, dekoratif bir gölge etkisi ekler"
-
-#~ msgid "Stylize regions"
-#~ msgstr "Bölgeleri stille"
-
-#~ msgid ""
-#~ "Adds a hint to the panel so that each of the panel's three main areas may "
-#~ "be themed differently."
-#~ msgstr ""
-#~ "Panele bir ayrıklık ekleyerek üç ana alanının her birinin farklı temalı "
-#~ "olabilmesini sağlar."
-
-#~ msgid "Dock mode"
-#~ msgstr "Dock modu"
-
-#~ msgid ""
-#~ "When in dock mode, the panel will use the minimal amount of space "
-#~ "possible, freeing up valuable screen estate"
-#~ msgstr ""
-#~ "Dock modundayken, panel mümkün olan en az alanı kullanır, ekran alanı "
-#~ "boşaltır"
-
-#~ msgid "Allow raising volume above 100%"
-#~ msgstr "Ses düzeyini %100'den fazla yükseltmeye izin ver"
-
-#~ msgid ""
-#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
-#~ "Widget in Raven up to 150%."
-#~ msgstr ""
-#~ "Ses Ayarları'ndan ve Raven'daki Ses Çıktı Widget'ından ses düzeyinin "
-#~ "%150'ye kadar çıkarılmasına izin verir."
-
-#~ msgid "Enable display of week numbers in Calendar"
-#~ msgstr "Takvimde hafta numaralarının gösterimini etkinleştir"
-
-#~ msgid ""
-#~ "This setting enables the display of week numbers in the Calendar widget."
-#~ msgstr ""
-#~ "Bu ayar Takvim Widget'ında hafta sayılarının görünümünü etkinleştirir."
-
-#~ msgid "Show Calendar Widget"
-#~ msgstr "Takvim Widget'ını göster"
-
-#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Raven'ın Uygulamalar bölümündeki Takvim Widgetı'nı gösterir veya saklar."
-
-#~ msgid "Show Sound Output Widget"
-#~ msgstr "Ses Çıktı Widget'ını göster"
-
-#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Raven'ın Uygulamalar bölümündeki Ses Çıktı Widgetı'nı gösterir veya "
-#~ "saklar."
-
-#~ msgid "Show Microphone Input Widget"
-#~ msgstr "Mikrofon Girdi Widget'ını göster"
-
-#~ msgid ""
-#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Raven'ın Uygulamalar bölümündeki Mikrofon Girdi Widgetı'nı gösterir veya "
-#~ "saklar."
-
-#~ msgid "Show Media Playback Controls Widget"
-#~ msgstr "Medya Yürütme Kontrolleri Widget'ını göster"
-
-#~ msgid ""
-#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
-#~ "Applets section."
-#~ msgstr ""
-#~ "Raven'ın Uygulamalar bölümündeki Medya Yürütme Kontrolleri (MPRIS) "
-#~ "Widget'ını gösterir veya saklar."
-
-#~ msgid "Show Power Strip"
-#~ msgstr "Güç Şeridini göster"
-
-#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
-#~ msgstr "Raven'ın altındaki Güç Şeridini gösterir veya saklar."
-
-#~ msgid "Confirm panel removal"
-#~ msgstr "Paneli kaldırmayı onayla"
-
-#~ msgid ""
-#~ "Do you really want to remove this panel? This action cannot be undone."
-#~ msgstr ""
-#~ "Bu paneli gerçekten kaldırmak istiyor musunuz? Bu eylem geri alınamaz."
-
-#~ msgid "Don't ask me again"
-#~ msgstr "Bir daha sorma"
-
-#~ msgid "Remove panel"
-#~ msgstr "Paneli kaldır"
-
-#~ msgid "Keep panel"
-#~ msgstr "Paneli tut"
-
-#~ msgid "Confirm applet removal"
-#~ msgstr "Uygulama kaldırmayı onayla"
-
-#~ msgid ""
-#~ "Do you really want to remove this applet? This action cannot be undone."
-#~ msgstr ""
-#~ "Bu uygulamayı gerçekten kaldırmak istiyor musunuz? Bu eylem geri alınamaz."
-
-#~ msgid "Remove applet"
-#~ msgstr "Uygulamayı kaldır"
-
-#~ msgid "Keep applet"
-#~ msgstr "Uygulamayı tut"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Masaüstü Simgeleri"
-
-#~ msgid "Control whether to allow launchers and icons on the desktop."
-#~ msgstr ""
-#~ "Masaüstündeki başlatıcılara ve simgelere izin verilip verilmeyeceğini "
-#~ "kontrol et."
-
-#~ msgid "Home directory"
-#~ msgstr "Ev dizini"
-
-#~ msgid "Add a shortcut to your home directory on the desktop."
-#~ msgstr "Masaüstüne ev dizinine kısayol ekle."
-
-#~ msgid "Network servers"
-#~ msgstr "Ağ sunucuları"
-
-#~ msgid "Add a shortcut to your local network servers on the desktop."
-#~ msgstr "Masaüstüne yerel ağ sunucularına kısayolu ekle."
-
-#~ msgid "Add a shortcut to the Trash directory on the desktop."
-#~ msgstr "Masaüstüne Çöp kısayolu ekle."
-
-#~ msgid "Mounted volumes"
-#~ msgstr "Bağlı birimler"
-
-#~ msgid "Mounted volumes & drives will appear on the desktop."
-#~ msgstr "Bağlı birimler & sürücüler masaüstünde görünecek."
-
-#~ msgid "Number of virtual desktops"
-#~ msgstr "Sanal masaüstü sayısı"
-
-#~ msgid ""
-#~ "Number of virtual desktops / workspaces to create automatically on "
-#~ "startup."
-#~ msgstr "Başlangıçta oluşturulacak sanal masaüstü / çalışma alanı sayısı."
-
-#~ msgid "Style"
-#~ msgstr "Stil"
-
-#~ msgid "Widgets"
-#~ msgstr "Widget'lar"
-
-#~ msgid "Set the appearance of window decorations and controls"
-#~ msgstr "Pencere süslerinin ve kontrollerinin görünümünü ayarla"
-
-#~ msgid "Icons"
-#~ msgstr "Simgeler"
-
-#~ msgid "Set the globally used icon theme"
-#~ msgstr "Genel olarak kullanılan simge temasını ayarla"
-
-#~ msgid "Cursors"
-#~ msgstr "İmleçler"
-
-#~ msgid "Set the globally used mouse cursor theme"
-#~ msgstr "Genel olarak kullanılan fare imleci temasını ayarla"
-
-#~ msgid "Notification Position"
-#~ msgstr "Bildirim Konumu"
-
-#~ msgid "Set the location for notification popups"
-#~ msgstr "Bildirim pencerelerinin yerleşimini ayarla"
-
-#~ msgid "Dark theme"
-#~ msgstr "Koyu tema"
-
-#~ msgid "Built-in theme"
-#~ msgstr "Yerleşik tema"
-
-#~ msgid ""
-#~ "When enabled, the built-in theme will override the desktop component "
-#~ "styling"
-#~ msgstr ""
-#~ "Etkinleştirildiğinde, içe inşalı stil masaüstü bileşeni stilini geçersiz "
-#~ "kılar"
-
-#~ msgid "Animations"
-#~ msgstr "Animasyonlar"
-
-#~ msgid "Control whether windows and controls use animations"
-#~ msgstr ""
-#~ "Pencerelerin ve denetimlerin animasyon kullanıp kullanmadığını kontrol et"
-
-#~ msgid "Top Left"
-#~ msgstr "Sol Üst"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Sol Alt"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Sağ Alt"
-
-#~ msgid "Top Right"
-#~ msgstr "Sağ Üst"
-
-#~ msgid "Untitled"
-#~ msgstr "Başlıksız"
-
-#~ msgid "No description"
-#~ msgstr "Açıklama yok"
-
-#~ msgid "running"
-#~ msgstr "çalışıyor"
-
-#~ msgid "Add"
-#~ msgstr "Ekle"
-
-#~ msgid "Command"
-#~ msgstr "Komut"
-
-#~ msgid "An entry with that title already exists"
-#~ msgstr "Bu başlığa sahip bir giriş bulunmakta"
-
-#~ msgid "Title"
-#~ msgstr "Başlık"
-
-#~ msgid "Required"
-#~ msgstr "Gerekli"
-
-#~ msgid "Description"
-#~ msgstr "Açıklama"
-
-#~ msgid "Optional"
-#~ msgstr "İsteğe bağlı"
-
-#~ msgid "Autostart"
-#~ msgstr "Otomatik Başlat"
-
-#~ msgid "Autostart apps"
-#~ msgstr "Otomatik başlatılan uygulamalar"
-
-#~ msgid "Configure applet"
-#~ msgstr "Uygulamayı yapılandır"
-
-#~ msgid "Add applet"
-#~ msgstr "Uygulama ekle"
-
-#~ msgid "Choose a new applet to add to this panel"
-#~ msgstr "Bu panele eklemek için yeni bir uygulama seçin"
-
-#~ msgid "No settings available"
-#~ msgstr "Kullanılabilir ayar yok"
-
-#~ msgid "Start"
-#~ msgstr "Baş"
-
-#~ msgid "Center"
-#~ msgstr "Orta"
-
-#~ msgid "End"
-#~ msgstr "Son"
-
-#~ msgid "Windows"
-#~ msgstr "Pencereler"
-
-#~ msgid "Attach modal dialogs to windows"
-#~ msgstr "Kalıcı diyalogları pencerelere bağla"
-
-#~ msgid ""
-#~ "Modal dialogs will become attached to the parent window and move together "
-#~ "when dragged."
-#~ msgstr ""
-#~ "Kalıcı diyaloglar üst pencereye bağlanacak ve sürüklendiğinde birlikte "
-#~ "hareket edecektir."
-
-#~ msgid "Button layout"
-#~ msgstr "Düğme düzeni"
-
-#~ msgid "Change the layout of buttons in application titlebars."
-#~ msgstr "Uygulama başlık çubuklarındaki düğmelerin düzenini değiştir."
-
-#~ msgid "Center new windows on screen"
-#~ msgstr "Yeni pencereleri ekranda ortala"
-
-#~ msgid "Center newly launched windows on the current screen."
-#~ msgstr "Yeni açılan pencereleri geçerli ekranda ortala."
-
-#~ msgid "Disable Night Light mode when windows are fullscreen"
-#~ msgstr "Pencereler tam ekran olunca Gece Lambası modunu devre dışı bırak"
-
-#~ msgid ""
-#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
-#~ "leaving fullscreen."
-#~ msgstr ""
-#~ "Bir pencere tam ekran olunca Gece Lambası modunu devre dışı bırakır. Tam "
-#~ "ekrandan çıkınca tekrar etkinleştirir."
-
-#~ msgid "Automatic tiling"
-#~ msgstr "Otomatik döşeme"
-
-#~ msgid ""
-#~ "Windows will automatically tile when dragged into the top of the screen "
-#~ "or the far corners."
-#~ msgstr ""
-#~ "Pencereler ekranın üstüne veya uzak köşelerine sürüklendiğinde otomatik "
-#~ "olarak döşenecektir."
-
-#~ msgid "Enable window focus change on mouse enter and leave"
-#~ msgstr "Fare giriş ve çıkışında pencere odak değişimini etkinleştir"
-
-#~ msgid ""
-#~ "Enables window focus to apply when the mouse enters the window and "
-#~ "unfocus when the mouse leaves the window."
-#~ msgstr ""
-#~ "Fare pencereye girince pencere odağının uygulanmasını ve çıkınca odağın "
-#~ "kaldırılmasına izin verir."
-
-#~ msgid "Disable unredirection of windows"
-#~ msgstr "Pencere tekrar yönlendirmemelerini devre dışı bırak"
-
-#~ msgid ""
-#~ "This option is for advanced users. Use this if you are having graphical "
-#~ "or performance issues with dedicated GPUs."
-#~ msgstr ""
-#~ "Bu ayar ileri gelişmiş kullanıcılar içindir. Özel GPU'lar ile grafiksel "
-#~ "veya performans sorunları yaşıyorsanız bunu kullanın."
-
-#~ msgid "Right (standard)"
-#~ msgstr "Sağ (standart)"
-
-#~ msgid "Fonts"
-#~ msgstr "Yazı Tipleri"
-
-#~ msgid "Window Titles"
-#~ msgstr "Pencere Başlıkları"
-
-#~ msgid "Set the font used in the titlebars of applications."
-#~ msgstr "Uygulamaların başlık çubuklarında kullanılan yazı tipini ayarla."
-
-#~ msgid "Documents"
-#~ msgstr "Belgeler"
-
-#~ msgid "Set the display font used by for documents."
-#~ msgstr "Belgeler için kullanılan görünüm yazı tipini ayarla."
-
-#~ msgid "Interface"
-#~ msgstr "Arayüz"
-
-#~ msgid "Set the primary font used by application controls."
-#~ msgstr ""
-#~ "Uygulama kontrolleri tarafından kullanılan birincil yazı tipini ayarla."
-
-#~ msgid "Monospace"
-#~ msgstr "Tek aralıklı"
-
-#~ msgid "Set the fixed-width font used by text dominant applications."
-#~ msgstr ""
-#~ "Yazı ağırlıklı uygulamalar tarafından kullanılan sabit genişlikli yazı "
-#~ "tipini ayarla."
-
-#~ msgid "Text scaling"
-#~ msgstr "Yazı ölçekleme"
-
-#~ msgid "Set the text scaling factor."
-#~ msgstr "Yazı ölçekleme katsayısını ayarla."
-
-#~ msgid "Full"
-#~ msgstr "Tam"
-
-#~ msgid "Medium"
-#~ msgstr "Orta"
-
-#~ msgid "Slight"
-#~ msgstr "Hafif"
-
-#~ msgid "Hinting"
-#~ msgstr "Ölçekleme"
-
-#~ msgid "Set the type of hinting to use."
-#~ msgstr "Kullanılacak yazı ölçekleme tipini ayarla."
-
-#~ msgid "Subpixel (for LCD screens)"
-#~ msgstr "Piksel altı (LCD ekranlar için)"
-
-#~ msgid "Standard (grayscale)"
-#~ msgstr "Standart (gri ton)"
-
-#~ msgid "Antialiasing"
-#~ msgstr "Düzgünleştirme"
-
-#~ msgid "Set the type of antialiasing to use."
-#~ msgstr "Kullanılacak düzgünleştirme tipini ayarla."
-
-#~ msgid "Choose an applet"
-#~ msgstr "Bir uygulama seçin"
-
-#~ msgid "Are you sure you want to end your session?"
-#~ msgstr "Oturumunuzu kapatmak istediğinizden emin misiniz?"
-
-#~ msgid "Show all windows on click"
-#~ msgstr "Tıklanınca tüm pencereleri göster"
-
-#~ msgid "Only show favorited"
-#~ msgstr "Sadece favorileri göster"
-
-#~ msgid "Lock icons"
-#~ msgstr "Simgeleri kilitle"
-
-#~ msgid "Restrict to Workspace"
-#~ msgstr "Masaüstüne sınırla"
-
-#~ msgid "Window grouping"
-#~ msgstr "Pencere gruplama"
-
-#~ msgid "Night Light"
-#~ msgstr "Gece Lambası"
-
-#~ msgid "Schedule"
-#~ msgstr "Çizelge"
-
-#~ msgid "Sunset to Sunrise"
-#~ msgstr "Gün batımından gün doğumuna"
-
-#~ msgid "Manual"
-#~ msgstr "El ile"
-
-#~ msgid "Display Settings"
-#~ msgstr "Görünüm Ayarları"
-
-#~ msgid "Spacer size"
-#~ msgstr "Aralayıcı boyutu"
-
-#~ msgid "Compact Mode"
-#~ msgstr "Sıkıştırılmış Mod"
-
-#~ msgid "Show Headers"
-#~ msgstr "Başlıkları Göster"
-
-#~ msgid "Roll-over mouse"
-#~ msgstr "Fare ile üzerinden geçme"
-
-#~ msgid "\"Add\" button visibility"
-#~ msgstr "\"Ekle\" düğmesi görünürlüğü"
-
-#~ msgid "Don't show"
-#~ msgstr "Gösterme"
-
-#~ msgid "Show on mouseover"
-#~ msgstr "Üzerine fare gelince göster"
-
-#~ msgid "Always show"
-#~ msgstr "Daima göster"
-
-#~ msgid "Enable notification"
-#~ msgstr "Bildirimi etkinleştir"
-
-#~ msgid "Maximize brightness"
-#~ msgstr "Parlaklığı en yükseğe getir"
-
-#~ msgid "Brightness Level"
-#~ msgstr "Parlaklık düzeyi"
-
-#~ msgid "Show label"
-#~ msgstr "Etiketi göster"
-
-#~ msgid "Show places"
-#~ msgstr "Konumları göster"
-
-#~ msgid "Show network folders"
-#~ msgstr "Ağ klasörlerini göster"
-
-#~ msgid "Show removable drives"
-#~ msgstr "Çıkarılabilir cihazları göster"
-
-#~ msgid "Always expand places"
-#~ msgstr "Konumları hep genişlet"
-
-#~ msgid "Authentication Required"
-#~ msgstr "Doğrulama Gerekli"
-
-#~ msgid "Password:"
-#~ msgstr "Parola:"
-
-#~ msgid "Authentication is required"
-#~ msgstr "Kimlik doğrulama gerekli"
-
-#~ msgid "Authenticate"
-#~ msgstr "Doğrula"
-
-#~ msgid "Budgie Desktop"
-#~ msgstr "Budgie Masaüstü"
-
-#~ msgid "This session logs you into the Budgie Desktop"
-#~ msgstr "Bu oturum size Budgie Masaüstü oturumu açar"
-
-#~ msgid "System Tray"
-#~ msgstr "Sistem Tepsisi"
-
-#~ msgid "Status Indicator"
-#~ msgstr "Durum göstergesi"
-
-#~ msgid "Icon Task List"
-#~ msgstr "Simgeli Görev Listesi"
-
-#~ msgid "Spacer"
-#~ msgstr "Aralayıcı"
-
-#~ msgid "Budgie Menu"
-#~ msgstr "Budgie Menü"
-
-#~ msgid "Lock Keys Indicator"
-#~ msgstr "Lock tuşları göstergesi"
-
-#~ msgid "Raven Sidebar Control"
-#~ msgstr "Raven Yan Çubuğu Kontrol"
-
-#~ msgid "Clock"
-#~ msgstr "Saat"
-
-#~ msgid "Separator"
-#~ msgstr "Ayırıcı"
-
-#~ msgid "Show Desktop Button"
-#~ msgstr "Masaüstünü Göster Düğmesi"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Çalışma Alanı Değiştiricisi"
-
-#~ msgid "Task List"
-#~ msgstr "Görev Listesi"
-
-#~ msgid "Caffeine"
-#~ msgstr "Kafein"
-
-#~ msgid "Keyboard Layout Indicator"
-#~ msgstr "Klavye Düzeni Göstergesi"
-
-#~ msgid "User Indicator"
-#~ msgstr "Kullanıcı Göstergesi"
-
-#~ msgid "Change desktop appearance and behavior"
-#~ msgstr "Masaüstü görünümünü ve davranışını değiştir"
-
-#~ msgid "Budgie Panel"
-#~ msgstr "Budgie Paneli"
-
-#~ msgid ""
-#~ "Launch other applications and provide various utilities to manage "
-#~ "windows, show the time, etc."
-#~ msgstr ""
-#~ "Başka uygulamaları başlat ve pencereleri yönetmek, saati göstermek, vs. "
-#~ "için araçlar sağla."
-
-#~ msgid "Slingshot"
-#~ msgstr "Slingshot"
-
-#~ msgid "The app-menu indicator"
-#~ msgstr "Uygulama menüsü göstergesi"
-
-#~ msgid "Uninstall"
-#~ msgstr "Kaldır"
-
-#~ msgid "View in AppCenter"
-#~ msgstr "Uygulama Merkezinde Görüntüle"
-
-#~ msgid "Search for %s in %s"
-#~ msgstr "%s metnini %s içinde ara"
-
-#~ msgid "Search the app store"
-#~ msgstr "Uygulama merkezinde ara"
-
-#~ msgid "AppCenter"
-#~ msgstr "Uygulama Merkezi"
-
-#~ msgid "Search for applications"
-#~ msgstr "Uygulama ara"
-
-#~ msgid "AppCenter is not installed"
-#~ msgstr "Uygulama merkezi kurulu değil"
-
-#~ msgid "Open %s settings"
-#~ msgstr "%s ayarlarını aç"
-
-#~ msgid "Find switchboard plugs and open them."
-#~ msgstr "Switchboard eklentilerini bulun ve açın."
-
-#~ msgid "Lock this device"
-#~ msgstr "Bu cihazı kilitle"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "lock"
-#~ msgstr "lock;kilitle;kilit"
-
-#~ msgid "Log Out"
-#~ msgstr "Oturumu Kapat"
-
-#~ msgid "Close all open applications and quit"
-#~ msgstr "Tüm açık uygulamaları kapatın ve çıkın"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "logout"
-#~ msgstr "logout;oturumu kapat;çık"
-
-#~ msgid "Put your computer into suspend mode"
-#~ msgstr "Bilgisayarınızı askıya alın"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "suspend"
-#~ msgstr "suspend;askıya al"
-
-#~ msgid "Put your computer into hibernation mode"
-#~ msgstr "Bilgisayarınızı hazırda bekletme moduna alın"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "hibernate"
-#~ msgstr "hibernate;hazırda beklet"
-
-#~ msgid "Shut Down"
-#~ msgstr "Bilgisayarı Kapat"
-
-#~ msgid "Turn your computer off"
-#~ msgstr "Bilgisayarınızı kapatın"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "shutdown;turn off"
-#~ msgstr "shutdown;turn off;bilgisayarı kapat;gücü kapat;kapat"
-
-#~ msgid "Restart your computer"
-#~ msgstr "Bilgisayarınızı yeniden başlatın"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "restart;reboot"
-#~ msgstr "restart;reboot;yeniden başlat"
-
-#~ msgid ""
-#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
-#~ "shutdown your computer."
-#~ msgstr ""
-#~ "Oturumu kilitleyin veya oturumu kapatın. Bilgisayarınızı askıya alın, "
-#~ "hazırda bekletin, yeniden başlatın veya kapatın."
-
-#~ msgid "ConsoleKit wasn't found"
-#~ msgstr "ConsoleKit bulunamadı"
-
-#~ msgid "Uninstall “%s”?"
-#~ msgstr "\"%s\" kaldırılsın mı?"
-
-#~ msgid "Uninstalling this app may also delete its data."
-#~ msgstr "Bu uygulamayı kaldırmak, uygulamanın verilerini de silebilir."
-
-#~ msgid "Open using default application"
-#~ msgstr "Varsayılan uygulama ile aç"
-
-#~ msgid "Open folder"
-#~ msgstr "Klasörü aç"
-
-#~ msgid "Open folder containing this file"
-#~ msgstr "Bu dosyayı içeren klasörü aç"
-
-#~ msgid "All Applications"
-#~ msgstr "Tüm Uygulamalar"
-
-#~ msgid "Create a new Filter"
-#~ msgstr "Yeni bir Filtre oluştur"
-
-#~ msgid "Shift"
-#~ msgstr "Shift"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Alt"
-#~ msgstr "Alt"
