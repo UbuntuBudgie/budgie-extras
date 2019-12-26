@@ -1,26 +1,47 @@
+# #-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Vasile Marian, 2019
 # David Mohammed <foss.freedom@gmail.com>, 2019
-# 
+#
+# #-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the budgie-desktop package.
+#
+# Translators:
+# Bogdan Cuza <boghison22@gmail.com>, 2015
+# Catirau Mihail <ustmaestro@gmail.com>, 2016
+# Dexter Rufus, 2016
+# Dexter Rufus, 2017
+# Richard <richardbp85@gmail.com>, 2015
+# Richard <richardbp85@gmail.com>, 2015
+# Vladimir Voinea <voineavladimir@gmail.com>, 2016
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: Budgie Desktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 23:32+0000\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: David Mohammed <foss.freedom@gmail.com>, 2019\n"
-"Language-Team: Romanian (Romania) (https://www.transifex.com/ubuntu-budgie/teams/72251/ro_RO/)\n"
+"POT-Creation-Date: 2019-12-26 16:17+0000\n"
+"PO-Revision-Date: 2019-03-17 09:05+0000\n"
+"Last-Translator: Joshua Strobl <joshua@getsol.us>\n"
+"Language-Team: Romanian <http://translate.getsol.us/projects/budgie-desktop/"
+"translations/ro/>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #. define the name of the application
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
@@ -85,8 +106,13 @@ msgstr ""
 #: budgie-trash/src/widgets/TrashPopover.vala:140
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-weathershow/src/get_color/get_color.vala:88
+#, fuzzy
 msgid "Cancel"
-msgstr "Anuleaza"
+msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Anuleaza\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Anulare"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 #: budgie-quicknote/QuickNoteApplet.vala:201
@@ -161,7 +187,9 @@ msgstr "inainte de amiaza"
 msgid "PM"
 msgstr "dupa amiaza"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -218,8 +246,7 @@ msgstr "Dreapta-in mijloc"
 msgid "Missing applet"
 msgstr "Applet lipsa"
 
-#. WindowPreviews is the name of a Budgie Applet and does not need to be
-#. translated
+#. WindowPreviews is the name of a Budgie Applet and does not need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:320
 msgid "Please add WindowPreviews"
 msgstr "Te rog adauga WindowsPreviews"
@@ -307,12 +334,22 @@ msgid "Suspend"
 msgstr "Suspendă"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#, fuzzy
 msgid "Restart"
 msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Reporneşte\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Resetare"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#, fuzzy
 msgid "Lock"
 msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Blochează\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Blocare acces"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
 msgid "Logout"
@@ -620,30 +657,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -689,8 +720,7 @@ msgstr ""
 msgid "almost %s"
 msgstr ""
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr ""
@@ -708,16 +738,13 @@ msgstr "Calendar"
 msgid "Preferences"
 msgstr "Preferințe"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Arată data"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Folosește formatul cu 24 ore"
@@ -840,8 +867,13 @@ msgid "General"
 msgstr "General"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#, fuzzy
 msgid "Desktop"
-msgstr "Desktop"
+msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Desktop\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Spațiul de lucru"
 
 #. set city section
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:788
@@ -865,8 +897,13 @@ msgstr "Afisati prognoza in popup"
 
 #. optional settings: show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#, fuzzy
 msgid "Transparency"
-msgstr "Transparenta"
+msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Transparenta\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Transparență"
 
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:879
@@ -876,6 +913,106 @@ msgstr "Setati pozitia personalizata (px)"
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
 msgid "Please enter at least 3 characters"
 msgstr "Te rog introdu cel putin 3 caractere"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
+msgid "Connect to Hidden Network…"
+msgstr "Conectare la o rețea ascunsă…"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
+msgid "Network Settings…"
+msgstr "Setări de reţea…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
+msgid "Unknown device"
+msgstr "Dispozitiv necunoscut"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
+#, c-format
+msgid "Unknown type: %s "
+msgstr "Tip necunoscut: %s "
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
+#, c-format
+msgid "Virtual network: %s"
+msgstr "Rețea virtuală: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "Cu fir"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
+msgid "No Access Points Available"
+msgstr "Nici un punct de acces valabil"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
+msgid "Scanning for Access Points…"
+msgstr "Se caută punctele de acces…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
+msgid "Wireless"
+msgstr "Fără fir"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
+msgid "This Virtual Private Network could not be connected to."
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
+#, c-format
+msgid "Mobile Broadband: %s"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
+msgid "Modem"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
+msgid "This wireless network could not be connected to."
+msgstr "Nu se poate conecta la această rețea fără fir."
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
+msgid "This network uses 40/64-bit WEP encryption"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
+msgid "This network uses 104/128-bit WEP encryption"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
+msgid "This network uses WPA encryption"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+msgid "This network uses encryption"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
+msgid "This network is unsecured"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
+msgid "Failed to connect"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
+msgid "Connecting"
+msgstr "Conectare"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
+msgid "Connected"
+msgstr "Conectat"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
+msgid "Disconnected"
+msgstr "Deconectat"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
@@ -916,8 +1053,13 @@ msgid "Stylish Desktop Application Menu"
 msgstr ""
 
 #: budgie-trash/src/Trash.plugin.in.h:1
+#, fuzzy
 msgid "Trash"
-msgstr "Cosul de gunoi"
+msgstr ""
+"#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Cosul de gunoi\n"
+"#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+"Gunoi"
 
 #: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
 msgid "Time of day in fuzzy way"
@@ -938,3 +1080,999 @@ msgstr "Adnotari Rapide & Usoare"
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Arata vremea & previziuni meteorologice"
+
+#, fuzzy
+#~ msgid "Hibernate"
+#~ msgstr ""
+#~ "#-#-#-#-#  ro_RO.po (budgie-extras 10.4)  #-#-#-#-#\n"
+#~ "Hibernează\n"
+#~ "#-#-#-#-#  ro.po (Budgie Desktop)  #-#-#-#-#\n"
+#~ "Hibernare"
+
+#~ msgid "Unknown"
+#~ msgstr "Necunoscut"
+
+#~ msgid "Log out"
+#~ msgstr "Ieșire din cont"
+
+#~ msgid "Restart device"
+#~ msgstr "Reporniți dispozitivul"
+
+#~ msgid "Power Off"
+#~ msgstr "Oprire"
+
+#~ msgid "Change background"
+#~ msgstr "Schimbă fundalul"
+
+#~ msgid "Displays"
+#~ msgstr "Afișaje"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Caffeine Boost Activat"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Caffeine Boost dezactivat"
+
+#, fuzzy
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Se va opri în"
+
+#, fuzzy
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Se va opri în"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Mod Cafeină"
+
+#~ msgid "Applets"
+#~ msgstr "Applet-uri"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificări"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Nicio aplicație nu redă muzică momentan."
+
+#~ msgid "Play some music"
+#~ msgstr "Redă niște muzică"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Nimic de văzut aici"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notificări necitite"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notificare necitită"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Nu aveți notificări necitite"
+
+#~ msgid "No new notifications"
+#~ msgstr "Nu aveți notificări noi"
+
+#~ msgid "Apps"
+#~ msgstr "Aplicații"
+
+#~ msgid "Devices"
+#~ msgstr "Dispozitive"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Baterie încărcată complet."
+
+#~ msgid "Battery charging"
+#~ msgstr "Încărcare baterie"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Restul bateriei"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Arată procentajul bateriei"
+
+#~ msgid "Power settings"
+#~ msgstr "Setări consum baterie"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Setări Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Trimite fișierele"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Mod avion Bluetooth"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth dezactivat"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth activat"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Conectat la %d dispozitiv"
+#~ msgstr[1] "Conectat la %d dispozitive"
+#~ msgstr[2] "Conectat la %d dispozitive"
+
+#~ msgid "Sound settings"
+#~ msgstr "Setări de sunet"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Pornește o nouă sesiune"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Închide toate ferestrele"
+
+#~ msgid "Always On Top"
+#~ msgstr "Întotdeauna deasupra"
+
+#~ msgid "Maximize"
+#~ msgstr "Mărește"
+
+#~ msgid "Minimize"
+#~ msgstr "Micșorează"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Elimină din favorite"
+
+#~ msgid "Favorite"
+#~ msgstr "Favorit"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Mută în spațiul de lucru %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Restaureaza"
+
+#~ msgid "Close Window"
+#~ msgstr "Închide fereastra"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Arată controalele ferestrelor"
+
+#~ msgid "All"
+#~ msgstr "Tot"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Ne pare rău, nu s-au găsit elemente"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Caps lock este activ"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Caps lock nu este activ"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Num lock este activ"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Num lock nu este activ"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Setări de timp și dată"
+
+#~ msgid "Show seconds"
+#~ msgstr "Arată secundele"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Comută spațiul de lucru"
+
+#~ msgid "Rename"
+#~ msgstr "Redenumire"
+
+#~ msgid "Remove"
+#~ msgstr "Îndepărtează"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Cronometru"
+
+#~ msgid "User"
+#~ msgstr "Utilizator"
+
+#~ msgid "Places"
+#~ msgstr "Locuri"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Nimic de afișat momentan"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Montează anumite drive-uri"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Activează mai multe secțiuni"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Deschide \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Volumul este folosit de alte procese"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operațiune anulată"
+
+#~ msgid "Type your password"
+#~ msgstr "Introduceți parola"
+
+#~ msgid "Removable devices"
+#~ msgstr "Dispozitive detașabile"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volume locale"
+
+#~ msgid "Network folders"
+#~ msgstr "Directoare din rețea"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Montează și deschide \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Scoate"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Introduceți parola de criptare pentru deblocarea acestui volum"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Puteți scoate în siguranță"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Parola introdusă este incorectă"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr ""
+#~ "S-a produs o eroare necunoscută în încercarea de montare a acestui volum"
+
+#~ msgid "Unmount"
+#~ msgstr "Demontează"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Dispozitiv necunoscut"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Eroare la scoaterea dispozitivului"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Eroare la demontarea volumului"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Autentificarea a eșuat"
+
+#~ msgid "Group:"
+#~ msgstr "Grup:"
+
+#~ msgid "Appearance"
+#~ msgstr "Aspect"
+
+#~ msgid "Panels"
+#~ msgstr "Panouri"
+
+#~ msgid "Session"
+#~ msgstr "Sesiune"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Setări desktop Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Crează un nou panou"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Îndepărtează acest panou de pe ecran"
+
+#~ msgid "Top Dock"
+#~ msgstr "Dock sus"
+
+#~ msgid "Right Dock"
+#~ msgstr "Dock în dreapta"
+
+#~ msgid "Left Dock"
+#~ msgstr "Dock în stânga"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Dock jos"
+
+#~ msgid "Top Panel"
+#~ msgstr "Panoul de sus"
+
+#~ msgid "Right Panel"
+#~ msgstr "Panoul din dreapta"
+
+#~ msgid "Left Panel"
+#~ msgstr "Panoul din stânga"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Panoul de jos"
+
+#~ msgid "Top"
+#~ msgstr "Sus"
+
+#~ msgid "Right"
+#~ msgstr "Dreapta"
+
+#~ msgid "Left"
+#~ msgstr "Stânga"
+
+#~ msgid "Bottom"
+#~ msgstr "Jos"
+
+#~ msgid "Always"
+#~ msgstr "Întotdeauna"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamic"
+
+#~ msgid "None"
+#~ msgstr "Niciuna"
+
+#~ msgid "Intelligent"
+#~ msgstr "Inteligent"
+
+#~ msgid "Never"
+#~ msgstr "Niciodată"
+
+#~ msgid "Position"
+#~ msgstr "Poziție"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Alege marginea ecranului unde va sta acest panou"
+
+#~ msgid "Size"
+#~ msgstr "Mărime"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Alege mărimea acestui panou (lățimea sau înălțimea, în funcție de "
+#~ "orientare)"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Ascundere automată"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Odată setat, acest panou se va ascunde pentru a maximaliza spațiul "
+#~ "disponibil"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Determină când are acest panou fundal opac"
+
+#~ msgid "Shadow"
+#~ msgstr "Umbră"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Adaugă o umbră decorativă, ideală pentru panouri opace"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Stilizare regiuni"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Adaugă o nuanță panoului, astfel încât fiecare dintre cele trei zone "
+#~ "principale ale lui pot fi tematizate diferit."
+
+#~ msgid "Dock mode"
+#~ msgstr "Modul dock"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Atâta timp cât se află în modul dock, panoul va folosi spațiu minimal, "
+#~ "lăsând mai mult disponibil"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Permiteți creșterea volumului peste 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Permite creșterea volumului prin intermediul setărilor de sunet, precum "
+#~ "și a Widgetului de ieșire a sunetului în Raven până la 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Activați afișarea numerelor de săptămâni în Calendar"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Această setare permite afișarea numerelor de săptămână în widgetul "
+#~ "Calendar."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Afișați widgetul Calendar"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Afișează sau ascunde widget-ul Calendar din secțiunea Aplicații Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Afișați widgetul pentru ieșirea sunetului"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Afișează sau ascunde Widgetul de ieșire a sunetului în secțiunea "
+#~ "Aplicații Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Afișați widgetul pentru intrarea microfonului"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Afișează sau ascunde Widgetul Intrare Microfon în secțiunea Aplicații "
+#~ "Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Afișați widgetul pentru controlul redării media"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Afișează sau ascunde Widget-ul de control al redării media (MPRIS) din "
+#~ "secțiunea Aplicații Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Vezi optiunile de alimentare"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Afișează sau ascunde banda de alimentare în partea de jos a Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirmă îndepărtarea panoului"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Chiar doriți să îndepărtați acest panou? Această acțiune nu poate fi "
+#~ "anulată ulterior."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Nu mă mai întreba ulterior"
+
+#~ msgid "Remove panel"
+#~ msgstr "Îndepărtează panoul"
+
+#~ msgid "Keep panel"
+#~ msgstr "Păstrează panoul"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirmă îndepărtarea appletului"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Chiar doriți să îndepărtați acest applet? Această acțiune nu poate fi "
+#~ "anulată ulterior."
+
+#~ msgid "Remove applet"
+#~ msgstr "Îndepărtează appletul"
+
+#~ msgid "Keep applet"
+#~ msgstr "Păstrează appletul"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Pictograme desktop"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Determină dacă sunt permise lansatoare și pictograme pe desktop."
+
+#~ msgid "Home directory"
+#~ msgstr "Directorul Acasă"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Adăugați o comandă rapidă către directorul acasă de pe desktop."
+
+#~ msgid "Network servers"
+#~ msgstr "Servere de rețea"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr ""
+#~ "Adăugă o comandă rapidă către serverele rețelei tale locale de pe desktop."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr ""
+#~ "Adăugați o comandă rapidă către directorul Coș de gunoi de pe desktop."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Volume montate"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Volumele și unitățile montate vor apărea pe desktop."
+
+#~ msgid "Style"
+#~ msgstr "Stil"
+
+#~ msgid "Widgets"
+#~ msgstr "Widget-uri"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Alege aspectul decorațiunilor și controlorilor de ferestre"
+
+#~ msgid "Icons"
+#~ msgstr "Pictograme"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Alege tema de pictograme globală"
+
+#~ msgid "Cursors"
+#~ msgstr "Cursoare"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Alege tema globală a cursoarelor de mouse"
+
+#~ msgid "Notification Position"
+#~ msgstr "Poziția de notificare"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Setați locația pentru ferestrele de notificare"
+
+#~ msgid "Dark theme"
+#~ msgstr "Temă întunecată"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema integrată"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Când este activată, tema implicită va suprascrie styling-ul componentei "
+#~ "desktop"
+
+#~ msgid "Animations"
+#~ msgstr "Animații"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Determină dacă ferestrele și controlorii folosesc animații"
+
+#~ msgid "Top Left"
+#~ msgstr "Stânga sus"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Stânga jos"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Dreapta jos"
+
+#~ msgid "Top Right"
+#~ msgstr "Dreapta sus"
+
+#~ msgid "Untitled"
+#~ msgstr "Fără titlu"
+
+#~ msgid "No description"
+#~ msgstr "Fără descriere"
+
+#~ msgid "running"
+#~ msgstr "rulează"
+
+#~ msgid "Add"
+#~ msgstr "Adaugă"
+
+#~ msgid "Command"
+#~ msgstr "Comandă"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "O înregistrare cu acest titlu există deja"
+
+#~ msgid "Title"
+#~ msgstr "Titlu"
+
+#~ msgid "Required"
+#~ msgstr "Necesar"
+
+#~ msgid "Description"
+#~ msgstr "Descriere"
+
+#~ msgid "Optional"
+#~ msgstr "Opțional"
+
+#~ msgid "Autostart"
+#~ msgstr "Pornire automată"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Aplicații care rulează automat la pornire"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configurează appletul"
+
+#~ msgid "Add applet"
+#~ msgstr "Adaugă un applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Alege un nou applet pentru adăugare la acest panou"
+
+#~ msgid "No settings available"
+#~ msgstr "Nu sunt disponibile setări"
+
+#~ msgid "Start"
+#~ msgstr "Partea stângă"
+
+#~ msgid "Center"
+#~ msgstr "Centru"
+
+#~ msgid "End"
+#~ msgstr "Partea dreaptă"
+
+#~ msgid "Windows"
+#~ msgstr "Ferestre"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Atașează dialoguri modale la ferestre"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Modalitățile de dialog vor fi atașate la fereastra părinte și se vor "
+#~ "deplasa împreună atunci când sunt trase."
+
+#~ msgid "Button layout"
+#~ msgstr "Configurația butoanelor"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr ""
+#~ "Modificați aspectul butoanelor din barele de titlu ale aplicațiilor."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centrează ferestrele noi pe ecran"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centrează ferestrele nou lansate pe ecranul curent."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr ""
+#~ "Dezactivați modul Lumină de Noapte atunci când ferestrele sunt ecran "
+#~ "complet"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Dezactivează modul Lumină de Noapte atunci când o fereastră este afișată "
+#~ "pe tot ecranul. Re-activează la părăsirea ecranului complet."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Dispunere automată"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Ferestrele vor fi automat aranjate când sunt trase în partea de sus a "
+#~ "ecranului sau în colțurile îndepărtate."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr ""
+#~ "Activați modificarea focalizării ferestrei cu mouse-ul pe intrare și "
+#~ "plecare"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Permite focalizarea ferestrei să se aplice când mouse-ul intră în "
+#~ "fereastră și se defocalizează atunci când mouse-ul părăsește fereastra."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Dezactivează \"unredirect\" pentru ferestre"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Această opțiune este pentru utilizatorii avansați. Utilizați acest lucru "
+#~ "dacă aveți probleme grafice sau de performanță cu Unitațile de Procesare "
+#~ "Grafică (UPG-urile) dedicate."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Dreapta (standard)"
+
+#~ msgid "Fonts"
+#~ msgstr "Fonturi"
+
+#~ msgid "Window Titles"
+#~ msgstr "Titlurile ferestrelor"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Setați fontul utilizat în barele de titlu ale aplicațiilor."
+
+#~ msgid "Documents"
+#~ msgstr "Documente"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Setați fontul de afișare utilizat pentru documente."
+
+#~ msgid "Interface"
+#~ msgstr "Interfața"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Setați fontul principal utilizat de comenzile aplicației."
+
+#~ msgid "Monospace"
+#~ msgstr "Monospațiat"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Setați fontul cu lățime fixă utilizat de aplicațiile de text dominante."
+
+#~ msgid "Text scaling"
+#~ msgstr "Scalarea textului"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Setați factorul de scalare a textului."
+
+#, fuzzy
+#~ msgid "Slight"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Setați factorul de scalare a textului."
+
+#, fuzzy
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Setați factorul de scalare a textului."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Alege un applet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Sigur doriți să terminați sesiunea?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Afișați toate ferestrele prin clic"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Afișați doar favorite"
+
+#~ msgid "Lock icons"
+#~ msgstr "Blocați pictogramele"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Limitați la spațiul de lucru"
+
+#~ msgid "Window grouping"
+#~ msgstr "Gruparea ferestrelor"
+
+#~ msgid "Night Light"
+#~ msgstr "Lumină nocturnă"
+
+#~ msgid "Schedule"
+#~ msgstr "Program"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "De la asfințitul până la răsăritul soarelui"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Setări pentru ecran"
+
+#~ msgid "Spacer size"
+#~ msgstr "Mărime distanțier"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Modul compact"
+
+#~ msgid "Show Headers"
+#~ msgstr "Arată antetul"
+
+#~ msgid "Roll-over mouse"
+#~ msgstr "Conținutul se arată la trecerea mouse-ului"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "\"Adăugați \" butonul de vizibilitate"
+
+#~ msgid "Don't show"
+#~ msgstr "Nu afișați"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Afișează la trecerea mouse-ului peste"
+
+#~ msgid "Always show"
+#~ msgstr "Arătați întotdeauna"
+
+#~ msgid "Enable notification"
+#~ msgstr "Activați notificarea"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximizați luminozitatea"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Nivelul luminozității"
+
+#~ msgid "Show label"
+#~ msgstr "Arată eticheta"
+
+#~ msgid "Show places"
+#~ msgstr "Arată locuri"
+
+#~ msgid "Show network folders"
+#~ msgstr "Arată directoarele din rețea"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Arată dispozitivele detașabile"
+
+#~ msgid "Always expand places"
+#~ msgstr "Întotdeauna desfășoară"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Autentificarea este necesară"
+
+#~ msgid "Password:"
+#~ msgstr "Parola:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Autentificarea este necesară"
+
+#~ msgid "Authenticate"
+#~ msgstr "Autentifică"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Desktop Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Această sesiune pornește în spațiul de lucru Budgie"
+
+#~ msgid "System Tray"
+#~ msgstr "Notificări de sistem"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indicator de stare"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Lista de sarcini cu pictograme"
+
+#~ msgid "Spacer"
+#~ msgstr "Distanțier"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Meniu Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indicatorul de taste blocate"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Controlul barei laterale Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Ceas"
+
+#~ msgid "Separator"
+#~ msgstr "Separator"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Afișează butonul Desktop"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Comutator spațiu de lucru"
+
+#~ msgid "Task List"
+#~ msgstr "Lista de sarcini"
+
+#~ msgid "Caffeine"
+#~ msgstr "Cafeină"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indicator configurație tastatură"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indicator Utilizator"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Modificați aspectul și comportamentul desktopului"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Panou Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Lansează alte aplicații și furnizează utilități pentru administrarea "
+#~ "ferestrelor, arătarea orei, etc."
+
+#~ msgid "Network"
+#~ msgstr "Rețea"
+
+#~ msgid "Network indicator"
+#~ msgstr "Indicator reţea"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Meniu indicator aplicație"
+
+#~ msgid "Uninstall"
+#~ msgstr "Dezinstalează"
+
+#, fuzzy
+#~ msgid "View in AppCenter"
+#~ msgstr "Vizualizează după categorie"
+
+#~ msgid "Open %s settings"
+#~ msgstr "Deschide setările %s"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Găseste comutatoarele și deschide-le"
+
+#~ msgid "Lock this device"
+#~ msgstr "Blochează acest dispozitiv"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Suspendă calculatorul"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "Suspendă"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Pune calculatorul în hibernare"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "Hibernează"
+
+#~ msgid "Shut Down"
+#~ msgstr "Închide"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Oprește calculatorul"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Repornește calculatorul"
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit nu a fost găsit"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Dezinstalează"
+
+#~ msgid "Open using default application"
+#~ msgstr "Deschide utilizând aplicația implicită"
+
+#~ msgid "Open folder"
+#~ msgstr "Deschide dosarul"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Deschide dosarul care conține acest fișier"
+
+#~ msgid "All Applications"
+#~ msgstr "Toate aplicaţiile"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Crează un nou Filtru"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Nu există nici un punct de acces fără fir în rază."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Conexiunea fără fir este dezactivată"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr ""
+#~ "Activează conexiunea fără fir pentru a descoperii punctele de acces din "
+#~ "apropiere."
+
+#, fuzzy
+#~ msgid "No VPN Available"
+#~ msgstr "Nici un punct de acces valabil"
+
+#~ msgid "Hotspot"
+#~ msgstr "Hotspot"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Hotspot %s"
+
+#~ msgid "Failed"
+#~ msgstr "Eșuat"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Cablu deconectat"
