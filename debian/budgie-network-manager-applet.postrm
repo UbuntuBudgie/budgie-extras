@@ -1,0 +1,9 @@
+#! /bin/sh
+set -e
+
+if [ "$1" = remove -o "$1" = purge ]; then
+  dpkg-divert --package budgie-network-manager-applet --remove --rename \
+       /etc/xdg/autostart/budgie-desktop-nm-applet.desktop
+fi
+
+#DEBHELPER#

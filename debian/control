@@ -29,7 +29,9 @@ Build-Depends: debhelper (>= 11),
  		libzeitgeist-2.0-dev,
  		libappstream-dev,
  		cmake,
-		libplank-dev
+		libplank-dev,
+		libnm-dev,
+		libnma-dev
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
@@ -45,6 +47,19 @@ Description: Shared component of budgie-extras applets
  .
  The shared component provides for capabilities that are utilised between
  budgie-extra applets.
+
+Package: budgie-network-manager-applet
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+ 		 budgie-extras-common
+Description: Network Manager Applet for the budgie-desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ This package installs an Network connectivity applet for the
+ budgie-desktop.
 
 Package: budgie-hotcorners-applet
 Architecture: any

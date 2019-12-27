@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+import subprocess
+import os
+import ast
+import time
+
+"""
+Hot Corners
+Author: Jacob Vlijm
+Copyright © 2017-2018 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+user = os.environ["USER"]
+orig_minimized = "/tmp/" + user + "sd_orig_minimized"
+active_minimized = "/tmp/" + user + "sd_active_minimized"
+front = "/tmp/" + user + "_sd_front"
+
+
+ignore = [
+    "= _NET_WM_WINDOW_TYPE_DOCK",
+    "= _NET_WM_WINDOW_TYPE_DESKTOP",
+]
+
+
+def get(cmd):
+    return subprocess.check_output(cmd).decode("utf-8").strip()
+
+
+def get_currws():
+    return [l.split()[0] for l in get(
+        ["wmctrl", "-d"]).splitlines() if "*" in l][0]
+
+
+def get_valid(w_id):
+    # see if the window is a valid one (type)
+    w_data = get(["xprop", "-id", w_id])
+    if w_data:
+        return True if not any([t in w_data for t in ignore]) else False
+    else:
+        return False
+
+
+def get_state(w_id):
+    return "window state: Iconic" in get(["xprop", "-id", w_id, "WM_STATE"])
+
+
+currws = get_currws()
+allwinsdata = [w.split() for w in get(["wmctrl", "-l"]).splitlines()]
+winsoncurr = [w[0] for w in allwinsdata if w[1] == currws]
+relevant = [w for w in winsoncurr if get_valid(w)]
+
+
+# windows on current workspace, normal state
+tominimize = [w for w in relevant if not get_state(w)]
+
+
+if tominimize:
+    # get currently active window
+    active_w = get(["xdotool", "getactivewindow"])
+    # remove possible previous window data
+    for f in [orig_minimized, active_minimized, front]:
+        try:
+            os.remove(f)
+        except FileNotFoundError:
+            pass
+    # minimize normal-state windows
+    for w in tominimize:
+        subprocess.Popen(["xdotool", "windowminimize", w])
+    # remember already minimized windows
+    minimized = [w for w in relevant if w not in tominimize]
+    open(orig_minimized, "wt").write(str(minimized))
+    # remember actively minimized
+    open(active_minimized, "wt").write(str(tominimize))
+    # remember active window
+    open(front, "wt").write(str(active_w))
+
+
+else:
+    try:
+        toshow = ast.literal_eval(open(active_minimized).read())
+        ignored = ast.literal_eval(open(orig_minimized).read())
+        active_w = open(front).read()
+    except FileNotFoundError:
+        pass
+    else:
+        allwins = sorted(toshow + ignored)
+        compare = sorted(relevant)
+        if allwins == compare:
+            # toshow.append(active_w)
+            for w in toshow:
+                subprocess.Popen(["wmctrl", "-ia", w])
+            time.sleep(0.05)
+            subprocess.Popen(["wmctrl", "-ia", active_w])
+            # remove possible previous window data
+            for f in [orig_minimized, active_minimized]:
+                try:
+                    os.remove(f)
+                except FileNotFoundError:
+                    pass
