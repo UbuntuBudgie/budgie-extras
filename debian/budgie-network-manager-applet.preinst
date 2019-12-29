@@ -1,9 +1,0 @@
-#! /bin/sh
-set -e
-
-if [ "$1" = "upgrade" ] || [ "$1" = "install" ]; then
-  dpkg-divert --package budgie-network-manager-applet --add --rename \
-       /etc/xdg/autostart/budgie-desktop-nm-applet.desktop
-fi
-
-#DEBHELPER#
