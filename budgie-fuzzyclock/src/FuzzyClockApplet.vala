@@ -1,7 +1,7 @@
 /*
  * This file is part of budgie-extras
  *
- * Copyright © 2019 Ubuntu Budgie Developers
+ * Copyright © 2020 Ubuntu Budgie Developers
  * Author: Adam Dyess
  * Website=https://ubuntubudgie.org
  * This program is free software: you can redistribute it and/or modify it

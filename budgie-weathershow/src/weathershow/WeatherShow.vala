@@ -7,7 +7,7 @@ using Gee;
 /*
 * WeatherShowII
 * Author: Jacob Vlijm
-* Copyright © 2017-2019 Ubuntu Budgie Developers
+* Copyright © 2017-2020 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -125,7 +125,7 @@ namespace WeatherShowFunctions {
             {"731", "701"}, {"741", "701"}, {"751", "701"}, {"761", "701"},
             {"762", "701"}
         };
-        // 314 - 313 was removed from mapping on 25 january 2019.
+        // 314 - 313 was removed from mapping on 25 january '19.
         // It has its own icon! 321 -> 314 was added
         int lenrep = replacements.length[0];
         for (int i=0; i < lenrep; i++) {
