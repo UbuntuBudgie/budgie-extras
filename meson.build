@@ -190,3 +190,8 @@ build_network_manager = get_option('build-network-manager')
 if build_all == true or build_network_manager == true
 	subdir('budgie-network-manager')
 endif
+
+build_window_shuffler = get_option('build-window-shuffler')
+if build_all == true or build_window_shuffler == true
+	subdir('budgie-window-shuffler')
+endif

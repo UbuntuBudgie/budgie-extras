@@ -1,0 +1,74 @@
+Introduction to Window Shuffler
+-------------------------------
+Window Shuffler is a window layout management tool.
+
+A. Window Shuffler daemon
+
+Running the windowshufflerdaemon, a set of shortcuts is added to the desktop:
+
+1. Half screen tiling
+  Ctrl + Alt + 
+  - 4: tile the active window left half
+  - 6: tile the active window right half
+  - 8: tile the active window top half
+  - 2: tile the active window bottom half
+
+2. Quarter screen tiling
+  Ctrl + Alt + 
+  - 7: tile the active window top left
+  - 9: tile the active window top right
+  - 1: tile the active window bottom left
+  - 3: tile the active window bottom right
+
+3. Jump tiling
+  Make the window jump to the nearest grid position in a defined grid*
+  - Super + left arrow: jump to nearest position on the left
+  - Super + right arrow: jump to nearest position on the right
+  - Super + down arrow: jump to nearest position below
+  - Super + Up arrow: jump to nearest position above
+
+4. Tile all windows on current monitor/workspace in a defined grid
+  Super + Alt + A
+
+* Grid size can be set from Shuffler settings or be set in sync with Shuffler
+  GUI Grid (below).
+
+
+B. Window Shuffler GUI
+
+When running the Window Shuffler GUI daemon, a keyboard shortcut calls the grid.
+On click on one of the cells, the active window will move to the corresponding
+clicked position. On hover, the targeted position becomes visible through a
+semi-transparent overlay. Shuffler grid gui supports Shift-click to span 
+multiple grid cells.
+
+The grid size can be changed by using the arrow keys, while GUI is active:
+- Add / remove columns: right/left arrow keys.
+- Add / remove rows: down/up arrow keys.
+
+The GUI can also be run from hotcorners.
+
+Additional Other features % options
+-----------------------------------
+- Swap geometry:
+  When using jump tiling, making a window jump to a position in grid where
+  already another window is located, the two can optionally switch places &
+  sizes.
+- Max number of columns and rows:
+  By default, the grid is max 6 columns x 6 rows. Optionally, this can be set
+  to a max of 10 x 10.
+- Synchronize grid size with GUI grid size.
+  By default, the grid columns & rows, used by 'Jump' and 'Tile all' are
+  synchronized with the last used grid size from the GUI. uncheck
+  'Synchronize' to have 'Jump' and 'Tile all' use a fixed grid size.
+
+
+
+
+
+
+
+
+
+
+
