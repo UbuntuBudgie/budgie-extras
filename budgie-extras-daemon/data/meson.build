@@ -1,0 +1,14 @@
+
+Layouts = [
+'cupertino.layout',
+'traditional.layout',
+'theone.layout',
+'ubuntubudgie.layout',
+'redmond.layout'
+]
+
+install_data(
+    Layouts,
+    install_dir: join_paths(prefix, get_option('datadir'), 'budgie-desktop', 'layouts')
+)
+

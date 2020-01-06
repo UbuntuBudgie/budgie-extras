@@ -13,7 +13,8 @@ subdir('config')
 ExtrasDaemonSources = [
 'main.vala',
 'manager.vala',
-'dbus.vala'
+'dbus.vala',
+'layouts.vala'
 ]
 
 ExtrasDaemonDependencies = [
@@ -48,5 +49,8 @@ install_data(
     join_paths('.', 'examplebde', 'example.bde'),
     install_dir: join_paths(prefix, get_option('datadir'), daemon_name)
 )
+
+install_data('invoke.py',
+    install_dir: LIB_INSTALL_DIR)
 
 install_man('budgie-extras-daemon.1')
