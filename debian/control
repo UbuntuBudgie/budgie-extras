@@ -399,7 +399,18 @@ Description: Applet to prompt when to take-a-break for a set period of time
 
 Package: budgie-extras-daemon
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-applications-menu-applet,
+Recommends: budgie-appmenu-applet,
+ budgie-trash-applet,
+ budgie-applications-menu-applet,
+ budgie-recentlyused-applet,
+ budgie-indicator-applet,
+ budgie-network-manager-applet,
+ budgie-dropby-applet,
+ budgie-showtime-applet,
+ budgie-quicknote-applet
+Suggests: plank
 Description: Extras daemon for budgie-extras capabilities
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -518,4 +529,4 @@ Description: Stylish Applications Menu for Budgie-Desktop
  applications quickly.
  .
  Variety of options are available including grid sizing and displaying a
- powerstrip. 
+ powerstrip.
