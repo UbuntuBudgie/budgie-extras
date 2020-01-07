@@ -403,7 +403,6 @@ Depends: ${misc:Depends}, ${shlibs:Depends},
  budgie-applications-menu-applet,
 Recommends: budgie-appmenu-applet,
  budgie-trash-applet,
- budgie-applications-menu-applet,
  budgie-recentlyused-applet,
  budgie-indicator-applet,
  budgie-network-manager-applet,
@@ -510,7 +509,7 @@ Package: budgie-applications-menu-applet
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, gnome-menus,
  budgie-extras-common
-Suggests: zeitgeist
+Suggests: zeitgeist-core
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
