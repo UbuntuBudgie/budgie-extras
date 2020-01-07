@@ -4,6 +4,10 @@ Panels=Top Panel;Side Panel;
 [Top Panel]
 Children=Spacer 1;GlobalMenu;AppIndicator;DropBy;Network;Notifications;Status;Clock; User Indicator;Raven Trigger;
 Position=Top
+Size=39
+
+[AppMenu]
+ID=AppMenu
 
 [Spacer 1]
 ID=Spacer
@@ -46,11 +50,18 @@ Alignment=end
 
 
 [Side Panel]
-Children=AppMenu;Places;Recent;IconTaskList;Trash;
+Children=Spacer 2;AppMenu;Spacer 3;Places;Recent;IconTaskList;Trash;Spacer 3;
 Position=Left
+Size=49
+
+[Spacer 2]
+ID=Spacer
 
 [AppMenu]
 ID=AppMenu
+
+[Spacer 3]
+ID=Spacer
 
 [Places]
 ID=Places
@@ -65,3 +76,6 @@ ID=Icon Task List
 ID=Trash
 Alignment=end
 
+[Spacer 3]
+ID=Spacer
+Alignment=end
