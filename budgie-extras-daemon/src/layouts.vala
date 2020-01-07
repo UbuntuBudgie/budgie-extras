@@ -14,8 +14,6 @@
 * <https://www.gnu.org/licenses/>.
 */
 
-// valac --pkg gio-2.0 --pkg gtk+-3.0
-
 namespace Layouts {
 
     const string plank_schema="net.launchpad.plank";
@@ -45,20 +43,16 @@ namespace Layouts {
         private void stop_plank () {
             run_cmd("killall plank");
 
-            if (! FileUtils.test("", FileTest.EXISTS)) {
-                return;
-            }
+            string autostart_file = Environment.get_home_dir() +
+                "/.config/autostart/plank.desktop";
 
-            string autostart_folder = Environment.get_home_dir() +
-                "/.config/autostart/";
-
-            if (! FileUtils.test (autostart_folder, FileTest.IS_DIR)) {
-                debug("does not exist %s", autostart_folder);
+            if (! FileUtils.test(autostart_file, FileTest.EXISTS)) {
+                debug("does not exist %s", autostart_file);
                 return;
             }
 
             try {
-                File file = File.new_for_path(autostart_folder + "plank.desktop");
+                File file = File.new_for_path(autostart_file);
                 file.delete();
             }
             catch (Error e) {
@@ -68,6 +62,11 @@ namespace Layouts {
 
         private void start_plank(bool centered=false) {
             stop_plank();
+            
+            if (! FileUtils.test(plank_global_path, FileTest.EXISTS)) {
+                debug("does not exist %s", plank_global_path);
+                return;
+            }
 
             if (centered) {
                 var plank_settings = new GLib.Settings(plank_schema);
@@ -85,29 +84,23 @@ namespace Layouts {
                     settings.set_boolean("zoom-enabled", true);
                     break; // we assume the first dock is the primary
                 }
+            }
 
-                if (! FileUtils.test(plank_global_path, FileTest.EXISTS)) {
-                    debug("does not exist %s", plank_global_path);
-                    return;
+            try {
+                string autostart_folder = Environment.get_home_dir() +
+                    "/.config/autostart/";
+
+                if (! FileUtils.test (autostart_folder, FileTest.IS_DIR)) {
+                    File folder = File.new_for_path(autostart_folder);
+                    folder.make_directory();
                 }
 
-                try {
-                    string autostart_folder = Environment.get_home_dir() +
-                        "/.config/autostart/";
-
-                    if (! FileUtils.test (autostart_folder, FileTest.IS_DIR)) {
-                        File folder = File.new_for_path(autostart_folder);
-                        folder.make_directory();
-                    }
-
-                    File file = File.new_for_path(plank_global_path);
-                    File dest = File.new_for_path(autostart_folder + "plank.desktop");
-                    file.copy(dest, FileCopyFlags.OVERWRITE);
-                }
-                catch (Error e) {
-                    warning("Cannot copy: %s", e.message);
-                }
-
+                File file = File.new_for_path(plank_global_path);
+                File dest = File.new_for_path(autostart_folder + "plank.desktop");
+                file.copy(dest, FileCopyFlags.OVERWRITE);
+            }
+            catch (Error e) {
+                warning("Cannot copy: %s", e.message);
             }
 
             run_cmd("nohup plank &>/dev/null", true);
@@ -165,15 +158,4 @@ namespace Layouts {
             });
         }
     }
-
-
-    /*public static int main (string[] args) {
-        //Gtk.init(ref args);
-        var layout = new Layouts();
-
-        layout.start_plank();
-        layout.reset_panel();
-        Process.exit(0);
-        //Gtk.main();
-    }*/
 }
