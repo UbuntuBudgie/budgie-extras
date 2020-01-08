@@ -22,6 +22,7 @@ namespace Layouts {
     const string panel_schema="com.solus-project.budgie-panel";
     const string plank_global_path="/usr/share/applications/plank.desktop";
     const string network_schema="io.elementary.desktop.wingpanel.applications-menu";
+    const string budgiewm_schema="com.solus-project.budgie-wm";
 
     public class LayoutsManager : Object {
 
@@ -62,7 +63,7 @@ namespace Layouts {
 
         private void start_plank(bool centered=false) {
             stop_plank();
-            
+
             if (! FileUtils.test(plank_global_path, FileTest.EXISTS)) {
                 debug("does not exist %s", plank_global_path);
                 return;
@@ -116,37 +117,49 @@ namespace Layouts {
             settings.set_boolean("use-category", show_category);
         }
 
+        private void leftside_buttons(bool leftside=true) {
+            var settings = new GLib.Settings(budgiewm_schema);
+            if (leftside) {
+                settings.set_string("button-style", "left");
+            }
+            else {
+                settings.set_string("button-style", "traditional");
+            }
+        }
+
         private void reset_panel() {
             run_cmd ("nohup budgie-panel --reset --replace &>/dev/null", true);
         }
 
         public void reset(string layout_name) {
 
+            stop_plank();
+            appmenu_powerstrip(false);
+            appmenu_categoryview(false);
+            leftside_buttons(false);
+
             switch (layout_name) {
                 case "ubuntubudgie": {
-                    stop_plank();
                     start_plank(true);
-                    appmenu_powerstrip(false);
-                    appmenu_categoryview(false);
                     break;
                 }
                 case "cupertino": {
-                    stop_plank();
                     start_plank(true);
                     appmenu_powerstrip(true);
                     appmenu_categoryview(true);
+                    leftside_buttons();
+                    break;
+                }
+                case "theone": {
+                    leftside_buttons();
                     break;
                 }
                 case "redmond": {
                     appmenu_powerstrip(true);
                     appmenu_categoryview(true);
-                    stop_plank();
                     break;
                 }
                 default: {
-                    appmenu_powerstrip(false);
-                    appmenu_categoryview(false);
-                    stop_plank();
                     break;
                 }
             }
