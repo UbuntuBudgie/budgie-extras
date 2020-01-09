@@ -14,7 +14,7 @@
 * <https://www.gnu.org/licenses/>.
 */
 
-// valac --pkg gio-2.0 --pkg gtk+-3.0
+// valac --pkg gio-2.0
 
 
 /*
@@ -24,10 +24,6 @@
 / --grid 2 3
 / without --grid, dconf val is used
 */
-
-// TODO! exclude grid window from jumping. Get subject from grid window GUI?
-// Or simply do not run while grid window runs?
-
 
 namespace JumpActive {
 
@@ -92,7 +88,6 @@ namespace JumpActive {
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
             bool guiruns = client.check_ifguiruns();
-            print(@"guiruns: $guiruns\n");
             int[] grid = client.get_grid();
             // cols/rows is read from dconf, or overruled by args:
             int cols = grid[0];
@@ -106,7 +101,7 @@ namespace JumpActive {
             // get active win
             int activewin = client.getactivewin();
             // if active exists....
-            // add validity test!...nope, made daemon say "-1" on invalid windows
+            // made daemon say "-1" on invalid windows
             if (activewin != -1 && !guiruns) {
                 // calculate target
                 string xs = (string)anchordata["x_anchors"];

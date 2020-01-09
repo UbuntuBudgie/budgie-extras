@@ -6,37 +6,28 @@
             <summary>Number of grid columns</summary>
             <description>Default umber of columns in the window grid</description>
             <default>2</default>
-	    <range min="1" max="6"/>
+	    <range min="1" max="10"/>
         </key>
-
         <key type="i" name="rows">
             <summary>Number of grid rows</summary>
             <description>Default umber of rows in the window grid</description>
             <default>2</default>
-	    <range min="1" max="6"/>
-        </key>
-
-        <key type="i" name="maxcols">
-            <summary>Max number of grid columns</summary>
-            <description>Maximum number of columns in the window grid</description>
-            <default>6</default>
 	    <range min="1" max="10"/>
         </key>
-        <key type="i" name="maxrows">
-            <summary>Max number of grid rows</summary>
-            <description>Maximum number of rows in the window grid</description>
-            <default>6</default>
-	    <range min="1" max="10"/>
-        </key>
-        <key type="b" name="remembergrid">
-            <summary>Wether the gui-gridwindow should control the current cols/rows for shuffler jump</summary>
-            <description>If we change the grid, decide if we should also change remembered cols/rows for shuffler jump</description>
-            <default>true</default>
-        </key> 
         <key type="b" name="swapgeometry">
             <summary>Swap window geometry between windows on grid when jumping</summary>
             <description>If a window jumps to another position where already is another window, swap window size and position</description>
             <default>true</default>
+        </key>
+        <key type="b" name="runshuffler">
+            <summary>Run the WindowShuffler daemon</summary>
+            <description>Run the daemon to be able to use shortcuts and cli options of Window Shuffler</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="runshufflergui">
+            <summary>Run the WindowShuffler GUI daemon</summary>
+            <description>Run the daemon to be able to use the grid gui on top of the cli options of Window Shuffler</description>
+            <default>false</default>
         </key> 
     </schema>
 </schemalist>

@@ -41,12 +41,7 @@ using Gdk.X11;
 / on leave, reset to currentlycolored.
 */
 
-//valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 --pkg gdk-3.0 --pkg cairo --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
-
-// N.B act on shift press -> update? No.
-// todo: gsettings gui_controlsgrid true/false
-// todo: gsettings max cols/rows 1-10
-// todo: create settings
+// valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 --pkg gdk-3.0 --pkg cairo --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
 
 
 namespace GridWindowSection {
@@ -108,6 +103,7 @@ namespace GridWindowSection {
 
         public GridWindow() {
             this.title = "Gridwindows";
+            this.set_skip_taskbar_hint(true);
             this.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
             this.enter_notify_event.connect(showquestionmark);
             this.key_press_event.connect(on_shiftpress);
@@ -192,7 +188,7 @@ namespace GridWindowSection {
             if (index != -1 && previously_active != null && winstillexists(previously_active)) {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
-                string cm = "/home/jacob/Desktop/experisync_edit3/newshuffler_2/tile_active ".concat(
+                string cm = "/usr/lib/windowshuffler/tile_active ".concat(
                     cmd_args, " id=", @"$previously_active");
                 try {
                     Process.spawn_command_line_async(cm);
@@ -443,7 +439,7 @@ namespace GridWindowSection {
                 }
                 break;
                 case "Down":
-                if (currrows < 5) {
+                if (currrows < 10) {
                     gridrows = currrows + 1;
                 }
                 break;
@@ -453,7 +449,7 @@ namespace GridWindowSection {
                 }
                 break;
                 case "Right":
-                if (currcols < 5) {
+                if (currcols < 10) {
                     gridcols = currcols + 1;
                 }
                 break;
@@ -472,7 +468,6 @@ namespace GridWindowSection {
 
         private bool on_draw (Widget da, Context ctx) {
             // transparency
-            // needs to be connected to transparency settings change?
             ctx.set_source_rgba(0.15, 0.15, 0.15, 0.0);
             ctx.set_operator(Cairo.Operator.SOURCE);
             ctx.paint();

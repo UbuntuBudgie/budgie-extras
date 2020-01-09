@@ -39,10 +39,7 @@ namespace ShufflerEssentialInfo {
     int setcols;
     int setrows;
     bool swapgeometry;
-    int maxcols;
-    int maxrows;
     bool gridguiruns;
-    bool remembergrid;
     Gtk.Window? showtarget = null;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -51,18 +48,22 @@ namespace ShufflerEssentialInfo {
 
         public int getactivewin () throws Error {
             // get active window id
-            int activewin = -1;
             Wnck.Window? curr_activewin = wnckscr.get_active_window();
             if (curr_activewin != null) {
                 int candidate = (int)curr_activewin.get_xid();
                 // do the validity test
-                foreach (string k in window_essentials.get_keys()) {
-                    if (k == @"$candidate") {
-                        return candidate;
-                    }
+                return check_windowvalid(candidate);
+            }
+            return -1;
+        }
+
+        public int check_windowvalid (int winid) throws Error {
+            foreach (string k in window_essentials.get_keys()) {
+                if (k == @"$winid") {
+                    return winid;
                 }
             }
-            return activewin;
+            return -1;
         }
 
         public bool check_ifguiruns () throws Error {
@@ -204,16 +205,6 @@ namespace ShufflerEssentialInfo {
             return {setcols, setrows};
         }
 
-        ////////////////////////////////////////////////
-        public int[] get_maxsize () throws Error {
-            return {maxcols, maxrows};
-        }
-
-        public bool remember_grid () throws Error {
-            return remembergrid;
-        }
-        ////////////////////////////////////////////////
-
         public bool swapgeo() throws Error {
             return swapgeometry;
         }
@@ -348,7 +339,7 @@ namespace ShufflerEssentialInfo {
         foreach (Wnck.Window w in wlist) {
             Wnck.WindowType type = w.get_window_type ();
             if (type == Wnck.WindowType.NORMAL) {
-                string name = w.get_name(); // needed?
+                string name = w.get_name();
                 bool onthisws = wnckscr.get_active_workspace() == w.get_workspace ();
                 int x;
                 int y;
@@ -387,7 +378,6 @@ namespace ShufflerEssentialInfo {
             this.resize(w, h);
             this.move(x, y);
             this.set_focus_on_map(true);
-            //  wnckscr.active_window_changed.connect(keep_active);
             this.show_all();
         }
     }
@@ -412,10 +402,6 @@ namespace ShufflerEssentialInfo {
         setcols = shuffler_settings.get_int("cols");
         setrows = shuffler_settings.get_int("rows");
         swapgeometry = shuffler_settings.get_boolean("swapgeometry");
-        maxcols = shuffler_settings.get_int("maxcols");
-        maxrows = shuffler_settings.get_int("maxrows");
-        remembergrid = shuffler_settings.get_boolean("remembergrid");
-
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {

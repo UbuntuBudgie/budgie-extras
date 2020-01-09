@@ -14,7 +14,7 @@
 * <https://www.gnu.org/licenses/>.
 */
 
-// valac --pkg gio-2.0 --pkg gtk+-3.0
+// valac --pkg gio-2.0
 
 /*
 / args:
@@ -45,6 +45,7 @@ namespace TileActive {
         public abstract int get_yshift (int w_id) throws Error;
         public abstract int toggle_maximize (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
+        public abstract int check_windowvalid (int wid) throws Error;
     }
 
     void main (string[] args) {
@@ -53,7 +54,6 @@ namespace TileActive {
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
-
             // get data, geo on windows
             windata = client.get_winsdata();
             windata_keys = windata.get_keys();
@@ -70,15 +70,9 @@ namespace TileActive {
                 activewin = client.getactivewin();
             }
             bool run = (!guiruns || surpass_blocking);
-            // need to check validity from client, since we possibly
-            // get the window as xid
-            bool winisvalid = false;
-            foreach (string k in windata_keys) {
-                if (k == @"$activewin") {
-                    winisvalid = true;
-                }
-            }
-            if (run && winisvalid) {
+            activewin = client.check_windowvalid(activewin);
+
+            if (run && activewin != -1) {
                 if (args.length >= 7) {
                     int ntiles_x = int.parse(args[5]);
                     int ntiles_y = int.parse(args[6]);

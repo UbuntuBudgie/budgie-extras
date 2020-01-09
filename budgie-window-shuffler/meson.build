@@ -31,5 +31,6 @@ install_data('schema/org.ubuntubudgie.windowshuffler.gschema.xml',
 message('Installing miniapp...')
 
 subdir('src')
+subdir('data')
 
 meson.add_install_script('meson_post_install.py')

@@ -15,7 +15,7 @@
 * <https://www.gnu.org/licenses/>.
 */
 
-// valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 -X -lm
+// valac --pkg gio-2.0 -X -lm
 
 
 namespace GridAll {
@@ -43,11 +43,10 @@ namespace GridAll {
 
     private string[] make_tilekeys (int cols, int rows) {
         /*
-        / we receieve the hastable keys in an unordered manner
+        / we receieve the hashtable keys in an unordered manner
         / so we need to reconstruc an ordered one to work with
         */
         string[] key_arr = {};
-
         for (int r=0; r< rows; r++) {
             for (int c=0; c < cols; c++) {
                 key_arr += @"$c*$r";
@@ -97,8 +96,6 @@ namespace GridAll {
     }
 
     private void grid_allwindows (int[] geo_args) {
-        // split args for readability please
-
         /*
         / 1. make array of window ids. then:
         / 2. create sorted key list from args
@@ -131,7 +128,7 @@ namespace GridAll {
                 bool onthisws = (string)got_data.get_child_value(1) == "true";
                 // on active monitor?
                 bool onthismon = (string)got_data.get_child_value(2) == mon_name;
-                if (onthisws && onthismon && !exclude) { //////////////////////////////////////////
+                if (onthisws && onthismon && !exclude) {
                     id_array += k;
                 }
             }
@@ -154,7 +151,8 @@ namespace GridAll {
                 // now look through windows for nearest, remove match from id_array afterwards
                 int neares_wid = get_windowindex(x, y, id_array, wins);
                 string window_id = id_array[neares_wid];
-                // NB index is calculated nearest from tile -> hastable x-y and windowid -> wins hastable
+                // NB index is calculated nearest from tile ->
+                // hastable x-y and windowid -> wins hastable
                 // now move
                 int num_wid = int.parse(window_id);
                 int yshift = 0;

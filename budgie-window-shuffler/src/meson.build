@@ -127,3 +127,19 @@ executable(
     c_args: ShufflerDaemonCArgs,
     install_dir: LIB_INSTALL_DIR,
 )
+
+ShufflerControlSources = [
+    'shuffler_control.vala'
+]
+
+ShufflerControlDependencies = [
+    dependency('gtk+-3.0'),
+]
+
+executable(
+    'shuffler_control', ShufflerControlSources,
+    dependencies: ShufflerControlDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    install_dir: LIB_INSTALL_DIR,
+)
