@@ -17,6 +17,7 @@ ECHO_INTERFACE = 'org.UbuntuBudgie.ExtrasDaemon'
 # paths to some objects in our program
 ECHO_OBJECT_PATH = '/org/ubuntubudgie/extrasdaemon'
 
+
 def client(mes):
     bus = dbus.SessionBus()
 
@@ -30,21 +31,25 @@ def client(mes):
         #   (during auto-activation since there is no .service file)
         # TODO figure out how to suppress the activation attempt
         # also, there *has* to be a better way of managing exceptions
-        if e._dbus_error_name != 'org.freedesktop.DBus.Error.ServiceUnknown':
+        if e._dbus_error_name != \
+                'org.freedesktop.DBus.Error.ServiceUnknown':
             raise
-        if e.__context__._dbus_error_name != 'org.freedesktop.DBus.Error.NameHasNoOwner':
+        if e.__context__._dbus_error_name != \
+                'org.freedesktop.DBus.Error.NameHasNoOwner':
             raise
         print('client: No one can hear me!!')
     else:
         iface = dbus.Interface(proxy, ECHO_INTERFACE)
-        print (mes)
+
         iface.ResetLayout(mes)
+
 
 def main(exe, args):
     if args:
         client(' '.join(args))
     else:
         sys.exit('Usage: %s message...' % exe)
+
 
 if __name__ == '__main__':
     main(sys.argv[0], sys.argv[1:])
