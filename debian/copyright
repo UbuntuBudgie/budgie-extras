@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
 Files: *
-Copyright: 2017-2019, Ubuntu Budgie Developers
+Copyright: 2017-2020, Ubuntu Budgie Developers
 License: GPL-3+
 
 Files: budgie-rotation-lock/budgie-rotation-button-symbolic.svg
@@ -295,23 +295,140 @@ License: CC-BY-3.0
     applicable law.
 
 Files: debian/*
-Copyright: 2017-2019, David Mohammed <fossfreedom@ubuntu.com>
+Copyright: 2017-2020, David Mohammed <fossfreedom@ubuntu.com>
 License: GPL-2+
- This program is free software: you can redistribute it and/or modify
+
+Files: budgie-applications-menu/applications-menu/*
+Copyright: 2011-2019, elementary, Inc. (https:elementary.io)
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in
+Copyright: 2017-2020, Ubuntu Budgie Developers
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/AppMenu.vala
+Copyright: 2017-2020, Ubuntu Budgie Developers
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/Backend/AppCenter.vala
+Copyright: 2017, elementary LLC (https:elementary.io)
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/Backend/DBusService.vala
+  budgie-applications-menu/applications-menu/src/Backend/RelevancyService.vala
+Copyright: 2011, 2012, Slingshot Developers
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/Backend/SynapseSearch.vala
+Copyright: 2011, 2012, Giulio Collura
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/IconChooser.vala
+Copyright: 2017-2019, Budgie Desktop Developers
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/Views/SearchView.vala
+Copyright: 2011-2019, elementary, Inc. (https:elementary.io)
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/Widgets/AppListBox.vala
+  budgie-applications-menu/applications-menu/src/Widgets/AppListRow.vala
+Copyright: 2011-2019, elementary, Inc. (https:elementary.io)
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/Widgets/PageChecker.vala
+Copyright: 2017-2019, elementary, Inc.
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/Widgets/Switcher.vala
+Copyright: 2014, Corentin Noël <tintou@mailoo.org>
+  2011, 2012, Giulio Collura
+License: GPL-3+
+
+Files: budgie-applications-menu/applications-menu/src/powerstrip.vala
+Copyright: 2019, Ubuntu Budgie Developers
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/synapse-core/*
+Copyright: 2010, Michal Hruby <michal.mhr@gmail.com>
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/synapse-plugins/*
+Copyright: 2010, Michal Hruby <michal.mhr@gmail.com>
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/synapse-plugins/appcenter-plugin.vala
+Copyright: 2017, David Hewitt <davidmhewitt@gmail.com>
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala
+Copyright: 2010, Magnus Kulke <mkulke@gmail.com>
+License: GPL-2+
+
+Files: budgie-applications-menu/applications-menu/src/synapse-plugins/switchboard-plugin.vala
+Copyright: 2015, Peter Arnold
+License: GPL-2+
+
+Files: budgie-network-manager/budgie-network-applet/data/*
+Copyright: 2018, Daniel Pinto
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/*
+Copyright: 2015-2018, elementary LLC (https:elementary.io)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/Applet.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2015-2018, elementary LLC (https:elementary.io)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/Widgets/*
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2015-2017, elementary LLC (http:launchpad.net/wingpanel-indicator-network)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/Widgets/ModemInterface.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2017, elementary LLC. (https:elementary.io)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/Widgets/Separator.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2011-2017, elementary LLC (https:elementary.io)
+License: GPL-2+
+
+Files: budgie-network-manager/budgie-network-applet/src/Widgets/Switch.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2011-2018, elementary, Inc. (https:elementary.io)
+License: GPL-2+
+
+Files: budgie-network-manager/budgie-network-applet/src/Widgets/VpnInterface.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2017, elementary LLC. (http:launchpad.net/elementary)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala
+Copyright: 2017, 2018, elementary LLC. (https:elementary.io)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala
+  budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala
+Copyright: 2018, Daniel Pinto (https:github.com/danielpinto8zz6/budgie-network-applet)
+  2015-2018, elementary LLC (https:elementary.io)
+License: LGPL-2.1+
+
+Files: budgie-network-manager/budgie-network-applet/src/common/rfkill.vala
+Copyright: 2012, Canonical Ltd.
+License: GPL-3+
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 2 of the License, or
- (at your option) any later version.
+ the Free Software Foundation; version 2 dated June, 1991, or (at
+ your option) any later version.
  .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>.
- .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ On Debian systems, the complete text of version 2 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-2'.
 
 License: GPL-3+
  This program is free software; you can redistribute it and/or modify
@@ -321,3 +438,12 @@ License: GPL-3+
  .
  On Debian systems, the complete text of version 3 of the GNU General
  Public License can be found in '/usr/share/common-licenses/GPL-3'.
+
+License: LGPL-2.1+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 2.1 of the License, or (at
+ your option) any later version.
+ .
+ On Debian systems, the complete text of version 2.1 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.

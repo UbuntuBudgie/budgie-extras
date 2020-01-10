@@ -3,6 +3,7 @@ Section: misc
 Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
 Build-Depends: debhelper (>= 12),
+        debhelper-compat (= 12),
 		python3,
 		meson,
 		dh-python,
@@ -20,8 +21,19 @@ Build-Depends: debhelper (>= 12),
 		libsoup2.4-dev,
 		libwnck-3-dev,
 		libkeybinder-3.0-dev,
-		gnome-settings-daemon-dev
-Standards-Version: 4.4.0
+		gnome-settings-daemon-dev,
+		libgranite-dev,
+ 		libgdk-pixbuf2.0-dev,
+ 		libglib2.0-dev (>= 2.56),
+ 		libgnome-desktop-3-dev,
+ 		libgnome-menu-3-dev,
+ 		libzeitgeist-2.0-dev,
+ 		libappstream-dev,
+ 		cmake,
+		libplank-dev,
+		libnm-dev,
+		libnma-dev
+Standards-Version: 4.4.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
 Homepage: https://ubuntubudgie.org
@@ -36,6 +48,19 @@ Description: Shared component of budgie-extras applets
  .
  The shared component provides for capabilities that are utilised between
  budgie-extra applets.
+
+Package: budgie-network-manager-applet
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+ 		 budgie-extras-common
+Description: Network Manager Applet for the budgie-desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ This package installs an Network connectivity applet for the
+ budgie-desktop.
 
 Package: budgie-hotcorners-applet
 Architecture: any
@@ -91,11 +116,21 @@ Description: Applet displays files recently accessed for the Budgie Desktop
  or created within a configurable period of time.
 
 Package: budgie-previews-applet
+Architecture: all
+Section: oldlibs
+Depends: ${misc:Depends},
+ budgie-previews
+Description: transitional package
+ This is a transitional package. It can safely be removed.
+
+Package: budgie-previews
 Architecture: any
 Depends: budgie-extras-daemon,
   ${misc:Depends}, ${shlibs:Depends},
   xprintidle
-Description: Applet providing window previews capabilities for the Budgie Desktop
+Replaces: budgie-preview-applet (<< 0.4.5+201910221917~)
+Breaks: budgie-previews-applet (<< 0.4.5+201910221917~)
+Description: Provides window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
  capabilities. These can be used individually or as a set.
@@ -365,7 +400,17 @@ Description: Applet to prompt when to take-a-break for a set period of time
 
 Package: budgie-extras-daemon
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-applications-menu-applet,
+Recommends: budgie-appmenu-applet,
+ budgie-trash-applet,
+ budgie-recentlyused-applet,
+ budgie-indicator-applet,
+ budgie-network-manager-applet,
+ budgie-dropby-applet,
+ budgie-showtime-applet,
+ budgie-quicknote-applet
+Suggests: plank
 Description: Extras daemon for budgie-extras capabilities
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -381,6 +426,7 @@ Depends: python3,
 	gir1.2-glib-2.0,
 	gir1.2-gtk-3.0,
 	gir1.2-wnck-3.0,
+	python3-pyperclip,
 	python3-xlib,
 	${misc:Depends}, ${python3:Depends}
 Recommends: budgie-extras-daemon
@@ -433,3 +479,54 @@ Description: Applet to control the brightness of the screen
  .
  The brightness controller applet allows controlling of the screen
  levels via xrandr (fallback) or via gnome-settings-daemon (if available)
+
+Package: budgie-wallstreet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Change wallpaper from a folder on a schedule
+ This is part of a suite of python3 and Vala based applets & mini-apps
+ created for the Budgie Desktop that provide additional user orientated
+ capabilities. These can be used individually or as a set.
+ .
+ Wallstreet allows for a directory of pictures to be shown on
+ a schedule.
+
+Package: budgie-visualspace-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Show and manage windows in workspaces for the Budgie Desktop
+ This is part of a suite of python3 and Vala based applets for the Budgie
+ Desktop that provide additional user orientated capabilities.
+ The applets can be used individually or as a set.
+ .
+ The visualspace applet shows as a stylish compact workspace on the budgie
+ panel.  Choosing windows in the applet popup moves to the workspace
+ where the window is located and gives it focus.
+ The number of Workspace can also be changed though the applet popup.
+
+Package: budgie-applications-menu-applet
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, gnome-menus,
+ budgie-extras-common
+Suggests: zeitgeist-core
+Description: Stylish Applications Menu for Budgie-Desktop
+ Budgie-Desktop is a GTK+ based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ The application-menu is a stylish panel applet that displays applications
+ in different views - grid and list. Weblinks typed into the search bar
+ can be opened in your default browser. Applications that have additional
+ desktop options show via a right-click menu. Applications with associated
+ actions show those actions are additional searchable entries.
+ .
+ With the optional zeitgeist package search entries learn your menu actions
+ and results are automatically biased to allow you to find and execute
+ applications quickly.
+ .
+ Variety of options are available including grid sizing and displaying a
+ powerstrip.

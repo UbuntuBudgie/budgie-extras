@@ -1,35 +1,39 @@
-budgie-extras (0.10.1-0ubuntu2) UNRELEASED; urgency=medium
-
-  * Bug-fix release
-    - install missing quickchar menu desktop file 
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 16 Sep 2019 21:11:49 +0100
-
-budgie-extras (0.10.1-0ubuntu1) eoan; urgency=medium
-
-  * New bug-fix-release
-    - see ChangeLog
-  * Packaging Changes
-    - remove unneeded docs and include-binaries files
-    - Add missing dependencies for hotcorners applet
-    - Add missing dependency for recentlyused applet
-    - Add missing dependency for weathershow applet
-    - Add missing dependency for previews
-    - Add missing dependency for takeabreak applet
-    - Remove unneeded dependency for quickchar
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 15 Sep 2019 10:53:58 +0100
-
-budgie-extras (0.10.0-0ubuntu1) eoan; urgency=medium
+budgie-extras (0.90.0-1) experimental; urgency=medium
 
   * New release
-    - See ChangeLog
+    git tag v0.90.0 beta release 1
+  * New applets
+    budgie-workspace-stopwatch-applet
+    budgie-applications-menu-applet
+    budgie-wallstreet
+    budgie-network-manager-applet
+  * budgie-visualspace-applet previous python based applet converted
+    to vala
+  * budgie-previews new mini-application with the previous applet
+    budgie-previews-applet now replaced.
+  * budgie-extras-daemon supports multiple desktop layouts
+  * Bug-fixes
+    desktop files includes keywords to resolve lintian information reports
+    Support vertical panels for weather applet
+    Rework dropby applet to prevent panel freezing issues
+  * Translation updates
   * Packaging Changes
-    - Control change previews from a python3 based app to a vala based
+    debian/copyright refresh to include year updates and new source files
+    control: add build-depends on debhelper-compat (= 12)
+    compat: remove deprecated file
+    control: new binaries for the listed applets above
+    control: build-dependencies updated for the vala compilation
+    control: budgie-visualspace-applet architecture changed to any
+    control: budgie-previews-applet made transition package
+    control: Add missing dependencies for hotcorners applet
+    control: Add missing dependency for recentlyused applet
+    control: Add missing dependency for weathershow applet
+    control: change previews from a python3 based app to a vala based
       application.  Description updated for the package
-    - Previews install files updated
+    Previews install files updated
+    remove unneeded docs and include-binaries files
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 21 Aug 2019 20:22:52 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 09 Jan 2020 23:16:34 +0000
 
 budgie-extras (0.9.1-1) unstable; urgency=medium
 
