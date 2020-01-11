@@ -48,21 +48,21 @@ namespace ShufflerControls {
             string rows_expl = (_("Number of grid rows, used by GUI grid, jump and tile-all shortcuts"));
             // tiling
             string qtiling_header = (_("Shortcuts for quarter and half tiling & tiling to grid")) +":";
-            string topleft = "Ctrl-7".concat("\t\t\t", (_("Top-left")));
-            string topright = "Ctrl-9".concat("\t\t\t", (_("Top-right")));
-            string bottomright = "Ctrl-3".concat("\t\t\t", (_("Bottom-right")));
-            string bottomleft = "Ctrl-1".concat("\t\t\t", (_("Top-left")));
-            string lefthalf = "Ctrl-4".concat("\t\t\t", (_("Left-half")));
-            string tophalf = "Ctrl-8".concat("\t\t\t", (_("Top-half")));
-            string rightthalf = "Ctrl-6".concat("\t\t\t", (_("Right-half")));
-            string bottomhalf = "Ctrl-2".concat("\t\t\t", (_("Bottom-half")));
-            string tileall = "Super + Alt_L + A".concat("\t", (_("Tile all windows to grid")));
+            string topleft = "Ctrl + Alt + 7".concat("\t\t\t", (_("Top-left")));
+            string topright = "Ctrl + Alt + 9".concat("\t\t\t", (_("Top-right")));
+            string bottomright = "Ctrl + Alt + 3".concat("\t\t\t", (_("Bottom-right")));
+            string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t", (_("Top-left")));
+            string lefthalf = "Ctrl + Alt + 4".concat("\t\t\t", (_("Left-half")));
+            string tophalf = "Ctrl + Alt + 8".concat("\t\t\t", (_("Top-half")));
+            string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t", (_("Right-half")));
+            string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t", (_("Bottom-half")));
+            string tileall = "Super + Alt + A".concat("\t", (_("Tile all windows to grid")));
             // Jump
             string jump_header = (_("Shortcuts for jumping to the nearest grid cell")) + ":";
-            string jumpleft = "Super + Alt_L + ←".concat("\t\t", (_("Jump left")));
-            string jumpright = "Super + Alt_L + →".concat("\t\t", (_("Jump right")));
-            string jumpup = "Super + Alt_L + ↑".concat("\t\t", (_("Jump up")));
-            string jumpdown = "Super + Alt_L + ↓".concat("\t\t", (_("Jump down")));
+            string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Jump left")));
+            string jumpright = "Super + Alt + →".concat("\t\t", (_("Jump right")));
+            string jumpup = "Super + Alt + ↑".concat("\t\t", (_("Jump up")));
+            string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Jump down")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
             string callgrid = (_("Call the grid GUI")).concat("\t\t", "Super + Alt + S");
