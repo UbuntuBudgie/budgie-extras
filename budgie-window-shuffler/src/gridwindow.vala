@@ -50,6 +50,7 @@ namespace GridWindowSection {
     ShufflerInfoClient client;
     Gtk.Window? gridgui;
     Gdk.X11.Window timestamp_window;
+    File gridtrigger;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
@@ -402,6 +403,14 @@ namespace GridWindowSection {
             if (pressed.contains("Shift")) {
                 shiftispressed = true;
             }
+            else if (pressed == "Escape") {
+                gridgui.destroy();
+                try {
+                    gridtrigger.delete();
+                }
+                catch (Error e) {
+                }
+            }
             else {
                 managegrid(pressed);
             }
@@ -546,7 +555,7 @@ namespace GridWindowSection {
         // monitoring files / dirs
         FileMonitor monitor;
         string user = Environment.get_user_name();
-        File gridtrigger = File.new_for_path(
+        gridtrigger = File.new_for_path(
             "/tmp/".concat(user, "_gridtrigger")
         );
         try {
