@@ -42,7 +42,7 @@ namespace ShufflerControls {
             // settings
             string daemonexpl = (_("Enable tiling and window jump shortcuts")) + ":";
             string guiexpl = (_("Enable grid tiling GUI shortcut"));
-            string swapgeexpl = (_("When using junp shortcuts, swap window geometry if a window moves to an existing window's position"));
+            string swapgeexpl = (_("When using jump shortcuts, swap window geometry if a window moves to an existing window's position"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
             string cols_expl = (_("Number of grid columns, used by GUI grid, jump and tile-all shortcuts"));
             string rows_expl = (_("Number of grid rows, used by GUI grid, jump and tile-all shortcuts"));
