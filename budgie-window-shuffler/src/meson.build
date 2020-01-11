@@ -1,4 +1,4 @@
-configurationData = configuration_data()
+fconfigurationData = configuration_data()
 configurationData.set('PACKAGE_NAME', meson.project_name())
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
@@ -87,7 +87,7 @@ TileActiveDependencies = [
 ]
 
 executable(
-    'tileactive', TileActiveSources,
+    'tile_active', TileActiveSources,
     dependencies: TileActiveDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
@@ -128,7 +128,7 @@ ShufflerDaemonCArgs = [
 ]
 
 executable(
-    'shufflerdaemon', ShufflerDaemonSources,
+    'windowshufflerdaemon', ShufflerDaemonSources,
     dependencies: ShufflerDaemonDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
