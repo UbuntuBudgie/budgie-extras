@@ -1,4 +1,4 @@
-fconfigurationData = configuration_data()
+configurationData = configuration_data()
 configurationData.set('PACKAGE_NAME', meson.project_name())
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
