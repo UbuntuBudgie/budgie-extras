@@ -20,7 +20,7 @@ libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
 
 LOCALE_DIR = join_paths(prefix, get_option('localedir'))
-MINIAPP = 'windowshuffler'
+MINIAPP = 'budgie-window-shuffler'
 
 LIB_INSTALL_DIR = join_paths(prefix, libdir, MINIAPP)
 
