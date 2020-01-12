@@ -529,3 +529,22 @@ Description: Stylish Applications Menu for Budgie-Desktop
  .
  Variety of options are available including grid sizing and displaying a
  powerstrip.
+
+Package: budgie-window-shuffler
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
+Description: Keyboard and GUI friendly window-tiling capability
+ Budgie-Desktop is a GTK+ based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ The window shuffler is an easy to use windows tiling capability
+ driven primarily through the keyboard to place and move window in
+ a grid format.
+ .
+ Windows can be easily quarter, half-tiled & maximized. Windows can
+ be moved within a user defined grid and intelligently switches
+ window positions where necessary.
