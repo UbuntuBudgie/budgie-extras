@@ -28,8 +28,16 @@
             <summary>Run the WindowShuffler GUI daemon</summary>
             <description>Run the daemon to be able to use the grid gui on top of the cli options of Window Shuffler</description>
             <default>false</default>
-        </key> 
+        </key>
+        <key type="s" name="newwindowaction">
+            <summary>Comaand to run on creation of new windows</summary>
+            <description>On creation of a new window, run a command</description>
+            <default>""</default>
+        </key>
+        <key type="s" name="closedwindowaction">
+            <summary>Comaand to run on closing windows</summary>
+            <description>On closure of a window, run a command</description>
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>
-
-

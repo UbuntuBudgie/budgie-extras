@@ -328,11 +328,30 @@ namespace ShufflerEssentialInfo {
             () => {}, () => stderr.printf ("Could not aquire name\n"));
     }
 
+    private void run_command (string cmd) {
+        try {
+            Process.spawn_command_line_async(cmd);
+        }
+        catch (GLib.SpawnError err) {
+            /*
+            * in case an error occurs, the command most likely is
+            * incorrect not much use for any action
+            */
+        }
+    }
+
+    private void run_windowchangecommand (string actiontype) {
+        string cmd = shuffler_settings.get_string(actiontype);
+        if (cmd != "") {
+            run_command(cmd);
+        }
+    }
+
     private void get_windata () {
         /*
         / maintaining function
         / get windowlist, per window:
-        / xid = key. then: name, onthisworspace, monitor-of-window, geometry
+        / xid = key. then: name, onthisworspace, monitor-of-window, geometry, wmclass
         */
         var winsdata = new HashTable<string, Variant> (str_hash, str_equal);
         unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
@@ -351,9 +370,10 @@ namespace ShufflerEssentialInfo {
                 ).get_model();
                 ulong xid = w.get_xid();
                 bool minimized = w.is_minimized();
+                string wmclass = w.get_class_group_name();
                 Variant windowdata = new Variant(
-                    "(sssiiiis)", name, @"$onthisws", winsmonitor,
-                    x, y, width, height, @"$minimized"
+                    "(sssiiiiss)", name, @"$onthisws", winsmonitor,
+                    x, y, width, height, @"$minimized", wmclass
                 );
                 winsdata.insert(@"$xid", windowdata);
             }
@@ -442,15 +462,20 @@ namespace ShufflerEssentialInfo {
         wnckscr.force_update();
         monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
         window_essentials = new HashTable<string, Variant> (str_hash, str_equal);
-
         gdkdisplay = Gdk.Display.get_default();
         Gdk.Screen gdkscreen = Gdk.Screen.get_default();
         get_monitors();
         getscale();
         gdkscreen.monitors_changed.connect(get_monitors);
         gdkscreen.monitors_changed.connect(getscale);
-        wnckscr.window_opened.connect(get_windata);
-        wnckscr.window_closed.connect(get_windata);
+        wnckscr.window_opened.connect(()=> {
+            get_windata();
+            run_windowchangecommand("newwindowaction");
+        });
+        wnckscr.window_closed.connect(()=> {
+            get_windata();
+            run_windowchangecommand("closedwindowaction");
+        });
         setup_dbus();
         Gtk.main();
         return 0;

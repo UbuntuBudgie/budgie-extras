@@ -65,7 +65,7 @@ namespace ShufflerControls {
             string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Jump down")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
-            string callgrid = (_("Call the grid GUI")).concat("\t\t", "Super + Alt + S");
+            string callgrid = (_("Call the grid GUI")).concat("\t\t", "Ctrl + Alt + S");
             string addcol = (_("Add a column")).concat("\t\t", "→");
             string addrow = (_("Add a row")).concat("\t\t\t", "↓");
             string remcol = (_("Remove a column")).concat("\t\t", "←");
