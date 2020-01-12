@@ -70,6 +70,7 @@ namespace ShufflerControls {
             string addrow = (_("Add a row")).concat("\t\t\t", "↓");
             string remcol = (_("Remove a column")).concat("\t\t", "←");
             string remrow = (_("Remove a row")).concat("\t\t", "↑");
+            string shift_click = (_("To select a range of tiles, use Shift + click"));
 
             // WINDOW STUFF
             string shufflercontrols_stylecss = """
@@ -290,6 +291,9 @@ namespace ShufflerControls {
                 guigrid.attach(l, 0, n3, 1, 1);
                 n3 += 1;
             }
+            guigrid.attach(new Gtk.Label("\n"), 0, 20, 1, 1);
+            guigrid.attach(new Gtk.Label(shift_click), 0, 21, 1, 1);
+
 
             supergrid.attach(controlwin_stack, 1, 3, 4, 1);
             controlwin_stack.set_visible_child_name("settings");
