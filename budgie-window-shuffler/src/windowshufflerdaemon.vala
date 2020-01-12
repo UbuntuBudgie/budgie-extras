@@ -310,7 +310,7 @@ namespace ShufflerEssentialInfo {
     }
 
     // setup dbus
-    void on_bus_aquired (DBusConnection conn) {
+    void on_bus_acquired (DBusConnection conn) {
         // register the bus
         try {
             conn.register_object ("/org/ubuntubudgie/shufflerinfodaemon",
@@ -324,8 +324,8 @@ namespace ShufflerEssentialInfo {
     public void setup_dbus () {
         Bus.own_name (
             BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
-            BusNameOwnerFlags.NONE, on_bus_aquired,
-            () => {}, () => stderr.printf ("Could not aquire name\n"));
+            BusNameOwnerFlags.NONE, on_bus_acquired,
+            () => {}, () => stderr.printf ("Could not acquire name\n"));
     }
 
     private void run_command (string cmd) {
