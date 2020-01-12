@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 16:17+0000\n"
+"POT-Creation-Date: 2020-01-12 12:06+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2020\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
@@ -69,7 +69,9 @@ msgstr "minuten"
 msgid "Seconds"
 msgstr "seconden"
 
+#. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-window-shuffler/src/shuffler_control.vala:186
 msgid "Close"
 msgstr "Sluiten"
 
@@ -204,10 +206,13 @@ msgid "Custom"
 msgstr "Aangepast"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:54
 msgid "Top-left"
 msgstr "Linksboven"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:52
 msgid "Top-right"
 msgstr "Rechtsboven"
 
@@ -216,6 +221,7 @@ msgid "Bottom-left"
 msgstr "Linksonder"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:53
 msgid "Bottom-right"
 msgstr "Rechtsonder"
 
@@ -360,6 +366,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:120
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -748,6 +755,155 @@ msgstr "Temperatuur"
 msgid "Light"
 msgstr "Licht"
 
+#. STRINGS & THINGS
+#. settings
+#: budgie-window-shuffler/src/shuffler_control.vala:43
+msgid "Enable tiling and window jump shortcuts"
+msgstr "Schermsplitsing- en vensternavigatiesneltoetsen inschakelen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:44
+msgid "Enable grid tiling GUI shortcut"
+msgstr "'Splitsen op rooster'-sneltoets inschakelen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:45
+msgid ""
+"When using jump shortcuts, swap window geometry if a window moves to an "
+"existing window's position"
+msgstr ""
+"Pas, bij gebruik van navigatiesneltoetsen, de vensterafmetingen aan als een "
+"venster wordt verplaast naar de locatie van een reeds aanwezig venster"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:46
+msgid "Move the mouse over a button for an explanation"
+msgstr "Houd de cursor op een knop om uitleg te tonen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:47
+msgid "Number of grid columns, used by GUI grid, jump and tile-all shortcuts"
+msgstr "Het aantal roosterkolommen dat wordt gebruikt door alle sneltoetsen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:48
+msgid "Number of grid rows, used by GUI grid, jump and tile-all shortcuts"
+msgstr "Het aantal roosterrijen dat wordt gebruikt door alle sneltoetsen"
+
+#. tiling
+#: budgie-window-shuffler/src/shuffler_control.vala:50
+msgid "Shortcuts for quarter and half tiling & tiling to grid"
+msgstr "Sneltoetsen voor kwart- en halve splitsing, en splitsen op rooster"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:55
+msgid "Left-half"
+msgstr "Linkerhelft"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:56
+msgid "Top-half"
+msgstr "Bovenste helft"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:57
+msgid "Right-half"
+msgstr "Rechterhelft"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:58
+msgid "Bottom-half"
+msgstr "Onderste helft"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:59
+msgid "Tile all windows to grid"
+msgstr "Alle vensters splitsen op rooster"
+
+#. Jump
+#: budgie-window-shuffler/src/shuffler_control.vala:61
+msgid "Shortcuts for jumping to the nearest grid cell"
+msgstr "Sneltoetsen voor navigeren naar het dichtstbijzijnde roostervlak"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:62
+msgid "Jump left"
+msgstr "Naar links navigeren"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:63
+msgid "Jump right"
+msgstr "Naar rechts navigeren"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:64
+msgid "Jump up"
+msgstr "Omhoog navigeren"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:65
+msgid "Jump down"
+msgstr "Omlaag navigeren"
+
+#. GUI grid
+#: budgie-window-shuffler/src/shuffler_control.vala:67
+msgid "Shortcuts for the grid GUI"
+msgstr "Sneltoetsen omtrent het rooster"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:68
+msgid "Call the grid GUI"
+msgstr "Rooster tonen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:69
+msgid "Add a column"
+msgstr "Kolom toevoegen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:70
+msgid "Add a row"
+msgstr "Rij toevoegen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:71
+msgid "Remove a column"
+msgstr "Kolom verwijderen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:72
+msgid "Remove a row"
+msgstr "Rij verwijderen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:73
+msgid "To select a range of tiles, use Shift + click"
+msgstr "Gebruik Shift+linksklikken op meerdere tegels te selecteren"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:99
+#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
+msgid "Window Shuffler Control"
+msgstr "Vensterbediening"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:121
+msgid "Tiling"
+msgstr "Splitsen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:122
+msgid "Jump"
+msgstr "Navigeren"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:123
+msgid "GUI grid"
+msgstr "Rooster"
+
+#. STACK-PAGES
+#. 1. settingsgrid - checkbuttons
+#: budgie-window-shuffler/src/shuffler_control.vala:128
+msgid "Enable Window Shuffler"
+msgstr "Vensterbediening gebruiken"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:132
+msgid "Enable Window Shuffler grid GUI"
+msgstr "Vensterbediening met rooster gebruiken"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:138
+msgid "Swap geometry"
+msgstr "Afmetingen omruilen"
+
+#. settingsgrid - spinbuttonsection
+#: budgie-window-shuffler/src/shuffler_control.vala:144
+msgid "Grid GUI: columns & rows"
+msgstr "Rooster: kolommen en rijen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:149
+msgid "Columns"
+msgstr "Kolommen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:154
+msgid "Rows"
+msgstr "Rijen"
+
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
 msgid "Show last used"
@@ -1043,3 +1199,7 @@ msgstr "Snelle, handige notities"
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Weer tonen, incl. voorspelling"
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr "Netwerkindicator"
