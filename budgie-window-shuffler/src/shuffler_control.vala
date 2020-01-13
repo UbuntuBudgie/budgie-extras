@@ -57,7 +57,7 @@ namespace ShufflerControls {
             string tophalf = "Ctrl + Alt + 8".concat("\t\t\t", (_("Top-half")));
             string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t", (_("Right-half")));
             string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t", (_("Bottom-half")));
-            string tileall = "Super + Alt + A".concat("\t", (_("Tile all windows to grid")));
+            string tileall = "Super + Alt + A".concat("\t\t", (_("Tile all windows to grid")));
             // Jump
             string jump_header = (_("Shortcuts for jumping to the nearest grid cell")) + ":";
             string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Jump left")));
@@ -66,11 +66,11 @@ namespace ShufflerControls {
             string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Jump down")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
-            string callgrid = (_("Call the grid GUI")).concat("\t\t", "Ctrl + Alt + S");
-            string addcol = (_("Add a column")).concat("\t\t", "→");
-            string addrow = (_("Add a row")).concat("\t\t\t", "↓");
-            string remcol = (_("Remove a column")).concat("\t\t", "←");
-            string remrow = (_("Remove a row")).concat("\t\t", "↑");
+            string callgrid = "Ctrl + Alt + S".concat("\t", (_("Call the grid GUI")));
+            string addcol = "→".concat("\t\t\t", (_("Add a column")));
+            string addrow = "↓".concat("\t\t\t",(_("Add a row")));
+            string remcol = "←".concat("\t\t\t", (_("Remove a column")));
+            string remrow = "↑".concat("\t\t\t", (_("Remove a row")));
             string shift_click = (_("To select a range of tiles, use Shift + click"));
 
             // WINDOW STUFF
