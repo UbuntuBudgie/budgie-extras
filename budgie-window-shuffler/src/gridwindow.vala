@@ -189,7 +189,7 @@ namespace GridWindowSection {
             if (index != -1 && previously_active != null && winstillexists(previously_active)) {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
-                string cm = "/usr/lib/windowshuffler/tile_active ".concat(
+                string cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                     cmd_args, " id=", @"$previously_active");
                 try {
                     Process.spawn_command_line_async(cm);

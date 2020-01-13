@@ -218,6 +218,7 @@ namespace ShufflerEssentialInfo {
             // kill preview
             if (showtarget != null) {
                 showtarget.destroy();
+                showtarget = null;
             }
         }
 
@@ -310,7 +311,7 @@ namespace ShufflerEssentialInfo {
     }
 
     // setup dbus
-    void on_bus_acquired (DBusConnection conn) {
+    void on_bus_aquired (DBusConnection conn) {
         // register the bus
         try {
             conn.register_object ("/org/ubuntubudgie/shufflerinfodaemon",
@@ -324,8 +325,8 @@ namespace ShufflerEssentialInfo {
     public void setup_dbus () {
         Bus.own_name (
             BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
-            BusNameOwnerFlags.NONE, on_bus_acquired,
-            () => {}, () => stderr.printf ("Could not acquire name\n"));
+            BusNameOwnerFlags.NONE, on_bus_aquired,
+            () => {}, () => stderr.printf ("Could not aquire name\n"));
     }
 
     private void run_command (string cmd) {
@@ -370,7 +371,10 @@ namespace ShufflerEssentialInfo {
                 ).get_model();
                 ulong xid = w.get_xid();
                 bool minimized = w.is_minimized();
-                string wmclass = w.get_class_group_name();
+                string? wmclass = w.get_class_group_name();
+                if (wmclass == null) {
+                    wmclass = "";
+                }
                 Variant windowdata = new Variant(
                     "(sssiiiiss)", name, @"$onthisws", winsmonitor,
                     x, y, width, height, @"$minimized", wmclass
@@ -473,6 +477,11 @@ namespace ShufflerEssentialInfo {
             run_windowchangecommand("newwindowaction");
         });
         wnckscr.window_closed.connect(()=> {
+            if (showtarget != null && gridguiruns == false) {
+                // ok, tiny code repetition. Edit if we are bored from having too much time
+                showtarget.destroy();
+                showtarget = null;
+            }
             get_windata();
             run_windowchangecommand("closedwindowaction");
         });
