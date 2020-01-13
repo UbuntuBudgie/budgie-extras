@@ -33,6 +33,7 @@ namespace ShufflerControls {
         ToggleButton toggle_swapgeo;
         //  string runinstruction;
         Label expl_label;
+        Label warninglabel;
         Gtk.Grid supergrid;
         Stack controlwin_stack;
 
@@ -88,6 +89,9 @@ namespace ShufflerControls {
             }
             .header {
                 font-weight: bold;
+            }
+            .warning {
+                color: red;
             }
             """;
 
@@ -178,14 +182,16 @@ namespace ShufflerControls {
             expl_label.set_xalign(0);
             expl_label.set_line_wrap(true);
             settingsgrid.attach(expl_label, 1, 21, 99, 1);
-            var sct = expl_label.get_style_context();
-            sct.add_class("explanation");
+            set_textstyle(expl_label, {"explanation"});
 
             // settingsgrid - bottomsection
             var okbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
             var ok_button = new Button.with_label((_("Close")));
             ok_button.set_size_request(100, 5);
             okbox.pack_end(ok_button, false, false, 0);
+            warninglabel = new Label("");
+            warninglabel.set_xalign(0);
+            supergrid.attach(warninglabel, 1, 99, 2, 1);
             supergrid.attach(okbox, 2, 99, 4, 1);
             ok_button.clicked.connect(Gtk.main_quit);
             this.destroy.connect(Gtk.main_quit);
@@ -233,7 +239,7 @@ namespace ShufflerControls {
 
             // 2. shortcutsgrid
             var qhshortcutsheader = new Label(qtiling_header);
-            set_textstyle(qhshortcutsheader, "header");
+            set_textstyle(qhshortcutsheader, {"header"});
             var spacer = new Label("");
             var tl = new Label(topleft);
             var tr = new Label(topright);
@@ -257,7 +263,7 @@ namespace ShufflerControls {
 
             // 3. jumpgrid shortcuts
             var jumpshortcutsheader = new Label(jump_header);
-            set_textstyle(jumpshortcutsheader, "header");
+            set_textstyle(jumpshortcutsheader, {"header"});
             var spacer2 = new Label("");
             var jump_left = new Label(jumpleft);
             var jump_right = new Label(jumpright);
@@ -275,7 +281,7 @@ namespace ShufflerControls {
 
             // 4. guigrid
             var guigridheader = new Label(guigrid_header);
-            set_textstyle(guigridheader, "header");
+            set_textstyle(guigridheader, {"header"});
             var spacer3 = new Label("");
             var call_grid = new Label(callgrid);
             var add_col = new Label(addcol);
@@ -327,9 +333,15 @@ namespace ShufflerControls {
             sct.add_class(style);
         }
 
-        private void set_textstyle (Gtk.Label l, string style) {
+        private void set_textstyle (Gtk.Label l, string[] style) {
             var sct = l.get_style_context();
-            sct.add_class(style);
+            string[] style_old = {"warning", "explanation", "header"};
+            foreach (string s_old in style_old) {
+                sct.remove_class(s_old);
+            }
+            foreach (string s in style) {
+                sct.add_class(s);
+            }
         }
 
         /**
@@ -364,7 +376,7 @@ namespace ShufflerControls {
             string match = "";
             bool newval = button.get_active();
             ToggleButton[] toggles = {
-                toggle_gui, toggle_shuffler,toggle_swapgeo
+                toggle_gui, toggle_shuffler, toggle_swapgeo
             };
             string[] vals = {
                 "runshufflergui", "runshuffler", "swapgeometry"
@@ -380,6 +392,10 @@ namespace ShufflerControls {
             if (n == 1) {
                 if (!newval) {
                     toggle_gui.set_active(newval);
+                    warninglabel.set_label("");
+                }
+                else {
+                    check_firstrunwarning();
                 }
                 toggle_gui.set_sensitive(newval);
                 toggle_swapgeo.set_sensitive(newval);
@@ -407,7 +423,6 @@ namespace ShufflerControls {
         }
 
         private void set_margins (Grid grid) {
-            // I admit, lazy layout
             int[,] corners = {
                 {0, 0}, {100, 0}, {2, 0}, {0, 100}, {100, 100}
             };
@@ -418,6 +433,38 @@ namespace ShufflerControls {
                     spacelabel, corners[i, 0], corners[i, 1], 1, 1
                 );
             }
+        }
+
+        private void check_firstrunwarning() {
+            /*
+            / 0.1 dec after gsettings change check if process is running
+            / if not -> show message in label
+            */
+            GLib.Timeout.add(100, () => {
+                bool daemonruns = procruns("windowshufflerdaemon");
+                if (!daemonruns) {
+                    warninglabel.set_label(_("Please log out/in to initialize"));
+                    set_textstyle(warninglabel, {"warning", "explanation"});
+
+                }
+                return false;
+            });
+        }
+
+        private bool procruns (string processname) {
+            string cmd = @"pgrep -f $processname";
+            string output;
+            try {
+                GLib.Process.spawn_command_line_sync(cmd, out output);
+                if (output == "") {
+                    return false;
+                }
+            }
+            /* on an unlike to happen exception, return true */
+            catch (SpawnError e) {
+                return true;
+            }
+            return true;
         }
     }
 
