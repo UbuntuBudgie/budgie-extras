@@ -335,7 +335,7 @@ namespace ShufflerEssentialInfo {
         Bus.own_name (
             BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
             BusNameOwnerFlags.NONE, on_bus_acquired,
-            () => {}, () => stderr.printf ("Could not aquire name\n"));
+            () => {}, () => stderr.printf ("Could not acquire name\n"));
     }
 
     private void run_command (string cmd) {
