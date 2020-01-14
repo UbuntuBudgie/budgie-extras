@@ -265,6 +265,7 @@ Description: Applet adding the ability to set a different keyboard layout per ap
 
 Package: budgie-network-manager-applet
 Architecture: any
+
 Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Network Manager Applet for the budgie-desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
@@ -290,6 +291,7 @@ Description: Provides window previews capabilities for the Budgie Desktop
 
 Package: budgie-previews-applet
 Architecture: all
+Priority: optional
 Section: oldlibs
 Depends: budgie-previews, ${misc:Depends}
 Description: transitional package
