@@ -41,9 +41,6 @@ using Gdk.X11;
 / on leave, reset to currentlycolored.
 */
 
-// valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 --pkg gdk-3.0 --pkg cairo --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
-
-
 namespace GridWindowSection {
 
     Wnck.Screen wnckscr;
@@ -56,6 +53,8 @@ namespace GridWindowSection {
 
     interface ShufflerInfoClient : Object {
         public abstract int[] get_grid () throws Error;
+        public abstract int get_greyshade () throws Error;
+        public abstract void set_greyshade (int newbrightness) throws Error;
         public abstract void set_grid (int cols, int rows) throws Error;
         public abstract void show_tilepreview (int col, int row, int width = 1, int height = 1) throws Error;
         public abstract void kill_tilepreview () throws Error;
@@ -85,11 +84,13 @@ namespace GridWindowSection {
         ulong? previously_active;
         Gtk.Grid maingrid;
         int[] currentlycolored; // arr of all currently colored buttons
+        string gridcss;
+        Gtk.CssProvider css_provider;
 
-        string gridcss = """
+        string raw_gridcss = """
         .gridmanage {
             border-radius: 3px;
-            background-color: rgb(235, 235, 235);
+            background-color: curr_greyshade;
             box-shadow: none;
         }
         .gridmanage:hover {
@@ -109,6 +110,11 @@ namespace GridWindowSection {
             this.enter_notify_event.connect(showquestionmark);
             this.key_press_event.connect(on_shiftpress);
             this.key_release_event.connect(on_shiftrelease);
+            gridcss = calculate_css();
+            // greyshade-scrolling
+            this.add_events(Gdk.EventMask.SCROLL_MASK);
+            this.scroll_event.connect(set_brightnessfromscroll);
+
             wnckscr.active_window_changed.connect(get_subject);
             Wnck.Window? curr_active = wnckscr.get_active_window();
             if (curr_active != null) {
@@ -123,15 +129,11 @@ namespace GridWindowSection {
             var visual = screen.get_rgba_visual();
             this.set_visual(visual);
             this.draw.connect(on_draw);
-            Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            try {
-                css_provider.load_from_data(gridcss);
-                Gtk.StyleContext.add_provider_for_screen(
-                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
-                );
-            }
-            catch (Error e) {
-            }
+
+
+            // separate
+            css_provider = new Gtk.CssProvider();
+            load_css();
             // grid and stuff
             maingrid = new Gtk.Grid();
             maingrid.set_column_spacing(6);
@@ -144,6 +146,80 @@ namespace GridWindowSection {
             this.set_decorated(false);
             this.set_keep_above(true);
             this.show_all();
+        }
+
+        private void load_css () {
+            try {
+                css_provider.load_from_data(gridcss);
+                Gtk.StyleContext.add_provider_for_screen(
+                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                );
+            }
+            catch (Error e) {
+            }
+        }
+
+        private bool set_brightnessfromscroll (Gdk.EventScroll scrollevent) {
+            Gdk.ScrollDirection upordown = scrollevent.direction;
+            if (upordown == Gdk.ScrollDirection.UP) {
+                set_brightnessongrid("plus");
+            }
+            else if (upordown == Gdk.ScrollDirection.DOWN) {
+                set_brightnessongrid("minus");
+            }
+            return false;
+        }
+
+        private string calculate_css (int? currshade = null) {
+            // convert percent to 255
+            if (currshade == null) {
+                currshade = 90;
+                try {
+                    currshade = client.get_greyshade();
+                }
+                catch (Error e) {
+                    print("cannot get greyshade\n");
+                }
+            }
+            int shade = (int)(255 * currshade / 100);
+            string newshade = @"rgb($shade, $shade, $shade)";
+            gridcss = raw_gridcss.replace("curr_greyshade", newshade);
+            return gridcss;
+        }
+
+        private bool set_brightnessongrid (string pressed) {
+            // falback
+            int currbrightness = 90;
+            try {
+                currbrightness = client.get_greyshade();
+            }
+            catch (Error e) {
+                print("cannot get greyshade\n");
+            }
+            int newbrightness = currbrightness;
+            if (pressed == "KP_Add" || pressed == "plus") {
+                if (currbrightness <= 98) {
+                    newbrightness = currbrightness + 2;
+                }
+            }
+            else if (pressed == "KP_Subtract" || pressed == "minus") {
+                if (currbrightness >= 2) {
+                    newbrightness = currbrightness - 2;
+                }
+            }
+            try {
+                client.set_greyshade(newbrightness);
+            }
+            catch (Error e) {
+                print("unable to change greyshade setting\n");
+            }
+            gridcss = calculate_css(newbrightness);
+            load_css();
+            killpreview();
+            buttongrid.destroy();
+            setgrid();
+            maingrid.show_all();
+            return false;
         }
 
         private int[] get_setcolsrows () {
@@ -189,7 +265,7 @@ namespace GridWindowSection {
             if (index != -1 && previously_active != null && winstillexists(previously_active)) {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
-                string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
+                string cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                     cmd_args, " id=", @"$previously_active");
                 try {
                     Process.spawn_command_line_async(cm);
@@ -410,6 +486,14 @@ namespace GridWindowSection {
                 }
                 catch (Error e) {
                 }
+            }
+            else if (
+                pressed == "KP_Add" ||
+                pressed == "KP_Subtract" ||
+                pressed == "plus" ||
+                pressed == "minus"
+            ) {
+                set_brightnessongrid(pressed);
             }
             else {
                 managegrid(pressed);

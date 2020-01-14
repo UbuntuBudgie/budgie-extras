@@ -39,5 +39,11 @@
             <description>On closure of a window, run a command</description>
             <default>""</default>
         </key>
+        <key type="i" name="greyshade">
+            <summary>Darkness of the grid button</summary>
+            <description>The grey shade of the grid buttons, 0 is black, 100 is white</description>
+            <default>90</default>
+	    <range min="0" max="100"/>
+        </key>
     </schema>
 </schemalist>

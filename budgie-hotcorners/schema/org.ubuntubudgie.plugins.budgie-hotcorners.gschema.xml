@@ -29,7 +29,13 @@
             "{'command': 'budgie-desktop-settings', 'name':'Budgie Desktop Settings'}", 
             "{'command': 'gnome-screensaver-command -l', 'name': 'Lock screen'}",
     	    "{'command': 'xdotool key super+n', 'name': 'Show Raven notifications'}", 
-            "{'command': 'xdotool key super+a', 'name': 'Toggle Raven'}"
+            "{'command': 'xdotool key super+a', 'name': 'Toggle Raven'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/togglegui', 'name': 'Toggle Shuffler GUI'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/grid_all', 'name': 'All windows in grid'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/tile_active 0 0 2 2', 'name': 'Active window to topleft'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/tile_active 1 0 2 2', 'name': 'Active window to topright'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/tile_active 1 1 2 2', 'name': 'Active window to bottomright'}",
+            "{'command': '/usr/lib/budgie-window-shuffler/tile_active 0 1 2 2', 'name': 'Active window to bottomleft'}"
             ]</default>
         </key>
     </schema>

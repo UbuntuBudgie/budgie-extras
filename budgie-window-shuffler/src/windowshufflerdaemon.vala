@@ -38,6 +38,7 @@ namespace ShufflerEssentialInfo {
     GLib.Settings shuffler_settings;
     int setcols;
     int setrows;
+    int greyshade;
     bool swapgeometry;
     bool gridguiruns;
     Gtk.Window? showtarget = null;
@@ -68,6 +69,10 @@ namespace ShufflerEssentialInfo {
 
         public bool check_ifguiruns () throws Error {
             return gridguiruns;
+        }
+
+        public int get_greyshade () throws Error {
+            return greyshade;
         }
 
         public void toggle_maximize (int w_id) throws Error {
@@ -154,7 +159,6 @@ namespace ShufflerEssentialInfo {
                     int tileheight = (int)(fullheight/rows);
                     int NEx = mon_wa.x * scale;
                     int origx = NEx;
-                    //  int i_tile = 0;
                     while (NEx < origx + fullwidth) {
                         xpositions += NEx;
                         NEx += tilewidth;
@@ -212,6 +216,11 @@ namespace ShufflerEssentialInfo {
         public void set_grid (int cols, int rows) throws Error {
             shuffler_settings.set_int("cols", cols);
             shuffler_settings.set_int("rows", rows);
+        }
+
+        public void set_greyshade (int newbrightness) throws Error {
+            // sets the gsettings brightness for the gui grid
+            shuffler_settings.set_int("greyshade", newbrightness);
         }
 
         public void kill_tilepreview () throws Error {
@@ -426,6 +435,7 @@ namespace ShufflerEssentialInfo {
         setcols = shuffler_settings.get_int("cols");
         setrows = shuffler_settings.get_int("rows");
         swapgeometry = shuffler_settings.get_boolean("swapgeometry");
+        greyshade = shuffler_settings.get_int("greyshade");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
