@@ -1,12 +1,13 @@
-budgie-extras (0.91.0-1) UNRELEASED; urgency=medium
+budgie-extras (0.91.0-1) experimental; urgency=medium
 
   * New release
     git tag v0.91.0 beta release 2
-  * New window shuffler applications
+  * New window shuffler application
   * Translation updates
   * Packaging Changes
     run wrap-and-sort -bst to tidy up package-lists
-    Revise recommendations for budgie-extras-daemon
+    control: Revise recommendations for budgie-extras-daemon
+    control: budgie-window-shuffler package
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 14 Jan 2020 19:24:37 +0000
 
