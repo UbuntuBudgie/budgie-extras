@@ -8,16 +8,16 @@
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Víctor Pont <victor@pont.cat>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2019
-# Davidmp <medipas@gmail.com>, 2019
+# Davidmp <medipas@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-26 16:17+0000\n"
+"POT-Creation-Date: 2020-01-13 19:57+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>, 2019\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2020\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,12 +69,15 @@ msgstr "Minuts"
 msgid "Seconds"
 msgstr "Segons"
 
+#. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-window-shuffler/src/shuffler_control.vala:189
 msgid "Close"
 msgstr "Tanca"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:446
 msgid "Please log out/in to initialize"
 msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
 
@@ -204,10 +207,13 @@ msgid "Custom"
 msgstr "Personalitzada"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:52
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Top-left"
 msgstr "A dalt a l'esquerra"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:53
 msgid "Top-right"
 msgstr "A dalt a la dreta"
 
@@ -216,6 +222,7 @@ msgid "Bottom-left"
 msgstr "A baix a l'esquerra"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:235
+#: budgie-window-shuffler/src/shuffler_control.vala:54
 msgid "Bottom-right"
 msgstr "A baix a la dreta"
 
@@ -360,6 +367,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:124
 msgid "Settings"
 msgstr "Paràmetres"
 
@@ -751,6 +759,155 @@ msgstr "Temperatura"
 msgid "Light"
 msgstr "Lluminositat"
 
+#. STRINGS & THINGS
+#. settings
+#: budgie-window-shuffler/src/shuffler_control.vala:44
+msgid "Enable tiling and window jump shortcuts"
+msgstr "Habilita les dreceres de mosaic i salt de finestra"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:45
+msgid "Enable grid tiling GUI shortcut"
+msgstr "Habilita la drecera del mosaic"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:46
+msgid ""
+"When using jump shortcuts, swap window geometry if a window moves to an "
+"existing window's position"
+msgstr ""
+"Quan s'usen dreceres de salt, es canvia la geometria de la finestra si una "
+"finestra es mou a la posició d'una altra."
+
+#: budgie-window-shuffler/src/shuffler_control.vala:47
+msgid "Move the mouse over a button for an explanation"
+msgstr "Passeu el ratolí per sobre d'un botó per veure'n l'explicació."
+
+#: budgie-window-shuffler/src/shuffler_control.vala:48
+msgid "Number of grid columns, used by GUI grid, jump and tile-all shortcuts"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:49
+msgid "Number of grid rows, used by GUI grid, jump and tile-all shortcuts"
+msgstr ""
+
+#. tiling
+#: budgie-window-shuffler/src/shuffler_control.vala:51
+msgid "Shortcuts for quarter and half tiling & tiling to grid"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:56
+msgid "Left-half"
+msgstr "Meitat esquerra"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:57
+msgid "Top-half"
+msgstr "Meitat superior"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:58
+msgid "Right-half"
+msgstr "Meitat dreta"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:59
+msgid "Bottom-half"
+msgstr "Meitat inferior"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+msgid "Tile all windows to grid"
+msgstr "Fes un mosaic de totes les finestres"
+
+#. Jump
+#: budgie-window-shuffler/src/shuffler_control.vala:62
+msgid "Shortcuts for jumping to the nearest grid cell"
+msgstr "Dreceres per saltar a la cel·la més propera"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:63
+msgid "Jump left"
+msgstr "Salta a l'esquerra"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:64
+msgid "Jump right"
+msgstr "Salta a la dreta"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:65
+msgid "Jump up"
+msgstr "Salta amunt"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:66
+msgid "Jump down"
+msgstr "Salta avall"
+
+#. GUI grid
+#: budgie-window-shuffler/src/shuffler_control.vala:68
+msgid "Shortcuts for the grid GUI"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:69
+msgid "Call the grid GUI"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:70
+msgid "Add a column"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:71
+msgid "Add a row"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:72
+msgid "Remove a column"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:73
+msgid "Remove a row"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:74
+msgid "To select a range of tiles, use Shift + click"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:103
+#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
+msgid "Window Shuffler Control"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:125
+msgid "Tiling"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:126
+msgid "Jump"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:127
+msgid "GUI grid"
+msgstr ""
+
+#. STACK-PAGES
+#. 1. settingsgrid - checkbuttons
+#: budgie-window-shuffler/src/shuffler_control.vala:132
+msgid "Enable Window Shuffler"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:136
+msgid "Enable Window Shuffler grid GUI"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:142
+msgid "Swap geometry"
+msgstr ""
+
+#. settingsgrid - spinbuttonsection
+#: budgie-window-shuffler/src/shuffler_control.vala:148
+msgid "Grid GUI: columns & rows"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:153
+msgid "Columns"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:158
+msgid "Rows"
+msgstr ""
+
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
 msgid "Show last used"
@@ -1046,3 +1203,7 @@ msgstr "Notes ràpides i fàcils"
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Mostra el temps i la previsió meteorològica"
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr ""
