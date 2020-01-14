@@ -72,6 +72,10 @@ namespace ShufflerControls {
             string remcol = "←".concat("\t\t\t", (_("Remove a column")));
             string remrow = "↑".concat("\t\t\t", (_("Remove a row")));
             string shift_click = (_("To select a range of tiles, use Shift + click"));
+            string set_greyshade = (_("Set greyshade of the GUI grid")) + ":";
+            string lighter = (_("Press +, or scroll up over the grid for lighter"));
+            string darker = (_("Press -, or scroll down over the grid for darker"));
+
 
             // WINDOW STUFF
             string shufflercontrols_stylecss = """
@@ -297,16 +301,28 @@ namespace ShufflerControls {
                 guigrid.attach(l, 0, n3, 1, 1);
                 n3 += 1;
             }
-            guigrid.attach(new Gtk.Label("\n"), 0, 20, 1, 1);
-            guigrid.attach(new Gtk.Label(shift_click), 0, 21, 1, 1);
-
-
+            guigrid.attach(new Gtk.Label(""), 0, 20, 1, 1);
+            var shiftclick = new Label(shift_click);
+            shiftclick.set_xalign(0);
+            guigrid.attach(shiftclick, 0, 21, 1, 1);
+            guigrid.attach(new Gtk.Label(""), 0, 22, 1, 1);
+            var greyshade_header = new Label(set_greyshade);
+            greyshade_header.set_xalign(0);
+            set_textstyle(greyshade_header, {"header"});
+            guigrid.attach(greyshade_header, 0, 23, 1, 1);
+            guigrid.attach(new Gtk.Label(""), 0, 24, 1, 1);
+            var lighter_label = new Label(lighter);
+            lighter_label.set_xalign(0);
+            lighter_label.set_line_wrap(true);
+            var darker_label = new Label(darker);
+            darker_label.set_xalign(0);
+            darker_label.set_line_wrap(true);
+            guigrid.attach(lighter_label, 0, 25, 1, 1);
+            guigrid.attach(darker_label, 0, 26, 1, 1);
             supergrid.attach(controlwin_stack, 1, 3, 4, 1);
             controlwin_stack.set_visible_child_name("settings");
-
             // get stuff
             get_currsettings();
-
             // connect stuff
             columns_spin.value_changed.connect(set_grid);
             rows_spin.value_changed.connect(set_grid);
