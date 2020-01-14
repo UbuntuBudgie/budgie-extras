@@ -427,8 +427,8 @@ Depends: python3,
 	gir1.2-wnck-3.0,
 	python3-pyperclip,
 	python3-xlib,
-	${misc:Depends}, ${python3:Depends}
-Recommends: budgie-extras-daemon
+	${misc:Depends}, ${python3:Depends},
+	budgie-extras-daemon
 Description: GUI to find and choose locale characters
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
@@ -533,6 +533,7 @@ Description: Stylish Applications Menu for Budgie-Desktop
 Package: budgie-window-shuffler
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-daemon,
  budgie-extras-common
 Description: Keyboard and GUI friendly window-tiling capability
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
