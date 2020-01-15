@@ -110,11 +110,11 @@ namespace GridWindowSection {
             this.enter_notify_event.connect(showquestionmark);
             this.key_press_event.connect(on_shiftpress);
             this.key_release_event.connect(on_shiftrelease);
-            gridcss = calculate_css(null);
+            int initial_greyshade = fetch_greyshade();
+            gridcss = calculate_css(initial_greyshade);
             // greyshade-scrolling
             this.add_events(Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect(set_brightnessfromscroll);
-
             wnckscr.active_window_changed.connect(get_subject);
             Wnck.Window? curr_active = wnckscr.get_active_window();
             if (curr_active != null) {
@@ -129,9 +129,6 @@ namespace GridWindowSection {
             var visual = screen.get_rgba_visual();
             this.set_visual(visual);
             this.draw.connect(on_draw);
-
-
-            // separate
             css_provider = new Gtk.CssProvider();
             load_css();
             // grid and stuff
@@ -170,17 +167,20 @@ namespace GridWindowSection {
             return false;
         }
 
-        private string calculate_css (int? currshade = null) {
-            // convert percent to 255
-            if (currshade == null) {
-                currshade = 90;
-                try {
-                    currshade = client.get_greyshade();
-                }
-                catch (Error e) {
-                    print("cannot get greyshade\n");
-                }
+        private int fetch_greyshade () {
+            // fallback to 90 on error
+            int currshade = 90;
+            try {
+                currshade = client.get_greyshade();
             }
+            catch (Error e) {
+                print("cannot get greyshade\n");
+            }
+            return currshade;
+        }
+
+        private string calculate_css (int currshade) {
+            // convert percent to 255
             int shade = (int)(255 * currshade / 100);
             string newshade = @"rgb($shade, $shade, $shade)";
             gridcss = raw_gridcss.replace("curr_greyshade", newshade);
@@ -189,13 +189,7 @@ namespace GridWindowSection {
 
         private bool set_brightnessongrid (string pressed) {
             // falback
-            int currbrightness = 90;
-            try {
-                currbrightness = client.get_greyshade();
-            }
-            catch (Error e) {
-                print("cannot get greyshade\n");
-            }
+            int currbrightness = fetch_greyshade();
             int newbrightness = currbrightness;
             if (pressed == "KP_Add" || pressed == "plus") {
                 if (currbrightness <= 98) {
