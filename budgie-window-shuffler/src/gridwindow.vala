@@ -110,7 +110,7 @@ namespace GridWindowSection {
             this.enter_notify_event.connect(showquestionmark);
             this.key_press_event.connect(on_shiftpress);
             this.key_release_event.connect(on_shiftrelease);
-            gridcss = calculate_css();
+            gridcss = calculate_css(null);
             // greyshade-scrolling
             this.add_events(Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect(set_brightnessfromscroll);
