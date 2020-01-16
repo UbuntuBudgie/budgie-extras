@@ -86,9 +86,7 @@ namespace ExtendWindow {
                 break;
         }
         if (resize) {
-            // David will probably tell me to replace ↓
-            //string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
-            string cm = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+            string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
                 @"$gridrows $xspan $yspan $xid_str"
             );
