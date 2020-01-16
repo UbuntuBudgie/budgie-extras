@@ -4,12 +4,33 @@ configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configurationData.set('LIB_DIR', LIB_INSTALL_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
-
 ShufflerValaArgs = [
     '--pkg=config',
     '--vapidir=' + VAPI_DIR,
     '--target-glib=2.38',
 ]
+
+ResizeSources = [
+    'resize.vala'
+]
+
+ResizeDependencies = [
+    dependency('gio-2.0'),
+    meson.get_compiler('c').find_library('m', required: false)
+]
+
+ResizeCArgs = [
+    '-lm'
+]
+
+executable(
+    'resize', ResizeSources,
+    dependencies: ResizeDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: ResizeCArgs,
+    install_dir: LIB_INSTALL_DIR,
+)
 
 GridAllSources = [
     'grid_all.vala'
