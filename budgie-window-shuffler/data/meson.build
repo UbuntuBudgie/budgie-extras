@@ -245,3 +245,39 @@ shufflerbde01 = custom_target(BDE_FILE,
   install : true,
   install_dir : BDE_LOC
 )
+
+BDE_FILE='windowshuffler-resize-addcolumn.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+BDE_FILE='windowshuffler-resize-addrow.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+BDE_FILE='windowshuffler-resize-subtractcolumn.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+BDE_FILE='windowshuffler-resize-subtractrow.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
