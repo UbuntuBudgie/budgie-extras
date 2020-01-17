@@ -68,7 +68,7 @@ namespace ShufflerControls {
             string resize_header = (_("Shortcuts for resizing windows on grid")) + ":";
             string addhorizontally = "Super + Alt + ]".concat("\t\t", (_("Expand horizontally")));
             string shrinkhorizontally = "Super + Alt + [".concat("\t\t", (_("Shrink horizontally")));
-            string addvertically = "Alt + ]".concat("\t\t\t\t", (_("Extend vertically")));
+            string addvertically = "Alt + ]".concat("\t\t\t\t", (_("Expand vertically")));
             string shrinkvertically = "Alt + [".concat("\t\t\t\t", (_("Shrink vertically")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
