@@ -58,12 +58,18 @@ namespace ShufflerControls {
             string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t", (_("Right-half")));
             string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t", (_("Bottom-half")));
             string tileall = "Super + Alt + A".concat("\t\t", (_("Tile all windows to grid")));
-            // Jump
+            // Jump & resize
             string jump_header = (_("Shortcuts for jumping to the nearest grid cell")) + ":";
             string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Jump left")));
             string jumpright = "Super + Alt + →".concat("\t\t", (_("Jump right")));
             string jumpup = "Super + Alt + ↑".concat("\t\t", (_("Jump up")));
             string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Jump down")));
+
+            string resize_header = (_("Shortcuts for resizing windows on grid")) + ":";
+            string addhorizontally = "Super + Alt + ]".concat("\t\t", (_("Expand horizontally")));
+            string shrinkhorizontally = "Super + Alt + [".concat("\t\t", (_("Shrink horizontally")));
+            string addvertically = "Alt + ]".concat("\t\t\t\t", (_("Extend vertically")));
+            string shrinkvertically = "Alt + [".concat("\t\t\t\t", (_("Shrink vertically")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
             string callgrid = "Ctrl + Alt + S".concat("\t", (_("Call the grid GUI")));
@@ -127,7 +133,7 @@ namespace ShufflerControls {
             set_margins(supergrid);
             make_headerbutton ((_("Settings")), "stackbuttonleft", 1, "settings");
             make_headerbutton ((_("Tiling")), "stackbuttons", 2, "qhshortcuts");
-            make_headerbutton ((_("Jump")), "stackbuttons", 3, "jumpshortcuts");
+            make_headerbutton ((_("Jump & resize")), "stackbuttons", 3, "jumpshortcuts");
             make_headerbutton ((_("GUI grid")), "stackbuttonright", 4, "guigrid");
 
             // STACK-PAGES
@@ -282,7 +288,25 @@ namespace ShufflerControls {
                 jumpgrid.attach(l, 0, n2, 1, 1);
                 n2 += 1;
             }
+            jumpgrid.attach(new Label(""), 0, 9, 1, 1);
+            var resizeheader = new Label(resize_header);
+            set_textstyle(resizeheader, {"header"});
+            var spacer4 = new Label("");
+            var add_horizontally = new Label(addhorizontally);
+            var shrink_horizontally = new Label(shrinkhorizontally);
+            var add_vertically = new Label(addvertically);
+            var shrink_vertically = new Label(shrinkvertically);
 
+            Label[] resizeshortc_labels = {
+                resizeheader, spacer4, add_horizontally, shrink_horizontally,
+                add_vertically, shrink_vertically
+            };
+            n2 = 10;
+            foreach (Label l in resizeshortc_labels) {
+                l.set_xalign(0);
+                jumpgrid.attach(l, 0, n2, 1, 1);
+                n2 += 1;
+            }
             // 4. guigrid
             var guigridheader = new Label(guigrid_header);
             set_textstyle(guigridheader, {"header"});
