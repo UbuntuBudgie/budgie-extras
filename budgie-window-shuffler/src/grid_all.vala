@@ -128,7 +128,9 @@ namespace GridAll {
                 bool onthisws = (string)got_data.get_child_value(1) == "true";
                 // on active monitor?
                 bool onthismon = (string)got_data.get_child_value(2) == mon_name;
-                if (onthisws && onthismon && !exclude) {
+                // minimized?
+                bool minimized = (string)got_data.get_child_value(7) == "true";
+                if (onthisws && onthismon && !exclude && !minimized) {
                     id_array += k;
                 }
             }
