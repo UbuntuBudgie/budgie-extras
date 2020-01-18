@@ -78,7 +78,7 @@ namespace ShufflerControls {
             string remcol = "←".concat("\t\t\t", (_("Remove a column")));
             string remrow = "↑".concat("\t\t\t", (_("Remove a row")));
             string shift_click = (_("To select a range of tiles, use Shift + click"));
-            string set_greyshade = (_("Set greyshade of the GUI grid")) + ":";
+            string set_greyshade = (_("Set the shade of gray for the grid")) + ":";
             string lighter = (_("Press +, or scroll up over the grid for lighter"));
             string darker = (_("Press -, or scroll down over the grid for darker"));
 
