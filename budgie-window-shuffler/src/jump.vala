@@ -53,7 +53,7 @@ namespace JumpActive {
     }
 
     private int find_previous (string[] arr, int anchor) {
-        int previous_anchor = 0;
+        int previous_anchor = anchor;
         foreach (string s in arr) {
             int curr_anchor = int.parse(s);
             if (curr_anchor < anchor) {
