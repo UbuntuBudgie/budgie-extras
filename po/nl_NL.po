@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 19:57+0000\n"
+"POT-Creation-Date: 2020-01-18 19:08+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Jacob Vlijm <vlijm@planet.nl>, 2020\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
@@ -71,13 +71,13 @@ msgstr "seconden"
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:189
+#: budgie-window-shuffler/src/shuffler_control.vala:199
 msgid "Close"
 msgstr "Sluiten"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:446
+#: budgie-window-shuffler/src/shuffler_control.vala:486
 msgid "Please log out/in to initialize"
 msgstr "Log uit en weer in om te initialiseren"
 
@@ -367,7 +367,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:134
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -760,11 +760,11 @@ msgstr "Licht"
 #. settings
 #: budgie-window-shuffler/src/shuffler_control.vala:44
 msgid "Enable tiling and window jump shortcuts"
-msgstr "Schermsplitsing- en vensternavigatiesneltoetsen inschakelen"
+msgstr "Sneltoetsen voor vensterverschuiving en -plaatsing inschakelen"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:45
 msgid "Enable grid tiling GUI shortcut"
-msgstr "'Splitsen op rooster'-sneltoets inschakelen"
+msgstr "Schakel GUI vensterplaasting in"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:46
 msgid ""
@@ -811,7 +811,7 @@ msgstr "Onderste helft"
 msgid "Tile all windows to grid"
 msgstr "Plaats alle vensters in het raster"
 
-#. Jump
+#. Jump & resize
 #: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Shortcuts for jumping to the nearest grid cell"
 msgstr "Sneltoetsen voor verschuiving naar de dichtstbijzijnde rasterpositie"
@@ -832,76 +832,108 @@ msgstr "Omhoog verschuiven"
 msgid "Jump down"
 msgstr "Omlaag verschuiven"
 
-#. GUI grid
 #: budgie-window-shuffler/src/shuffler_control.vala:68
+msgid "Shortcuts for resizing windows on grid"
+msgstr "Sneltoetsen om de vensterafmetingen te wijzigen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:69
+msgid "Expand horizontally"
+msgstr "Naar rechts vergroten"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:70
+msgid "Shrink horizontally"
+msgstr "Vanaf rechts verkleinen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:71
+msgid "Expand vertically"
+msgstr "Naar beneden vergroten"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:72
+msgid "Shrink vertically"
+msgstr "Vanaf de onderkant verkleinen"
+
+#. GUI grid
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Shortcuts for the grid GUI"
 msgstr "Sneltoetsen met betrekking tot het GUI raster"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:75
 msgid "Call the grid GUI"
 msgstr "Het raster tonen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Add a column"
 msgstr "Kolom toevoegen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Add a row"
 msgstr "Rij toevoegen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Remove a column"
 msgstr "Kolom verwijderen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Remove a row"
 msgstr "Rij verwijderen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:74
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "To select a range of tiles, use Shift + click"
 msgstr "Gebruik Shift-click om een celbereik te selecteren"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:103
+#: budgie-window-shuffler/src/shuffler_control.vala:81
+msgid "Set the shade of gray for the grid"
+msgstr "De grijstint voor het raster instellen"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:82
+msgid "Press + or scroll up to lighten the grid shade"
+msgstr "Scroll omhoog of gebruik de + toets om de tint lichter te maken"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:83
+msgid "Press - or scroll down to darken the grid shade"
+msgstr "Scroll omlaag of gebruik de - toets om de tint donkerder te maken"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:113
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr "Window Shuffler instellingen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:125
+#: budgie-window-shuffler/src/shuffler_control.vala:135
 msgid "Tiling"
 msgstr "Plaatsen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:126
-msgid "Jump"
-msgstr "Verschuiven"
+#: budgie-window-shuffler/src/shuffler_control.vala:136
+msgid "Jump & resize"
+msgstr "Verschuiving & afmeting"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:127
+#: budgie-window-shuffler/src/shuffler_control.vala:137
 msgid "GUI grid"
 msgstr "GUI raster"
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:132
+#: budgie-window-shuffler/src/shuffler_control.vala:142
 msgid "Enable Window Shuffler"
 msgstr "Gebruik Window Shuffler"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:136
+#: budgie-window-shuffler/src/shuffler_control.vala:146
 msgid "Enable Window Shuffler grid GUI"
 msgstr "Gebruik Window Shuffler GUI raster"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:142
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Swap geometry"
 msgstr "Verwissel afmetingen en posities"
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:158
 msgid "Grid GUI: columns & rows"
 msgstr "Raster: kolommen en rijen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:153
+#: budgie-window-shuffler/src/shuffler_control.vala:163
 msgid "Columns"
 msgstr "Kolommen"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:158
+#: budgie-window-shuffler/src/shuffler_control.vala:168
 msgid "Rows"
 msgstr "Rijen"
 
