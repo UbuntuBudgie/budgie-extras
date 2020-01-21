@@ -111,7 +111,7 @@ namespace VisualSpaceApplet {
             this.add(supergrid);
             // refresh on signals
             wnckscr.window_closed.connect(update_interface);
-            wnckscr.window_opened.connect(update_interface);
+            wnckscr.window_opened.connect(acton_newwin);
             wnckscr.workspace_created.connect(update_interface);
             wnckscr.workspace_destroyed.connect(update_interface);
         }
@@ -277,7 +277,13 @@ namespace VisualSpaceApplet {
             scrollwin.set_min_content_width(365);
         }
 
+        private void acton_newwin (Wnck.Window newwin) {
+            newwin.workspace_changed.connect(update_interface);
+            update_interface();
+        }
+
         private void update_interface () {
+
             GLib.List<weak Gtk.Widget> widgets = maingrid.get_children();
             foreach (Gtk.Widget wdg in widgets) {
                 GLib.Idle.add( () => {
