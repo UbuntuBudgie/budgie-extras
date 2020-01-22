@@ -498,6 +498,7 @@ namespace ShufflerEssentialInfo {
         getscale();
         gdkscreen.monitors_changed.connect(get_monitors);
         gdkscreen.monitors_changed.connect(getscale);
+        get_windata();
         wnckscr.window_opened.connect(()=> {
             get_windata();
             run_windowchangecommand("newwindowaction");

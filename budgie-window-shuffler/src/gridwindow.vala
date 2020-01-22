@@ -107,7 +107,6 @@ namespace GridWindowSection {
             this.title = "Gridwindows";
             this.set_skip_taskbar_hint(true);
             this.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
-            this.enter_notify_event.connect(showquestionmark);
             this.key_press_event.connect(on_shiftpress);
             this.key_release_event.connect(on_shiftrelease);
             int initial_greyshade = fetch_greyshade();
@@ -117,6 +116,7 @@ namespace GridWindowSection {
             this.scroll_event.connect(set_brightnessfromscroll);
             wnckscr.active_window_changed.connect(get_subject);
             Wnck.Window? curr_active = wnckscr.get_active_window();
+            previously_active = -1;
             if (curr_active != null) {
                 previously_active = curr_active.get_xid();
             }
@@ -256,7 +256,7 @@ namespace GridWindowSection {
         private void send_to_pos (Gtk.Button b) {
             // here we send the subject window to its targeted position, using tile_active
             int index = find_buttonindex(b);
-            if (index != -1 && previously_active != null && winstillexists(previously_active)) {
+            if (index != -1 && previously_active != -1 && winstillexists(previously_active)) {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
                 string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
@@ -492,11 +492,6 @@ namespace GridWindowSection {
             else {
                 managegrid(pressed);
             }
-            return false;
-        }
-
-        private bool showquestionmark () {
-            // currently out of a job
             return false;
         }
 
