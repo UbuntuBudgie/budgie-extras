@@ -55,9 +55,9 @@ namespace VisualSpaceApplet {
             // Wnck initial stuff
             wnckscr =  Wnck.Screen.get_default();
             wnckscr.force_update();
-            maingrid = new Gtk.Grid(); //*
-            maingrid.show_all(); //*
-            produce_content (); //*
+            maingrid = new Gtk.Grid();
+            maingrid.show_all();
+            produce_content ();
             // supergrid, including maingrid
             Grid supergrid = new Gtk.Grid();
             // buttonbox & elements, holding top section
@@ -107,7 +107,7 @@ namespace VisualSpaceApplet {
             supergrid.attach(ws_managebox, 0, 1, 1, 1);
             supergrid.attach(topspace1, 0, 0, 1, 1);
             // throw all stuff at each other
-            scrollwin.add(maingrid); //*
+            scrollwin.add(maingrid);
             this.add(supergrid);
             // refresh on signals
             wnckscr.window_closed.connect(update_interface);
