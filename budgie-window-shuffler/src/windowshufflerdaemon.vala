@@ -96,15 +96,31 @@ namespace ShufflerEssentialInfo {
             return window_essentials;
         }
 
+        private Wnck.Window? get_matchingwnckwin (int wid) {
+            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
+            foreach (unowned Wnck.Window w in wlist) {
+                if (w.get_xid() == wid) {
+                    return w;
+                }
+            }
+            return null;
+        }
+
+        public void activate_window (int win_id) throws Error {
+            Wnck.Window? w = get_matchingwnckwin(win_id);
+            if (w != null) {
+                w.activate(get_now());
+            }
+        }
+
         public void move_window (
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, external connection
-            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
-            foreach (Wnck.Window w in wlist) {
-                if (w.get_xid() == w_id) {  // not sure about the last one
-                    now_move(w, x, y, width, height);
-                }
+            Wnck.Window? w = get_matchingwnckwin(w_id);
+
+            if (w != null) {
+                now_move(w, x, y, width, height);
             }
         }
 
