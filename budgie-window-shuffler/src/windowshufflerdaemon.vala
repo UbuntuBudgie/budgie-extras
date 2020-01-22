@@ -148,6 +148,7 @@ namespace ShufflerEssentialInfo {
         public HashTable<string, Variant> get_tiles (
             string mon_name, int cols, int rows
         ) throws Error {
+            // won't be called unless a monitor is on?
 
             /* tiledata.keys:
             / "x_anchors" (as string)
@@ -166,8 +167,11 @@ namespace ShufflerEssentialInfo {
             int[] xpositions = {};
             int[] ypositions = {};
             for (int i=0; i < n_monitors; i++) {
-                Gdk.Monitor monitorsubj = gdkdisplay.get_monitor(i);
-                if (monitorsubj.get_model()  == mon_name) {
+                Gdk.Monitor? monitorsubj = gdkdisplay.get_monitor(i);
+                if (monitorsubj == null) {
+                    print("monitor cannot be detected\n");
+                }
+                else if (monitorsubj.get_model()  == mon_name) {
                     Gdk.Rectangle mon_wa = monitorsubj.get_workarea();
                     int fullwidth = mon_wa.width * scale;
                     int tilewidth = (int)(fullwidth/cols);
@@ -312,27 +316,38 @@ namespace ShufflerEssentialInfo {
 
     private void getscale() {
         // get scale factor of primary (which we are using)
-        Gdk.Monitor monitorsubj = gdkdisplay.get_primary_monitor();
-        scale = monitorsubj.get_scale_factor();
+        Gdk.Monitor? monitorsubj = gdkdisplay.get_primary_monitor();
+        print("scaling 1\n");
+        if (monitorsubj != null) {
+            scale = monitorsubj.get_scale_factor();
+        }
+        print("scaling 2\n");
     }
 
     private void get_monitors () {
+        // N.B. curently, only applied use of function below is get n_monitors
+        // keep the rest (monitorgeo) for future use though
         // maintaining function
         // collect data on connected monitors: real numbers! (unscaled)
         monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
         n_monitors = gdkdisplay.get_n_monitors();
+        print("getmonitors a\n");
+
         for (int i=0; i < n_monitors; i++) {
-            Gdk.Monitor newmonitor = gdkdisplay.get_monitor(i);
-            string mon_name = newmonitor.get_model();
-            Gdk.Rectangle mon_geo = newmonitor.get_workarea();
-            int sf = newmonitor.get_scale_factor ();
-            int x = mon_geo.x * sf;
-            int y = mon_geo.y * sf;
-            int width = mon_geo.width * sf;
-            int height = mon_geo.height * sf;
-            Variant geodata = new Variant("(iiii)", x , y, width, height);
-            monitorgeo.insert(mon_name, geodata);
+            Gdk.Monitor? newmonitor = gdkdisplay.get_monitor(i);
+            if (newmonitor != null) {
+                string mon_name = newmonitor.get_model();
+                Gdk.Rectangle mon_geo = newmonitor.get_workarea();
+                int sf = newmonitor.get_scale_factor ();
+                int x = mon_geo.x * sf;
+                int y = mon_geo.y * sf;
+                int width = mon_geo.width * sf;
+                int height = mon_geo.height * sf;
+                Variant geodata = new Variant("(iiii)", x , y, width, height);
+                monitorgeo.insert(mon_name, geodata);
+            }
         }
+        print("getmonitors b\n");
     }
 
     // setup dbus
