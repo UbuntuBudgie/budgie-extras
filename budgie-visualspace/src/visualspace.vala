@@ -55,9 +55,9 @@ namespace VisualSpaceApplet {
             // Wnck initial stuff
             wnckscr =  Wnck.Screen.get_default();
             wnckscr.force_update();
-            maingrid = new Gtk.Grid();
-            maingrid.show_all();
-            produce_content ();
+            maingrid = new Gtk.Grid(); //*
+            maingrid.show_all(); //*
+            produce_content (); //*
             // supergrid, including maingrid
             Grid supergrid = new Gtk.Grid();
             // buttonbox & elements, holding top section
@@ -107,7 +107,7 @@ namespace VisualSpaceApplet {
             supergrid.attach(ws_managebox, 0, 1, 1, 1);
             supergrid.attach(topspace1, 0, 0, 1, 1);
             // throw all stuff at each other
-            scrollwin.add(maingrid);
+            scrollwin.add(maingrid); //*
             this.add(supergrid);
             // refresh on signals
             wnckscr.window_closed.connect(update_interface);
@@ -273,7 +273,8 @@ namespace VisualSpaceApplet {
                 blockrow += 1;
             }
             scrollwin = new Gtk.ScrolledWindow (null, null);
-            scrollwin.set_min_content_height(350);
+            scrollwin.set_propagate_natural_height(true);
+            scrollwin.set_max_content_height(350);
             scrollwin.set_min_content_width(365);
         }
 
@@ -313,7 +314,7 @@ namespace VisualSpaceApplet {
         private VisualSpacePopover popover = null;
         private unowned Budgie.PopoverManager? manager = null;
         public string uuid { public set; public get; }
-        ButtonBox? spacebox = null;
+        //ButtonBox? spacebox = null;
         Label label = new Label("");
         bool usevertical;
 
@@ -335,7 +336,7 @@ namespace VisualSpaceApplet {
         private void update_appearance () {
             string s = "";
             string charc = "";
-            spacebox = new Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL);
+            //spacebox = new Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL);
             unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
             Wnck.Workspace curractive = wnckscr.get_active_workspace();
             foreach (Wnck.Workspace w in spaces) {
@@ -353,7 +354,7 @@ namespace VisualSpaceApplet {
             label.set_text(s);
             set_spacing(gdkscreen, label, "fontspacing");
             indicatorBox.show_all();
-            spacebox.show_all();
+            //spacebox.show_all();
         }
 
         public Applet() {
