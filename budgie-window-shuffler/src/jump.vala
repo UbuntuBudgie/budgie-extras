@@ -40,6 +40,7 @@ namespace JumpActive {
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
+        public abstract int activate_window (int w_id) throws Error;
     }
 
     private int find_next (string[] arr, int anchor) {
@@ -114,7 +115,6 @@ namespace JumpActive {
                 Variant activewin_data = wins[@"$activewin"];
                 int winx = (int)activewin_data.get_child_value(3);
                 int winy = (int)activewin_data.get_child_value(4);
-
                 int nextx = 0;
                 int nexty = 0;
                 string direction = args[1];
@@ -152,10 +152,11 @@ namespace JumpActive {
                         int xpos = (int)windata.get_child_value(3);
                         int ypos = (int)windata.get_child_value(4);
                         bool minimized = (string)windata.get_child_value(7) == "true";
+                        bool onthisworkspace = (string)windata.get_child_value(1) == "true";
                         // check if window is on targeted position
                         bool ontargetpos = xpos == nextx && ypos == nexty;
                         // take over size of win on target
-                        if (ontargetpos && !minimized) {
+                        if (ontargetpos && !minimized && onthisworkspace) {
                             int tomove = int.parse(k);
                             // 1. set correct geo for sourcewin
                             tilewidth = (int)windata.get_child_value(5);
