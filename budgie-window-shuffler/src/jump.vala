@@ -40,7 +40,6 @@ namespace JumpActive {
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
-        public abstract int activate_window (int w_id) throws Error;
     }
 
     private int find_next (string[] arr, int anchor) {
