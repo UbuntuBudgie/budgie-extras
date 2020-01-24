@@ -13,12 +13,6 @@
             <description>The list of set commands, t-left, t-right, b-left, b-right</description>
             <default>['', '', 'gnome-screensaver-command -l', 'xdotool key Super_L+d']</default>
         </key>
-        <key type="as" name="appletdependencies">
-            <summary>Check if another applet runs if the command depends on it</summary>
-            <description>Default commands possibly call another applet which needs to run
-            These are command - corresponding applet combinations</description>
-            <default>[]</default>
-        </key>
         <key type="as" name="dropdown">
             <summary>Command list dropdown menu</summary>
             <description>The default list of commands/names in the dropdown menu</description>

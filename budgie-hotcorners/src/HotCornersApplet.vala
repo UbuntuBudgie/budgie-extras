@@ -170,9 +170,8 @@ namespace HotCornersApplet {
         private string[] dropdown_namelist;
         private string[] dropdown_cmdlist;
         /* misc stuff */
-        private string[] check_commands;
-        private string[] check_applets;
-        
+        //  private string[] check_commands;
+        //  private string[] check_applets;
 
         public HotCornersPopover(Gtk.EventBox indicatorBox) {
             GLib.Object(relative_to: indicatorBox);
@@ -188,7 +187,7 @@ namespace HotCornersApplet {
                 "org.ubuntubudgie.plugins.budgie-hotcorners"
             );
             populate_dropdown ();
-            populate_checkups ();
+            //  populate_checkups ();
             read_setcommands ();
             update_pressure ();
             this.hc_settings.changed["pressure"].connect(update_pressure);
@@ -223,13 +222,18 @@ namespace HotCornersApplet {
             };
             var screen = this.get_screen ();
             var css_provider = new Gtk.CssProvider();
-            css_provider.load_from_data(css_data);
-            Gtk.StyleContext.add_provider_for_screen(
-                screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
-            );
-            foreach (Label l in headers) {
-                l.get_style_context().add_class("label");
-            };
+            try {
+                css_provider.load_from_data(css_data);
+                Gtk.StyleContext.add_provider_for_screen(
+                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                );
+                foreach (Label l in headers) {
+                    l.get_style_context().add_class("label");
+                };
+            }
+            catch (Error e) {
+                print("Could not load css\n");
+            }
             /* toggle buttons -names*/
             string[] namelist = {
                 (_("Top-left")), (_("Top-right")), (_("Bottom-left")), (_("Bottom-right"))
@@ -313,13 +317,18 @@ namespace HotCornersApplet {
             }
         }
 
-        private void sendwarning () {
+        private void sendwarning (string msg_header, string message) {
             string set_icon = "notify-send -i budgie-hotcorners-symbolic ";
-            string header = "'" + (_("Missing applet")) + "'";
+            string header = "'" + msg_header + "'";
             // WindowPreviews is the name of a Budgie Applet and does not need to be translated
-            string body = " '" + (_("Please add WindowPreviews")) + "'";
+            string body = " '" + message + "'";
             string command = set_icon.concat(header, body);
-            Process.spawn_command_line_async(command);
+            try {
+                Process.spawn_command_line_async(command);
+            }
+            catch (Error e) {
+                print("Error sending notification\n");
+            }
         }
 
         private void update_fromentry(Editable entry) {
@@ -330,6 +339,71 @@ namespace HotCornersApplet {
             string new_cmd = entry.get_chars(0, 100);
             this.commands[buttonindex] = new_cmd;
             this.hc_settings.set_strv("commands", this.commands);
+        }
+
+        private bool procruns (string processname) {
+            string cmd = @"pgrep -f $processname";
+            string output;
+            try {
+                GLib.Process.spawn_command_line_sync(cmd, out output);
+                if (output == "") {
+                    return false;
+                }
+            }
+            /* on an unlike to happen exception, return true */
+            catch (SpawnError e) {
+                return true;
+            }
+            return true;
+        }
+
+        private void check_dependencies (string newcommand) {
+            string? match = null;
+            string[] command_keywords = {
+                "previews", "shuffler/togglegui", "shuffler"
+            };
+            foreach (string keyword in command_keywords) {
+                if (newcommand.contains(keyword)) {
+                    match = keyword;
+                    break;
+                }
+            }
+            if (match != null) {
+                string msg_header = "";
+                string msg = "";
+                string? proc_tocheck = null;
+                switch (match) {
+                    case "previews": {
+                        msg_header = (_("Missing process"));
+                        proc_tocheck = "budgie-previews/previews_daemon";
+                        msg = (_(
+                            (_("Please enable Window Previews"))
+                        ));
+                        break;
+                    }
+                    case "shuffler/togglegui": {
+                        msg_header = (_("Missing process"));
+                        proc_tocheck = "budgie-window-shuffler/gridwindow";
+                        msg = (_(
+                            (_("Please enable Window Shuffler GUI"))
+                        ));
+                        break;
+                    }
+                    case "shuffler": {
+                        msg_header = (_("Missing process"));
+                        proc_tocheck = "budgie-window-shuffler/windowshufflerdaemon";
+                        msg = (_(
+                            "Please enable Window Shuffler"
+                        ));
+                        break;
+                    }
+                }
+                if (proc_tocheck != null) {
+                    if (!procruns(proc_tocheck)) {
+                        sendwarning(msg_header, msg);
+                    }
+                }
+            }
         }
 
         private void get_fromcombo (ComboBox combo) {
@@ -344,19 +418,7 @@ namespace HotCornersApplet {
             /* command index */
             int command_index = combo.get_active();
             string new_cmd = dropdown_cmdlist[command_index];
-            int matches_index = HCSupport.get_stringindex(
-                new_cmd, this.check_commands
-            );
-            if (matches_index != -1) {
-                string checkname = this.check_applets[matches_index];
-                bool check = HCSupport.check_onapplet(
-                    "/com/solus-project/budgie-panel/applets/",
-                    checkname
-                );
-                if (check == false) {
-                    sendwarning();
-                }
-            }
+            check_dependencies(new_cmd);
             this.commands[combo_index] = new_cmd;
             this.hc_settings.set_strv("commands", this.commands);
         }
@@ -445,38 +507,17 @@ namespace HotCornersApplet {
             Json.Parser parser, string command
             ) {
             /* reads json data from gsettings name/command couples */
-            parser.load_from_data (command);
-            var root_object = parser.get_root ().get_object ();
-            string test = root_object.get_string_member ("name");
-            string test2 = root_object.get_string_member ("command");
-            this.dropdown_namelist += translate_gsettingsval(test);
-            this.dropdown_cmdlist += test2;
-        }
-
-        private void populate_checkups () {
-            /*
-            * reads the default checkups commands/names and populates
-            * the arrays
-            */
-            var parser = new Json.Parser ();
-            string[] checkup_source = this.hc_settings.get_strv(
-                "appletdependencies"
-            );
-            foreach (string s in checkup_source) {
-                read_checkups(parser, s);
+            try {
+                parser.load_from_data (command);
+                var root_object = parser.get_root ().get_object ();
+                string test = root_object.get_string_member ("name");
+                string test2 = root_object.get_string_member ("command");
+                this.dropdown_namelist += translate_gsettingsval(test);
+                this.dropdown_cmdlist += test2;
             }
-        }
-
-        private void read_checkups(
-            Json.Parser parser, string command
-            ) {
-            /* I know, stupidly repeated code, but hey, this is Vala */
-            parser.load_from_data (command);
-            var root_object = parser.get_root ().get_object ();
-            string test = root_object.get_string_member ("name");
-            string test2 = root_object.get_string_member ("command");
-            this.check_applets += test;
-            this.check_commands += test2;
+            catch (Error e) {
+                print("Unable to read commands- data\n");
+            }
         }
 
         private int[] keepsection(int[] arr_in, int lastn) {
