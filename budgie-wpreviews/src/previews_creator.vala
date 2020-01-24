@@ -31,7 +31,7 @@ namespace create_previews {
 
 
     public static void main (string[] args) {
-        // all valid windows are in queue to be refreshed, starting index o
+        // all valid windows are in queue to be refreshed, starting index 0
         curr_refreshindex = 0;
         // if idle exceeds 90 seconds, pauze refreshing
         idle_state = false;
@@ -133,9 +133,32 @@ namespace create_previews {
         cleanup();
     }
 
+    private void act_on_workspacechange (Wnck.Window movedwin) {
+        // note the posibility of an invalid window
+        // creat new:
+        bool valid = movedwin.get_window_type() == Wnck.WindowType.NORMAL;
+        update_new(movedwin);
+        ulong? xid = movedwin.get_xid();
+        if (xid != null && valid) {
+            string[] lookuplist = get_currpreviews();
+            try {
+                foreach (string s in lookuplist) {
+                    if (s.contains(@"$xid")) {
+                        File rmfile = File.new_for_path(s);
+                        rmfile.delete();
+                    }
+                }
+            }
+            catch (Error e) {
+                print(@"Failed to remove previous preview file\n");
+            }
+        }
+    }
+
     private void update_new (Wnck.Window w) {
         // create preview on creation of (valid) window,
         // refresh after 6 seconds
+        w.workspace_changed.connect(act_on_workspacechange);
         if (w.get_window_type() == Wnck.WindowType.NORMAL) {
             GLib.Timeout.add(500, () => {
                 update_preview(w);
