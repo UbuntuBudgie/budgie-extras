@@ -58,7 +58,6 @@ namespace ExtendWindow {
         double xspan = Math.round(winwidth/tilewidth);
         double yspan = Math.round(winheight/tileheight);
         bool resize = false;
-
         switch (action) {
             case "-x":
                 if (xspan > 1) {
@@ -84,7 +83,38 @@ namespace ExtendWindow {
                     resize = true;
                 }
                 break;
+            case "+x-left":
+                if (curr_gridposx != 0 && xspan + 1 <= gridcols) {
+                    xspan = xspan + 1;
+                    curr_gridposx = curr_gridposx -1;
+                    resize = true;
+                }
+                break;
+
+            case "-x-left":
+                if (xspan > 1) {
+                    xspan = xspan - 1;
+                    curr_gridposx = curr_gridposx + 1;
+                    resize = true;
+                }
+                break;
+
+            case "+y-top":
+                if (curr_gridposy != 0 && yspan + 1 <= gridrows) {
+                    yspan = yspan + 1;
+                    curr_gridposy = curr_gridposy - 1;
+                    resize = true;
+                }
+                break;
+            case "-y-top":
+                if (yspan > 1) {
+                    yspan = yspan - 1;
+                    curr_gridposy = curr_gridposy + 1;
+                    resize = true;
+                }
+                break;
         }
+
         if (resize) {
             string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
