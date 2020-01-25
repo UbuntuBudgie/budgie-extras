@@ -84,7 +84,7 @@ namespace ExtendWindow {
                 }
                 break;
             case "+x-left":
-                if (curr_gridposx != 0 && xspan + 1 <= gridcols) {
+                if (curr_gridposx != 0) {
                     xspan = xspan + 1;
                     curr_gridposx = curr_gridposx -1;
                     resize = true;
@@ -100,7 +100,7 @@ namespace ExtendWindow {
                 break;
 
             case "+y-top":
-                if (curr_gridposy != 0 && yspan + 1 <= gridrows) {
+                if (curr_gridposy != 0) {
                     yspan = yspan + 1;
                     curr_gridposy = curr_gridposy - 1;
                     resize = true;
