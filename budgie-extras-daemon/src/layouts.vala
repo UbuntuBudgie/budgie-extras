@@ -143,6 +143,10 @@ namespace Layouts {
                     start_plank(true);
                     break;
                 }
+                case "classicubuntubudgie": {
+                    start_plank(true);
+                    break;
+                }
                 case "cupertino": {
                     start_plank(true);
                     appmenu_powerstrip(true);
