@@ -41,35 +41,40 @@ namespace ShufflerControls {
 
             // STRINGS & THINGS
             // settings
-            string daemonexpl = (_("Enable tiling and window jump shortcuts")) + ":";
+            string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
             string guiexpl = (_("Enable grid tiling GUI shortcut"));
-            string swapgeexpl = (_("When using jump shortcuts, swap window geometry if a window moves to an existing window's position"));
+            string swapgeexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
-            string cols_expl = (_("Number of grid columns, used by GUI grid, jump and tile-all shortcuts"));
-            string rows_expl = (_("Number of grid rows, used by GUI grid, jump and tile-all shortcuts"));
+            string cols_expl = (_("Number of grid columns, used by GUI grid-, move- and tile-all shortcuts"));
+            string rows_expl = (_("Number of grid rows, used by GUI grid, move- and tile-all shortcuts"));
             // tiling
             string qtiling_header = (_("Shortcuts for quarter and half tiling & tiling to grid")) +":";
-            string topleft = "Ctrl + Alt + 7".concat("\t\t\t", (_("Top-left")));
-            string topright = "Ctrl + Alt + 9".concat("\t\t\t", (_("Top-right")));
-            string bottomright = "Ctrl + Alt + 3".concat("\t\t\t", (_("Bottom-right")));
-            string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t", (_("Top-left")));
-            string lefthalf = "Ctrl + Alt + 4".concat("\t\t\t", (_("Left-half")));
-            string tophalf = "Ctrl + Alt + 8".concat("\t\t\t", (_("Top-half")));
-            string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t", (_("Right-half")));
-            string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t", (_("Bottom-half")));
-            string tileall = "Super + Alt + A".concat("\t\t", (_("Tile all windows to grid")));
+            string topleft = "Ctrl + Alt + 7".concat("\t\t\t\t", (_("Top-left")));
+            string topright = "Ctrl + Alt + 9".concat("\t\t\t\t", (_("Top-right")));
+            string bottomright = "Ctrl + Alt + 3".concat("\t\t\t\t", (_("Bottom-right")));
+            string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t\t", (_("Top-left")));
+            string lefthalf = "Ctrl + Alt + 4".concat("\t\t\t\t", (_("Left-half")));
+            string tophalf = "Ctrl + Alt + 8".concat("\t\t\t\t", (_("Top-half")));
+            string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t\t", (_("Right-half")));
+            string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t\t", (_("Bottom-half")));
+            string tileall = "Control + Super + A".concat("\t\t", (_("Tile all windows to grid")));
             // Jump & resize
-            string jump_header = (_("Shortcuts for jumping to the nearest grid cell")) + ":";
-            string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Jump left")));
-            string jumpright = "Super + Alt + →".concat("\t\t", (_("Jump right")));
-            string jumpup = "Super + Alt + ↑".concat("\t\t", (_("Jump up")));
-            string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Jump down")));
+            string jump_header = (_("Shortcuts for moving to the nearest grid cell")) + ":";
+            string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Move left")));
+            string jumpright = "Super + Alt + →".concat("\t\t", (_("Move right")));
+            string jumpup = "Super + Alt + ↑".concat("\t\t", (_("Move up")));
+            string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Move down")));
 
             string resize_header = (_("Shortcuts for resizing windows on grid")) + ":";
-            string addhorizontally = "Super + Alt + ]".concat("\t\t", (_("Expand horizontally")));
-            string shrinkhorizontally = "Super + Alt + [".concat("\t\t", (_("Shrink horizontally")));
-            string addvertically = "Alt + ]".concat("\t\t\t\t", (_("Expand vertically")));
-            string shrinkvertically = "Alt + [".concat("\t\t\t\t", (_("Shrink vertically")));
+            string addhorizontally = "Control + Super + →".concat("\t\t", (_("Expand horizontally (to the right)")));
+            string shrinkhorizontally = "Control + Super + ←".concat("\t\t", (_("Shrink horizontally (from the right)")));
+            string addvertically = "Control + Super + ↓".concat("\t\t", (_("Expand vertically (down)")));
+            string shrinkvertically = "Control + Super + ↑".concat("\t\t", (_("Shrink vertically (from the bottom)")));
+
+            string addhorizontally_br = "Control + Super + Alt + ←".concat("\t", (_("Expand horizontally (to the left)")));
+            string shrinkhorizontally_br = "Control + Super + Alt + →".concat("\t", (_("Shrink horizontally (from the left)")));
+            string addvertically_br = "Control + Super + Alt + ↑".concat("\t", (_("Expand vertically (up)")));
+            string shrinkvertically_br = "Control + Super + Alt + ↓".concat("\t", (_("Shrink vertically (from the top)")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
             string callgrid = "Ctrl + Alt + S".concat("\t", (_("Call the grid GUI")));
@@ -133,7 +138,7 @@ namespace ShufflerControls {
             set_margins(supergrid);
             make_headerbutton ((_("Settings")), "stackbuttonleft", 1, "settings");
             make_headerbutton ((_("Tiling")), "stackbuttons", 2, "qhshortcuts");
-            make_headerbutton ((_("Jump & resize")), "stackbuttons", 3, "jumpshortcuts");
+            make_headerbutton ((_("Move & resize")), "stackbuttons", 3, "jumpshortcuts");
             make_headerbutton ((_("GUI grid")), "stackbuttonright", 4, "guigrid");
 
             // STACK-PAGES
@@ -297,9 +302,15 @@ namespace ShufflerControls {
             var add_vertically = new Label(addvertically);
             var shrink_vertically = new Label(shrinkvertically);
 
+            var add_horizontally_br = new Label(addhorizontally_br);
+            var shrink_horizontally_br = new Label(shrinkhorizontally_br);
+            var add_vertically_br = new Label(addvertically_br);
+            var shrink_vertically_br = new Label(shrinkvertically_br);
+
             Label[] resizeshortc_labels = {
                 resizeheader, spacer4, add_horizontally, shrink_horizontally,
-                add_vertically, shrink_vertically
+                add_vertically, shrink_vertically, add_horizontally_br,
+                shrink_horizontally_br, add_vertically_br, shrink_vertically_br
             };
             n2 = 10;
             foreach (Label l in resizeshortc_labels) {
@@ -361,7 +372,7 @@ namespace ShufflerControls {
             var stackbutton = new Gtk.Button.with_label(name);
             set_buttonstyle(stackbutton, style);
             supergrid.attach(stackbutton, pos, 1, 1, 1);
-            stackbutton.set_size_request(100, 10);
+            stackbutton.set_size_request(120, 10);
             stackbutton.clicked.connect(() => {
                 controlwin_stack.set_visible_child_name(target);
             });
