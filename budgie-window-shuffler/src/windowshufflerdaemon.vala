@@ -76,35 +76,30 @@ namespace ShufflerEssentialInfo {
         }
 
         public void toggle_maximize (int w_id) throws Error {
-            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
-            foreach (Wnck.Window w in wlist) {
-                if (w.get_xid() == w_id) {
-                    bool state = w.is_maximized();
-                    if (state) {
-                        w.unmaximize();
-                    }
-                    else {
-                        w.maximize();
-                    }
+            Wnck.Window? w = get_matchingwnckwin(w_id);
+            if (w != null) {
+                bool state = w.is_maximized();
+                if (state) {
+                    w.unmaximize();
+                }
+                else {
+                    w.maximize();
                 }
             }
         }
 
         public void move_toworkspace (int w_id, int workspace) throws Error{
-            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
-            foreach (Wnck.Window w in wlist) {
-                if (w.get_xid() == w_id) {
-                    unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
-                    foreach (Wnck.Workspace ws in spaces) {
-                        if (ws.get_number() == workspace) {
-                            GLib.Timeout.add(50, ()=> {
-                                w.move_to_workspace(ws);
-                                return false;
-                            });
-                            break;
-                        }
+            Wnck.Window? w = get_matchingwnckwin(w_id);
+            if (w != null) {
+                unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
+                foreach (Wnck.Workspace ws in spaces) {
+                    if (ws.get_number() == workspace) {
+                        GLib.Timeout.add(50, ()=> {
+                            w.move_to_workspace(ws);
+                            return false;
+                        });
+                        break;
                     }
-                    break;
                 }
             }
         }
@@ -166,7 +161,6 @@ namespace ShufflerEssentialInfo {
         public HashTable<string, Variant> get_tiles (
             string mon_name, int cols, int rows
         ) throws Error {
-            // won't be called unless a monitor is on?
 
             /* tiledata.keys:
             / "x_anchors" (as string)
