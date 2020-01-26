@@ -90,6 +90,25 @@ namespace ShufflerEssentialInfo {
             }
         }
 
+        public void move_toworkspace (int w_id, int workspace) throws Error{
+            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
+            foreach (Wnck.Window w in wlist) {
+                if (w.get_xid() == w_id) {
+                    unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
+                    foreach (Wnck.Workspace ws in spaces) {
+                        if (ws.get_number() == workspace) {
+                            GLib.Timeout.add(50, ()=> {
+                                w.move_to_workspace(ws);
+                                return false;
+                            });
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
         public HashTable<string, Variant> get_winsdata () throws Error {
             // window data, send through
             get_windata();
@@ -118,7 +137,6 @@ namespace ShufflerEssentialInfo {
         ) throws Error {
             // move window, external connection
             Wnck.Window? w = get_matchingwnckwin(w_id);
-
             if (w != null) {
                 now_move(w, x, y, width, height);
             }
@@ -380,10 +398,20 @@ namespace ShufflerEssentialInfo {
         }
     }
 
-    private void run_windowchangecommand (string actiontype) {
+    private void acton_latestwin (Wnck.Window newwin) {
+        int new_window = (int)newwin.get_xid();
+        get_windata();
+        run_windowchangecommand("newwindowaction", new_window);
+    }
+
+    private void run_windowchangecommand (string actiontype, int? newwin = null) {
         string cmd = shuffler_settings.get_string(actiontype);
         if (cmd != "") {
-            run_command(cmd);
+            string window_arg = "";
+            if (newwin != null) {
+                window_arg = (@" $newwin");
+            }
+            run_command(cmd + window_arg);
         }
     }
 
@@ -513,13 +541,9 @@ namespace ShufflerEssentialInfo {
         gdkscreen.monitors_changed.connect(get_monitors);
         gdkscreen.monitors_changed.connect(getscale);
         get_windata();
-        wnckscr.window_opened.connect(()=> {
-            get_windata();
-            run_windowchangecommand("newwindowaction");
-        });
+        wnckscr.window_opened.connect(acton_latestwin);
         wnckscr.window_closed.connect(()=> {
             if (showtarget != null && gridguiruns == false) {
-                // ok, tiny code repetition. Edit if we are bored from having too much time
                 showtarget.destroy();
                 showtarget = null;
             }
