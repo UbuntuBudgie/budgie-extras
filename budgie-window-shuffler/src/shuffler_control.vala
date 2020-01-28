@@ -266,22 +266,22 @@ namespace ShufflerControls {
             marginheader.set_xalign(0);
             marginsgrid.attach(marginheader, 0, 0, 1, 1);
             set_textstyle(marginheader, {"header"});
-            var maginsubgrid = new Gtk.Grid();
-            marginsgrid.attach(maginsubgrid, 0, 1, 1, 1);
-            maginsubgrid.set_column_homogeneous(true);
-            maginsubgrid.attach(new Label(""), 0, 5, 1, 1);
-            maginsubgrid.attach(new Label((_("Top"))+ "\n"), 2, 9, 1, 1);
+            var marginsubgrid = new Gtk.Grid();
+            marginsgrid.attach(marginsubgrid, 0, 1, 1, 1);
+            marginsubgrid.set_column_homogeneous(true);
+            marginsubgrid.attach(new Label(""), 0, 5, 1, 1);
+            marginsubgrid.attach(new Label((_("Top"))+ "\n"), 2, 9, 1, 1);
             topmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
-            maginsubgrid.attach(topmarginspin, 2, 10, 1, 1);
-            maginsubgrid.attach(new Label((_("Left")) + "\n"), 1, 11, 1, 1);
+            marginsubgrid.attach(topmarginspin, 2, 10, 1, 1);
+            marginsubgrid.attach(new Label((_("Left")) + "\n"), 1, 11, 1, 1);
             leftmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
-            maginsubgrid.attach(leftmarginspin, 1, 12, 1, 1);
-            maginsubgrid.attach(new Label((_("Right")) + "\n"), 3, 11, 1, 1);
+            marginsubgrid.attach(leftmarginspin, 1, 12, 1, 1);
+            marginsubgrid.attach(new Label((_("Right")) + "\n"), 3, 11, 1, 1);
             rightmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
-            maginsubgrid.attach(rightmarginspin, 3, 12, 1, 1);
-            maginsubgrid.attach(new Label((_("Bottom")) + "\n"), 2, 13, 1, 1);
+            marginsubgrid.attach(rightmarginspin, 3, 12, 1, 1);
+            marginsubgrid.attach(new Label((_("Bottom")) + "\n"), 2, 13, 1, 1);
             bottommarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
-            maginsubgrid.attach(bottommarginspin, 2, 14, 1, 1);
+            marginsubgrid.attach(bottommarginspin, 2, 14, 1, 1);
 
             // 3. shortcutsgrid
             var qhshortcutsheader = new Label(qtiling_header);
