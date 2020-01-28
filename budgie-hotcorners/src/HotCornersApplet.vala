@@ -376,6 +376,7 @@ namespace HotCornersApplet {
                     case "previews": {
                         msg_header = (_("Missing process"));
                         proc_tocheck = "budgie-previews/previews_daemon";
+                        //TRANSLATORS: Window Previews is the name of the application and does not need to be translated
                         msg = (_(
                             (_("Please enable Window Previews"))
                         ));
@@ -384,8 +385,9 @@ namespace HotCornersApplet {
                     case "shuffler/togglegui": {
                         msg_header = (_("Missing process"));
                         proc_tocheck = "budgie-window-shuffler/gridwindow";
+                        //TRANSLATORS: Window Previews is the name of the application and does not need to be translated
                         msg = (_(
-                            (_("Please enable Window Shuffler GUI"))
+                            (_("Please enable Window Shuffler"))
                         ));
                         break;
                     }
