@@ -38,6 +38,10 @@ namespace ShufflerEssentialInfo {
     GLib.Settings shuffler_settings;
     int setcols;
     int setrows;
+    int marginleft;
+    int marginright;
+    int margintop;
+    int marginbottom;
     int greyshade;
     bool swapgeometry;
     bool gridguiruns;
@@ -185,17 +189,17 @@ namespace ShufflerEssentialInfo {
                 }
                 else if (monitorsubj.get_model()  == mon_name) {
                     Gdk.Rectangle mon_wa = monitorsubj.get_workarea();
-                    int fullwidth = mon_wa.width * scale;
+                    int fullwidth = (mon_wa.width * scale) - (marginleft + marginright);
                     int tilewidth = (int)(fullwidth/cols);
-                    int fullheight = mon_wa.height * scale;
+                    int fullheight = (mon_wa.height * scale) - (margintop + marginbottom);
                     int tileheight = (int)(fullheight/rows);
-                    int NEx = mon_wa.x * scale;
+                    int NEx = (mon_wa.x * scale) + marginleft;
                     int origx = NEx;
                     while (NEx < origx + fullwidth) {
                         xpositions += NEx;
                         NEx += tilewidth;
                     }
-                    int NEy = mon_wa.y * scale;
+                    int NEy = (mon_wa.y * scale) + margintop;
                     int origy = NEy;
                     while (NEy < origy + fullheight) {
                         ypositions += NEy;
@@ -488,6 +492,10 @@ namespace ShufflerEssentialInfo {
         setrows = shuffler_settings.get_int("rows");
         swapgeometry = shuffler_settings.get_boolean("swapgeometry");
         greyshade = shuffler_settings.get_int("greyshade");
+        marginleft = shuffler_settings.get_int("marginleft");
+        marginright = shuffler_settings.get_int("marginright");
+        margintop = shuffler_settings.get_int("margintop");
+        marginbottom = shuffler_settings.get_int("marginbottom");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
