@@ -28,6 +28,10 @@ namespace ShufflerControls {
 
         SpinButton columns_spin;
         SpinButton rows_spin;
+        SpinButton topmarginspin;
+        SpinButton leftmarginspin;
+        SpinButton rightmarginspin;
+        SpinButton bottommarginspin;
         ToggleButton toggle_gui;
         ToggleButton toggle_shuffler;
         ToggleButton toggle_swapgeo;
@@ -47,6 +51,8 @@ namespace ShufflerControls {
             string default_expl = (_("Move the mouse over a button for an explanation"));
             string cols_expl = (_("Number of grid columns, used by GUI grid-, move- and tile-all shortcuts"));
             string rows_expl = (_("Number of grid rows, used by GUI grid, move- and tile-all shortcuts"));
+            // margins
+            string margin_header = (_("Margins between virtual grid and screen edges ")) + ":";
             // tiling
             string qtiling_header = (_("Shortcuts for quarter and half tiling & tiling to grid")) +":";
             string topleft = "Ctrl + Alt + 7".concat("\t\t\t\t", (_("Top-left")));
@@ -55,15 +61,15 @@ namespace ShufflerControls {
             string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t\t", (_("Top-left")));
             string lefthalf = "Ctrl + Alt + 4".concat("\t\t\t\t", (_("Left-half")));
             string tophalf = "Ctrl + Alt + 8".concat("\t\t\t\t", (_("Top-half")));
-            string rightthalf = "Ctrl + Alt + 6".concat("\t\t\t\t", (_("Right-half")));
+            string righthalf = "Ctrl + Alt + 6".concat("\t\t\t\t", (_("Right-half")));
             string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t\t", (_("Bottom-half")));
             string tileall = "Control + Super + A".concat("\t\t", (_("Tile all windows to grid")));
             // Jump & resize
             string jump_header = (_("Shortcuts for moving to the nearest grid cell")) + ":";
-            string jumpleft = "Super + Alt + ←".concat("\t\t", (_("Move left")));
-            string jumpright = "Super + Alt + →".concat("\t\t", (_("Move right")));
-            string jumpup = "Super + Alt + ↑".concat("\t\t", (_("Move up")));
-            string jumpdown = "Super + Alt + ↓".concat("\t\t", (_("Move down")));
+            string jumpleft = "Super + Alt + ←".concat("\t\t\t", (_("Move left")));
+            string jumpright = "Super + Alt + →".concat("\t\t\t", (_("Move right")));
+            string jumpup = "Super + Alt + ↑".concat("\t\t\t", (_("Move up")));
+            string jumpdown = "Super + Alt + ↓".concat("\t\t\t", (_("Move down")));
 
             string resize_header = (_("Shortcuts for resizing windows on grid")) + ":";
             string addhorizontally = "Control + Super + →".concat("\t\t", (_("Expand horizontally (to the right)")));
@@ -126,6 +132,8 @@ namespace ShufflerControls {
             );
             var settingsgrid = new Gtk.Grid();
             controlwin_stack.add_named(settingsgrid, "settings");
+            var marginsgrid = new Gtk.Grid();
+            controlwin_stack.add_named(marginsgrid, "marginsrid");
             var shortcutsgrid = new Gtk.Grid();
             controlwin_stack.add_named(shortcutsgrid, "qhshortcuts");
             var jumpgrid = new Gtk.Grid();
@@ -137,9 +145,10 @@ namespace ShufflerControls {
             supergrid.attach(new Label("\n"), 0, 2, 1, 1);
             set_margins(supergrid);
             make_headerbutton ((_("Settings")), "stackbuttonleft", 1, "settings");
-            make_headerbutton ((_("Tiling")), "stackbuttons", 2, "qhshortcuts");
-            make_headerbutton ((_("Move & resize")), "stackbuttons", 3, "jumpshortcuts");
-            make_headerbutton ((_("GUI grid")), "stackbuttonright", 4, "guigrid");
+            make_headerbutton ((_("Margins")), "stackbuttons", 2, "marginsrid");
+            make_headerbutton ((_("Tiling")), "stackbuttons", 3, "qhshortcuts");
+            make_headerbutton ((_("Move & resize")), "stackbuttons", 4, "jumpshortcuts");
+            make_headerbutton ((_("GUI grid")), "stackbuttonright", 5, "guigrid");
 
             // STACK-PAGES
             // 1. settingsgrid - checkbuttons
@@ -252,7 +261,29 @@ namespace ShufflerControls {
                 return false;
             });
 
-            // 2. shortcutsgrid
+            // 2. marginsgrid
+            Label marginheader = new Label(margin_header + "\n");
+            marginheader.set_xalign(0);
+            marginsgrid.attach(marginheader, 0, 0, 1, 1);
+            set_textstyle(marginheader, {"header"});
+            var maginsubgrid = new Gtk.Grid();
+            marginsgrid.attach(maginsubgrid, 0, 1, 1, 1);
+            maginsubgrid.set_column_homogeneous(true);
+            maginsubgrid.attach(new Label(""), 0, 5, 1, 1);
+            maginsubgrid.attach(new Label((_("Top"))+ "\n"), 2, 9, 1, 1);
+            topmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
+            maginsubgrid.attach(topmarginspin, 2, 10, 1, 1);
+            maginsubgrid.attach(new Label((_("Left")) + "\n"), 1, 11, 1, 1);
+            leftmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
+            maginsubgrid.attach(leftmarginspin, 1, 12, 1, 1);
+            maginsubgrid.attach(new Label((_("Right")) + "\n"), 3, 11, 1, 1);
+            rightmarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
+            maginsubgrid.attach(rightmarginspin, 3, 12, 1, 1);
+            maginsubgrid.attach(new Label((_("Bottom")) + "\n"), 2, 13, 1, 1);
+            bottommarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
+            maginsubgrid.attach(bottommarginspin, 2, 14, 1, 1);
+
+            // 3. shortcutsgrid
             var qhshortcutsheader = new Label(qtiling_header);
             set_textstyle(qhshortcutsheader, {"header"});
             var spacer = new Label("");
@@ -262,7 +293,7 @@ namespace ShufflerControls {
             var bl = new Label(bottomleft);
             var lh = new Label(lefthalf);
             var th = new Label(tophalf);
-            var rh = new Label(rightthalf);
+            var rh = new Label(righthalf);
             var bh = new Label(bottomhalf);
             var space4 = new Label("");
             var ta = new Label(tileall);
@@ -276,7 +307,7 @@ namespace ShufflerControls {
                 n += 1;
             }
 
-            // 3. jumpgrid shortcuts
+            // 4. jumpgrid shortcuts
             var jumpshortcutsheader = new Label(jump_header);
             set_textstyle(jumpshortcutsheader, {"header"});
             var spacer2 = new Label("");
@@ -318,7 +349,7 @@ namespace ShufflerControls {
                 jumpgrid.attach(l, 0, n2, 1, 1);
                 n2 += 1;
             }
-            // 4. guigrid
+            // 5. guigrid
             var guigridheader = new Label(guigrid_header);
             set_textstyle(guigridheader, {"header"});
             var spacer3 = new Label("");
@@ -359,8 +390,13 @@ namespace ShufflerControls {
             // get stuff
             get_currsettings();
             // connect stuff
-            columns_spin.value_changed.connect(set_grid);
-            rows_spin.value_changed.connect(set_grid);
+            SpinButton[] spins = {
+                columns_spin, rows_spin, topmarginspin,
+                leftmarginspin, rightmarginspin, bottommarginspin
+            };
+            foreach (SpinButton spb in spins) {
+                spb.value_changed.connect(set_fromspinbutton);
+            }
             toggle_shuffler.toggled.connect(manage_boolean);
             toggle_gui.toggled.connect(manage_boolean);
             toggle_swapgeo.toggled.connect(manage_boolean);
@@ -368,7 +404,9 @@ namespace ShufflerControls {
             this.show_all();
         }
 
-        private Gtk.Button make_headerbutton (string name, string style, int pos, string target) {
+        private Gtk.Button make_headerbutton (
+            string name, string style, int pos, string target
+        ) {
             var stackbutton = new Gtk.Button.with_label(name);
             set_buttonstyle(stackbutton, style);
             supergrid.attach(stackbutton, pos, 1, 1, 1);
@@ -420,6 +458,10 @@ namespace ShufflerControls {
             toggle_swapgeo.set_active(shuffler_settings.get_boolean("swapgeometry"));
             columns_spin.set_value(shuffler_settings.get_int("cols"));
             rows_spin.set_value(shuffler_settings.get_int("rows"));
+            topmarginspin.set_value(shuffler_settings.get_int("margintop"));
+            leftmarginspin.set_value(shuffler_settings.get_int("marginleft"));
+            rightmarginspin.set_value(shuffler_settings.get_int("marginright"));
+            bottommarginspin.set_value(shuffler_settings.get_int("marginbottom"));
         }
 
         private void manage_boolean (ToggleButton button) {
@@ -453,12 +495,14 @@ namespace ShufflerControls {
             }
         }
 
-        private void set_grid (SpinButton b) {
+        private void set_fromspinbutton (SpinButton b) {
             SpinButton[] sp_buttons = {
-                columns_spin, rows_spin
+                columns_spin, rows_spin, topmarginspin,
+                leftmarginspin, rightmarginspin, bottommarginspin
             };
             string[] vals = {
-                "cols", "rows"
+                "cols", "rows", "margintop", "marginleft",
+                "marginright", "marginbottom"
             };
             int newval = (int)b.get_value();
             string match = "";

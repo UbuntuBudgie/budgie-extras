@@ -241,6 +241,10 @@ namespace ShufflerEssentialInfo {
             return tiledata;
         }
 
+        public int[] get_margins ()  throws Error {
+            return {margintop, marginleft, marginright, marginbottom};
+        }
+
         public int[] get_grid() throws Error {
             return {setcols, setrows};
         }
