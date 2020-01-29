@@ -47,11 +47,11 @@ namespace ShufflerControls {
             // STRINGS & THINGS
             // settings
             string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
-            string guiexpl = (_("Enable grid tiling GUI shortcut"));
+            string guiexpl = (_("Enable grid tiling graphical shortcut"));
             string swapgeexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
-            string cols_expl = (_("Number of grid columns, used by GUI grid-, move- and tile-all shortcuts"));
-            string rows_expl = (_("Number of grid rows, used by GUI grid, move- and tile-all shortcuts"));
+            string cols_expl = (_("Number of columns, used by grid, move and tile-all shortcuts"));
+            string rows_expl = (_("Number of rows, used by grid, move and tile-all shortcuts"));
             // margins
             string margin_header = (_("Margins between virtual grid and screen edges ")) + ":";
             // tiling
@@ -83,8 +83,8 @@ namespace ShufflerControls {
             string addvertically_br = "Control + Super + Alt + ↑".concat("\t", (_("Expand vertically (up)")));
             string shrinkvertically_br = "Control + Super + Alt + ↓".concat("\t", (_("Shrink vertically (from the top)")));
             // GUI grid
-            string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
-            string callgrid = "Ctrl + Alt + S".concat("\t", (_("Call the grid GUI")));
+            string guigrid_header = (_("Shortcuts for the grid")) + ":";
+            string callgrid = "Ctrl + Alt + S".concat("\t", (_("Show the grid")));
             string addcol = "→".concat("\t\t\t", (_("Add a column")));
             string addrow = "↓".concat("\t\t\t",(_("Add a row")));
             string remcol = "←".concat("\t\t\t", (_("Remove a column")));
@@ -148,7 +148,7 @@ namespace ShufflerControls {
             make_headerbutton ((_("Margins")), "stackbuttons", 2, "marginsrid");
             make_headerbutton ((_("Tiling")), "stackbuttons", 3, "qhshortcuts");
             make_headerbutton ((_("Move & resize")), "stackbuttons", 4, "jumpshortcuts");
-            make_headerbutton ((_("GUI grid")), "stackbuttonright", 5, "guigrid");
+            make_headerbutton ((_("Grid")), "stackbuttonright", 5, "guigrid");
 
             // STACK-PAGES
             // 1. settingsgrid - checkbuttons
@@ -157,7 +157,7 @@ namespace ShufflerControls {
             );
             settingsgrid.attach(toggle_shuffler, 1, 1, 1, 1);
             toggle_gui = new Gtk.CheckButton.with_label(
-                (_("Enable Window Shuffler grid GUI"))
+                (_("Enable Window Shuffler grid"))
             );
             settingsgrid.attach(toggle_gui, 1, 2, 1, 1);
             var givemesomespace = new Gtk.Label("");
@@ -169,7 +169,7 @@ namespace ShufflerControls {
             var empty = new Label("");
             settingsgrid.attach(empty, 1, 12, 1, 1);
             // settingsgrid - spinbuttonsection
-            var colslabel = new Label("\n" + (_("Grid GUI: columns & rows")) + "\n");
+            var colslabel = new Label("\n" + (_("Grid: columns & rows")) + "\n");
             colslabel.set_xalign(0);
             settingsgrid.attach(colslabel, 1, 13, 1, 1);
             var geogrid = new Gtk.Grid();
