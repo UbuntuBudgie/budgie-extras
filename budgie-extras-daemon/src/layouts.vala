@@ -108,11 +108,17 @@ namespace Layouts {
         }
 
         private void appmenu_powerstrip(bool enable) {
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (network_schema, true);
+            if (schema == null)
+                return;
             var settings = new GLib.Settings(network_schema);
             settings.set_boolean("enable-powerstrip", enable);
         }
 
         private void appmenu_categoryview(bool show_category) {
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (network_schema, true);
+            if (schema == null)
+                return;
             var settings = new GLib.Settings(network_schema);
             settings.set_boolean("use-category", show_category);
         }
