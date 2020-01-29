@@ -5,15 +5,8 @@ project('budgie-extras',
 )
 
 i18n = import('i18n')
-python = import('python3')
 
 message('Looking for dependencies')
-python_bin = python.find_python()
-if not python_bin.found()
-	error('No python3 binary found')
-else
-	message('Found python3 binary')
-endif
 
 add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
