@@ -285,7 +285,7 @@ namespace ShufflerControls {
 
             var paddingbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
             paddingspin = new Gtk.SpinButton.with_range(0, 40, 1);
-            var paddinglabel = new Label((_("Padding")) + ":\t\t");
+            var paddinglabel = new Label((_("Window padding")) + ":\t\t");
             set_textstyle(paddinglabel, {"header"});
             paddingbox.pack_start(paddinglabel, false, false, 0);
             paddingbox.pack_start(paddingspin, false, false, 0);
