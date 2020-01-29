@@ -32,6 +32,7 @@ namespace ShufflerControls {
         SpinButton leftmarginspin;
         SpinButton rightmarginspin;
         SpinButton bottommarginspin;
+        SpinButton paddingspin;
         ToggleButton toggle_gui;
         ToggleButton toggle_shuffler;
         ToggleButton toggle_swapgeo;
@@ -46,11 +47,11 @@ namespace ShufflerControls {
             // STRINGS & THINGS
             // settings
             string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
-            string guiexpl = (_("Enable grid tiling graphical shortcut"));
+            string guiexpl = (_("Enable grid tiling GUI shortcut"));
             string swapgeexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
-            string cols_expl = (_("Number of columns, used by grid, move and tile-all shortcuts"));
-            string rows_expl = (_("Number of rows, used by grid, move and tile-all shortcuts"));
+            string cols_expl = (_("Number of grid columns, used by GUI grid-, move- and tile-all shortcuts"));
+            string rows_expl = (_("Number of grid rows, used by GUI grid, move- and tile-all shortcuts"));
             // margins
             string margin_header = (_("Margins between virtual grid and screen edges ")) + ":";
             // tiling
@@ -82,8 +83,8 @@ namespace ShufflerControls {
             string addvertically_br = "Control + Super + Alt + ↑".concat("\t", (_("Expand vertically (up)")));
             string shrinkvertically_br = "Control + Super + Alt + ↓".concat("\t", (_("Shrink vertically (from the top)")));
             // GUI grid
-            string guigrid_header = (_("Shortcuts for the grid")) + ":";
-            string callgrid = "Ctrl + Alt + S".concat("\t", (_("Show the grid")));
+            string guigrid_header = (_("Shortcuts for the grid GUI")) + ":";
+            string callgrid = "Ctrl + Alt + S".concat("\t", (_("Call the grid GUI")));
             string addcol = "→".concat("\t\t\t", (_("Add a column")));
             string addrow = "↓".concat("\t\t\t",(_("Add a row")));
             string remcol = "←".concat("\t\t\t", (_("Remove a column")));
@@ -92,7 +93,6 @@ namespace ShufflerControls {
             string set_greyshade = (_("Set the shade of gray for the grid")) + ":";
             string lighter = (_("Press + or scroll up to lighten the grid shade"));
             string darker = (_("Press - or scroll down to darken the grid shade"));
-
 
             // WINDOW STUFF
             string shufflercontrols_stylecss = """
@@ -148,7 +148,7 @@ namespace ShufflerControls {
             make_headerbutton ((_("Margins")), "stackbuttons", 2, "marginsrid");
             make_headerbutton ((_("Tiling")), "stackbuttons", 3, "qhshortcuts");
             make_headerbutton ((_("Move & resize")), "stackbuttons", 4, "jumpshortcuts");
-            make_headerbutton ((_("Grid")), "stackbuttonright", 5, "guigrid");
+            make_headerbutton ((_("GUI grid")), "stackbuttonright", 5, "guigrid");
 
             // STACK-PAGES
             // 1. settingsgrid - checkbuttons
@@ -157,7 +157,7 @@ namespace ShufflerControls {
             );
             settingsgrid.attach(toggle_shuffler, 1, 1, 1, 1);
             toggle_gui = new Gtk.CheckButton.with_label(
-                (_("Enable Window Shuffler grid"))
+                (_("Enable Window Shuffler grid GUI"))
             );
             settingsgrid.attach(toggle_gui, 1, 2, 1, 1);
             var givemesomespace = new Gtk.Label("");
@@ -169,7 +169,7 @@ namespace ShufflerControls {
             var empty = new Label("");
             settingsgrid.attach(empty, 1, 12, 1, 1);
             // settingsgrid - spinbuttonsection
-            var colslabel = new Label("\n" + (_("Grid: columns & rows")) + "\n");
+            var colslabel = new Label("\n" + (_("Grid GUI: columns & rows")) + "\n");
             colslabel.set_xalign(0);
             settingsgrid.attach(colslabel, 1, 13, 1, 1);
             var geogrid = new Gtk.Grid();
@@ -283,6 +283,15 @@ namespace ShufflerControls {
             bottommarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
             marginsubgrid.attach(bottommarginspin, 2, 14, 1, 1);
 
+            var paddingbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
+            paddingspin = new Gtk.SpinButton.with_range(0, 40, 1);
+            var paddinglabel = new Label((_("Padding")) + ":\t\t");
+            set_textstyle(paddinglabel, {"header"});
+            paddingbox.pack_start(paddinglabel, false, false, 0);
+            paddingbox.pack_start(paddingspin, false, false, 0);
+            marginsgrid.attach(new Label(""), 0, 2, 1, 1);
+            marginsgrid.attach(paddingbox, 0, 3, 1, 1);
+
             // 3. shortcutsgrid
             var qhshortcutsheader = new Label(qtiling_header);
             set_textstyle(qhshortcutsheader, {"header"});
@@ -392,7 +401,8 @@ namespace ShufflerControls {
             // connect stuff
             SpinButton[] spins = {
                 columns_spin, rows_spin, topmarginspin,
-                leftmarginspin, rightmarginspin, bottommarginspin
+                leftmarginspin, rightmarginspin, bottommarginspin,
+                paddingspin
             };
             foreach (SpinButton spb in spins) {
                 spb.value_changed.connect(set_fromspinbutton);
@@ -462,6 +472,7 @@ namespace ShufflerControls {
             leftmarginspin.set_value(shuffler_settings.get_int("marginleft"));
             rightmarginspin.set_value(shuffler_settings.get_int("marginright"));
             bottommarginspin.set_value(shuffler_settings.get_int("marginbottom"));
+            paddingspin.set_value(shuffler_settings.get_int("padding"));
         }
 
         private void manage_boolean (ToggleButton button) {
@@ -498,11 +509,12 @@ namespace ShufflerControls {
         private void set_fromspinbutton (SpinButton b) {
             SpinButton[] sp_buttons = {
                 columns_spin, rows_spin, topmarginspin,
-                leftmarginspin, rightmarginspin, bottommarginspin
+                leftmarginspin, rightmarginspin, bottommarginspin,
+                paddingspin
             };
             string[] vals = {
                 "cols", "rows", "margintop", "marginleft",
-                "marginright", "marginbottom"
+                "marginright", "marginbottom", "padding"
             };
             int newval = (int)b.get_value();
             string match = "";

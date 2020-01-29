@@ -38,6 +38,7 @@ namespace ShufflerEssentialInfo {
     GLib.Settings shuffler_settings;
     int setcols;
     int setrows;
+    int padding;
     int marginleft;
     int marginright;
     int margintop;
@@ -153,7 +154,7 @@ namespace ShufflerEssentialInfo {
                 Wnck.WindowMoveResizeMask.Y |
                 Wnck.WindowMoveResizeMask.WIDTH |
                 Wnck.WindowMoveResizeMask.HEIGHT,
-                x, y, width, height
+                x, y, width - padding, height - padding
             );
         }
 
@@ -189,9 +190,9 @@ namespace ShufflerEssentialInfo {
                 }
                 else if (monitorsubj.get_model()  == mon_name) {
                     Gdk.Rectangle mon_wa = monitorsubj.get_workarea();
-                    int fullwidth = (mon_wa.width * scale) - (marginleft + marginright);
+                    int fullwidth = (mon_wa.width * scale) - (marginleft + marginright) + padding;
                     int tilewidth = (int)(fullwidth/cols);
-                    int fullheight = (mon_wa.height * scale) - (margintop + marginbottom);
+                    int fullheight = (mon_wa.height * scale) - (margintop + marginbottom) + padding;
                     int tileheight = (int)(fullheight/rows);
                     int NEx = (mon_wa.x * scale) + marginleft;
                     int origx = NEx;
@@ -242,7 +243,7 @@ namespace ShufflerEssentialInfo {
         }
 
         public int[] get_margins ()  throws Error {
-            return {margintop, marginleft, marginright, marginbottom};
+            return {margintop, marginleft, marginright, marginbottom, padding};
         }
 
         public int[] get_grid() throws Error {
@@ -271,7 +272,9 @@ namespace ShufflerEssentialInfo {
             }
         }
 
-        public void show_tilepreview (int col, int row, int width = 1, int height = 1) throws Error {
+        public void show_tilepreview (
+            int col, int row, int width = 1, int height = 1
+        ) throws Error {
             int x = 0;
             int y = 0;
             int w = 0;
@@ -284,10 +287,10 @@ namespace ShufflerEssentialInfo {
                     if (int.parse(xy[0]) == col && int.parse(xy[1]) == row) {
                         Variant v = currtiles[tk];
                         // remember, Gtk uses scaled numbers!
-                        x = ((int)v.get_child_value(0))/scale;
-                        y = ((int)v.get_child_value(1))/scale;
-                        w = width * ((int)v.get_child_value(2))/scale;
-                        h = height * ((int)v.get_child_value(3))/scale;
+                        x = (int)v.get_child_value(0)/scale;
+                        y = (int)v.get_child_value(1)/scale;
+                        w = (width * ((int)v.get_child_value(2))/scale) - (padding/scale);
+                        h = (height * ((int)v.get_child_value(3))/scale) - (padding/scale);
                         break;
                     }
                 }
@@ -500,6 +503,7 @@ namespace ShufflerEssentialInfo {
         marginright = shuffler_settings.get_int("marginright");
         margintop = shuffler_settings.get_int("margintop");
         marginbottom = shuffler_settings.get_int("marginbottom");
+        padding = shuffler_settings.get_int("padding");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {

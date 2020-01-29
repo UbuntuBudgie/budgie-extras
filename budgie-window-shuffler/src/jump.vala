@@ -40,6 +40,8 @@ namespace JumpActive {
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
+        public abstract int[] get_margins () throws Error;
+
     }
 
     private int find_next (string[] arr, int anchor) {
@@ -141,6 +143,7 @@ namespace JumpActive {
                 bool samewindow = winx == nextx && winy == nexty;
 
                 GLib.List<weak string> winkeys = wins.get_keys();
+                int correct_padding = 0;
 
                 // if swapgemetry
                 if (client.swapgeo()) {
@@ -163,8 +166,11 @@ namespace JumpActive {
                             // 2. get geo -of- sourcewin (activewin), move swapwindow
                             int tomove_yshift = client.get_yshift(tomove);
                             if (!samewindow) {
+                                // if padding != 0, we need to fix swapgeometry with padding
+                                correct_padding = client.get_margins()[4];
                                 client.move_window(
-                                    tomove, winx, winy - tomove_yshift, winwidth, winheight
+                                    tomove, winx, winy - tomove_yshift,
+                                    winwidth + correct_padding, winheight + correct_padding
                                 );
                             }
                             break;
@@ -174,7 +180,8 @@ namespace JumpActive {
                 // move subject to targeted position
                 if (!samewindow) {
                     client.move_window(
-                        activewin, nextx, nexty - yshift, tilewidth, tileheight
+                        activewin, nextx, nexty - yshift,
+                        tilewidth + correct_padding, tileheight + correct_padding
                     );
                 }
             }
