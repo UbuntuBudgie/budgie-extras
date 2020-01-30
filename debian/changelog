@@ -1,3 +1,17 @@
+budgie-extras (0.92.0-1) experimental; urgency=medium
+
+  * New release
+    git tag v0.92.0 beta release 3
+    Shuffler updates including shortcut key revisions
+    Visualspace and previews handling windows moving to other workspaces
+    Revise layouts available
+  * Packaging Changes
+    control: bump Standards-Version; no changes required
+    control: budgie-extras-daemon change dependency to suggests
+    tests: replace pep8 for pycodestyle
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 30 Jan 2020 19:42:21 +0000
+
 budgie-extras (0.91.0-1) experimental; urgency=medium
 
   * New release
