@@ -170,8 +170,14 @@ namespace HotCornersApplet {
         private string[] dropdown_namelist;
         private string[] dropdown_cmdlist;
         /* misc stuff */
-        //  private string[] check_commands;
-        //  private string[] check_applets;
+        Gdk.Screen gdkscreen;
+        Gdk.Display gdkdisplay;
+        Gdk.Seat seat;
+        int width;
+        int height;
+        int screen_xpos;
+        int screen_ypos;
+        int scale;
 
         public HotCornersPopover(Gtk.EventBox indicatorBox) {
             GLib.Object(relative_to: indicatorBox);
@@ -220,12 +226,15 @@ namespace HotCornersApplet {
             Label[] headers = {
                 cornerlabel, actionlabel, customlabel
             };
-            var screen = this.get_screen ();
+            gdkscreen = this.get_screen ();
+            gdkscreen.monitors_changed.connect(check_res);
+            gdkdisplay = Gdk.Display.get_default();
+            seat = gdkdisplay.get_default_seat();
             var css_provider = new Gtk.CssProvider();
             try {
                 css_provider.load_from_data(css_data);
                 Gtk.StyleContext.add_provider_for_screen(
-                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                    gdkscreen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
                 );
                 foreach (Label l in headers) {
                     l.get_style_context().add_class("label");
@@ -537,22 +546,33 @@ namespace HotCornersApplet {
             return arr_in;
         }
 
-        private int[] check_res() {
-            /* see what is the resolution on the primary monitor */
-            var prim = Gdk.Display.get_default().get_primary_monitor();
-            var geo = prim.get_geometry();
-            int width = geo.width;
-            int height = geo.height;
-            int screen_xpos = geo.x;
-            int screen_ypos = geo.y;
-            return {width, height, screen_xpos, screen_ypos};
+        private int getscale(Gdk.Monitor? prim) {
+            // get scale factor of primary (which we are using)
+            //  Gdk.Monitor? monitorsubj = gdkdisplay.get_primary_monitor();
+            if (prim != null) {
+                return prim.get_scale_factor();
+            }
+            return 1;
         }
 
-        private int check_corner(int xres, int yres, int x_offset, int y_offset, Seat seat) {
+        private void check_res() {
+            /* see what is the resolution on the primary monitor */
+            var prim = gdkdisplay.get_primary_monitor();
+            scale = getscale(prim);
+            var geo = prim.get_geometry();
+            width = geo.width * scale;
+            height = geo.height * scale;
+            screen_xpos = geo.x * scale;
+            screen_ypos = geo.y * scale;
+        }
+
+        private int check_corner() {
             /* see if we are in a corner, if so, which one */
             int x;
             int y;
             seat.get_pointer().get_position(null, out x, out y);
+            x = x * scale;
+            y = y * scale;
             /* add coords to array, edit array */
             this.x_arr += x;
             this.x_arr = keepsection(this.x_arr, this.time_steps);
@@ -560,16 +580,16 @@ namespace HotCornersApplet {
             this.y_arr = keepsection(this.y_arr, this.time_steps);
             int n = -1;
 
-            int innerleft = x_offset + this.action_area;
-            int innertop = y_offset + this.action_area;
-            int rightside = x_offset + xres;
-            int bottom = y_offset + yres;
+            int innerleft = screen_xpos + this.action_area;
+            int innertop = screen_ypos + this.action_area;
+            int rightside = screen_xpos + width;
+            int bottom = screen_ypos + height;
             int innerbottom = bottom - this.action_area;
             int innerright = rightside - this.action_area;
             bool[] tests = {
-                (x_offset <= x < innerleft && y_offset <= y < innertop), // topleft
-                (innerright < x <= rightside && y_offset <= y < innertop), // topright
-                (x_offset <= x < innerleft && innerbottom < y <= bottom), // bottomleft
+                (screen_xpos <= x < innerleft && screen_ypos <= y < innertop), // topleft
+                (innerright < x <= rightside && screen_ypos <= y < innertop), // topright
+                (screen_xpos <= x < innerleft && innerbottom < y <= bottom), // bottomleft
                 (innerright < x <= rightside && innerbottom < y <= bottom) // bottomright
             };
             foreach (bool test in tests) {
@@ -610,19 +630,13 @@ namespace HotCornersApplet {
 
         private int watch_loop(string[] ? args = null) {
             Gdk.init(ref args);
-            Gdk.Seat seat = Gdk.Display.get_default().get_default_seat();
-            int[] res = check_res();
+            check_res();
             /* here we set the size of the array (20 = 1 sec.) */
             this.action_area = 5;
             /* here we set the time steps (size of array, 20 = last 1 second) */
             this.time_steps = 3;
             this.x_arr = {0};
             this.y_arr = {0};
-            int xres = res[0];
-            int yres = res[1];
-            // new args
-            int x_offset = res[2];
-            int y_offset = res[3];
             bool reported = false;
             int t = 0;
             GLib.Timeout.add (50, () => {
@@ -637,7 +651,7 @@ namespace HotCornersApplet {
                         return false;
                     }
                 }
-                int corner = check_corner(xres, yres, x_offset, y_offset, seat);
+                int corner = check_corner();
                 if (corner != -1 && reported == false) {
                     if (check_onpressure() == true) {
                         run_command(corner);
