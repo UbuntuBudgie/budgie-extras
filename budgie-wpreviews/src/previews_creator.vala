@@ -108,7 +108,7 @@ namespace create_previews {
 
     private bool get_idle () {
         // see if idle exceeds 90 seconds
-        string cmd = "xprintidle";
+        string cmd = "/usr/bin/xprintidle";
         string output;
         int curridle = 0;
         try {
