@@ -306,7 +306,7 @@ namespace ShufflerEssentialInfo {
             */
             int yshift = 0;
             string winsubj = @"$w_id";
-            string cmd = "xprop -id ".concat(winsubj, " _NET_FRAME_EXTENTS");
+            string cmd = "/usr/bin/xprop -id ".concat(winsubj, " _NET_FRAME_EXTENTS");
             string output = "";
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
