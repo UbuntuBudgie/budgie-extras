@@ -37,12 +37,24 @@ namespace WeatherShowFunctions {
 
     private void write_tofile(string path, string data) {
         File datasrc = File.new_for_path(path);
-        if (datasrc.query_exists ()) {
-            datasrc.delete ();
+        delete_file(datasrc);
+        try {
+            var file_stream = datasrc.create (FileCreateFlags.NONE);
+            var data_stream = new DataOutputStream (file_stream);
+            data_stream.put_string (data);
         }
-        var file_stream = datasrc.create (FileCreateFlags.NONE);
-        var data_stream = new DataOutputStream (file_stream);
-        data_stream.put_string (data);
+        catch (Error e) {
+            print("Error writing to file\n");
+        }
+    }
+
+    private void delete_file (File file) {
+        try {
+            file.delete();
+        }
+        catch (Error e) {
+            print("File does not exist\n");
+        }
     }
 
     private string get_langmatch () {
@@ -65,7 +77,7 @@ namespace WeatherShowFunctions {
     }
 
     private bool check_onwindow(string path) {
-        string cmd_check = "pgrep -f " + path;
+        string cmd_check = "/usr/bin/pgrep -f " + path;
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd_check, out output);
@@ -85,12 +97,11 @@ namespace WeatherShowFunctions {
         if (win_exists) {
             try {
                 Process.spawn_command_line_async(
-                    "pkill -f ".concat(path));
+                    "/usr/bin/pkill -f ".concat(path));
             }
             catch (SpawnError e) {
                 /* nothing to be done */
             }
-
         }
     }
 
@@ -254,7 +265,9 @@ namespace WeatherShowApplet {
                 foreach (Grid gr in popover_subgrids) {
                     gr.destroy();
                 }
-                popoverstack.destroy();
+                if (popoverstack != null) {
+                    popoverstack.destroy();
+                }
                 popover_subgrids = {};
                 // create new ones
                 for (int i = 0; i < 4; i++) {
@@ -344,13 +357,7 @@ namespace WeatherShowApplet {
             if (show_ondesktop == true) {
                 string username = Environment.get_user_name();
                 string src = "/tmp/".concat(username, "_weatherdata");
-                File datasrc = File.new_for_path(src);
-                if (datasrc.query_exists ()) {
-                    datasrc.delete ();
-                }
-                var file_stream = datasrc.create (FileCreateFlags.NONE);
-                var data_stream = new DataOutputStream (file_stream);
-                data_stream.put_string (result_current);
+                WeatherShowFunctions.write_tofile(src, result_current);
             }
         }
     }
@@ -386,35 +393,32 @@ namespace WeatherShowApplet {
     private void update_log (string wtype, string output) {
         // update log file
         string loglocation = create_dirs_file(".config/budgie-extras", "weatherlog");
-        var logfile = File.new_for_path (loglocation);
-        if (!logfile.query_exists ()) {
-            var file_stream = logfile.create (FileCreateFlags.NONE);
-        }
         var logtime = currtime();
         // read history
         string glue = "\n=\n";
         string file_contents;
-        FileUtils.get_contents(loglocation, out file_contents);
-        string[] records = file_contents.split(glue);
-        int length = records.length;
-        string[] keeprecords;
-        if (length > 40) {
-            keeprecords = records[length - 40:length];
+
+        try {
+            FileUtils.get_contents(loglocation, out file_contents);
+            string[] records = file_contents.split(glue);
+            int length = records.length;
+            string[] keeprecords;
+            if (length > 40) {
+                keeprecords = records[length - 40:length];
+            }
+            else {keeprecords = records;}
+            // add new record
+            string log_output = wtype.concat(
+                " time: ", logtime, "\n\n", output, glue
+            );
+            keeprecords += log_output;
+            string newlog = string.joinv(glue, keeprecords);
+            // delete previous version
+            WeatherShowFunctions.write_tofile(loglocation, newlog);
         }
-        else {keeprecords = records;}
-        // add new record
-        string log_output = wtype.concat(
-            " time: ", logtime, "\n\n", output, glue
-        );
-        keeprecords += log_output;
-        string newlog = string.joinv(glue, keeprecords);
-        // delete previous version
-        if (logfile.query_exists ()) {
-            logfile.delete ();
+        catch (Error e) {
+            print("Error writing to logfile\n");
         }
-        var file_stream = logfile.create (FileCreateFlags.NONE);
-        var data_stream = new DataOutputStream (file_stream);
-        data_stream.put_string (newlog);
     }
 
 
@@ -445,6 +449,17 @@ namespace WeatherShowApplet {
             else {
                 return "no data";
             }
+        }
+
+        private Json.Parser load_data (string data) {
+            var parser = new Json.Parser ();
+            try {
+                parser.load_from_data(data);
+            }
+            catch (Error e) {
+                print("Error loading data\n");
+            }
+            return parser;
         }
 
         private string check_stringvalue(Json.Object obj, string val) {
@@ -484,8 +499,8 @@ namespace WeatherShowApplet {
             * textfile in /temp from get_weather, called by the loop in
             * Applet().
             */
-            var parser = new Json.Parser ();
-            parser.load_from_data(data);
+            var parser = load_data(data);
+
             var root_object = parser.get_root ().get_object ();
             HashMap<string, Json.Object> map = get_categories(
                 root_object
@@ -642,8 +657,9 @@ namespace WeatherShowApplet {
         private HashMap getspan(string data) {
             // get the forecast
             var map = new HashMap<int, string> ();
-            var parser = new Json.Parser ();
-            parser.load_from_data (data);
+            //  var parser = new Json.Parser ();
+            //  parser.load_from_data (data);
+            var parser = load_data(data);
             var root_object = parser.get_root ().get_object ();
             /* we need to parse each datasection from <list> */
             Json.Array newroot = root_object.get_array_member("list");
@@ -1040,7 +1056,12 @@ namespace WeatherShowApplet {
             string newcsscolor = string.joinv(", ", readcolor);
             css_data2 = css_template.replace("xxx, xxx, xxx", newcsscolor);
             weathercbutton.get_style_context().remove_class("weathercbutton");
-            css_provider.load_from_data(css_data2);
+            try {
+                css_provider.load_from_data(css_data2);
+            }
+            catch (Error e) {
+                print("Error loading css\n");
+            }
             Gtk.StyleContext.add_provider_for_screen(
                 screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
             );
@@ -1319,7 +1340,14 @@ namespace WeatherShowApplet {
             show_all();
             // start immediately
             update_weathershow();
-            update_thread = new Thread<bool>.try ("oldtimer", run_periodiccheck);
+            try {
+                update_thread = new Thread<bool>.try (
+                    "oldtimer", run_periodiccheck
+                );
+            }
+            catch (Error e) {
+                print("Cannot start thread\n");
+            }
         }
 
         public override void panel_position_changed(
@@ -1349,7 +1377,8 @@ namespace WeatherShowApplet {
                     "WeatherShow"
                 )) {
                     WeatherShowFunctions.close_window(desktop_window);
-                    update_thread.exit(true);
+                    return true;
+                    //  update_thread.exit(true);
                 }
                 Thread.usleep(15 * 1000000);
             }
@@ -1357,7 +1386,7 @@ namespace WeatherShowApplet {
 
         private bool check_onapplet(string path, string applet_name) {
             // check if the applet still runs
-            string cmd = "dconf dump " + path;
+            string cmd = "/usr/bin/dconf dump " + path;
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -1384,12 +1413,17 @@ namespace WeatherShowApplet {
                     string iconpath = GLib.Path.build_filename(
                         icondir, filename
                     );
-                    iconpixbufs += new Pixbuf.from_file_at_size (
-                        iconpath, 22, 22
-                    );
-                    iconpixbufs_large += new Pixbuf.from_file_at_size (
-                        iconpath, 65, 65
-                    );
+                    try {
+                        iconpixbufs += new Pixbuf.from_file_at_size (
+                            iconpath, 22, 22
+                        );
+                        iconpixbufs_large += new Pixbuf.from_file_at_size (
+                            iconpath, 65, 65
+                        );
+                    }
+                    catch (Error e) {
+                        print("Error loading icons\n");
+                    }
                 }
             } catch (FileError err) {
                     // unlikely to occur, but:

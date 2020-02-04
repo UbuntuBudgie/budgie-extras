@@ -112,7 +112,8 @@ public class DesktopWeather : Gtk.Window {
         locationlabel.set_xalign(0);
         // css (needs a separate function to update)
         css_provider = new Gtk.CssProvider();
-        css_provider.load_from_data(css_data);
+        //  css_provider.load_from_data(css_data); ////
+        load_css(css_data);
         Gtk.StyleContext.add_provider_for_screen(
             screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         );
@@ -123,8 +124,13 @@ public class DesktopWeather : Gtk.Window {
         weather_image = new Gtk.Image();
         maingrid.attach(weather_image, 1, 1, 1, 5);
         // monitor
-        monitor = datasrc.monitor(FileMonitorFlags.NONE, null);
-        monitor.changed.connect(update_content);
+        try {
+            monitor = datasrc.monitor(FileMonitorFlags.NONE, null);
+            monitor.changed.connect(update_content);
+        }
+        catch (Error e) {
+            print("Error setting up monitor\n");
+        }
         update_content();
     }
 
@@ -155,7 +161,7 @@ public class DesktopWeather : Gtk.Window {
         this.move(xpos, ypos);
     }
 
-    private GLib.Settings get_settings(string path) {
+    private new GLib.Settings get_settings(string path) {
         var settings = new GLib.Settings(path);
         return settings;
     }
@@ -217,13 +223,22 @@ public class DesktopWeather : Gtk.Window {
         }
     }
 
+    private void load_css (string css_data) {
+        try {
+            css_provider.load_from_data(css_data);
+        }
+        catch (Error e) {
+            print("Error loading css\n");
+        }
+    }
+
     private void update_style() {
         // update the window if weather (file/datasrc) or settings changes
         // get/update textcolor
         css_data = get_css();
         weatherlabel.get_style_context().remove_class("label");
         locationlabel.get_style_context().remove_class("biglabel");
-        css_provider.load_from_data(css_data);
+        load_css(css_data);
         locationlabel.get_style_context().add_class("biglabel");
         weatherlabel.get_style_context().add_class("label");
     }
@@ -274,19 +289,24 @@ public class DesktopWeather : Gtk.Window {
                 string iconpath = GLib.Path.build_filename(
                     icondir, filename
                 );
-                iconpixbufs_1 += new Pixbuf.from_file_at_size (
-                    iconpath, 150, 150
-                );
-                iconpixbufs_2 += new Pixbuf.from_file_at_size (
-                    iconpath, 220, 220
-                );
-                iconpixbufs_3 += new Pixbuf.from_file_at_size (
-                    iconpath, 320, 320
-                );
+                try {
+                    iconpixbufs_1 += new Pixbuf.from_file_at_size (
+                        iconpath, 150, 150
+                    );
+                    iconpixbufs_2 += new Pixbuf.from_file_at_size (
+                        iconpath, 220, 220
+                    );
+                    iconpixbufs_3 += new Pixbuf.from_file_at_size (
+                        iconpath, 320, 320
+                    );
+                }
+                catch (Error e) {
+                    print("Error loading images\n");
+                }
             }
         } catch (FileError err) {
                 // unlikely to occur, but:
-                print("Something went wrong loading the icons");
+                print("Something went wrong loading the icons\n");
         }
     }
 
