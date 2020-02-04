@@ -112,7 +112,6 @@ public class DesktopWeather : Gtk.Window {
         locationlabel.set_xalign(0);
         // css (needs a separate function to update)
         css_provider = new Gtk.CssProvider();
-        //  css_provider.load_from_data(css_data); ////
         load_css(css_data);
         Gtk.StyleContext.add_provider_for_screen(
             screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
