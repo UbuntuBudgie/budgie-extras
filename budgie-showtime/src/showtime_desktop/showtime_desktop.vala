@@ -348,7 +348,7 @@ namespace  ShowTime {
             string[] monthdayvars = {
                 "%e", "%-e", "%_e", "%d", "%-d", "%_d"
             };
-            string cmd = "locale date_fmt";
+            string cmd = "/usr/bin/locale date_fmt";
             string output = "";
             try {
                 StringBuilder builder = new StringBuilder ();
@@ -411,7 +411,7 @@ namespace  ShowTime {
 
         private bool check_onapplet () {
             // check if the applet still runs
-            string cmd = "dconf dump /com/solus-project/budgie-panel/applets/";
+            string cmd = "/usr/bin/dconf dump /com/solus-project/budgie-panel/applets/";
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
