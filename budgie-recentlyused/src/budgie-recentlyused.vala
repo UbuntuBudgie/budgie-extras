@@ -109,8 +109,13 @@ namespace RecentlyUsedApplet {
             );
             rused_settings.changed.connect(update_menu);
             // monitor the .xbel file for changes
-            monitor = infofile.monitor (FileMonitorFlags.NONE, null);
-            monitor.changed.connect(update_menu);
+            try {
+                monitor = infofile.monitor (FileMonitorFlags.NONE, null);
+                monitor.changed.connect(update_menu);
+            }
+            catch (Error e) {
+                print("Unable to set up file monitor\n");
+            }
             button = new Gtk.MenuButton();
             button.set_relief(Gtk.ReliefStyle.NONE);
             var indicatorIcon = new Gtk.Image.from_icon_name(
@@ -127,23 +132,32 @@ namespace RecentlyUsedApplet {
             show_all();
         }
 
-        private Gtk.Menu create_menu() {
+        private Gtk.Menu create_menu(DataInputStream xbelcontent) {
             // get relevant lines
-            var dis = new DataInputStream (infofile.read ());
             string line;
             var sortlist = new ArrayList<string> ();
             HashMap<string, string> sortdict = new HashMap<string, string>();
-            while ((line = dis.read_line (null)) != null) {
-                if (line.contains("<bookmark href=\"file://")) {
-                    string[] subject = line.split("=\"");
-                    string timestamp = subject[3];
-                    // trim file path
-                    string path = replace(subject[1]);
-                    int len = path.char_count();
-                    sortdict[timestamp] = path[0:len-7];
-                    sortlist.add(timestamp);
+
+
+            try {
+                while ((line = xbelcontent.read_line (null)) != null) {
+                    if (line.contains("<bookmark href=\"file://")) {
+                        string[] subject = line.split("=\"");
+                        string timestamp = subject[3];
+                        // trim file path
+                        string path = replace(subject[1]);
+                        int len = path.char_count();
+                        sortdict[timestamp] = path[0:len-7];
+                        sortlist.add(timestamp);
+                    }
                 }
             }
+            catch (IOError e) {
+                print("Read error\n");
+            }
+
+
+
             // take care of sorting, slice
             sortlist.sort((a, b) => - a.collate(b));
             int n = 0;
@@ -170,7 +184,7 @@ namespace RecentlyUsedApplet {
                 string menuname = getmenuname(longname);
                 Gtk.MenuItem newitem = new Gtk.MenuItem.with_label(menuname);
                 // command
-                string command = "xdg-open " + "'" + longname.replace(
+                string command = "/usr/bin/xdg-open " + "'" + longname.replace(
                     "'", "'\\''"
                 ) + "'";;
                 // tooltip
@@ -231,9 +245,16 @@ namespace RecentlyUsedApplet {
             showtooltips = rused_settings.get_boolean("showtooltips");
             hidepath = rused_settings.get_boolean("hidepath");
             n_show = rused_settings.get_int("nitems");
-            recent = create_menu();
-            recent.show_all();
-            this.button.set_popup(recent);
+
+            try {
+                var dis = new DataInputStream (infofile.read ());
+                recent = create_menu(dis);
+                recent.show_all();
+                this.button.set_popup(recent);
+            }
+            catch (Error e) {
+                print("Unable to read xbel file\n");
+            }
         }
 
         public void initialiseLocaleLanguageSupport(){
