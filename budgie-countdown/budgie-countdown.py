@@ -21,21 +21,28 @@ import gi
 
 gi.require_version('Budgie', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, GdkPixbuf, Gtk
+from gi.repository import Budgie, GObject, GdkPixbuf, Gtk, Gio
 from threading import Thread
 import time
 import subprocess
 import ast
 
-settingspath = os.path.join(
-    os.environ["HOME"], ".config", "budgie-extras", "countdown",
+
+powersettings = Gio.Settings.new(
+    "org.gnome.settings-daemon.plugins.power"
 )
 
-dconf_key = "/org/gnome/settings-daemon/plugins/power/"
+
 subs = [
     ["ac", "sleep-inactive-ac-type"],
     ["battery", "sleep-inactive-battery-type"],
 ]
+
+
+settingspath = os.path.join(
+    os.environ["HOME"], ".config", "budgie-extras", "countdown",
+)
+
 
 try:
     os.makedirs(settingspath)
@@ -251,27 +258,20 @@ class CountDownApplet(Budgie.Applet):
                 open(file, "wt").write(str(newfile))
 
     def disable_suspend(self, filename, subkey):
-        key = dconf_key + subkey
-        currval = subprocess.check_output([
-            "dconf", "read", key,
-        ]).decode("utf-8").strip()
+        currval = powersettings.get_string(subkey)
         stored = os.path.join(settingspath, filename)
         open(stored, "wt").write(currval)
-        subprocess.Popen([
-            "dconf", "write", key, "'nothing'",
-        ])
+        powersettings.set_string(subkey, "nothing")
 
     def restore_prevset(self, filename, subkey):
-        key = dconf_key + subkey
         stored = os.path.join(settingspath, filename)
         try:
             prevset = open(stored).read().strip()
         except FileNotFoundError:
+            print("failing to reset")
             pass
         else:
-            subprocess.Popen([
-                "dconf", "write", key, prevset,
-            ])
+            powersettings.set_string(subkey, prevset)
 
     def two_dg(self, n):
         n = str(n)
@@ -317,12 +317,12 @@ class CountDownApplet(Budgie.Applet):
         if not self.cancel:
             if self.runvars["showwindow"]:
                 subprocess.Popen([
-                    "zenity", "--info", '--title=CountDown message',
+                    "/usr/bin/zenity", "--info", '--title=CountDown message',
                     "--text=Count Down has ended"
                 ])
             wait = any([flash, ringbell])
             bellcmd = [
-                "ogg123", "-q",
+                "/usr/bin/ogg123", "-q",
                 "/usr/share/sounds/freedesktop/stereo/complete.oga"
             ]
             if self.runvars["runcmd"]:
