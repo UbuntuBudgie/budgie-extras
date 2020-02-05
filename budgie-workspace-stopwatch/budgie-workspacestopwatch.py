@@ -6,7 +6,6 @@ gi.require_version('Wnck', '3.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Budgie, GObject, Gtk, Wnck, GLib
 import time
-import subprocess
 import ast
 
 

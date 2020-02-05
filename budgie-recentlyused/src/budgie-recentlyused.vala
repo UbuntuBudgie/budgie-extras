@@ -85,7 +85,7 @@ namespace RecentlyUsedApplet {
     public class Applet : Budgie.Applet {
 
         private File infofile;
-        private Gtk.Menu recent;
+        private Gtk.Menu? recent;
         private FileMonitor monitor;
         private Gtk.MenuButton button;
         private Gtk.EventBox indicatorBox;
@@ -225,7 +225,9 @@ namespace RecentlyUsedApplet {
 
         private void update_menu() {
             // empty menu, fill with updated content
-            recent.destroy();
+            if (recent != null) {
+                recent.destroy();
+            }
             showtooltips = rused_settings.get_boolean("showtooltips");
             hidepath = rused_settings.get_boolean("hidepath");
             n_show = rused_settings.get_int("nitems");
