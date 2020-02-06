@@ -279,7 +279,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
 
     def run_search(self, button):
         subprocess.Popen(
-            ["xdg-open", "https://www.timeanddate.com/time/map/"]
+            ["/usr/bin/xdg-open", "https://www.timeanddate.com/time/map/"]
         )
 
     def double_digits(self, t):
