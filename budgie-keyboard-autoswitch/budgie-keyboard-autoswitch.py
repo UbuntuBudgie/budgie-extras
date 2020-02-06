@@ -387,7 +387,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         # handle special cases
         try:
             cl = self.get([
-                "xprop", "-id", wid, "WM_CLASS"
+                "/usr/bin/xprop", "-id", wid, "WM_CLASS"
             ]).split("=")[-1].split(",")[-1].strip().strip('"')
         except (IndexError, AttributeError):
             pass
@@ -402,7 +402,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
 
     def get_activeclass(self):
         # get WM_CLASS of active window
-        currfront = self.get(["xdotool", "getactivewindow"])
+        currfront = self.get(["/usr/bin/xdotool", "getactivewindow"])
         return self.show_wmclass(currfront) if currfront else None
 
     def get_currlangname(self):
