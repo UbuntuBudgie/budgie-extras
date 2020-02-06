@@ -105,9 +105,10 @@ class KangarooSettings(Gtk.Grid):
         return spacegrid
 
     def get_directory(self, button):
+        # in future, use Gtk.FileChooser please
         try:
             directory = subprocess.check_output([
-                "zenity", "--file-selection", "--directory",
+                "/usr/bin/zenity", "--file-selection", "--directory",
             ]).decode("utf-8").strip()
         except subprocess.CalledProcessError:
             pass
@@ -276,7 +277,7 @@ class KangarooApplet(Budgie.Applet):
         # open the selected file on left click
         if button.button == 1:
             self.curr_subject = path
-            subprocess.Popen(["xdg-open", self.curr_subject])
+            subprocess.Popen(["/usr/bin/xdg-open", self.curr_subject])
 
     def open_onthree(self, event, button):
         # opens either the directory, if selected,
@@ -288,7 +289,7 @@ class KangarooApplet(Budgie.Applet):
                 path = self.currselectedfile[
                     :self.currselectedfile.rfind("/")
                 ]
-            subprocess.Popen(["xdg-open", path])
+            subprocess.Popen(["/usr/bin/xdg-open", path])
             self.menu.popdown()
 
     def do_get_settings_ui(self):
