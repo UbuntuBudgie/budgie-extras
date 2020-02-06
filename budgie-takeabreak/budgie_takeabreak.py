@@ -233,9 +233,9 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         try:
             # I know, old school, but it works well
             pid = subprocess.check_output([
-                "pgrep", "-f", "-u", user, app,
+                "/usr/bin/pgrep", "-f", "-u", user, app,
             ]).decode("utf-8").strip()
-            subprocess.Popen(["kill", pid])
+            subprocess.Popen(["/usr/bin/kill", pid])
         except subprocess.CalledProcessError:
             pass
         if state:
