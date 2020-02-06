@@ -36,7 +36,7 @@ def check_runs(pname):
     # get the pid of a proc
     try:
         pid = subprocess.check_output([
-            "pgrep", "-f", "-u", user, pname,
+            "/usr/bin/pgrep", "-f", "-u", user, pname,
         ]).decode("utf-8")
     except subprocess.CalledProcessError:
         return None
