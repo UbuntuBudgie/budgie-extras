@@ -368,7 +368,6 @@ class BudgieClockWorksApplet(Budgie.Applet):
         self.maingrid.attach(timezone_box, clock_id, 7, 1, 1)
         timezone_box.pack_start(offset_down, False, False, 0)
         timezone_box.pack_start(timezone_time, False, False, 0)
-        timezone_box.set_center_widget(timezone_time)
         timezone_box.pack_start(offset_up, False, False, 0)
         # label entry
         clockname_label = Gtk.Entry()
