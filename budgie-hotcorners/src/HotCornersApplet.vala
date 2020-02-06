@@ -620,7 +620,7 @@ namespace HotCornersApplet {
                 this.y_arr[0] - this.y_arr[this.time_steps - 1], 2
             );
             double travel = Math.pow(x_travel + y_travel, 0.5);
-            if (travel > this.pressure * 3) {
+            if (travel > this.pressure * 6) {
                 return true;
             }
             else {
