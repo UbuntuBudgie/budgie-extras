@@ -88,17 +88,17 @@ class Splash(Gtk.Window):
         self.move((x_res / 2 - x_size / 2) + xoffset, y_res - 180 + yoffset)
 
     def move_to(self, button, subj, wspace):
-        wmt.run(["wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
+        wmt.run(["/usr/bin/wmctrl", "-ir", subj.strip(), "-t", str(wspace)])
         targetx = str(100 + xoffset)
         targety = str(100 + yoffset)
-        wmt.run(["xdotool", "windowmove", subj, targetx, targety])
+        wmt.run(["/usr/bin/xdotool", "windowmove", subj, targetx, targety])
         self.stop()
 
     def busy(self, *args):
         open(fpath, "wt").write("")
 
     def move_desktop(self, button, subj, wspace):
-        wmt.run(["wmctrl", "-s", str(wspace)])
+        wmt.run(["/usr/bin/wmctrl", "-s", str(wspace)])
         self.stop()
 
     def stop(self, *args):

@@ -56,13 +56,17 @@ def get(cmd):
 def show_wmclass(wid):
     # get WM_CLASS from window- id
     try:
-        return get(["xprop", "-id", wid, "WM_CLASS"]).split("=")[-1].strip()
+        return get([
+            "/usr/bin/xprop",
+            "-id", wid,
+            "WM_CLASS"
+        ]).split("=")[-1].strip()
     except (IndexError, AttributeError):
         pass
 
 
 def get_wsdata():
-    wsdata = get(["wmctrl", "-d"]).splitlines()
+    wsdata = get(["/usr/bin/wmctrl", "-d"]).splitlines()
     return (len(wsdata), wsdata.index([l for l in wsdata if "*" in l][0]))
 
 
@@ -122,7 +126,7 @@ def find_bar():
 def callwindow(target, xres, yres, xoffset, yoffset):
     wtype = show_wmclass(target)
     if wtype in ignore:
-        run(["notify-send", "-i", "wmover-panel",
+        run(["/usr/bin/notify-send", "-i", "wmover-panel",
              "WindowMover", "Please first activate a window."])
     else:
         runwindow(target, xres, yres, xoffset, yoffset)
@@ -144,7 +148,7 @@ def runwindow(target, xres, yres, xoffset, yoffset):
 
 def get_font():
     key = ["org.gnome.desktop.wm.preferences", "titlebar-font"]
-    fontdata = get(["gsettings", "get", key[0], key[1]]).strip("'")
+    fontdata = get(["/usr/bin/gsettings", "get", key[0], key[1]]).strip("'")
     fdscr = Pango.FontDescription(fontdata)
     return Pango.FontDescription.get_family(fdscr)
 
@@ -155,12 +159,12 @@ def limit_exist():
     while True:
         time.sleep(1)
         if t >= 5:
-            run(["wmctrl", "-ic", find_bar()])
+            run(["/usr/bin/wmctrl", "-ic", find_bar()])
             break
         else:
             try:
-                if "w_moversplash" in get(["wmctrl", "-l"]):
-                    run(["wmctrl", "-a", "w_moversplash"])
+                if "w_moversplash" in get(["/usr/bin/wmctrl", "-l"]):
+                    run(["/usr/bin/wmctrl", "-a", "w_moversplash"])
                 else:
                     break
             except TypeError:

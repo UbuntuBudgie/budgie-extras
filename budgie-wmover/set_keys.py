@@ -46,7 +46,10 @@ def get_currnames():
     else:
         for c in customs:
             name = get([
-                "gsettings", "get", key[0] + "." + key[2] + ":" + c, "name",
+                "/usr/bin/gsettings",
+                "get",
+                key[0] + "." + key[2] + ":" + c,
+                "name",
             ]).replace("'", "")
             if name in shortcut_names:
                 relevant.append(c)
@@ -59,7 +62,7 @@ def remove_custom():
     remove = get_currnames()[1]
     newlist = [item for item in customs if item not in remove]
     subprocess.call([
-        "gsettings", "set", key[0], key[1], str(newlist),
+        "/usr/bin/gsettings", "set", key[0], key[1], str(newlist),
     ])
 
 
@@ -70,7 +73,7 @@ def define_keyboard_shortcut(name, command, shortcut):
     item_s = "/" + subkey1[:-1] + "s".replace(".", "/") + "/"
     firstname = "custom"
     # get the current list of custom shortcuts
-    getcurrent = get(["gsettings", "get", key[0], key[1]])
+    getcurrent = get(["/usr/bin/gsettings", "get", key[0], key[1]])
     if '@as []' in getcurrent:
         current = []
     else:
@@ -92,7 +95,7 @@ def define_keyboard_shortcut(name, command, shortcut):
         [subkey1 + new, "command", command],
         [subkey1 + new, "binding", shortcut],
     ]):
-        subprocess.call(["gsettings", "set"] + cmd)
+        subprocess.call(["/usr/bin/gsettings", "set"] + cmd)
 
 
 def change_keys(arg):

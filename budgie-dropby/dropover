@@ -288,7 +288,11 @@ class WatchVolumes:
         self.act_onmount = True
 
     def checkonapplet(self):
-        cmd = ["/usr/bin/dconf", "dump", "/com/solus-project/budgie-panel/applets/"]
+        cmd = [
+            "/usr/bin/dconf",
+            "dump",
+            "/com/solus-project/budgie-panel/applets/"
+        ]
         try:
             return "DropBy" in subprocess.check_output(
                 cmd).decode("utf-8")

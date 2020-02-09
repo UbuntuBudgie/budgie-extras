@@ -35,7 +35,10 @@ def notify_result(n):
     ]
     message = err[n]
     subprocess.Popen([
-        "/usr/bin/notify-send", "-i", "media-flash-symbolic", "Copy result", message
+        "/usr/bin/notify-send",
+        "-i", "media-flash-symbolic",
+        "Copy result",
+        message
     ])
 
 

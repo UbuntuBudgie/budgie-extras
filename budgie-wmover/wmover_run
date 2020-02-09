@@ -32,7 +32,9 @@ def run_wmover():
     while True:
         if t_res == 20:
             # see if the user is still around
-            if user not in subprocess.check_output("who").decode("utf-8"):
+            if user not in subprocess.check_output(
+                "/usr/bin/who"
+            ).decode("utf-8"):
                 break
             t_res = 0
         # master loop
@@ -53,7 +55,7 @@ def run_wmover():
 
 
 def singlerun():
-    target = wmt.get(["xdotool", "getactivewindow"])
+    target = wmt.get(["/usr/bin/xdotool", "getactivewindow"])
     if target:
         wmt.callwindow(target, xres, yres, xoffset, yoffset)
 

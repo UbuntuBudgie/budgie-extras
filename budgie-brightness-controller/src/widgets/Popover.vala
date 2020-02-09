@@ -227,7 +227,7 @@ public class Popover : Budgie.Popover
                 PopulateLight(CurrentLight);
                 lightHelper.Save();
             }
-        } 
+        }
         catch (Error e)
         {
             GLib.message("Failed to run : %s", e.message);
