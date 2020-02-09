@@ -1,11 +1,11 @@
 /*
- * BrightnessController 
+ * BrightnessController
  * This file is part of budgie-extras
- * 
+ *
  * Author: Serdar ŞEN github.com/serdarsen
- * 
+ *
  * Copyright © 2018-2020 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -16,7 +16,7 @@ using BrightnessController.Widgets;
 using BrightnessController.Helpers;
 
 namespace BrightnessController
-{ 
+{
 public class Applet : Budgie.Applet
 {
     private IndicatorButton indicatorButton;
@@ -41,17 +41,17 @@ public class Applet : Budgie.Applet
 
     public void AddPressEventToIndicatorButton()
     {
-        indicatorButton.button_press_event.connect((e)=> 
+        indicatorButton.button_press_event.connect((e)=>
         {
-            if (e.button != 1) 
+            if (e.button != 1)
             {
                 return Gdk.EVENT_PROPAGATE;
             }
-            if (popover.get_visible()) 
+            if (popover.get_visible())
             {
                 popover.hide();
-            } 
-            else 
+            }
+            else
             {
                 this.manager.show_popover(indicatorButton);
                 popover.OnShow();

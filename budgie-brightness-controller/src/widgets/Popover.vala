@@ -1,11 +1,11 @@
 /*
- * BrightnessController 
+ * BrightnessController
  * This file is part of budgie-extras
- * 
+ *
  * Author: Serdar ŞEN github.com/serdarsen
- * 
+ *
  * Copyright © 2018-2020 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -18,7 +18,7 @@ using BrightnessController.Models;
 
 namespace BrightnessController.Widgets
 {
-public class Popover : Budgie.Popover 
+public class Popover : Budgie.Popover
 {
     private Gtk.Grid grid;
     private CustomScale dimScale;
@@ -29,10 +29,10 @@ public class Popover : Budgie.Popover
     private Gtk.Label lightLabel;
     private DimHelper dimHelper;
     private LightHelper lightHelper;
-    private Dim CurrentDim {get; set;} 
-    private Light CurrentLight {get; set;} 
+    private Dim CurrentDim {get; set;}
+    private Light CurrentLight {get; set;}
 
-    public Popover(IndicatorButton indicatorButton, int witdh, int height) 
+    public Popover(IndicatorButton indicatorButton, int witdh, int height)
     {
         Object(relative_to: indicatorButton);
 
@@ -55,7 +55,7 @@ public class Popover : Budgie.Popover
     public void BuildViews()
     {
         BuildGrid();
-        
+
         if(dimHelper.IsAvailable)
         {
             BuildDim();
@@ -92,11 +92,11 @@ public class Popover : Budgie.Popover
         dimScale = new CustomScale(0, 10, 0, 1, 0.1, 0);
         blueScale = new CustomScale(0, 10, 0, 1, 0.1, 0);
 
-        dimHelper.list.foreach((dim)=> 
+        dimHelper.list.foreach((dim)=>
         {
             var item = new Gtk.MenuItem.with_label(dim.Name);
             menuButton.Add(item);
-            item.activate.connect(()=> 
+            item.activate.connect(()=>
             {
                 menuButton.Select(item);
                 dimHelper.SetActive(dim);
@@ -110,15 +110,15 @@ public class Popover : Budgie.Popover
             }
         });
         menuButton.ShowAll();
-        
-        dimScale.value_changed.connect(()=> 
+
+        dimScale.value_changed.connect(()=>
         {
             CurrentDim.Brightness = dimScale.Value;
             dimLabel.set_text(CurrentDim.BrightnessText);
             dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
         });
 
-        blueScale.value_changed.connect(()=> 
+        blueScale.value_changed.connect(()=>
         {
             CurrentDim.Blue = blueScale.Value;
             blueLabel.set_text(CurrentDim.BlueText);
@@ -143,11 +143,11 @@ public class Popover : Budgie.Popover
         lightLabel.set_tooltip_text(_("Brightness"));
         lightScale = new CustomScale(0, 0, 0, 1, 1, 0);
 
-        lightHelper.list.foreach((light) => 
+        lightHelper.list.foreach((light) =>
         {
             var item = new Gtk.MenuItem.with_label(light.Name);
             menuButton.Add(item);
-            item.activate.connect(()=> 
+            item.activate.connect(()=>
             {
                 menuButton.Select(item);
                 lightHelper.SetActive(light);
@@ -162,7 +162,7 @@ public class Popover : Budgie.Popover
         });
         menuButton.ShowAll();
 
-        lightScale.value_changed.connect(()=> 
+        lightScale.value_changed.connect(()=>
         {
             CurrentLight.Brightness = lightScale.Value;
             lightLabel.set_text(CurrentLight.BrightnessText);
@@ -175,7 +175,7 @@ public class Popover : Budgie.Popover
         grid.attach(lightLabel, 0, 2, 1, 1);
     }
     //[END Build]
-    
+
     //[START Populate]
     private void PopulateLight(Light light)
     {
@@ -201,15 +201,19 @@ public class Popover : Budgie.Popover
         string output = "";
         var subprocessLauncher = new SubprocessLauncher (SubprocessFlags.STDOUT_PIPE);
 
-        try 
+        try
         {
             if(lightHelper.haveGnomeSettingsDaemon332)
             {
-                yield subprocessLauncher.spawnv({"cat", @"/sys/class/backlight/$name/brightness"}).communicate_utf8_async(null, null, out output, null);
+                yield subprocessLauncher.spawnv(
+                    {"/usr/bin/cat", @"/sys/class/backlight/$name/brightness"}
+                ).communicate_utf8_async(null, null, out output, null);
             }
             else if(lightHelper.haveGnomeSettingsDaemonOlderThan332)
             {
-                yield subprocessLauncher.spawnv({"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--get-brightness"}).communicate_utf8_async(null, null, out output, null);
+                yield subprocessLauncher.spawnv(
+                    {"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--get-brightness"}
+                ).communicate_utf8_async(null, null, out output, null);
             }
 
             if(output == "")
@@ -219,12 +223,12 @@ public class Popover : Budgie.Popover
 
             if(CurrentLight.Brightness != output.to_double())
             {
-                CurrentLight.Brightness = output.to_double(); 
+                CurrentLight.Brightness = output.to_double();
                 PopulateLight(CurrentLight);
                 lightHelper.Save();
             }
         } 
-        catch (Error e) 
+        catch (Error e)
         {
             GLib.message("Failed to run : %s", e.message);
         }

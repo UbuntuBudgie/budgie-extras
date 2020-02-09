@@ -1,33 +1,33 @@
 /*
- * BrightnessController 
+ * BrightnessController
  * This file is part of budgie-extras
- * 
+ *
  * Author: Serdar ŞEN github.com/serdarsen
- * 
+ *
  * Copyright © 2018-2020 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  */
- 
-namespace BrightnessController.Widgets 
+
+namespace BrightnessController.Widgets
 {
 public class CustomScale : Gtk.Scale
 {
-    public double Value 
+    public double Value
     {
-        get{return adjustment.value;} 
+        get{return adjustment.value;}
         set{adjustment.value = value;}
     }
 
-    public CustomScale(double currentValue, double lower, double upper, 
+    public CustomScale(double currentValue, double lower, double upper,
                        double stepIncrement, double pageIncrement, double pageSize)
     {
         adjustment.value = currentValue;
         adjustment.lower = lower;
-        
+
         adjustment.step_increment = stepIncrement;
         adjustment.page_increment = pageIncrement;
         adjustment.page_size = pageSize;
@@ -47,7 +47,7 @@ public class CustomScale : Gtk.Scale
     {
         adjustment.value = currentValue;
         adjustment.upper = upper;
-    
+
         if(upper >= 100)
         {
             adjustment.lower = 10;

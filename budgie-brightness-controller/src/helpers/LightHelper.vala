@@ -1,29 +1,29 @@
 /*
- * BrightnessController 
+ * BrightnessController
  * This file is part of budgie-extras
- * 
+ *
  * Author: Serdar ŞEN github.com/serdarsen
- * 
+ *
  * Copyright © 2018-2020 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  */
- 
+
 using BrightnessController.Models;
 
-namespace BrightnessController.Helpers 
+namespace BrightnessController.Helpers
 {
 /**
- * LightHelper is a helper to work with 
+ * LightHelper is a helper to work with
  * GNOME/gnome-settings-daemon gsd-backlight-helper
  * Currently working correctly with GNOME_SETTINGS_DAEMON_3_32_0
- * 
- * https://github.com/GNOME/gnome-settings-daemon/releases 
- * 
- */    
+ *
+ * https://github.com/GNOME/gnome-settings-daemon/releases
+ *
+ */
 public class LightHelper
 {
     public bool IsAvailable {get; set;}
@@ -49,7 +49,7 @@ public class LightHelper
         var retrivedLightNames = new string[]{};
         var lightObjects = configHelper.Read();
 
-        foreach (var obj in lightObjects) 
+        foreach (var obj in lightObjects)
         {
             var properties = obj.split(" ");
             if(properties.length > 3)
@@ -67,7 +67,7 @@ public class LightHelper
         }
 
         // Load Lights Frome Device
-        var lightsString = subprocessHelper.RunAndGetResult({"ls", "/sys/class/backlight"});
+        var lightsString = subprocessHelper.RunAndGetResult({"/usr/bin/ls", "/sys/class/backlight"});
 
         lightsString = lightsString._strip();
         if (lightsString == "")
@@ -80,14 +80,14 @@ public class LightHelper
         foreach (var name in lightNames)
         {
             name = name._strip();
-            if(name != "" 
+            if(name != ""
                && !strv_contains(retrivedLightNames, name))
             {
                 var light = new Light();
-                light.Name = name; 
+                light.Name = name;
                 light.MaxBrightness = GetMaxBrightness(name);
                 light.Brightness = GetBrightness(name);
-              
+
                 if(lightNamesCount == 0)
                 {
                     light.IsActive = true;
@@ -100,7 +100,7 @@ public class LightHelper
 
                 //print(@"Load Lighs From Device: %s, %s, %s, %s \n", light.Name, light.MaxBrightnessText, light.BrightnessText, light.IsActive.to_string());
                 lightNamesCount++;
-            }       
+            }
         }
 
         #if HAVE_GNOME_SETTINGS_DAEMON_3_32_0
@@ -122,8 +122,8 @@ public class LightHelper
         else
         {
             print("is not available");
-            IsAvailable = false; 
-  
+            IsAvailable = false;
+
             var lightListLength = list.length();
             GLib.message(@"Light is not available (Gnome Settings Daemon version >= 3.32.0: $haveGnomeSettingsDaemon332, Number of Lights: $lightListLength)\n");
         }
@@ -131,12 +131,12 @@ public class LightHelper
 
     private double GetMaxBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({"cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({"/usr/bin/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
     }
 
     public double GetBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({"cat", @"/sys/class/backlight/$name/brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({"/usr/bin/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
     }
 
     public void SetBrightness(string name, double brightness)
@@ -144,11 +144,11 @@ public class LightHelper
         var brightnessInt = (int)brightness;
         if(haveGnomeSettingsDaemon332)
         {
-            subprocessHelper.Run({"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
+            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }
         else if(haveGnomeSettingsDaemonOlderThan332)
         {
-            subprocessHelper.Run({"pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--set-brightness", @"$brightnessInt"});
+            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--set-brightness", @"$brightnessInt"});
         }
 
         Save();
@@ -167,7 +167,7 @@ public class LightHelper
     public void Save()
     {
         var data = new string[]{};
-        list.foreach((light)=> 
+        list.foreach((light)=>
         {
             var name = light.Name;
             var maxBrightness = light.MaxBrightnessText;

@@ -1,11 +1,11 @@
 /*
- * BrightnessController 
+ * BrightnessController
  * This file is part of budgie-extras
- * 
+ *
  * Author: Serdar ŞEN github.com/serdarsen
- * 
+ *
  * Copyright © 2018-2020 Ubuntu Budgie Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -14,13 +14,13 @@
 
 using BrightnessController.Models;
 
-namespace BrightnessController.Helpers 
+namespace BrightnessController.Helpers
 {
 /**
- * DimHelper is a helper to work with 
+ * DimHelper is a helper to work with
  * xrandr
  * Currently working correctly with xrandr-1.5.0
- * 
+ *
  */
 public class DimHelper
 {
@@ -48,7 +48,7 @@ public class DimHelper
         var retrivedDimNames = new string[]{};
         var dimObjects = configHelper.Read();
 
-        foreach (var obj in dimObjects) 
+        foreach (var obj in dimObjects)
         {
             var properties = obj.split(" ");
             if(properties.length > 4)
@@ -67,9 +67,9 @@ public class DimHelper
         }
 
         // Load Dims From Device
-        var dimsString = subprocessHelper.RunAndGetResult({"xrandr", "-q"});
+        var dimsString = subprocessHelper.RunAndGetResult({"/usr/bin/xrandr", "-q"});
 
-        dimsString = dimsString._strip(); 
+        dimsString = dimsString._strip();
         if (dimsString == "")
         {
             return;
@@ -89,11 +89,11 @@ public class DimHelper
                         && !strv_contains(retrivedDimNames, words[0]))
                     {
                         var dim = new Dim();
-                        dim.Name = words[0]; 
+                        dim.Name = words[0];
                         dim.MaxBrightness = 100;
                         dim.Brightness = 100;
                         dim.Blue = 100;
-                    
+
                         if(connectedDeviceCount == 0)
                         {
                             dim.IsActive = true;
@@ -103,13 +103,13 @@ public class DimHelper
                             dim.IsActive = false;
                         }
                         list.append(dim);
-                        
+
                         //print(@"Load Dims From Device: %s, %s, %s, %s \n", dim.Name, dim.MaxBrightnessText, dim.BrightnessText, dim.IsActive.to_string());
                         connectedDeviceCount++;
                     }
                 }
             }
-        }   
+        }
 
         #if HAVE_XRANDR_1_5_0
             haveXrandr150 = true;
@@ -127,13 +127,13 @@ public class DimHelper
             GLib.message(@"Dim is not available (Xrandr version >= 1.5.0: $haveXrandr150, Number of Dims: $dimListLength)\n");
         }
     }
-    
+
     public void SetBrightness(string name, double brightness, double blue)
     {
         //print(@"DimHelper.SetBrightness: $name $brightness \n");
         var aOnePercentOfbrightness = brightness / 100;
         var aOnePercentOfBlue = blue / 100;
-        subprocessHelper.Run({"xrandr", "--output", @"$name", "--gamma", @"1:1:$aOnePercentOfBlue", "--brightness", @"$aOnePercentOfbrightness"});
+        subprocessHelper.Run({"/usr/bin/xrandr", "--output", @"$name", "--gamma", @"1:1:$aOnePercentOfBlue", "--brightness", @"$aOnePercentOfbrightness"});
         Save();
     }
 
@@ -150,7 +150,7 @@ public class DimHelper
     public void Save()
     {
         var data = new string[]{};
-        list.foreach((dim)=> 
+        list.foreach((dim)=>
         {
             var name = dim.Name;
             var maxBrightness = dim.MaxBrightnessText;
