@@ -35,7 +35,7 @@ def notify_result(n):
     ]
     message = err[n]
     subprocess.Popen([
-        "notify-send", "-i", "media-flash-symbolic", "Copy result", message
+        "/usr/bin/notify-send", "-i", "media-flash-symbolic", "Copy result", message
     ])
 
 
@@ -53,11 +53,11 @@ def check_permissions(target):
 
 
 def cont(source, targetdir):
-    subprocess.Popen(["xdg-open", target])
+    subprocess.Popen(["/usr/bin/xdg-open", target])
     time.sleep(0.5)
     try:
         question = subprocess.check_output([
-            "zenity", "--question",
+            "/usr/bin/zenity", "--question",
             "--title", "Directory exists",
             "--text", "A previous copy exists. Please remove it first.",
             "--ok-label=Proceed", "--cancel-label=Cancel",
@@ -87,7 +87,7 @@ def copy(source, targetdir):
 # get targeted path
 try:
     target = subprocess.check_output([
-        "zenity", "--file-selection", "--directory",
+        "/usr/bin/zenity", "--file-selection", "--directory",
         '--title=Choose a target directory',
     ]).decode("utf-8").strip()
 except subprocess.CalledProcessError:

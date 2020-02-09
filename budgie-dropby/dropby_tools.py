@@ -79,7 +79,7 @@ def get_mounted():
 def uuid_todev(uuid):
     try:
         return subprocess.check_output(
-            ["findfs", "UUID=" + uuid]
+            ["/usr/sbin/findfs", "UUID=" + uuid]
         ).decode("utf-8").strip()
     except (subprocess.CalledProcessError, TypeError):
         return None

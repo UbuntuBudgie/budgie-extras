@@ -58,7 +58,7 @@ class WatchVolumes:
     def process_check(self, process):
         try:
             pid = subprocess.check_output([
-                "pgrep", "-f", process
+                "/usr/bin/pgrep", "-f", process
             ]).decode("utf-8")
             return True
         except subprocess.CalledProcessError:
@@ -66,7 +66,7 @@ class WatchVolumes:
 
     def process_kill(self, procname):
         try:
-            subprocess.call(["pkill", "-f", procname])
+            subprocess.call(["/usr/bin/pkill", "-f", procname])
         except subprocess.CalledProcessError:
             pass
 
@@ -279,7 +279,7 @@ class WatchVolumes:
 
     def open_folder(self, *args):
         path = list(args)[-1]
-        subprocess.Popen(["xdg-open", path])
+        subprocess.Popen(["/usr/bin/xdg-open", path])
 
     def mount_volume(self, button, vol):
         Gio.Volume.mount(
@@ -288,7 +288,7 @@ class WatchVolumes:
         self.act_onmount = True
 
     def checkonapplet(self):
-        cmd = ["dconf", "dump", "/com/solus-project/budgie-panel/applets/"]
+        cmd = ["/usr/bin/dconf", "dump", "/com/solus-project/budgie-panel/applets/"]
         try:
             return "DropBy" in subprocess.check_output(
                 cmd).decode("utf-8")
