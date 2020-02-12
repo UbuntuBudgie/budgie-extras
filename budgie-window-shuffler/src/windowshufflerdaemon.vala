@@ -196,13 +196,13 @@ namespace ShufflerEssentialInfo {
                     int tileheight = (int)(fullheight/rows);
                     int NEx = (mon_wa.x * scale) + marginleft;
                     int origx = NEx;
-                    while (NEx < origx + fullwidth) {
+                    while (NEx < origx + fullwidth - marginright) {
                         xpositions += NEx;
                         NEx += tilewidth;
                     }
                     int NEy = (mon_wa.y * scale) + margintop;
                     int origy = NEy;
-                    while (NEy < origy + fullheight) {
+                    while (NEy < origy + fullheight - marginbottom) {
                         ypositions += NEy;
                         NEy += tileheight;
                     }
