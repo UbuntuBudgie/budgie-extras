@@ -35,11 +35,13 @@ namespace JumpActive {
         public abstract int getactivewin () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
+        public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
         public abstract int get_yshift (int w_id) throws Error;
         public abstract string getactivemon_name () throws Error;
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
+        public abstract bool get_softmove () throws Error;
         public abstract int[] get_margins () throws Error;
 
     }
@@ -179,10 +181,23 @@ namespace JumpActive {
                 }
                 // move subject to targeted position
                 if (!samewindow) {
-                    client.move_window(
-                        activewin, nextx, nexty - yshift,
-                        tilewidth + correct_padding, tileheight + correct_padding
-                    );
+                    bool softmove = client.get_softmove();
+                    if (softmove) {
+                        client.move_window_animated(
+                            activewin, nextx, nexty - yshift,
+                            tilewidth + correct_padding,
+                            tileheight + correct_padding
+                        );
+                    }
+                    else {
+                        client.move_window(
+                            activewin, nextx, nexty - yshift,
+                            tilewidth + correct_padding,
+                            tileheight + correct_padding
+                        );
+                    }
+
+
                 }
             }
         }

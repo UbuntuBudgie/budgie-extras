@@ -32,6 +32,28 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+SoftMoveSources = [
+    'softmove.vala'
+]
+
+SoftMoveDependencies = [
+    dependency('gio-2.0'),
+    meson.get_compiler('c').find_library('m', required: false)
+]
+
+SoftMoveCArgs = [
+    '-lm'
+]
+
+executable(
+    'softmove', SoftMoveSources,
+    dependencies: SoftMoveDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: SoftMoveCArgs,
+    install_dir: LIB_INSTALL_DIR,
+)
+
 GridAllSources = [
     'grid_all.vala'
 ]

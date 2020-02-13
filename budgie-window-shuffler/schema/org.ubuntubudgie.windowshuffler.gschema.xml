@@ -19,6 +19,11 @@
             <description>If a window jumps to another position where already is another window, swap window size and position</description>
             <default>true</default>
         </key>
+        <key type="b" name="softmove">
+            <summary>Use animation on xy move and xy tile actions</summary>
+            <description>WHen a window is moved by tiling or move, use smooth transition</description>
+            <default>true</default>
+        </key>
         <key type="b" name="runshuffler">
             <summary>Run the WindowShuffler daemon</summary>
             <description>Run the daemon to be able to use shortcuts and cli options of Window Shuffler</description>

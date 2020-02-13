@@ -36,6 +36,7 @@ namespace ShufflerEssentialInfo {
     int scale;
     // dconf
     GLib.Settings shuffler_settings;
+    bool soft_move;
     int setcols;
     int setrows;
     int padding;
@@ -139,6 +140,20 @@ namespace ShufflerEssentialInfo {
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
                 now_move(w, x, y, width, height);
+            }
+        }
+
+        public void move_window_animated (
+            int w_id, int x, int y, int width, int height
+        ) throws Error {
+            // move window, animated
+            string cm = Config.PACKAGE_LIBDIR + "/softmove ".concat(
+                @" $w_id $x $y $width $height"
+            );
+            try {
+                Process.spawn_command_line_async(cm);
+            }
+            catch (SpawnError e) {
             }
         }
 
@@ -248,6 +263,10 @@ namespace ShufflerEssentialInfo {
 
         public int[] get_grid() throws Error {
             return {setcols, setrows};
+        }
+
+        public bool get_softmove() throws Error {
+            return soft_move;
         }
 
         public bool swapgeo() throws Error {
@@ -504,6 +523,7 @@ namespace ShufflerEssentialInfo {
         margintop = shuffler_settings.get_int("margintop");
         marginbottom = shuffler_settings.get_int("marginbottom");
         padding = shuffler_settings.get_int("padding");
+        soft_move = shuffler_settings.get_boolean("softmove");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
