@@ -126,11 +126,18 @@ namespace TileActive {
             // vars
             int yshift = 0;
             string winsmonitor = "";
+            int[] currwincoords = {}; ///
             foreach (string s in windata_keys) {
                 if (int.parse(s) == activewin) {
                     yshift = client.get_yshift(activewin);
                     Variant currwindata = windata[s];
                     winsmonitor = (string)currwindata.get_child_value(2);
+                    currwincoords = {
+                        (int)currwindata.get_child_value(3),
+                        (int)currwindata.get_child_value(4),
+                        (int)currwindata.get_child_value(5),
+                        (int)currwindata.get_child_value(6),
+                    };
                 }
             }
             // get tiles -> matching tile
@@ -148,10 +155,16 @@ namespace TileActive {
                     int tile_y = (int)currtile.get_child_value(1);
                     int tile_wdth = orig_width * ntiles_x;
                     int tile_hght = orig_height * ntiles_y;
-                    client.move_window(
-                        activewin, tile_x, tile_y - yshift,
-                        tile_wdth, tile_hght
-                    );
+
+                    int[] tiletarget = {
+                        tile_x, tile_y, tile_wdth, tile_hght
+                    };
+                    if (currwincoords != tiletarget) {
+                        client.move_window(
+                            activewin, tile_x, tile_y - yshift,
+                            tile_wdth, tile_hght
+                        );
+                    }
                 }
             }
         }
