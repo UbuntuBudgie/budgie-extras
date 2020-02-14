@@ -43,6 +43,7 @@ namespace JumpActive {
         public abstract bool check_ifguiruns () throws Error;
         public abstract bool get_softmove () throws Error;
         public abstract int[] get_margins () throws Error;
+        public abstract bool get_general_animations_set () throws Error;
     }
 
     private bool procruns (string processname) {
@@ -163,13 +164,10 @@ namespace JumpActive {
                         break;
                 }
                 int yshift = client.get_yshift(activewin);
-
                 // move window to target -if it isn't already there-
                 bool samewindow = winx == nextx && winy == nexty;
-
                 GLib.List<weak string> winkeys = wins.get_keys();
                 int correct_padding = 0;
-
                 // if swapgemetry
                 if (client.swapgeo()) {
                     int winwidth = (int)activewin_data.get_child_value(5);
@@ -204,7 +202,7 @@ namespace JumpActive {
                 }
                 // move subject to targeted position
                 if (!samewindow) {
-                    bool softmove = client.get_softmove();
+                    bool softmove = client.get_softmove() && client.get_general_animations_set();
                     if (softmove) {
                         client.move_window_animated(
                             activewin, nextx, nexty - yshift,

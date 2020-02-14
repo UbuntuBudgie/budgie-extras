@@ -68,7 +68,8 @@ namespace CalculateTracks {
             foreach (double ad in accumulated) {
                 double relative = ad / largest;
                 xarr += (double)orig_x + (round(relative * (double)xtrack));
-                yarr += (double)orig_y + (round(relative * (double)ytrack)) - ((1 - relative) * yshift); // now think of that!
+                // now think of that: ((1 - relative) * yshift) (!)
+                yarr += (double)orig_y + (round(relative * (double)ytrack)) - ((1 - relative) * yshift);
             }
             // now first resize, one step
             client.move_window(wid, orig_x, orig_y - yshift, trg_w, trg_h);
@@ -111,75 +112,4 @@ namespace CalculateTracks {
         }
         return {0, 0};
     }
-
-    //  private void calctracks (
-    //      ShufflerInfoClient client, int wid,
-    //      int trg_x, int trg_y, int trg_w, int trg_h
-    //  ) {
-        //  int[] originals = get_startposition(client, wid);
-        //  int yshift = client.get_yshift(wid);
-        //  // get from server
-        //  int orig_x = originals[0];
-        //  int orig_y = originals[1];
-        //  // let's see which of the properties shows the biggest change
-        //  int xtrack = trg_x - orig_x;
-        //  int ytrack = trg_y - orig_y;
-        //  double[] xarr = {};
-        //  double[] yarr = {};
-        //  // find largest track
-        //  int[] tracks = {xtrack, ytrack};
-        //  int largest = 0;
-        //  int largest_abs = 0;
-        //  int i = 0;
-        //  int index = 0;
-        //  foreach (int n in tracks) {
-        //      int absval = n.abs();
-        //      if (absval > largest_abs) {
-        //          largest = n;
-        //          largest_abs = absval;
-
-        //          index = i;
-        //      }
-        //      i += 1;
-        //  }
-        //  // steps array to calculate with, based on longest track
-        //  double[] calc_array = {};
-        //  double temp_largest = largest;
-        //  double nextstep = 10000;
-        //  while (fabs(nextstep) > 1) {
-        //      nextstep = temp_largest / 4.0;
-        //      calc_array += nextstep;
-        //      temp_largest = temp_largest - nextstep;
-        //  }
-        //  // create acumulated values
-        //  double[] accumulated = {};
-        //  double temp_currtotal = 0;
-        //  foreach (double d in calc_array) {
-        //      temp_currtotal = temp_currtotal + d;
-        //      accumulated += temp_currtotal;
-        //  }
-        //  // now fill in all arrays (accumulated)
-        //  foreach (double ad in accumulated) {
-        //      double relative = ad / largest;
-        //      xarr += (double)orig_x + (round(relative * (double)xtrack));
-        //      yarr += (double)orig_y + (round(relative * (double)ytrack)) - ((1 - relative) * yshift); // now think of that!
-        //  }
-        //  // now first resize, one step
-        //  client.move_window(wid, orig_x, orig_y - yshift, trg_w, trg_h);
-        //  Thread.usleep(2000);
-        //  // then make the move
-        //  int ind = 0;
-        //  int xn = 0;
-        //  int yn = 0;
-        //  foreach (double d in xarr) {
-        //      Thread.usleep(2000);
-        //      xn = (int)xarr[ind];
-        //      yn = (int)yarr[ind];
-        //      client.move_window(wid, xn, yn , trg_w, trg_h);
-        //      ind += 1;
-        //  }
-        //  // finish
-        //  Thread.usleep(2000);
-        //  client.move_window(wid, trg_x, trg_y, trg_w, trg_h);
-    //  }
 }

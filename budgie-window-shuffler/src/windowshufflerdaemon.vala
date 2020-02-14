@@ -36,6 +36,8 @@ namespace ShufflerEssentialInfo {
     int scale;
     // dconf
     GLib.Settings shuffler_settings;
+    GLib.Settings desktop_settings;
+    bool desktop_animations_set;
     bool soft_move;
     int setcols;
     int setrows;
@@ -267,6 +269,10 @@ namespace ShufflerEssentialInfo {
 
         public bool get_softmove() throws Error {
             return soft_move;
+        }
+
+        public bool get_general_animations_set () throws Error {
+            return desktop_animations_set;
         }
 
         public bool swapgeo() throws Error {
@@ -535,6 +541,10 @@ namespace ShufflerEssentialInfo {
         }
     }
 
+    private void update_desktopsettings () {
+        desktop_animations_set = desktop_settings.get_boolean("enable-animations");
+    }
+
     public static int main (string[] args) {
         Gtk.init(ref args);
         // FileMonitor stuff, see if gui runs (disable jump & tileactive)
@@ -554,6 +564,9 @@ namespace ShufflerEssentialInfo {
         shuffler_settings = get_settings("org.ubuntubudgie.windowshuffler");
         shuffler_settings.changed.connect(update_settings);
         update_settings();
+        desktop_settings = get_settings("org.gnome.desktop.interface");
+        desktop_settings.changed["enable-animations"].connect(update_desktopsettings);
+        update_desktopsettings();
         // X11 stuff, non-dynamic part
         unowned X.Window xwindow = Gdk.X11.get_default_root_xwindow();
         unowned X.Display xdisplay = Gdk.X11.get_default_xdisplay();

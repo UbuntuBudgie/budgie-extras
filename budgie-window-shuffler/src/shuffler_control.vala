@@ -36,7 +36,7 @@ namespace ShufflerControls {
         ToggleButton toggle_gui;
         ToggleButton toggle_shuffler;
         ToggleButton toggle_swapgeo;
-        //  string runinstruction;
+        ToggleButton toggle_softmove;
         Label expl_label;
         Label warninglabel;
         Gtk.Grid supergrid;
@@ -48,7 +48,8 @@ namespace ShufflerControls {
             // settings
             string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
             string guiexpl = (_("Enable grid tiling graphical shortcut"));
-            string swapgeexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
+            string swapgeoexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
+            string softmoveexpl = (_("Enable animation on move and tiling actions if general desktop animations are enabled"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
             string cols_expl = (_("Number of columns, used by grid, move and tile-all shortcuts"));
             string rows_expl = (_("Number of rows, used by grid, move and tile-all shortcuts"));
@@ -166,6 +167,10 @@ namespace ShufflerControls {
                 (_("Swap geometry"))
             );
             settingsgrid.attach(toggle_swapgeo, 1, 4, 1, 1);
+            toggle_softmove = new Gtk.CheckButton.with_label(
+                (_("Enable animation"))
+            );
+            settingsgrid.attach(toggle_softmove, 1, 5, 1, 1);
             var empty = new Label("");
             settingsgrid.attach(empty, 1, 12, 1, 1);
             // settingsgrid - spinbuttonsection
@@ -237,7 +242,15 @@ namespace ShufflerControls {
                 return false;
             });
             toggle_swapgeo.enter_notify_event.connect(() => {
-                expl_label.set_text(swapgeexpl);
+                expl_label.set_text(swapgeoexpl);
+                return false;
+            });
+            toggle_softmove.enter_notify_event.connect(() => {
+                expl_label.set_text(softmoveexpl);
+                return false;
+            });
+            toggle_softmove.leave_notify_event.connect(() => {
+                expl_label.set_text(default_expl);
                 return false;
             });
             toggle_swapgeo.leave_notify_event.connect(() => {
@@ -410,6 +423,7 @@ namespace ShufflerControls {
             toggle_shuffler.toggled.connect(manage_boolean);
             toggle_gui.toggled.connect(manage_boolean);
             toggle_swapgeo.toggled.connect(manage_boolean);
+            toggle_softmove.toggled.connect(manage_boolean);
 
             this.show_all();
         }
@@ -464,8 +478,10 @@ namespace ShufflerControls {
             toggle_shuffler.set_active(currentlyactive);
             toggle_gui.set_sensitive(currentlyactive);
             toggle_swapgeo.set_sensitive(currentlyactive);
+            toggle_softmove.set_sensitive(currentlyactive);
             toggle_gui.set_active(shuffler_settings.get_boolean("runshufflergui"));
             toggle_swapgeo.set_active(shuffler_settings.get_boolean("swapgeometry"));
+            toggle_softmove.set_active(shuffler_settings.get_boolean("softmove"));
             columns_spin.set_value(shuffler_settings.get_int("cols"));
             rows_spin.set_value(shuffler_settings.get_int("rows"));
             topmarginspin.set_value(shuffler_settings.get_int("margintop"));
@@ -480,10 +496,10 @@ namespace ShufflerControls {
             string match = "";
             bool newval = button.get_active();
             ToggleButton[] toggles = {
-                toggle_gui, toggle_shuffler, toggle_swapgeo
+                toggle_gui, toggle_shuffler, toggle_swapgeo, toggle_softmove
             };
             string[] vals = {
-                "runshufflergui", "runshuffler", "swapgeometry"
+                "runshufflergui", "runshuffler", "swapgeometry", "softmove"
             };
             foreach (ToggleButton b in toggles) {
                 if (b == button) {
@@ -503,6 +519,7 @@ namespace ShufflerControls {
                 }
                 toggle_gui.set_sensitive(newval);
                 toggle_swapgeo.set_sensitive(newval);
+                toggle_softmove.set_sensitive(newval);
             }
         }
 
