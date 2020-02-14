@@ -43,7 +43,21 @@ namespace JumpActive {
         public abstract bool check_ifguiruns () throws Error;
         public abstract bool get_softmove () throws Error;
         public abstract int[] get_margins () throws Error;
+    }
 
+    private int procruns (string processname) {
+        string cmd = @"/usr/bin/pgrep -f $processname";
+        string output;
+        try {
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            string[] procs = output.split("\n");
+            int n_procs = procs.length;
+            return n_procs;
+        }
+        /* on an unlike to happen exception, return true */
+        catch (SpawnError e) {
+            return 0;
+        }
     }
 
     private int find_next (string[] arr, int anchor) {
@@ -91,6 +105,14 @@ namespace JumpActive {
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
+            // check if softmove runs. wait a tiny bit if so
+            // should this be made smart?
+            int number_procs = procruns(
+                "/usr/lib/budgie-window-shuffler/softmove"
+            );
+            if (number_procs != 0) {
+                Thread.usleep(60000);
+            }
             bool guiruns = client.check_ifguiruns();
             int[] grid = client.get_grid();
             // cols/rows is read from dconf, or overruled by args:
@@ -196,8 +218,6 @@ namespace JumpActive {
                             tileheight + correct_padding
                         );
                     }
-
-
                 }
             }
         }
