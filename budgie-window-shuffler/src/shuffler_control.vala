@@ -48,7 +48,7 @@ namespace ShufflerControls {
             // settings
             string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
             string guiexpl = (_("Enable grid tiling graphical shortcut"));
-            string swapgeoexpl = (_("When using move shortcuts, swap window geometry if a window moves to an existing window's position"));
+            string swapgeoexpl = (_("When using move shortcuts, swap window size & position if a window moves to an existing window's position"));
             string softmoveexpl = (_("Enable animation on move and tiling actions if general desktop animations are enabled"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
             string cols_expl = (_("Number of columns, used by grid, move and tile-all shortcuts"));
@@ -164,7 +164,7 @@ namespace ShufflerControls {
             var givemesomespace = new Gtk.Label("");
             settingsgrid.attach(givemesomespace, 1, 3, 1, 1);
             toggle_swapgeo = new Gtk.CheckButton.with_label(
-                (_("Swap geometry"))
+                (_("Swap windows"))
             );
             settingsgrid.attach(toggle_swapgeo, 1, 4, 1, 1);
             toggle_softmove = new Gtk.CheckButton.with_label(
