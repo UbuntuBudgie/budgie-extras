@@ -73,20 +73,20 @@ namespace CalculateTracks {
             }
             // now first resize, one step
             client.move_window(wid, orig_x, orig_y - yshift, trg_w, trg_h);
-            Thread.usleep(2000);
+            Thread.usleep(3000);
             // then make the move
             int ind = 0;
             int xn = 0;
             int yn = 0;
             foreach (double d in xarr) {
-                Thread.usleep(2000);
+                Thread.usleep(3000);
                 xn = (int)xarr[ind];
                 yn = (int)yarr[ind];
                 client.move_window(wid, xn, yn , trg_w, trg_h);
                 ind += 1;
             }
             // finish
-            Thread.usleep(2000);
+            Thread.usleep(3000);
             client.move_window(wid, trg_x, trg_y, trg_w, trg_h);
         }
         catch (Error e) {
