@@ -119,6 +119,7 @@ namespace ShufflerControls {
 
             // window basics
             this.set_default_size(10, 10);
+            this.set_resizable(false);
             //this.set_resizable(false);
             initialiseLocaleLanguageSupport();
             this.set_position(Gtk.WindowPosition.CENTER);
@@ -206,11 +207,11 @@ namespace ShufflerControls {
             }
             catch (Error e) {
             }
-
             expl_label = new Gtk.Label(default_expl);
             expl_label.set_xalign(0);
             expl_label.set_line_wrap(true);
-            settingsgrid.attach(expl_label, 1, 21, 99, 1);
+            expl_label.set_max_width_chars(50);
+            settingsgrid.attach(expl_label, 1, 21, 110, 1);
             set_textstyle(expl_label, {"explanation"});
 
             // settingsgrid - bottomsection
