@@ -2,26 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Daniel Hernandez, 2019
 # Adolfo Jayme-Barrientos, 2019
 # david mohammed <foss.freedom@gmail.com>, 2019
 # Borja Piñero, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 21:46+0000\n"
+"POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Borja Piñero, 2020\n"
-"Language-Team: Spanish (https://www.transifex.com/ubuntu-budgie/teams/72251/es/)\n"
+"Language-Team: Spanish (https://www.transifex.com/ubuntu-budgie/teams/72251/"
+"es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. define the name of the application
@@ -70,13 +71,13 @@ msgstr "Segundos"
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:213
+#: budgie-window-shuffler/src/shuffler_control.vala:218
 msgid "Close"
 msgstr "Cerrar"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:553
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 msgid "Please log out/in to initialize"
 msgstr "Por favor, cierre sesión y vuélvala a abrir para iniciar"
 
@@ -168,7 +169,9 @@ msgstr "a. m."
 msgid "PM"
 msgstr "p. m."
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Automático"
@@ -191,56 +194,54 @@ msgid "Set pressure (0 = no pressure)"
 msgstr "Establecer presión (0 = sin presión)"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:208
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
 msgid "Corner"
 msgstr "Esquina"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:212
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
 msgid "Action"
 msgstr "Acción"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:216
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
 msgid "Custom"
 msgstr "Personalizada"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-#: budgie-window-shuffler/src/shuffler_control.vala:62
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-window-shuffler/src/shuffler_control.vala:63
 msgid "Top-left"
 msgstr "Superior izquierda"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "Superior derecha"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "Inferior izquierda"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Bottom-right"
 msgstr "Inferior derecha"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:377
 #: budgie-hotcorners/src/HotCornersApplet.vala:386
 #: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
 msgid "Missing process"
 msgstr "Proceso no encotrado"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:381
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr "Por favor, habilite Windows Previews"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-#: budgie-hotcorners/src/HotCornersApplet.vala:398
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
 msgstr "Por favor, habilite Window Suffler"
 
@@ -322,19 +323,19 @@ msgstr "Sin resultados para «%s»"
 msgid "Shutdown"
 msgstr "Apagar"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
 msgid "Suspend"
 msgstr "Suspender"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
 msgid "Lock"
 msgstr "Bloquear"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -375,7 +376,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:147
+#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Configuración"
 
@@ -450,7 +451,7 @@ msgstr "Elegir icono"
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
 #: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
 msgstr "Abrir"
 
@@ -641,30 +642,24 @@ msgid "quarter after %s"
 msgstr "las %s y cuarto"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "las %s y veinte"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "casi las %s y media"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -710,8 +705,7 @@ msgstr "las %s menos diez"
 msgid "almost %s"
 msgstr "las %s menos cinco"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Opciones de fecha y hora"
@@ -729,16 +723,13 @@ msgstr "Calendario"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Mostrar fecha"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Usar formato de 24h"
@@ -777,221 +768,234 @@ msgid "Enable grid tiling graphical shortcut"
 msgstr "Habilitar accesos directos gráficos de la rejilla de mosaicos"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:51
+#, fuzzy
 msgid ""
-"When using move shortcuts, swap window geometry if a window moves to an "
-"existing window's position"
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
 msgstr ""
 "Cuando se usan los atajos de movimiento, intercambia la geometría de la "
 "ventana si esta se mueve a la posición de otra ventana"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:52
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:53
 msgid "Move the mouse over a button for an explanation"
 msgstr "Mueve el ratón sobre un botón para obtener información"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:53
+#: budgie-window-shuffler/src/shuffler_control.vala:54
 msgid "Number of columns, used by grid, move and tile-all shortcuts"
 msgstr ""
 "Número de columnas usadas por los atajos de la rejilla, el movimiento y el "
 "mosaico"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:54
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Number of rows, used by grid, move and tile-all shortcuts"
 msgstr "Número de filas usadas por la rejilla, el movimiento y el mosaico"
 
 #. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:56
+#: budgie-window-shuffler/src/shuffler_control.vala:57
 msgid "Margins between virtual grid and screen edges "
 msgstr "Márgenes entre la rejilla virtual y los bordes de la pantalla"
 
 #. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:58
+#: budgie-window-shuffler/src/shuffler_control.vala:59
 msgid "Shortcuts for quarter and half tiling & tiling to grid"
 msgstr "Atajos para dividir la rejilla en cuartos o mitades"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 msgid "Left-half"
 msgstr "Mitad izquierda"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:64
+#: budgie-window-shuffler/src/shuffler_control.vala:65
 msgid "Top-half"
 msgstr "Mitad superior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:65
+#: budgie-window-shuffler/src/shuffler_control.vala:66
 msgid "Right-half"
 msgstr "Mitad derecha"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:66
+#: budgie-window-shuffler/src/shuffler_control.vala:67
 msgid "Bottom-half"
 msgstr "Mitad inferior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:67
+#: budgie-window-shuffler/src/shuffler_control.vala:68
 msgid "Tile all windows to grid"
 msgstr "Encajar todas las ventanas en la rejilla"
 
 #. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:70
 msgid "Shortcuts for moving to the nearest grid cell"
 msgstr "Atajos para mover la ventana a la celda de la rejilla más cercana"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:71
 msgid "Move left"
 msgstr "Mover a la izquierda"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:72
 msgid "Move right"
 msgstr "Mover a la derecha"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid "Move up"
 msgstr "Mover hacia arriba"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move down"
 msgstr "Mover hacia abajo"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:75
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Shortcuts for resizing windows on grid"
 msgstr "Atajos para redimensionar la ventana al tamaño de la rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:76
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Expand horizontally (to the right)"
 msgstr "Expandir horizontalmente (hacia la derecha)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:77
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Shrink horizontally (from the right)"
 msgstr "Contraer horizontalmente (hacia la derecha)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:78
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Expand vertically (down)"
 msgstr "Expandir verticalmente (hacia abajo)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:79
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "Shrink vertically (from the bottom)"
 msgstr "Contraer verticalmente (hacia abajo)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:81
+#: budgie-window-shuffler/src/shuffler_control.vala:82
 msgid "Expand horizontally (to the left)"
 msgstr "Expandir horizontalmente (hacia la izquierda)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:83
 msgid "Shrink horizontally (from the left)"
 msgstr "Contraer horizontalmente (hacia la izquierda)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:83
+#: budgie-window-shuffler/src/shuffler_control.vala:84
 msgid "Expand vertically (up)"
 msgstr "Expandir verticalmente (Hacia arriba)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:84
+#: budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Shrink vertically (from the top)"
 msgstr "Contraer verticalmente (hacia abajo)"
 
 #. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:86
+#: budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Shortcuts for the grid"
 msgstr "Atajos de la rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:87
+#: budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Show the grid"
 msgstr "Mostrar rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:88
+#: budgie-window-shuffler/src/shuffler_control.vala:89
 msgid "Add a column"
 msgstr "Añadir columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:89
+#: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Add a row"
 msgstr "Añadir fila"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:90
+#: budgie-window-shuffler/src/shuffler_control.vala:91
 msgid "Remove a column"
 msgstr "Eliminar columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:91
+#: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Remove a row"
 msgstr "Eliminar fila"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:92
+#: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "To select a range of tiles, use Shift + click"
 msgstr ""
 "Para seleccionar un conjunto de elementos de la rejilla, pulsa Shift + clic "
 
-#: budgie-window-shuffler/src/shuffler_control.vala:93
+#: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Set the shade of gray for the grid"
 msgstr "Establecer el tono de gris de la rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:94
+#: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Press + or scroll up to lighten the grid shade"
 msgstr "Pulsar + o deslizar hacia arriba para aclarar el tono de la rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:95
+#: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Press - or scroll down to darken the grid shade"
 msgstr "Pulsar - o deslizar hacia abajo para oscurecer el tono de la rejilla"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:125
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr "Control de Window Suffler"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:149
 msgid "Margins"
 msgstr "Márgenes"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:149
+#: budgie-window-shuffler/src/shuffler_control.vala:150
 msgid "Tiling"
 msgstr "Mosaico"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:150
+#: budgie-window-shuffler/src/shuffler_control.vala:151
 msgid "Move & resize"
 msgstr "Mover y redimensionar"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:151
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Grid"
 msgstr "Rejilla"
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:156
+#: budgie-window-shuffler/src/shuffler_control.vala:157
 msgid "Enable Window Shuffler"
 msgstr "Habilitar Window Suffler"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:160
+#: budgie-window-shuffler/src/shuffler_control.vala:161
 msgid "Enable Window Shuffler grid"
 msgstr "Habilitar la rejilla de Window Suffler"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:166
-msgid "Swap geometry"
-msgstr "Intercambiar geometría"
+#: budgie-window-shuffler/src/shuffler_control.vala:167
+#, fuzzy
+msgid "Swap windows"
+msgstr "Ventanas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+#, fuzzy
+msgid "Enable animation"
+msgstr "Activar notificación"
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:172
+#: budgie-window-shuffler/src/shuffler_control.vala:177
 msgid "Grid: columns & rows"
 msgstr "Rejilla: columnas y filas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:177
+#: budgie-window-shuffler/src/shuffler_control.vala:182
 msgid "Columns"
 msgstr "Columnas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:182
+#: budgie-window-shuffler/src/shuffler_control.vala:187
 msgid "Rows"
 msgstr "Filas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:273
+#: budgie-window-shuffler/src/shuffler_control.vala:286
 msgid "Top"
 msgstr "Arriba"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:289
 msgid "Left"
 msgstr "Izquierda"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:279
+#: budgie-window-shuffler/src/shuffler_control.vala:292
 msgid "Right"
 msgstr "Derecha"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:282
+#: budgie-window-shuffler/src/shuffler_control.vala:295
 msgid "Bottom"
 msgstr "Abajo"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:288
+#: budgie-window-shuffler/src/shuffler_control.vala:301
 msgid "Window padding"
 msgstr "Relleno de la ventana"
 
@@ -1037,7 +1041,7 @@ msgstr "Elija un directorio"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
 msgid "Set text color"
 msgstr "Establecer el color del texto"
 
@@ -1059,73 +1063,73 @@ msgid "Choose"
 msgstr "Elegir"
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
 msgstr "Lunes"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
 msgstr "Martes"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
 msgstr "Miércoles"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
 msgstr "Jueves"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
 msgstr "Viernes"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
 msgstr "Sábado"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
 msgstr "Domingo"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
 msgid "General"
 msgstr "General"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "Desktop"
 msgstr "Escritorio"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
 msgid "City"
 msgstr "Ciudad"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
 msgid "Show on desktop"
 msgstr "Mostrar en el escritorio"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
 msgid "Show dynamic panel icon"
 msgstr "Mostrar un icono dinámico en el panel"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show forecast in popover"
 msgstr "Mostrar la previsión en un globo"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
 msgid "Transparency"
 msgstr "Transparencia"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
 msgid "Set custom position (px)"
 msgstr "Establecer posición personalizada (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
 msgid "Please enter at least 3 characters"
 msgstr "Escriba por lo menos 3 caracteres"
 
@@ -1294,3 +1298,900 @@ msgstr "Mostrar el clima y el pronóstico"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Miniaplicación de Redes"
+
+#~ msgid "Swap geometry"
+#~ msgstr "Intercambiar geometría"
+
+#~ msgid "Log out"
+#~ msgstr "Cerrar sesión"
+
+#~ msgid "Restart device"
+#~ msgstr "Reiniciar dispositivo"
+
+#~ msgid "Power Off"
+#~ msgstr "Apagar"
+
+#~ msgid "Change background"
+#~ msgstr "Cambiar fondo"
+
+#~ msgid "Displays"
+#~ msgstr "Configuración de pantallas"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Impulso de Cafeína activado"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Impulso de Cafeína desactivado"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Se apagará en un minuto"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Se apagará en %d minutos"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Modo Cafeína"
+
+#~ msgid "Applets"
+#~ msgstr "Applets"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificaciones"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Actualmente no hay aplicaciones reproduciendo audio."
+
+#~ msgid "Play some music"
+#~ msgstr "Reproducir música"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Nada que ver aquí"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notificaciones no leídas"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notificación no leída"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Sin notificaciones"
+
+#~ msgid "No new notifications"
+#~ msgstr "Sin notificaciones nuevas"
+
+#~ msgid "Apps"
+#~ msgstr "Aplicaciones"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositivos"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Batería totalmente cargada."
+
+#~ msgid "Unknown"
+#~ msgstr "Desconocido"
+
+#~ msgid "Battery charging"
+#~ msgstr "Cargando batería"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Batería restante"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Mostrar porcentaje de batería"
+
+#~ msgid "Power settings"
+#~ msgstr "Configuración de energía"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Configuración del Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Enviar archivos"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth en modo avión"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth está desactivado"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth está activado"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Conectado a %d dispositivo"
+#~ msgstr[1] "Conectado a %d dispositivos"
+
+#~ msgid "Sound settings"
+#~ msgstr "Configuración de sonido"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Iniciar instancia nueva"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Cerrar todas las ventanas"
+
+#~ msgid "Always On Top"
+#~ msgstr "Siempre en primer plano"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximizar"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimizar"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Borrar del favoritos"
+
+#~ msgid "Favorite"
+#~ msgstr "Agregar a favoritos"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Mover al área de trabajo %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Restaurar"
+
+#~ msgid "Close Window"
+#~ msgstr "Cerrar ventana"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Mostrar controles de ventana"
+
+#~ msgid "All"
+#~ msgstr "Todo"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "No se han encontrado resultados"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Bloq Mayús está activo"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Bloq Mayús no está activo"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Bloq Num activo"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Bloq Num inactivo"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Configuración de fecha y hora"
+
+#~ msgid "Show seconds"
+#~ msgstr "Mostrar segundos"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Alternar escritorios"
+
+#~ msgid "Rename"
+#~ msgstr "Renombrar"
+
+#~ msgid "Remove"
+#~ msgstr "Quitar"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Temporizador (minutos)"
+
+#~ msgid "User"
+#~ msgstr "Usuario"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hibernar"
+
+#~ msgid "Places"
+#~ msgstr "Lugares"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "No hay nada para mostrar en este momento"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Montar unidades"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Habilitar más secciones"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Abrir \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "El disco está siendo usado por otros procesos"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operación abortada"
+
+#~ msgid "Type your password"
+#~ msgstr "Escriba su contraseña"
+
+#~ msgid "Removable devices"
+#~ msgstr "Dispositivos extraíbles"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volúmenes locales"
+
+#~ msgid "Network folders"
+#~ msgstr "Carpetas de red"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Montar y abrir \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Expulsar"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Introduzca la contraseña de cifrado para desbloquear este volumen"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Ahora lo puede quitar con seguridad"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "La contraseña es incorrecta"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Ha ocurrido un error desconocido intentando montar este volumen"
+
+#~ msgid "Unmount"
+#~ msgstr "Desmontar"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Dispositivo desconocido"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Error al expulsar el dispositivo"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Error al desmontar el volumen"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Autenticación fallida"
+
+#~ msgid "Group:"
+#~ msgstr "Grupo:"
+
+#~ msgid "Appearance"
+#~ msgstr "Apariencia"
+
+#~ msgid "Panels"
+#~ msgstr "Paneles"
+
+#~ msgid "Session"
+#~ msgstr "Sesión"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Ajustes del escritorio Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Crear nuevo panel"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Quitar este panel de la pantalla"
+
+#~ msgid "Top Dock"
+#~ msgstr "Dock superior"
+
+#~ msgid "Right Dock"
+#~ msgstr "Dock derecho"
+
+#~ msgid "Left Dock"
+#~ msgstr "Dock izquierdo"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Dock inferior"
+
+#~ msgid "Top Panel"
+#~ msgstr "Panel superior"
+
+#~ msgid "Right Panel"
+#~ msgstr "Panel derecho"
+
+#~ msgid "Left Panel"
+#~ msgstr "Panel izquierdo"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Panel inferior"
+
+#~ msgid "Always"
+#~ msgstr "Siempre"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinámico"
+
+#~ msgid "None"
+#~ msgstr "Nada"
+
+#~ msgid "Intelligent"
+#~ msgstr "Inteligente"
+
+#~ msgid "Never"
+#~ msgstr "Nunca"
+
+#~ msgid "Position"
+#~ msgstr "Posición"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Seleccione el borde de la pantalla donde poner este panel"
+
+#~ msgid "Size"
+#~ msgstr "Tamaño"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Configurar el tamaño (alto o ancho dependiendo de la orientación) de este "
+#~ "panel"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Ocultar automáticamente"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Cuando se establece, este panel se ocultará de la vista para maximizar la "
+#~ "pantalla"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Establecer si quiere o no el panel transparente"
+
+#~ msgid "Shadow"
+#~ msgstr "Sombra"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Agrega una sombra paralela decorativa, ideal para paneles opacos"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Estilizar regiones"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Agrega una sugerencia al panel para que cada una de las tres áreas "
+#~ "principales del panel tenga un tema diferente."
+
+#~ msgid "Dock mode"
+#~ msgstr "Modo Dock"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Cuando esté en modo dock, el panel usará el mínimo espacio posible, "
+#~ "liberando pantalla"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Permitir subir el volumen por encima de 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Permite subir el volumen tanto en la configuración de sonido, como en el "
+#~ "widget de sonido de Raven hasta el 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Mostrar el número de la semana en el calendario"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Esta configuración permite mostrar el número de la semana en el widget "
+#~ "del calendario."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Mostrar el widget del calendario"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Muestra u oculta el Widget del calendario en la sección de Applets del "
+#~ "Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Mostrar el Widget de salida de sonido"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Muestra u oculta el Widget de salida de sonido en la sección de Applets "
+#~ "del Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Mostrar el Widget de entrada de micrófono"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Muestra u oculta el Widget de entrada de micrófono en la sección de "
+#~ "Applets del Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Mostrar el Widget de control de la reproducción Multimedia"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Muestra u oculta el Widget de control de la reproducción Multimedia "
+#~ "(MPRIS) en la sección de Applets del Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Mostrar la barra de ajustes"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr ""
+#~ "Mostrar u ocultar la barra de ajustes en la parte inferior de Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirmar la eliminación del panel"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "¿Está seguro de querer quitar este panel? Esta acción no se puede "
+#~ "deshacer."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "No volver a preguntar"
+
+#~ msgid "Remove panel"
+#~ msgstr "Quitar panel"
+
+#~ msgid "Keep panel"
+#~ msgstr "Mantener panel"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirmar la eliminación de applet"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "¿Está seguro de querer quitar este applet? Esta acción no se puede "
+#~ "deshacer."
+
+#~ msgid "Remove applet"
+#~ msgstr "Quitar applet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Mantener applet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Iconos del escritorio"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Permitir, o no, lanzadores e íconos en el escritorio."
+
+#~ msgid "Home directory"
+#~ msgstr "Carpeta personal"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Agregar un acceso directo a la carpeta personal en el escritorio."
+
+#~ msgid "Network servers"
+#~ msgstr "Servidores de red"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr ""
+#~ "Agregue un acceso directo a sus servidores de red local en el escritorio."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Agregue un acceso directo a la Papelera en el escritorio."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Volúmenes montados"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Los discos y volúmenes montados aparecerán en el escritorio."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Número de escritorios virtuales"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Número de escritorios y espacios de trabajo virtuales para crear "
+#~ "automaticamente en el inicio."
+
+#~ msgid "Style"
+#~ msgstr "Estilo"
+
+#~ msgid "Widgets"
+#~ msgstr "Widgets"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Establecer el aspecto de las decoraciones y controles de ventana"
+
+#~ msgid "Icons"
+#~ msgstr "Iconos"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Establecer el tema de iconos"
+
+#~ msgid "Cursors"
+#~ msgstr "Cursores"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Establecer el tema del cursor"
+
+#~ msgid "Notification Position"
+#~ msgstr "Posición de notificaciones"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Establecer la ubicación de los popups de notificación"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tema oscuro"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema integrado"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Cuando esté activado, el tema integrado sobreescribirá el tema del "
+#~ "escritorio"
+
+#~ msgid "Animations"
+#~ msgstr "Animaciones"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Permitir o no animaciones"
+
+#~ msgid "Top Left"
+#~ msgstr "Superior Izquierda"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Inferior Izquierda"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Inferior Derecha"
+
+#~ msgid "Top Right"
+#~ msgstr "Superior Derecha"
+
+#~ msgid "Untitled"
+#~ msgstr "Sin título"
+
+#~ msgid "No description"
+#~ msgstr "Sin descripción"
+
+#~ msgid "running"
+#~ msgstr "en ejecución"
+
+#~ msgid "Add"
+#~ msgstr "Agregar"
+
+#~ msgid "Command"
+#~ msgstr "Comando"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Ya existe una entrada con ese título"
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "Required"
+#~ msgstr "Requerido"
+
+#~ msgid "Description"
+#~ msgstr "Descripción"
+
+#~ msgid "Optional"
+#~ msgstr "Opcional"
+
+#~ msgid "Autostart"
+#~ msgstr "Inicio automático"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Inicio automático de aplicaciones"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configuraciones del applet"
+
+#~ msgid "Add applet"
+#~ msgstr "Agregar un applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Elija un nuevo applet para agregar a este panel"
+
+#~ msgid "No settings available"
+#~ msgstr "No hay configuraciones disponibles"
+
+#~ msgid "Start"
+#~ msgstr "Inicio"
+
+#~ msgid "Center"
+#~ msgstr "Centro"
+
+#~ msgid "End"
+#~ msgstr "Fin"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Adjunte diálogos modales a las ventanas"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Los diálogos modales se adjuntarán a la ventana principal y se moverán "
+#~ "juntos cuando se los arrastre."
+
+#~ msgid "Button layout"
+#~ msgstr "Disposición de los botones"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr ""
+#~ "Cambie el diseño de los botones en las barras de título de la aplicación."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centrar ventanas nuevas en la pantalla"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centrar las ventanas recién abiertas en la pantalla actual."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr ""
+#~ "Desactivar el modo noche cuando las ventanas están a pantalla completa"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Desactiva el modo noche cuando una ventana está a pantalla completa. Se "
+#~ "vuelve a activar al salir de pantalla completa."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Mosaico automático"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Las ventanas se dispondrán automáticamente en mosaico cuando se arrastren "
+#~ "a la parte superior o a las esquinas de la pantalla."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr ""
+#~ "Habilitar el cambio de enfoque en la ventana cuando el cursor entre y "
+#~ "salga"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Habilita que el enfoque en la ventana se aplique cuando el cursor entra "
+#~ "en la ventana y que se desenfoque cuando el cursor sale de la ventana."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Deshabilitar desredirección de ventanas"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Esta opción es para usuarios avanzados. Utilice esta función si tiene "
+#~ "problemas gráficos o de rendimiento con las GPU dedicadas."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Derecha (por defecto)"
+
+#~ msgid "Fonts"
+#~ msgstr "Fuentes"
+
+#~ msgid "Window Titles"
+#~ msgstr "Títulos de las ventanas"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr ""
+#~ "Establecer la fuente usada en las barras de título de las aplicaciones."
+
+#~ msgid "Documents"
+#~ msgstr "Documentos"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Establecer la fuente usada por los documentos."
+
+#~ msgid "Interface"
+#~ msgstr "Interfaz"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr ""
+#~ "Establecer la fuente primaria usada en los controles de las aplicaciones."
+
+#~ msgid "Monospace"
+#~ msgstr "Monoespacio"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Establecer la fuente de ancho fijo utilizada en las aplicaciones donde "
+#~ "predomina el texto."
+
+#~ msgid "Text scaling"
+#~ msgstr "Escala del texto"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Establecer el factor de escala del texto."
+
+#~ msgid "Full"
+#~ msgstr "Lleno"
+
+#~ msgid "Medium"
+#~ msgstr "Medio"
+
+#~ msgid "Slight"
+#~ msgstr "Suave"
+
+#~ msgid "Hinting"
+#~ msgstr "Reticente"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Establecer el factor de escalada del texto."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpíxeles (para pantallas LCD)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Estándar (escala de grises)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Antialisado"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Establecer el factor de escala del texto."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Escoger un applet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "¿Está seguro de que quiere cerrar la sesión?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Mostrar todas las ventanas cuando se hace clic"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Mostrar solo los favoritos"
+
+#~ msgid "Lock icons"
+#~ msgstr "Bloquear los iconos"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Restringir al espacio de trabajo"
+
+#~ msgid "Window grouping"
+#~ msgstr "Agrupación de ventanas"
+
+#~ msgid "Night Light"
+#~ msgstr "Modo noche"
+
+#~ msgid "Schedule"
+#~ msgstr "Horario"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Del atardecer al amanecer"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Configuración de pantalla"
+
+#~ msgid "Spacer size"
+#~ msgstr "Tamaño del espaciador"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Modo Compacto"
+
+#~ msgid "Show Headers"
+#~ msgstr "Mostrar Encabezados"
+
+#~ msgid "Roll-over mouse"
+#~ msgstr "Al pasar el cursor"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "Visibilidad del botón \"Añadir\""
+
+#~ msgid "Don't show"
+#~ msgstr "No mostrar"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Mostrar cuando el cursor pase por encima"
+
+#~ msgid "Always show"
+#~ msgstr "Mostrar siempre"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximizar el brillo"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Nivel del brillo"
+
+#~ msgid "Show label"
+#~ msgstr "Mostrar etiqueta"
+
+#~ msgid "Show places"
+#~ msgstr "Mostrar lugares"
+
+#~ msgid "Show network folders"
+#~ msgstr "Mostrar las carpetas de red"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Mostrar los dispositivos extraíbles"
+
+#~ msgid "Always expand places"
+#~ msgstr "Siempre expandir los lugares"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Autentificación requerida"
+
+#~ msgid "Password:"
+#~ msgstr "Contraseña:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Se requiere autentificación"
+
+#~ msgid "Authenticate"
+#~ msgstr "Autentificar"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Escritorio Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Esta sesión te permite ingresar al Escritorio Budgie"
+
+#~ msgid "System Tray"
+#~ msgstr "Bandeja de Sistema"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indicador de Estado"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Lista de aplicaciones abiertas"
+
+#~ msgid "Spacer"
+#~ msgstr "Espaciador"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menu Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indicador de bloqueo de teclas"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Barra lateral Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Reloj"
+
+#~ msgid "Separator"
+#~ msgstr "Separador"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Mostrar/Ocultar el Escritorio"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Cambiador de espacio de trabajo"
+
+#~ msgid "Task List"
+#~ msgstr "Lista de Tareas"
+
+#~ msgid "Caffeine"
+#~ msgstr "Cafeína"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indicador de disposición de teclado"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indicador de usuario"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Cambiar apariencia y comportamiento del escritorio"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Panel Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Iniciar otras aplicaciones y proveer utilidades varias para configurar "
+#~ "las ventanas, el tiempo, etc."

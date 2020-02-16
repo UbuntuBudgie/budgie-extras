@@ -2,25 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Nikola Stojic <nikolas@grindam.com>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 21:46+0000\n"
+"POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2019\n"
-"Language-Team: Serbian (Serbia) (https://www.transifex.com/ubuntu-budgie/teams/72251/sr_RS/)\n"
+"Language-Team: Serbian (Serbia) (https://www.transifex.com/ubuntu-budgie/"
+"teams/72251/sr_RS/)\n"
+"Language: sr_RS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr_RS\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. define the name of the application
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
@@ -68,13 +70,13 @@ msgstr ""
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:213
+#: budgie-window-shuffler/src/shuffler_control.vala:218
 msgid "Close"
 msgstr ""
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:553
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 msgid "Please log out/in to initialize"
 msgstr ""
 
@@ -118,7 +120,7 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:178
 msgid "Automatic"
-msgstr ""
+msgstr "Aутоматски"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:179
 msgid "On all monitors"
@@ -164,7 +166,9 @@ msgstr ""
 msgid "PM"
 msgstr ""
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -187,56 +191,54 @@ msgid "Set pressure (0 = no pressure)"
 msgstr "Podesi pritisak ( 0 = bez pritiska)"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:208
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
 msgid "Corner"
 msgstr "Ugao"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:212
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
 msgid "Action"
 msgstr "Akcija"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:216
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
 msgid "Custom"
 msgstr "Custom"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-#: budgie-window-shuffler/src/shuffler_control.vala:62
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-window-shuffler/src/shuffler_control.vala:63
 msgid "Top-left"
 msgstr "Gornje levo"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "Gornje desno"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "Donje levo"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Bottom-right"
 msgstr "Donje desno"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:377
 #: budgie-hotcorners/src/HotCornersApplet.vala:386
 #: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:381
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-#: budgie-hotcorners/src/HotCornersApplet.vala:398
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
 msgstr ""
 
@@ -318,19 +320,19 @@ msgstr "Нема резултата претраге параметра “%s”
 msgid "Shutdown"
 msgstr "Угаси"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
 msgid "Suspend"
 msgstr "Суспендуј"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
 msgstr "Обнови"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
 msgid "Lock"
 msgstr "Закључај"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
 msgid "Logout"
 msgstr "Одјави се"
 
@@ -371,7 +373,7 @@ msgid "Internet"
 msgstr "Мрежа"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:147
+#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -446,7 +448,7 @@ msgstr "Постави иконицу"
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
 #: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
 msgstr "Otvori"
 
@@ -637,30 +639,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -706,8 +702,7 @@ msgstr ""
 msgid "almost %s"
 msgstr ""
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr ""
@@ -725,16 +720,13 @@ msgstr "Календар"
 msgid "Preferences"
 msgstr "Одредбе приказа времена"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Покажи датум"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Користи 24 часовни формат"
@@ -772,215 +764,227 @@ msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:51
 msgid ""
-"When using move shortcuts, swap window geometry if a window moves to an "
-"existing window's position"
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:52
-msgid "Move the mouse over a button for an explanation"
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:53
-msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgid "Move the mouse over a button for an explanation"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:54
+msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Number of rows, used by grid, move and tile-all shortcuts"
 msgstr ""
 
 #. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:56
+#: budgie-window-shuffler/src/shuffler_control.vala:57
 msgid "Margins between virtual grid and screen edges "
 msgstr ""
 
 #. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:58
+#: budgie-window-shuffler/src/shuffler_control.vala:59
 msgid "Shortcuts for quarter and half tiling & tiling to grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 msgid "Left-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:64
+#: budgie-window-shuffler/src/shuffler_control.vala:65
 msgid "Top-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:65
+#: budgie-window-shuffler/src/shuffler_control.vala:66
 msgid "Right-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:66
+#: budgie-window-shuffler/src/shuffler_control.vala:67
 msgid "Bottom-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:67
+#: budgie-window-shuffler/src/shuffler_control.vala:68
 msgid "Tile all windows to grid"
 msgstr ""
 
 #. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:70
 msgid "Shortcuts for moving to the nearest grid cell"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:71
 msgid "Move left"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:72
 msgid "Move right"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid "Move up"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move down"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:75
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Shortcuts for resizing windows on grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:76
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Expand horizontally (to the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:77
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Shrink horizontally (from the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:78
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Expand vertically (down)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:79
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "Shrink vertically (from the bottom)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:81
+#: budgie-window-shuffler/src/shuffler_control.vala:82
 msgid "Expand horizontally (to the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:83
 msgid "Shrink horizontally (from the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:83
+#: budgie-window-shuffler/src/shuffler_control.vala:84
 msgid "Expand vertically (up)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:84
+#: budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Shrink vertically (from the top)"
 msgstr ""
 
 #. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:86
+#: budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Shortcuts for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:87
+#: budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Show the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:88
+#: budgie-window-shuffler/src/shuffler_control.vala:89
 msgid "Add a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:89
+#: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Add a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:90
+#: budgie-window-shuffler/src/shuffler_control.vala:91
 msgid "Remove a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:91
+#: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Remove a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:92
+#: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "To select a range of tiles, use Shift + click"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:93
+#: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Set the shade of gray for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:94
+#: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Press + or scroll up to lighten the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:95
+#: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Press - or scroll down to darken the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:125
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:149
 msgid "Margins"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:149
+#: budgie-window-shuffler/src/shuffler_control.vala:150
 msgid "Tiling"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:150
+#: budgie-window-shuffler/src/shuffler_control.vala:151
 msgid "Move & resize"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:151
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Grid"
 msgstr ""
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:156
+#: budgie-window-shuffler/src/shuffler_control.vala:157
 msgid "Enable Window Shuffler"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:160
+#: budgie-window-shuffler/src/shuffler_control.vala:161
 msgid "Enable Window Shuffler grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:166
-msgid "Swap geometry"
-msgstr ""
+#: budgie-window-shuffler/src/shuffler_control.vala:167
+#, fuzzy
+msgid "Swap windows"
+msgstr "Прозори"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+#, fuzzy
+msgid "Enable animation"
+msgstr "Омогући обавештења"
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:172
+#: budgie-window-shuffler/src/shuffler_control.vala:177
 msgid "Grid: columns & rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:177
+#: budgie-window-shuffler/src/shuffler_control.vala:182
 msgid "Columns"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:182
+#: budgie-window-shuffler/src/shuffler_control.vala:187
 msgid "Rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:273
+#: budgie-window-shuffler/src/shuffler_control.vala:286
 msgid "Top"
-msgstr ""
+msgstr "Врх"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:289
 msgid "Left"
-msgstr ""
+msgstr "Лево"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:279
+#: budgie-window-shuffler/src/shuffler_control.vala:292
 msgid "Right"
-msgstr ""
+msgstr "Десно"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:282
+#: budgie-window-shuffler/src/shuffler_control.vala:295
 msgid "Bottom"
-msgstr ""
+msgstr "Дно"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:288
+#: budgie-window-shuffler/src/shuffler_control.vala:301
 msgid "Window padding"
 msgstr ""
 
@@ -1026,7 +1030,7 @@ msgstr "Izaberi direktorijum"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
 msgid "Set text color"
 msgstr "Podesi boju teksta"
 
@@ -1048,73 +1052,73 @@ msgid "Choose"
 msgstr "Izaberi"
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
 msgstr "Ponedeljak"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
 msgstr "Utorak"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
 msgstr "Sreda"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
 msgstr "Četvrtak"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
 msgstr "Petak"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
 msgstr "Subota"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
 msgstr "Nedelja"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
 msgid "General"
 msgstr "Generalno"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "Desktop"
 msgstr "Desktop"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
 msgid "City"
 msgstr "Grad"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
 msgid "Show on desktop"
 msgstr "Prikaži na desktopu"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
 msgid "Show dynamic panel icon"
 msgstr "Prikaži dinamički panel sa ikonama"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show forecast in popover"
 msgstr "Prikaži prognozu u popoveru."
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
 msgid "Transparency"
 msgstr "Transparentnost"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
 msgid "Set custom position (px)"
 msgstr "Podesi custom poziciju (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
 msgid "Please enter at least 3 characters"
 msgstr "Molimo unesite barem 3 karaktera"
 
@@ -1283,3 +1287,662 @@ msgstr "Prikaži vreme i prognozu"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr ""
+
+#~ msgid "Log out"
+#~ msgstr "Одјави се"
+
+#~ msgid "Restart device"
+#~ msgstr "Поново покрени уређај"
+
+#~ msgid "Power Off"
+#~ msgstr "Искључи рачунар"
+
+#~ msgid "Change background"
+#~ msgstr "Промени позадину"
+
+#~ msgid "Displays"
+#~ msgstr "Подешавања приказа"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Радна кафа је укључена"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Радна кафа је искључена"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Искључиће се за минут"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Искључиће се за %d минута"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Радна Кафа"
+
+#~ msgid "Applets"
+#~ msgstr "Прибори"
+
+#~ msgid "Notifications"
+#~ msgstr "Обавештења"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Тренутно ниједан прозор не пушта звук."
+
+#~ msgid "Play some music"
+#~ msgstr "Пусти музику"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Ништа за приказати"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u непрочитаних обавештења"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 непрочитано обавештење"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Нема непрочитаних обавештења"
+
+#~ msgid "No new notifications"
+#~ msgstr "Нема нових обавештења"
+
+#~ msgid "Apps"
+#~ msgstr "Програми"
+
+#~ msgid "Devices"
+#~ msgstr "Уређаји"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Батерија је пуна."
+
+#~ msgid "Unknown"
+#~ msgstr "Непознато"
+
+#~ msgid "Battery charging"
+#~ msgstr "Батерија се пуни"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Преостало батерије"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Прикажи проценат батерије"
+
+#~ msgid "Power settings"
+#~ msgstr "Подешавање напајања"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth подешавања"
+
+#~ msgid "Send Files"
+#~ msgstr "Пошаљи датотеке"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth режим летења"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth је искључен"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth је укључен"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Повезан на %d уређај"
+#~ msgstr[1] "Повезан на %d уређаја"
+#~ msgstr[2] "Повезан на %d уређаја"
+
+#~ msgid "Sound settings"
+#~ msgstr "Подешавање звука"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Покрени нови прозор"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Затвори све прозоре"
+
+#~ msgid "Always On Top"
+#~ msgstr "Увек на врху"
+
+#~ msgid "Maximize"
+#~ msgstr "Подигни прозор на радну површину"
+
+#~ msgid "Minimize"
+#~ msgstr "Спусти прозор на радну траку"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Искључи са радне траке"
+
+#~ msgid "Favorite"
+#~ msgstr "Прикључи радној траци"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Премести на радну површину %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Одређени приказ прозора"
+
+#~ msgid "Close Window"
+#~ msgstr "Затвори прозор"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Прикажи управности прозора"
+
+#~ msgid "All"
+#~ msgstr "Све"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Нема нађених предмета"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Тастер за велика слова је активан"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Тастер за велика слова није активан"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Тастер за закључавање бројчане тастатуре је активан"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Тастер за закључавање бројчане тастатуре није активан"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Подешавање времена и датума"
+
+#~ msgid "Show seconds"
+#~ msgstr "Покажи секунде"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Прикажи/Сакриј радну површину"
+
+#~ msgid "Rename"
+#~ msgstr "Преименуј"
+
+#~ msgid "Remove"
+#~ msgstr "Уклони"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Одбројавање (минути)"
+
+#~ msgid "User"
+#~ msgstr "Корисник"
+
+#~ msgid "Hibernate"
+#~ msgstr "Хибернација"
+
+#~ msgid "Places"
+#~ msgstr "Локације"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Ништа за приказати тренутно"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Повежи дискове"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Омогући још секција"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Отвори \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Други процеси користе капацитет диска"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Задатак је отказан"
+
+#~ msgid "Type your password"
+#~ msgstr "Упиши лозинку"
+
+#~ msgid "Removable devices"
+#~ msgstr "Преносиви уређаји"
+
+#~ msgid "Local volumes"
+#~ msgstr "Локалне партиције"
+
+#~ msgid "Network folders"
+#~ msgstr "Мрежни фолдери"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Повежи и отвори \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Избаци"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr ""
+#~ "Овај уређај је заштићен шифром, да би сте приступили подацима укуцајте "
+#~ "одговарајућу лозинку"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Можете сигурно уклонити"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Лозинка коју сте укуцали није тачна"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr ""
+#~ "Дошло је до непознате грешке, приликом покушаја монтаже овог меморијског "
+#~ "капацитета"
+
+#~ msgid "Unmount"
+#~ msgstr "Одвоји"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Непознат уређај"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Грешка приликом уклањања уређаја"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Грешка приликом демонтаже меморијског капацитета"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Овера није важећа"
+
+#~ msgid "Group:"
+#~ msgstr "Скупина:"
+
+#~ msgid "Appearance"
+#~ msgstr "Изглед"
+
+#~ msgid "Panels"
+#~ msgstr "Радне траке"
+
+#~ msgid "Session"
+#~ msgstr "Седница"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Подешавање Budgie радне површине"
+
+#~ msgid "Create new panel"
+#~ msgstr "Додај радну траку"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Уклони ову радну траку с екрана"
+
+#~ msgid "Top Panel"
+#~ msgstr "Горња радна трака"
+
+#~ msgid "Right Panel"
+#~ msgstr "Десна радна трака"
+
+#~ msgid "Left Panel"
+#~ msgstr "Лева радна трака"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Доња радна трака"
+
+#~ msgid "Always"
+#~ msgstr "Увек"
+
+#~ msgid "Dynamic"
+#~ msgstr "Динамички"
+
+#~ msgid "None"
+#~ msgstr "Нема"
+
+#~ msgid "Intelligent"
+#~ msgstr "Интелигентно"
+
+#~ msgid "Never"
+#~ msgstr "Никад"
+
+#~ msgid "Position"
+#~ msgstr "Позиција"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Одредите ивицу заслона на којој ће стајати радна трака"
+
+#~ msgid "Size"
+#~ msgstr "Величина"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Одредите димензије (ширину или висину, зависно од положаја) ове радне "
+#~ "траке"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Аутоматски сакриј"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Када је постављена, радна трака се аутоматски сакрива, да би се добила "
+#~ "максимална корисна површина заслона"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Контролишите када би ова радна трака требало да буде непровидна"
+
+#~ msgid "Shadow"
+#~ msgstr "Сенка"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr ""
+#~ "Додаје декоративну падајућу сенку, идеалну за непровидне радне траке"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Стилизуј области"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Додаје репер тамо где ће бити крај сваке, од три, главне области радне "
+#~ "траке, тако да би сваки одељак могао да има посебну тему."
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Одобри појачавање звука преко 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Омогућава појачавање у подешавању звука, као и звучног Виџета у Рејвену "
+#~ "на 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Омогући приказ броја недеље у Календару."
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Ово подешавање омогућава приказ редног броја недеље у виџету Календар."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Прикажи виџет Календар."
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет Календар у Рејвеновом одељку Програмчићи."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Прикажи виџет за звучни излаз"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет за звучни излаз у Рејвеновом одељку "
+#~ "Програмчићи."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr " Прикажи виџет за микрофон"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет за микрофон у Рејвеновом одељку Програмчићи."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Прикажи виџет за репродукцију звучних медија."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Потврди уклањање радне траке"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Да ли заиста желите уклонити ову радну траку? \n"
+#~ "Ова одлука не може бити опозвана."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Не понављај ово питање"
+
+#~ msgid "Remove panel"
+#~ msgstr "Уклони радну траку"
+
+#~ msgid "Keep panel"
+#~ msgstr "Задржи радну траку"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Потврди уклањање прибора"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Да ли заиста желите уклонити овај прибор? \n"
+#~ "Ова одлука не може бити опозвана."
+
+#~ msgid "Remove applet"
+#~ msgstr "Уклони прибор"
+
+#~ msgid "Keep applet"
+#~ msgstr "Задржи прибор"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Иконице радне површине"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Управљајте могућношћу коришћења пречица и икона на радној површини."
+
+#~ msgid "Home directory"
+#~ msgstr "Лична фасцикла"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Додај пречицу Личне фасцикле на радну површину."
+
+#~ msgid "Network servers"
+#~ msgstr "Мрежни сервери"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Додај пречицу локалних мрежних сервера на радну површину."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Додај пречицу за Смеће на радну површину."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Прикачени меморијски уређаји"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr ""
+#~ "Прикачени меморијски уређаји и чврсти дискови ће се приказати на радној "
+#~ "површини."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Број виртуалних радних површина"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Број виртуалних радних површина створених приликом покретању рачунара."
+
+#~ msgid "Style"
+#~ msgstr "Budgie изглед"
+
+#~ msgid "Widgets"
+#~ msgstr "Изглед Budgie окружења"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Подесите изглед украса и дугмади прозора"
+
+#~ msgid "Icons"
+#~ msgstr "Иконице"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Подесите изглед иконица"
+
+#~ msgid "Cursors"
+#~ msgstr "Показивачи"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Подесите изглед показивача"
+
+#~ msgid "Notification Position"
+#~ msgstr "Позиција обавештења"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Подесите место појаве обавештења"
+
+#~ msgid "Dark theme"
+#~ msgstr "Тамна варијанта теме"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Уграђена тема"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr "Када је укључена, уграђена тема мења изглед радне површине"
+
+#~ msgid "Animations"
+#~ msgstr "Анимације"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Изабери да ли ће прозори и њихови дугмићи користити анимације"
+
+#~ msgid "Top Left"
+#~ msgstr "Горе лево"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Доле лево"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Горе десно"
+
+#~ msgid "Top Right"
+#~ msgstr "Горе десно"
+
+#~ msgid "Untitled"
+#~ msgstr "Неименовано"
+
+#~ msgid "No description"
+#~ msgstr "Нема опис"
+
+#~ msgid "Add"
+#~ msgstr "Додај"
+
+#~ msgid "Command"
+#~ msgstr "Наредба"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Унос са истим називом већ постоји"
+
+#~ msgid "Title"
+#~ msgstr "Наслов"
+
+#~ msgid "Required"
+#~ msgstr "Обавезно"
+
+#~ msgid "Description"
+#~ msgstr "Опис"
+
+#~ msgid "Optional"
+#~ msgstr "Необавезно"
+
+#~ msgid "Autostart"
+#~ msgstr "Почетни прибор"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Изабери почетни прибор"
+
+#~ msgid "Add applet"
+#~ msgstr "Додај прибор"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Изабери и додај нови прибор на радну траку"
+
+#~ msgid "Start"
+#~ msgstr "Почетак"
+
+#~ msgid "Center"
+#~ msgstr "Средина"
+
+#~ msgid "End"
+#~ msgstr "Крај"
+
+#~ msgid "Button layout"
+#~ msgstr "Распоред дугмади"
+
+#~ msgid "Fonts"
+#~ msgstr "Словолик"
+
+#~ msgid "Window Titles"
+#~ msgstr "Наслови прозора"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Подесите словолик који се користи у наслову траке програма."
+
+#~ msgid "Documents"
+#~ msgstr "Документи"
+
+#~ msgid "Interface"
+#~ msgstr "Интерфејс"
+
+#~ msgid "Monospace"
+#~ msgstr "Моноспејс"
+
+#~ msgid "Choose an applet"
+#~ msgstr "Изабери прибор"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Сигурни сте, да желите окончати тренутну седницу?"
+
+#~ msgid "Spacer size"
+#~ msgstr "Величина размакнице"
+
+#~ msgid "Show label"
+#~ msgstr "Прикажи ознаку"
+
+#~ msgid "Show places"
+#~ msgstr "Прикажи локације"
+
+#~ msgid "Show network folders"
+#~ msgstr "Прикажи мрежне фолдере"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Прикажи преносиве уређаје"
+
+#~ msgid "Password:"
+#~ msgstr "Лозинка:"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie радна површина"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Ова седница те пријављује у Budgie радну површину"
+
+#~ msgid "System Tray"
+#~ msgstr "Системска трака"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Статусни индикатор"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Иконе на радној траци"
+
+#~ msgid "Spacer"
+#~ msgstr "Размакница"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie изборник"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Индикатор тастера за закључавање"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Контрола Равен бочне траке"
+
+#~ msgid "Clock"
+#~ msgstr "Часовник"
+
+#~ msgid "Separator"
+#~ msgstr "Одвајач"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Дугме за приказивање радне површине"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Пребацивач радних окружења"
+
+#~ msgid "Task List"
+#~ msgstr "Картице отворених задатака"
+
+#~ msgid "Caffeine"
+#~ msgstr "Кафа"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Показивач тастатурног уноса"
+
+#~ msgid "User Indicator"
+#~ msgstr "Кориснички мени"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Мења изглед и понашање радне површине"

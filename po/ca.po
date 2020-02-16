@@ -2,27 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Adolfo Jayme-Barrientos, 2019
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Víctor Pont <victor@pont.cat>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2019
 # Davidmp <medipas@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 21:46+0000\n"
+"POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2020\n"
-"Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
+"Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/"
+"ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. define the name of the application
@@ -71,13 +72,13 @@ msgstr "Segons"
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:213
+#: budgie-window-shuffler/src/shuffler_control.vala:218
 msgid "Close"
 msgstr "Tanca"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:553
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 msgid "Please log out/in to initialize"
 msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
 
@@ -113,8 +114,8 @@ msgstr "Desa la posició"
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
 msgstr ""
-"Habiliteu Súper + arrossegament per establir la posició de l'hora. Cliqueu a"
-" Desa la posició per establir-ho."
+"Habiliteu Súper + arrossegament per establir la posició de l'hora. Cliqueu a "
+"Desa la posició per establir-ho."
 
 #. window content
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:172
@@ -169,7 +170,9 @@ msgstr "AM"
 msgid "PM"
 msgstr "PM"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Automàtic"
@@ -192,56 +195,54 @@ msgid "Set pressure (0 = no pressure)"
 msgstr "Estableix la pressió (0 = sense pressió)"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:208
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
 msgid "Corner"
 msgstr "Cantó"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:212
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
 msgid "Action"
 msgstr "Acció"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:216
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
 msgid "Custom"
 msgstr "Personalitzada"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-#: budgie-window-shuffler/src/shuffler_control.vala:62
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-window-shuffler/src/shuffler_control.vala:63
 msgid "Top-left"
 msgstr "A dalt a l'esquerra"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "A dalt a la dreta"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "A baix a l'esquerra"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Bottom-right"
 msgstr "A baix a la dreta"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:377
 #: budgie-hotcorners/src/HotCornersApplet.vala:386
 #: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
 msgid "Missing process"
 msgstr "Falta un procés"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:381
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr "Si us plau, habiliteu les previsualitzacions de finestres."
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-#: budgie-hotcorners/src/HotCornersApplet.vala:398
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
 msgstr "Si us plau, habiliteu el canviador de finestres."
 
@@ -323,19 +324,19 @@ msgstr "Cap resultat per a “%s”"
 msgid "Shutdown"
 msgstr "Atura"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
 msgid "Suspend"
 msgstr "Suspèn"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
 msgstr "Reinicia"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
 msgid "Lock"
 msgstr "Bloqueja"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
 msgid "Logout"
 msgstr "Surt"
 
@@ -376,7 +377,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:147
+#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Paràmetres"
 
@@ -451,7 +452,7 @@ msgstr "Establiu-ne la icona."
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
 #: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
 msgstr "Obre"
 
@@ -465,8 +466,7 @@ msgstr "Voleu buidar la paperera?"
 
 #: budgie-trash/src/widgets/TrashPopover.vala:126
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-"Se suprimiran permanentment tots els elements que hi ha a la paperera."
+msgstr "Se suprimiran permanentment tots els elements que hi ha a la paperera."
 
 #: budgie-trash/src/widgets/TrashPopover.vala:147
 msgid "Empty Trash"
@@ -643,30 +643,24 @@ msgid "quarter after %s"
 msgstr "Passa un quart de %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "Passen vint minuts de %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "Gairebé passa mitja hora de %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -712,8 +706,7 @@ msgstr "Falten uns 10 minuts per a %s"
 msgid "almost %s"
 msgstr "Gairebé %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Paràmetres de l'hora i la data"
@@ -731,16 +724,13 @@ msgstr "Calendari"
 msgid "Preferences"
 msgstr "Preferències"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Mostra la data"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Usa un rellotge de 24 hores."
@@ -779,220 +769,233 @@ msgid "Enable grid tiling graphical shortcut"
 msgstr "Habiliteu la drecera gràfica de mosaic en graella."
 
 #: budgie-window-shuffler/src/shuffler_control.vala:51
+#, fuzzy
 msgid ""
-"When using move shortcuts, swap window geometry if a window moves to an "
-"existing window's position"
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
 msgstr ""
 "Quan s'usen les dreceres de moviment, es canvia la geometria de la finestra "
 "si es mou a la posició d'una altra."
 
 #: budgie-window-shuffler/src/shuffler_control.vala:52
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:53
 msgid "Move the mouse over a button for an explanation"
 msgstr "Passeu el ratolí per sobre d'un botó per veure'n l'explicació."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:53
+#: budgie-window-shuffler/src/shuffler_control.vala:54
 msgid "Number of columns, used by grid, move and tile-all shortcuts"
 msgstr ""
 "Nombre de columnes, usades per les dreceres de graella, moviment i mosaic."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:54
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Number of rows, used by grid, move and tile-all shortcuts"
 msgstr ""
 "Nombre de files, usades per les dreceres de graella, moviment i mosaic."
 
 #. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:56
+#: budgie-window-shuffler/src/shuffler_control.vala:57
 msgid "Margins between virtual grid and screen edges "
 msgstr "Marges entre la graella virtual i les vores de la pantalla."
 
 #. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:58
+#: budgie-window-shuffler/src/shuffler_control.vala:59
 msgid "Shortcuts for quarter and half tiling & tiling to grid"
 msgstr "Dreceres per al mosaic d'un quart i mig i de mosaic a graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 msgid "Left-half"
 msgstr "Meitat esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:64
+#: budgie-window-shuffler/src/shuffler_control.vala:65
 msgid "Top-half"
 msgstr "Meitat superior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:65
+#: budgie-window-shuffler/src/shuffler_control.vala:66
 msgid "Right-half"
 msgstr "Meitat dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:66
+#: budgie-window-shuffler/src/shuffler_control.vala:67
 msgid "Bottom-half"
 msgstr "Meitat inferior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:67
+#: budgie-window-shuffler/src/shuffler_control.vala:68
 msgid "Tile all windows to grid"
 msgstr "Fes un mosaic en forma de graella de totes les finestres"
 
 #. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:70
 msgid "Shortcuts for moving to the nearest grid cell"
 msgstr "Dreceres per moure's a la cel·la més propera"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:71
 msgid "Move left"
 msgstr "Mou a l'esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:72
 msgid "Move right"
 msgstr "Mou a la dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid "Move up"
 msgstr "Mou amunt"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move down"
 msgstr "Mou avall"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:75
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Shortcuts for resizing windows on grid"
 msgstr "Dreceres per canviar la mida de les finestres a la graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:76
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Expand horizontally (to the right)"
 msgstr "Expandeix horitzontalment (a la dreta)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:77
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Shrink horizontally (from the right)"
 msgstr "Encongeix horitzontalment (des de la dreta)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:78
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Expand vertically (down)"
 msgstr "Expandeix verticalment (avall)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:79
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "Shrink vertically (from the bottom)"
 msgstr "Encongeix verticalment (des de baix)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:81
+#: budgie-window-shuffler/src/shuffler_control.vala:82
 msgid "Expand horizontally (to the left)"
 msgstr "Expandeix horitzontalment (a l'esquerra)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:83
 msgid "Shrink horizontally (from the left)"
 msgstr "Encongeix horitzontalment (des de l'esquerra)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:83
+#: budgie-window-shuffler/src/shuffler_control.vala:84
 msgid "Expand vertically (up)"
 msgstr "Expandeix verticalment (amunt)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:84
+#: budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Shrink vertically (from the top)"
 msgstr "Encongeix verticalment (des de dalt)"
 
 #. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:86
+#: budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Shortcuts for the grid"
 msgstr "Dreceres per a la graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:87
+#: budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Show the grid"
 msgstr "Mostra la graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:88
+#: budgie-window-shuffler/src/shuffler_control.vala:89
 msgid "Add a column"
 msgstr "Afegeix-hi una columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:89
+#: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Add a row"
 msgstr "Afegeix-hi una fila"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:90
+#: budgie-window-shuffler/src/shuffler_control.vala:91
 msgid "Remove a column"
 msgstr "Suprimeix-ne una columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:91
+#: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Remove a row"
 msgstr "Suprimeix-ne una fila"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:92
+#: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "To select a range of tiles, use Shift + click"
 msgstr "Per seleccionar un conjunt de cel·les, useu Maj. + clic."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:93
+#: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Set the shade of gray for the grid"
 msgstr "Establiu l'ombra de gris per a la graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:94
+#: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Press + or scroll up to lighten the grid shade"
 msgstr "Premeu + o desplaceu-vos amunt per aclarir l'ombra de la graella."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:95
+#: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Press - or scroll down to darken the grid shade"
 msgstr "Premeu - o desplaceu-vos avall per enfosquir l'ombra de la graella."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:125
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr "Control del canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:149
 msgid "Margins"
 msgstr "Marges"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:149
+#: budgie-window-shuffler/src/shuffler_control.vala:150
 msgid "Tiling"
 msgstr "Mosaic"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:150
+#: budgie-window-shuffler/src/shuffler_control.vala:151
 msgid "Move & resize"
 msgstr "Mou i canvia'n la mida"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:151
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Grid"
 msgstr "Graella"
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:156
+#: budgie-window-shuffler/src/shuffler_control.vala:157
 msgid "Enable Window Shuffler"
 msgstr "Habilita el canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:160
+#: budgie-window-shuffler/src/shuffler_control.vala:161
 msgid "Enable Window Shuffler grid"
 msgstr "Habilita la graella del canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:166
-msgid "Swap geometry"
-msgstr "Canvia'n la geometria"
+#: budgie-window-shuffler/src/shuffler_control.vala:167
+#, fuzzy
+msgid "Swap windows"
+msgstr "Finestres"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+#, fuzzy
+msgid "Enable animation"
+msgstr "Habilita les notificacions."
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:172
+#: budgie-window-shuffler/src/shuffler_control.vala:177
 msgid "Grid: columns & rows"
 msgstr "Graella: columnes i files"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:177
+#: budgie-window-shuffler/src/shuffler_control.vala:182
 msgid "Columns"
 msgstr "Columnes"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:182
+#: budgie-window-shuffler/src/shuffler_control.vala:187
 msgid "Rows"
 msgstr "Files"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:273
+#: budgie-window-shuffler/src/shuffler_control.vala:286
 msgid "Top"
 msgstr "A dalt"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:289
 msgid "Left"
 msgstr "A l'esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:279
+#: budgie-window-shuffler/src/shuffler_control.vala:292
 msgid "Right"
 msgstr "A la dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:282
+#: budgie-window-shuffler/src/shuffler_control.vala:295
 msgid "Bottom"
 msgstr "A baix"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:288
+#: budgie-window-shuffler/src/shuffler_control.vala:301
 msgid "Window padding"
 msgstr "Farciment de la finestra"
 
@@ -1038,7 +1041,7 @@ msgstr "Trieu un directori"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
 msgid "Set text color"
 msgstr "Estableix el color del text"
 
@@ -1060,73 +1063,73 @@ msgid "Choose"
 msgstr "Trieu"
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
 msgstr "dilluns"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
 msgstr "dimarts"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
 msgstr "dimecres"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
 msgstr "dijous"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
 msgstr "divendres"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
 msgstr "dissabte"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
 msgstr "diumenge"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
 msgid "General"
 msgstr "General"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "Desktop"
 msgstr "Escriptori"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
 msgid "City"
 msgstr "Ciutat"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
 msgid "Show on desktop"
 msgstr "Mostra a l'escriptori"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
 msgid "Show dynamic panel icon"
 msgstr "Mostra la icona de plafó dinàmic"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show forecast in popover"
 msgstr "Mostra la previsió meteorològica en una finestreta emergent"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
 msgid "Transparency"
 msgstr "Transparència"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
 msgid "Set custom position (px)"
 msgstr "Estableix-ne una posició personalitzada (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
 msgid "Please enter at least 3 characters"
 msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
@@ -1295,3 +1298,898 @@ msgstr "Mostra el temps i la previsió meteorològica"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Miniapliació de xarxa"
+
+#~ msgid "Swap geometry"
+#~ msgstr "Canvia'n la geometria"
+
+#~ msgid "Log out"
+#~ msgstr "Surt"
+
+#~ msgid "Restart device"
+#~ msgstr "Reinicia el dispositiu"
+
+#~ msgid "Power Off"
+#~ msgstr "Atura"
+
+#~ msgid "Change background"
+#~ msgstr "Canvia el fons."
+
+#~ msgid "Displays"
+#~ msgstr "Pantalles"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "S'ha activat l'empenta de la Cafeïna."
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "S'ha desactivat l'empenta de la Cafeïna."
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Es desactivarà d'aquí a un minut."
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Es desactivarà d'aquí a %d minuts."
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Mode de la Cafeïna"
+
+#~ msgid "Applets"
+#~ msgstr "Miniaplicacions"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificacions"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Ara no hi ha cap aplicació que reprodueixi àudio."
+
+#~ msgid "Play some music"
+#~ msgstr "Reprodueix una mica de música"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Aquí no hi ha res per veure."
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notificacions per llegir"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notificació per llegir"
+
+#~ msgid "No unread notifications"
+#~ msgstr "No hi ha notificacions per llegir."
+
+#~ msgid "No new notifications"
+#~ msgstr "No hi ha cap notificació nova."
+
+#~ msgid "Apps"
+#~ msgstr "Aplicacions"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositius"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "La bateria està totalment carregada."
+
+#~ msgid "Unknown"
+#~ msgstr "Desconegut"
+
+#~ msgid "Battery charging"
+#~ msgstr "Es carrega la bateria."
+
+#~ msgid "Battery remaining"
+#~ msgstr "Càrrega de la bateria"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Mostra el percentatge de la bateria."
+
+#~ msgid "Power settings"
+#~ msgstr "Paràmetres de l'energia"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Paràmetres del Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Envia els fitxers"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Mode d'avió del Bluetooth"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "El Bluetooth està inhabilitat."
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "El Bluetooth està actiu."
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Connectat a %d dispositiu"
+#~ msgstr[1] "Connectat a %d dispostius"
+
+#~ msgid "Sound settings"
+#~ msgstr "Paràmetres del so"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Obre'n una instància nova."
+
+#~ msgid "Close All Windows"
+#~ msgstr "Tanca totes les finestres."
+
+#~ msgid "Always On Top"
+#~ msgstr "Sempre a dalt"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximitza"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimitza"
+
+#~ msgid "Unfavorite"
+#~ msgstr "No ho consideris preferit."
+
+#~ msgid "Favorite"
+#~ msgstr "Considera-ho preferit."
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Mou a l'espai de treball %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Desmaximitza"
+
+#~ msgid "Close Window"
+#~ msgstr "Tanca la finestra."
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Mostra els controls de les finestres."
+
+#~ msgid "All"
+#~ msgstr "Tot"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Perdoneu, no s'ha trobat cap element."
+
+#~ msgid "Caps lock is active"
+#~ msgstr "El bloqueig de majúscules està activat."
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "El bloqueig de majúscules no està activat."
+
+#~ msgid "Num lock is active"
+#~ msgstr "El bloqueig numèric està activat."
+
+#~ msgid "Num lock is not active"
+#~ msgstr "El bloqueig numèric no està activat."
+
+#~ msgid "Time and date settings"
+#~ msgstr "Paràmetres de la data i l'hora"
+
+#~ msgid "Show seconds"
+#~ msgstr "Mostra els segons."
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Commuta l'escriptori."
+
+#~ msgid "Rename"
+#~ msgstr "Canvia'n el nom."
+
+#~ msgid "Remove"
+#~ msgstr "Suprimeix"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Temporitzador (minuts)"
+
+#~ msgid "User"
+#~ msgstr "Usuari"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hiberna"
+
+#~ msgid "Places"
+#~ msgstr "Llocs"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Ara no hi ha res per mostrar."
+
+#~ msgid "Mount some drives"
+#~ msgstr "Munteu alguns dispositius."
+
+#~ msgid "Enable more sections"
+#~ msgstr "Habiliteu més seccions."
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Obre %s"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "El volum està en ús per altres processos."
+
+#~ msgid "Operation aborted"
+#~ msgstr "S'ha avortat l'operació."
+
+#~ msgid "Type your password"
+#~ msgstr "Escriviu la contrasenya."
+
+#~ msgid "Removable devices"
+#~ msgstr "Dispositius extraïbles"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volums locals"
+
+#~ msgid "Network folders"
+#~ msgstr "Carpetes de xarxa"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Munta i obre %s"
+
+#~ msgid "Eject"
+#~ msgstr "Expulsa"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr ""
+#~ "Escriviu la contrasenya d'encriptació per desbloquejar aquest volum."
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Ara podeu desconnectar amb seguretat"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "La contrasenya que heu escrit no és correcta."
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr ""
+#~ "Hi ha hagut un error desconegut mentre s'intentava muntar aquest volum."
+
+#~ msgid "Unmount"
+#~ msgstr "Desmunta"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Dispositiu desconegut"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Error en expulsar el dispositiu"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Error en desmuntar el volum"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Ha fallat l'autenticació."
+
+#~ msgid "Group:"
+#~ msgstr "Grup:"
+
+#~ msgid "Appearance"
+#~ msgstr "Aparença"
+
+#~ msgid "Panels"
+#~ msgstr "Plafons"
+
+#~ msgid "Session"
+#~ msgstr "Sessió"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Paràmetres de l'escriptori Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Crea un plafó nou."
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Suprimeix aquest plafó de la pantalla."
+
+#~ msgid "Top Dock"
+#~ msgstr "Acoblador superior"
+
+#~ msgid "Right Dock"
+#~ msgstr "Acoblador dret"
+
+#~ msgid "Left Dock"
+#~ msgstr "Acoblador esquerre"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Acoblador inferior"
+
+#~ msgid "Top Panel"
+#~ msgstr "Plafó superior"
+
+#~ msgid "Right Panel"
+#~ msgstr "Plafó dret"
+
+#~ msgid "Left Panel"
+#~ msgstr "Plafó esquerre"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Plafó inferior"
+
+#~ msgid "Always"
+#~ msgstr "Sempre"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinàmic"
+
+#~ msgid "None"
+#~ msgstr "Cap"
+
+#~ msgid "Intelligent"
+#~ msgstr "Intel·ligent"
+
+#~ msgid "Never"
+#~ msgstr "Mai"
+
+#~ msgid "Position"
+#~ msgstr "Posició"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Establiu la vora de la pantalla on se situarà aquest plafó."
+
+#~ msgid "Size"
+#~ msgstr "Mida"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Establiu la mida (amplada o alçada, segons l'orientació) d'aquest plafó."
+
+#~ msgid "Automatically hide"
+#~ msgstr "Amaga'l automàticament."
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Quan estigui establert, aquest plafó s'amagarà per maximitzar l'espai de "
+#~ "la pantalla."
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Controleu quan aquest plafó hauria de tenir un color de fons sòlid."
+
+#~ msgid "Shadow"
+#~ msgstr "Ombra"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Afegeix una ombra de fons decorativa, ideal per a plafons opacs."
+
+#~ msgid "Stylize regions"
+#~ msgstr "Estilitza les regions."
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Afegeix un suggeriment al plafó de manera que cada una de les tres àrees "
+#~ "principals pugui tenir un tema diferent."
+
+#~ msgid "Dock mode"
+#~ msgstr "Mode d'acoblador"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "En mode d'acoblador, el plafó usarà la mínima quantitat d'espai possible "
+#~ "i alliberarà espai de pantalla valuós."
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Permet augmentar el volum a més del 100 %"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Permet augmentar el volum a través dels paràmetres del so així com del "
+#~ "giny de sortida de so del Raven fins al 150 %."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Habilita mostrar els números de la setmana al calendari."
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Aquest paràmetre habilita mostrar els números de la setmana al giny del "
+#~ "calendari."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Mostra el giny del calendari."
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Mostra o amaga el giny del calendari a la secció de miniaplicacions del "
+#~ "Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Mostra el giny de la sortida de so."
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Mostra o amaga el giny de la sortida de so a la secció de miniaplicacions "
+#~ "del Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Mostra el giny de l'entrada del micròfon."
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Mostra o amaga el giny de l'entrada del micròfon a la secció de "
+#~ "miniaplicacions del Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Mostra el giny de controls de reproducció multimèdia."
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Mostra o amaga el giny de controls de reproducció multimèdia (MPRIS) de "
+#~ "la secció de miniaplicacions del Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Mostra la franja de l'energia."
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Mostra o amaga la franja de l'energia a la part inferior del Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirmeu la supressió del plafó."
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Realment voleu suprimir aquest plafó? Aquesta acció no es pot desfer."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "No m'ho tornis a preguntar."
+
+#~ msgid "Remove panel"
+#~ msgstr "Suprimeix el plafó."
+
+#~ msgid "Keep panel"
+#~ msgstr "Mantén el plafó."
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirmeu la supressió de la miniaplicació."
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Realment voleu suprimir aquesta miniaplicació? Aquesta acció no es pot "
+#~ "desfer."
+
+#~ msgid "Remove applet"
+#~ msgstr "Suprimeix la miniaplicació."
+
+#~ msgid "Keep applet"
+#~ msgstr "Mantén la miniaplicació."
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Icones de l'escriptori"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Controleu si voleu permetre llançadors i icones a l'escriptori."
+
+#~ msgid "Home directory"
+#~ msgstr "Directori personal"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Afegeix una drecera del directori personal a l'escriptori."
+
+#~ msgid "Network servers"
+#~ msgstr "Servidors de xarxa"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Afegeix una drecera als servidors de xarxa locals a l'escriptori."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Afegeix una drecera del directori de la paperera a l'escriptori."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Volums muntats"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Els volums i els dispositius muntats es mostraran a l'escriptori."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Nombre d'escriptoris virtuals"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Nombre d'escriptoris virtuals / espais de treball per crear "
+#~ "automàticament a l'engegada."
+
+#~ msgid "Style"
+#~ msgstr "Estil"
+
+#~ msgid "Widgets"
+#~ msgstr "Ginys"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr ""
+#~ "Establiu l'aparença de les decoracions de les finestres i dels controls."
+
+#~ msgid "Icons"
+#~ msgstr "Icones"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Establiu el tema global de les icones."
+
+#~ msgid "Cursors"
+#~ msgstr "Cursors"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Establiu el tema global del cursor del ratolí."
+
+#~ msgid "Notification Position"
+#~ msgstr "Posició de les notificacions"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Establiu la ubicació de les notificacions emergents."
+
+#~ msgid "Dark theme"
+#~ msgstr "Tema fosc"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema integrat"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Quan estigui habilitat, l'estil de l'escriptori se substituirà per "
+#~ "l'estil integrat."
+
+#~ msgid "Animations"
+#~ msgstr "Animacions"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Controleu si les finestres i els controls usen animacions."
+
+#~ msgid "Top Left"
+#~ msgstr "A dalt a l'esquerra"
+
+#~ msgid "Bottom Left"
+#~ msgstr "A baix a l'esquerra"
+
+#~ msgid "Bottom Right"
+#~ msgstr "A baix a la dreta"
+
+#~ msgid "Top Right"
+#~ msgstr "A dalt a la dreta"
+
+#~ msgid "Untitled"
+#~ msgstr "Sense títol"
+
+#~ msgid "No description"
+#~ msgstr "Sense descripció"
+
+#~ msgid "running"
+#~ msgstr "s'executa"
+
+#~ msgid "Add"
+#~ msgstr "Afegeix"
+
+#~ msgid "Command"
+#~ msgstr "Ordre"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Ja existeix una entrada amb aquest títol."
+
+#~ msgid "Title"
+#~ msgstr "Títol"
+
+#~ msgid "Required"
+#~ msgstr "Necessari"
+
+#~ msgid "Description"
+#~ msgstr "Descripció"
+
+#~ msgid "Optional"
+#~ msgstr "Opcional"
+
+#~ msgid "Autostart"
+#~ msgstr "Inici automàtic"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Inici automàtic d'aplicacions"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configureu la miniaplicació."
+
+#~ msgid "Add applet"
+#~ msgstr "Afegeix una miniaplicació."
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Trieu una miniaplicació nova per afegir-la a aquest plafó."
+
+#~ msgid "No settings available"
+#~ msgstr "No hi ha paràmetres disponibles."
+
+#~ msgid "Start"
+#~ msgstr "A l'inici"
+
+#~ msgid "Center"
+#~ msgstr "Al centre"
+
+#~ msgid "End"
+#~ msgstr "Al final"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Adjunta diàlegs modals a les finestres."
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Els diàlegs modals s'adjuntaran a la finestra mare i es mouran "
+#~ "conjuntament quan s'arrosseguin."
+
+#~ msgid "Button layout"
+#~ msgstr "Disposició dels botons"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr ""
+#~ "Canvia la disposició dels botons a les barres de títol de les aplicacions."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centra les finestres noves a la pantalla."
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centra les finestres noves que s'obrin a la pantalla actual."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr ""
+#~ "Inhabilita el mode de llum de nit quan les finestres estiguin en pantalla "
+#~ "completa."
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Inhabilita el mode de llum de nit quan una finestra està en pantalla "
+#~ "completa. Es torna a habilitar quan se'n surt."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Mosaic automàtic"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Les finestres faran automàticament un mosaic quan s'arrosseguin a dalt de "
+#~ "tot de la pantalla o als cantons."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr ""
+#~ "Habilita el canvi del focus de la finestra en entrar-hi i sortir-ne amb "
+#~ "el ratolí."
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Habilita que la finestra tingui el focus quan s'hi entri amb el ratolí i "
+#~ "que el deixi de tenir quan se'n surti."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Inhabilita la no redirecció de les finestres."
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Aquesta opció és per a usuaris avançats. Useu-la si teniu problemes "
+#~ "gràfics o de rendiment amb GPU dedicades."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Dreta (estàndard)"
+
+#~ msgid "Fonts"
+#~ msgstr "Lletres"
+
+#~ msgid "Window Titles"
+#~ msgstr "Títols de les finestres"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Establiu la lletra de les barres de títol de les aplicacions."
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Establiu la lletra de visualització per als documents."
+
+#~ msgid "Interface"
+#~ msgstr "Interfície"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Establiu la lletra primària usada pels controls de les aplicacions."
+
+#~ msgid "Monospace"
+#~ msgstr "Monoespai"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Establiu la lletra d'amplada fixa usada per les aplicacions predominants "
+#~ "en text."
+
+#~ msgid "Text scaling"
+#~ msgstr "Escala del text"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Establiu el factor de l'escala del text."
+
+#~ msgid "Full"
+#~ msgstr "Completa"
+
+#~ msgid "Medium"
+#~ msgstr "Mitjana"
+
+#~ msgid "Slight"
+#~ msgstr "Lleu"
+
+#~ msgid "Hinting"
+#~ msgstr "Insinuació"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Establiu el tipus d'insinuació per usar."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpíxel (per a pantalles LCD)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Estàndard (escala de grisos)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Antialiàsing"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Establiu el factor d'antialiàsing a usar."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Trieu una miniaplicació."
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Segur que voleu acabar la sessió?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Mostra totes les finestres en clicar-hi."
+
+#~ msgid "Only show favorited"
+#~ msgstr "Mostra només el contingut preferit."
+
+#~ msgid "Lock icons"
+#~ msgstr "Bloqueja les icones."
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Restringeix-ho a l'espai de treball."
+
+#~ msgid "Window grouping"
+#~ msgstr "Agrupament de finestres"
+
+#~ msgid "Night Light"
+#~ msgstr "Llum de nit"
+
+#~ msgid "Schedule"
+#~ msgstr "Planificació"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "De la posta a la sortida del sol"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Paràmetres de la pantalla"
+
+#~ msgid "Spacer size"
+#~ msgstr "Mida de l'espaiador"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Mode compacte"
+
+#~ msgid "Show Headers"
+#~ msgstr "Mostra les capçaleres."
+
+#~ msgid "Roll-over mouse"
+#~ msgstr "Pas del ratolí"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "Visibilitat del botó «Afegeix»"
+
+#~ msgid "Don't show"
+#~ msgstr "No el mostris."
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Mostra'l en passar-hi el ratolí."
+
+#~ msgid "Always show"
+#~ msgstr "Mostra'l sempre."
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximitza la brillantor."
+
+#~ msgid "Brightness Level"
+#~ msgstr "Nivell de la brillantor"
+
+#~ msgid "Show label"
+#~ msgstr "Mostra'n l'etiqueta."
+
+#~ msgid "Show places"
+#~ msgstr "Mostra els llocs."
+
+#~ msgid "Show network folders"
+#~ msgstr "Mostra les carpetes de xarxa."
+
+#~ msgid "Show removable drives"
+#~ msgstr "Mostra els dispositius extraïbles."
+
+#~ msgid "Always expand places"
+#~ msgstr "Expandeix sempre els llocs."
+
+#~ msgid "Authentication Required"
+#~ msgstr "Cal autenticació."
+
+#~ msgid "Password:"
+#~ msgstr "Contrasenya:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Cal autenticació."
+
+#~ msgid "Authenticate"
+#~ msgstr "Autentica"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Escriptori Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Aquesta sessió us fa entrar a l'escriptori Budgie."
+
+#~ msgid "System Tray"
+#~ msgstr "Safata del sistema"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indicador d'estat"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Icona de la llista de tasques"
+
+#~ msgid "Spacer"
+#~ msgstr "Espaiador"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menú del Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indicador del bloqueig de tecles"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Control de la barra lateral del Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Rellotge"
+
+#~ msgid "Separator"
+#~ msgstr "Separador"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Mostra el botó de l'escriptori."
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Canviador d'espais de treball"
+
+#~ msgid "Task List"
+#~ msgstr "Llista de tasques"
+
+#~ msgid "Caffeine"
+#~ msgstr "Cafeïna"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indicador de la disposició del teclat"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indicador de l'usuari"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Canvieu l'aparença i el comportament de l'escriptori."
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Plafó del Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Obre altres aplicacions i proporciona diverses utilitats per gestionar "
+#~ "finestres, mostrar l'hora, etc."

@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # david mohammed <foss.freedom@gmail.com>, 2019
 # abuyop <abuyop@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 21:46+0000\n"
+"POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2020\n"
-"Language-Team: Malay (Malaysia) (https://www.transifex.com/ubuntu-budgie/teams/72251/ms_MY/)\n"
+"Language-Team: Malay (Malaysia) (https://www.transifex.com/ubuntu-budgie/"
+"teams/72251/ms_MY/)\n"
+"Language: ms_MY\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ms_MY\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. define the name of the application
@@ -68,13 +69,13 @@ msgstr "Saat"
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:213
+#: budgie-window-shuffler/src/shuffler_control.vala:218
 msgid "Close"
 msgstr "Tutup"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:553
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 msgid "Please log out/in to initialize"
 msgstr "Sila daftar keluar/masuk untuk awalkan"
 
@@ -166,7 +167,9 @@ msgstr "AM"
 msgid "PM"
 msgstr "PM"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Auto"
@@ -189,56 +192,54 @@ msgid "Set pressure (0 = no pressure)"
 msgstr "Tetapkan tekanan (0 = tanpa tekanan)"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:208
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
 msgid "Corner"
 msgstr "Bucu"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:212
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
 msgid "Action"
 msgstr "Tindakan"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:216
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
 msgid "Custom"
 msgstr "Suai"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-#: budgie-window-shuffler/src/shuffler_control.vala:62
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-window-shuffler/src/shuffler_control.vala:63
 msgid "Top-left"
 msgstr "Kiri-atas"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "Kanan-atas"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "Kiri-bawah"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Bottom-right"
 msgstr "Kanan-bawah"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:377
 #: budgie-hotcorners/src/HotCornersApplet.vala:386
 #: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:381
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-#: budgie-hotcorners/src/HotCornersApplet.vala:398
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
 msgstr ""
 
@@ -320,19 +321,19 @@ msgstr "Tiada Keputusan untuk \"%s\""
 msgid "Shutdown"
 msgstr "Matikan"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
 msgid "Suspend"
 msgstr "Tangguh"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
 msgstr "Mula Semula"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
 msgid "Lock"
 msgstr "Kunci"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
 msgid "Logout"
 msgstr "Daftar Keluar"
 
@@ -373,7 +374,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:147
+#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Tetapan"
 
@@ -448,7 +449,7 @@ msgstr "Tetapkan ikon"
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
 #: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
 msgstr "Buka"
 
@@ -639,30 +640,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -708,8 +703,7 @@ msgstr ""
 msgid "almost %s"
 msgstr "hampir %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Tetapan Tarikh dan Waktu"
@@ -727,16 +721,13 @@ msgstr "Kalendar"
 msgid "Preferences"
 msgstr "Keutamaan"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Tunjuk tarikh"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Guna waktu 24 jam"
@@ -774,215 +765,227 @@ msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:51
 msgid ""
-"When using move shortcuts, swap window geometry if a window moves to an "
-"existing window's position"
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:52
-msgid "Move the mouse over a button for an explanation"
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:53
-msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgid "Move the mouse over a button for an explanation"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:54
+msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Number of rows, used by grid, move and tile-all shortcuts"
 msgstr ""
 
 #. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:56
+#: budgie-window-shuffler/src/shuffler_control.vala:57
 msgid "Margins between virtual grid and screen edges "
 msgstr ""
 
 #. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:58
+#: budgie-window-shuffler/src/shuffler_control.vala:59
 msgid "Shortcuts for quarter and half tiling & tiling to grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 msgid "Left-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:64
+#: budgie-window-shuffler/src/shuffler_control.vala:65
 msgid "Top-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:65
+#: budgie-window-shuffler/src/shuffler_control.vala:66
 msgid "Right-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:66
+#: budgie-window-shuffler/src/shuffler_control.vala:67
 msgid "Bottom-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:67
+#: budgie-window-shuffler/src/shuffler_control.vala:68
 msgid "Tile all windows to grid"
 msgstr ""
 
 #. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:70
 msgid "Shortcuts for moving to the nearest grid cell"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:71
 msgid "Move left"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:72
 msgid "Move right"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid "Move up"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move down"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:75
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Shortcuts for resizing windows on grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:76
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Expand horizontally (to the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:77
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Shrink horizontally (from the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:78
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Expand vertically (down)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:79
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "Shrink vertically (from the bottom)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:81
+#: budgie-window-shuffler/src/shuffler_control.vala:82
 msgid "Expand horizontally (to the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:83
 msgid "Shrink horizontally (from the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:83
+#: budgie-window-shuffler/src/shuffler_control.vala:84
 msgid "Expand vertically (up)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:84
+#: budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Shrink vertically (from the top)"
 msgstr ""
 
 #. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:86
+#: budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Shortcuts for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:87
+#: budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Show the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:88
+#: budgie-window-shuffler/src/shuffler_control.vala:89
 msgid "Add a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:89
+#: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Add a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:90
+#: budgie-window-shuffler/src/shuffler_control.vala:91
 msgid "Remove a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:91
+#: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Remove a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:92
+#: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "To select a range of tiles, use Shift + click"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:93
+#: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Set the shade of gray for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:94
+#: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Press + or scroll up to lighten the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:95
+#: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Press - or scroll down to darken the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:125
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:149
 msgid "Margins"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:149
+#: budgie-window-shuffler/src/shuffler_control.vala:150
 msgid "Tiling"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:150
+#: budgie-window-shuffler/src/shuffler_control.vala:151
 msgid "Move & resize"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:151
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Grid"
 msgstr ""
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:156
+#: budgie-window-shuffler/src/shuffler_control.vala:157
 msgid "Enable Window Shuffler"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:160
+#: budgie-window-shuffler/src/shuffler_control.vala:161
 msgid "Enable Window Shuffler grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:166
-msgid "Swap geometry"
-msgstr ""
+#: budgie-window-shuffler/src/shuffler_control.vala:167
+#, fuzzy
+msgid "Swap windows"
+msgstr "Tetingkap"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+#, fuzzy
+msgid "Enable animation"
+msgstr "Tiada pemberitahuan baharu"
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:172
+#: budgie-window-shuffler/src/shuffler_control.vala:177
 msgid "Grid: columns & rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:177
+#: budgie-window-shuffler/src/shuffler_control.vala:182
 msgid "Columns"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:182
+#: budgie-window-shuffler/src/shuffler_control.vala:187
 msgid "Rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:273
+#: budgie-window-shuffler/src/shuffler_control.vala:286
 msgid "Top"
-msgstr ""
+msgstr "Atas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:289
 msgid "Left"
-msgstr ""
+msgstr "Kiri"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:279
+#: budgie-window-shuffler/src/shuffler_control.vala:292
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:282
+#: budgie-window-shuffler/src/shuffler_control.vala:295
 msgid "Bottom"
-msgstr ""
+msgstr "Bawah"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:288
+#: budgie-window-shuffler/src/shuffler_control.vala:301
 msgid "Window padding"
 msgstr ""
 
@@ -1028,7 +1031,7 @@ msgstr "Pilih direktori"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
 msgid "Set text color"
 msgstr "Tetapkan warna teks"
 
@@ -1050,73 +1053,73 @@ msgid "Choose"
 msgstr "Pilih"
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
 msgstr "Isnin"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
 msgstr "Selasa"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
 msgstr "Khamis"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
 msgstr "Jumaat"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
 msgstr "Sabtu"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
 msgstr "Ahad"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
 msgid "General"
 msgstr "Am"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "Desktop"
 msgstr "Desktop"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
 msgid "City"
 msgstr "Bandar"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
 msgid "Show on desktop"
 msgstr "Tunjuk atas desktop"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
 msgid "Show dynamic panel icon"
 msgstr "Tunjuk ikon panel dinamik"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show forecast in popover"
 msgstr "Tunjuk ramalan dalam dialog timbul"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
 msgid "Transparency"
 msgstr "Kelutsinaran"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
 msgid "Set custom position (px)"
 msgstr "Tetapkan kedudukan suai (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
 msgid "Please enter at least 3 characters"
 msgstr "Sila masukkan sekurang-kurangnya 3 aksara"
 
@@ -1285,3 +1288,691 @@ msgstr "Tunjuk cuaca & ramalan"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr ""
+
+#~ msgid "Log out"
+#~ msgstr "Daftar Keluar"
+
+#~ msgid "Restart device"
+#~ msgstr "Mula semula peranti"
+
+#~ msgid "Power Off"
+#~ msgstr "Matikan"
+
+#~ msgid "Change background"
+#~ msgstr "Ubah latar belakang"
+
+#, fuzzy
+#~ msgid "Displays"
+#~ msgstr "Tetapan Paparan"
+
+#~ msgid "Applets"
+#~ msgstr "Aplet"
+
+#~ msgid "Notifications"
+#~ msgstr "Pemberitahuan"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Tiada apa-apa di sini"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u pemberitahuan belum dibaca"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 pemberitahuan belum baca"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Tiada pemberitahuan belum baca"
+
+#~ msgid "No new notifications"
+#~ msgstr "Tiada pemberitahuan baharu"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Bateri telah dicas sepenuhnya."
+
+#~ msgid "Unknown"
+#~ msgstr "Tidak diketahui"
+
+#~ msgid "Battery charging"
+#~ msgstr "Mengecas bateri"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Kuasa bateri berbaki"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Tunjuk peratusan kuasa bateri"
+
+#~ msgid "Power settings"
+#~ msgstr "Tetapan kuasa"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Tetapan Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Hantar Fail"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Mod Bluetooth Dalam Penerbangan"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth dilumpuhkan"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth aktif"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Bersambung dengan %d peranti"
+
+#~ msgid "Sound settings"
+#~ msgstr "Tetapan bunyi"
+
+#, fuzzy
+#~ msgid "Always On Top"
+#~ msgstr "Sentiasa"
+
+#, fuzzy
+#~ msgid "Close Window"
+#~ msgstr "Tetingkap"
+
+#, fuzzy
+#~ msgid "Show Window Controls"
+#~ msgstr "Tajuk Tetingkap"
+
+#~ msgid "All"
+#~ msgstr "Semua"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Kunci huruf besar aktif"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Kunci huruf besar tidak aktif"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Kunci nombor aktif"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Kunci nombor tidak aktif"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Tetapan waktu dan tarikh"
+
+#~ msgid "Show seconds"
+#~ msgstr "Tunjuk saat"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Togol desktop"
+
+#~ msgid "Rename"
+#~ msgstr "Nama Semula"
+
+#~ msgid "Remove"
+#~ msgstr "Buang"
+
+#~ msgid "User"
+#~ msgstr "Pengguna"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hibernasi"
+
+#~ msgid "Places"
+#~ msgstr "Tempat"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Tiada apa-apa hendak dipaparkan"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Lekap beberapa pemacu"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Benarkan lagi seksyen"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Buka \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Volum ini telah digunakan oleh proses lain"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operasi dihenti paksa"
+
+#~ msgid "Type your password"
+#~ msgstr "Taip kata laluan anda"
+
+#~ msgid "Removable devices"
+#~ msgstr "Peranti boleh alih"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volum setempat"
+
+#~ msgid "Network folders"
+#~ msgstr "Fail rangkaian"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Lekap dan buka \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Lenting"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Masukkan frasa laluan penyulitan untuk membuka volum ini"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Anda boleh tanggalkan dengan selamat"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Kata laluan yang anda masukkan adalah salah"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Satu ralat tidak diketahui berlaku ketika cuba melekapkan volum ini"
+
+#~ msgid "Unmount"
+#~ msgstr "Nyahlekap"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Peranti Tidak Diketahui"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Ralat ketika melenting peranti"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Ralat ketika menyahlekap volum"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Pengesahihan gagal"
+
+#~ msgid "Group:"
+#~ msgstr "Kumpulan:"
+
+#~ msgid "Appearance"
+#~ msgstr "Penampilan"
+
+#~ msgid "Panels"
+#~ msgstr "Panel"
+
+#~ msgid "Session"
+#~ msgstr "Sesi"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Tetapan Desktop Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Cipta panel baharu"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Buang panel ini dari skrin"
+
+#~ msgid "Top Dock"
+#~ msgstr "Labuh Atas"
+
+#~ msgid "Right Dock"
+#~ msgstr "Labuh Kanan"
+
+#~ msgid "Left Dock"
+#~ msgstr "Labuh Kiri"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Labuh Bawah"
+
+#~ msgid "Top Panel"
+#~ msgstr "Panel Atas"
+
+#~ msgid "Right Panel"
+#~ msgstr "Panel Kanan"
+
+#~ msgid "Left Panel"
+#~ msgstr "Panel Kiri"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Panel Bawah"
+
+#~ msgid "Always"
+#~ msgstr "Sentiasa"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamik"
+
+#~ msgid "None"
+#~ msgstr "Tiada"
+
+#~ msgid "Intelligent"
+#~ msgstr "Pintar"
+
+#~ msgid "Never"
+#~ msgstr "Tidak Sesekali"
+
+#~ msgid "Position"
+#~ msgstr "Kedudukan"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Tetapkan pinggir skrin yang mana panel berada di atasnya"
+
+#~ msgid "Size"
+#~ msgstr "Saiz"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Tetapkan saiz (lebar atau tinggi, bergantung pada orientasi) panel ini"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Sembunyi secara automatik"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Bila ditetapkan, panel ini akan disembunyikan dari pandangan untuk "
+#~ "maksimumkan ruang skrin"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Kawal sama ada panel ini patut mempunyai latar belakang tegar"
+
+#~ msgid "Shadow"
+#~ msgstr "Bayang"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Tambah bayang-letak hiasan, sesuai untuk panel legap"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Gayakan bahagian"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Tambah pembayang pada panel supaya setiap tiga kawasan utama panel boleh "
+#~ "ditemakan secara berlainan."
+
+#~ msgid "Dock mode"
+#~ msgstr "Mod labuh"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Bila dalam mod labuh, panel akan gunakan ruang seminimum yang mungkin, "
+#~ "bebaskan ruang skrin yang penting"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Sahkan pembuangan panel"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Anda pasti mahu membuang panel ini? Tindakan ini tidak boleh dikembalikan."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Jangan tanya saya lagi"
+
+#~ msgid "Remove panel"
+#~ msgstr "Buang panel"
+
+#~ msgid "Keep panel"
+#~ msgstr "Kekalkan panel"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Sahkan pembuangan aplet"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Anda pasti mahu membuang aplet ini? Tindakan ini tidak boleh dikembalikan."
+
+#~ msgid "Remove applet"
+#~ msgstr "Buang aplet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Kekalkan aplet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Ikon Desktop"
+
+#, fuzzy
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Kawal sama ada hendak benarkan pelancar dan ikon di atas desktop"
+
+#~ msgid "Home directory"
+#~ msgstr "Direktori rumah"
+
+#, fuzzy
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Tambah satu pintasan ke direktori rumah di atas dekstop"
+
+#~ msgid "Network servers"
+#~ msgstr "Pelayang rangkaian"
+
+#, fuzzy
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Tambah satu pintasan ke pelayan rangkaian di atas dekstop"
+
+#, fuzzy
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Tambah satu pintasan ke direktori Tong Sampah di atas dekstop"
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Volum terlekap"
+
+#, fuzzy
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Volum & pemacu terlekap akan muncul di atas desktop"
+
+#~ msgid "Style"
+#~ msgstr "Gaya"
+
+#~ msgid "Widgets"
+#~ msgstr "Widjet"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Tetapkan penampilan hiasan dan kawalan tetingkap"
+
+#~ msgid "Icons"
+#~ msgstr "Ikon"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Tetapkan tema ikon digunakan secara sejagat"
+
+#~ msgid "Cursors"
+#~ msgstr "Kursor"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Tetapkan tema kursor tetikus digunakan secara sejagat"
+
+#, fuzzy
+#~ msgid "Notification Position"
+#~ msgstr "Pemberitahuan"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tema gelap"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema terbina-dalam"
+
+#, fuzzy
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Bila dibenarkan, gaya komponen desktop akan ditulis-ganti dengan tema "
+#~ "terbina-dalam"
+
+#~ msgid "Animations"
+#~ msgstr "Animasi"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Kawal sama ada tetingkap dan kawalan menggunakan animasi"
+
+#, fuzzy
+#~ msgid "Top Left"
+#~ msgstr "Kiri"
+
+#, fuzzy
+#~ msgid "Bottom Left"
+#~ msgstr "Bawah"
+
+#, fuzzy
+#~ msgid "Bottom Right"
+#~ msgstr "Bawah"
+
+#, fuzzy
+#~ msgid "Top Right"
+#~ msgstr "Kanan"
+
+#~ msgid "Untitled"
+#~ msgstr "Tidak Bertajuk"
+
+#~ msgid "No description"
+#~ msgstr "Tiada keterangan"
+
+#~ msgid "running"
+#~ msgstr "berjalan"
+
+#~ msgid "Add"
+#~ msgstr "Tambah"
+
+#~ msgid "Command"
+#~ msgstr "Perintah"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Satu masukan dengan tajuk sudah pun wujud"
+
+#~ msgid "Title"
+#~ msgstr "Tajuk"
+
+#~ msgid "Required"
+#~ msgstr "Diperlukan"
+
+#~ msgid "Description"
+#~ msgstr "Keterangan"
+
+#~ msgid "Optional"
+#~ msgstr "Pilihan"
+
+#~ msgid "Autostart"
+#~ msgstr "Automula"
+
+#, fuzzy
+#~ msgid "Autostart apps"
+#~ msgstr "Automula"
+
+#~ msgid "Configure applet"
+#~ msgstr "Konfigur aplet"
+
+#~ msgid "Add applet"
+#~ msgstr "Tambah aplet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Pilih satu aplet untuk ditambah ke dalam panel ini"
+
+#~ msgid "No settings available"
+#~ msgstr "Tiada tetapan yang tersedia"
+
+#~ msgid "Start"
+#~ msgstr "Mula"
+
+#~ msgid "Center"
+#~ msgstr "Tengah"
+
+#~ msgid "End"
+#~ msgstr "Tamat"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Lampirkan dialog modal ke dalam tetingkap"
+
+#, fuzzy
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Dialog modal akan dilampirkan dengan tetingkap induk dan bergerak bersama-"
+#~ "sama jika diseret"
+
+#~ msgid "Button layout"
+#~ msgstr "Bentangan butang"
+
+#, fuzzy
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Ubah bentangan butang dalam palang tajuk aplikasi"
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Penjubinan automatik"
+
+#, fuzzy
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Tetingkap akan dijubinkan secara automatik bila diseret ke bucu skrin "
+#~ "atau bucu jauh"
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Lumpuhkan nyaharahan semula tetingkap"
+
+#, fuzzy
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Pilihan ini untuk pengguna mahir. Guna ia jika anda menghadapi masalah "
+#~ "grafik atau prestasi dengan GPU sedia ada"
+
+#~ msgid "Right (standard)"
+#~ msgstr "Kanan (piawai)"
+
+#~ msgid "Fonts"
+#~ msgstr "Fo"
+
+#~ msgid "Window Titles"
+#~ msgstr "Tajuk Tetingkap"
+
+#, fuzzy
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Tetapkan fon yang digunakan dalam palang tajuk aplikasi"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumen"
+
+#, fuzzy
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Tetapkan fon paparan yang digunakan untuk dokumen"
+
+#~ msgid "Interface"
+#~ msgstr "Antaramuka"
+
+#, fuzzy
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Tetapkan fon utama yang digunakan oleh kawalan aplikasi"
+
+#~ msgid "Monospace"
+#~ msgstr "Monospace"
+
+#, fuzzy
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr "Tetapkan fon lebar-tetap yang digunakan oleh aplikasi dominan"
+
+#, fuzzy
+#~ msgid "Slight"
+#~ msgstr "Kanan"
+
+#~ msgid "Choose an applet"
+#~ msgstr "Pilih satu aplet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Anda pasti mahu tamatkan sesi anda?"
+
+#~ msgid "Night Light"
+#~ msgstr "Cahaya Malam"
+
+#~ msgid "Schedule"
+#~ msgstr "Jadual"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Matahari Terbenam hingga Matahari Terbit"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Tetapan Paparan"
+
+#~ msgid "Spacer size"
+#~ msgstr "Saiz jarak"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Mod Padat"
+
+#~ msgid "Show Headers"
+#~ msgstr "Tunjuk Pengepala"
+
+#~ msgid "Roll-over mouse"
+#~ msgstr "Tetikus gulung-atas"
+
+#, fuzzy
+#~ msgid "Always show"
+#~ msgstr "Sentiasa"
+
+#~ msgid "Show label"
+#~ msgstr "Tunjuk label"
+
+#~ msgid "Show places"
+#~ msgstr "Tunjuk tempat"
+
+#~ msgid "Show network folders"
+#~ msgstr "Tunjuk folder rangkaian"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Tunjuk pemacu boleh alih"
+
+#~ msgid "Always expand places"
+#~ msgstr "Sentiasa kembangkan tempat"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Pengesahihan Diperlukan"
+
+#~ msgid "Password:"
+#~ msgstr "Kata Laluan:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Pengesahihan diperlukan"
+
+#~ msgid "Authenticate"
+#~ msgstr "Sahihkan"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Desktop Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Sesi ini mendaftar masuk anda ke Desktop Budgie"
+
+#~ msgid "System Tray"
+#~ msgstr "Talam Sistem"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Penunjuk Status"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Senarai Tugas Ikon"
+
+#~ msgid "Spacer"
+#~ msgstr "Ruangan"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menu Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Penunjuk Kekunci Kunci"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Kawalan Palang Sisi Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Jam"
+
+#~ msgid "Separator"
+#~ msgstr "Pemisah"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Tunjuk Butang Desktop"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Penukar Ruang Kerja"
+
+#~ msgid "Task List"
+#~ msgstr "Senarai Tugas"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Penunjuk Bentangan Papan Kekunci"
+
+#~ msgid "User Indicator"
+#~ msgstr "Penunjuk Pengguna"
+
+#, fuzzy
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Ubah penampilan dan kelakuan desktop"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Panel Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Lancar lain-lain aplikasi dan menyediakan pelbagai utiliti untuk mengurus "
+#~ "tetingkap, tunjuk waktu, dll."

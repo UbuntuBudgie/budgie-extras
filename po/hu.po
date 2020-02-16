@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Benjamin Piller <benpiller@gmail.com>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 21:46+0000\n"
+"POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2019\n"
-"Language-Team: Hungarian (https://www.transifex.com/ubuntu-budgie/teams/72251/hu/)\n"
+"Language-Team: Hungarian (https://www.transifex.com/ubuntu-budgie/"
+"teams/72251/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. define the name of the application
@@ -68,13 +69,13 @@ msgstr ""
 
 #. settingsgrid - bottomsection
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:213
+#: budgie-window-shuffler/src/shuffler_control.vala:218
 msgid "Close"
 msgstr ""
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:553
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 msgid "Please log out/in to initialize"
 msgstr ""
 
@@ -166,7 +167,9 @@ msgstr "de."
 msgid "PM"
 msgstr "du."
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -189,56 +192,54 @@ msgid "Set pressure (0 = no pressure)"
 msgstr "Nyomás állítása (0 = nincs nyomás)"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:208
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
 msgid "Corner"
 msgstr "Sarok"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:212
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
 msgid "Action"
 msgstr "Művelet"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:216
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
 msgid "Custom"
 msgstr "Egyedi"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-#: budgie-window-shuffler/src/shuffler_control.vala:62
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-window-shuffler/src/shuffler_control.vala:63
 msgid "Top-left"
 msgstr "Bal felső"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:60
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "Jobb felső"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "Bal alsó"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:239
-#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 msgid "Bottom-right"
 msgstr "Jobb alsó"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:377
 #: budgie-hotcorners/src/HotCornersApplet.vala:386
 #: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:381
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-#: budgie-hotcorners/src/HotCornersApplet.vala:398
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
 msgstr ""
 
@@ -320,19 +321,19 @@ msgstr "Nincsenek találatok erre “%s”"
 msgid "Shutdown"
 msgstr "Leállítás"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:106
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
 msgid "Suspend"
 msgstr "Felfüggesztés"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:115
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:125
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
 msgid "Lock"
 msgstr "Zár"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:142
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
 msgid "Logout"
 msgstr "Kijelentkezés"
 
@@ -373,7 +374,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:147
+#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -448,7 +449,7 @@ msgstr "Ikon beállítása"
 #. tooltip
 #: budgie-trash/src/widgets/MenuRow.vala:52
 #: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:177
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -639,30 +640,24 @@ msgid "quarter after %s"
 msgstr "%s múlt tizenöt perccel"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "%s múlt húsz perccel"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "majdnem %s múlt harminc perccel"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -708,8 +703,7 @@ msgstr "tíz perc múlva %s"
 msgid "almost %s"
 msgstr "majdnem %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Dátum és Idő beállítások"
@@ -727,16 +721,13 @@ msgstr "Naptár"
 msgid "Preferences"
 msgstr "Beállítások"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Dátum megjelenítése"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "24 órás formátum használata"
@@ -775,215 +766,227 @@ msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:51
 msgid ""
-"When using move shortcuts, swap window geometry if a window moves to an "
-"existing window's position"
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:52
-msgid "Move the mouse over a button for an explanation"
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:53
-msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgid "Move the mouse over a button for an explanation"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:54
+msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:55
 msgid "Number of rows, used by grid, move and tile-all shortcuts"
 msgstr ""
 
 #. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:56
+#: budgie-window-shuffler/src/shuffler_control.vala:57
 msgid "Margins between virtual grid and screen edges "
 msgstr ""
 
 #. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:58
+#: budgie-window-shuffler/src/shuffler_control.vala:59
 msgid "Shortcuts for quarter and half tiling & tiling to grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 msgid "Left-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:64
+#: budgie-window-shuffler/src/shuffler_control.vala:65
 msgid "Top-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:65
+#: budgie-window-shuffler/src/shuffler_control.vala:66
 msgid "Right-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:66
+#: budgie-window-shuffler/src/shuffler_control.vala:67
 msgid "Bottom-half"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:67
+#: budgie-window-shuffler/src/shuffler_control.vala:68
 msgid "Tile all windows to grid"
 msgstr ""
 
 #. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:69
+#: budgie-window-shuffler/src/shuffler_control.vala:70
 msgid "Shortcuts for moving to the nearest grid cell"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:70
+#: budgie-window-shuffler/src/shuffler_control.vala:71
 msgid "Move left"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:71
+#: budgie-window-shuffler/src/shuffler_control.vala:72
 msgid "Move right"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:72
+#: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid "Move up"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:73
+#: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move down"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:75
+#: budgie-window-shuffler/src/shuffler_control.vala:76
 msgid "Shortcuts for resizing windows on grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:76
+#: budgie-window-shuffler/src/shuffler_control.vala:77
 msgid "Expand horizontally (to the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:77
+#: budgie-window-shuffler/src/shuffler_control.vala:78
 msgid "Shrink horizontally (from the right)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:78
+#: budgie-window-shuffler/src/shuffler_control.vala:79
 msgid "Expand vertically (down)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:79
+#: budgie-window-shuffler/src/shuffler_control.vala:80
 msgid "Shrink vertically (from the bottom)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:81
+#: budgie-window-shuffler/src/shuffler_control.vala:82
 msgid "Expand horizontally (to the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:82
+#: budgie-window-shuffler/src/shuffler_control.vala:83
 msgid "Shrink horizontally (from the left)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:83
+#: budgie-window-shuffler/src/shuffler_control.vala:84
 msgid "Expand vertically (up)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:84
+#: budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Shrink vertically (from the top)"
 msgstr ""
 
 #. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:86
+#: budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Shortcuts for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:87
+#: budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Show the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:88
+#: budgie-window-shuffler/src/shuffler_control.vala:89
 msgid "Add a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:89
+#: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Add a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:90
+#: budgie-window-shuffler/src/shuffler_control.vala:91
 msgid "Remove a column"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:91
+#: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Remove a row"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:92
+#: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "To select a range of tiles, use Shift + click"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:93
+#: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Set the shade of gray for the grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:94
+#: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Press + or scroll up to lighten the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:95
+#: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Press - or scroll down to darken the grid shade"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:124
+#: budgie-window-shuffler/src/shuffler_control.vala:125
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:148
+#: budgie-window-shuffler/src/shuffler_control.vala:149
 msgid "Margins"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:149
+#: budgie-window-shuffler/src/shuffler_control.vala:150
 msgid "Tiling"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:150
+#: budgie-window-shuffler/src/shuffler_control.vala:151
 msgid "Move & resize"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:151
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 msgid "Grid"
 msgstr ""
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:156
+#: budgie-window-shuffler/src/shuffler_control.vala:157
 msgid "Enable Window Shuffler"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:160
+#: budgie-window-shuffler/src/shuffler_control.vala:161
 msgid "Enable Window Shuffler grid"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:166
-msgid "Swap geometry"
-msgstr ""
+#: budgie-window-shuffler/src/shuffler_control.vala:167
+#, fuzzy
+msgid "Swap windows"
+msgstr "Ablakok"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+#, fuzzy
+msgid "Enable animation"
+msgstr "Értesítés bekapcsolása"
 
 #. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:172
+#: budgie-window-shuffler/src/shuffler_control.vala:177
 msgid "Grid: columns & rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:177
+#: budgie-window-shuffler/src/shuffler_control.vala:182
 msgid "Columns"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:182
+#: budgie-window-shuffler/src/shuffler_control.vala:187
 msgid "Rows"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:273
+#: budgie-window-shuffler/src/shuffler_control.vala:286
 msgid "Top"
-msgstr ""
+msgstr "Felső"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:289
 msgid "Left"
-msgstr ""
+msgstr "Bal"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:279
+#: budgie-window-shuffler/src/shuffler_control.vala:292
 msgid "Right"
-msgstr ""
+msgstr "Jobb"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:282
+#: budgie-window-shuffler/src/shuffler_control.vala:295
 msgid "Bottom"
-msgstr ""
+msgstr "Alsó"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:288
+#: budgie-window-shuffler/src/shuffler_control.vala:301
 msgid "Window padding"
 msgstr ""
 
@@ -1029,7 +1032,7 @@ msgstr "Mappa kiválasztása"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:872
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
 msgid "Set text color"
 msgstr "Szöveg színének állítása"
 
@@ -1051,73 +1054,73 @@ msgid "Choose"
 msgstr "Választás"
 
 #. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
 msgstr "Hétfő"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
 msgstr "Kedd"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
 msgstr "Szerda"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:142
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
 msgstr "Csütörtök"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
 msgstr "Péntek"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
 msgstr "Szombat"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
 msgstr "Vasárnap"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:770
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
 msgid "General"
 msgstr "Általános"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:776
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "Desktop"
 msgstr "Asztal"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:788
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
 msgid "City"
 msgstr "Város"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:811
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
 msgid "Show on desktop"
 msgstr "Megjelenítés az asztalon"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
 msgid "Show dynamic panel icon"
 msgstr "Dinamikus panel ikon megjelenítése"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show forecast in popover"
 msgstr "Előrejelzés megjelenítése az előugró értesítésen"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:846
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
 msgid "Transparency"
 msgstr "Átlátszóság"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:879
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
 msgid "Set custom position (px)"
 msgstr "Egyedi pozíció állítása (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1025
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
 msgid "Please enter at least 3 characters"
 msgstr "Kérem adjon meg legalább 3 karaktert"
 
@@ -1286,3 +1289,883 @@ msgstr "Időjárás és előrejelzés megjelenítése"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr ""
+
+#~ msgid "Log out"
+#~ msgstr "Kijelentkezés"
+
+#~ msgid "Restart device"
+#~ msgstr "Eszköz újraindítása"
+
+#~ msgid "Power Off"
+#~ msgstr "Kikapcsolás"
+
+#~ msgid "Change background"
+#~ msgstr "Háttérkép cseréje"
+
+#~ msgid "Displays"
+#~ msgstr "Kijelzők"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Caffeine Boost bekapcsolva"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Caffeine Boost kikapcsolva"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Kikapcsolás egy percen belül"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Kikapcsolás %d perc múlva"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Caffeine Mód"
+
+#~ msgid "Applets"
+#~ msgstr "Appletek"
+
+#~ msgid "Notifications"
+#~ msgstr "Értesítések"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Egy applikáció sem ad ki hangot."
+
+#~ msgid "Play some music"
+#~ msgstr "Játssz le zenét"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Nincs itt semmi látnivaló"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u olvasatlan értesítés"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 olvasatlan értesítés"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Nincs olvasatlan értesítés"
+
+#~ msgid "No new notifications"
+#~ msgstr "Nincs új értesítés"
+
+#~ msgid "Apps"
+#~ msgstr "Alkalmazások"
+
+#~ msgid "Devices"
+#~ msgstr "Eszközök"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Az akkumulátor teljesen fel van töltve."
+
+#~ msgid "Unknown"
+#~ msgstr "Ismeretlen"
+
+#~ msgid "Battery charging"
+#~ msgstr "Az akkumulátor töltődik"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Fennmaradó akkuidő"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Százalékos töltöttségi szint megjelenítése"
+
+#~ msgid "Power settings"
+#~ msgstr "Energiagazdálkodás"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth beállítások"
+
+#~ msgid "Send Files"
+#~ msgstr "Fájlok küldése"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth repülő üzemmódja"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth letiltva"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "A Bluetooth aktív"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Kapcsolódva %d eszközhöz"
+#~ msgstr[1] "Kapcsolódva %d eszközhöz"
+
+#~ msgid "Sound settings"
+#~ msgstr "Hangbeállítások"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Új példány indítása"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Összes ablak bezárása"
+
+#~ msgid "Always On Top"
+#~ msgstr "Mindig felül"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximalizál"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimalizál"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Nem kedvenc"
+
+#~ msgid "Favorite"
+#~ msgstr "Kedvenc"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Mozgatás a %i. munkaterületre"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Eredeti méret"
+
+#~ msgid "Close Window"
+#~ msgstr "Ablak bezárása"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Ablak vezérlők mutatása"
+
+#~ msgid "All"
+#~ msgstr "Minden"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Nincs eredmény"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "A Caps Lock aktív"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "A Caps Lock nem aktív"
+
+#~ msgid "Num lock is active"
+#~ msgstr "A Num Lock aktív"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "A Num Lock nem aktív"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Idő és dátum beállításai"
+
+#~ msgid "Show seconds"
+#~ msgstr "Másodpercek mutatása"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Váltás az asztalra"
+
+#~ msgid "Rename"
+#~ msgstr "Átnevezés"
+
+#~ msgid "Remove"
+#~ msgstr "Törlés"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Időzítő (percek)"
+
+#~ msgid "User"
+#~ msgstr "Felhasználó"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hibernálás"
+
+#~ msgid "Places"
+#~ msgstr "Helyek"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Most nincs mit megjeleníteni"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Néhány meghajtó csatolása"
+
+#~ msgid "Enable more sections"
+#~ msgstr "További részek engedélyezése"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "\"%s\" megnyitása"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "A kötetet más folyamatok használják"
+
+#~ msgid "Operation aborted"
+#~ msgstr "A művelet megszakadt"
+
+#~ msgid "Type your password"
+#~ msgstr "Írja be a jelszavát"
+
+#~ msgid "Removable devices"
+#~ msgstr "Eltávolítható eszközök"
+
+#~ msgid "Local volumes"
+#~ msgstr "Helyi kötetek"
+
+#~ msgid "Network folders"
+#~ msgstr "Hálózati mappák"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "\"%s\" csatolása és megnyitása"
+
+#~ msgid "Eject"
+#~ msgstr "Kiadás"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "A kötet feloldásához adja meg a titkosítási jelszót"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Most biztonságosan eltávolíthatja"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "A megadott jelszó helytelen"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Ismeretlen hiba történt a kötet csatlakoztatásakor"
+
+#~ msgid "Unmount"
+#~ msgstr "Leválasztás"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Ismeretlen eszköz"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Hiba az eszköz kiadása során"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Hiba a kötet lecsatolása során"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Sikertelen volt a hitelesítés"
+
+#~ msgid "Group:"
+#~ msgstr "Csoport:"
+
+#~ msgid "Appearance"
+#~ msgstr "Elrendezés"
+
+#~ msgid "Panels"
+#~ msgstr "Panelek"
+
+#~ msgid "Session"
+#~ msgstr "Munkamenet"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Budgie Desktop beállítása"
+
+#~ msgid "Create new panel"
+#~ msgstr "Új panel"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Panel eltávolítása a kijelzőről"
+
+#~ msgid "Top Dock"
+#~ msgstr "Felső dokk"
+
+#~ msgid "Right Dock"
+#~ msgstr "Jobb dokk"
+
+#~ msgid "Left Dock"
+#~ msgstr "Bal dokk"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Alsó dokk"
+
+#~ msgid "Top Panel"
+#~ msgstr "Felső panel"
+
+#~ msgid "Right Panel"
+#~ msgstr "Jobboldali panel"
+
+#~ msgid "Left Panel"
+#~ msgstr "Baloldali panel"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Alsó panel"
+
+#~ msgid "Always"
+#~ msgstr "Mindig"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamikus"
+
+#~ msgid "None"
+#~ msgstr "Egyik sem"
+
+#~ msgid "Intelligent"
+#~ msgstr "Intelligens"
+
+#~ msgid "Never"
+#~ msgstr "Soha"
+
+#~ msgid "Position"
+#~ msgstr "Pozíció"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Állítsa be a képernyő szélét, amelyen ez a panel marad"
+
+#~ msgid "Size"
+#~ msgstr "Méret"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Állítsa be a panel méretét (szélesség vagy magasság, tájolásától függően)"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Automatikus elrejtés"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Ha be van állítva, ez a panel maximalizált képernyő esetén elrejtődik"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "A panel szolid hátterének beállítása"
+
+#~ msgid "Shadow"
+#~ msgstr "Árnyék"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Dekoratív árnyék hozzáadása, ideális az átlátszó panelekhez"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Terület testreszabása"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "A panel három fő részre való felosztása a jobb elkülönítés érdekében."
+
+#~ msgid "Dock mode"
+#~ msgstr "Dokkoló mód"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Dokkoló módban a panel a lehető legkevesebb helyet használja fel, "
+#~ "felszabadítva a képernyő értékes területeit"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "A hangerő 100% fölé emelésének engedélyezése"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Engedélyezi a hangerő 150%-ig emelését a hang beállításokban és a Raven "
+#~ "hang moduljában."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Hetek számának mutatása a Naptárban"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Ez a beállítás engedélyezi a hetek számának mutatását a Naptár modulban."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Naptár modul megjelenítése"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr "Megjeleníti/elrejti a naptár modult a Raven aplletek szekciójában."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Hangkimeneti modul megjelenítése"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Megjeleníti vagy elrejti a hangkimeneti modult a Raven alkalmazások "
+#~ "szekciójában."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Mikrofon bemeneti modul megjelenítése"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Megjeleníti vagy elrejti a mikrofon bemeneti modult a Raven alkalmazások "
+#~ "szekciójában."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Média lejátszási kezelőszervek megjelenítése"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Megjeleníti vagy elrejti a média lejátszási kezelőszervek modult a Raven "
+#~ "alkalmazások szekciójában."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Energiagazdálkodási sáv megjelenítése"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr ""
+#~ "Megjeleníti vagy elrejti az energiagazdálkodási sávot a Raven alján."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Erősítse meg a panel eltávolítását"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Biztosan el akarja távolítani a panelt? Ez a művelet visszavonhatatlan."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Ne kérdezze többször"
+
+#~ msgid "Remove panel"
+#~ msgstr "Panel eltávolítása"
+
+#~ msgid "Keep panel"
+#~ msgstr "Panel megtartása"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Applet eltávolításának megerősítése"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Biztosan el akarja távolítani az appletet? Ez a művelet visszavonhatatlan."
+
+#~ msgid "Remove applet"
+#~ msgstr "Applet eltávolítása"
+
+#~ msgid "Keep applet"
+#~ msgstr "Applet megtartása"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Asztali ikonok"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Az asztalon található ikonok megjelenítésének kontrollálása."
+
+#~ msgid "Home directory"
+#~ msgstr "Saját mappa"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Saját mappa parancsikonjának megjelenítése az asztalon."
+
+#~ msgid "Network servers"
+#~ msgstr "Hálózati szerverek"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr ""
+#~ "Helyi hálózati szerverek parancsikonjának megjelenítése az asztalon."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Kuka parancsikonjának megjelenítése az asztalon."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Csatolt kötetek"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Csatolt kötetek és meghajtók megjelenítése az asztalon."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Virtuális asztalok száma"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr "Az indítás után létrejövő virtuális asztalok / munkaasztalok száma."
+
+#~ msgid "Style"
+#~ msgstr "Stílus"
+
+#~ msgid "Widgets"
+#~ msgstr "Widgetek"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Állítsa be az ablakdekorációkat és a vezérlőket"
+
+#~ msgid "Icons"
+#~ msgstr "Ikonok"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Állítsa be a globálisan használt ikontémát"
+
+#~ msgid "Cursors"
+#~ msgstr "Kurzorok"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Állítsa be a globálisan használt egérkurzor témát"
+
+#~ msgid "Notification Position"
+#~ msgstr "Értesítések pozíciója"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Felugró értesítések pozíciójának beállítása"
+
+#~ msgid "Dark theme"
+#~ msgstr "Sötét téma"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Beépített téma"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Engedélyezéskor a beépített stílus felülírja az asztali komponensek "
+#~ "stílusát"
+
+#~ msgid "Animations"
+#~ msgstr "Animációk"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr ""
+#~ "Meghatározhatja, hogy az ablakok és vezérlők animációkat használjanak"
+
+#~ msgid "Top Left"
+#~ msgstr "Bal felül"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Bal alul"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Jobb alul"
+
+#~ msgid "Top Right"
+#~ msgstr "Jobb felül"
+
+#~ msgid "Untitled"
+#~ msgstr "Névtelen"
+
+#~ msgid "No description"
+#~ msgstr "Nincs leírás"
+
+#~ msgid "running"
+#~ msgstr "fut"
+
+#~ msgid "Add"
+#~ msgstr "Hozzáadás"
+
+#~ msgid "Command"
+#~ msgstr "Parancs"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Már létezik egy bejegyzés ezzel a címmel"
+
+#~ msgid "Title"
+#~ msgstr "Cím"
+
+#~ msgid "Required"
+#~ msgstr "Kötelező"
+
+#~ msgid "Description"
+#~ msgstr "Leírás"
+
+#~ msgid "Optional"
+#~ msgstr "Tetszőleges"
+
+#~ msgid "Autostart"
+#~ msgstr "Automatikus indítás"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Automatikusan induló alkalmazások"
+
+#~ msgid "Configure applet"
+#~ msgstr "Applet beállítása"
+
+#~ msgid "Add applet"
+#~ msgstr "Applet hozzáadás"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Válasszon egy új appletet a panelhez való hozzáadáshoz"
+
+#~ msgid "No settings available"
+#~ msgstr "Nincs elérhető beállítás"
+
+#~ msgid "Start"
+#~ msgstr "Eleje"
+
+#~ msgid "Center"
+#~ msgstr "Közép"
+
+#~ msgid "End"
+#~ msgstr "Vég"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Csatolja a felbukkanó párbeszédablakokat a szülőablakokra"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "A felbukkanó párbeszédpanelek a szülőablakhoz csatolódnak, és velük "
+#~ "együtt mozognak."
+
+#~ msgid "Button layout"
+#~ msgstr "Gombok elrendezése"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Módosítsa az alkalmazások címsorainak gombelrendezését."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Új ablakok középre igazítása a képernyőn"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Újonnan indított ablakok középre igazítása a jelenlegi képernyőn."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Teljes képernyős ablakok esetén az éjszakai fény kikapcsolása"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Letiltja az éjszakai fényt teljes képernyős ablak esetén. Teljes képernyő "
+#~ "elhagyásakor újra engedélyezi."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Automatikus csempézés"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Az ablakok automatikusan csempéződnek, amikor a képernyő tetejére, vagy a "
+#~ "sarkokhoz közel húzza őket."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Ablak fókuszváltás engedélyezése az egérmutató be- és kilépésekor"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Engedélyezi az ablak fókuszba helyezését az egérmutató belépésekor, "
+#~ "illetve letiltja ha az egérmutató elhagyja az ablakot."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Ablakok közti átirányítás kikapcsolása"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Haladó felhasználók számára. Használja ezt, ha megjelenítési vagy "
+#~ "teljesítménybeli problémákat tapasztal dedikált GPU esetén."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Jobb (alapértelmezett)"
+
+#~ msgid "Fonts"
+#~ msgstr "Betűtípusok"
+
+#~ msgid "Window Titles"
+#~ msgstr "Ablak címek"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Állítsa be az alkalmazások címsoraiban használt betűtípust."
+
+#~ msgid "Documents"
+#~ msgstr "Dokumentumok"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Állítsa be a dokumentumok által használt megjelenítési betűtípust."
+
+#~ msgid "Interface"
+#~ msgstr "Felület"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr ""
+#~ "Állítsa be az alkalmazásvezérlések által használt elsődleges betűtípust."
+
+#~ msgid "Monospace"
+#~ msgstr "Fix szélességű"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Állítsa be a fix szélességű betűtípust a szöveges alkalmazások számára."
+
+#~ msgid "Text scaling"
+#~ msgstr "Szöveg méretezés"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Állítsa be a szöveg méretezési faktorát."
+
+#~ msgid "Full"
+#~ msgstr "Teljes"
+
+#~ msgid "Medium"
+#~ msgstr "Közepes"
+
+#~ msgid "Slight"
+#~ msgstr "Enyhe"
+
+#~ msgid "Hinting"
+#~ msgstr "Hinting"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr ""
+#~ "A hinting (jobb képernyőre való optimalizálás) típusának beállítása."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpixel (LCD kijelzőkhöz)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Alapértelmezett (szürkeárnyalatos)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Élsimítás"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Az élsimítás típusának beállítása."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Válasszon egy appletet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Biztosan be szeretné fejezni a munkamenetet?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Minden ablak megjelenítése klikkeléskor"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Csak a kedvencek megjelenítése"
+
+#~ msgid "Lock icons"
+#~ msgstr "Ikonok zárolása"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Munkaterületre korlátozás"
+
+#~ msgid "Window grouping"
+#~ msgstr "Ablak csoportosítás"
+
+#~ msgid "Night Light"
+#~ msgstr "Éjszakai fény"
+
+#~ msgid "Schedule"
+#~ msgstr "Ütemezés"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Napnyugtától napkeltéig"
+
+#~ msgid "Manual"
+#~ msgstr "Kézi"
+
+#~ msgid "Display Settings"
+#~ msgstr "Képernyőbeállítások"
+
+#~ msgid "Spacer size"
+#~ msgstr "Elosztósáv mérete"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Kompakt mód"
+
+#~ msgid "Show Headers"
+#~ msgstr "Fejlécek mutatása"
+
+#~ msgid "Roll-over mouse"
+#~ msgstr "Roll-over görgetés"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "„Hozzáadás” gomb láthatósága"
+
+#~ msgid "Don't show"
+#~ msgstr "Ne mutassa"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Megjelenítés egérmutató áthaladásakor"
+
+#~ msgid "Always show"
+#~ msgstr "Mindig mutassa"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Fényerősség maximalizálása"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Fényerő"
+
+#~ msgid "Show label"
+#~ msgstr "Címke mutatása"
+
+#~ msgid "Show places"
+#~ msgstr "Helyek mutatása"
+
+#~ msgid "Show network folders"
+#~ msgstr "Hálózati mappák mutatása"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Eltávolítható eszközök mutatása"
+
+#~ msgid "Always expand places"
+#~ msgstr "Mindig bővítse a helyeket"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Hitelesítés szükséges"
+
+#~ msgid "Password:"
+#~ msgstr "Jelszó:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Hitelesítés szükséges"
+
+#~ msgid "Authenticate"
+#~ msgstr "Hitelesítés"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie asztal"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Ez a munkamenet a Budgie asztalra jelentkezik be"
+
+#~ msgid "System Tray"
+#~ msgstr "Tálca"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Állapot indikátor"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Ikonfeladat-lista"
+
+#~ msgid "Spacer"
+#~ msgstr "Elosztósáv"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie menü"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Lock billentyűk indikátor"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Raven oldalsáv vezérlő"
+
+#~ msgid "Clock"
+#~ msgstr "Óra"
+
+#~ msgid "Separator"
+#~ msgstr "Elválasztó"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Asztal mutatása gomb"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Munkaterület váltó"
+
+#~ msgid "Task List"
+#~ msgstr "Feladatlista"
+
+#~ msgid "Caffeine"
+#~ msgstr "Koffein"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Billentyűzetkiosztás indikátor"
+
+#~ msgid "User Indicator"
+#~ msgstr "Felhasználó indikátor"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Az asztali megjelenés és a viselkedés megváltoztatása"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Budgie Panel"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Alkalmazásokat indít, és segédprogramokat biztosít az ablakok "
+#~ "kezeléséhez, az idő megjelenítéséhez, stb."
