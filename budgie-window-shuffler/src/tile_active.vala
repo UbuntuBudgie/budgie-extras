@@ -33,6 +33,7 @@ namespace TileActive {
 
     GLib.HashTable<string, Variant> windata;
     GLib.List<unowned string> windata_keys;
+    bool surpass_blocking;
 
     ShufflerInfoClient? client;
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -42,10 +43,21 @@ namespace TileActive {
         public abstract int getactivewin () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
+        public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
         public abstract int get_yshift (int w_id) throws Error;
         public abstract int toggle_maximize (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
+        public abstract bool get_softmove () throws Error;
+    }
+
+    private bool check_position_isequal (int[] start, int[] target) {
+        for (int i = 0; i < start.length; i++) {
+            if (start[i] != target[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     void main (string[] args) {
@@ -62,7 +74,7 @@ namespace TileActive {
             // check if we should use window from set args
             int activewin;
             string lastarg = args[args.length - 1];
-            bool surpass_blocking = lastarg.contains("id=");
+            surpass_blocking = lastarg.contains("id=");
             if (surpass_blocking) {
                 activewin = int.parse(lastarg.split("=")[1]);
             }
@@ -155,15 +167,23 @@ namespace TileActive {
                     int tile_y = (int)currtile.get_child_value(1);
                     int tile_wdth = orig_width * ntiles_x;
                     int tile_hght = orig_height * ntiles_y;
-
                     int[] tiletarget = {
                         tile_x, tile_y, tile_wdth, tile_hght
                     };
-                    if (currwincoords != tiletarget) {
-                        client.move_window(
-                            activewin, tile_x, tile_y - yshift,
-                            tile_wdth, tile_hght
-                        );
+                    if (!check_position_isequal(currwincoords, tiletarget)) {
+                        bool softmove = client.get_softmove();
+                        if (softmove && !surpass_blocking) {
+                            client.move_window_animated(
+                                activewin, tile_x, tile_y - yshift,
+                                tile_wdth, tile_hght
+                            );
+                        }
+                        else {
+                            client.move_window(
+                                activewin, tile_x, tile_y - yshift,
+                                tile_wdth, tile_hght
+                            );
+                        }
                     }
                 }
             }

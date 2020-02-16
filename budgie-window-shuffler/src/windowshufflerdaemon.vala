@@ -36,6 +36,9 @@ namespace ShufflerEssentialInfo {
     int scale;
     // dconf
     GLib.Settings shuffler_settings;
+    GLib.Settings desktop_settings;
+    bool desktop_animations_set;
+    bool soft_move;
     int setcols;
     int setrows;
     int padding;
@@ -139,6 +142,20 @@ namespace ShufflerEssentialInfo {
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
                 now_move(w, x, y, width, height);
+            }
+        }
+
+        public void move_window_animated (
+            int w_id, int x, int y, int width, int height
+        ) throws Error {
+            // move window, animated
+            string cm = Config.PACKAGE_LIBDIR + "/softmove ".concat(
+                @" $w_id $x $y $width $height"
+            );
+            try {
+                Process.spawn_command_line_async(cm);
+            }
+            catch (SpawnError e) {
             }
         }
 
@@ -248,6 +265,14 @@ namespace ShufflerEssentialInfo {
 
         public int[] get_grid() throws Error {
             return {setcols, setrows};
+        }
+
+        public bool get_softmove() throws Error {
+            return soft_move;
+        }
+
+        public bool get_general_animations_set () throws Error {
+            return desktop_animations_set;
         }
 
         public bool swapgeo() throws Error {
@@ -504,6 +529,7 @@ namespace ShufflerEssentialInfo {
         margintop = shuffler_settings.get_int("margintop");
         marginbottom = shuffler_settings.get_int("marginbottom");
         padding = shuffler_settings.get_int("padding");
+        soft_move = shuffler_settings.get_boolean("softmove");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
@@ -513,6 +539,10 @@ namespace ShufflerEssentialInfo {
         else if (event == FileMonitorEvent.DELETED) {
             gridguiruns = false;
         }
+    }
+
+    private void update_desktopsettings () {
+        desktop_animations_set = desktop_settings.get_boolean("enable-animations");
     }
 
     public static int main (string[] args) {
@@ -534,6 +564,9 @@ namespace ShufflerEssentialInfo {
         shuffler_settings = get_settings("org.ubuntubudgie.windowshuffler");
         shuffler_settings.changed.connect(update_settings);
         update_settings();
+        desktop_settings = get_settings("org.gnome.desktop.interface");
+        desktop_settings.changed["enable-animations"].connect(update_desktopsettings);
+        update_desktopsettings();
         // X11 stuff, non-dynamic part
         unowned X.Window xwindow = Gdk.X11.get_default_root_xwindow();
         unowned X.Display xdisplay = Gdk.X11.get_default_xdisplay();

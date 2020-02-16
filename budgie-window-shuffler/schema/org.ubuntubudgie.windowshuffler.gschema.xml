@@ -17,6 +17,11 @@
         <key type="b" name="swapgeometry">
             <summary>Swap window geometry between windows on grid when jumping</summary>
             <description>If a window jumps to another position where already is another window, swap window size and position</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="softmove">
+            <summary>Use animation on xy move and xy tile actions</summary>
+            <description>WHen a window is moved by tiling or move, use smooth transition</description>
             <default>true</default>
         </key>
         <key type="b" name="runshuffler">

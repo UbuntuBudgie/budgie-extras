@@ -35,13 +35,31 @@ namespace JumpActive {
         public abstract int getactivewin () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
+        public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
         public abstract int get_yshift (int w_id) throws Error;
         public abstract string getactivemon_name () throws Error;
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
+        public abstract bool get_softmove () throws Error;
         public abstract int[] get_margins () throws Error;
+        public abstract bool get_general_animations_set () throws Error;
+    }
 
+    private bool procruns (string processname) {
+        string cmd = @"/usr/bin/pgrep -f $processname";
+        string output;
+        try {
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            if (output != "") {
+                return true;
+            }
+        }
+        /* on an unlike to happen exception, return false */
+        catch (SpawnError e) {
+            return false;
+        }
+        return false;
     }
 
     private int find_next (string[] arr, int anchor) {
@@ -89,6 +107,20 @@ namespace JumpActive {
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
+            // check if softmove runs. wait a tiny bit if so
+            int n_checks = 0;
+            bool proc_runs = true;
+            while (proc_runs) {
+                proc_runs = procruns(
+                    "/usr/lib/budgie-window-shuffler/softmove"
+                );
+                Thread.usleep(10000);
+                n_checks += 1;
+                if (n_checks == 200) {
+                    break;
+                }
+
+            }
             bool guiruns = client.check_ifguiruns();
             int[] grid = client.get_grid();
             // cols/rows is read from dconf, or overruled by args:
@@ -138,13 +170,10 @@ namespace JumpActive {
                         break;
                 }
                 int yshift = client.get_yshift(activewin);
-
                 // move window to target -if it isn't already there-
                 bool samewindow = winx == nextx && winy == nexty;
-
                 GLib.List<weak string> winkeys = wins.get_keys();
                 int correct_padding = 0;
-
                 // if swapgemetry
                 if (client.swapgeo()) {
                     int winwidth = (int)activewin_data.get_child_value(5);
@@ -179,10 +208,21 @@ namespace JumpActive {
                 }
                 // move subject to targeted position
                 if (!samewindow) {
-                    client.move_window(
-                        activewin, nextx, nexty - yshift,
-                        tilewidth + correct_padding, tileheight + correct_padding
-                    );
+                    bool softmove = client.get_softmove() && client.get_general_animations_set();
+                    if (softmove) {
+                        client.move_window_animated(
+                            activewin, nextx, nexty - yshift,
+                            tilewidth + correct_padding,
+                            tileheight + correct_padding
+                        );
+                    }
+                    else {
+                        client.move_window(
+                            activewin, nextx, nexty - yshift,
+                            tilewidth + correct_padding,
+                            tileheight + correct_padding
+                        );
+                    }
                 }
             }
         }
