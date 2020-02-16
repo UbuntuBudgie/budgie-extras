@@ -108,12 +108,18 @@ namespace JumpActive {
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
             // check if softmove runs. wait a tiny bit if so
+            int n_checks = 0;
             bool proc_runs = true;
             while (proc_runs) {
                 proc_runs = procruns(
                     "/usr/lib/budgie-window-shuffler/softmove"
                 );
                 Thread.usleep(10000);
+                n_checks += 1;
+                if (n_checks == 200) {
+                    break;
+                }
+
             }
             bool guiruns = client.check_ifguiruns();
             int[] grid = client.get_grid();
