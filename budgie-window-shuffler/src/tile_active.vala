@@ -51,6 +51,15 @@ namespace TileActive {
         public abstract bool get_softmove () throws Error;
     }
 
+    private bool check_position_isequal (int[] start, int[] target) {
+        for (int i = 0; i < start.length; i++) {
+            if (start[i] != target[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void main (string[] args) {
         try {
             client = Bus.get_proxy_sync (
@@ -161,7 +170,7 @@ namespace TileActive {
                     int[] tiletarget = {
                         tile_x, tile_y, tile_wdth, tile_hght
                     };
-                    if (currwincoords != tiletarget) {
+                    if (!check_position_isequal(currwincoords, tiletarget)) {
                         bool softmove = client.get_softmove();
                         if (softmove && !surpass_blocking) {
                             client.move_window_animated(
