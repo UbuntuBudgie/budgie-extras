@@ -17,6 +17,7 @@
 // valac --pkg gio-2.0
 
 /*
+/ args relate to the matrix coords & matrix size
 / args:
 / |--x/y--| |--cols/rows--|
 /  int int      int int
@@ -193,7 +194,6 @@ namespace TileActive {
                     if (!check_position_isequal(currwincoords, tiletarget)) {
                         bool softmove = client.get_softmove();
                         if (softmove && !surpass_blocking) {
-                            print(@"moving to $tile_wdth, $tile_hght\n");
                             client.move_window_animated(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
