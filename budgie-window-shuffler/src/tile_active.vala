@@ -34,6 +34,7 @@ namespace TileActive {
     GLib.HashTable<string, Variant> windata;
     GLib.List<unowned string> windata_keys;
     bool surpass_blocking;
+    int[] margins;
 
     ShufflerInfoClient? client;
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -49,11 +50,28 @@ namespace TileActive {
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
         public abstract bool get_softmove () throws Error;
+        public abstract int[] get_margins () throws Error;
     }
 
     private bool check_position_isequal (int[] start, int[] target) {
-        for (int i = 0; i < start.length; i++) {
-            if (start[i] != target[i]) {
+        int padding = margins[4];
+        bool[] checks = {
+            start[0] == target[0],
+            start[1] == target[1],
+            /*
+            for unknown reasons (not really interested as well), making
+            Wnck resize a window to size x pixels, occasionally results
+            in x+1 pixels. that is an issue when we want to check if the
+            window already is moved & sized to a certain q-tile or not.
+            therefore, we allow a difference of max 2 px, which does most
+            likely exist -ever- coincidentally, and assuming window is
+            already moved to position is safe.
+            */
+            (start[2] - (target[2] - padding)).abs() < 3,
+            (start[3] - (target[3] - padding)).abs() < 3
+        };
+        for (int i = 0; i < checks.length; i++) {
+            if (checks[i] == false) {
                 return false;
             }
         }
@@ -69,6 +87,7 @@ namespace TileActive {
             // get data, geo on windows
             windata = client.get_winsdata();
             windata_keys = windata.get_keys();
+            margins = client.get_margins ();
             // if guiruns, only act on window from args
             bool guiruns = client.check_ifguiruns();
             // check if we should use window from set args
@@ -170,9 +189,11 @@ namespace TileActive {
                     int[] tiletarget = {
                         tile_x, tile_y, tile_wdth, tile_hght
                     };
+
                     if (!check_position_isequal(currwincoords, tiletarget)) {
                         bool softmove = client.get_softmove();
                         if (softmove && !surpass_blocking) {
+                            print(@"moving to $tile_wdth, $tile_hght\n");
                             client.move_window_animated(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght

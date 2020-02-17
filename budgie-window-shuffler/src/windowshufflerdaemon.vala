@@ -2,6 +2,7 @@ using Gdk.X11;
 using Cairo;
 using Gtk;
 using Gdk;
+using Math;
 
 /*
 * ShufflerII
@@ -208,9 +209,9 @@ namespace ShufflerEssentialInfo {
                 else if (monitorsubj.get_model()  == mon_name) {
                     Gdk.Rectangle mon_wa = monitorsubj.get_workarea();
                     int fullwidth = (mon_wa.width * scale) - (marginleft + marginright) + padding;
-                    int tilewidth = (int)(fullwidth/cols);
+                    int tilewidth = (int)(round(fullwidth/cols));
                     int fullheight = (mon_wa.height * scale) - (margintop + marginbottom) + padding;
-                    int tileheight = (int)(fullheight/rows);
+                    int tileheight = (int)(round(fullheight/rows));
                     int NEx = (mon_wa.x * scale) + marginleft;
                     int origx = NEx;
                     while (NEx < origx + fullwidth - marginright) {
@@ -314,8 +315,8 @@ namespace ShufflerEssentialInfo {
                         // remember, Gtk uses scaled numbers!
                         x = (int)v.get_child_value(0)/scale;
                         y = (int)v.get_child_value(1)/scale;
-                        w = (width * ((int)v.get_child_value(2))/scale) - (padding/scale);
-                        h = (height * ((int)v.get_child_value(3))/scale) - (padding/scale);
+                        w = (width * ((int)round((int)v.get_child_value(2))/scale)) - (int)round(padding/scale);
+                        h = (height * ((int)round((int)v.get_child_value(3))/scale)) - (int)round(padding/scale);
                         break;
                     }
                 }
@@ -464,7 +465,7 @@ namespace ShufflerEssentialInfo {
                 int height;
                 w.get_geometry(out x, out y, out width, out height);
                 string winsmonitor = gdkdisplay.get_monitor_at_point(
-                    (int)(x/scale), (int)(y/scale)
+                    (int)(round (x/scale)), (int)(round(y/scale))
                 ).get_model();
                 ulong xid = w.get_xid();
                 bool minimized = w.is_minimized();
