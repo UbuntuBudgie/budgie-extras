@@ -54,7 +54,10 @@ namespace TileActive {
         public abstract int[] get_margins () throws Error;
     }
 
-    private bool check_position_isequal (int[] start, int[] target) {
+    private bool[] check_position_isequal (int[] start, int[] target) {
+        bool pos_isequal = true;
+        bool size_isequal = true;
+
         int padding = margins[4];
         bool[] checks = {
             start[0] == target[0],
@@ -71,12 +74,19 @@ namespace TileActive {
             (start[2] - (target[2] - padding)).abs() < 3,
             (start[3] - (target[3] - padding)).abs() < 3
         };
-        for (int i = 0; i < checks.length; i++) {
+
+        for (int i = 0; i < 2; i++) {
             if (checks[i] == false) {
-                return false;
+                pos_isequal = false;
             }
         }
-        return true;
+        for (int i = 2; i < 4; i++) {
+            if (checks[i] == false) {
+                size_isequal = false;
+            }
+        }
+        bool[] tests = {pos_isequal, size_isequal};
+        return tests;
     }
 
     void main (string[] args) {
@@ -191,21 +201,58 @@ namespace TileActive {
                         tile_x, tile_y, tile_wdth, tile_hght
                     };
 
-                    if (!check_position_isequal(currwincoords, tiletarget)) {
-                        bool softmove = client.get_softmove();
-                        if (softmove && !surpass_blocking) {
+                    bool[] posdata = check_position_isequal(currwincoords, tiletarget);
+                    bool samepos = posdata[0];
+                    bool samesize = posdata[1];
+                    bool softmove = client.get_softmove();
+                    /*
+                    NB: surpass_blocking true means tile_active is called from
+                    gui: no animations for now.
+                    */
+                    // if any reason for move at all
+                    if (!samepos || !samesize) {
+                        print("conditions met\n");
+                        // if softmove
+                        if (samepos && !samesize) {
+                            // move, no animation
+                            softmove = false;
+                        }
+                        else {
+                            if (softmove && !surpass_blocking) {
+                                softmove = true;
+                            }
+                            else {
+                                softmove = false;
+                            }
+                        }
+
+                        if (softmove) {
+                            print("soft move\n");
                             client.move_window_animated(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
                             );
                         }
                         else {
+                            print("just move\n");
                             client.move_window(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
                             );
                         }
                     }
+                    //  if (softmove) {
+                    //      client.move_window_animated(
+                    //          activewin, tile_x, tile_y - yshift,
+                    //          tile_wdth, tile_hght
+                    //      );
+                    //  }
+                    //  else {
+                    //      client.move_window(
+                    //          activewin, tile_x, tile_y - yshift,
+                    //          tile_wdth, tile_hght
+                    //      );
+                    //  }
                 }
             }
         }
