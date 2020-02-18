@@ -118,7 +118,7 @@ namespace ExtendWindow {
         if (resize) {
             string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
-                @"$gridrows $xspan $yspan $xid_str"
+                @"$gridrows $xspan $yspan"
             );
             try {
                 Process.spawn_command_line_async(cm);
