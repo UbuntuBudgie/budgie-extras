@@ -51,6 +51,7 @@ namespace TileActive {
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
         public abstract bool get_softmove () throws Error;
+        public abstract bool get_general_animations_set () throws Error;
         public abstract int[] get_margins () throws Error;
     }
 
@@ -200,18 +201,17 @@ namespace TileActive {
                     int[] tiletarget = {
                         tile_x, tile_y, tile_wdth, tile_hght
                     };
-
                     bool[] posdata = check_position_isequal(currwincoords, tiletarget);
                     bool samepos = posdata[0];
                     bool samesize = posdata[1];
                     bool softmove = client.get_softmove();
+                    bool general_softmove = client.get_general_animations_set();
                     /*
                     NB: surpass_blocking true means tile_active is called from
                     gui: no animations for now.
                     */
                     // if any reason for move at all
                     if (!samepos || !samesize) {
-                        print("conditions met\n");
                         // if softmove
                         if (samepos && !samesize) {
                             // move, no animation
@@ -225,34 +225,19 @@ namespace TileActive {
                                 softmove = false;
                             }
                         }
-
-                        if (softmove) {
-                            print("soft move\n");
+                        if (softmove && general_softmove) {
                             client.move_window_animated(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
                             );
                         }
                         else {
-                            print("just move\n");
                             client.move_window(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
                             );
                         }
                     }
-                    //  if (softmove) {
-                    //      client.move_window_animated(
-                    //          activewin, tile_x, tile_y - yshift,
-                    //          tile_wdth, tile_hght
-                    //      );
-                    //  }
-                    //  else {
-                    //      client.move_window(
-                    //          activewin, tile_x, tile_y - yshift,
-                    //          tile_wdth, tile_hght
-                    //      );
-                    //  }
                 }
             }
         }
