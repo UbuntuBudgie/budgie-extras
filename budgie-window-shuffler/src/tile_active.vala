@@ -204,8 +204,7 @@ namespace TileActive {
                     bool[] posdata = check_position_isequal(currwincoords, tiletarget);
                     bool samepos = posdata[0];
                     bool samesize = posdata[1];
-                    bool softmove = client.get_softmove();
-                    bool general_softmove = client.get_general_animations_set();
+                    bool softmove = client.get_softmove() && client.get_general_animations_set();
                     /*
                     NB: surpass_blocking true means tile_active is called from
                     gui: no animations for now.
@@ -225,7 +224,7 @@ namespace TileActive {
                                 softmove = false;
                             }
                         }
-                        if (softmove && general_softmove) {
+                        if (softmove) {
                             client.move_window_animated(
                                 activewin, tile_x, tile_y - yshift,
                                 tile_wdth, tile_hght
