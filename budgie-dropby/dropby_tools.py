@@ -47,8 +47,10 @@ def get_usb():
         except Exception:
             pass
         else:
-            if all(["usb" in v.get("DEVPATH"), uuid]):
-                relevant.append(uuid)
+            devpath = v.get("DEVPATH")
+            if devpath is not None:
+                if all(["usb" in v.get("DEVPATH"), uuid]):
+                    relevant.append(uuid)
     return relevant
 
 
