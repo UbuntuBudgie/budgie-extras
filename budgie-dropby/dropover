@@ -279,7 +279,8 @@ class WatchVolumes:
 
     def open_folder(self, *args):
         path = list(args)[-1]
-        subprocess.Popen(["/usr/bin/xdg-open", path])
+        if path is not None:
+            subprocess.Popen(["/usr/bin/xdg-open", path])
 
     def mount_volume(self, button, vol):
         Gio.Volume.mount(
