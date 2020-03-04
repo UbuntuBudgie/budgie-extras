@@ -537,7 +537,7 @@ namespace WeatherShowApplet {
                 int icon_index = WeatherShowFunctions.get_stringindex(
                     mapped_id.concat(add_daytime) , iconnames
                 );
-                if (icon_index == -1) {
+                if (icon_index == -1 || icon_index > iconpixbufs.length - 1) {
                     string loglocation = create_dirs_file(
                         ".config/budgie-extras", "icon_error"
                     );
