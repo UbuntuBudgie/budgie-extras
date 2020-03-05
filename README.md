@@ -71,6 +71,7 @@ Use the debian/control file on the debian branch to understand the build and run
 Overall, the following packages are required for the various Python plugins to work:
 
  - wmctrl
+ - util-linux
  - xdotool
  - xprintidle
  - python3

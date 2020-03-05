@@ -9,3 +9,4 @@ The applet is *context- sensitive*, meaning: it only shows its icon in the panel
 
 ![screenshot-2](https://github.com/UbuntuBudgie/budgie-extras/blob/master/budgie-dropby/dropby_open.png)
 
+Dependencies - requires wmctrl and util-linux
