@@ -69,47 +69,11 @@ We love Budgie-Extras to work across as many distro's as possible.  So please le
 
 ## Build/Runtime dependencies
 
-Use the debian/control file on the debian branch to understand the build and runtime package dependencies for each applet.
+Individual applets/mini apps have build and runtime dependencies. These are described by https://github.com/UbuntuBudgie/budgie-extras/blob/debian/debian/control
 
-Overall, the following packages are required for the various Python plugins to work:
-
- - wmctrl
- - util-linux
- - xdotool
- - xprintidle
- - python3
- - python3-gi
- - python3-gi-cairo
- - python3-cairo
- - zenity
- - ogg123 (from vorbis-tools)
- - gir1.2-budgie-1.0
- - gir1.2-gtk-3.0
- - gir1.2-glib-2.0
- - gir1.2-wnck-3.0
- - python3-psutil
- - dconf-cli
- - sound-theme-freedesktop
- - imagemagick
- - python3-pil
- - python3-svgwrite
- - python3-cairosvg
- - python3-pyudev
- - python3-requests
- - notofonts
- - python3-xlib
-
-The following packages are required for the various Vala plugins to work:
- - gobject-introspection
- - libgtk-3-dev
- - valac
- - meson
- - budgie-core-dev
- - libbudgie-plugin0
- - libpeas-dev
- - libjson-glib-dev
- - libgee-0.8-dev
- - libsoup2.4-dev
- - libwnck-3-dev
- - libkeybinder-3.0-dev
- - gnome-settings-daemon-dev
+ 
+ ## Project License
+ 
+ The overall license for the project is GPL-3+.  It is important to note, various individual source files varies from this and git-submodules have a separate licensing.
+ 
+ This is covered by https://github.com/UbuntuBudgie/budgie-extras/blob/debian/debian/copyright
