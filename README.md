@@ -25,6 +25,8 @@ Additional enhancements for the user experience
  - Fuzzy Clock
  - Brightness Controller
  - Visualspace
+ - Applications Menu
+ - Network Manager
 
 ## Standalone
 
@@ -35,7 +37,7 @@ budgie mini-apps - see the individual components for details
  - Budgie Quickchar (needs the extras daemon as a runtime dependency)
  - Budgie Window Previews (needs the extras daemon as a runtime dependency)
  - Budgie Shuffler
-
+ 
  ## Installation
 
  By default all applets are compiled and installed:
