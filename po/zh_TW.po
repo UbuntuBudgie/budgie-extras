@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Hsin-Yi Chen <hychen.iim05g@g2.nctu.edu.tw>, 2019
-# david mohammed <foss.freedom@gmail.com>, 2019
-#
+# david mohammed <foss.freedom@gmail.com>, 2020
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,13 +14,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-16 16:16+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2019\n"
-"Language-Team: Chinese (Taiwan) (https://www.transifex.com/ubuntu-budgie/"
-"teams/72251/zh_TW/)\n"
-"Language: zh_TW\n"
+"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
+"Language-Team: Chinese (Taiwan) (https://www.transifex.com/ubuntu-budgie/teams/72251/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. define the name of the application
@@ -165,9 +164,7 @@ msgstr ""
 msgid "PM"
 msgstr ""
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -230,12 +227,14 @@ msgstr "右下"
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:390
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:399
 #: budgie-hotcorners/src/HotCornersApplet.vala:407
 msgid "Please enable Window Shuffler"
@@ -638,24 +637,30 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -701,7 +706,8 @@ msgstr ""
 msgid "almost %s"
 msgstr ""
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr ""
@@ -719,13 +725,16 @@ msgstr "行事曆"
 msgid "Preferences"
 msgstr "設定喜好"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "顯示日期"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "套用24小時制"
@@ -945,14 +954,12 @@ msgid "Enable Window Shuffler grid"
 msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:167
-#, fuzzy
 msgid "Swap windows"
-msgstr "視窗"
+msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:171
-#, fuzzy
 msgid "Enable animation"
-msgstr "沒有新通知"
+msgstr ""
 
 #. settingsgrid - spinbuttonsection
 #: budgie-window-shuffler/src/shuffler_control.vala:177
@@ -1286,423 +1293,3 @@ msgstr ""
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr ""
-
-#~ msgid "Log out"
-#~ msgstr "登出"
-
-#~ msgid "Restart device"
-#~ msgstr "重新開機"
-
-#~ msgid "Power Off"
-#~ msgstr "關機"
-
-#~ msgid "Change background"
-#~ msgstr "更換背景"
-
-#~ msgid "Displays"
-#~ msgstr "螢幕"
-
-#~ msgid "Turned on Caffeine Boost"
-#~ msgstr "啟動Caffeine Boost程序"
-
-#~ msgid "Turned off Caffeine Boost"
-#~ msgstr "關閉Caffeine Boost程序"
-
-#~ msgid "Caffeine Mode"
-#~ msgstr "Caffeine 模式"
-
-#~ msgid "Applets"
-#~ msgstr "面板程式"
-
-#~ msgid "Notifications"
-#~ msgstr "通知"
-
-#~ msgid "No apps are currently playing audio."
-#~ msgstr "未有正在播放聲音的程式."
-
-#~ msgid "Play some music"
-#~ msgstr "播放音樂"
-
-#~ msgid "Nothing to see here"
-#~ msgstr "此處無內容"
-
-#~ msgid "%u unread notifications"
-#~ msgstr "%u 則未讀通知"
-
-#~ msgid "1 unread notification"
-#~ msgstr "1 則未讀通知"
-
-#~ msgid "No unread notifications"
-#~ msgstr "沒有未讀通知"
-
-#~ msgid "No new notifications"
-#~ msgstr "沒有新通知"
-
-#~ msgid "Apps"
-#~ msgstr "應用程序"
-
-#~ msgid "Devices"
-#~ msgstr "設備"
-
-#~ msgid "Battery fully charged."
-#~ msgstr "電池完全充滿。"
-
-#~ msgid "Unknown"
-#~ msgstr "未知"
-
-#~ msgid "Battery charging"
-#~ msgstr "電池充電中"
-
-#~ msgid "Battery remaining"
-#~ msgstr "電池還剩下"
-
-#~ msgid "Show battery percentage"
-#~ msgstr "顯示電池容量"
-
-#~ msgid "Power settings"
-#~ msgstr "電源設定"
-
-#~ msgid "Bluetooth Settings"
-#~ msgstr "藍牙設定"
-
-#~ msgid "Send Files"
-#~ msgstr "傳送檔案"
-
-#~ msgid "Bluetooth Airplane Mode"
-#~ msgstr "藍牙飛航模式"
-
-#~ msgid "Bluetooth is disabled"
-#~ msgstr "藍牙已停用"
-
-#~ msgid "Bluetooth is active"
-#~ msgstr "藍牙啟用中"
-
-#~ msgid "Connected to %d device"
-#~ msgid_plural "Connected to %d devices"
-#~ msgstr[0] "已連接 %d 個裝置"
-
-#~ msgid "Sound settings"
-#~ msgstr "音響設定"
-
-#~ msgid "Launch New Instance"
-#~ msgstr "啟動新的執行個體"
-
-#~ msgid "Close All Windows"
-#~ msgstr "關閉所有視窗"
-
-#~ msgid "Always On Top"
-#~ msgstr "永遠置上"
-
-#~ msgid "Maximize"
-#~ msgstr "最大化"
-
-#~ msgid "Minimize"
-#~ msgstr "最小化"
-
-#~ msgid "Unfavorite"
-#~ msgstr "移除最愛"
-
-#~ msgid "Favorite"
-#~ msgstr "最愛"
-
-#~ msgid "Move To Workspace %i"
-#~ msgstr "移至作業區%i"
-
-#~ msgid "Unmaximize"
-#~ msgstr "解除最大化"
-
-#~ msgid "Close Window"
-#~ msgstr "關閉視窗"
-
-#~ msgid "Show Window Controls"
-#~ msgstr "顯示視窗控制選項"
-
-#~ msgid "All"
-#~ msgstr "全部"
-
-#~ msgid "Sorry, no items found"
-#~ msgstr "抱歉, 查無此物"
-
-#~ msgid "Caps lock is active"
-#~ msgstr "Caps lock 大寫鎖啟用中"
-
-#~ msgid "Caps lock is not active"
-#~ msgstr "Caps lock 大寫鎖停用中"
-
-#~ msgid "Num lock is active"
-#~ msgstr "Num lock 數字鎖啟用中"
-
-#~ msgid "Num lock is not active"
-#~ msgstr "Num lock 數字鎖停用中"
-
-#~ msgid "Time and date settings"
-#~ msgstr "時間和日期設定"
-
-#~ msgid "Show seconds"
-#~ msgstr "顯示秒鐘"
-
-#~ msgid "Toggle the desktop"
-#~ msgstr "切換桌面"
-
-#~ msgid "Rename"
-#~ msgstr "重新命名"
-
-#~ msgid "Remove"
-#~ msgstr "移除"
-
-#~ msgid "Timer (minutes)"
-#~ msgstr "計時器(分鐘)"
-
-#~ msgid "User"
-#~ msgstr "使用者"
-
-#~ msgid "Hibernate"
-#~ msgstr "休眠"
-
-#~ msgid "Places"
-#~ msgstr "位置"
-
-#~ msgid "Nothing to display right now"
-#~ msgstr "現在沒有什麼可顯示"
-
-#~ msgid "Mount some drives"
-#~ msgstr "掛載一些裝置"
-
-#~ msgid "Enable more sections"
-#~ msgstr "啟用更多區塊"
-
-#~ msgid "Open \"%s\""
-#~ msgstr "開啟「%s」"
-
-#~ msgid "Volume is in use by other processes"
-#~ msgstr "此卷正被其它程序占用中"
-
-#~ msgid "Operation aborted"
-#~ msgstr "作業被強制中斷"
-
-#~ msgid "Type your password"
-#~ msgstr "輸入密碼"
-
-#~ msgid "Removable devices"
-#~ msgstr "卸除式裝置"
-
-#~ msgid "Local volumes"
-#~ msgstr "本地端儲存區"
-
-#~ msgid "Network folders"
-#~ msgstr "網路資料夾"
-
-#~ msgid "Mount and open \"%s\""
-#~ msgstr "掛載並開啟「%s」"
-
-#~ msgid "Eject"
-#~ msgstr "退出"
-
-#~ msgid "Enter the encryption passphrase to unlock this volume"
-#~ msgstr "輸入加密密碼以解鎖此卷"
-
-#~ msgid "You can now safely remove"
-#~ msgstr "您現在可以安全移除"
-
-#~ msgid "The password you entered is incorrect"
-#~ msgstr "您所輸入的密碼有誤"
-
-#~ msgid "An unknown error occurred while attempting to mount this volume"
-#~ msgstr "掛載此卷時遇到未知的錯誤"
-
-#~ msgid "Unmount"
-#~ msgstr "卸載"
-
-#~ msgid "Unknown Device"
-#~ msgstr "不明裝置"
-
-#~ msgid "Error while ejecting device"
-#~ msgstr "移除裝置時發生錯誤"
-
-#~ msgid "Error while unmounting volume"
-#~ msgstr "卸載裝置時發生錯誤"
-
-#~ msgid "Authentication failed"
-#~ msgstr "認證失敗"
-
-#~ msgid "Group:"
-#~ msgstr "組別:"
-
-#~ msgid "Appearance"
-#~ msgstr "外觀"
-
-#~ msgid "Panels"
-#~ msgstr "面板"
-
-#~ msgid "Budgie Desktop Settings"
-#~ msgstr "Budgie 桌面設定"
-
-#~ msgid "Create new panel"
-#~ msgstr "開創新面板"
-
-#~ msgid "Remove this panel from the screen"
-#~ msgstr "從螢幕中移除此面板"
-
-#~ msgid "Top Panel"
-#~ msgstr "頂端面板"
-
-#~ msgid "Right Panel"
-#~ msgstr "右側面板"
-
-#~ msgid "Left Panel"
-#~ msgstr "左側面板"
-
-#~ msgid "Bottom Panel"
-#~ msgstr "底部面板"
-
-#~ msgid "Always"
-#~ msgstr "总是"
-
-#~ msgid "Dynamic"
-#~ msgstr "動態"
-
-#~ msgid "None"
-#~ msgstr "無"
-
-#~ msgid "Intelligent"
-#~ msgstr "聰明"
-
-#~ msgid "Never"
-#~ msgstr "從不"
-
-#~ msgid "Position"
-#~ msgstr "位置"
-
-#~ msgid "Size"
-#~ msgstr "比例"
-
-#~ msgid "Shadow"
-#~ msgstr "陰影"
-
-#~ msgid "Stylize regions"
-#~ msgstr "個人區塊風格"
-
-#, fuzzy
-#~ msgid "Keep panel"
-#~ msgstr "頂端面板"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "桌面圖示"
-
-#~ msgid "Home directory"
-#~ msgstr "家目錄"
-
-#, fuzzy
-#~ msgid "Notification Position"
-#~ msgstr "通知"
-
-#~ msgid "Dark theme"
-#~ msgstr "暗黑主題"
-
-#~ msgid "Built-in theme"
-#~ msgstr "內建主題"
-
-#, fuzzy
-#~ msgid "Bottom Left"
-#~ msgstr "底部"
-
-#, fuzzy
-#~ msgid "Bottom Right"
-#~ msgstr "底部"
-
-#~ msgid "Start"
-#~ msgstr "開頭"
-
-#~ msgid "Center"
-#~ msgstr "中心"
-
-#~ msgid "End"
-#~ msgstr "結尾"
-
-#~ msgid "Button layout"
-#~ msgstr "按鈕配置"
-
-#~ msgid "Fonts"
-#~ msgstr "字型"
-
-#~ msgid "Window Titles"
-#~ msgstr "視窗題名"
-
-#~ msgid "Documents"
-#~ msgstr "文件"
-
-#~ msgid "Interface"
-#~ msgstr "介面"
-
-#~ msgid "Monospace"
-#~ msgstr "等寬字"
-
-#, fuzzy
-#~ msgid "Slight"
-#~ msgstr "右邊"
-
-#~ msgid "Are you sure you want to end your session?"
-#~ msgstr "您確定要結束您的作業階段？"
-
-#~ msgid "Spacer size"
-#~ msgstr "佔位填空大小"
-
-#~ msgid "Show label"
-#~ msgstr "顯示標籤"
-
-#~ msgid "Show places"
-#~ msgstr "顯示位置"
-
-#~ msgid "Show network folders"
-#~ msgstr "顯示網路資料夾"
-
-#~ msgid "Show removable drives"
-#~ msgstr "顯示卸除式裝置"
-
-#~ msgid "Budgie Desktop"
-#~ msgstr "Budgie 桌面"
-
-#~ msgid "This session logs you into the Budgie Desktop"
-#~ msgstr "本作業階段會讓您使用 Budgie 桌面登入"
-
-#~ msgid "System Tray"
-#~ msgstr "系統匣"
-
-#~ msgid "Status Indicator"
-#~ msgstr "狀態指示器"
-
-#~ msgid "Icon Task List"
-#~ msgstr "圖示化工作列表"
-
-#~ msgid "Spacer"
-#~ msgstr "填空佔位"
-
-#~ msgid "Budgie Menu"
-#~ msgstr "Budgie 選單"
-
-#~ msgid "Lock Keys Indicator"
-#~ msgstr "鎖定鍵指示器"
-
-#~ msgid "Raven Sidebar Control"
-#~ msgstr "Raven 側邊欄控制"
-
-#~ msgid "Clock"
-#~ msgstr "時鐘"
-
-#~ msgid "Separator"
-#~ msgstr "分隔線"
-
-#~ msgid "Show Desktop Button"
-#~ msgstr "顯示桌面按鈕"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "工作區切換器"
-
-#~ msgid "Task List"
-#~ msgstr "工作列表"
-
-#~ msgid "Keyboard Layout Indicator"
-#~ msgstr "鍵盤配置指示器"
-
-#~ msgid "User Indicator"
-#~ msgstr "使用者指示器"
