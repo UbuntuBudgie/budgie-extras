@@ -59,7 +59,7 @@ namespace PreviewsControls {
                     check_firstrunwarning();
                 }
                 else {
-                    instruct.set_label(_(""));
+                    instruct.set_label("");
                 }
             });
             toggle_allworkspaces.toggled.connect ( () => {
