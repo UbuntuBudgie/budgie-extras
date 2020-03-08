@@ -65,7 +65,7 @@ def get_mounted():
         usage = None
         try:
             usage = psutil.disk_usage(v.mountpoint)
-        except PermissionError:
+        except (PermissionError, OSError):
             continue
         dev = v.device
         # mountpoint is relevant for possible actions
@@ -84,9 +84,12 @@ def uuid_todev(uuid):
             ["/usr/sbin/findfs", "UUID=" + uuid]
         ).decode("utf-8").strip()
     except FileNotFoundError:
-        return subprocess.check_output(
-            ["/sbin/findfs", "UUID=" + uuid]
-        ).decode("utf-8").strip()
+        try:
+            return subprocess.check_output(
+                ["/sbin/findfs", "UUID=" + uuid]
+            ).decode("utf-8").strip()
+        except (subprocess.CalledProcessError, TypeError):
+            return None
     except (subprocess.CalledProcessError, TypeError):
         return None
 
