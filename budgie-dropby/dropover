@@ -173,7 +173,8 @@ class WatchVolumes:
                     tooltip = "Unmount"
                     eject_button.connect("clicked", self.unmount_volume, mount)
                 eject_button.set_tooltip_text(tooltip)
-                namebutton.set_tooltip_text("Open " + vol_path)
+                if vol_path is not None:
+                    namebutton.set_tooltip_text("Open " + vol_path)
                 namebutton.connect("clicked", self.open_folder, vol_path)
             else:
                 namebutton.connect("clicked", self.mount_volume, d["volume"])
