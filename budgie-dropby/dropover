@@ -310,5 +310,6 @@ class WatchVolumes:
     def copy_flashdrive(self, button, source, name):
         subprocess.Popen([self.copyscript, source, name])
 
+
 Gtk.init(None)
 WatchVolumes()
