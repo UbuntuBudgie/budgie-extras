@@ -87,6 +87,9 @@ def check_ypos(yres):
     except (subprocess.CalledProcessError, TypeError):
         return False, None
     else:
+        if ydata is None:
+            return False, None
+
         if name not in ["dropby_popup"]:
             ypos = int(
                 [l for l in ydata.splitlines()
