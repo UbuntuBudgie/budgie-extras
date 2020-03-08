@@ -83,6 +83,10 @@ def uuid_todev(uuid):
         return subprocess.check_output(
             ["/usr/sbin/findfs", "UUID=" + uuid]
         ).decode("utf-8").strip()
+    except FileNotFoundError:
+        return subprocess.check_output(
+            ["/sbin/findfs", "UUID=" + uuid]
+        ).decode("utf-8").strip()
     except (subprocess.CalledProcessError, TypeError):
         return None
 
