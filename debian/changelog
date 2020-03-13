@@ -1,8 +1,28 @@
-budgie-extras (0.93.0-3) UNRELEASED; urgency=medium
+budgie-extras (1.0.0-1) UNRELEASED; urgency=medium
 
-  * Add util-linux to dropby as a dependency
+  * New release
+    stable release
+    Translation updates
+    Fix errors.ubuntu.com reports for takeabreak
+  * Packaging changes
+    control: Add missing dependencies for applets (xdotool, zenity, wmctrl)
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 05 Mar 2020 20:46:02 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 13 Mar 2020 22:15:31 +0000
+
+budgie-extras (0.94.0-1) unstable; urgency=medium
+
+  * New release
+    git tag v0.94.0 release candidate 1
+    Translation updates
+    Add path to subprocess executables to ensure applets are running
+    with system defined calls
+    Shuffler fixes to ensure positioning on last row is correct
+    Applications menu remove double click for logout
+    Lots of fixes throughout applets for issues raised by
+    errors.ubuntu.com reports
+    Previews; don't translate an empty string
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 08 Mar 2020 22:01:37 +0000
 
 budgie-extras (0.93.0-2) unstable; urgency=medium
 
@@ -13,7 +33,7 @@ budgie-extras (0.93.0-2) unstable; urgency=medium
 budgie-extras (0.93.0-1) unstable; urgency=medium
 
   * New release
-    git tab v0.93.0 beta release 4
+    git tag v0.93.0 beta release 4
     Translation updates
     Shuffler animations
     Shuffler tiling fixes

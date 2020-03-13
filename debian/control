@@ -155,7 +155,6 @@ Depends:
  python3-pyudev,
  zenity,
  wmctrl,
- util-linux,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to popup when a USB device is connected
@@ -233,6 +232,7 @@ Depends:
  python3-gi,
  python3-psutil,
  xdg-utils,
+ zenity,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to allow quick file-browsing
@@ -387,7 +387,6 @@ Depends:
  python3-gi,
  x11-xserver-utils,
  xprintidle,
- wmctrl,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to prompt when to take-a-break for a set period of time
@@ -551,7 +550,6 @@ Depends:
  python3,
  python3-gi,
  python3-psutil,
- wmctrl,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet providing per workspace wallpaper
