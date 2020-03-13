@@ -66,6 +66,14 @@ class Splash(Gtk.Window):
         self.set_textstyle("seconds", self.timelabel)
         maingrid.attach(self.timelabel, 2, 0, 1, 1)
         Thread(target=self.timer).start()
+        self.set_decorated(False)
+        self.set_resizable(False)
+        self.set_keep_above(True)
+        self.stick()
+        self.set_skip_taskbar_hint(True)
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.show_all()
+        Gtk.main()
 
     def area_draw(self, widget, cr):
         # set transparent color
@@ -93,39 +101,14 @@ class Splash(Gtk.Window):
                 str(duration),
                 priority=GLib.PRIORITY_DEFAULT
             )
-            if duration % 5 == 0:
-                try:
-                    subprocess.Popen([
-                        "wmctrl", "-a", "Take a Break countdown",
-                    ])
-                except subprocess.CalledProcessError:
-                    pass
             if duration <= 0:
                 self.label.set_text("Back to work...")
                 try:
-                    subprocess.Popen([
-                        "wmctrl", "-a", "Take a Break countdown",
-                    ])
-                    w_list = subprocess.check_output(
-                        ["wmctrl", "-lp"]
-                    ).decode("utf-8")
-                    splashpid = [l.split()[2] for l in w_list.splitlines()
-                                 if "Take a Break countdown" in l][0]
                     time.sleep(2)
-                    subprocess.Popen(["kill", splashpid])
-                except (IndexError, subprocess.CalledProcessError):
+                    self.destroy()
+                except Exception:
                     pass
                 break
 
 
-def splashwindow():
-    window = Splash()
-    window.set_decorated(False)
-    window.set_resizable(False)
-    window.set_skip_taskbar_hint(True)
-    window.set_position(Gtk.WindowPosition.CENTER)
-    window.show_all()
-    Gtk.main()
-
-
-splashwindow()
+Splash()
