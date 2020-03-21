@@ -47,12 +47,12 @@ namespace TileActive {
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
         public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
         public abstract int get_yshift (int w_id) throws Error;
-        public abstract int toggle_maximize (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
         public abstract bool get_softmove () throws Error;
         public abstract bool get_general_animations_set () throws Error;
         public abstract int[] get_margins () throws Error;
+        public abstract void toggle_maximize (int w_arg) throws Error;
     }
 
     private bool[] check_position_isequal (int[] start, int[] target) {
@@ -147,7 +147,7 @@ namespace TileActive {
                     if (arg == "maximize") {
                         // ok, for the sake of simplicity,
                         // let's allow one internal action
-                        int win_id = client.getactivewin();
+                        int win_id = (int)client.getactivewin();
                         client.toggle_maximize(win_id);
                     }
                     else {
@@ -169,7 +169,7 @@ namespace TileActive {
             // vars
             int yshift = 0;
             string winsmonitor = "";
-            int[] currwincoords = {}; ///
+            int[] currwincoords = {};
             foreach (string s in windata_keys) {
                 if (int.parse(s) == activewin) {
                     yshift = client.get_yshift(activewin);

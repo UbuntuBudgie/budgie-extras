@@ -84,8 +84,8 @@ namespace ShufflerEssentialInfo {
             return greyshade;
         }
 
-        public void toggle_maximize (int w_id) throws Error {
-            Wnck.Window? w = get_matchingwnckwin(w_id);
+        public void toggle_maximize (int w_arg) throws Error {
+            Wnck.Window? w = get_matchingwnckwin(w_arg);
             if (w != null) {
                 bool state = w.is_maximized();
                 if (state) {
@@ -97,7 +97,7 @@ namespace ShufflerEssentialInfo {
             }
         }
 
-        public void move_toworkspace (int w_id, int workspace) throws Error{
+        public void move_toworkspace (int w_id, int workspace) throws Error {
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
                 unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
