@@ -1,6 +1,6 @@
 project('budgie-extras',
 	['vala', 'c'],
-	version: '0.95.0',
+	version: '1.0.0',
 	meson_version: '>= 0.40.0'
 )
 
