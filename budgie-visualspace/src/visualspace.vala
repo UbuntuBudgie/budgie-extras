@@ -101,11 +101,11 @@ namespace VisualSpaceApplet {
             // set_widgets_sensitive(!autospace);
 
             // linespacing_topspacelabel
-            Label topspace1 = new Gtk.Label("");
-            set_spacing(gdkscreen, topspace1, "linespacing_top");
+            //Label topspace1 = new Gtk.Label("");
+            //set_spacing(gdkscreen, topspace1, "linespacing_top");
             supergrid.attach(scrollwin, 0, 10, 1, 1);
-            supergrid.attach(ws_managebox, 0, 1, 1, 1);
-            supergrid.attach(topspace1, 0, 0, 1, 1);
+            supergrid.attach(ws_managebox, 0, 0, 1, 1);
+            //supergrid.attach(topspace1, 0, 0, 1, 1);
             // throw all stuff at each other
             scrollwin.add(maingrid);
             this.add(supergrid);
@@ -268,7 +268,7 @@ namespace VisualSpaceApplet {
             int blockrow = 0;
             foreach (Grid g in spacegrids) {
                 if (grids_rows[blockrow] != 0) {
-                    maingrid.attach(g, 1, blockrow + 1, 1, 1);
+                    maingrid.attach(g, 1, blockrow, 1, 1);
                 }
                 blockrow += 1;
             }
