@@ -16,177 +16,220 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/* refresh happens in three layers:
+1. new windows are refreshed/created after 0.5 and 6 seconds
+2. active window is refreshed every 5 seconds, and immediately on change
+3. other windows are in queue, cycle window stack, one per 11 seconds
+ */
+
 
 namespace create_previews {
 
-
+    uint n_wins;
+    uint current_queueindex;
+    bool validwins_exist;
+    Gdk.X11.Display gdkdisp;
+    double threshold;
+    string previewspath;
     Wnck.Screen wnck_scr;
     Gdk.Screen gdk_scr;
-    int curr_refreshindex;
-    double threshold;
-    Gdk.X11.Display gdkdisp;
     GLib.List<Gdk.Window> gdk_winlist;
-    string previewspath;
     bool idle_state;
 
 
     public static void main (string[] args) {
-        // all valid windows are in queue to be refreshed, starting index 0
-        curr_refreshindex = 0;
-        // if idle exceeds 90 seconds, pauze refreshing
+
+        current_queueindex = 0;
         idle_state = false;
-        // decide if we should take xsize or ysize as a reference for resize
-        threshold = 260.0/160.0;
+        Gtk.init(ref args);
+        wnck_scr = Wnck.Screen.get_default();
+        gdk_scr = Gdk.Screen.get_default();
         string user = Environment.get_user_name();
         previewspath = "/tmp/".concat(user, "_window-previews");
+        update_winlist();
+        wnck_scr.window_opened.connect(update_winlist);
+        wnck_scr.window_opened.connect(refresh_new);
+        wnck_scr.window_closed.connect(update_winlist);
+        wnck_scr.active_window_changed.connect(refresh_activewindow);
+        gdkdisp = (Gdk.X11.Display)Gdk.Display.get_default();
+        int global_cycleindex = 0;
+        int active_win_cycleindex = 0;
+        threshold = 260.0/160.0;
+        // make previews path
         try {
             File file = File.new_for_commandline_arg (previewspath);
             file.make_directory ();
         } catch (Error e) {
             // directory exists, no action needed
         }
-        Gtk.init(ref args);
-        // set sources
-        wnck_scr = Wnck.Screen.get_default();
-        gdk_scr = Gdk.Screen.get_default();
-        gdkdisp = (Gdk.X11.Display)Gdk.Display.get_default();
-        update_winlist();
-        // for updating gdk window list / clean up
-        wnck_scr.window_opened.connect(update_winlist);
-        wnck_scr.window_closed.connect(update_winlist);
-        // for maintaining new window (refresh after 6 seconds)
-        wnck_scr.window_opened.connect(update_new);
-        // immediate refresh active window?
-        wnck_scr.active_window_changed.connect(() => {
-            update_preview(wnck_scr.get_active_window());
-        });
-        // make phase so that they won't fall together all the time
-        int refresh_cycle = 1;
-        int refresh_active = 1;
+
         GLib.Timeout.add_seconds(1, () => {
-            gdkdisp.error_trap_push();
-            // take care of active window
-            if (refresh_active == 1) {
-                update_preview(wnck_scr.get_active_window());
+            // setting up cycles
+            // queue
+            if (global_cycleindex == 11) {
+                refresh_queueitem();
+                global_cycleindex = 0;
             }
-            else if (refresh_active == 5) {
+            else {
+                global_cycleindex += 1;
+            }
+            // active window
+            if (active_win_cycleindex == 5) {
+                refresh_activewindow();
                 idle_state = get_idle();
-                refresh_active = 0;
+                active_win_cycleindex = 0;
             }
-            refresh_active += 1;
-            // general refresh pool
-            if (refresh_cycle == 1) {
-                unowned GLib.List<Wnck.Window> wnck_winlist = wnck_scr.get_windows();
-                uint n_wins = wnck_winlist.length();
-                // make sure index does not exceed n-windows
-                if (curr_refreshindex >= n_wins) {
-                    curr_refreshindex = 0;
-                }
-                // get matching Gdk.Window from Gdk stack
-                int current_check = 0;
-                foreach (Wnck.Window w in wnck_winlist) {
-                    bool valid = w.get_window_type() == Wnck.WindowType.NORMAL;
-                    bool active = w == wnck_scr.get_active_window();
-                    if (valid && !active) {
-                        if (current_check == curr_refreshindex) {
-                            update_preview(w);
-                            break;
-                        }
-                        current_check += 1;
-                    }
-                }
-                curr_refreshindex += 1;
+            else {
+                active_win_cycleindex += 1;
             }
-            else if (refresh_cycle == 11) {
-                refresh_cycle = 0;
-            }
-            refresh_cycle += 1;
             return true;
         });
         Gtk.main();
     }
 
-    private bool get_idle () {
-        // see if idle exceeds 90 seconds
-        string cmd = "/usr/bin/xprintidle";
-        string output;
-        int curridle = 0;
-        try {
-            GLib.Process.spawn_command_line_sync(cmd, out output);
-            curridle = int.parse(output) / 1000;
-            if (curridle > 90) {
-                return true;
-            }
-            else {
-                return false;
+    private uint get_nextqueueindex () {
+        if (!validwins_exist) {
+            // if no valid wins
+            current_queueindex = -1;
+        }
+        // if only one win, which is apparently valid, don't try to iter
+        else if (n_wins == 1) {
+            current_queueindex = 0;
+        }
+        else {
+            // if multiple, windows, lookup the next valid
+            while (true) {
+                current_queueindex += 1;
+                if (current_queueindex < n_wins) {
+                    Gdk.Window checkwindow = gdk_winlist.nth(current_queueindex).data;
+                    if (checkwindow.get_type_hint() == Gdk.WindowTypeHint.NORMAL) {
+                        break;
+                    }
+                }
+                else {
+                    current_queueindex = 0;
+                }
             }
         }
-        //on an occasional exception, return false
-        catch (SpawnError e) {
-            return false;
+        return current_queueindex;
+    }
+
+    private void refresh_queueitem () {
+        // as the name sais, refreshing current index from queue
+        if (n_wins != 0) {
+            uint nextindex = get_nextqueueindex();
+            // ok, potentially repeated lookup, but for the sake of readability
+            if (nextindex != -1) {
+                Gdk.Window winsubj = gdk_winlist.nth(nextindex).data;
+                update_preview(winsubj);
+            }
         }
     }
 
-    private void update_winlist () {
-        // refresh wnck winlist, remove obsolete images
-        gdk_winlist = gdk_scr.get_window_stack();
-        cleanup();
+    private Gdk.Window? get_gdkmactch (ulong wnck_xid) {
+        // given an xid, find the (existing) Gdk.Window
+        // Gdk.WindowTypeHint.NORMAL - check is done here
+        foreach (Gdk.Window gdkwin in gdk_winlist) {
+            if (gdkwin.get_type_hint() == Gdk.WindowTypeHint.NORMAL) {
+                Gdk.X11.Window x11conv = (Gdk.X11.Window)gdkwin; // check!!!
+                ulong x11_xid = x11conv.get_xid();
+                if (wnck_xid == x11_xid) {
+                    return gdkwin;
+                }
+            }
+        }
+        return null;
     }
 
-    private void act_on_workspacechange (Wnck.Window movedwin) {
-        // note the posibility of an invalid window
-        // creat new:
-        bool valid = movedwin.get_window_type() == Wnck.WindowType.NORMAL;
-        update_new(movedwin);
-        ulong? xid = movedwin.get_xid();
-        if (xid != null && valid) {
+    private void refresh_activewindow () {
+        Wnck.Window? activewin = wnck_scr.get_active_window();
+        if (activewin != null) {
+            ulong wnckwin_xid = activewin.get_xid();
+            Gdk.Window? xid_match = get_gdkmactch(wnckwin_xid);
+            if (xid_match != null) {
+                update_preview(xid_match);
+            }
+        }
+    }
+
+    private void refresh_new (Wnck.Window newwin) {
+        // make sure new window's previews are drawn correctly
+        // lookup gdk window
+        ulong wnckwin_xid = newwin.get_xid();
+        Gdk.Window? xid_match = get_gdkmactch(wnckwin_xid);
+        if (xid_match != null) {
+            // remove possible previous preview on other ws
             string[] lookuplist = get_currpreviews();
             try {
                 foreach (string s in lookuplist) {
-                    if (s.contains(@"$xid")) {
+                    if (s.contains(@"$wnckwin_xid")) {
                         File rmfile = File.new_for_path(s);
                         rmfile.delete();
                     }
                 }
             }
             catch (Error e) {
-                print(@"Failed to remove previous preview file\n");
+                // nothing to do
             }
-        }
-    }
-
-    private void update_new (Wnck.Window w) {
-        // create preview on creation of (valid) window,
-        // refresh after 6 seconds
-        w.workspace_changed.connect(act_on_workspacechange);
-        if (w.get_window_type() == Wnck.WindowType.NORMAL) {
-            GLib.Timeout.add(500, () => {
-                update_preview(w);
+            newwin.workspace_changed.connect(refresh_new);
+            GLib.Timeout.add(500, () => {;
+                update_preview(xid_match);
                 return false;
             });
+        }
+        // check existence again
+        xid_match = get_gdkmactch(wnckwin_xid);
+        if (xid_match != null) {
             GLib.Timeout.add_seconds(6, () => {
-                update_preview(w);
+                update_preview(xid_match);
                 return false;
             });
         }
     }
 
-    private Gdk.Window? get_gdkmatch_fromwnckwin (Wnck.Window curractive) {
-        // given a wnck window, find its gdk representative
-        // for preview creation
-        uint curractive_xid = (uint)curractive.get_xid();
-        foreach (Gdk.Window w in gdk_winlist) {
-            Gdk.X11.Window winsubj = (Gdk.X11.Window)w;
-            uint gdk_xid = (uint)winsubj.get_xid();
-            if (gdk_xid == curractive_xid) {
-                return w;
+    private void update_preview (Gdk.Window window) {
+        // no filter on type needed, is done already
+        gdkdisp.error_trap_push();
+        if (window.is_viewable() && !idle_state) {
+            int width = window.get_width();
+            int height = window.get_height();
+            Gdk.Pixbuf? currpix = Gdk.pixbuf_get_from_window(
+                window, 0, 0, width, height
+            );
+            // get the xid, workspace
+            Gdk.X11.Window x11_w = (Gdk.X11.Window)window;
+            uint name_xid = (uint)(x11_w.get_xid());
+            uint name_workspace = x11_w.get_desktop();
+            int[] sizes = determine_sizes(currpix, (double)width, (double)height);
+            string name = @"$name_xid.$name_workspace.png";
+            if (currpix != null) {
+                try {
+                    currpix.scale_simple(
+                        sizes[0], sizes[1] , Gdk.InterpType.BILINEAR
+                    ).save(previewspath.concat("/", name), "png");
+                }
+                catch (Error e) {
+                }
             }
         }
-        return null;
+    }
+
+    private void update_winlist () {
+        // refresh gdk winlist, remove obsolete images
+        gdk_winlist = gdk_scr.get_window_stack();
+        n_wins = gdk_winlist.length();
+        validwins_exist = false;
+        // check if we should fire up refresh anyway
+        foreach (Gdk.Window w in gdk_winlist) {
+            if (w.get_type_hint() == Gdk.WindowTypeHint.NORMAL) {
+                validwins_exist = true;
+            }
+        }
+        cleanup();
     }
 
     private int[] determine_sizes (
-        Gdk.Pixbuf pre_shot, double xsize, double ysize
+        Gdk.Pixbuf? pre_shot, double xsize, double ysize
     ) {
         // calculates targeted sizes
         int targetx = 0;
@@ -202,47 +245,6 @@ namespace create_previews {
             targetx = (int)((160 / ysize) * xsize);
         }
         return {targetx, targety};
-    }
-
-    private void update_preview (Wnck.Window? w) {
-        /*
-        [1] check existence (get_gdkmatch_fromwnckwin(w))
-        [2] create the pixbuf
-        [3] get xid, workspace
-        [4] scale, name and write do disc
-        */
-
-        if (w != null && !idle_state) {
-            Gdk.Window? gdk_match = get_gdkmatch_fromwnckwin(w);
-            if (
-                // [1] check existence (get_gdkmatch_fromwnckwin(w))
-                gdk_match != null &&
-                w.get_window_type() == Wnck.WindowType.NORMAL
-            ) {
-                // [2] create the pixbuf (the sensitive part)
-                int width = gdk_match.get_width();
-                int height = gdk_match.get_height();
-                Gdk.Pixbuf currpix = Gdk.pixbuf_get_from_window(
-                    gdk_match, 0, 0, width, height
-                );
-                // [3] get the xid, workspace
-                Gdk.X11.Window x11_w = (Gdk.X11.Window)gdk_match;
-                uint name_xid = (uint)(x11_w.get_xid());
-                uint name_workspace = x11_w.get_desktop();
-                int[] sizes = determine_sizes(currpix, (double)width, (double)height);
-                //resize, write
-                string name = @"$name_xid.$name_workspace.png";
-                if (currpix != null) {
-                    try {
-                        currpix.scale_simple(
-                            sizes[0], sizes[1] , Gdk.InterpType.BILINEAR
-                        ).save(previewspath.concat("/", name), "png");
-                    }
-                    catch (Error e) {
-                    }
-                }
-            }
-        }
     }
 
     private string[] get_currpreviews () {
@@ -274,16 +276,13 @@ namespace create_previews {
 
     private void cleanup () {
         // look over existing images, remove if obsolete
-        // get filenames
         string[] filenames = get_currpreviews();
         // get existing xids
-        unowned GLib.List<Wnck.Window> latest_list = wnck_scr.get_windows();
         string[] latest_xids = {};
-        foreach (Wnck.Window w in latest_list) {
-            ulong xid = w.get_xid();
-            string name_xid = xid.to_string();
-            string lookup = name_xid.to_string();
-            latest_xids += lookup;
+        foreach (Gdk.Window w in gdk_winlist) {
+            Gdk.X11.Window x11_w = (Gdk.X11.Window)w;
+            ulong xid = x11_w.get_xid();
+            latest_xids += xid.to_string();
         }
         foreach (string f in filenames) {
             bool keep = get_stringindex(f, latest_xids);
@@ -295,6 +294,27 @@ namespace create_previews {
                 catch (Error e) {
                 }
             }
+        }
+    }
+
+    private bool get_idle () {
+        // see if idle exceeds 90 seconds
+        string cmd = "/usr/bin/xprintidle";
+        string output;
+        int curridle = 0;
+        try {
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            curridle = int.parse(output) / 1000;
+            if (curridle > 90) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        //on an occasional exception, return false
+        catch (SpawnError e) {
+            return false;
         }
     }
 }
