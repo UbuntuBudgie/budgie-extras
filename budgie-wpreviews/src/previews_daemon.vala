@@ -224,7 +224,7 @@ namespace NewPreviews {
                 );
                 return false;
             });
-            actionbar.pack_end(closebutton, false, false, 0);
+            //  actionbar.pack_end(closebutton, false, false, 0);
             closebutton.clicked.connect (() => {
                 uint now = get_now();
                 w.close(now);
