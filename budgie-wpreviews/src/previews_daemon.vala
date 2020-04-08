@@ -51,7 +51,6 @@ namespace NewPreviews {
     Gdk.X11.Window timestamp_window;
     string previewspath;
 
-
     private uint get_now() {
         // time stamp needs it
         return Gdk.X11.get_server_time(timestamp_window);
@@ -162,7 +161,7 @@ namespace NewPreviews {
         }
 
         private Grid makebuttongrid(
-            string imgpath, Image appicon, string windowname, Wnck.Window w
+            string imgpath, Image appicon, string windowname, string some_xid
             ) {
             var subgrid = new Gtk.Grid();
             subgrid.set_row_spacing(0);
@@ -177,8 +176,7 @@ namespace NewPreviews {
             button.set_relief(Gtk.ReliefStyle.NONE);
             button.clicked.connect (() => {
                 //raise_win(s)
-                uint now = get_now();
-                w.activate(now);
+                activate_window(some_xid);
                 previews_window.destroy();
             });
             currbuttons += button;
@@ -224,10 +222,9 @@ namespace NewPreviews {
                 );
                 return false;
             });
-            //  actionbar.pack_end(closebutton, false, false, 0);
+
+            actionbar.pack_end(closebutton, false, false, 0);
             closebutton.clicked.connect (() => {
-                uint now = get_now();
-                w.close(now);
                 if (currbuttons.length == 1) {
                     this.destroy();
                 }
@@ -237,8 +234,38 @@ namespace NewPreviews {
                     currtilindex = 0;
                     this.resize(100, 100);
                 }
+
+                close_window(some_xid);
             });
             return subgrid;
+        }
+
+        // new functions, looking up window from most recent Wnck stack
+        private Wnck.Window? get_wnckwindow_fromxid (string xid_str) {
+            z_list = wnck_scr.get_windows_stacked();
+            foreach (Wnck.Window w in z_list) {
+                string compare = w.get_xid().to_string();
+                if (compare == xid_str) {
+                    return w;
+                }
+            }
+            return null;
+        }
+
+        private void close_window (string xid_str) {
+            Wnck.Window found_match = get_wnckwindow_fromxid (xid_str);
+            if (found_match != null) {
+                uint now = get_now();
+                found_match.close(now);
+            }
+        }
+
+        private void activate_window (string xid_str) {
+            Wnck.Window found_match = get_wnckwindow_fromxid (xid_str);
+            if (found_match != null) {
+                uint now = get_now();
+                found_match.activate(now);
+            }
         }
 
         private bool filter_wmclass (
@@ -374,8 +401,9 @@ namespace NewPreviews {
             if (curr_active != null) {
                 wm_class = curr_active.get_class_group();
             }
+
             foreach (Wnck.Window w in z_list) {
-                string z_intid = w.get_xid().to_string();
+                string z_intid = w.get_xid().to_string();  // store in array
                 int dirlistindex = get_stringindex(num_ids_fromdir, z_intid);
                 if (
                     w.get_window_type() == Wnck.WindowType.NORMAL &&
@@ -393,11 +421,13 @@ namespace NewPreviews {
                         Pixbuf icon = w.get_mini_icon();
                         Image img = new Gtk.Image.from_pixbuf(icon);
                         string wname = w.get_name();
-                        Grid newtile = makebuttongrid(img_path, img, wname, w);
+                        string some_xid = w.get_xid().to_string();
+                        Grid newtile = makebuttongrid(img_path, img, wname, some_xid);
                         subgrids += newtile;
                     }
                 }
             }
+
             // reverse buttons
             Button[] reversed_buttons = {};
             int n_buttons = currbuttons.length;
@@ -648,7 +678,6 @@ namespace NewPreviews {
         // prevent cold start (not sure why, but it works)
         previews_window = new PreviewsWindow();
         previews_window.destroy();
-        z_list = wnck_scr.get_windows_stacked();
         Gtk.main();
     }
 
