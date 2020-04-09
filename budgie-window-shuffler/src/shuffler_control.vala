@@ -119,9 +119,7 @@ namespace ShufflerControls {
             """;
 
             // misc
-            bool daemonruns = procruns("windowshufflerdaemon"); //////////////////////////////////////////////
-            print(@"$daemonruns\n");
-
+            daemonruns = procruns("windowshufflerdaemon");
             // window basics
             this.set_default_size(10, 10);
             this.set_resizable(false);
