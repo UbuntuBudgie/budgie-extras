@@ -88,6 +88,8 @@ def copy(source, targetdir):
 
 
 # get targeted path
+user = os.environ["USER"]
+cptrigger = "/tmp/" + user + "_dropby_icon_copy"
 try:
     target = subprocess.check_output([
         "/usr/bin/zenity", "--file-selection", "--directory",
@@ -99,5 +101,11 @@ except subprocess.CalledProcessError:
 else:
     permission = check_permissions(target)
     if permission:
+        open(cptrigger, "wt").write("")
         targetdir = os.path.join(target, name)
         copy(source, targetdir)
+# make sure trigger is removed anyway
+try:
+    os.remove(cptrigger)
+except FileNotFoundError:
+    pass
