@@ -393,11 +393,17 @@ namespace WeatherShowApplet {
     private void update_log (string wtype, string output) {
         // update log file
         string loglocation = create_dirs_file(".config/budgie-extras", "weatherlog");
+        try {
+            File curr_log = File.new_for_path(loglocation);
+            curr_log.create(FileCreateFlags.NONE);
+        }
+        catch (Error e) {
+            // currlog exists, fine!
+        }
         var logtime = currtime();
         // read history
         string glue = "\n=\n";
         string file_contents;
-
         try {
             FileUtils.get_contents(loglocation, out file_contents);
             string[] records = file_contents.split(glue);
