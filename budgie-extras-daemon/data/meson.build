@@ -4,6 +4,7 @@ Layouts = [
 'traditional.layout',
 'theone.layout',
 'ubuntubudgie.layout',
+'classicubuntubudgie.layout',
 'redmond.layout'
 ]
 
