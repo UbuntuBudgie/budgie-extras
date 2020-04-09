@@ -3,7 +3,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Wnck", "3.0")
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gio, Wnck
+from gi.repository import Budgie, GObject, Gtk, Gio, Wnck, GLib
 import os
 import dropby_tools as db
 import subprocess
@@ -108,17 +108,27 @@ class BudgieDropByApplet(Budgie.Applet):
         self.uuid = uuid
         self.connect("destroy", Gtk.main_quit)
         app_path = os.path.dirname(os.path.abspath(__file__))
+        user = os.environ["USER"]
+        self.copytrigger = "/tmp/" + user + "_dropby_icon_copy"
+        self.copying = False
         self.winpath = os.path.join(app_path, "dropover")
         self.box = Gtk.EventBox()
-        self.box.connect("button-press-event", self.create_trigger)
+        self.box.connect("button-press-event", self.create_windowtrigger)
         self.icon = Gtk.Image.new_from_icon_name(
             "budgie-dropby-symbolic", Gtk.IconSize.MENU
         )
         self.idle_icon = Gtk.Image.new_from_icon_name(
             "budgie-dropby-idle", Gtk.IconSize.MENU
         )
+        self.smallsq_icon = Gtk.Image.new_from_icon_name(
+            "budgie-dropbysmallsq-symbolic", Gtk.IconSize.MENU
+        )
+        self.bigsq_icon = Gtk.Image.new_from_icon_name(
+            "budgie-dropbybigsq-symbolic", Gtk.IconSize.MENU
+        )
         self.scr = Wnck.Screen.get_default()
         self.box.add(self.icon)
+        self.curr_iconindex = 0
         self.add(self.box)
         self.box.show_all()
         self.show_all()
@@ -126,7 +136,57 @@ class BudgieDropByApplet(Budgie.Applet):
         self.start_dropover()
         self.refresh_from_idle()
 
-    def create_trigger(self, *args):
+    def set_icon_state(self):
+        if not self.copying:
+            self.refresh_from_idle()
+        else:
+            GLib.timeout_add_seconds(1, self.toggle_icons)
+
+    def toggle_icons(self):
+        if self.copying:
+            for wdg in self.box.get_children():
+                self.box.remove(wdg)
+            if self.curr_iconindex == 0:
+                nexticon = self.bigsq_icon
+                self.curr_iconindex = 1
+            elif self.curr_iconindex == 1:
+                nexticon = self.idle_icon
+                self.curr_iconindex = 2
+            elif self.curr_iconindex == 2:
+                nexticon = self.smallsq_icon
+                self.curr_iconindex = 3
+            elif self.curr_iconindex == 3:
+                nexticon = self.icon
+                self.curr_iconindex = 0
+            GObject.idle_add(
+                self.update_activeicon, nexticon,
+                priority=GObject.PRIORITY_DEFAULT,
+            )
+        return self.copying
+
+    def update_activeicon(self, icon):
+        self.box.add(icon)
+        self.box.show_all()
+        self.show_all()
+
+    def getridof_copytrigger(self):
+        try:
+            os.remove(self.copytrigger)
+        except FileNotFoundError:
+            pass
+
+    def set_iconactive(self, arg1, arg2, arg3, event):
+        copytriggerexists = os.path.exists(self.copytrigger)
+        copytriggercreated = event == Gio.FileMonitorEvent.CREATED
+        if all([copytriggerexists, copytriggercreated]):
+            self.copying = True
+            self.set_icon_state()
+        elif all([self.copying, not copytriggerexists]):
+            self.getridof_copytrigger()
+            self.copying = False
+            self.set_icon_state()
+
+    def create_windowtrigger(self, *args):
         if not self.check_winexists():
             open("/tmp/call_dropby", "wt").write("")
 
@@ -146,11 +206,19 @@ class BudgieDropByApplet(Budgie.Applet):
         return False
 
     def setup_watching(self):
+        # setup watching triggers
+        infofile = Gio.File.new_for_path(self.copytrigger)
+        try:
+            os.remove(self.copytrigger)
+        except FileNotFoundError:
+            pass
+        self.monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
+        self.monitor.connect("changed", self.set_iconactive)
         self.watchdrives = Gio.VolumeMonitor.get()
-        self.triggers = [
+        self.actiontriggers = [
             "volume_added", "volume_removed", "mount_added", "mount_removed",
         ]
-        for t in self.triggers:
+        for t in self.actiontriggers:
             self.watchdrives.connect(t, self.refresh_from_idle)
 
     def do_get_settings_ui(self):
