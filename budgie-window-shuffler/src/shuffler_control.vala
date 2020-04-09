@@ -41,6 +41,7 @@ namespace ShufflerControls {
         Label warninglabel;
         Gtk.Grid supergrid;
         Stack controlwin_stack;
+        bool daemonruns;
 
         public ControlsWindow () {
 
@@ -116,6 +117,10 @@ namespace ShufflerControls {
                 color: red;
             }
             """;
+
+            // misc
+            bool daemonruns = procruns("windowshufflerdaemon"); //////////////////////////////////////////////
+            print(@"$daemonruns\n");
 
             // window basics
             this.set_default_size(10, 10);
@@ -565,12 +570,23 @@ namespace ShufflerControls {
             / 0.1 dec after gsettings change check if process is running
             / if not -> show message in label
             */
+            string home = Environment.get_home_dir();
+            string subdir = home.concat("/.config/budgie-extras/shuffler/");
+            File trigerdir = File.new_for_path (subdir);
+            File firstrun_trigger = File.new_for_path (subdir.concat("shuffler_firstrun"));
+            bool ranbefore = firstrun_trigger.query_exists ();
+
             GLib.Timeout.add(100, () => {
-                bool daemonruns = procruns("windowshufflerdaemon");
-                if (!daemonruns) {
+                if (!daemonruns && !ranbefore) {
                     warninglabel.set_label(_("Please log out/in to initialize"));
                     set_textstyle(warninglabel, {"warning", "explanation"});
-
+                    try {
+                        trigerdir.make_directory_with_parents();
+                        firstrun_trigger.create (FileCreateFlags.PRIVATE);
+                    }
+                    catch (Error e) {
+                        print("Cannot create triggerfile\n");
+                    }
                 }
                 return false;
             });
