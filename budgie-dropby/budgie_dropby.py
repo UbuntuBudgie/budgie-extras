@@ -58,7 +58,45 @@ class DropBySettings(Gtk.Grid):
         explanation.set_xalign(0)
         explanation.set_line_wrap(True)
         self.attach(explanation, 0, 0, 1, 1)
+
+        self.attach(Gtk.Label(""), 0, 1, 1, 1)
+        popup_positionlabel = Gtk.Label()
+        popup_positionlabel.set_text(
+            "Dropby popup window position:"
+        )
+        popup_positionlabel.set_xalign(0)
+        self.attach(popup_positionlabel, 0, 2, 1, 1)
+        self.attach(Gtk.Label(""), 0, 3, 1, 1)
+        # settings
+        self.settings = Gio.Settings.new(
+            "org.ubuntubudgie.plugins.budgie-dropby"
+        )
+        initially_active = self.settings.get_int("popup-corner")
+        # anchor section
+        anchorgrid = Gtk.Grid()
+        leftspace = Gtk.Label("\t")
+        centerlabel = Gtk.Label("\t")
+        anchorgrid.attach(leftspace, 1, 0, 1, 1)
+        anchorgrid.attach(centerlabel, 3, 1, 1, 1)
+        # group
+        nw = Gtk.RadioButton(group=None)
+        ne = Gtk.RadioButton(group=nw)
+        se = Gtk.RadioButton(group=nw)
+        sw = Gtk.RadioButton(group=nw)
+        self.buttons = [nw, ne, sw, se]
+        self.buttons[initially_active - 1].set_active(True)
+        pos = [[2, 0], [4, 0], [2, 2], [4, 2]]
+        i = 0
+        for button in self.buttons:
+            button.connect("toggled", self.update_corner)
+            anchorgrid.attach(button, pos[i][0], pos[i][1], 1, 1)
+            i = i + 1
+        self.attach(anchorgrid, 0, 5, 2, 1)
         self.show_all()
+
+    def update_corner(self, togglebutton):
+        newcorner = self.buttons.index(togglebutton) + 1
+        self.settings.set_int("popup-corner", newcorner)
 
 
 class BudgieDropByApplet(Budgie.Applet):

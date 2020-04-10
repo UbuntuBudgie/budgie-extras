@@ -35,6 +35,13 @@ class WatchVolumes:
         self.provider.load_from_data(dropby_css.encode())
         self.newwin = None
 
+        self.settings = Gio.Settings.new(
+            "org.ubuntubudgie.plugins.budgie-dropby"
+        )
+        self.settings.connect("changed", self.update_corner)
+        self.update_corner()
+        print("self.winpos:", self.winpos)
+
         app_path = os.path.dirname(os.path.abspath(__file__))
         self.copyscript = os.path.join(app_path, "copy_flash")
         self.start_timer = os.path.join(app_path, "checkonwin")
@@ -44,6 +51,9 @@ class WatchVolumes:
         monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
         monitor.connect("changed", self.actonfile)
         Gtk.main()
+
+    def update_corner(self, *args):
+        self.winpos = self.settings.get_int("popup-corner")
 
     def actonfile(self, arg1, arg2, arg3, event):
         # ok, let's replace once dbus is a fact
@@ -231,11 +241,30 @@ class WatchVolumes:
         else:
             winw = win_size.width
             winh = win_size.height
+            # top-left
+            if self.winpos == 1:
+                newwin.move(
+                    dsp.x + 80,
+                    dsp.y + 80
+                )
+            # top-right
+            elif self.winpos == 2:
+                newwin.move(
+                    dsp.x + dsp.width - (winw + 80),
+                    dsp.y + 80
+                )
+            # bottom-left
+            elif self.winpos == 3:
+                newwin.move(
+                    dsp.x + 80,
+                    dsp.y + dsp.height - (80 + winh)
+                )
             # bottom-right
-            newwin.move(
-                dsp.x + dsp.width - win_size.width - 80,
-                dsp.y + dsp.height - 80 - winh
-            )
+            if self.winpos == 4:
+                newwin.move(
+                    dsp.x + dsp.width - (winw + 80),
+                    dsp.y + dsp.height - (80 + winh)
+                )
             self.newwin.show_all()
 
     def update_existing(self, newvol):
