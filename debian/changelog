@@ -1,3 +1,12 @@
+budgie-extras (1.0.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - Do not follow symlinks pointing to other partitions when emptying the
+      trash-can otherwise the location pointed to will also be deleted
+      (LP: #1872197)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 11 Apr 2020 16:26:57 +0100
+
 budgie-extras (1.0.1-1) unstable; urgency=medium
 
   * Service release
