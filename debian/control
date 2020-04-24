@@ -255,6 +255,7 @@ Depends:
  python3-gi,
  python3-psutil,
  wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet adding the ability to set a different keyboard layout per application
@@ -280,7 +281,7 @@ Description: Network Manager Applet for the budgie-desktop
 
 Package: budgie-previews
 Architecture: any
-Depends: budgie-extras-daemon, xprintidle, ${misc:Depends}, ${shlibs:Depends}
+Depends: budgie-extras-daemon, xprintidle, xinput, ${misc:Depends}, ${shlibs:Depends}
 Replaces: budgie-preview-applet (<< 0.4.6~)
 Breaks: budgie-previews-applet (<< 0.4.6~)
 Description: Provides window previews capabilities for the Budgie Desktop
@@ -463,6 +464,7 @@ Depends:
  python3-psutil,
  wmctrl,
  xdotool,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet allows moving windows between workspaces for the Budgie Desktop
@@ -481,6 +483,7 @@ Architecture: any
 Depends:
  budgie-extras-common,
  budgie-extras-daemon,
+ x11-utils,
  ${misc:Depends},
  ${shlibs:Depends},
 Description: Keyboard and GUI friendly window-tiling capability
@@ -509,6 +512,7 @@ Depends:
  python3-gi,
  python3-psutil,
  wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet providing quick access to workspaces for the Budgie Desktop
