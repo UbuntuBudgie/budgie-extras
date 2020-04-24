@@ -61,7 +61,7 @@ namespace ShufflerControls {
             string topleft = "Ctrl + Alt + 7".concat("\t\t\t\t", (_("Top-left")));
             string topright = "Ctrl + Alt + 9".concat("\t\t\t\t", (_("Top-right")));
             string bottomright = "Ctrl + Alt + 3".concat("\t\t\t\t", (_("Bottom-right")));
-            string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t\t", (_("Top-left")));
+            string bottomleft = "Ctrl + Alt + 1".concat("\t\t\t\t", (_("Bottom-left")));
             string lefthalf = "Ctrl + Alt + 4".concat("\t\t\t\t", (_("Left-half")));
             string tophalf = "Ctrl + Alt + 8".concat("\t\t\t\t", (_("Top-half")));
             string righthalf = "Ctrl + Alt + 6".concat("\t\t\t\t", (_("Right-half")));
