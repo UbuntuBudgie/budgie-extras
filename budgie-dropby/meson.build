@@ -14,7 +14,7 @@ install_data(
 
 install_data(
     'budgie-dropby-symbolic.svg',
-    'budgie-dropby-idle.png',
+    'budgie-dropby-idle.svg',
     'budgie-dropby-exit-symbolic.svg',
     'budgie-dropbybigsq-symbolic.svg',
     'budgie-dropbysmallsq-symbolic.svg',
