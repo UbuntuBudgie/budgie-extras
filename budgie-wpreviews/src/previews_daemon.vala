@@ -322,6 +322,7 @@ namespace NewPreviews {
             safety" procedure to make sure the window doesn't stick on
             reversed release Alt-Tab
             */
+            wnck_scr.active_window_changed.connect(check_ifactive);
             if (!allappshotc_trigger && !currapphotc_trigger) {
                 string[] devices = get_devices();
                 GLib.Timeout.add (100, () => {
@@ -342,7 +343,9 @@ namespace NewPreviews {
                         }
                     }
                     if (!pressed) {
-                        currbuttons[currtilindex].clicked();
+                        if (currbuttons.length != 0) {
+                            currbuttons[currtilindex].clicked();
+                        }
                         return false;
                     }
                     return true;
@@ -478,6 +481,14 @@ namespace NewPreviews {
             this.title = "PreviewsWindow";
             prev_winexists = true;
             this.add(maingrid);
+        }
+
+        private void check_ifactive () {
+            Wnck.Window curr = wnck_scr.get_active_window();
+            if (curr.get_name() != "PreviewsWindow") {
+                this.destroy();
+            }
+
         }
 
         private bool on_draw (Widget da, Context ctx) {
