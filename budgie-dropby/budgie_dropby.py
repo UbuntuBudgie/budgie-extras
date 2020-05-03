@@ -246,5 +246,6 @@ class BudgieDropByApplet(Budgie.Applet):
         if get_relevant:
             self.box.add(self.icon)
         else:
-            self.box.add(self.idle_icon)
+            print("removing")
+            self.box.remove(self.idle_icon)
         self.box.show_all()
