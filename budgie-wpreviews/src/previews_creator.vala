@@ -299,7 +299,7 @@ namespace create_previews {
 
     private bool get_idle () {
         // see if idle exceeds 90 seconds
-        string cmd = "/usr/bin/xprintidle";
+        string cmd = Config.PACKAGE_BINDIR + "/xprintidle";
         string output;
         int curridle = 0;
         try {

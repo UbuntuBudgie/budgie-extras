@@ -26,6 +26,7 @@ intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
+bindir = get_option('bindir')
 sysconfdir = get_option('sysconfdir')
 
 add_project_arguments(
@@ -48,6 +49,8 @@ conf = configuration_data()
 conf.set('PACKAGE_NAME', 'budgie-extras')
 conf.set_quoted('PACKAGE_LOCALEDIR', LOCALE_DIR)
 conf.set_quoted('PACKAGE_LIBDIR', libdir)
+conf.set_quoted('PACKAGE_BINDIR', bindir)
+conf.set_quoted('PACKAGE_SHAREDIR', datadir)
 
 config_h = configure_file(
 	output: 'config.h',

@@ -67,7 +67,7 @@ public class LightHelper
         }
 
         // Load Lights Frome Device
-        var lightsString = subprocessHelper.RunAndGetResult({"/usr/bin/ls", "/sys/class/backlight"});
+        var lightsString = subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/ls", "/sys/class/backlight"});
 
         lightsString = lightsString._strip();
         if (lightsString == "")
@@ -131,12 +131,12 @@ public class LightHelper
 
     private double GetMaxBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({"/usr/bin/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
     }
 
     public double GetBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({"/usr/bin/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
     }
 
     public void SetBrightness(string name, double brightness)
@@ -144,11 +144,11 @@ public class LightHelper
         var brightnessInt = (int)brightness;
         if(haveGnomeSettingsDaemon332)
         {
-            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
+            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }
         else if(haveGnomeSettingsDaemonOlderThan332)
         {
-            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--set-brightness", @"$brightnessInt"});
+            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", "--set-brightness", @"$brightnessInt"});
         }
 
         Save();

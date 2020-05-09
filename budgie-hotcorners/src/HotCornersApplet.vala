@@ -28,7 +28,7 @@ namespace HCSupport {
     */
 
     private bool locked () {
-        string cmd = "/usr/bin/pgrep -f gnome-screensaver-dialog";
+        string cmd = Config.PACKAGE_BINDIR + "/pgrep -f gnome-screensaver-dialog";
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -45,7 +45,7 @@ namespace HCSupport {
 
     private bool check_onapplet(string path, string applet_name) {
         /* check if the applet still runs */
-        string cmd = "/usr/bin/dconf dump " + path;
+        string cmd = Config.PACKAGE_BINDIR + "/dconf dump " + path;
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -298,7 +298,7 @@ namespace HotCornersApplet {
         }
 
         private void sendwarning (string msg_header, string message) {
-            string set_icon = "/usr/bin/notify-send -i budgie-hotcorners-symbolic ";
+            string set_icon = Config.PACKAGE_BINDIR + "/notify-send -i budgie-hotcorners-symbolic ";
             string header = "'" + msg_header + "'";
             // WindowPreviews is the name of a Budgie Applet and does not need to be translated
             string body = " '" + message + "'";
@@ -429,7 +429,7 @@ namespace HotCornersApplet {
     }
 
     private bool procruns (string processname) {
-        string cmd = @"/usr/bin/pgrep -f $processname";
+        string cmd = Config.PACKAGE_BINDIR + "/pgrep -f $processname";
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);

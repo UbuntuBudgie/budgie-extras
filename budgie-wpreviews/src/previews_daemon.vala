@@ -108,7 +108,7 @@ namespace NewPreviews {
             string output = "";
             try {
                 GLib.Process.spawn_command_line_sync(
-                    "/usr/bin/xinput --list", out output
+                    Config.PACKAGE_BINDIR + "/xinput --list", out output
                 );
             }
             catch (Error e) {
@@ -331,7 +331,7 @@ namespace NewPreviews {
                         string output = "";
                         try {
                             GLib.Process.spawn_command_line_sync(
-                                "/usr/bin/xinput --query-state " + s, out output
+                                Config.PACKAGE_BINDIR + "/xinput --query-state " + s, out output
                             );
                         }
                         catch (Error e) {

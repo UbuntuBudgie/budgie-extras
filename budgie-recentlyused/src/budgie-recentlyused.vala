@@ -184,7 +184,7 @@ namespace RecentlyUsedApplet {
                 string menuname = getmenuname(longname);
                 Gtk.MenuItem newitem = new Gtk.MenuItem.with_label(menuname);
                 // command
-                string command = "/usr/bin/xdg-open " + "'" + longname.replace(
+                string command = Config.PACKAGE_BINDIR + "/xdg-open " + "'" + longname.replace(
                     "'", "'\\''"
                 ) + "'";;
                 // tooltip

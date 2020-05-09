@@ -67,7 +67,7 @@ public class DimHelper
         }
 
         // Load Dims From Device
-        var dimsString = subprocessHelper.RunAndGetResult({"/usr/bin/xrandr", "-q"});
+        var dimsString = subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/xrandr", "-q"});
 
         dimsString = dimsString._strip();
         if (dimsString == "")
@@ -133,7 +133,7 @@ public class DimHelper
         //print(@"DimHelper.SetBrightness: $name $brightness \n");
         var aOnePercentOfbrightness = brightness / 100;
         var aOnePercentOfBlue = blue / 100;
-        subprocessHelper.Run({"/usr/bin/xrandr", "--output", @"$name", "--gamma", @"1:1:$aOnePercentOfBlue", "--brightness", @"$aOnePercentOfbrightness"});
+        subprocessHelper.Run({Config.PACKAGE_BINDIR + "/xrandr", "--output", @"$name", "--gamma", @"1:1:$aOnePercentOfBlue", "--brightness", @"$aOnePercentOfbrightness"});
         Save();
     }
 

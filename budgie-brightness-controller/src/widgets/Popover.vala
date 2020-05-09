@@ -206,13 +206,13 @@ public class Popover : Budgie.Popover
             if(lightHelper.haveGnomeSettingsDaemon332)
             {
                 yield subprocessLauncher.spawnv(
-                    {"/usr/bin/cat", @"/sys/class/backlight/$name/brightness"}
+                    {Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}
                 ).communicate_utf8_async(null, null, out output, null);
             }
             else if(lightHelper.haveGnomeSettingsDaemonOlderThan332)
             {
                 yield subprocessLauncher.spawnv(
-                    {"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", "--get-brightness"}
+                    {Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", "--get-brightness"}
                 ).communicate_utf8_async(null, null, out output, null);
             }
 

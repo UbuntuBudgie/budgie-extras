@@ -206,7 +206,7 @@ namespace WallStreetControls {
         }
 
         private bool processruns (string application) {
-            string cmd = "/usr/bin/pgrep -f " + application;
+            string cmd = Config.PACKAGE_BINDIR + "/pgrep -f " + application;
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);

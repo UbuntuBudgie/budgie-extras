@@ -77,7 +77,7 @@ namespace WeatherShowFunctions {
     }
 
     private bool check_onwindow(string path) {
-        string cmd_check = "/usr/bin/pgrep -f " + path;
+        string cmd_check = Config.PACKAGE_BINDIR + "/pgrep -f " + path;
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd_check, out output);
@@ -97,7 +97,7 @@ namespace WeatherShowFunctions {
         if (win_exists) {
             try {
                 Process.spawn_command_line_async(
-                    "/usr/bin/pkill -f ".concat(path));
+                    Config.PACKAGE_BINDIR + "/pkill -f ".concat(path));
             }
             catch (SpawnError e) {
                 /* nothing to be done */
@@ -1392,7 +1392,7 @@ namespace WeatherShowApplet {
 
         private bool check_onapplet(string path, string applet_name) {
             // check if the applet still runs
-            string cmd = "/usr/bin/dconf dump " + path;
+            string cmd = Config.PACKAGE_BINDIR + "/dconf dump " + path;
             string output;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
