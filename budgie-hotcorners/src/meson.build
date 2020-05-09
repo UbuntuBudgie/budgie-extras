@@ -1,8 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
 
 custom_target('plugin-file-hotcorners',
     input : 'HotCorners.plugin.in',
@@ -34,8 +29,6 @@ HotCornersValaArgs = [
 ]
 
 HotCornersCArgs = [
-'-include',
-'config.h',
 '-lm'
 ]
 
@@ -45,6 +38,7 @@ shared_library(
     dependencies: HotCornersDependencies,
     vala_args: HotCornersValaArgs,
     c_args: HotCornersCArgs,
+    include_directories: config_inc_dir,
     install: true,
     install_dir: LIB_INSTALL_DIR
 )

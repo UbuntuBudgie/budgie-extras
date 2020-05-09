@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 WallstreetControlSources = [
 'wallstreet_control.vala'
@@ -19,8 +15,6 @@ WallstreetControlValaArgs = [
 ]
 
 WallstreetControlCArgs = [
-'-include',
-'config.h',
 '-lm'
 ]
 
@@ -30,5 +24,6 @@ executable(
     install: true,
     vala_args: WallstreetControlValaArgs,
     c_args: WallstreetControlCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )

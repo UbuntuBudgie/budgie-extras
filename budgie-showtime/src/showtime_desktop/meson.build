@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 BudgieShowTimeSources = [
 'showtime_desktop.vala'
@@ -20,8 +16,6 @@ BudgieShowTimeValaArgs = [
 ]
 
 BudgieShowTimeCArgs = [
-'-include',
-'config.h',
 '-lm',
 '-DWNCK_I_KNOW_THIS_IS_UNSTABLE'
 ]
@@ -32,6 +26,7 @@ executable(
     install: true,
     vala_args: BudgieShowTimeValaArgs,
     c_args: BudgieShowTimeCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 

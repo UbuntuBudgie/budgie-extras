@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 custom_target('plugin-file-trash',
     input : 'Trash.plugin.in',
@@ -34,8 +30,13 @@ trashValaArgs = [
 ]
 
 trashCArgs = [
-'-include',
-'config.h'
 ]
 
-shared_library('trash', trashSources, dependencies: trashDependencies, vala_args: trashValaArgs, c_args: trashCArgs, install: true, install_dir: LIB_INSTALL_DIR)
+shared_library('trash',
+    trashSources,
+    dependencies: trashDependencies,
+    vala_args: trashValaArgs,
+    c_args: trashCArgs,
+    include_directories: config_inc_dir,
+    install: true,
+    install_dir: LIB_INSTALL_DIR)

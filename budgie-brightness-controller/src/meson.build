@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 custom_target('plugin-brightness',
     input : 'brightnesscontroller.plugin.in',
@@ -26,7 +22,7 @@ AppletSources = [
 ]
 
 AppletDependencies = [
-DEPENDENCY_GTK, 
+DEPENDENCY_GTK,
 DEPENDENCY_BUDGIE
 ]
 
@@ -45,22 +41,21 @@ if DEPENDENCY_XRANDR.version().version_compare('>=1.5.0')
 endif
 
 AppletValaArgs = [
-'--pkg=config', 
-'--vapidir=' + VAPI_DIR, 
-'--target-glib=2.38', 
+'--pkg=config',
+'--vapidir=' + VAPI_DIR,
+'--target-glib=2.38',
 '--enable-deprecated',
 BudgieWmStatusValaArgs
 ]
 
 AppletCArgs = [
-'-include', 
-'config.h'
 ]
 
-shared_library('brightnesscontroller', 
-AppletSources, 
-dependencies: AppletDependencies, 
-vala_args: AppletValaArgs, 
-c_args: AppletCArgs, 
-install: true, 
+shared_library('brightnesscontroller',
+AppletSources,
+dependencies: AppletDependencies,
+vala_args: AppletValaArgs,
+c_args: AppletCArgs,
+include_directories: config_inc_dir,
+install: true,
 install_dir: LIB_INSTALL_DIR)

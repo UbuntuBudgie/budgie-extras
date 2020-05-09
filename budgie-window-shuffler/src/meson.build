@@ -1,9 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configurationData.set('LIB_DIR', LIB_INSTALL_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
 ShufflerValaArgs = [
     '--pkg=config',
     '--vapidir=' + VAPI_DIR,
@@ -29,6 +23,7 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: ResizeCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -51,6 +46,7 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: SoftMoveCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -75,6 +71,7 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: GridAllCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -101,6 +98,7 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: GridWindowCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -118,6 +116,7 @@ executable(
     dependencies: JumpDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -135,6 +134,7 @@ executable(
     dependencies: TileActiveDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -151,6 +151,7 @@ executable(
     dependencies: ToggleGUIDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -177,6 +178,7 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: ShufflerDaemonCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 
@@ -193,5 +195,6 @@ executable(
     dependencies: ShufflerControlDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )

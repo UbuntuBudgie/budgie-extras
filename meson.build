@@ -8,6 +8,11 @@ i18n = import('i18n')
 
 message('Looking for dependencies')
 
+vala_version_required = '0.40.0'
+vala = meson.get_compiler('vala')
+VAPI_DIR = join_paths(meson.source_root(),
+                      'vapi')
+
 add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     language: 'c'
@@ -38,11 +43,26 @@ PLUGINS_DATA_DIR = join_paths(datadir, 'budgie-desktop',
 	'plugins')
 APPLICATIONS_DIR = join_paths(datadir, 'applications')
 
+# Global configuration data - matches vapi/config.vapi strings
 conf = configuration_data()
-conf.set('PROJECT_NAME', meson.project_name())
+conf.set('PACKAGE_NAME', 'budgie-extras')
+conf.set_quoted('PACKAGE_LOCALEDIR', LOCALE_DIR)
+conf.set_quoted('PACKAGE_LIBDIR', libdir)
 
-VAPI_DIR = join_paths(meson.source_root(),
-                      'vapi')
+config_h = configure_file(
+	output: 'config.h',
+	configuration: conf
+)
+
+config_dep = declare_dependency(
+	dependencies: vala.find_library('config', dirs: VAPI_DIR),
+	sources: config_h
+)
+
+config_inc_dir = include_directories('.')
+
+
+# Now lets install applets
 
 message('Installing applets...')
 

@@ -1,10 +1,5 @@
 # Fuzzy Clock Applet build
 
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
 custom_target('plugin-fuzzy-clock',
     input : 'FuzzyClockApplet.plugin.in',
     output : 'FuzzyClockApplet.plugin',
@@ -31,8 +26,6 @@ FuzzyValaArgs = [
 ]
 
 FuzzyCArgs = [
-'-include',
-'config.h',
 '-lm'
 ]
 
@@ -42,5 +35,6 @@ shared_library(
     install: true,
     vala_args: FuzzyValaArgs,
     c_args: FuzzyCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )

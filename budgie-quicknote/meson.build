@@ -1,11 +1,4 @@
 # QuickNote Applet build
-
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
-
 PLUGIN='budgie-quicknote'
 applet_quicknote_dir = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
@@ -39,8 +32,6 @@ QuickNoteValaArgs = [
 ]
 
 QuickNoteCArgs = [
-'-include',
-'config.h',
 '-lm'
 ]
 
@@ -50,6 +41,7 @@ shared_library(
     dependencies: applet_quicknote_deps,
     vala_args: QuickNoteValaArgs,
     c_args: QuickNoteCArgs,
+    include_directories: config_inc_dir,
     install: true,
     install_dir: applet_quicknote_dir,
 )

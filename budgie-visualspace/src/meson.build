@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 custom_target('plugin-file-visualspace',
     input : 'VisualSpace.plugin.in',
@@ -16,7 +12,7 @@ VisualSpaceSources = [
 ]
 
 VisualSpaceDependencies = [
-dependency('gtk+-3.0'), 
+dependency('gtk+-3.0'),
 dependency('budgie-1.0'),
 dependency('gdk-x11-3.0'),
 dependency('libwnck-3.0'),
@@ -24,25 +20,24 @@ dependency('libpeas-gtk-1.0')
 ]
 
 VisualSpaceArgs = [
-'--pkg=config', 
-'--vapidir=' + VAPI_DIR, 
+'--pkg=config',
+'--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
 ]
 
 VisualSpaceCArgs = [
 '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
-'-include', 
-'config.h',
 '-lm'
 ]
 
 shared_library(
-    'visualspace', 
-    VisualSpaceSources, 
-    dependencies: VisualSpaceDependencies, 
-    vala_args: VisualSpaceArgs, 
-    c_args: VisualSpaceCArgs, 
-    install: true, 
+    'visualspace',
+    VisualSpaceSources,
+    dependencies: VisualSpaceDependencies,
+    vala_args: VisualSpaceArgs,
+    c_args: VisualSpaceCArgs,
+    include_directories: config_inc_dir,
+    install: true,
     install_dir: LIB_INSTALL_DIR
 )
 
@@ -69,6 +64,7 @@ executable(
     install: true,
     vala_args: AutoWorkspaceValaArgs,
     c_args: AutoWorkspaceCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 

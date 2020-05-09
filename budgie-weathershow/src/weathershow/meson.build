@@ -1,8 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', 'budgie-extras')
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
-
 
 custom_target('plugin-file-weather',
     input : 'WeatherShow.plugin.in',
@@ -35,8 +30,6 @@ WeatherShowValaArgs = [
 ]
 
 WeatherShowCArgs = [
-'-include',
-'config.h',
 '-lm'
 ]
 
@@ -46,6 +39,7 @@ shared_library(
     vala_args: WeatherShowValaArgs,
     dependencies: WeatherShowDependencies,
     c_args: WeatherShowCArgs,
+    include_directories: config_inc_dir,
     install: true,
     install_dir: LIB_INSTALL_DIR
 )

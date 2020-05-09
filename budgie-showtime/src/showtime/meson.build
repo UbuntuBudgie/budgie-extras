@@ -1,7 +1,3 @@
-configurationData = configuration_data()
-configurationData.set('PACKAGE_NAME', meson.project_name())
-configurationData.set('LOCALE_DIR', LOCALE_DIR)
-configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
 custom_target('plugin-file-showtime',
     input : 'ShowTime.plugin.in',
@@ -31,8 +27,6 @@ BudgieShowTimeValaArgs = [
 
 
 BudgieShowTimeCArgs = [
-'-include',
-'config.h',
 '-lm',
 '-DWNCK_I_KNOW_THIS_IS_UNSTABLE'
 ]
@@ -43,6 +37,7 @@ shared_library(
     dependencies: BudgieShowTimeDependencies,
     vala_args: BudgieShowTimeValaArgs,
     c_args: BudgieShowTimeCArgs,
+    include_directories: config_inc_dir,
     install: true,
     install_dir: LIB_INSTALL_DIR
 )
