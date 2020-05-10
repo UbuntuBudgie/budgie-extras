@@ -6,7 +6,7 @@ custom_target('plugin-file-recently',
     install_dir : LIB_INSTALL_DIR)
 
 BudgieRecentlyUsedSources = [
-'budgie-recentlyused.vala'
+    'budgie-recentlyused.vala'
 ]
 
 BudgieRecentlyUsedDependencies = [
@@ -14,7 +14,6 @@ dependency('gtk+-3.0'),
 dependency('budgie-1.0'),
 dependency('libpeas-gtk-1.0'),
 dependency('gee-0.8'),
-config_dep,
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
