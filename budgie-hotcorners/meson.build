@@ -16,10 +16,17 @@ am_cflags = [
 
 PLUGIN = 'budgie-hotcorners'
 
-install_data('schema/org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml',
-    install_dir: '/usr/share/glib-2.0/schemas'
-)
+substprog = find_program('subst.py')
 
+# n.b. libdir comes from the top level meson.build
+
+mytarget = custom_target('hotcorners_schema',
+  output : 'org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml',
+  input : 'schema/org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml.in',
+  command : [substprog, '@INPUT@', libdir, '@OUTPUT@'],
+  install : true,
+  install_dir : '/usr/share/glib-2.0/schemas'
+)
 
 LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
