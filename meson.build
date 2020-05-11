@@ -25,6 +25,7 @@ add_global_arguments(am_cflags, language: 'c')
 intltool = find_program('intltool-merge')
 prefix = get_option('prefix')
 libdir = join_paths(prefix, get_option('libdir'))
+libexecdir = get_option('libexecdir')
 datadir = join_paths(prefix, get_option('datadir'))
 bindir = get_option('bindir')
 sysconfdir = get_option('sysconfdir')
@@ -49,6 +50,13 @@ conf = configuration_data()
 conf.set('PACKAGE_NAME', 'budgie-extras')
 conf.set_quoted('PACKAGE_LOCALEDIR', LOCALE_DIR)
 conf.set_quoted('PACKAGE_LIBDIR', libdir)
+if libexecdir == 'libexec'
+    libexecdir = join_paths(prefix, libexecdir)
+endif
+conf.set_quoted('PACKAGE_LIBEXECDIR', libexecdir)
+if bindir == 'bin'
+	bindir = join_paths(prefix, bindir)
+endif
 conf.set_quoted('PACKAGE_BINDIR', bindir)
 conf.set_quoted('PACKAGE_SHAREDIR', datadir)
 
