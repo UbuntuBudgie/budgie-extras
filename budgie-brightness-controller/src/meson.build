@@ -28,6 +28,10 @@ DEPENDENCY_BUDGIE
 
 BudgieWmStatusValaArgs = []
 
+if DEPENDENCY_GNOME_SETTINGS_DAEMON.version().version_compare('>=3.36.0')
+    BudgieWmStatusValaArgs += ['-D', 'HAVE_GNOME_SETTINGS_DAEMON_3_36_0']
+endif
+
 if DEPENDENCY_GNOME_SETTINGS_DAEMON.version().version_compare('>=3.32.0')
     BudgieWmStatusValaArgs += ['-D', 'HAVE_GNOME_SETTINGS_DAEMON_3_32_0']
 endif

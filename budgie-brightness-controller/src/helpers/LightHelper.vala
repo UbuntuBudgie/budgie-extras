@@ -27,6 +27,7 @@ namespace BrightnessController.Helpers
 public class LightHelper
 {
     public bool IsAvailable {get; set;}
+    public bool haveGnomeSettingsDaemon336 = false;
     public bool haveGnomeSettingsDaemon332 = false;
     public bool haveGnomeSettingsDaemonOlderThan332 = false;
     public List<Light> list;
@@ -43,6 +44,19 @@ public class LightHelper
 
     private void Load()
     {
+
+#if HAVE_GNOME_SETTINGS_DAEMON_3_36_0
+        haveGnomeSettingsDaemon336 = true;
+#endif
+
+#if HAVE_GNOME_SETTINGS_DAEMON_3_32_0
+        haveGnomeSettingsDaemon332 = true;
+#endif
+
+#if HAVE_GNOME_SETTINGS_DAEMON_OLDER_THAN_3_32_0
+        haveGnomeSettingsDaemonOlderThan332 = true;
+#endif
+
         list = new List<Light>();
 
         //Load Lights From Config
@@ -103,14 +117,6 @@ public class LightHelper
             }
         }
 
-        #if HAVE_GNOME_SETTINGS_DAEMON_3_32_0
-            haveGnomeSettingsDaemon332 = true;
-        #endif
-
-        #if HAVE_GNOME_SETTINGS_DAEMON_OLDER_THAN_3_32_0
-            haveGnomeSettingsDaemonOlderThan332 = true;
-        #endif
-
         if(haveGnomeSettingsDaemon332 && list.length() > 0)
         {
             IsAvailable = true;
@@ -142,7 +148,11 @@ public class LightHelper
     public void SetBrightness(string name, double brightness)
     {
         var brightnessInt = (int)brightness;
-        if(haveGnomeSettingsDaemon332)
+        if(haveGnomeSettingsDaemon336)
+        {
+            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBEXECDIR + "/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
+        }
+        elseif(haveGnomeSettingsDaemon332)
         {
             subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }

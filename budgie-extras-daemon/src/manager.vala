@@ -256,6 +256,7 @@ public class KeybinderManager : GLib.Object
 
         return false;
     }
+
     /**
      * Construct a new KeybinderManager and initialiase appropriately
      */
@@ -270,21 +271,43 @@ public class KeybinderManager : GLib.Object
         debug("syspath %s", BudgieExtras.SYSCONFDIR);
         debug("datapath %s", BudgieExtras.DATADIR);
         debug("userpath %s/%s", Environment.get_user_data_dir(), BudgieExtras.DAEMONNAME);
+        reload();
+    }
 
-        shortcuts = new HashTable<string, BDEFile>(str_hash, str_equal);
+    /**
+     * Reload keyboard shortcuts
+     */
+    public bool reload()
+    {
 
         string datapath = BudgieExtras.DATADIR;
         string syspath = BudgieExtras.SYSCONFDIR;
         string localpath = Environment.get_user_data_dir() + "/" + BudgieExtras.DAEMONNAME;
-
         string paths[] = {datapath, syspath, localpath};
+        string shortcut;
+        BDEFile bdefile;
+
+        if (shortcuts == null) {
+            message("no shortcuts");
+            shortcuts = new HashTable<string, BDEFile>(str_hash, str_equal);
+        }
+
+        if (shortcuts.size() != 0) {
+            message("in size cleanup");
+            HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
+            while (iter.next(out shortcut, out bdefile))
+            {
+                Keybinder.unbind_all(shortcut);
+            }
+
+            shortcuts.remove_all();
+        }
 
         foreach (var path in paths)
         {
             File file = File.new_for_path(path);
 
             if (!file.query_exists()) continue;
-
             FileEnumerator enumerator = null;
             try {
                 enumerator = file.enumerate_children (
@@ -321,12 +344,11 @@ public class KeybinderManager : GLib.Object
         }
 
         HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
-        string shortcut;
-        BDEFile bdefile;
         while (iter.next(out shortcut, out bdefile))
         {
             bdefile.connect();
         }
+        return true;
     }
 
 

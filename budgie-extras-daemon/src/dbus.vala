@@ -68,6 +68,14 @@ public class DbusManager : Object
         layoutmanager.reset(layout_name);
      }
 
+     /**
+     * Perform a desktop layout reset
+     */
+
+     public bool ReloadShortcuts() throws Error {
+        return keybinder.reload();
+     }
+
     /**
      * Find the shortcut key string for the bde file name key
      */

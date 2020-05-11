@@ -107,11 +107,16 @@ public class Applet : Budgie.Applet
         }
         else
         {
+            string path = Config.PACKAGE_LIBDIR + "/gnome-settings-daemon";
+            var lightHelper = new LightHelper();
+            if (lightHelper.haveGnomeSettingsDaemon336) {
+                path = Config.PACKAGE_LIBEXECDIR;
+            }
             gnomeSettingsDaemonsColorPluginConfigHelper.Write({
             "[Desktop Entry]",
             "Type=Application",
             "Name=GNOME Settings Daemon's color plugin",
-            "Exec=" + Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-color",
+            "Exec=" + path + "/gsd-color",
             "OnlyShowIn=GNOME;",
             "NoDisplay=false",
             "X-GNOME-Autostart-Phase=Initialization",
