@@ -47,7 +47,7 @@ namespace JumpActive {
     }
 
     private bool procruns (string processname) {
-        string cmd = Config.PACKAGE_BINDIR + "/pgrep -f $processname";
+        string cmd = Config.PACKAGE_BINDIR + @"/pgrep -f $processname";
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
