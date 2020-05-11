@@ -259,7 +259,7 @@ namespace GridWindowSection {
             if (index != -1 && previously_active != -1 && winstillexists(previously_active)) {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
-                string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
+                string cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     cmd_args, " id=", @"$previously_active");
                 try {
                     Process.spawn_command_line_async(cm);

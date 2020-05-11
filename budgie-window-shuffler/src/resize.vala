@@ -116,7 +116,7 @@ namespace ExtendWindow {
         }
 
         if (resize) {
-            string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
+            string cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
                 @"$gridrows $xspan $yspan"
             );

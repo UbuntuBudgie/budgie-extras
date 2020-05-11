@@ -59,6 +59,8 @@ if bindir == 'bin'
 endif
 conf.set_quoted('PACKAGE_BINDIR', bindir)
 conf.set_quoted('PACKAGE_SHAREDIR', datadir)
+SHUFFLER = 'budgie-window-shuffler'
+conf.set_quoted('SHUFFLER_DIR', join_paths(libdir, SHUFFLER))
 
 config_h = configure_file(
 	output: 'config.h',

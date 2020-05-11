@@ -150,9 +150,10 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
-            string cm = Config.PACKAGE_LIBDIR + "/softmove ".concat(
+            string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
+
             try {
                 Process.spawn_command_line_async(cm);
             }

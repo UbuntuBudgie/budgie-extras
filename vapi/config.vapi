@@ -6,4 +6,5 @@ namespace Config {
     public const string PACKAGE_LIBEXECDIR;
     public const string PACKAGE_BINDIR;
     public const string PACKAGE_SHAREDIR;
+    public const string SHUFFLER_DIR;
 }

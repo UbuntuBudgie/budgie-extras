@@ -108,14 +108,11 @@ namespace JumpActive {
                 ("/org/ubuntubudgie/shufflerinfodaemon")
             );
             // check if softmove runs. wait a tiny bit if so
-
-            //string cm = Config.PACKAGE_LIBDIR + "/softmove ".concat(
-
             int n_checks = 0;
             bool proc_runs = true;
             while (proc_runs) {
                 proc_runs = procruns(
-                    Config.PACKAGE_LIBDIR + "/softmove"
+                    Config.SHUFFLER_DIR + "/softmove"
                 );
                 Thread.usleep(10000);
                 n_checks += 1;
