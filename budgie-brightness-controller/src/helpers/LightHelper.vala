@@ -152,7 +152,7 @@ public class LightHelper
         {
             subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBEXECDIR + "/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }
-        elseif(haveGnomeSettingsDaemon332)
+        else if(haveGnomeSettingsDaemon332)
         {
             subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }
