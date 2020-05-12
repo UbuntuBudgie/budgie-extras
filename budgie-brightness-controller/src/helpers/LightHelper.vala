@@ -144,7 +144,7 @@ public class LightHelper
         var brightnessInt = (int)brightness;
         if(haveGnomeSettingsDaemon332)
         {
-            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/lib/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
+            subprocessHelper.Run({"/usr/bin/pkexec", "/usr/libexec/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
         }
         else if(haveGnomeSettingsDaemonOlderThan332)
         {

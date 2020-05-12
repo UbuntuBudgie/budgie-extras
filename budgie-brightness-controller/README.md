@@ -16,7 +16,7 @@ Evo Pop                    |  Arc Design
 
 # Dependencies
 ```
-gnome-settings-daemon >= 3.32.0
+gnome-settings-daemon >= 3.36.0
 xrandr >= 1.5.0
 budgie-1.0 >= 2
 gtk+-3.0

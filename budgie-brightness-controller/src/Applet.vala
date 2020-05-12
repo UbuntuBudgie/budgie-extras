@@ -111,7 +111,7 @@ public class Applet : Budgie.Applet
             "[Desktop Entry]",
             "Type=Application",
             "Name=GNOME Settings Daemon's color plugin",
-            "Exec=/usr/lib/gnome-settings-daemon/gsd-color",
+            "Exec=/usr/libexec/gsd-color",
             "OnlyShowIn=GNOME;",
             "NoDisplay=false",
             "X-GNOME-Autostart-Phase=Initialization",
