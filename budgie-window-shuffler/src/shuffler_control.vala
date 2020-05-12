@@ -535,13 +535,13 @@ namespace ShufflerControls {
             if (n == 1) {
                 GLib.Timeout.add(250, () => {
                     try {
-                        client.ReloadShortcuts();
                         daemonruns = procruns("windowshufflerdaemon");
 
-                        if (!daemonruns) {
+                        if (newval && !daemonruns) {
                             string cm = Config.SHUFFLER_DIR + "/windowshufflerdaemon";
-                            Process.spawn_command_line_async(cm);
+                            Process.spawn_command_line_sync(cm);
                         }
+                        client.ReloadShortcuts();
                     }
                     catch (Error e) {
                         stderr.printf ("%s\n", e.message);
