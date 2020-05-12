@@ -23,6 +23,26 @@ namespace ShufflerControls {
 
     //  GLib.Settings wallstreet_settings;
     GLib.Settings shuffler_settings;
+    ExtrasDaemon client;
+
+
+    [DBus (name = "org.UbuntuBudgie.ExtrasDaemon")]
+    interface ExtrasDaemon : Object {
+        public abstract bool ReloadShortcuts () throws Error;
+    }
+
+    private void setup_client () {
+        try {
+            client = Bus.get_proxy_sync (
+                BusType.SESSION, "org.UbuntuBudgie.ExtrasDaemon",
+                ("/org/ubuntubudgie/extrasdaemon")
+            );
+        }
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
+    }
+
 
     class ControlsWindow : Gtk.Window {
 
@@ -118,8 +138,6 @@ namespace ShufflerControls {
             }
             """;
 
-            // misc
-            daemonruns = procruns("windowshufflerdaemon");
             // window basics
             this.set_default_size(10, 10);
             this.set_resizable(false);
@@ -424,6 +442,7 @@ namespace ShufflerControls {
             foreach (SpinButton spb in spins) {
                 spb.value_changed.connect(set_fromspinbutton);
             }
+            setup_client();
             toggle_shuffler.toggled.connect(manage_boolean);
             toggle_gui.toggled.connect(manage_boolean);
             toggle_swapgeo.toggled.connect(manage_boolean);
@@ -514,13 +533,23 @@ namespace ShufflerControls {
             }
             shuffler_settings.set_boolean(match, newval);
             if (n == 1) {
-                if (!newval) {
-                    toggle_gui.set_active(newval);
-                    warninglabel.set_label("");
-                }
-                else {
-                    check_firstrunwarning();
-                }
+                GLib.Timeout.add(250, () => {
+                    try {
+                        client.ReloadShortcuts();
+                        daemonruns = procruns("windowshufflerdaemon");
+
+                        if (!daemonruns) {
+                            string cm = Config.SHUFFLER_DIR + "/windowshufflerdaemon";
+                            Process.spawn_command_line_async(cm);
+                        }
+                    }
+                    catch (Error e) {
+                        stderr.printf ("%s\n", e.message);
+                    }
+
+                    return false;
+                });
+
                 toggle_gui.set_sensitive(newval);
                 toggle_swapgeo.set_sensitive(newval);
                 toggle_softmove.set_sensitive(newval);
@@ -561,33 +590,6 @@ namespace ShufflerControls {
                     spacelabel, corners[i, 0], corners[i, 1], 1, 1
                 );
             }
-        }
-
-        private void check_firstrunwarning() {
-            /*
-            / 0.1 dec after gsettings change check if process is running
-            / if not -> show message in label
-            */
-            string home = Environment.get_home_dir();
-            string subdir = home.concat("/.config/budgie-extras/shuffler/");
-            File trigerdir = File.new_for_path (subdir);
-            File firstrun_trigger = File.new_for_path (subdir.concat("shuffler_firstrun"));
-            bool ranbefore = firstrun_trigger.query_exists ();
-
-            GLib.Timeout.add(100, () => {
-                if (!daemonruns && !ranbefore) {
-                    warninglabel.set_label(_("Please log out/in to initialize"));
-                    set_textstyle(warninglabel, {"warning", "explanation"});
-                    try {
-                        trigerdir.make_directory_with_parents();
-                        firstrun_trigger.create (FileCreateFlags.PRIVATE);
-                    }
-                    catch (Error e) {
-                        print("Cannot create triggerfile\n");
-                    }
-                }
-                return false;
-            });
         }
 
         private bool procruns (string processname) {
