@@ -45,7 +45,8 @@ class WatchVolumes:
         app_path = os.path.dirname(os.path.abspath(__file__))
         self.copyscript = os.path.join(app_path, "copy_flash")
         self.start_timer = os.path.join(app_path, "checkonwin")
-        self.timer = "/tmp/keepdropbywin"
+        user = os.environ["USER"]
+        self.timer = "/tmp/" + user + "_keepdropbywin"
         # setup watching trigger (uncomment below lines if)
         infofile = Gio.File.new_for_path("/tmp")
         monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
@@ -57,7 +58,8 @@ class WatchVolumes:
 
     def actonfile(self, arg1, arg2, arg3, event):
         # ok, let's replace once dbus is a fact
-        trigger = "/tmp/call_dropby"
+        user = os.environ["USER"]
+        trigger = "/tmp/" + user + "_call_dropby"
         if all([
             event == Gio.FileMonitorEvent.CREATED,
             os.path.exists(trigger)
