@@ -90,7 +90,8 @@ class BudgieDropByApplet(Budgie.Applet):
 
     def create_trigger(self, *args):
         if not self.check_winexists():
-            open("/tmp/call_dropby", "wt").write("")
+            user = os.environ["USER"]
+            open("/tmp/" + user + "_call_dropby", "wt").write("")
 
     def start_dropover(self):
         try:
