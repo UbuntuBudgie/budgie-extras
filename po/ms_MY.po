@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-16 16:16+0000\n"
+"POT-Creation-Date: 2020-04-24 21:55+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2020\n"
 "Language-Team: Malay (Malaysia) (https://www.transifex.com/ubuntu-budgie/teams/72251/ms_MY/)\n"
@@ -22,477 +22,353 @@ msgstr ""
 "Language: ms_MY\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
-#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
-msgid "WallStreet Control"
-msgstr "Kawalan WallStreet"
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Tunjuk yang terakhir digunakan"
 
-#. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr "Jalankan WallStreet"
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Tunjuk tip alat"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr "Guna kertas dinding rawak"
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Sembunyi laluan dalam menu"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr "Segerak ke skrin-kunci"
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-trash/src/widgets/MenuRow.vala:52
+msgid "Open"
+msgstr "Buka"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
-msgid "Use default wallpapers"
-msgstr "Guna kertas dinding lalai"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
-msgid "Browse"
-msgstr "Layar"
-
-#. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
-msgid "Change interval"
-msgstr "Ubah sela"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-msgid "Hours"
-msgstr "Jam"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
-msgid "Minutes"
-msgstr "Minit"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
-msgid "Seconds"
-msgstr "Saat"
-
-#. settingsgrid - bottomsection
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-#: budgie-window-shuffler/src/shuffler_control.vala:218
-msgid "Close"
-msgstr "Tutup"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
-#: budgie-wpreviews/src/previews_controls.vala:82
-#: budgie-window-shuffler/src/shuffler_control.vala:570
-msgid "Please log out/in to initialize"
-msgstr "Sila daftar keluar/masuk untuk awalkan"
-
-#. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
-msgid "Select a directory"
-msgstr "Pilih satu direktori"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-msgid "Cancel"
-msgstr "Batal"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-#: budgie-quicknote/QuickNoteApplet.vala:201
-msgid "Use"
-msgstr "Guna"
-
-#. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
-msgid "Drag position"
-msgstr "Seret kedudukan"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
-msgid "Save position"
-msgstr "Simpan kedudukan"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
-msgid ""
-"Enable Super + drag to set time position. Click ´Save position´ to save."
-msgstr ""
-"Benarkan Super + seret untuk tetapkan kedudukan waktu. Klik 'Simpan "
-"kedudukan' untuk menyimpan."
-
-#. window content
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
-msgid "Position & anchor"
-msgstr "Kedudukan & penambat"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
-msgid "Automatic"
-msgstr "Automatik"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
-msgid "On all monitors"
-msgstr "Pada semua monitor"
-
-#. time font settings -> boxed!!
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
-msgid "Time font, size & color"
-msgstr "Fon, saiz & warna waktu"
-
-#. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
-msgid "Date font, size & color"
-msgstr "Fon, saiz & warna tarikh"
-
-#. miscellaneous section
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
-msgid "Miscellaneous"
-msgstr "Pelbagai"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
-msgid "Left align text"
-msgstr "Jajar kiri teks"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
-msgid "Use 12hr time format"
-msgstr "Guna format waktu 12jam"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
-msgid "Linespacing"
-msgstr "Jarak baris"
-
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
-msgid "Super + drag"
-msgstr "Super + seret"
-
-#. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
-msgid "AM"
-msgstr "AM"
-
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
-msgid "PM"
-msgstr "PM"
-
-#. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:70
-msgid "Auto"
-msgstr "Auto"
-
-#: budgie-wpreviews/src/previews_controls.vala:30
+#: budgie-wpreviews/src/previews_controls.vala:57
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
 msgstr "Kawalan Pratonton"
 
-#: budgie-wpreviews/src/previews_controls.vala:35
+#: budgie-wpreviews/src/previews_controls.vala:62
 msgid "Run Previews"
 msgstr "Jalankan Pratonton"
 
-#: budgie-wpreviews/src/previews_controls.vala:38
+#: budgie-wpreviews/src/previews_controls.vala:65
 msgid "Show windows of all workspaces"
 msgstr "Tunjuk tetingkap untuk semua ruang kerja"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:128
-msgid "Set pressure (0 = no pressure)"
-msgstr "Tetapkan tekanan (0 = tanpa tekanan)"
+#: budgie-wpreviews/src/previews_controls.vala:108
+#: budgie-window-shuffler/src/shuffler_control.vala:579
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr "Sila daftar keluar/masuk untuk awalkan"
 
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:214
-msgid "Corner"
-msgstr "Bucu"
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Selamat datang ke QuickNote."
 
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:218
-msgid "Action"
-msgstr "Tindakan"
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "Teks akan disimpan secara automatik ketika menaip."
 
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:222
-msgid "Custom"
-msgstr "Suai"
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Lebar kawasan teks"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:248
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Tinggi kawasan teks"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Tetapkan direktori suai"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Pilih direktori"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+msgid "Cancel"
+msgstr "Batal"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Use"
+msgstr "Guna"
+
+#. STRINGS & THINGS
+#. settings
+#: budgie-window-shuffler/src/shuffler_control.vala:50
+msgid "Enable tiling and window move shortcuts"
+msgstr "Benarkan pintasan penjubinan dan alih tetingkap"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:51
+msgid "Enable grid tiling graphical shortcut"
+msgstr "Benarkan pintasan penjubinan grid bergrafik"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:52
+msgid ""
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
+msgstr ""
+"Bila menggunakan pintasan alih, silih saiz & kedudukan tetingkap jika satu "
+"tetingkap beralih ke kedudukan tetingkap sedia ada"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:53
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
+msgstr ""
+"Benarkan animasi ketika tindakan bergerak dan menjubin jika animasi atas "
+"meja am dibenarkan"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:54
+msgid "Move the mouse over a button for an explanation"
+msgstr "Alih tetingkap di atas butang untuk penjelasan"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:55
+msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgstr "Bilangan lajur, digunakan oleh grid, pintasan alih dan jubin-semua"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:56
+msgid "Number of rows, used by grid, move and tile-all shortcuts"
+msgstr "Bilangan baris digunakan oleh grid, pintasan alih dan jubin-semua"
+
+#. margins
+#: budgie-window-shuffler/src/shuffler_control.vala:58
+msgid "Margins between virtual grid and screen edges "
+msgstr "Jidar antata grid maya dengan pinggir skrin"
+
+#. tiling
 #: budgie-window-shuffler/src/shuffler_control.vala:60
-#: budgie-window-shuffler/src/shuffler_control.vala:63
+msgid "Shortcuts for quarter and half tiling & tiling to grid"
+msgstr "Pintasan untuk penjubinan suku dan separa & penjubinan ke grid"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:61
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Top-left"
 msgstr "Kiri-atas"
 
+#: budgie-window-shuffler/src/shuffler_control.vala:62
 #: budgie-hotcorners/src/HotCornersApplet.vala:248
-#: budgie-window-shuffler/src/shuffler_control.vala:61
 msgid "Top-right"
 msgstr "Kanan-atas"
 
+#: budgie-window-shuffler/src/shuffler_control.vala:63
+#: budgie-hotcorners/src/HotCornersApplet.vala:248
+msgid "Bottom-right"
+msgstr "Kanan-bawah"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:64
 #: budgie-hotcorners/src/HotCornersApplet.vala:248
 msgid "Bottom-left"
 msgstr "Kiri-bawah"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:248
-#: budgie-window-shuffler/src/shuffler_control.vala:62
-msgid "Bottom-right"
-msgstr "Kanan-bawah"
+#: budgie-window-shuffler/src/shuffler_control.vala:65
+msgid "Left-half"
+msgstr "Separa-kiri"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:386
-#: budgie-hotcorners/src/HotCornersApplet.vala:395
-#: budgie-hotcorners/src/HotCornersApplet.vala:404
-msgid "Missing process"
-msgstr "Proses hilang"
+#: budgie-window-shuffler/src/shuffler_control.vala:66
+msgid "Top-half"
+msgstr "Separa-atas"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:390
-msgid "Please enable Window Previews"
-msgstr "Sila benarkan Pratonton Tetingkap"
+#: budgie-window-shuffler/src/shuffler_control.vala:67
+msgid "Right-half"
+msgstr "Separa-kanan"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:399
-#: budgie-hotcorners/src/HotCornersApplet.vala:407
-msgid "Please enable Window Shuffler"
-msgstr "Sila benarkan Pengocok Tetingkap"
+#: budgie-window-shuffler/src/shuffler_control.vala:68
+msgid "Bottom-half"
+msgstr "Separa-bawah"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
-msgid "Run this command…"
-msgstr "Jalankan perintah ini..."
+#: budgie-window-shuffler/src/shuffler_control.vala:69
+msgid "Tile all windows to grid"
+msgstr "Jubin semua tetingkap ke grid"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
-msgid "Open %s in default web browser"
-msgstr "Buka%s dalam pelayar sesawang lalai"
+#. Jump & resize
+#: budgie-window-shuffler/src/shuffler_control.vala:71
+msgid "Shortcuts for moving to the nearest grid cell"
+msgstr "Pintasan untuk beralih ke sel grid terhampir"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
-#, c-format
-msgid "Open %s in %s"
-msgstr "Buka %s dalam %s"
+#: budgie-window-shuffler/src/shuffler_control.vala:72
+msgid "Move left"
+msgstr "Alih kiri"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
-msgid "Open this link in default browser"
-msgstr "Buka pautan ini dalam pelayar lalai"
+#: budgie-window-shuffler/src/shuffler_control.vala:73
+msgid "Move right"
+msgstr "Alih kanan"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
-msgid "Link"
-msgstr "Pautan"
+#: budgie-window-shuffler/src/shuffler_control.vala:74
+msgid "Move up"
+msgstr "Alih atas"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
-msgid "Open link in default browser"
-msgstr "Buka pautan dalam pelayar lalai"
+#: budgie-window-shuffler/src/shuffler_control.vala:75
+msgid "Move down"
+msgstr "Alih bawah"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
-msgid "Search for and run applications on your computer."
-msgstr "Gelintar dan jalankan aplikasi di dalam komputer anda."
+#: budgie-window-shuffler/src/shuffler_control.vala:77
+msgid "Shortcuts for resizing windows on grid"
+msgstr "Pintasan untuk saizkan semula tetingkap pada grid"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:320
-#, c-format
-msgid "Open with %s"
-msgstr "Buka dengan %s"
+#: budgie-window-shuffler/src/shuffler_control.vala:78
+msgid "Expand horizontally (to the right)"
+msgstr "Kembangkan secara mengufuk (ke arah kanan)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
-#, c-format
-msgid "Opens current selection using %s"
-msgstr "Buka pemilihan semasa menggunakan %s"
+#: budgie-window-shuffler/src/shuffler_control.vala:79
+msgid "Shrink horizontally (from the right)"
+msgstr "Kecilkan secara mengufuk (dari arah kanan)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
-msgid "Calculator"
-msgstr "Kalkulator"
+#: budgie-window-shuffler/src/shuffler_control.vala:80
+msgid "Expand vertically (down)"
+msgstr "Kembangkan secara menegak (ke bawah)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
-msgid "Calculate basic expressions."
-msgstr "Kira ungkapan asas."
+#: budgie-window-shuffler/src/shuffler_control.vala:81
+msgid "Shrink vertically (from the bottom)"
+msgstr "Kecilkan secara menegak (dari bawah)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
-msgid "bc is not installed"
-msgstr "bc tidak dipasang"
+#: budgie-window-shuffler/src/shuffler_control.vala:83
+msgid "Expand horizontally (to the left)"
+msgstr "Kembangkan secara mengufuk (ke arah kiri)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-#, c-format
-msgid "Execute '%s'"
-msgstr "Lakukan '%s'"
+#: budgie-window-shuffler/src/shuffler_control.vala:84
+msgid "Shrink horizontally (from the left)"
+msgstr "Kecilkan secara mengufuk (dari arah kiri)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-msgid "Run command"
-msgstr "Jalankan perintah"
+#: budgie-window-shuffler/src/shuffler_control.vala:85
+msgid "Expand vertically (up)"
+msgstr "Kebangkan secara menegak (ke atas)"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
-msgid "Find and execute arbitrary commands."
-msgstr "Cari dan lakukan perintah arbitari."
+#: budgie-window-shuffler/src/shuffler_control.vala:86
+msgid "Shrink vertically (from the top)"
+msgstr "Kecilkan secara menegak (dari atas)"
 
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
-msgid "Try changing search terms."
-msgstr "Cuba mengubah terma gelintar."
+#. GUI grid
+#: budgie-window-shuffler/src/shuffler_control.vala:88
+msgid "Shortcuts for the grid"
+msgstr "Pintasan untuk grid"
 
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
-#, c-format
-msgid "No Results for “%s”"
-msgstr "Tiada Keputusan untuk \"%s\""
+#: budgie-window-shuffler/src/shuffler_control.vala:89
+msgid "Show the grid"
+msgstr "Tunjuk grid"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
-msgid "Shutdown"
-msgstr "Matikan"
+#: budgie-window-shuffler/src/shuffler_control.vala:90
+msgid "Add a column"
+msgstr "Tambah satu lajur"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
-msgid "Suspend"
-msgstr "Tangguh"
+#: budgie-window-shuffler/src/shuffler_control.vala:91
+msgid "Add a row"
+msgstr "Tambah satu baris"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
-msgid "Restart"
-msgstr "Mula Semula"
+#: budgie-window-shuffler/src/shuffler_control.vala:92
+msgid "Remove a column"
+msgstr "Buang satu lajur"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
-msgid "Lock"
-msgstr "Kunci"
+#: budgie-window-shuffler/src/shuffler_control.vala:93
+msgid "Remove a row"
+msgstr "Buang satu baris"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:148
-msgid "Logout"
-msgstr "Daftar Keluar"
+#: budgie-window-shuffler/src/shuffler_control.vala:94
+msgid "To select a range of tiles, use Shift + click"
+msgstr "Untuk memilih satu julat jubin, guna Shift + klik"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
-msgid "Remove from _Dock"
-msgstr "Buang dari _Labuh"
+#: budgie-window-shuffler/src/shuffler_control.vala:95
+msgid "Set the shade of gray for the grid"
+msgstr "Tetapkan lorek kelabu untuk grid"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
-msgid "Add to _Dock"
-msgstr "Tambah ke _Labuh"
+#: budgie-window-shuffler/src/shuffler_control.vala:96
+msgid "Press + or scroll up to lighten the grid shade"
+msgstr "Tekan + untuk menatal ke atas untuk mencerahkan lorek grid"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
-msgid "Text"
-msgstr "Teks"
+#: budgie-window-shuffler/src/shuffler_control.vala:97
+msgid "Press - or scroll down to darken the grid shade"
+msgstr "Tekan - untuk menatal ke atas untuk menggelapkan lorek grid"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
-msgid "Applications"
-msgstr "Aplikasi"
+#: budgie-window-shuffler/src/shuffler_control.vala:129
+#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
+msgid "Window Shuffler Control"
+msgstr "Kawalan Pengocok Tetingkap"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
-msgid "Files"
-msgstr "Fail"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
-msgid "Actions"
-msgstr "Tindakan"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
-msgid "Search"
-msgstr "Gelintar"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
-msgid "Contacts"
-msgstr "Kenalan"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
-msgid "Internet"
-msgstr "Internet"
-
+#: budgie-window-shuffler/src/shuffler_control.vala:152
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-#: budgie-window-shuffler/src/shuffler_control.vala:148
 msgid "Settings"
 msgstr "Tetapan"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
-msgid "Application Actions"
-msgstr "Tindakan Aplikasi"
+#: budgie-window-shuffler/src/shuffler_control.vala:153
+msgid "Margins"
+msgstr "Jidar"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
-msgid "Other"
-msgstr "Lain-lain"
+#: budgie-window-shuffler/src/shuffler_control.vala:154
+msgid "Tiling"
+msgstr "Penjubinan"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
-msgid "Run"
-msgstr "Jalan"
+#: budgie-window-shuffler/src/shuffler_control.vala:155
+msgid "Move & resize"
+msgstr "Alih & saiz semula"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
-msgid "Run an application, action or script"
-msgstr "Jalankan aplikasi, tindakan atau skrip"
+#: budgie-window-shuffler/src/shuffler_control.vala:156
+msgid "Grid"
+msgstr "Grid"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
-msgid "Run in Terminal"
-msgstr "Jalankan dalam Terminal"
+#. STACK-PAGES
+#. 1. settingsgrid - checkbuttons
+#: budgie-window-shuffler/src/shuffler_control.vala:161
+msgid "Enable Window Shuffler"
+msgstr "Benarkan Pengocok Tetingkap"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
-msgid "Run application or command in terminal"
-msgstr "Jalankan aplikasi atau perintah dalam terminal"
+#: budgie-window-shuffler/src/shuffler_control.vala:165
+msgid "Enable Window Shuffler grid"
+msgstr "Benarkan grid Pengocok Tetingkap"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
-msgid "Copy to Clipboard"
-msgstr "Salin ke Papan Keratan"
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+msgid "Swap windows"
+msgstr "Silih tetingkap"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
-msgid "Copy selection to clipboard"
-msgstr "Salin pemilihan ke papan keratan"
+#: budgie-window-shuffler/src/shuffler_control.vala:175
+msgid "Enable animation"
+msgstr "Benarkan animasi"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
-msgid "View as Grid"
-msgstr "Papar sebagai Grid"
+#. settingsgrid - spinbuttonsection
+#: budgie-window-shuffler/src/shuffler_control.vala:181
+msgid "Grid: columns & rows"
+msgstr "Grid: lajur & baris"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
-msgid "View by Category"
-msgstr "Papar mengikut Kategori"
+#: budgie-window-shuffler/src/shuffler_control.vala:186
+msgid "Columns"
+msgstr "Lajur"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
-msgid "Search Apps"
-msgstr "Gelintar Aplikasi"
+#: budgie-window-shuffler/src/shuffler_control.vala:191
+msgid "Rows"
+msgstr "Baris"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
-msgid "Clear all"
-msgstr "Kosongkan semua"
+#. settingsgrid - bottomsection
+#: budgie-window-shuffler/src/shuffler_control.vala:222
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+msgid "Close"
+msgstr "Tutup"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
-msgid "Open and search apps"
-msgstr "Buka dan gelintar apl"
+#: budgie-window-shuffler/src/shuffler_control.vala:290
+msgid "Top"
+msgstr "Atas"
 
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-msgid "Set menu icon from file"
-msgstr "Tetapkan ikom menu dari fail"
+#: budgie-window-shuffler/src/shuffler_control.vala:293
+msgid "Left"
+msgstr "Kiri"
 
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
-msgid "Image files"
-msgstr "Fail imej"
+#: budgie-window-shuffler/src/shuffler_control.vala:296
+msgid "Right"
+msgstr "Kanan"
 
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
-msgid "Any file"
-msgstr "Apa-apa fail"
+#: budgie-window-shuffler/src/shuffler_control.vala:299
+msgid "Bottom"
+msgstr "Bawah"
 
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-msgid "Set icon"
-msgstr "Tetapkan ikon"
-
-#. tooltip
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-msgid "Open"
-msgstr "Buka"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Kosong"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Kosongkan semua item dalam Tong Sampah?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Semua item dalam Tong Sampah akan dipadam secara kekal."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Kosongkan Tong Sampah"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:109
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "Tidak dapat tentukan lokasi asal %s"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:134
-#, c-format
-msgid "%s restored."
-msgstr "%s dipulihkan."
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:141
-#, c-format
-msgid "%s already exists."
-msgstr "%s sudah wujud."
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:363
-msgid "Restore"
-msgstr "Pulih"
+#: budgie-window-shuffler/src/shuffler_control.vala:305
+msgid "Window padding"
+msgstr "Pemadatan tetingkap"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -741,327 +617,48 @@ msgstr "Tunjuk tarikh"
 msgid "Use 24 hour time"
 msgstr "Guna waktu 24 jam"
 
-#: budgie-brightness-controller/src/Applet.vala:81
-msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr "Buang pemalam warna Daemon Tetapan Gnome daripada automula"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:87
-msgid "Dim"
-msgstr "Malap"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:89
-#: budgie-brightness-controller/src/widgets/Popover.vala:143
-msgid "Brightness"
-msgstr "Kecerahan"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:91
-msgid "Temperature"
-msgstr "Suhu"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:141
-msgid "Light"
-msgstr "Cerah"
-
-#. STRINGS & THINGS
-#. settings
-#: budgie-window-shuffler/src/shuffler_control.vala:49
-msgid "Enable tiling and window move shortcuts"
-msgstr "Benarkan pintasan penjubinan dan alih tetingkap"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:50
-msgid "Enable grid tiling graphical shortcut"
-msgstr "Benarkan pintasan penjubinan grid bergrafik"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:51
-msgid ""
-"When using move shortcuts, swap window size & position if a window moves to "
-"an existing window's position"
-msgstr ""
-"Bila menggunakan pintasan alih, silih saiz & kedudukan tetingkap jika satu "
-"tetingkap beralih ke kedudukan tetingkap sedia ada"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:52
-msgid ""
-"Enable animation on move and tiling actions if general desktop animations "
-"are enabled"
-msgstr ""
-"Benarkan animasi ketika tindakan bergerak dan menjubin jika animasi atas "
-"meja am dibenarkan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:53
-msgid "Move the mouse over a button for an explanation"
-msgstr "Alih tetingkap di atas butang untuk penjelasan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:54
-msgid "Number of columns, used by grid, move and tile-all shortcuts"
-msgstr "Bilangan lajur, digunakan oleh grid, pintasan alih dan jubin-semua"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:55
-msgid "Number of rows, used by grid, move and tile-all shortcuts"
-msgstr "Bilangan baris digunakan oleh grid, pintasan alih dan jubin-semua"
-
-#. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:57
-msgid "Margins between virtual grid and screen edges "
-msgstr "Jidar antata grid maya dengan pinggir skrin"
-
-#. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:59
-msgid "Shortcuts for quarter and half tiling & tiling to grid"
-msgstr "Pintasan untuk penjubinan suku dan separa & penjubinan ke grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:64
-msgid "Left-half"
-msgstr "Separa-kiri"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:65
-msgid "Top-half"
-msgstr "Separa-atas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:66
-msgid "Right-half"
-msgstr "Separa-kanan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:67
-msgid "Bottom-half"
-msgstr "Separa-bawah"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:68
-msgid "Tile all windows to grid"
-msgstr "Jubin semua tetingkap ke grid"
-
-#. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:70
-msgid "Shortcuts for moving to the nearest grid cell"
-msgstr "Pintasan untuk beralih ke sel grid terhampir"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:71
-msgid "Move left"
-msgstr "Alih kiri"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:72
-msgid "Move right"
-msgstr "Alih kanan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:73
-msgid "Move up"
-msgstr "Alih atas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:74
-msgid "Move down"
-msgstr "Alih bawah"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:76
-msgid "Shortcuts for resizing windows on grid"
-msgstr "Pintasan untuk saizkan semula tetingkap pada grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:77
-msgid "Expand horizontally (to the right)"
-msgstr "Kembangkan secara mengufuk (ke arah kanan)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:78
-msgid "Shrink horizontally (from the right)"
-msgstr "Kecilkan secara mengufuk (dari arah kanan)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:79
-msgid "Expand vertically (down)"
-msgstr "Kembangkan secara menegak (ke bawah)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:80
-msgid "Shrink vertically (from the bottom)"
-msgstr "Kecilkan secara menegak (dari bawah)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:82
-msgid "Expand horizontally (to the left)"
-msgstr "Kembangkan secara mengufuk (ke arah kiri)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:83
-msgid "Shrink horizontally (from the left)"
-msgstr "Kecilkan secara mengufuk (dari arah kiri)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:84
-msgid "Expand vertically (up)"
-msgstr "Kebangkan secara menegak (ke atas)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:85
-msgid "Shrink vertically (from the top)"
-msgstr "Kecilkan secara menegak (dari atas)"
-
-#. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:87
-msgid "Shortcuts for the grid"
-msgstr "Pintasan untuk grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:88
-msgid "Show the grid"
-msgstr "Tunjuk grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:89
-msgid "Add a column"
-msgstr "Tambah satu lajur"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:90
-msgid "Add a row"
-msgstr "Tambah satu baris"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:91
-msgid "Remove a column"
-msgstr "Buang satu lajur"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:92
-msgid "Remove a row"
-msgstr "Buang satu baris"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:93
-msgid "To select a range of tiles, use Shift + click"
-msgstr "Untuk memilih satu julat jubin, guna Shift + klik"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:94
-msgid "Set the shade of gray for the grid"
-msgstr "Tetapkan lorek kelabu untuk grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:95
-msgid "Press + or scroll up to lighten the grid shade"
-msgstr "Tekan + untuk menatal ke atas untuk mencerahkan lorek grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:96
-msgid "Press - or scroll down to darken the grid shade"
-msgstr "Tekan - untuk menatal ke atas untuk menggelapkan lorek grid"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:125
-#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
-msgid "Window Shuffler Control"
-msgstr "Kawalan Pengocok Tetingkap"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:149
-msgid "Margins"
-msgstr "Jidar"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:150
-msgid "Tiling"
-msgstr "Penjubinan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:151
-msgid "Move & resize"
-msgstr "Alih & saiz semula"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:152
-msgid "Grid"
-msgstr "Grid"
-
-#. STACK-PAGES
-#. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:157
-msgid "Enable Window Shuffler"
-msgstr "Benarkan Pengocok Tetingkap"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:161
-msgid "Enable Window Shuffler grid"
-msgstr "Benarkan grid Pengocok Tetingkap"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:167
-msgid "Swap windows"
-msgstr "Silih tetingkap"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:171
-msgid "Enable animation"
-msgstr "Benarkan animasi"
-
-#. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:177
-msgid "Grid: columns & rows"
-msgstr "Grid: lajur & baris"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:182
-msgid "Columns"
-msgstr "Lajur"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:187
-msgid "Rows"
-msgstr "Baris"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:286
-msgid "Top"
-msgstr "Atas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:289
-msgid "Left"
-msgstr "Kiri"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:292
-msgid "Right"
-msgstr "Kanan"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:295
-msgid "Bottom"
-msgstr "Bawah"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:301
-msgid "Window padding"
-msgstr "Pemadatan tetingkap"
-
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Tunjuk yang terakhir digunakan"
-
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Tunjuk tip alat"
-
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Sembunyi laluan dalam menu"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Selamat datang ke QuickNote."
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "Teks akan disimpan secara automatik ketika menaip."
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Lebar kawasan teks"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Tinggi kawasan teks"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Tetapkan direktori suai"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Pilih direktori"
-
-#. window props
-#: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:888
-msgid "Set text color"
-msgstr "Tetapkan warna teks"
-
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "Merah"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "Hijau"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "Biru"
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "Pilih"
+#: budgie-hotcorners/src/HotCornersApplet.vala:128
+msgid "Set pressure (0 = no pressure)"
+msgstr "Tetapkan tekanan (0 = tanpa tekanan)"
+
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:214
+msgid "Corner"
+msgstr "Bucu"
+
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:218
+msgid "Action"
+msgstr "Tindakan"
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:222
+msgid "Custom"
+msgstr "Suai"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:386
+#: budgie-hotcorners/src/HotCornersApplet.vala:395
+#: budgie-hotcorners/src/HotCornersApplet.vala:404
+msgid "Missing process"
+msgstr "Proses hilang"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:390
+msgid "Please enable Window Previews"
+msgstr "Sila benarkan Pratonton Tetingkap"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:399
+#: budgie-hotcorners/src/HotCornersApplet.vala:407
+msgid "Please enable Window Shuffler"
+msgstr "Sila benarkan Pengocok Tetingkap"
+
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:70
+msgid "Auto"
+msgstr "Auto"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
@@ -1092,55 +689,450 @@ msgstr "Sabtu"
 msgid "Sunday"
 msgstr "Ahad"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:786
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
 msgid "General"
 msgstr "Am"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:792
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:798
 msgid "Desktop"
 msgstr "Desktop"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:804
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:810
 msgid "City"
 msgstr "Bandar"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:827
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:833
 msgid "Show on desktop"
 msgstr "Tunjuk atas desktop"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:834
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:840
 msgid "Show dynamic panel icon"
 msgstr "Tunjuk ikon panel dinamik"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:847
 msgid "Show forecast in popover"
 msgstr "Tunjuk ramalan dalam dialog timbul"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:862
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:868
 msgid "Transparency"
 msgstr "Kelutsinaran"
 
+#. window props
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:894
+#: budgie-weathershow/src/get_color/get_color.vala:50
+msgid "Set text color"
+msgstr "Tetapkan warna teks"
+
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:895
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Set custom position (px)"
 msgstr "Tetapkan kedudukan suai (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1041
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1047
 msgid "Please enter at least 3 characters"
 msgstr "Sila masukkan sekurang-kurangnya 3 aksara"
 
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
-msgid "Connect to Hidden Network…"
-msgstr "Sambung ke Rangkaian Tersembunyi..."
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "Merah"
 
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
-msgid "Network Settings…"
-msgstr "Tetapan Rangkaian..."
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "Hijau"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "Biru"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "Pilih"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:315
+msgid "Open and search apps"
+msgstr "Buka dan gelintar apl"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Jalankan dalam Terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Jalankan aplikasi atau perintah dalam terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Jalan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Jalankan aplikasi, tindakan atau skrip"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Salin ke Papan Keratan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Salin pemilihan ke papan keratan"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Jalankan perintah ini..."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Cuba mengubah terma gelintar."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:102
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Tiada Keputusan untuk \"%s\""
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:65
+msgid "View as Grid"
+msgstr "Papar sebagai Grid"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:69
+msgid "View by Category"
+msgstr "Papar mengikut Kategori"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:82
+msgid "Search Apps"
+msgstr "Gelintar Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:86
+msgid "Clear all"
+msgstr "Kosongkan semua"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Matikan"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
+msgid "Suspend"
+msgstr "Tangguh"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
+msgid "Restart"
+msgstr "Mula Semula"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
+msgid "Lock"
+msgstr "Kunci"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
+msgid "Logout"
+msgstr "Daftar Keluar"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Teks"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Fail"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Tindakan"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Gelintar"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Kenalan"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Internet"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Tindakan Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Lain-lain"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Buang dari _Labuh"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Tambah ke _Labuh"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Tetapkan ikom menu dari fail"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Fail imej"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Apa-apa fail"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Tetapkan ikon"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Gelintar dan jalankan aplikasi di dalam komputer anda."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#, c-format
+msgid "Open with %s"
+msgstr "Buka dengan %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Buka pemilihan semasa menggunakan %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Lakukan '%s'"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Jalankan perintah"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Cari dan lakukan perintah arbitari."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Buka%s dalam pelayar sesawang lalai"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Buka %s dalam %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Buka pautan ini dalam pelayar lalai"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Pautan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Buka pautan dalam pelayar lalai"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Kira ungkapan asas."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "bc tidak dipasang"
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
+msgid "AM"
+msgstr "AM"
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
+msgid "PM"
+msgstr "PM"
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
+msgid "Drag position"
+msgstr "Seret kedudukan"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
+msgid "Save position"
+msgstr "Simpan kedudukan"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+"Benarkan Super + seret untuk tetapkan kedudukan waktu. Klik 'Simpan "
+"kedudukan' untuk menyimpan."
+
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
+msgid "Position & anchor"
+msgstr "Kedudukan & penambat"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
+msgid "Automatic"
+msgstr "Automatik"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
+msgid "On all monitors"
+msgstr "Pada semua monitor"
+
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+msgid "Time font, size & color"
+msgstr "Fon, saiz & warna waktu"
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+msgid "Date font, size & color"
+msgstr "Fon, saiz & warna tarikh"
+
+#. miscellaneous section
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
+msgid "Miscellaneous"
+msgstr "Pelbagai"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+msgid "Left align text"
+msgstr "Jajar kiri teks"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+msgid "Use 12hr time format"
+msgstr "Guna format waktu 12jam"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+msgid "Linespacing"
+msgstr "Jarak baris"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+msgid "Super + drag"
+msgstr "Super + seret"
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr "Kawalan WallStreet"
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr "Jalankan WallStreet"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr "Guna kertas dinding rawak"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr "Segerak ke skrin-kunci"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr "Guna kertas dinding lalai"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr "Layar"
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr "Ubah sela"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr "Jam"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr "Minit"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr "Saat"
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr "Pilih satu direktori"
+
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr "Buang pemalam warna Daemon Tetapan Gnome daripada automula"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr "Malap"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:143
+msgid "Brightness"
+msgstr "Kecerahan"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:91
+msgid "Temperature"
+msgstr "Suhu"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:141
+msgid "Light"
+msgstr "Cerah"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:110
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "Tidak dapat tentukan lokasi asal %s"
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:135
+#, c-format
+msgid "%s restored."
+msgstr "%s dipulihkan."
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:142
+#, c-format
+msgid "%s already exists."
+msgstr "%s sudah wujud."
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:390
+msgid "Restore"
+msgstr "Pulih"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Kosong"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Kosongkan semua item dalam Tong Sampah?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Semua item dalam Tong Sampah akan dipadam secara kekal."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Kosongkan Tong Sampah"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
 msgid "Unknown device"
@@ -1150,20 +1142,6 @@ msgstr "Peranti tidak diketahui"
 #, c-format
 msgid "Unknown type: %s "
 msgstr "Jenis tidak diketahui: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
-msgid "VPN"
-msgstr "VPN"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
-msgid "Virtual network: %s"
-msgstr "Rangkaian maya: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
-msgid "Wired"
-msgstr "Berwayar"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
 msgid "No Access Points Available"
@@ -1180,19 +1158,6 @@ msgstr "Tanpa Wayar"
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
 msgid "This Virtual Private Network could not be connected to."
 msgstr "Rangkaian Persendirian Maya ini tidak dapat disambungkan."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
-msgid "Mobile Broadband: %s"
-msgstr "Jalur Lebar Mudah Alih: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
-msgid "Mobile Broadband"
-msgstr "Jalur Lebar Mudah Alih"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
-msgid "Modem"
-msgstr "Modem"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
 msgid "This wireless network could not be connected to."
@@ -1234,6 +1199,41 @@ msgstr "Bersambung"
 msgid "Disconnected"
 msgstr "Terputus"
 
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr "VPN"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
+#, c-format
+msgid "Virtual network: %s"
+msgstr "Rangkaian maya: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "Berwayar"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
+#, c-format
+msgid "Mobile Broadband: %s"
+msgstr "Jalur Lebar Mudah Alih: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr "Jalur Lebar Mudah Alih"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
+msgid "Modem"
+msgstr "Modem"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
+msgid "Connect to Hidden Network…"
+msgstr "Sambung ke Rangkaian Tersembunyi..."
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
+msgid "Network Settings…"
+msgstr "Tetapan Rangkaian..."
+
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
 msgstr "Ikon Menu"
@@ -1260,30 +1260,6 @@ msgstr "Label Menu"
 msgid "Show Power-strip"
 msgstr "Tunjuk jalur-kuasa"
 
-#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
-msgid "Workspace indicator and window list"
-msgstr "Penunjuk ruang kerja dan senarai tetingkap"
-
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
-msgid "Set hotcorner actions"
-msgstr "Tetapkan tindakan bucu panas"
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
-msgid "Stylish Desktop Application Menu"
-msgstr "Menu Aplikasi Atas Meja Bergaya"
-
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Tong Sampah"
-
-#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
-msgid "Time of day in fuzzy way"
-msgstr "Waktu hari dalam cara pelik"
-
-#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
-msgid "Brightness Controller"
-msgstr "Pengawal Kecerahan"
-
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr "Tunjuk item digunakan baru-baru ini"
@@ -1292,9 +1268,33 @@ msgstr "Tunjuk item digunakan baru-baru ini"
 msgid "Quick & Easy Notes"
 msgstr "Nota Pantas & Mudah"
 
+#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
+msgid "Time of day in fuzzy way"
+msgstr "Waktu hari dalam cara pelik"
+
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr "Tetapkan tindakan bucu panas"
+
+#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
+msgid "Workspace indicator and window list"
+msgstr "Penunjuk ruang kerja dan senarai tetingkap"
+
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
 msgstr "Tunjuk cuaca & ramalan"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr "Menu Aplikasi Atas Meja Bergaya"
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr "Pengawal Kecerahan"
+
+#: budgie-trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Tong Sampah"
 
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
