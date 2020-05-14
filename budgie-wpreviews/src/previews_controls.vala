@@ -19,39 +19,32 @@ namespace PreviewsControls {
 
     GLib.Settings prvsettings;
 
+    ExtrasDaemon client;
+
+    [DBus (name = "org.UbuntuBudgie.ExtrasDaemon")]
+    interface ExtrasDaemon : Object {
+        public abstract bool ReloadShortcuts () throws Error;
+    }
+
+    private void setup_client () {
+        try {
+            client = Bus.get_proxy_sync (
+                BusType.SESSION, "org.UbuntuBudgie.ExtrasDaemon",
+                ("/org/ubuntubudgie/extrasdaemon")
+            );
+        }
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
+    }
+
+
     class ControlsWindow : Gtk.Window {
 
         Grid maingrid;
         ToggleButton toggle_previews;
-        Label instruct;
-        bool daemonruns;
 
         public ControlsWindow () {
-
-            // check if previews runs
-            daemonruns = procruns("previews_daemon");
-            // bunch of styling stuff
-            string previews_stylecss = """
-            .explanation {
-                font-style: italic;
-                color: red;
-            }
-            """;
-            Gdk.Screen screen = this.get_screen();
-            Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            try {
-                css_provider.load_from_data(previews_stylecss);
-                Gtk.StyleContext.add_provider_for_screen(
-                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
-                );
-            }
-            catch (Error e) {
-            }
-            // message label: log out/in
-            instruct = new Label("");
-            instruct.set_xalign(0);
-            var sct = instruct.get_style_context();
-            sct.add_class("explanation");
 
             this.set_position(Gtk.WindowPosition.CENTER);
             this.title = _("Previews Control");
@@ -70,50 +63,47 @@ namespace PreviewsControls {
             maingrid.attach(toggle_previews, 1, 1, 1, 1);
             maingrid.attach(toggle_allworkspaces, 1, 2, 1, 1);
             maingrid.attach(empty, 1, 3, 1, 1);
-            maingrid.attach(instruct, 1, 4, 1, 1);
+            //  maingrid.attach(instruct, 1, 4, 1, 1); -> dump
             toggle_previews.set_active(get_currsetting("enable-previews"));
             toggle_allworkspaces.set_active(get_currsetting("allworkspaces"));
             toggle_previews.toggled.connect ( () => {
                 update_settings(toggle_previews, "enable-previews");
                 bool newactive = toggle_previews.get_active();
                 if (newactive) {
-                    check_firstrunwarning();
-                }
-                else {
-                    instruct.set_label("");
+                    check_onpreviews();
                 }
             });
             toggle_allworkspaces.toggled.connect ( () => {
                 update_settings(toggle_allworkspaces, "allworkspaces");
             });
 
+
             maingrid.attach(ok_button, 99, 99, 1, 1);
             this.destroy.connect(Gtk.main_quit);
+            setup_client();
         }
 
-        private void check_firstrunwarning() {
-            /*
-            / 0.1 dec after gsettings change check if process is running
-            / if not -> show message in label
-            */
-            print("warning called\n");
-            string home = Environment.get_home_dir();
-            string subdir = home.concat("/.config/budgie-extras/previews/");
-            File trigerdir = File.new_for_path (subdir);
-            File firstrun_trigger = File.new_for_path (subdir.concat("previews_firstrun"));
-            bool ranbefore = firstrun_trigger.query_exists ();
+        private void check_onpreviews() {
 
-            GLib.Timeout.add(100, () => {
-                if (!daemonruns && !ranbefore) {
-                    instruct.set_label(_("Please log out/in to initialize"));
-                    // set_textstyle(warninglabel, {"warning", "explanation"});
-                    try {
-                        trigerdir.make_directory_with_parents();
-                        firstrun_trigger.create (FileCreateFlags.PRIVATE);
+            GLib.Timeout.add(250, () => {
+                try {
+                    client.ReloadShortcuts();
+                    bool daemonruns = procruns("previews_daemon");
+                    bool creatorruns = procruns("previews_creator");
+                    bool runpreviews = get_currsetting("enable-previews");
+                    if (runpreviews) {
+                        if (!daemonruns) {
+                            string cm = Config.PREVIEWS_DIR + "/previews_daemon";
+                            Process.spawn_command_line_async(cm);
+                        }
+                        if (!creatorruns) {
+                            string cm = Config.PREVIEWS_DIR + "/previews_daemon";
+                            Process.spawn_command_line_async(cm);
+                        }
                     }
-                    catch (Error e) {
-                        print("Cannot create triggerfile\n");
-                    }
+                }
+                catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
                 }
                 return false;
             });
