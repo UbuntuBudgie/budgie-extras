@@ -68,9 +68,7 @@ namespace PreviewsControls {
             toggle_previews.toggled.connect ( () => {
                 update_settings(toggle_previews, "enable-previews");
                 bool newactive = toggle_previews.get_active();
-                if (newactive) {
-                    check_onpreviews();
-                }
+                check_onpreviews(newactive);
             });
             toggle_allworkspaces.toggled.connect ( () => {
                 update_settings(toggle_allworkspaces, "allworkspaces");
@@ -82,24 +80,26 @@ namespace PreviewsControls {
             setup_client();
         }
 
-        private void check_onpreviews() {
+        private void check_onpreviews(bool start_services) {
 
             GLib.Timeout.add(250, () => {
                 try {
-                    client.ReloadShortcuts();
-                    bool daemonruns = procruns("previews_daemon");
-                    bool creatorruns = procruns("previews_creator");
-                    bool runpreviews = get_currsetting("enable-previews");
-                    if (runpreviews) {
-                        if (!daemonruns) {
-                            string cm = Config.PREVIEWS_DIR + "/previews_daemon";
-                            Process.spawn_command_line_async(cm);
-                        }
-                        if (!creatorruns) {
-                            string cm = Config.PREVIEWS_DIR + "/previews_creator";
-                            Process.spawn_command_line_async(cm);
+                    if (start_services) {
+                        bool daemonruns = procruns("previews_daemon");
+                        bool creatorruns = procruns("previews_creator");
+                        bool runpreviews = get_currsetting("enable-previews");
+                        if (runpreviews) {
+                            if (!daemonruns) {
+                                string cm = Config.PREVIEWS_DIR + "/previews_daemon";
+                                Process.spawn_command_line_sync(cm);
+                            }
+                            if (!creatorruns) {
+                                string cm = Config.PREVIEWS_DIR + "/previews_creator";
+                                Process.spawn_command_line_sync(cm);
+                            }
                         }
                     }
+                    client.ReloadShortcuts();
                 }
                 catch (Error e) {
                     stderr.printf ("%s\n", e.message);
