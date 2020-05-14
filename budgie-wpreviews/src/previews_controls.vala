@@ -63,7 +63,6 @@ namespace PreviewsControls {
             maingrid.attach(toggle_previews, 1, 1, 1, 1);
             maingrid.attach(toggle_allworkspaces, 1, 2, 1, 1);
             maingrid.attach(empty, 1, 3, 1, 1);
-            //  maingrid.attach(instruct, 1, 4, 1, 1); -> dump
             toggle_previews.set_active(get_currsetting("enable-previews"));
             toggle_allworkspaces.set_active(get_currsetting("allworkspaces"));
             toggle_previews.toggled.connect ( () => {
@@ -97,7 +96,7 @@ namespace PreviewsControls {
                             Process.spawn_command_line_async(cm);
                         }
                         if (!creatorruns) {
-                            string cm = Config.PREVIEWS_DIR + "/previews_daemon";
+                            string cm = Config.PREVIEWS_DIR + "/previews_creator";
                             Process.spawn_command_line_async(cm);
                         }
                     }
