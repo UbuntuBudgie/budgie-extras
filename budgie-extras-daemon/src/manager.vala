@@ -174,6 +174,14 @@ public class BDEFile
             settings.set_boolean(settings_key, !val);
         }
     }
+
+    public void reset_overlay() {
+        if (overlay_path != null)
+        {
+            Settings settings = new Settings(overlay_path);
+            settings.reset(overlay_key);
+        }
+    }
     public bool connect()
     {
         debug("1");
@@ -279,7 +287,6 @@ public class KeybinderManager : GLib.Object
      */
     public bool reload()
     {
-
         string datapath = BudgieExtras.DATADIR;
         string syspath = BudgieExtras.SYSCONFDIR;
         string localpath = Environment.get_user_data_dir() + "/" + BudgieExtras.DAEMONNAME;
@@ -288,15 +295,14 @@ public class KeybinderManager : GLib.Object
         BDEFile bdefile;
 
         if (shortcuts == null) {
-            message("no shortcuts");
             shortcuts = new HashTable<string, BDEFile>(str_hash, str_equal);
         }
 
         if (shortcuts.size() != 0) {
-            message("in size cleanup");
             HashTableIter<string, BDEFile> iter = HashTableIter<string, BDEFile> (shortcuts);
             while (iter.next(out shortcut, out bdefile))
             {
+                bdefile.reset_overlay();
                 Keybinder.unbind_all(shortcut);
             }
 
