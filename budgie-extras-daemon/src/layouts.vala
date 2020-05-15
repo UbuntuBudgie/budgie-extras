@@ -71,7 +71,7 @@ namespace Layouts {
             var preference_settings = new GLib.Settings(nemo_preferences_schema);
             preference_settings.set_boolean("disable-menu-warning", true);
             GLib.Timeout.add(500, () => {
-                /* add a little wait to allow nemo to chew on the previous dconf change
+                /* add a little wait to allow nemo to chew on the previous dconf change */
                 var window_settings = new GLib.Settings(nemo_window_schema);
                 window_settings.set_boolean("start-with-menu-bar", show_menu);
                 preference_settings.set_boolean("disable-menu-warning", false);
