@@ -21,8 +21,11 @@ namespace Layouts {
     const string plank_path="/net/launchpad/plank/docks/xyz/";
     const string panel_schema="com.solus-project.budgie-panel";
     const string plank_global_path="/usr/share/applications/plank.desktop";
-    const string network_schema="io.elementary.desktop.wingpanel.applications-menu";
+    const string appmenu_elementary_schema="io.elementary.desktop.wingpanel.applications-menu";
+    const string appmenu_budgie_schema="org.ubuntubudgie.plugins.budgie-appmenu";
     const string budgiewm_schema="com.solus-project.budgie-wm";
+    const string nemo_window_schema="org.nemo.window-state";
+    const string nemo_preferences_schema="org.nemo.preferences";
 
     public class LayoutsManager : Object {
 
@@ -59,6 +62,21 @@ namespace Layouts {
             catch (Error e) {
                 warning("Cannot delete: %s", e.message);
             }
+        }
+
+        private void show_nemo_menu(bool show_menu) {
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (nemo_window_schema, true);
+            if (schema == null)
+                return;
+            var preference_settings = new GLib.Settings(nemo_preferences_schema);
+            preference_settings.set_boolean("disable-menu-warning", true);
+            GLib.Timeout.add(500, () => {
+                /* add a little wait to allow nemo to chew on the previous dconf change
+                var window_settings = new GLib.Settings(nemo_window_schema);
+                window_settings.set_boolean("start-with-menu-bar", show_menu);
+                preference_settings.set_boolean("disable-menu-warning", false);
+                return false;
+            });
         }
 
         private void start_plank(bool centered=false) {
@@ -108,18 +126,18 @@ namespace Layouts {
         }
 
         private void appmenu_powerstrip(bool enable) {
-            var schema = GLib.SettingsSchemaSource.get_default ().lookup (network_schema, true);
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (appmenu_budgie_schema, true);
             if (schema == null)
                 return;
-            var settings = new GLib.Settings(network_schema);
+            var settings = new GLib.Settings(appmenu_budgie_schema);
             settings.set_boolean("enable-powerstrip", enable);
         }
 
         private void appmenu_categoryview(bool show_category) {
-            var schema = GLib.SettingsSchemaSource.get_default ().lookup (network_schema, true);
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (appmenu_elementary_schema, true);
             if (schema == null)
                 return;
-            var settings = new GLib.Settings(network_schema);
+            var settings = new GLib.Settings(appmenu_elementary_schema);
             settings.set_boolean("use-category", show_category);
         }
 
@@ -143,6 +161,7 @@ namespace Layouts {
             appmenu_powerstrip(false);
             appmenu_categoryview(false);
             leftside_buttons(false);
+            show_nemo_menu(false);
 
             switch (layout_name) {
                 case "ubuntubudgie": {
@@ -158,10 +177,12 @@ namespace Layouts {
                     appmenu_powerstrip(true);
                     appmenu_categoryview(true);
                     leftside_buttons();
+                    show_nemo_menu(true);
                     break;
                 }
                 case "theone": {
                     leftside_buttons();
+                    show_nemo_menu(true);
                     break;
                 }
                 case "redmond": {
