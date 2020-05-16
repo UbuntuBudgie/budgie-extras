@@ -81,14 +81,20 @@ class CountDownApplet(Budgie.Applet):
         Budgie.Applet.__init__(self)
         self.red_time = 60
         self.yellow_time = 300
-        # --- panelgrid ---
+        # --- panelgrid/containergrid ---
         self.panelgrid = Gtk.Grid()
-        # space section. make it depend on panel size?
-        spacer_img = Gtk.Image.new_from_file(
-            os.path.join(path, "cr_spacer.png")
-        )
-        self.panelgrid.attach(spacer_img, 0, 0, 2, 1)
-        self.panelgrid.set_row_spacing(10)  # <-- make depend on panel height
+        self.panelgrid.set_row_spacing(10)
+        self.panelgrid.set_column_spacing(10)
+        self.containergrid = Gtk.Grid()
+        self.containergrid.attach(self.panelgrid, 1, 1, 1, 1)
+        # --- let's initiate some stuff ---
+        self.panelspacing = 0
+        self.position_index = 0
+        # label/spacer position
+        self.labelpos = [0, 0, 1, 1]
+        self.spacerpos = "top"
+        self.grid_helpers = []  # spacer imag(es?)
+        self.labelplacement = 0  # distance
         # icons
         grey = os.path.join(path, "cr_grey.png")
         green = os.path.join(path, "cr_green.png")
@@ -101,10 +107,10 @@ class CountDownApplet(Budgie.Applet):
         ]
         # initial icon
         self.seticon = Gtk.Image.new_from_pixbuf(self.iconset[0])
-        self.panelgrid.attach(self.seticon, 0, 1, 1, 1)
+        self.panelgrid.attach(self.seticon, 1, 1, 1, 1)
         # menu label
-        self.timer = Gtk.Label("  00:00:00")
-        self.panelgrid.attach(self.timer, 1, 1, 1, 1)
+        self.timer = Gtk.Label(label="00:00:00")
+        self.panelgrid.attach(self.timer, 2, 1, 1, 1)
         # --- menugrid ---
         self.menugrid = Gtk.Grid()
         self.menugrid.set_column_spacing(15)
@@ -132,18 +138,14 @@ class CountDownApplet(Budgie.Applet):
         self.secsbutton = Gtk.SpinButton()
         self.secsbutton.set_adjustment(adjustment)
         self.menugrid.attach(self.secsbutton, 2, 4, 1, 1)
-
         for sp in [self.hoursbutton, self.minsbutton, self.secsbutton]:
             sp.set_numeric(True)
             sp.set_update_policy(True)
-
         # prevent pause
         self.sleep = Gtk.CheckButton("Prevent pausing countdown")
         self.menugrid.attach(self.sleep, 1, 6, 2, 1)
-
         sep = Gtk.Separator()
         self.menugrid.attach(sep, 4, 1, 1, 8)
-
         self.bbox = Gtk.Box()
         self.menugrid.attach(self.bbox, 0, 10, 9, 2)
         self.menugrid.attach(Gtk.Label(""), 1, 9, 1, 1)
@@ -160,7 +162,6 @@ class CountDownApplet(Budgie.Applet):
         self.menugrid.attach(self.nf_icon, 5, 3, 1, 1)
         self.nf_message = Gtk.CheckButton("Display window")
         self.menugrid.attach(self.nf_message, 5, 4, 1, 1)
-
         self.runcomm = Gtk.CheckButton("Run command:")
         self.menugrid.attach(self.runcomm, 5, 5, 1, 1)
         self.command_entry = Gtk.Entry()
@@ -207,17 +208,15 @@ class CountDownApplet(Budgie.Applet):
         self.cancel = True
         # panel
         self.box = Gtk.EventBox()
-        self.box.add(self.panelgrid)
+        self.box.add(self.containergrid)
         self.add(self.box)
         # menu
         self.popover = Budgie.Popover.new(self.box)
         self.popover.add(self.menugrid)
         self.popover.get_child().show_all()
-
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-
         GObject.threads_init()
         # thread
         self.update = Thread(target=self.run_countdown)
@@ -225,6 +224,65 @@ class CountDownApplet(Budgie.Applet):
         self.update.setDaemon(True)
         self.update.start()
         self.seticon.set_from_pixbuf(self.iconset[1])
+
+    def do_panel_size_changed(self, panelsize, icsize, small_icsize):
+        diff = icsize - small_icsize
+        # 22 is the used icon size, 3 is an apparent constant
+        self.panelspacing = round(
+            ((panelsize - icsize) / 2) + ((icsize - 22) / 2) - 3
+        )
+        self.edit_grid()
+
+    def do_panel_position_changed(self, panelposition):
+        if panelposition != Budgie.PanelPosition.NONE:
+            panelpositions = [
+                Budgie.PanelPosition.RIGHT,
+                Budgie.PanelPosition.LEFT,
+                Budgie.PanelPosition.BOTTOM,
+                Budgie.PanelPosition.TOP,
+            ]
+            angles = [270, 90, 0, 0]
+            self.position_index = panelpositions.index(panelposition)
+            if self.position_index > 1:
+                self.labelpos = [2, 1, 1, 1]
+                self.spacerpos = "top"
+                self.timer.set_angle(0)
+                print("option1")
+            else:
+                self.labelpos = [1, 2, 1, 1]
+                self.spacerpos = "left"
+                print("option2")
+            self.timer.set_angle(angles[self.position_index])
+            self.edit_grid()
+
+    def edit_grid(self):
+        for img in self.grid_helpers:
+            self.containergrid.remove(img)
+        self.grid_helpers = []
+        spacerimg = Gtk.Image.new_from_file(
+            "/usr/share/pixmaps/panelspacer.png"
+        )
+        self.grid_helpers.append(spacerimg)
+        if self.spacerpos == "left":
+            self.containergrid.attach(spacerimg, 0, 1, 1, 1)
+            self.containergrid.set_column_spacing(self.panelspacing)
+            self.containergrid.set_row_spacing(0)
+        else:
+            self.containergrid.attach(spacerimg, 1, 0, 1, 1)
+            self.containergrid.set_row_spacing(self.panelspacing)
+            self.containergrid.set_column_spacing(0)
+        # helper left or right, set size, add to self.grid_helpers
+        self.panelgrid.remove(self.timer)
+        if self.countdown != 0:
+            self.panelgrid.attach(
+                self.timer,
+                self.labelpos[0],
+                self.labelpos[1],
+                self.labelpos[2],
+                self.labelpos[3],
+            )
+        self.panelgrid.show_all()
+        self.containergrid.show_all()
 
     def get_setting(self, checkbox, readval=False):
         file = os.path.join(settingspath, checkbox[1])
@@ -281,7 +339,7 @@ class CountDownApplet(Budgie.Applet):
         hrs = self.two_dg(int(seconds / 3600))
         mins = self.two_dg(int((seconds % 3600) / 60))
         secs = self.two_dg(seconds % 60)
-        return "  " + ":".join([hrs, mins, secs])
+        return ":".join([hrs, mins, secs])
 
     def set_label(self, newlabel):
         GObject.idle_add(
@@ -388,7 +446,9 @@ class CountDownApplet(Budgie.Applet):
             self.context_start.remove_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION)
             self.context_start.add_class(Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
             GObject.idle_add(
-                self.panelgrid.attach, self.timer, 1, 1, 1, 1,
+                self.panelgrid.attach, self.timer,
+                self.labelpos[0], self.labelpos[1],
+                self.labelpos[2], self.labelpos[3],
                 priority=GObject.PRIORITY_DEFAULT,
             )
             GObject.idle_add(
