@@ -15,10 +15,9 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+
 import os
-
 import gi
-
 gi.require_version('Budgie', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Budgie, GObject, GdkPixbuf, Gtk, Gio
@@ -74,17 +73,58 @@ class CountDown(GObject.GObject, Budgie.Plugin):
         return CountDownApplet(uuid)
 
 
+class CountDownSettings(Gtk.Grid):
+
+    def __init__(self, setting):
+
+        super().__init__()
+
+        self.setting = setting
+        # grid & layout
+        countdown_spacegrid = Gtk.Grid()
+        self.add(countdown_spacegrid)
+        for cell in [[0, 0], [100, 0], [0, 100], [100, 100]]:
+            countdown_spacegrid.attach(
+                Gtk.Label(label="\t"), cell[0], cell[1], 1, 1
+            )
+        self.space_settings = Gio.Settings(
+            schema="org.ubuntubudgie.plugins.budgie-countdown"
+        )
+        currvalue = self.space_settings.get_int("spacersize")
+        space = Gtk.SpinButton()
+        space.set_range(0, 50)
+        space.set_increments(1, 1)
+        space.set_value(currvalue)
+        space.connect("value-changed", self.update_value)
+        label = Gtk.Label("Built-in spacer" + "\n")
+        label.set_xalign(0)
+        countdown_spacegrid.attach(label, 1, 1, 2, 1)
+        countdown_spacegrid.attach(space, 1, 2, 1, 1)
+        self.show_all()
+
+    def update_value(self, spin):
+        newval = spin.get_value()
+        self.space_settings.set_int("spacersize", newval)
+
+
 class CountDownApplet(Budgie.Applet):
     """ Budgie.Applet is in fact a Gtk.Bin """
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
         self.red_time = 60
         self.yellow_time = 300
+        # spacesettings
+        self.space_settings = Gio.Settings(
+            schema="org.ubuntubudgie.plugins.budgie-countdown"
+        )
+        self.claimed_panelspace = self.space_settings.get_int("spacersize")
+        self.space_settings.connect("changed", self.get_currclaimedspace)
         # --- panelgrid/containergrid ---
         self.panelgrid = Gtk.Grid()
-        self.panelgrid.set_row_spacing(10)
-        self.panelgrid.set_column_spacing(10)
+        self.panelgrid.set_row_spacing(5)
+        self.panelgrid.set_column_spacing(5)
         self.containergrid = Gtk.Grid()
         self.containergrid.attach(self.panelgrid, 1, 1, 1, 1)
         # --- let's initiate some stuff ---
@@ -93,7 +133,7 @@ class CountDownApplet(Budgie.Applet):
         # label/spacer position
         self.labelpos = [0, 0, 1, 1]
         self.spacerpos = "top"
-        self.grid_helpers = []  # spacer imag(es?)
+        self.grid_helpers = []  # spacer images
         self.labelplacement = 0  # distance
         # icons
         grey = os.path.join(path, "cr_grey.png")
@@ -225,6 +265,23 @@ class CountDownApplet(Budgie.Applet):
         self.update.start()
         self.seticon.set_from_pixbuf(self.iconset[1])
 
+    def get_currclaimedspace(self, *args):
+        self.claimed_panelspace = self.space_settings.get_int("spacersize")
+        if self.spacerpos == "top":
+            self.containergrid.set_column_spacing(self.claimed_panelspace)
+        else:
+            self.containergrid.set_row_spacing(self.claimed_panelspace)
+
+    def do_get_settings_ui(self):
+        """Return the applet settings with given uuid"""
+        return CountDownSettings(self.get_applet_settings(self.uuid))
+
+    def do_supports_settings(self):
+        """Return True if support setting through Budgie Setting,
+        False otherwise.
+        """
+        return True
+
     def do_panel_size_changed(self, panelsize, icsize, small_icsize):
         diff = icsize - small_icsize
         # 22 is the used icon size, 3 is an apparent constant
@@ -247,30 +304,36 @@ class CountDownApplet(Budgie.Applet):
                 self.labelpos = [2, 1, 1, 1]
                 self.spacerpos = "top"
                 self.timer.set_angle(0)
-                print("option1")
             else:
                 self.labelpos = [1, 2, 1, 1]
                 self.spacerpos = "left"
-                print("option2")
             self.timer.set_angle(angles[self.position_index])
             self.edit_grid()
 
     def edit_grid(self):
         for img in self.grid_helpers:
             self.containergrid.remove(img)
+        spacerpath = "/usr/share/pixmaps/panelspacer.png"
         self.grid_helpers = []
-        spacerimg = Gtk.Image.new_from_file(
-            "/usr/share/pixmaps/panelspacer.png"
-        )
-        self.grid_helpers.append(spacerimg)
+        spacerimg = Gtk.Image.new_from_file(spacerpath)
+        built_in_spacer1 = Gtk.Image.new_from_file(spacerpath)
+        built_in_spacer2 = Gtk.Image.new_from_file(spacerpath)
+        for img in [
+            spacerimg, built_in_spacer1, built_in_spacer2,
+        ]:
+            self.grid_helpers.append(img)
         if self.spacerpos == "left":
             self.containergrid.attach(spacerimg, 0, 1, 1, 1)
+            self.containergrid.attach(built_in_spacer1, 1, 0, 1, 1)
+            self.containergrid.attach(built_in_spacer2, 1, 2, 1, 1)
             self.containergrid.set_column_spacing(self.panelspacing)
-            self.containergrid.set_row_spacing(0)
+            self.containergrid.set_row_spacing(self.claimed_panelspace)
         else:
             self.containergrid.attach(spacerimg, 1, 0, 1, 1)
+            self.containergrid.attach(built_in_spacer1, 0, 1, 1, 1)
+            self.containergrid.attach(built_in_spacer2, 2, 1, 1, 1)
             self.containergrid.set_row_spacing(self.panelspacing)
-            self.containergrid.set_column_spacing(0)
+            self.containergrid.set_column_spacing(self.claimed_panelspace)
         # helper left or right, set size, add to self.grid_helpers
         self.panelgrid.remove(self.timer)
         if self.countdown != 0:
