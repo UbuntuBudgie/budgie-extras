@@ -258,10 +258,9 @@ class CountDownApplet(Budgie.Applet):
     def edit_grid(self):
         for img in self.grid_helpers:
             self.containergrid.remove(img)
+        spacerpath = "/usr/share/pixmaps/cr_panelspacer.png"
         self.grid_helpers = []
-        spacerimg = Gtk.Image.new_from_file(
-            "/usr/share/pixmaps/panelspacer.png"
-        )
+        spacerimg = Gtk.Image.new_from_file(spacerpath)
         self.grid_helpers.append(spacerimg)
         if self.spacerpos == "left":
             self.containergrid.attach(spacerimg, 0, 1, 1, 1)
