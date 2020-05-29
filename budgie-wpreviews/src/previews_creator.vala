@@ -87,7 +87,7 @@ namespace create_previews {
         Gtk.main();
     }
 
-    private uint get_nextqueueindex () {
+    private void update_nextqueueindex () {
         if (!validwins_exist) {
             // if no valid wins
             current_queueindex = -1;
@@ -98,29 +98,37 @@ namespace create_previews {
         }
         else {
             // if multiple, windows, lookup the next valid
-            while (true) {
-                current_queueindex += 1;
+            current_queueindex += 1;
+            // in unlike closing last valid windows (>1) in the split second between
+            // refreshing winlist and update queue-index, don't try forever
+            int maxtry = 0;
+            while (maxtry < 50) {
+                // check if current index is valid
                 if (current_queueindex < n_wins) {
                     Gdk.Window checkwindow = gdk_winlist.nth(current_queueindex).data;
                     if (checkwindow.get_type_hint() == Gdk.WindowTypeHint.NORMAL) {
                         break;
                     }
+                    else {
+                        current_queueindex += 1;
+                    }
                 }
                 else {
                     current_queueindex = 0;
                 }
+                maxtry += 1;
             }
         }
-        return current_queueindex;
     }
 
     private void refresh_queueitem () {
         // as the name sais, refreshing current index from queue
         if (n_wins != 0) {
-            uint nextindex = get_nextqueueindex();
+            update_nextqueueindex();
             // ok, potentially repeated lookup, but for the sake of readability
-            if (nextindex != -1) {
-                Gdk.Window winsubj = gdk_winlist.nth(nextindex).data;
+            if (current_queueindex != -1) {
+                Gdk.Window winsubj = gdk_winlist.nth(current_queueindex).data;
+                //  print(@"updating $current_queueindex\n");
                 update_preview(winsubj);
             }
         }
