@@ -21,6 +21,8 @@ namespace ExtendWindow {
 
     string action;
     ShufflerInfoClient client;
+    HashTable<string, Variant> tiledata;
+
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
@@ -32,15 +34,18 @@ namespace ExtendWindow {
         public abstract int getactivewin () throws Error;
     }
 
-    private bool check_ifongrid (int x, int y, string key, Variant tile) {
-        if (key.contains("*")) {
-            int tile_x = (int)tile.get_child_value(0);
-            int tile_y = (int)tile.get_child_value(1);
-            if (tile_x == x && tile_y == y) {
-                return true;
+    private Variant? check_ifongrid (int x, int y) {
+        foreach (string s in tiledata.get_keys()) {
+            if ("*" in s) {
+                Variant tile = tiledata[s];
+                int tile_x = (int)tile.get_child_value(0);
+                int tile_y = (int)tile.get_child_value(1);
+                if (tile_x == x && tile_y == y) {
+                  return tile;
+                }
             }
         }
-        return false;
+        return null;
     }
 
     private void extend_horizontally (
@@ -116,7 +121,8 @@ namespace ExtendWindow {
         }
 
         if (resize) {
-            string cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
+            string cm = Config.PACKAGE_LIBDIR + "/tile_active ".concat(
+            // string cm = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
                 @"$gridrows $xspan $yspan"
             );
@@ -137,31 +143,28 @@ namespace ExtendWindow {
             );
             // get active window
             int activewin = client.getactivewin();
+            // look up monitorname, tiledata
+            string monname = client.getactivemon_name();
+            int[] colsrows = client.get_grid();
+            int gridcols = colsrows[0];
+            int gridrows = colsrows[1];
+            tiledata = client.get_tiles(
+                monname, gridcols, gridrows
+            );
             // get data on (normal) windows, look up active
             HashTable<string, Variant> windata = client.get_winsdata();
-            foreach (string k in windata.get_keys()) {
-                if (k == @"$activewin") {
-                    Variant winvar = windata[k];
+            foreach (string winkey in windata.get_keys()) {
+                if (winkey == @"$activewin") {
+                    Variant winvar = windata[winkey];
                     int xpos = (int)winvar.get_child_value(3);
                     int ypos = (int)winvar.get_child_value(4);
-                    // look up monitorname, tiledata
-                    string monname = client.getactivemon_name();
-                    int[] colsrows = client.get_grid();
-                    int gridcols = colsrows[0];
-                    int gridrows = colsrows[1];
-                    HashTable<string, Variant> tiledata = client.get_tiles(
-                        monname, gridcols, gridrows
-                    );
-                    foreach (string s in tiledata.get_keys()) {
-                        Variant matchingvar = tiledata[s];
-                        // check if the window is on a gridposition
-                        if (check_ifongrid(xpos, ypos, s, matchingvar)) {
-                            extend_horizontally(
-                                xpos, ypos, matchingvar,
-                                winvar, gridcols, gridrows, k, s
-                            );
-                            break;
-                        }
+                    Variant matching_cell = check_ifongrid(xpos, ypos);
+                    if (matching_cell != null) {
+                        string tilekey = (string)matching_cell.get_child_value(4);
+                        extend_horizontally(
+                            xpos, ypos, matching_cell,
+                            winvar, gridcols, gridrows, winkey, tilekey
+                        );
                     }
                     break;
                 }
