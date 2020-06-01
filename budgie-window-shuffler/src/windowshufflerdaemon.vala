@@ -119,15 +119,6 @@ namespace ShufflerEssentialInfo {
             return window_essentials;
         }
 
-        /////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////
-        public HashTable<string, Variant> get_monitorgeo () throws Error {
-            // window data, send through
-            return monitorgeo;
-        }
-        /////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////
-
         private Wnck.Window? get_matchingwnckwin (int wid) {
             unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
             foreach (unowned Wnck.Window w in wlist) {
@@ -159,9 +150,10 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
-            string cm = Config.PACKAGE_LIBDIR + "/softmove ".concat(
+            string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
+
             try {
                 Process.spawn_command_line_async(cm);
             }
@@ -200,7 +192,7 @@ namespace ShufflerEssentialInfo {
             / "tilewidth" (int)
             / "tileheight" (int)
             / additionally per tile "col*row" (Variant), representing:
-            / - x, y, width, height, key (iiiis)
+            / - x, y, width, height (iiii)
             / having info -per tile- and general info on the very same level
             / doesn't seem brilliantly elegant on second thought. fix if we
             / ever have too mutch time.
@@ -256,11 +248,10 @@ namespace ShufflerEssentialInfo {
                     foreach (int nx in xpositions) {
                         int row = 0;
                         foreach (int ny in ypositions) {
-                            string tilekey = @"$col*$row";
                             Variant newtile = new Variant(
-                                "(iiiis)", nx, ny, tilewidth, tileheight, tilekey
+                                "(iiii)", nx, ny, tilewidth, tileheight
                             );
-                            tiledata.insert(tilekey, newtile);
+                            tiledata.insert(@"$col*$row", newtile);
                             row += 1;
                         }
                         col += 1;
@@ -342,7 +333,7 @@ namespace ShufflerEssentialInfo {
             */
             int yshift = 0;
             string winsubj = @"$w_id";
-            string cmd = "/usr/bin/xprop -id ".concat(winsubj, " _NET_FRAME_EXTENTS");
+            string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(winsubj, " _NET_FRAME_EXTENTS");
             string output = "";
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -460,7 +451,7 @@ namespace ShufflerEssentialInfo {
         /*
         / maintaining function
         / get windowlist, per window:
-        / xid = key. then: name, onthisworspace, monitor-of-window, geometry, minimized, wmclass
+        / xid = key. then: name, onthisworspace, monitor-of-window, geometry, wmclass
         */
         var winsdata = new HashTable<string, Variant> (str_hash, str_equal);
         unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
