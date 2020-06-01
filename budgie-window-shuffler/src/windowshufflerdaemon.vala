@@ -192,7 +192,7 @@ namespace ShufflerEssentialInfo {
             / "tilewidth" (int)
             / "tileheight" (int)
             / additionally per tile "col*row" (Variant), representing:
-            / - x, y, width, height (iiii)
+            / - x, y, width, height (iiiis)
             / having info -per tile- and general info on the very same level
             / doesn't seem brilliantly elegant on second thought. fix if we
             / ever have too mutch time.
@@ -248,10 +248,11 @@ namespace ShufflerEssentialInfo {
                     foreach (int nx in xpositions) {
                         int row = 0;
                         foreach (int ny in ypositions) {
+                            string tilekey = @"$col*$row";
                             Variant newtile = new Variant(
-                                "(iiii)", nx, ny, tilewidth, tileheight
+                                "(iiiis)", nx, ny, tilewidth, tileheight, tilekey
                             );
-                            tiledata.insert(@"$col*$row", newtile);
+                            tiledata.insert(tilekey, newtile);
                             row += 1;
                         }
                         col += 1;
@@ -451,7 +452,7 @@ namespace ShufflerEssentialInfo {
         /*
         / maintaining function
         / get windowlist, per window:
-        / xid = key. then: name, onthisworspace, monitor-of-window, geometry, wmclass
+        / xid = key. then: name, onthisworspace, monitor-of-window, geometry, minimized, wmclass
         */
         var winsdata = new HashTable<string, Variant> (str_hash, str_equal);
         unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
