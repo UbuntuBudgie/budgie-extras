@@ -4,6 +4,10 @@ install_data('shuffler-control.svg',
     install_dir: PIXMAPS_DIR
 )
 
+install_data('shuffler-togglesticky-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
+
 shufflertargetauto = custom_target('shufflerautostart',
   output : 'shufflerdaemon-autostart.desktop',
   input : 'shufflerdaemon-autostart.desktop.in',
@@ -310,6 +314,15 @@ shufflerbde01 = custom_target(BDE_FILE,
 )
 
 BDE_FILE='windowshuffler-resize-subtractrow-top.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+
+BDE_FILE='windowshuffler-toggle_stickyneighbors.bde'
 shufflerbde01 = custom_target(BDE_FILE,
   output : BDE_FILE,
   input : BDE_FILE + '.in',

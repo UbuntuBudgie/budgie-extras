@@ -104,6 +104,7 @@ namespace ShufflerControls {
             string shrinkhorizontally_br = "Control + Super + Alt + →".concat("\t", (_("Shrink horizontally (from the left)")));
             string addvertically_br = "Control + Super + Alt + ↑".concat("\t", (_("Expand vertically (up)")));
             string shrinkvertically_br = "Control + Super + Alt + ↓".concat("\t", (_("Shrink vertically (from the top)")));
+            string togglestickyneighbor = "Control + Super + N".concat("\t\t", (_("Toggle resizing opposite window")));
             // GUI grid
             string guigrid_header = (_("Shortcuts for the grid")) + ":";
             string callgrid = "Ctrl + Alt + S".concat("\t", (_("Show the grid")));
@@ -381,11 +382,14 @@ namespace ShufflerControls {
             var shrink_horizontally_br = new Label(shrinkhorizontally_br);
             var add_vertically_br = new Label(addvertically_br);
             var shrink_vertically_br = new Label(shrinkvertically_br);
+            var spacer5 = new Label("");
+            var toggle_stickyneighbor = new Label(togglestickyneighbor);
 
             Label[] resizeshortc_labels = {
                 resizeheader, spacer4, add_horizontally, shrink_horizontally,
                 add_vertically, shrink_vertically, add_horizontally_br,
-                shrink_horizontally_br, add_vertically_br, shrink_vertically_br
+                shrink_horizontally_br, add_vertically_br, shrink_vertically_br,
+                spacer5, toggle_stickyneighbor
             };
             n2 = 10;
             foreach (Label l in resizeshortc_labels) {
@@ -393,6 +397,7 @@ namespace ShufflerControls {
                 jumpgrid.attach(l, 0, n2, 1, 1);
                 n2 += 1;
             }
+
             // 5. guigrid
             var guigridheader = new Label(guigrid_header);
             set_textstyle(guigridheader, {"header"});
@@ -609,13 +614,41 @@ namespace ShufflerControls {
         }
     }
 
+    private void sendwarning (string msg_header, string message) {
+        string set_icon = Config.PACKAGE_BINDIR + "/notify-send -i shuffler-togglesticky-symbolic ";
+        string header = "'" + msg_header + "'";
+        // WindowPreviews is the name of a Budgie Applet and does not need to be translated
+        string body = " '" + message + "'";
+        string command = set_icon.concat(header, body);
+        try {
+            Process.spawn_command_line_async(command);
+        }
+        catch (Error e) {
+            print("Error sending notification\n");
+        }
+    }
+
     public static int main (string[] args) {
         Gtk.init(ref args);
         shuffler_settings = new GLib.Settings(
             "org.ubuntubudgie.windowshuffler"
         );
-        new ControlsWindow();
-        Gtk.main();
+        if (args[1] == "togglestickyneighbors") {
+            bool sticky = shuffler_settings.get_boolean("stickyneighbors");
+            shuffler_settings.set_boolean("stickyneighbors", !sticky);
+            string msg = "";
+            if (sticky) {
+                msg = (_("Sticky Neighbors switched off"));
+            }
+            else {
+                msg = (_("Sticky Neighbors switched on"));
+            }
+            sendwarning("Window Shuffler notification", msg);
+        }
+        else {
+            new ControlsWindow();
+            Gtk.main();
+        }
         return 0;
     }
 }

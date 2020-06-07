@@ -50,6 +50,7 @@ namespace ShufflerEssentialInfo {
     int greyshade;
     bool swapgeometry;
     bool gridguiruns;
+    bool stickyneighbors;
     Gtk.Window? showtarget = null;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -272,6 +273,10 @@ namespace ShufflerEssentialInfo {
 
         public bool get_softmove() throws Error {
             return soft_move;
+        }
+
+        public bool get_stickyneighbors() throws Error {
+            return stickyneighbors;
         }
 
         public bool get_general_animations_set () throws Error {
@@ -533,6 +538,7 @@ namespace ShufflerEssentialInfo {
         marginbottom = shuffler_settings.get_int("marginbottom");
         padding = shuffler_settings.get_int("padding");
         soft_move = shuffler_settings.get_boolean("softmove");
+        stickyneighbors = shuffler_settings.get_boolean("stickyneighbors");
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
