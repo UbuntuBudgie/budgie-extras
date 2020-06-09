@@ -57,14 +57,19 @@ namespace PreviewsControls {
             var toggle_allworkspaces = new Gtk.CheckButton.with_label(
                 _("Show windows of all workspaces")
             );
+            var toggle_showtooltips = new Gtk.CheckButton.with_label(
+                _("Show window full name in tooltip")
+            );
             var ok_button = new Button.with_label("Close");
             ok_button.clicked.connect(Gtk.main_quit);
             var empty = new Label("");
             maingrid.attach(toggle_previews, 1, 1, 1, 1);
             maingrid.attach(toggle_allworkspaces, 1, 2, 1, 1);
+            maingrid.attach(toggle_showtooltips, 1, 3, 1, 1);
             maingrid.attach(empty, 1, 3, 1, 1);
             toggle_previews.set_active(get_currsetting("enable-previews"));
             toggle_allworkspaces.set_active(get_currsetting("allworkspaces"));
+            toggle_showtooltips.set_active(get_currsetting("showtooltips"));
             toggle_previews.toggled.connect ( () => {
                 update_settings(toggle_previews, "enable-previews");
                 bool newactive = toggle_previews.get_active();
@@ -73,8 +78,9 @@ namespace PreviewsControls {
             toggle_allworkspaces.toggled.connect ( () => {
                 update_settings(toggle_allworkspaces, "allworkspaces");
             });
-
-
+            toggle_showtooltips.toggled.connect ( () => {
+                update_settings(toggle_showtooltips, "showtooltips");
+            });
             maingrid.attach(ok_button, 99, 99, 1, 1);
             this.destroy.connect(Gtk.main_quit);
             setup_client();

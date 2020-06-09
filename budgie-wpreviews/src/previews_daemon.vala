@@ -28,6 +28,7 @@ namespace NewPreviews {
     int currws;
     int maxcol;
     bool allworkspaces;
+    bool showtooltips;
     bool allapps;
     Gtk.Button[] currbuttons;
     string user;
@@ -167,6 +168,9 @@ namespace NewPreviews {
             subgrid.set_row_spacing(0);
             // window image button
             var button = new Gtk.Button();
+            if (showtooltips) {
+                button.set_tooltip_text(windowname);
+            }
             button.set_size_request(280, 180);
             var image = new Gtk.Image.from_file (imgpath);
             button.set_image(image);
@@ -640,8 +644,10 @@ namespace NewPreviews {
             "org.ubuntubudgie.budgie-wpreviews"
         );
         allworkspaces = previews_settings.get_boolean("allworkspaces");
+        showtooltips = previews_settings.get_boolean("showtooltips");
         previews_settings.changed.connect (() => {
             allworkspaces = previews_settings.get_boolean("allworkspaces");
+            showtooltips = previews_settings.get_boolean("showtooltips");
         });
         triggerdir = File.new_for_path("/tmp");
         allappstrigger = File.new_for_path(
