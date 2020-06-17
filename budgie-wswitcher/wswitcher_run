@@ -48,7 +48,7 @@ def current_ws():
         wsdata = subprocess.check_output([
             "wmctrl", "-d"
         ]).decode("utf-8").splitlines()
-        return [l.split()[0] for l in wsdata if "*" in l][0]
+        return [sl.split()[0] for sl in wsdata if "*" in sl][0]
     except subprocess.CalledProcessError:
         pass
 
