@@ -1,3 +1,12 @@
+budgie-extras (1.0.2-2) unstable; urgency=medium
+
+  * Add patch to resolve test suite failure (Closes: #962935)
+    - 0001-apply_pycodestyle.patch
+  * debian/tests add superficial as a restriction since the test
+    only covers source-code checks (Closes: #963023)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 17 Jun 2020 16:02:48 +0100
+
 budgie-extras (1.0.2-1) unstable; urgency=medium
 
   * Service release (LP: #1881261)
