@@ -88,9 +88,9 @@ class WsOverviewWin(GObject.Object):
             if m[1]:
                 # flattened submenu
                 self.submenu = Gtk.Menu()
-                for l in [d for d in m[1]]:
-                    app = l[0]
-                    wins = [[it[0], it[1]] for it in l[1]]
+                for sl in [d for d in m[1]]:
+                    app = sl[0]
+                    wins = [[it[0], it[1]] for it in sl[1]]
                     for w in wins:
                         name = self.shortname(w[0]) + "  -  " + app
                         winmention = Gtk.MenuItem(name)

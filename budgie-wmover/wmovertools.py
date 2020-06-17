@@ -67,7 +67,7 @@ def show_wmclass(wid):
 
 def get_wsdata():
     wsdata = get(["/usr/bin/wmctrl", "-d"]).splitlines()
-    return (len(wsdata), wsdata.index([l for l in wsdata if "*" in l][0]))
+    return (len(wsdata), wsdata.index([sl for sl in wsdata if "*" in sl][0]))
 
 
 def run(cmd):
@@ -92,8 +92,8 @@ def check_ypos(yres):
 
         if name not in ["dropby_popup"]:
             ypos = int(
-                [l for l in ydata.splitlines()
-                 if "Position" in l][0].split(",")[1].split()[0]
+                [sl for sl in ydata.splitlines()
+                 if "Position" in sl][0].split(",")[1].split()[0]
             )
             return ypos > yres - 300, subj.strip()
 

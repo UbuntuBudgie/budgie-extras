@@ -38,7 +38,7 @@ def getspaces(wsdata):
     # get the current workspace and n- spaces from wmctrl -d
     newsrc = wsdata.splitlines()
     n_ws = len(newsrc)
-    curr_ws = [l.split()[0] for l in newsrc if "*" in l][0]
+    curr_ws = [sl.split()[0] for sl in newsrc if "*" in sl][0]
     return n_ws, curr_ws
 
 
@@ -62,7 +62,7 @@ def get_wmname(wid):
 
 def get_menuset(wdata):
     # return valid window-ids and workspaces from wmctrl -l
-    allwindows = [l.split() for l in wdata.splitlines()]
+    allwindows = [sl.split() for sl in wdata.splitlines()]
     return [wid[1] for wid in allwindows if not show_wmclass(wid[0]) in ignore]
 
 
@@ -79,9 +79,9 @@ def update_winmenu(currdata):
     except TypeError:
         test = False
     if all([not test, newdata]):
-        for l in [w.split() for w in newdata.splitlines()]:
-            wid = l[0]
-            wspace = l[1]
+        for sl in [w.split() for w in newdata.splitlines()]:
+            wid = sl[0]
+            wspace = sl[1]
             wname = get_wmname(wid)
             wmclass = show_wmclass(wid)
             if all([wname, wmclass, wmclass not in ignore]):

@@ -256,10 +256,10 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         ]
         # add new languages
         curr_keys = list(self.langdata.keys())
-        for l in self.raw_langlist:
-            readable = self.readable_lang(l)
-            if l not in curr_keys:
-                self.langdata[l] = {"classes": [], "readable": readable}
+        for sl in self.raw_langlist:
+            readable = self.readable_lang(sl)
+            if sl not in curr_keys:
+                self.langdata[sl] = {"classes": [], "readable": readable}
         # remove obsolete languages + data
         for k in curr_keys:
             if k not in self.raw_langlist:
@@ -301,7 +301,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         if newlang:
             index = self.raw_langlist.index(newlang)
         elif default:
-            getreadables = [self.readable_lang(l) for l in self.raw_langlist]
+            getreadables = [self.readable_lang(sl) for sl in self.raw_langlist]
             index = getreadables.index(self.default_lang)
         self.settings.set_uint("current", index)
 
