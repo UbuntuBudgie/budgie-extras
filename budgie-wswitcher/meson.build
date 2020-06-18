@@ -1,17 +1,12 @@
-#gnome = import('gnome')
+PLUGIN='budgie-wswitcher'
+LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
-PLUGIN = 'wswitcher'
+message('Installing applet...')
 
-install_data(
-    'BudgieWSwitcher.plugin',
-    'budgie_wswitcher.py',
-    'getkeys.py',
-    'wswitcher_run',
-    'wswitcher_panelrunner',
-    install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
+subdir('src')
+subdir('data')
+
+install_data('schema/org.ubuntubudgie.plugins.budgie-wswitcher.gschema.xml',
+    install_dir: '/usr/share/glib-2.0/schemas'
 )
-
-install_data(
-    'budgie-wsw-symbolic.svg',
-    install_dir: PIXMAPS_DIR
-)
+meson.add_install_script('meson_post_install.py')
