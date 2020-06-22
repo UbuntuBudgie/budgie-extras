@@ -19,19 +19,13 @@ using Gtk;
 
 namespace WallpaperSwitcherApplet {
 
-    private Wnck.Screen wnck_scr;
-    private GLib.Settings wallsettings;
     private GLib.Settings switchersettings;
-    private uint curr_wsindex;
-    private string[] curr_wallist;
-    private bool runsornot;
-
 
     public class WallpaperSwitcherSettings : Gtk.Grid {
 
         // strings
         const string SETTRUE = (_("Stop"));
-        const string SETFALSE = (_("Run"));
+        const string SETFALSE = (_("Start"));
         const string EXPLAIN = (_("Wallpaper Workspace Switcher automatically remembers which wallpaper was set per workspace"));
         const string NOPANELICON = (_("Applet runs without a panel icon"));
 
@@ -56,7 +50,7 @@ namespace WallpaperSwitcherApplet {
                     newlabel = SETFALSE;
                 }
                 toggle_run_wswitcher.set_label (newlabel);
-                update_workspace();
+                //  update_workspace();
             });
             toggle_run_wswitcher.set_size_request (90, 10);
             this.attach (toggle_run_wswitcher, 0, 0, 1, 1);
@@ -73,29 +67,16 @@ namespace WallpaperSwitcherApplet {
         }
     }
 
-    private void update_workspace () {
-        // find out what workspace we land on
-        unowned GLib.List<Wnck.Workspace> currspaces = wnck_scr.get_workspaces ();
-        var curr_ws = wnck_scr.get_active_workspace ();
-        curr_wsindex = currspaces.index (curr_ws);
-        // and make sure we've got enough image entries
-        curr_wallist = switchersettings.get_strv("wallpapers");
-        uint n_workspaces = currspaces.length ();
-        while (curr_wallist.length < n_workspaces) {
-            curr_wallist += "";
-        }
-        switchersettings.set_strv("wallpapers", curr_wallist);
-        // then see if we need to change wallpaper
-        string new_wall = curr_wallist[curr_wsindex];
-        if (new_wall != "" && runsornot) {
-            wallsettings.set_string("picture-uri", new_wall);
-        }
-    }
-
-
     public class Plugin : Budgie.Plugin, Peas.ExtensionBase {
 
         public Budgie.Applet get_panel_widget(string uuid) {
+            string cmd = Config.WSWITCHER_DIR + @"/wallpaperswitcher_runner $uuid";
+            try {
+                Process.spawn_command_line_async(cmd);
+            }
+            catch (Error e) {
+
+            }
             return new Applet();
         }
     }
@@ -104,6 +85,7 @@ namespace WallpaperSwitcherApplet {
     public class Applet : Budgie.Applet {
 
         public string uuid { public set; public get; }
+
         /* specifically to the settings section */
         public override bool supports_settings() {
             return true;
@@ -111,7 +93,6 @@ namespace WallpaperSwitcherApplet {
         public override Gtk.Widget? get_settings_ui() {
             return new WallpaperSwitcherSettings();
         }
-
         public void initialiseLocaleLanguageSupport() {
             GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
             GLib.Intl.bindtextdomain(
@@ -124,30 +105,10 @@ namespace WallpaperSwitcherApplet {
         }
 
         public Applet() {
-            wnck_scr = Wnck.Screen.get_default ();
-            wnck_scr.active_workspace_changed.connect (update_workspace);
-            wallsettings = new GLib.Settings (
-                "org.gnome.desktop.background"
-            );
-            wallsettings.changed["picture-uri"].connect(update_wallpaperlist);
             switchersettings = new GLib.Settings (
                 "org.ubuntubudgie.plugins.budgie-wswitcher"
             );
-            runsornot = switchersettings.get_boolean("runwswitcher");
-            switchersettings.changed["runwswitcher"].connect(() => {
-                runsornot = switchersettings.get_boolean("runwswitcher");
-            });
             initialiseLocaleLanguageSupport();
-            update_workspace();
-            update_wallpaperlist();
-        }
-
-        private void update_wallpaperlist () {
-            string new_wall = wallsettings.get_string("picture-uri");
-            if (curr_wallist[curr_wsindex] != new_wall) {
-                curr_wallist[curr_wsindex] = new_wall;
-                switchersettings.set_strv("wallpapers", curr_wallist);
-            }
         }
     }
 }
