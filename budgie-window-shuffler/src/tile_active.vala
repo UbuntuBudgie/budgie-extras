@@ -46,7 +46,7 @@ namespace TileActive {
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
         public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
-        public abstract int get_yshift (int w_id) throws Error;
+        public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
         public abstract bool get_softmove () throws Error;
@@ -172,7 +172,7 @@ namespace TileActive {
             int[] currwincoords = {};
             foreach (string s in windata_keys) {
                 if (int.parse(s) == activewin) {
-                    yshift = client.get_yshift(activewin);
+                    yshift = client.get_winspecs(activewin)[0];
                     Variant currwindata = windata[s];
                     winsmonitor = (string)currwindata.get_child_value(2);
                     currwincoords = {

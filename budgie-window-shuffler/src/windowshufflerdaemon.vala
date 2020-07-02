@@ -151,7 +151,8 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
-            string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
+            //  string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
+            string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
 
@@ -332,27 +333,47 @@ namespace ShufflerEssentialInfo {
             showtarget = new PreviewWindow(x, y, w, h);
         }
 
-        public int get_yshift (int w_id) throws Error {
+        public int[] get_winspecs (int w_id) throws Error {
             /*
             / windows with property NET_FRAME_EXTENTS need to be positioned
-            / differently, y-wise. below calculated offset
+            / differently, y-wise. calculated offset = yshift
+            / to prevent (attempting to) resize windows below minsize, we need to
+            / know minwindth, minheight
             */
-            int yshift = 0;
+            int yshift = 0; int minwidth = 0; int minheight = 0;
             string winsubj = @"$w_id";
-            string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(winsubj, " _NET_FRAME_EXTENTS");
-            string output = "";
+            //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
+            string cmd = "/usr/bin" + "/xprop -id ".concat(
+                winsubj, " _NET_FRAME_EXTENTS ", "WM_NORMAL_HINTS"
+            );
+    
+            string? output = null;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
             }
             catch (SpawnError e) {
                 // nothing to do
             }
-            if (output.contains("=")) {
-                yshift = int.parse(output.split(", ")[2]);
+    
+            if (output != null) {
+                string[] lookfordata = output.split("\n");
+                foreach (string s in lookfordata) {
+                    if (s.contains("minimum size")) {
+                        string[] linecont = s.split(" ");
+                        int n_str = linecont.length;
+                        minwidth = int.parse(linecont[n_str - 3]);
+                        minheight = int.parse(linecont[n_str - 1]);
+                        break;
+                    }
+                    else if (s.contains("_NET_FRAME_EXTENTS")  && s.contains("=")) { 
+                        yshift = int.parse(s.split(", ")[2]);
+                    }
+                }
             }
-            return yshift;
+            //  print(@"look: $yshift, $minwidth, $minheight\n");
+            return {yshift, minwidth, minheight};
         }
-
+    
         public string getactivemon_name () throws Error {
             // get the monitor with active window or ""
             string activemon_name = "";

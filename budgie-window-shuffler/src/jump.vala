@@ -36,7 +36,7 @@ namespace JumpActive {
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
         public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
-        public abstract int get_yshift (int w_id) throws Error;
+        public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract string getactivemon_name () throws Error;
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
@@ -169,7 +169,7 @@ namespace JumpActive {
                         nexty = find_next(y_anchors, winy);
                         break;
                 }
-                int yshift = client.get_yshift(activewin);
+                int yshift = client.get_winspecs(activewin)[0];
                 // move window to target -if it isn't already there-
                 bool samewindow = winx == nextx && winy == nexty;
                 GLib.List<weak string> winkeys = wins.get_keys();
@@ -193,7 +193,7 @@ namespace JumpActive {
                             tilewidth = (int)windata.get_child_value(5);
                             tileheight = (int)windata.get_child_value(6);
                             // 2. get geo -of- sourcewin (activewin), move swapwindow
-                            int tomove_yshift = client.get_yshift(tomove);
+                            int tomove_yshift = client.get_winspecs(tomove)[0];
                             if (!samewindow) {
                                 // if padding != 0, we need to fix swapgeometry with padding
                                 correct_padding = client.get_margins()[4];

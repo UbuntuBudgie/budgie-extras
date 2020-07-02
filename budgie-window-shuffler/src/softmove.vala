@@ -24,7 +24,7 @@ namespace CalculateTracks {
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
-        public abstract int get_yshift (int w_id) throws Error;
+        public abstract int[] get_winspecs (int w_id) throws Error;
     }
 
     public static void main (string[] args) {
@@ -41,7 +41,7 @@ namespace CalculateTracks {
             int trg_h = int.parse(args[5]);
             //  calctracks(client, wid, trg_x, trg_y, trg_w, trg_h);
             int[] originals = get_startposition(client, wid);
-            int yshift = client.get_yshift(wid);
+            int yshift = client.get_winspecs(wid)[0];
             // get from server
             int orig_x = originals[0];
             int orig_y = originals[1];

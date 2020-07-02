@@ -29,7 +29,7 @@ namespace GridAll {
         //  public abstract int getactivewin () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
-        public abstract int get_yshift (int w_id) throws Error;
+        public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract string getactivemon_name () throws Error;
         public abstract int[] get_grid () throws Error;
     }
@@ -159,7 +159,7 @@ namespace GridAll {
                 int num_wid = int.parse(window_id);
                 int yshift = 0;
                 try {
-                    yshift = client.get_yshift(num_wid);
+                    yshift = client.get_winspecs(num_wid)[0];
                 }
                 catch (Error e) {
                 }
