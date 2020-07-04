@@ -151,8 +151,8 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
-            string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
-            //  string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
+            //  string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
+            string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
 
@@ -346,8 +346,8 @@ namespace ShufflerEssentialInfo {
             int ext_hor = 0; int ext_vert = 0;
 
             string winsubj = @"$w_id";
-            string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
-            //  string cmd = "/usr/bin" + "/xprop -id ".concat(
+            //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
+            string cmd = "/usr/bin" + "/xprop -id ".concat(
                 winsubj, " _NET_FRAME_EXTENTS ",
                 "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
             );
@@ -525,8 +525,11 @@ namespace ShufflerEssentialInfo {
 
     private class PreviewWindow: Gtk.Window {
 
-        public PreviewWindow (int x, int y, int w, int h) {
+        bool warning;
+
+        public PreviewWindow (int x, int y, int w, int h, bool warning = false) {
             // transparency
+            this.warning = warning;
             this.title = "shuffler_shade";
             var screen = this.get_screen();
             this.set_app_paintable(true);
@@ -541,15 +544,21 @@ namespace ShufflerEssentialInfo {
             this.set_focus_on_map(true);
             this.show_all();
         }
-    }
 
-    private bool on_draw (Widget da, Context ctx) {
-        // needs to be connected to transparency settings change
-        ctx.set_source_rgba(0.0, 0.30, 0.50, 0.40);
-        ctx.set_operator(Cairo.Operator.SOURCE);
-        ctx.paint();
-        ctx.set_operator(Cairo.Operator.OVER);
-        return false;
+        private bool on_draw (Widget da, Context ctx) {
+            // needs to be connected to transparency settings change
+            if (this.warning) {
+                ctx.set_source_rgba(1.0, 0.0, 0.0, 0.40);
+            }
+            else {
+                ctx.set_source_rgba(0.0, 0.30, 0.50, 0.40);
+            }
+            ctx.set_operator(Cairo.Operator.SOURCE);
+            ctx.paint();
+            ctx.set_operator(Cairo.Operator.OVER);
+            return false;
+        }
+
     }
 
     private GLib.Settings get_settings (string path) {
