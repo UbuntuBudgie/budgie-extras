@@ -341,12 +341,15 @@ namespace ShufflerEssentialInfo {
             / know minwindth, minheight
             */
             int yshift = 0; int minwidth = 0; int minheight = 0;
+            int ext_hor = 0; int ext_vert = 0;
+
             string winsubj = @"$w_id";
             string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
             //  string cmd = "/usr/bin" + "/xprop -id ".concat(
-                winsubj, " _NET_FRAME_EXTENTS ", "WM_NORMAL_HINTS"
+                winsubj, " _NET_FRAME_EXTENTS ",
+                "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
             );
-    
+
             string? output = null;
             try {
                 GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -354,7 +357,7 @@ namespace ShufflerEssentialInfo {
             catch (SpawnError e) {
                 // nothing to do
             }
-    
+
             if (output != null) {
                 string[] lookfordata = output.split("\n");
                 foreach (string s in lookfordata) {
@@ -363,17 +366,23 @@ namespace ShufflerEssentialInfo {
                         int n_str = linecont.length;
                         minwidth = int.parse(linecont[n_str - 3]);
                         minheight = int.parse(linecont[n_str - 1]);
-                        break;
                     }
-                    else if (s.contains("_NET_FRAME_EXTENTS")  && s.contains("=")) { 
-                        yshift = int.parse(s.split(", ")[2]);
+                    else if (s.contains("FRAME_EXTENTS") && s.contains("=")) {
+                        string[] ext_data = s.split(" = ")[1].split(", ");
+                        ext_hor = int.parse(ext_data[0]) + int.parse(ext_data[1]);
+                        ext_vert = int.parse(ext_data[2]) + int.parse(ext_data[3]);
+                        if (s.contains("_NET")) {
+                            yshift = int.parse(ext_data[2]);
+                            ext_hor = ext_hor * -1; ext_vert = ext_vert * -1;
+                        }
                     }
                 }
             }
-            //  print(@"look: $yshift, $minwidth, $minheight\n");
-            return {yshift, minwidth, minheight};
+            minwidth = minwidth - ext_hor;
+            minheight = minheight - ext_vert;
+            return {yshift, minwidth , minheight};
         }
-    
+
         public string getactivemon_name () throws Error {
             // get the monitor with active window or ""
             string activemon_name = "";
