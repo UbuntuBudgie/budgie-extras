@@ -151,8 +151,8 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
-            //  string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
-            string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
+            string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
+            //  string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
 
@@ -346,8 +346,8 @@ namespace ShufflerEssentialInfo {
             int ext_hor = 0; int ext_vert = 0;
 
             string winsubj = @"$w_id";
-            //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
-            string cmd = "/usr/bin" + "/xprop -id ".concat(
+            string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
+            //  string cmd = "/usr/bin" + "/xprop -id ".concat(
                 winsubj, " _NET_FRAME_EXTENTS ",
                 "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
             );
