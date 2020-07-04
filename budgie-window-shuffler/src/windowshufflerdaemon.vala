@@ -335,10 +335,12 @@ namespace ShufflerEssentialInfo {
 
         public int[] get_winspecs (int w_id) throws Error {
             /*
-            / windows with property NET_FRAME_EXTENTS need to be positioned
-            / differently, y-wise. calculated offset = yshift
-            / to prevent (attempting to) resize windows below minsize, we need to
-            / know minwindth, minheight
+            / get yshift & minimumsize
+            / in case a window has property NET_FRAME_EXTENTS, we need to
+            / position the window according to y-extent
+            / to get -real- minimum size, in case of NET_FRAME_EXTENTS, we
+            / need to -add- FRAME_EXTENTS in case of NET_FRAME_EXTENTS,
+            / but -subtract- in case of GTK_FRAME_EXTENTS.
             */
             int yshift = 0; int minwidth = 0; int minheight = 0;
             int ext_hor = 0; int ext_vert = 0;
