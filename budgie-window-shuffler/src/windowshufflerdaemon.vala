@@ -53,8 +53,8 @@ namespace ShufflerEssentialInfo {
     bool gridguiruns;
     bool stickyneighbors;
     Gtk.Window? showtarget = null;
-    Gtk.Window? showwarning = null;
     int remaining_warningtime = 0;
+    SizeExceedsWarning[] warningwindows;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
@@ -159,13 +159,23 @@ namespace ShufflerEssentialInfo {
 
         public void show_awarning () throws Error {
             if (show_warning) {
+                //////
+                kill_tilepreview(); // remove later. temporary bandage
+                //////
                 if (remaining_warningtime == 0) {
                     remaining_warningtime = 1000;
-                    showwarning = new SizeExceedsWarning(); // translate!!
+                    /*
+                    / occasionally, due to timing issue, in a split secondd,
+                    / double warnings can occur. let's make sure all are
+                    / destroyed
+                    */
+                    warningwindows += new SizeExceedsWarning();
                     GLib.Timeout.add (100, ()=> {
                         if (remaining_warningtime <= 0) {
-                            showwarning.destroy ();
-                            showwarning = null;
+                            foreach (SizeExceedsWarning wrn in warningwindows) {
+                                wrn.destroy ();
+                                warningwindows = {};
+                            }
                             return false;
                         }
                         else {
@@ -380,6 +390,12 @@ namespace ShufflerEssentialInfo {
         public void show_tilepreview (
             int col, int row, int width = 1, int height = 1
         ) throws Error {
+            ////// temporary bandage, remove after making warning external
+            foreach (SizeExceedsWarning wrn in warningwindows) {
+                wrn.destroy ();
+                warningwindows = {};
+            }
+            //////
             int x = 0;
             int y = 0;
             int w = 0;
@@ -662,6 +678,7 @@ namespace ShufflerEssentialInfo {
         bool warning;
 
         public PreviewWindow (int x, int y, int w, int h, bool warning = false) {
+            warningwindows = {};
             // transparency
             this.warning = warning;
             this.title = "shuffler_shade";
