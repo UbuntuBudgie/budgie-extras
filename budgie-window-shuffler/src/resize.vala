@@ -45,7 +45,8 @@ namespace ExtendWindow {
                 int tile_x = (int)tile.get_child_value(0);
                 int tile_y = (int)tile.get_child_value(1);
                 /*
-                / due to rounding differences on specific resolutions and/or windows,
+                / due to rounding differences and (more likely) window default's
+                / resize step size on specific resolutions and/or windows,
                 / allow a 2px deviation, considering if a window is on grid or not
                 */
                 if (x - 3 < tile_x < x + 3  && y - 3 < tile_y < y + 3) {
@@ -71,14 +72,11 @@ namespace ExtendWindow {
     ) {
         // adjecents are: adjacent_left, adjacent_right, adjacent_top, adjacent_bottom
         // just for testing during develpoment:
-        //  string[] adjecent_names = {"adjacent_left", "adjacent_right", "adjacent_top", "adjacent_bottom"};
         //
         int curr_index = 0;
         int found_adjacent = -1;
         foreach (int n in adjacents) {
             if (n != -1) {
-                //  string lookat = adjecent_names[curr_index];
-                //  print(@"look at: $lookat: $n\n");
                 found_adjacent = n;
                 break;
             }
@@ -123,18 +121,21 @@ namespace ExtendWindow {
                 int right = (int)(gridx + xspan);
                 int top = gridy;
                 int bottom = (int)(gridy + yspan);
-                // print(@"winstuff: name: $name, left: $left, right: $right, top: $top, bottom: $bottom, $action\n");
                 string cm = "";
                 bool overlap = false;
+                bool resize_neighbour = false;
                 // here we go
+                // note: left, right, top, bottom is about secundary window(!) right?
                 switch (curr_index) {
                     case 0:
                         if (right == found_adjacent) {
                             if (xspan > 1 && action == "+x-left") {
                                 xspan = xspan -1;
+                                resize_neighbour = true;
                             }
                             else if (action == "-x-left") {
                                 xspan = xspan +1;
+                                resize_neighbour = true;
                             }
                         }
                         // check overlap
@@ -147,10 +148,12 @@ namespace ExtendWindow {
                             if (xspan > 1 && action == "+x") {
                                 xspan = xspan - 1;
                                 gridx = gridx + 1;
+                                resize_neighbour = true;
                             }
                             else if (action == "-x") {
                                 xspan = xspan + 1;
                                 gridx = gridx - 1;
+                                resize_neighbour = true;
                             }
                         }
                         // check overlap
@@ -158,13 +161,16 @@ namespace ExtendWindow {
                         int windowbottom = main_curr_gridposy + main_yspan;
                         overlap = !check_overlap(top, bottom, windowtop, windowbottom);
                         break;
+
                     case 2:
                         if (bottom == found_adjacent) {
                             if (yspan > 1 && action == "+y-top") {
                                 yspan = yspan -1;
+                                resize_neighbour = true;
                             }
                             else if (action == "-y-top") {
                                 yspan = yspan +1;
+                                resize_neighbour = true;
                             }
                         }
                         // check overlap
@@ -172,16 +178,17 @@ namespace ExtendWindow {
                         int windowright = main_curr_gridposx + main_xspan;
                         overlap = !check_overlap(left, right, windowleft, windowright);
                         break;
-
                     case 3:
                         if (top == found_adjacent) {
                             if (yspan > 1 && action == "+y") {
                                 yspan = yspan - 1;
                                 gridy = gridy + 1;
+                                resize_neighbour = true;
                             }
                             else if (action == "-y") {
                                 yspan = yspan + 1;
                                 gridy = gridy - 1;
+                                resize_neighbour = true;
                             }
                         }
                         // check overlap
@@ -190,8 +197,9 @@ namespace ExtendWindow {
                         overlap = !check_overlap(left, right, windowleft, windowright);
                         break;
                 }
-                if (overlap) {
+                if (overlap && resize_neighbour) {
                     cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
+                    //  cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                             @"$gridx $gridy $gridcols ",
                             @"$gridrows $xspan $yspan id=$winkey"
                     );
@@ -227,6 +235,8 @@ namespace ExtendWindow {
         double xspan = Math.round(winwidth/tilewidth);
         double yspan = Math.round(winheight/tileheight);
         bool resize = false;
+        // adjecents are positions on all sides of the main subject window
+        // to take into account
         int adjacent_right = -1;
         int adjacent_bottom = -1;
         int adjacent_left = -1;
@@ -269,7 +279,6 @@ namespace ExtendWindow {
                     resize = true;
                 }
                 break;
-
             case "-x-left":
                 if (xspan > 1) {
                     adjacent_left = curr_gridposx;
@@ -278,7 +287,6 @@ namespace ExtendWindow {
                     resize = true;
                 }
                 break;
-
             case "+y-top":
                 if (curr_gridposy != 0) {
                     adjacent_top = curr_gridposy;
@@ -298,9 +306,9 @@ namespace ExtendWindow {
         }
 
         if (resize) {
-            // just keep for standalone testing + quick compile: ////////////////////////////////////////////////////////////////////
-            // string cm = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+            // just keep for standalone testing + quick compile:
             string cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
+            //  string cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                 @"$curr_gridposx $curr_gridposy $gridcols ",
                 @"$gridrows $xspan $yspan"
             );

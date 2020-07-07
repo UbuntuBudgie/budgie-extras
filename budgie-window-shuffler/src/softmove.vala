@@ -23,7 +23,7 @@ namespace CalculateTracks {
 
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
-        public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
+        public abstract void move_window (int wid, int x, int y, int width, int height, bool nowarning = false) throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
     }
 
@@ -89,7 +89,7 @@ namespace CalculateTracks {
                 yarr += (double)orig_y + (round(relative * (double)ytrack)) - ((1 - relative) * yshift);
             }
             // now first resize, one step
-            client.move_window(wid, orig_x, orig_y - yshift, trg_w, trg_h);
+            client.move_window(wid, orig_x, orig_y - yshift, trg_w, trg_h, true);
             Thread.usleep(3000);
             // then make the move
             int ind = 0;
@@ -99,12 +99,12 @@ namespace CalculateTracks {
                 Thread.usleep(3000);
                 xn = (int)xarr[ind];
                 yn = (int)yarr[ind];
-                client.move_window(wid, xn, yn , trg_w, trg_h);
+                client.move_window(wid, xn, yn , trg_w, trg_h, true);
                 ind += 1;
             }
             // finish
             Thread.usleep(3000);
-            client.move_window(wid, trg_x, trg_y, trg_w, trg_h);
+            client.move_window(wid, trg_x, trg_y, trg_w, trg_h, true);
         }
         catch (Error e) {
         }

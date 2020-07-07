@@ -26,7 +26,12 @@
         </key>
         <key type="b" name="softmove">
             <summary>Use animation on xy move and xy tile actions</summary>
-            <description>WHen a window is moved by tiling or move, use smooth transition</description>
+            <description>When a window is moved by tiling or move, use smooth transition</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="showwarning">
+            <summary>Show a warning on incorrect target window size</summary>
+            <description>On resizing or moving windows, show a warning if targeted window size is below minimum window size</description>
             <default>true</default>
         </key>
         <key type="b" name="runshuffler">

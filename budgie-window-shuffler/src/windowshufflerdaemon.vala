@@ -40,6 +40,7 @@ namespace ShufflerEssentialInfo {
     GLib.Settings desktop_settings;
     bool desktop_animations_set;
     bool soft_move;
+    bool show_warning;
     int setcols;
     int setrows;
     int padding;
@@ -52,6 +53,8 @@ namespace ShufflerEssentialInfo {
     bool gridguiruns;
     bool stickyneighbors;
     Gtk.Window? showtarget = null;
+    Gtk.Window? showwarning = null;
+    int remaining_warningtime = 0;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
@@ -137,13 +140,73 @@ namespace ShufflerEssentialInfo {
             }
         }
 
+        public void activate_window_byname (string wname) throws Error {
+            Wnck.Window? w = get_matchingwnckwin_byname(wname);
+            if (w != null) {
+                w.activate(get_now());
+            }
+        }
+
+        private Wnck.Window? get_matchingwnckwin_byname (string wname) {
+            unowned GLib.List<Wnck.Window> wlist = wnckscr.get_windows();
+            foreach (unowned Wnck.Window w in wlist) {
+                if (w.get_name() == wname) {
+                    return w;
+                }
+            }
+            return null;
+        }
+
+        public void show_awarning () throws Error {
+            if (show_warning) {
+                if (remaining_warningtime == 0) {
+                    remaining_warningtime = 1000;
+                    showwarning = new SizeExceedsWarning(); // translate!!
+                    GLib.Timeout.add (100, ()=> {
+                        if (remaining_warningtime <= 0) {
+                            showwarning.destroy ();
+                            showwarning = null;
+                            return false;
+                        }
+                        else {
+                            try {
+                                activate_window_byname("sizeexceedswarning");
+                            }
+                            catch (Error e) {
+                                print("connat raise window\n");
+                            }
+                            remaining_warningtime -= 100;
+                            return true;
+                        }
+                    });
+                }
+                else {
+                    remaining_warningtime = 1000;
+                }
+            }
+        }
+
+        public bool winistoolarge (int w_id, int targetw, int targeth) throws Error {
+            int[] specs = get_winspecs(w_id);
+            // allow a tiny oversize
+            if (targetw + 1 < specs[1] || targeth + 1 < specs[2]) {
+                return true;
+            }
+            return false;
+        }
+
         public void move_window (
-            int w_id, int x, int y, int width, int height
+            int w_id, int x, int y, int width, int height, bool nowarning = false
         ) throws Error {
-            // move window, external connection
+            // move window, (also) external connection
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
                 now_move(w, x, y, width, height);
+            }
+            if (!nowarning) {
+                if (winistoolarge(w_id, width, height)) {
+                    show_awarning();
+                }
             }
         }
 
@@ -151,15 +214,23 @@ namespace ShufflerEssentialInfo {
             int w_id, int x, int y, int width, int height
         ) throws Error {
             // move window, animated
+            /*
+            / if move is initiated from here, softmove disables warnings
+            / in move_window to prevent repeted warnings on the same move
+            / action
+            */
             string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
             //  string cm = "/usr/lib/budgie-window-shuffler" + "/softmove ".concat(
                 @" $w_id $x $y $width $height"
             );
-
             try {
                 Process.spawn_command_line_async(cm);
             }
             catch (SpawnError e) {
+            }
+
+            if (winistoolarge(w_id, width, height)) {
+                show_awarning();
             }
         }
 
@@ -344,10 +415,9 @@ namespace ShufflerEssentialInfo {
             */
             int yshift = 0; int minwidth = 0; int minheight = 0;
             int ext_hor = 0; int ext_vert = 0;
-
             string winsubj = @"$w_id";
-            string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
-            //  string cmd = "/usr/bin" + "/xprop -id ".concat(
+            //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
+            string cmd = "/usr/bin" + "/xprop -id ".concat(
                 winsubj, " _NET_FRAME_EXTENTS ",
                 "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
             );
@@ -522,6 +592,70 @@ namespace ShufflerEssentialInfo {
         window_essentials = winsdata;
     }
 
+    class SizeExceedsWarning : Gtk.Window {
+
+        public SizeExceedsWarning () {
+            initialiseLocaleLanguageSupport();
+            string warning_css = """
+                .header {
+                    font-weight: bold;
+                    color: white;
+                }
+                """;
+            // transparency
+            var screen = this.get_screen();
+            this.set_app_paintable(true);
+            var visual = screen.get_rgba_visual();
+            this.set_visual(visual);
+            this.draw.connect(on_draw);
+            Gtk.CssProvider css_provider = new Gtk.CssProvider();
+            try {
+                css_provider.load_from_data(warning_css);
+                Gtk.StyleContext.add_provider_for_screen(
+                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                );
+            }
+            catch (Error e) {
+            }
+
+            this.title = "sizeexceedswarning";
+            this.set_position (CENTER);
+            this.set_decorated(false);
+            this.set_accept_focus(false);
+
+            var maingrid = new Gtk.Grid ();
+            var label = new Label (_("Minimum window size exceeds target"));
+            var sc = label.get_style_context ();
+            sc.add_class ("header");
+            label.xalign = (float)0.5;
+            this.add (maingrid);
+            Gtk.Image img = new Gtk.Image.from_file ("/tmp/shuffler-warning.png");
+            maingrid.attach (label, 0, 0, 1, 1);
+            maingrid.attach (img, 0, 0, 1, 1);
+            this.show_all ();
+        }
+
+        private bool on_draw (Widget da, Context ctx) {
+            // needs to be connected to transparency settings change
+            ctx.set_source_rgba(0, 0, 0, 0);
+            ctx.set_operator(Cairo.Operator.SOURCE);
+            ctx.paint();
+            ctx.set_operator(Cairo.Operator.OVER);
+            return false;
+        }
+
+        public void initialiseLocaleLanguageSupport() {
+            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+            GLib.Intl.bindtextdomain(
+                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+            );
+            GLib.Intl.bind_textdomain_codeset(
+                Config.GETTEXT_PACKAGE, "UTF-8"
+            );
+            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
+        }
+    }
+
 
     private class PreviewWindow: Gtk.Window {
 
@@ -546,13 +680,9 @@ namespace ShufflerEssentialInfo {
         }
 
         private bool on_draw (Widget da, Context ctx) {
+            // optimize please, also in warning
             // needs to be connected to transparency settings change
-            if (this.warning) {
-                ctx.set_source_rgba(1.0, 0.0, 0.0, 0.40);
-            }
-            else {
-                ctx.set_source_rgba(0.0, 0.30, 0.50, 0.40);
-            }
+            ctx.set_source_rgba(0.0, 0.30, 0.50, 0.40);
             ctx.set_operator(Cairo.Operator.SOURCE);
             ctx.paint();
             ctx.set_operator(Cairo.Operator.OVER);
@@ -579,6 +709,7 @@ namespace ShufflerEssentialInfo {
         marginbottom = shuffler_settings.get_int("marginbottom");
         padding = shuffler_settings.get_int("padding");
         soft_move = shuffler_settings.get_boolean("softmove");
+        show_warning = shuffler_settings.get_boolean("showwarning");
         stickyneighbors = shuffler_settings.get_boolean("stickyneighbors");
     }
 
@@ -595,7 +726,32 @@ namespace ShufflerEssentialInfo {
         desktop_animations_set = desktop_settings.get_boolean("enable-animations");
     }
 
+    private void create_warningbg () {
+        // on startup of the daemon, create a bg image for the warning
+        // Create a context:
+        Cairo.ImageSurface surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, 490, 65); // image size
+        Cairo.Context context = new Cairo.Context (surface);
+        create_box (surface, context, {0, 0, 490, 65}, {0, 0.3, 0.5, 0.8});
+        create_box (surface, context, {40, 30, 16, 16}, {1, 1, 1, 1});
+        create_box (surface, context, {30, 20, 8, 8}, {1, 1, 1, 1});
+        create_box (surface, context, {30, 30, 8, 8}, {1, 1, 1, 1});
+        create_box (surface, context, {40, 20, 8, 8}, {1, 1, 1, 1});
+        // Save the image:
+        surface.write_to_png ("/tmp/shuffler-warning.png");
+    }
+
+    private void create_box (
+        Cairo.ImageSurface surface, Cairo.Context context,
+        int[] geo, double[] rgba)
+        {
+            context.set_source_rgba (rgba[0], rgba[1], rgba[2], rgba[3]);
+            context.rectangle (geo[0], geo[1], geo[2], geo[3]);
+            context.fill ();
+    }
+
     public static int main (string[] args) {
+        // create warning image
+        create_warningbg();
         Gtk.init(ref args);
         // FileMonitor stuff, see if gui runs (disable jump & tileactive)
         gridguiruns = false;

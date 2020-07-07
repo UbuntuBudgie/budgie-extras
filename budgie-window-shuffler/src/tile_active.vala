@@ -44,7 +44,7 @@ namespace TileActive {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
         public abstract int getactivewin () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
-        public abstract void move_window (int wid, int x, int y, int width, int height) throws Error;
+        public abstract void move_window (int wid, int x, int y, int width, int height, bool nowarning = false) throws Error;
         public abstract void move_window_animated (int wid, int x, int y, int width, int height) throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
