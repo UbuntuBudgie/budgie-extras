@@ -54,9 +54,10 @@ namespace ShufflerEssentialInfo {
     bool stickyneighbors;
     Gtk.Window? showtarget = null;
     int remaining_warningtime = 0;
-    SizeExceedsWarning[] warningwindows;
+
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
+
 
     public class ShufflerInfoServer : Object {
 
@@ -82,6 +83,10 @@ namespace ShufflerEssentialInfo {
 
         public bool check_ifguiruns () throws Error {
             return gridguiruns;
+        }
+
+        public int show_warningage () throws Error {
+            return remaining_warningtime;
         }
 
         public int get_greyshade () throws Error {
@@ -159,33 +164,27 @@ namespace ShufflerEssentialInfo {
 
         public void show_awarning () throws Error {
             if (show_warning) {
-                //////
-                kill_tilepreview(); // remove later. temporary bandage
-                //////
                 if (remaining_warningtime == 0) {
                     remaining_warningtime = 1000;
-                    /*
-                    / occasionally, due to timing issue, in a split secondd,
-                    / double warnings can occur. let's make sure all are
-                    / destroyed
-                    */
-                    warningwindows += new SizeExceedsWarning();
+                    string cmd = Config.SHUFFLER_DIR + "/sizeexceeds_warning";
+                    try {
+                        Process.spawn_command_line_async (cmd);
+                    }
+                    catch (Error e) {
+                        stderr.printf ("%s\n", e.message);
+                    }
                     GLib.Timeout.add (100, ()=> {
                         if (remaining_warningtime <= 0) {
-                            foreach (SizeExceedsWarning wrn in warningwindows) {
-                                wrn.destroy ();
-                                warningwindows = {};
-                            }
                             return false;
                         }
                         else {
+                            remaining_warningtime -= 100;
                             try {
                                 activate_window_byname("sizeexceedswarning");
                             }
                             catch (Error e) {
-                                print("connat raise window\n");
+                                stderr.printf ("%s\n", e.message);
                             }
-                            remaining_warningtime -= 100;
                             return true;
                         }
                     });
@@ -238,7 +237,6 @@ namespace ShufflerEssentialInfo {
             }
             catch (SpawnError e) {
             }
-
             if (winistoolarge(w_id, width, height)) {
                 show_awarning();
             }
@@ -390,12 +388,6 @@ namespace ShufflerEssentialInfo {
         public void show_tilepreview (
             int col, int row, int width = 1, int height = 1
         ) throws Error {
-            ////// temporary bandage, remove after making warning external
-            foreach (SizeExceedsWarning wrn in warningwindows) {
-                wrn.destroy ();
-                warningwindows = {};
-            }
-            //////
             int x = 0;
             int y = 0;
             int w = 0;
@@ -608,77 +600,12 @@ namespace ShufflerEssentialInfo {
         window_essentials = winsdata;
     }
 
-    class SizeExceedsWarning : Gtk.Window {
-
-        public SizeExceedsWarning () {
-            initialiseLocaleLanguageSupport();
-            string warning_css = """
-                .header {
-                    font-weight: bold;
-                    color: white;
-                }
-                """;
-            // transparency
-            var screen = this.get_screen();
-            this.set_app_paintable(true);
-            var visual = screen.get_rgba_visual();
-            this.set_visual(visual);
-            this.draw.connect(on_draw);
-            Gtk.CssProvider css_provider = new Gtk.CssProvider();
-            try {
-                css_provider.load_from_data(warning_css);
-                Gtk.StyleContext.add_provider_for_screen(
-                    screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
-                );
-            }
-            catch (Error e) {
-            }
-
-            this.title = "sizeexceedswarning";
-            this.set_position (CENTER);
-            this.set_decorated(false);
-            this.set_accept_focus(false);
-
-            var maingrid = new Gtk.Grid ();
-            var label = new Label (_("Minimum window size exceeds target"));
-            var sc = label.get_style_context ();
-            sc.add_class ("header");
-            label.xalign = (float)0.5;
-            this.add (maingrid);
-            Gtk.Image img = new Gtk.Image.from_file ("/tmp/shuffler-warning.png");
-            maingrid.attach (label, 0, 0, 1, 1);
-            maingrid.attach (img, 0, 0, 1, 1);
-            this.show_all ();
-        }
-
-        private bool on_draw (Widget da, Context ctx) {
-            // needs to be connected to transparency settings change
-            ctx.set_source_rgba(0, 0, 0, 0);
-            ctx.set_operator(Cairo.Operator.SOURCE);
-            ctx.paint();
-            ctx.set_operator(Cairo.Operator.OVER);
-            return false;
-        }
-
-        public void initialiseLocaleLanguageSupport() {
-            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
-            GLib.Intl.bindtextdomain(
-                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
-            );
-            GLib.Intl.bind_textdomain_codeset(
-                Config.GETTEXT_PACKAGE, "UTF-8"
-            );
-            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
-        }
-    }
-
 
     private class PreviewWindow: Gtk.Window {
 
         bool warning;
 
         public PreviewWindow (int x, int y, int w, int h, bool warning = false) {
-            warningwindows = {};
             // transparency
             this.warning = warning;
             this.title = "shuffler_shade";

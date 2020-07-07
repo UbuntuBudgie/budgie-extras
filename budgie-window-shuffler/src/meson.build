@@ -183,6 +183,24 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+SizeExceedsWarningSources = [
+    'sizeexceeds_warning.vala'
+]
+
+SizeExceedsWarningDependencies = [
+    dependency('gtk+-3.0'),
+    dependency('cairo')
+]
+
+executable(
+    'sizeexceeds_warning', SizeExceedsWarningSources,
+    dependencies: SizeExceedsWarningDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
+
 ShufflerControlSources = [
     'shuffler_control.vala'
 ]
