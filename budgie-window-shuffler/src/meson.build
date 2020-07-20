@@ -121,6 +121,30 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+OpenInPositionSources = [
+    'open_inposition.vala'
+]
+
+OpenInPositionDependencies = [
+    dependency('gtk+-3.0'),
+    dependency('libwnck-3.0'),
+]
+
+OpenInPositionCArgs = [
+    '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
+    '-lm'
+]
+
+executable(
+    'open_inposition', OpenInPositionSources,
+    dependencies: OpenInPositionDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: OpenInPositionCArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
+
 TileActiveSources = [
     'tile_active.vala'
 ]
