@@ -24,6 +24,8 @@ namespace NewWallPaperSwitcher {
     Wnck.Screen wnck_scr;
     GLib.Settings wallsettings;
     GLib.Settings switchersettings;
+    GLib.Settings animationsettings;
+
     int curr_wsindex;
     string[] curr_wallist;
     private bool runsornot;
@@ -51,6 +53,7 @@ namespace NewWallPaperSwitcher {
 
         public WatchApplet (string uuid) {
             string[] applets;
+
             panel_settings = new GLib.Settings(path);
             string[] allpanels_list = panel_settings.get_strv("panels");
             foreach (string p in allpanels_list) {
@@ -82,6 +85,9 @@ namespace NewWallPaperSwitcher {
             "org.gnome.desktop.background"
         );
         wallsettings.changed["picture-uri"].connect(update_wallpaperlist);
+        animationsettings = new GLib.Settings(
+                "org.gnome.desktop.interface"
+        );
         switchersettings = new GLib.Settings (
             "org.ubuntubudgie.plugins.budgie-wswitcher"
         );
@@ -118,7 +124,23 @@ namespace NewWallPaperSwitcher {
         // then see if we need to change wallpaper
         string new_wall = curr_wallist[curr_wsindex];
         if (new_wall != "" && runsornot) {
+            bool save_animation = animationsettings.get_boolean("enable-animations");
+            if (save_animation) {
+                /* so turn off animations so that wallpapers change faster */
+                animationsettings.set_boolean("enable-animations", false);
+            }
             wallsettings.set_string("picture-uri", new_wall);
+            if (save_animation) {
+                /*
+                 * reinstate animations if applicable - we use a short delay
+                 * to allow the wallpaper change to occur without animations
+                 * being reenabled
+                 */
+                GLib.Timeout.add(650, ()=> {
+                    animationsettings.set_boolean("enable-animations", true);
+                    return false;
+                });
+            }
         }
     }
 }
