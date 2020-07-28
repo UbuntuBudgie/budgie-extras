@@ -59,11 +59,16 @@ if bindir == 'bin'
 endif
 conf.set_quoted('PACKAGE_BINDIR', bindir)
 conf.set_quoted('PACKAGE_SHAREDIR', datadir)
+
 SHUFFLER = 'budgie-window-shuffler'
 conf.set_quoted('SHUFFLER_DIR', join_paths(libdir, SHUFFLER))
 
 PREVIEWS = 'budgie-previews'
 conf.set_quoted('PREVIEWS_DIR', join_paths(libdir, PREVIEWS))
+
+WSWITCHER = 'budgie-wswitcher'
+conf.set_quoted('WSWITCHER_DIR', join_paths(PLUGINS_INSTALL_DIR, WSWITCHER))
+
 
 config_h = configure_file(
 	output: 'config.h',

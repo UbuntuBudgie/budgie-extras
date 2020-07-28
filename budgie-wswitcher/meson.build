@@ -1,17 +1,28 @@
-#gnome = import('gnome')
+am_cflags = [
+    '-fstack-protector',
+    '-pedantic',
+    '-Wstrict-prototypes',
+    '-Wundef',
+    '-Werror-implicit-function-declaration',
+    '-Wformat',
+    '-Wformat-security',
+    '-Werror=format-security',
+    '-Wconversion',
+    '-Wunused-variable',
+    '-Wunreachable-code',
+    '-Wall',
+    '-W',
+]
 
-PLUGIN = 'wswitcher'
+PLUGIN='budgie-wswitcher'
+LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
-install_data(
-    'BudgieWSwitcher.plugin',
-    'budgie_wswitcher.py',
-    'getkeys.py',
-    'wswitcher_run',
-    'wswitcher_panelrunner',
-    install_dir: join_paths(PLUGINS_INSTALL_DIR, 'budgie-' + PLUGIN)
+message('Installing applet...')
+
+subdir('src')
+subdir('data')
+
+install_data('schema/org.ubuntubudgie.plugins.budgie-wswitcher.gschema.xml',
+    install_dir: '/usr/share/glib-2.0/schemas'
 )
-
-install_data(
-    'budgie-wsw-symbolic.svg',
-    install_dir: PIXMAPS_DIR
-)
+meson.add_install_script('meson_post_install.py')
