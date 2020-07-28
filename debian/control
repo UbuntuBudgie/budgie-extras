@@ -538,19 +538,9 @@ Description: Workspace usage tracker for the budgie desktop
  Workspaces can be freely named, custom names and all data are remembered.
 
 Package: budgie-workspace-wallpaper-applet
-Architecture: all
-Depends:
- dconf-cli,
- gir1.2-budgie-1.0,
- gir1.2-glib-2.0,
- gir1.2-gtk-3.0,
- gir1.2-peas-1.0,
- python3,
- python3-gi,
- python3-psutil,
- wmctrl,
- ${misc:Depends},
- ${python3:Depends},
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+ budgie-extras-common
 Description: Applet providing per workspace wallpaper
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
