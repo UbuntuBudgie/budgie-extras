@@ -525,7 +525,7 @@ namespace WeatherShowApplet {
             string city = check_stringvalue(root_object, "name");
             string country = check_stringvalue(map["sys"], "country");
             string citydisplay = city.concat(", ", country);
-            if (use_custom) {
+            if (use_custom && customcityname != null && customcityname != "") {
                 citydisplay = customcityname;
             }
             /* get weatherline */	
