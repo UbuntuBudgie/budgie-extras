@@ -931,6 +931,7 @@ namespace WeatherShowApplet {
             	(_("Custom location name"))
             );
             customcity_entry = new Gtk.Entry();
+            customcity_entry.set_max_length(50);
             subgrid_desktop.attach(spacelabel8, 0, 52, 1, 1);
             subgrid_desktop.attach(customcity_checkbox, 0, 53, 1, 1);
             subgrid_desktop.attach(customcity_entry, 0, 54, 1, 1);
@@ -1030,6 +1031,10 @@ namespace WeatherShowApplet {
             edit_citymenu = false;
             cityentry.set_text(newselect);
             edit_citymenu = true;
+            // when the city is changed, turn off the custom name
+            if (use_custom) {
+                customcity_checkbox.set_active(false);
+            }
             update_weathershow();
         }
 
