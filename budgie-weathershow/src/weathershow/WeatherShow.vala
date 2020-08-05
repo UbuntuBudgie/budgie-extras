@@ -226,6 +226,8 @@ namespace WeatherShowApplet {
     private string color_window;
     private string moduledir;
     private bool lasttime_failed;
+    private string customcityname;
+    private bool use_custom_cityname;
 
     private string to_hrs (int t) {
         if (t < 10) {
@@ -523,6 +525,9 @@ namespace WeatherShowApplet {
             string city = check_stringvalue(root_object, "name");
             string country = check_stringvalue(map["sys"], "country");
             string citydisplay = city.concat(", ", country);
+            if (use_custom_cityname && customcityname != null && customcityname != "") {
+                citydisplay = customcityname;
+            }
             /* get weatherline */
             string skydisplay = check_stringvalue(
                 map["weather"], "description"
@@ -750,6 +755,7 @@ namespace WeatherShowApplet {
         private Gtk.Label xpos_label;
         private Gtk.Label ypos_label;
         private Gtk.Button apply;
+        private Gtk.Button apply_cityname;
         private Gtk.Label transparency_label;
         private Stack stack;
         private Gtk.Button button_desktop;
@@ -764,6 +770,8 @@ namespace WeatherShowApplet {
         private string[] city_menurefs;
         private string[] city_menucodes;
         private bool edit_citymenu;
+        private Gtk.CheckButton customcity_checkbox;
+        private Gtk.Entry customcity_entry;
 
         public WeatherShowSettings(GLib.Settings? settings) {
             // css
@@ -918,22 +926,42 @@ namespace WeatherShowApplet {
             apply.clicked.connect(update_xysetting);
             posholder.pack_end(apply, false, false, 0);
             subgrid_desktop.attach(posholder, 0, 51, 1, 1);
+            var spacelabel8 = new Gtk.Label("\n");
+            customcity_checkbox = new Gtk.CheckButton.with_label(
+                (_("Custom location name"))
+            );
+            customcity_entry = new Gtk.Entry();
+            customcity_entry.set_max_length(50);
+            subgrid_desktop.attach(spacelabel8, 0, 52, 1, 1);
+            subgrid_desktop.attach(customcity_checkbox, 0, 53, 1, 1);
+            subgrid_desktop.attach(customcity_entry, 0, 54, 1, 1);
+            apply_cityname = new Gtk.Button.with_label("Set");
+            apply_cityname.clicked.connect(update_customname);
+            subgrid_desktop.attach(apply_cityname, 1, 54, 1, 1);
+            customcity_checkbox.toggled.connect(toggle_value);
             button_desktop.set_sensitive(show_ondesktop);
             cbuttons = {
                 ondesktop_checkbox, dynamicicon_checkbox,
-                forecast_checkbox, setposbutton
+                forecast_checkbox, setposbutton, customcity_checkbox
             };
             add_args = {
                 "desktopweather", "dynamicicon", "forecast",
-                ""
+                "","usecustomcity"
             };
             set_initialpos();
+            set_initialcustom();
             // update button color on gsettings change
             set_buttoncolor();
             ws_settings.changed["textcolor"].connect (() => {
                 set_buttoncolor();
             });
             this.show_all();
+        }
+
+        private void update_customname () {
+            customcityname = customcity_entry.get_text().strip();
+            ws_settings.set_string("customcityname", customcityname);
+            update_weathershow();
         }
 
         private string set_initialcity() {
@@ -970,6 +998,15 @@ namespace WeatherShowApplet {
             ypos_label.set_sensitive(currcustom);
         }
 
+        private void set_initialcustom () {
+            use_custom_cityname = ws_settings.get_boolean("usecustomcity");
+            customcityname = ws_settings.get_string("customcityname").strip();
+            customcity_checkbox.set_active(use_custom_cityname);
+            customcity_entry.set_sensitive(use_custom_cityname);
+            customcity_entry.set_text(customcityname);
+            apply_cityname.set_sensitive(use_custom_cityname);
+        }
+
         private void update_xysetting (Button button) {
             string newxpos_str = xpos.get_text();
             int newx = int.parse(newxpos_str);
@@ -994,6 +1031,10 @@ namespace WeatherShowApplet {
             edit_citymenu = false;
             cityentry.set_text(newselect);
             edit_citymenu = true;
+            // when the city is changed, turn off the custom name
+            if (use_custom_cityname) {
+                customcity_checkbox.set_active(false);
+            }
             update_weathershow();
         }
 
@@ -1169,7 +1210,12 @@ namespace WeatherShowApplet {
                     ws_settings.set_int("yposition", 200);
                 }
             }
-
+            else if (val_index == 4) {
+                customcity_entry.set_sensitive(newsetting);
+                //revert entrybox if something was typed but "Set" was not clicked
+                customcity_entry.set_text(customcityname);
+                apply_cityname.set_sensitive(newsetting);
+            }
             else if (val_index == 1 && newsetting == false) {
                 indicatorIcon.set_from_icon_name(
                     default_icon, Gtk.IconSize.MENU
@@ -1312,6 +1358,14 @@ namespace WeatherShowApplet {
             show_forecast = ws_settings.get_boolean("forecast");
             ws_settings.changed["forecast"].connect (() => {
                 show_forecast = ws_settings.get_boolean("forecast");
+            });
+            use_custom_cityname = ws_settings.get_boolean("usecustomcity");
+            ws_settings.changed["usecustomcity"].connect(() => {
+                use_custom_cityname = ws_settings.get_boolean("usecustomcity");
+            });
+            customcityname = ws_settings.get_string("customcityname").strip();
+            ws_settings.changed["customcityname"].connect(() => {
+                customcityname = ws_settings.get_string("customcityname").strip();
             });
 
             if (show_ondesktop == true) {
