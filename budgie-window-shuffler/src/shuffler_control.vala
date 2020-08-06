@@ -191,7 +191,7 @@ namespace ShufflerControls {
             );
             settingsgrid.attach(toggle_softmove, 1, 5, 1, 1);
             toggle_warning = new Gtk.CheckButton.with_label(
-                (_("Show notificationh on incorrect window size"))
+                (_("Show notification on incorrect window size"))
             );
             settingsgrid.attach(toggle_warning, 1, 6, 1, 1);
             var empty = new Label("");
