@@ -1,26 +1,45 @@
+# #-#-#-#-#  en_GB.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  en_GB.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # david mohammed <foss.freedom@gmail.com>, 2019
 # David Mohammed <fossfreedom@ubuntu.com>, 2020
-# 
+#
+# #-#-#-#-#  en_GB.po (slingshot)  #-#-#-#-#
+# English (United Kingdom) translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 22:30+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: David Mohammed <fossfreedom@ubuntu.com>, 2020\n"
-"Language-Team: English (United Kingdom) (https://www.transifex.com/ubuntu-budgie/teams/72251/en_GB/)\n"
+"POT-Creation-Date: 2020-08-14 21:18+0100\n"
+"PO-Revision-Date: 2018-05-05 09:38+0000\n"
+"Last-Translator: Ciaran Ainsworth <cda@whistlingkappa.com>\n"
+"Language-Team: English (United Kingdom) <https://weblate.elementary.io/"
+"projects/wingpanel/wingpanel-indicator-network/en_GB/>\n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en_GB\n"
+"#-#-#-#-#  en_GB.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  en_GB.po (budgie-extras 10.4)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"#-#-#-#-#  en_GB.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:24+0000\n"
+"#-#-#-#-#  en_GB.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
 #. spinbutton section (menu length)
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
@@ -537,30 +556,24 @@ msgid "quarter after %s"
 msgstr "quarter past %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "twenty past %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "almost half-past %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -606,8 +619,7 @@ msgstr "ten to %s"
 msgid "almost %s"
 msgstr "almost %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Date and Time settings"
@@ -625,16 +637,13 @@ msgstr "Calendar"
 msgid "Preferences"
 msgstr "Preferences"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Show date"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Use 24 hour time"
@@ -660,14 +669,12 @@ msgstr "Custom"
 msgid "Missing process"
 msgstr "Missing process"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:270
 msgid "Please enable Window Previews"
 msgstr "Please enable Window Previews"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:279
 #: budgie-hotcorners/src/HotCornersApplet.vala:287
 msgid "Please enable Window Shuffler"
@@ -681,7 +688,9 @@ msgstr "Manage corners from panel icon"
 msgid "Set pressure (0 = no pressure)"
 msgstr "Set pressure (0 = no pressure)"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Auto"
@@ -784,7 +793,7 @@ msgstr "Blue"
 msgid "Choose"
 msgstr "Choose"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:317
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
 msgid "Open and search apps"
 msgstr "Open and search apps"
 
@@ -1136,11 +1145,11 @@ msgstr "Start"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
@@ -1314,6 +1323,10 @@ msgstr "Menu Label"
 msgid "Show Power-strip"
 msgstr "Show Power-strip"
 
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+msgid "Roll-over mouse"
+msgstr "Roll-over mouse"
+
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr "Show recently used items"
@@ -1357,3 +1370,1028 @@ msgstr "Rubbish Bin"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Network Applet"
+
+#~ msgid "Log out"
+#~ msgstr "Log out"
+
+#~ msgid "Restart device"
+#~ msgstr "Restart device"
+
+#~ msgid "Power Off"
+#~ msgstr "Power Off"
+
+#~ msgid "Change background"
+#~ msgstr "Change background"
+
+#~ msgid "Displays"
+#~ msgstr "Displays"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Turned on Caffeine Boost"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Turned off Caffeine Boost"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Will turn off in a minute"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Will turn off in %d minutes"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Caffeine Mode"
+
+#~ msgid "Applets"
+#~ msgstr "Applets"
+
+#~ msgid "Notifications"
+#~ msgstr "Notifications"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "No apps are currently playing audio."
+
+#~ msgid "Play some music"
+#~ msgstr "Play some music"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Nothing to see here"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u unread notifications"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 unread notification"
+
+#~ msgid "No unread notifications"
+#~ msgstr "No unread notifications"
+
+#~ msgid "No new notifications"
+#~ msgstr "No new notifications"
+
+#~ msgid "Apps"
+#~ msgstr "Apps"
+
+#~ msgid "Devices"
+#~ msgstr "Devices"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Battery fully charged."
+
+#~ msgid "Battery charging"
+#~ msgstr "Battery charging"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Battery remaining"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Show battery percentage"
+
+#~ msgid "Power settings"
+#~ msgstr "Power settings"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth Settings"
+
+#~ msgid "Send Files"
+#~ msgstr "Send Files"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth Aeroplane Mode"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth is disabled"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth is active"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Connected to %d device"
+#~ msgstr[1] "Connected to %d devices"
+
+#~ msgid "Sound settings"
+#~ msgstr "Sound settings"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Launch New Instance"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Close All Windows"
+
+#~ msgid "Always On Top"
+#~ msgstr "Always On Top"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximise"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimise"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Unfavourite"
+
+#~ msgid "Favorite"
+#~ msgstr "Favourite"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Move To Workspace %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Unmaximise"
+
+#~ msgid "Close Window"
+#~ msgstr "Close Window"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Show Window Controls"
+
+#~ msgid "All"
+#~ msgstr "All"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Sorry, no items found"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Caps lock is active"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Caps lock is not active"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Num lock is active"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Num lock is not active"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Time and date settings"
+
+#~ msgid "Show seconds"
+#~ msgstr "Show seconds"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Toggle the desktop"
+
+#~ msgid "Rename"
+#~ msgstr "Rename"
+
+#~ msgid "Remove"
+#~ msgstr "Remove"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Timer (minutes)"
+
+#~ msgid "User"
+#~ msgstr "User"
+
+#~ msgid "Places"
+#~ msgstr "Places"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Nothing to display right now"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Mount some drives"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Enable more sections"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Open \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Volume is in use by other processes"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operation aborted"
+
+#~ msgid "Type your password"
+#~ msgstr "Type your password"
+
+#~ msgid "Removable devices"
+#~ msgstr "Removable devices"
+
+#~ msgid "Local volumes"
+#~ msgstr "Local volumes"
+
+#~ msgid "Network folders"
+#~ msgstr "Network folders"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Mount and open \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Eject"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Enter the encryption passphrase to unlock this volume"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "You can now safely remove"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "The password you entered is incorrect"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "An unknown error occurred while attempting to mount this volume"
+
+#~ msgid "Unmount"
+#~ msgstr "Unmount"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Unknown Device"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Error while ejecting device"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Error while unmounting volume"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Authentication failed"
+
+#~ msgid "Group:"
+#~ msgstr "Group:"
+
+#~ msgid "Appearance"
+#~ msgstr "Appearance"
+
+#~ msgid "Panels"
+#~ msgstr "Panels"
+
+#~ msgid "Session"
+#~ msgstr "Session"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Budgie Desktop Settings"
+
+#~ msgid "Create new panel"
+#~ msgstr "Create new panel"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Remove this panel from the screen"
+
+#~ msgid "Top Dock"
+#~ msgstr "Top Dock"
+
+#~ msgid "Right Dock"
+#~ msgstr "Right Dock"
+
+#~ msgid "Left Dock"
+#~ msgstr "Left Dock"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Bottom Dock"
+
+#~ msgid "Top Panel"
+#~ msgstr "Top Panel"
+
+#~ msgid "Right Panel"
+#~ msgstr "Right Panel"
+
+#~ msgid "Left Panel"
+#~ msgstr "Left Panel"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Bottom Panel"
+
+#~ msgid "Always"
+#~ msgstr "Always"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dynamic"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "Intelligent"
+#~ msgstr "Intelligent"
+
+#~ msgid "Never"
+#~ msgstr "Never"
+
+#~ msgid "Position"
+#~ msgstr "Position"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Set the edge of the screen that this panel will stay on"
+
+#~ msgid "Size"
+#~ msgstr "Size"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Automatically hide"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr "When set, this panel will hide from view to maximise screen estate"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Control when this panel should have a solid background"
+
+#~ msgid "Shadow"
+#~ msgstr "Shadow"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Adds a decorative drop-shadow, ideal for opaque panels"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Stylize regions"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+
+#~ msgid "Dock mode"
+#~ msgstr "Dock mode"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Allow raising volume above 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Enable display of week numbers in Calendar"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Show Calendar Widget"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr "Shows or hides the Calendar Widget in Raven's Applets section."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Show Sound Output Widget"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr "Shows or hides the Sound Output Widget in Raven's Applets section."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Show Microphone Input Widget"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Show Media Playback Controls Widget"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Show Power Strip"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Shows or hides the Power Strip in the bottom of Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirm panel removal"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Don't ask me again"
+
+#~ msgid "Remove panel"
+#~ msgstr "Remove panel"
+
+#~ msgid "Keep panel"
+#~ msgstr "Keep panel"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirm applet removal"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+
+#~ msgid "Remove applet"
+#~ msgstr "Remove applet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Keep applet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Desktop Icons"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Control whether to allow launchers and icons on the desktop."
+
+#~ msgid "Home directory"
+#~ msgstr "Home directory"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Add a shortcut to your home directory on the desktop."
+
+#~ msgid "Network servers"
+#~ msgstr "Network servers"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Add a shortcut to your local network servers on the desktop."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Add a shortcut to the Rubbish Bin directory on the desktop."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Mounted volumes"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Mounted volumes & drives will appear on the desktop."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Number of virtual desktops"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+
+#~ msgid "Style"
+#~ msgstr "Style"
+
+#~ msgid "Widgets"
+#~ msgstr "Widgets"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Set the appearance of window decorations and controls"
+
+#~ msgid "Icons"
+#~ msgstr "Icons"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Set the globally used icon theme"
+
+#~ msgid "Cursors"
+#~ msgstr "Cursors"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Set the globally used mouse cursor theme"
+
+#~ msgid "Notification Position"
+#~ msgstr "Notification Position"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Set the location for notification popups"
+
+#~ msgid "Dark theme"
+#~ msgstr "Dark theme"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Built-in theme"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+
+#~ msgid "Animations"
+#~ msgstr "Animations"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Control whether windows and controls use animations"
+
+#~ msgid "Top Left"
+#~ msgstr "Top Left"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Bottom Left"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Bottom Right"
+
+#~ msgid "Top Right"
+#~ msgstr "Top Right"
+
+#~ msgid "Untitled"
+#~ msgstr "Untitled"
+
+#~ msgid "No description"
+#~ msgstr "No description"
+
+#~ msgid "running"
+#~ msgstr "running"
+
+#~ msgid "Add"
+#~ msgstr "Add"
+
+#~ msgid "Command"
+#~ msgstr "Command"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "An entry with that title already exists"
+
+#~ msgid "Title"
+#~ msgstr "Title"
+
+#~ msgid "Required"
+#~ msgstr "Required"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgid "Optional"
+#~ msgstr "Optional"
+
+#~ msgid "Autostart"
+#~ msgstr "Autostart"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Autostart apps"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configure applet"
+
+#~ msgid "Add applet"
+#~ msgstr "Add applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Choose a new applet to add to this panel"
+
+#~ msgid "No settings available"
+#~ msgstr "No settings available"
+
+#~ msgid "Center"
+#~ msgstr "Centre"
+
+#~ msgid "End"
+#~ msgstr "End"
+
+#~ msgid "Windows"
+#~ msgstr "Windows"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Attach modal dialogs to windows"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+
+#~ msgid "Button layout"
+#~ msgstr "Button layout"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Change the layout of buttons in application titlebars."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centre new windows on screen"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centre newly launched windows on the current screen."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Disable Night Light mode when windows are fullscreen"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Automatic tiling"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Enable window focus change on mouse enter and leave"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Disable unredirection of windows"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Right (standard)"
+
+#~ msgid "Fonts"
+#~ msgstr "Fonts"
+
+#~ msgid "Window Titles"
+#~ msgstr "Window Titles"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Set the font used in the titlebars of applications."
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Set the display font used by for documents."
+
+#~ msgid "Interface"
+#~ msgstr "Interface"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Set the primary font used by application controls."
+
+#~ msgid "Monospace"
+#~ msgstr "Monospace"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr "Set the fixed-width font used by text dominant applications."
+
+#~ msgid "Text scaling"
+#~ msgstr "Text scaling"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Set the text scaling factor."
+
+#~ msgid "Full"
+#~ msgstr "Full"
+
+#~ msgid "Medium"
+#~ msgstr "Medium"
+
+#~ msgid "Slight"
+#~ msgstr "Slight"
+
+#~ msgid "Hinting"
+#~ msgstr "Hinting"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Set the type of hinting to use."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpixel (for LCD screens)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Standard (grayscale)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Antialiasing"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Set the type of antialiasing to use."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Choose an applet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Are you sure you want to end your session?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Show all windows on click"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Only show favourited"
+
+#~ msgid "Lock icons"
+#~ msgstr "Lock icons"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Restrict to Workspace"
+
+#~ msgid "Window grouping"
+#~ msgstr "Window grouping"
+
+#~ msgid "Night Light"
+#~ msgstr "Night Light"
+
+#~ msgid "Schedule"
+#~ msgstr "Schedule"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Sunset to Sunrise"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Display Settings"
+
+#~ msgid "Spacer size"
+#~ msgstr "Spacer size"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Compact Mode"
+
+#~ msgid "Show Headers"
+#~ msgstr "Show Headers"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "\"Add\" button visibility"
+
+#~ msgid "Don't show"
+#~ msgstr "Don't show"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Show on mouseover"
+
+#~ msgid "Always show"
+#~ msgstr "Always show"
+
+#~ msgid "Enable notification"
+#~ msgstr "Enable notification"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximise brightness"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Brightness Level"
+
+#~ msgid "Show label"
+#~ msgstr "Show label"
+
+#~ msgid "Show places"
+#~ msgstr "Show places"
+
+#~ msgid "Show network folders"
+#~ msgstr "Show network folders"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Show removable drives"
+
+#~ msgid "Always expand places"
+#~ msgstr "Always expand places"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Authentication Required"
+
+#~ msgid "Password:"
+#~ msgstr "Password:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Authentication is required"
+
+#~ msgid "Authenticate"
+#~ msgstr "Authenticate"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie Desktop"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "This session logs you into the Budgie Desktop"
+
+#~ msgid "System Tray"
+#~ msgstr "System Tray"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Status Indicator"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Icon Task List"
+
+#~ msgid "Spacer"
+#~ msgstr "Spacer"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie Menu"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Lock Keys Indicator"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Raven Sidebar Control"
+
+#~ msgid "Clock"
+#~ msgstr "Clock"
+
+#~ msgid "Separator"
+#~ msgstr "Separator"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Show Desktop Button"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Workspace Switcher"
+
+#~ msgid "Task List"
+#~ msgstr "Task List"
+
+#~ msgid "Caffeine"
+#~ msgstr "Caffeine"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Keyboard Layout Indicator"
+
+#~ msgid "User Indicator"
+#~ msgstr "User Indicator"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Change desktop appearance and behaviour"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Budgie Panel"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+
+#~ msgid "Network"
+#~ msgstr "Network"
+
+#~ msgid "Network indicator"
+#~ msgstr "Network indicator"
+
+#~ msgid "Uninstall"
+#~ msgstr "Uninstall"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "View in AppCenter"
+
+#~ msgid "Search for %s in %s"
+#~ msgstr "Search for %s in %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Search the app store"
+
+#~ msgid "AppCenter"
+#~ msgstr "AppCenter"
+
+#~ msgid "Search for applications"
+#~ msgstr "Search for applications"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "AppCenter is not installed"
+
+#~ msgid "Open %s settings"
+#~ msgstr "Open %s settings"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Find switchboard plugs and open them."
+
+#~ msgid "Lock this device"
+#~ msgstr "Lock this device"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "lock"
+
+#~ msgid "Log Out"
+#~ msgstr "Log Out"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Close all open applications and quit"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "logout"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Put your computer into suspend mode"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "suspend"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hibernate"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Put your computer into hibernation mode"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "hibernate"
+
+#~ msgid "Shut Down"
+#~ msgstr "Shut Down"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Turn your computer off"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "shutdown;turn off"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Restart your computer"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "restart;reboot"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit wasn't found"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "The app-menu indicator"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Uninstall"
+
+#~ msgid "Open using default application"
+#~ msgstr "Open using default application"
+
+#~ msgid "Open folder"
+#~ msgstr "Open folder"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Open folder containing this file"
+
+#~ msgid "All Applications"
+#~ msgstr "All Applications"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Create a new Filter"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "There are no wireless access points within range."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Wireless is Disabled"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Enable wireless to discover nearby wireless access points."
+
+#~ msgid "No VPN Available"
+#~ msgstr "No VPN Available"
+
+#~ msgid "Hotspot"
+#~ msgstr "Hotspot"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Hotspot %s"
+
+#~ msgid "Failed"
+#~ msgstr "Failed"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Cable unplugged"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Airplane mode enabled"
+
+#~ msgid "Unknown"
+#~ msgstr "Unknown"
