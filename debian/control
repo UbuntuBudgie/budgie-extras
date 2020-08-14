@@ -5,8 +5,8 @@ Maintainer: David Mohammed <fossfreedom@ubuntu.com>
 Build-Depends:
  budgie-core-dev,
  cmake,
- debhelper (>= 12),
- debhelper-compat (= 12),
+ debhelper (>= 13),
+ debhelper-compat (= 13),
  dh-python,
  gnome-settings-daemon-dev,
  gobject-introspection,
@@ -20,6 +20,7 @@ Build-Depends:
  libgnome-menu-3-dev,
  libgranite-dev,
  libgtk-3-dev,
+ libhandy-1-dev,
  libjson-glib-dev,
  libkeybinder-3.0-dev,
  libnm-dev,
@@ -153,8 +154,9 @@ Depends:
  python3-gi,
  python3-psutil,
  python3-pyudev,
- zenity,
+ util-linux (>= 2.31.1),
  wmctrl,
+ zenity,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to popup when a USB device is connected
@@ -184,7 +186,7 @@ Description: Shared component of budgie-extras applets
 Package: budgie-extras-daemon
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Suggests: plank, budgie-applications-menu-applet
+Suggests: budgie-applications-menu-applet, plank
 Description: Extras daemon for budgie-extras capabilities
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -281,7 +283,12 @@ Description: Network Manager Applet for the budgie-desktop
 
 Package: budgie-previews
 Architecture: any
-Depends: budgie-extras-daemon, xprintidle, xinput, ${misc:Depends}, ${shlibs:Depends}
+Depends:
+ budgie-extras-daemon,
+ xinput,
+ xprintidle,
+ ${misc:Depends},
+ ${shlibs:Depends},
 Replaces: budgie-preview-applet (<< 0.4.6~)
 Breaks: budgie-previews-applet (<< 0.4.6~)
 Description: Provides window previews capabilities for the Budgie Desktop
@@ -312,6 +319,7 @@ Depends:
  python3-pyperclip,
  python3-xlib,
  wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: GUI to find and choose locale characters
@@ -463,8 +471,8 @@ Depends:
  python3-gi,
  python3-psutil,
  wmctrl,
- xdotool,
  x11-utils,
+ xdotool,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet allows moving windows between workspaces for the Budgie Desktop
@@ -544,18 +552,8 @@ Description: Workspace usage tracker for the budgie desktop
  Workspaces can be freely named, custom names and all data are remembered.
 
 Package: budgie-workspace-wallpaper-applet
-Architecture: all
-Depends:
- dconf-cli,
- gir1.2-budgie-1.0,
- gir1.2-glib-2.0,
- gir1.2-gtk-3.0,
- gir1.2-peas-1.0,
- python3,
- python3-gi,
- python3-psutil,
- ${misc:Depends},
- ${python3:Depends},
+Architecture: any
+Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Applet providing per workspace wallpaper
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
