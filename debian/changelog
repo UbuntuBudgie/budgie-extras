@@ -1,3 +1,17 @@
+budgie-extras (1.0.90-0ubuntu1) groovy; urgency=medium
+
+  * New release
+    - git tag v1.0.90 beta1 release
+    - see ChangeLog
+  * Packaging Changes:
+    - Remove all patches since merged in this new release
+    - control: bump debhelper version
+    - control: budgie-workspace-wallpaper-applet change arch to any
+    - control: update missing runtime dependencies, include
+      libhandy-1 build dependency
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 14 Aug 2020 21:51:44 +0100
+
 budgie-extras (1.0.2-2) unstable; urgency=medium
 
   * Add patch to resolve test suite failure (Closes: #962935)
