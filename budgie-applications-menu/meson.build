@@ -29,7 +29,12 @@ json_glib_dep = dependency('json-glib-1.0')
 zeitgeist_dep = dependency('zeitgeist-2.0')
 libgnome_menu_dep = dependency('libgnome-menu-3.0')
 posix_dep = meson.get_compiler('vala').find_library('posix')
-libhandy_dep = dependency('libhandy-0.0')
+libhandy_dep = dependency('libhandy-1', version: '>= 1.0', required: false)
+if libhandy_dep.found()
+    add_project_arguments('--define=HANDY1', language: 'vala')
+else
+    libhandy_dep = dependency('libhandy-0.0')
+endif
 budgie_dep = dependency('budgie-1.0')
 peas_dep = dependency('libpeas-gtk-1.0')
 plank_dep = dependency('plank', required: false)
