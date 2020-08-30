@@ -22,30 +22,12 @@ using Math;
 
 // valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm
 
-// todo:
-// add rulesdata-lookup function here
-// add internal window action on new windows, depending on gsettings "use windowrules", sending wm_class to executable,
-// executable fetches wm_class data from daemon to move new window subject
 
 namespace GetWindowRules {
 
     HashTable<string, Variant> newrules;
 
-    //  private string create_dirs_file (string subpath) {
-    //      // defines, and if needed, creates directory for rules
-    //      string homedir = Environment.get_home_dir();
-    //      string fullpath = GLib.Path.build_path(
-    //          GLib.Path.DIR_SEPARATOR_S, homedir, subpath
-    //      );
-    //      GLib.File file = GLib.File.new_for_path(fullpath);
-    //      try {
-    //          file.make_directory_with_parents();
-    //      }
-    //      catch (Error e) {
-    //          /* the directory exists, nothing to be done */
-    //      }
-    //      return fullpath;
-    //  }
+
 
     private bool endswith (string str, string tail ) {
         int str_len = str.length;
