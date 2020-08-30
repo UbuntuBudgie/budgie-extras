@@ -17,6 +17,7 @@ using Math;
 */
 
 // valac --pkg gio-2.0 -X -lm
+
 namespace ExtendWindow {
 
     string action;
@@ -198,16 +199,24 @@ namespace ExtendWindow {
                         break;
                 }
                 if (overlap && resize_neighbour) {
+
+                    //////////////////////////////////////////////////////////////////////////////////////
+                    ///////////////////////////////
                     cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     //  cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                             @"$gridx $gridy $gridcols ",
-                            @"$gridrows $xspan $yspan id=$winkey"
+                            @"$gridrows $xspan $yspan softmove=false id=$winkey"
+                            // add softmove=false here!
+                            // add arg to tile_active, rearrange arg parsing
                     );
                     try {
                         Process.spawn_command_line_sync(cm, null, null, null);
                     }
                     catch (SpawnError e) {
                     }
+                    ///////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////
+
                 }
             }
         }
