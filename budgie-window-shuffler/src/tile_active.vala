@@ -30,11 +30,23 @@
 / id=12345678 <- no hex!
 */
 
+/*
+todo:
+add overrule monitor -> monitor=
+add overrule animation -> animated=
+edit overrule window -> winid=
+^^^ all in one edit, see if args in args
+
+The above is to fix sticky neighbours losing focus issue (in resize)
+*/
+
 namespace TileActive {
 
     GLib.HashTable<string, Variant> windata;
     GLib.List<unowned string> windata_keys;
     bool surpass_blocking;
+    string overrule_monitor;
+    bool overrule_softmove;
     int[] margins;
 
     ShufflerInfoClient? client;
@@ -64,7 +76,7 @@ namespace TileActive {
             start[0] == target[0],
             start[1] == target[1],
             /*
-            for unknown reasons (not really interested as well), making
+            for reasons of minimum resize steps per application, making
             Wnck resize a window to size x pixels, occasionally results
             in x+1 pixels. that is an issue when we want to check if the
             window already is moved & sized to a certain q-tile or not.
@@ -102,19 +114,31 @@ namespace TileActive {
             margins = client.get_margins ();
             // if guiruns, only act on window from args
             bool guiruns = client.check_ifguiruns();
-            // check if we should use window from set args
-            int activewin;
-            string lastarg = args[args.length - 1];
-            surpass_blocking = lastarg.contains("id=");
-            if (surpass_blocking) {
-                activewin = int.parse(lastarg.split("=")[1]);
-            }
-            else {
-                activewin = client.getactivewin();
+            // check if we should use window, softmove & monitor from set args
+            // strictly, better do it if/else, but hey, this is almost for free
+            // just state something, see if it'll stand
+            // (surpass_blocking is derrived internally)
+            int activewin = client.getactivewin();
+            surpass_blocking = false;
+            overrule_softmove = false;
+            overrule_monitor = "";
+            foreach (string set_arg in args) {
+                if (set_arg.contains("id=")) {
+                    activewin = int.parse(set_arg.split("=")[1]);
+                    surpass_blocking = true;
+                    // applied ok
+                }
+                else if (set_arg.contains("monitor=")) {
+                    overrule_monitor = set_arg.split("=")[1];
+                    // applied ok
+                }
+                else if (set_arg.contains("softmove=")) {
+                    overrule_softmove = true;
+                    // applied ok
+                }
             }
             bool run = (!guiruns || surpass_blocking);
             activewin = client.check_windowvalid(activewin);
-
             if (run && activewin != -1) {
                 if (args.length >= 7) {
                     int ntiles_x = int.parse(args[5]);
@@ -129,7 +153,6 @@ namespace TileActive {
                         print("size exceeds monitor size\n");
                     }
                 }
-
                 else if (args.length >= 5) {
                     if (
                         int.parse(args[1]) < int.parse(args[3]) &&
@@ -141,7 +164,6 @@ namespace TileActive {
                         print("position is outside monitor\n");
                     }
                 }
-
                 else if (args.length >= 2) {
                     string arg = (args[1]);
                     if (arg == "maximize") {
@@ -175,6 +197,11 @@ namespace TileActive {
                     yshift = client.get_winspecs(activewin)[0];
                     Variant currwindata = windata[s];
                     winsmonitor = (string)currwindata.get_child_value(2);
+                    // however...
+                    if (overrule_monitor != "") {
+                        winsmonitor = overrule_monitor;
+                    }
+                    //
                     currwincoords = {
                         (int)currwindata.get_child_value(3),
                         (int)currwindata.get_child_value(4),
@@ -204,7 +231,15 @@ namespace TileActive {
                     bool[] posdata = check_position_isequal(currwincoords, tiletarget);
                     bool samepos = posdata[0];
                     bool samesize = posdata[1];
-                    bool softmove = client.get_softmove() && client.get_general_animations_set();
+                    // see if we should use softmove
+                    bool softmove;
+                    if (overrule_softmove) {
+                        softmove = false;
+                    }
+                    else {
+                         softmove = client.get_softmove() &&
+                         client.get_general_animations_set(); // overrule this one if set
+                    }
                     /*
                     NB: surpass_blocking true means tile_active is called from
                     gui: no animations for now.
