@@ -30,15 +30,6 @@
 / id=12345678 <- no hex!
 */
 
-/*
-todo:
-add overrule monitor -> monitor=
-add overrule animation -> animated=
-edit overrule window -> winid=
-^^^ all in one edit, see if args in args
-
-The above is to fix sticky neighbours losing focus issue (in resize)
-*/
 
 namespace TileActive {
 
