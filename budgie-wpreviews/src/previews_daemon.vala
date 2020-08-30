@@ -305,7 +305,11 @@ namespace NewPreviews {
                     currtilindex = 0;
                 }
                 delete_file(nexttrigger);
-                currbuttons[currtilindex].grab_focus();
+                if (currtilindex <= currbuttons.length &&
+                    currtilindex >= 0) {
+                        currbuttons[currtilindex].grab_focus();
+                }
+
             }
             else if (previoustrigger.query_exists()) {
                 currtilindex -= 1;
@@ -313,7 +317,10 @@ namespace NewPreviews {
                     currtilindex =  currbuttons.length - 1;
                 }
                 delete_file(previoustrigger);
-                currbuttons[currtilindex].grab_focus();
+                if (currtilindex <= currbuttons.length &&
+                    currtilindex >= 0) {
+                        currbuttons[currtilindex].grab_focus();
+                }
             }
         }
 
