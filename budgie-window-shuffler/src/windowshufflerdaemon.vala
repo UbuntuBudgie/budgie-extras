@@ -22,12 +22,151 @@ using Math;
 
 // valac --pkg gio-2.0 --pkg gdk-x11-3.0 --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm
 
+// todo:
+// add rulesdata-lookup function here
+// add internal window action on new windows, depending on gsettings "use windowrules", sending wm_class to executable,
+// executable fetches wm_class data from daemon to move new window subject
+
+namespace GetWindowRules {
+
+    HashTable<string, Variant> newrules;
+
+    //  private string create_dirs_file (string subpath) {
+    //      // defines, and if needed, creates directory for rules
+    //      string homedir = Environment.get_home_dir();
+    //      string fullpath = GLib.Path.build_path(
+    //          GLib.Path.DIR_SEPARATOR_S, homedir, subpath
+    //      );
+    //      GLib.File file = GLib.File.new_for_path(fullpath);
+    //      try {
+    //          file.make_directory_with_parents();
+    //      }
+    //      catch (Error e) {
+    //          /* the directory exists, nothing to be done */
+    //      }
+    //      return fullpath;
+    //  }
+
+    private bool endswith (string str, string tail ) {
+        int str_len = str.length;
+        int tail_len = tail.length;
+        if (tail_len  <= str_len) {
+            if (str[str_len-tail_len:str_len] == tail) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool startswith (string str, string substr ) {
+        int str_len = str.length;
+        int field_len = substr.length;
+        if (field_len  <= str_len) {
+            if (str[0:field_len] == substr) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void readfile (string rulesdir, string fname) {
+        // read file & add resulting Variant to HashTable
+        // since wm_class is filename, it's key. No need to make it a field
+        string monitor = "";
+        string xposition = "";
+        string yposition = "";
+        string rows = "";
+        string cols = "";
+        string xspan = "";
+        string yspan = "";
+
+        var file = File.new_for_path (rulesdir.concat("/", fname));
+        string[] fields = {
+            "Monitor", "XPosition", "YPosition",
+            "Rows", "Cols", "XSpan", "YSpan"
+        };
+
+        try {
+            var dis = new DataInputStream (file.read ());
+            string line;
+            // walk through lines, fetch arguments
+            while ((line = dis.read_line (null)) != null) {
+                int fieldindex = 0;
+                foreach (string field in fields) {
+                    if (startswith (line, field)) {
+                        string new_value = line.split("=")[1];
+                        switch (fieldindex) {
+                            case 0:
+                                monitor = new_value;
+                                break;
+                            case 1:
+                                xposition = new_value;
+                                break;
+                            case 2:
+                                yposition = new_value;
+                                break;
+                            case 3:
+                                rows = new_value;
+                                break;
+                            case 4:
+                                cols = new_value;
+                                break;
+                            case 5:
+                                xspan = new_value;
+                                break;
+                            case 6:
+                                yspan = new_value;
+                                break;
+                        }
+                    }
+                    fieldindex += 1;
+                }
+            }
+        }
+        catch (Error e) {
+            error ("%s", e.message);
+        }
+        // populate HashTable here
+        Variant newrule = new Variant(
+            "(sssssss)" , monitor, xposition,
+            yposition, rows, cols, xspan, yspan
+        );
+        newrules.insert(fname.split(".")[0], newrule);
+    }
+
+    public HashTable<string, Variant> find_rules (string rulesdir) {
+        newrules = new HashTable<string, Variant> (str_hash, str_equal);
+        // walk through files, collect rules
+        try {
+            var dr = Dir.open(rulesdir);
+            string? filename = null;
+            // walk through relevant files
+            while ((filename = dr.read_name()) != null) {
+                if (endswith(filename, ".windowrule")) {
+                    readfile (rulesdir, filename);
+                }
+            }
+        }
+        catch (Error e) {
+            error ("%s", e.message);
+        }
+        return newrules;
+    }
+}
+
+
 namespace ShufflerEssentialInfo {
 
     // monitordata-dict
     HashTable<string, Variant> monitorgeo;
+    // windowrules directory
+    string windowrule_location;
+    // rules monitor
+    FileMonitor monitor_ruleschange;
     // windowdata-dict
     HashTable<string, Variant> window_essentials;
+    // rulesdata-dict
+    HashTable<string, Variant> windowrules;
     // misc.
     unowned Wnck.Screen wnckscr;
     Gdk.Display gdkdisplay;
@@ -40,6 +179,7 @@ namespace ShufflerEssentialInfo {
     GLib.Settings desktop_settings;
     bool desktop_animations_set;
     bool soft_move;
+    bool use_windowrules;
     bool show_warning;
     int setcols;
     int setrows;
@@ -55,9 +195,7 @@ namespace ShufflerEssentialInfo {
     Gtk.Window? showtarget = null;
     int remaining_warningtime = 0;
 
-
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
-
 
     public class ShufflerInfoServer : Object {
 
@@ -70,6 +208,15 @@ namespace ShufflerEssentialInfo {
                 return check_windowvalid(candidate);
             }
             return -1;
+        }
+
+        public HashTable<string, Variant> get_rules () throws Error {
+            // get rules externally
+            print("sending data\n");
+            foreach (string k in windowrules.get_keys()) {
+                print (@"(from dm) $k\n");
+            }
+            return windowrules;
         }
 
         public int check_windowvalid (int winid) throws Error {
@@ -547,9 +694,21 @@ namespace ShufflerEssentialInfo {
     }
 
     private void acton_latestwin (Wnck.Window newwin) {
-        int new_window = (int)newwin.get_xid();
+        int win_xid = (int)newwin.get_xid();
         get_windata();
-        run_windowchangecommand("newwindowaction", new_window);
+        run_windowchangecommand("newwindowaction", win_xid);
+        run_windowrules(newwin, win_xid); // new, make depend on gsettings
+    }
+
+    private void run_windowrules (Wnck.Window newwin, int? xid) {
+        if (use_windowrules) {
+            string groupname = newwin.get_class_group_name();
+            print(@"groupname $groupname, $xid\n");
+            /*
+            / run execute_rule executable here with these args ^^^
+            / executable then fetches relevant window rule and moves window
+            */
+        }
     }
 
     private void run_windowchangecommand (string actiontype, int? newwin = null) {
@@ -655,6 +814,56 @@ namespace ShufflerEssentialInfo {
         soft_move = shuffler_settings.get_boolean("softmove");
         show_warning = shuffler_settings.get_boolean("showwarning");
         stickyneighbors = shuffler_settings.get_boolean("stickyneighbors");
+        use_windowrules = shuffler_settings.get_boolean("windowrules");
+        set_rulesmonitor ();
+
+    }
+
+    private string create_dirs_file (string subpath) {
+        // defines, and if needed, creates directory for rules
+        string homedir = Environment.get_home_dir();
+        string fullpath = GLib.Path.build_path(
+            GLib.Path.DIR_SEPARATOR_S, homedir, subpath
+        );
+        GLib.File file = GLib.File.new_for_path(fullpath);
+        try {
+            file.make_directory_with_parents();
+        }
+        catch (Error e) {
+            /* the directory exists, nothing to be done */
+        }
+        return fullpath;
+    }
+
+    private void update_rulesdata () {
+
+        windowrules = GetWindowRules.find_rules(windowrule_location);
+        print ("from daemon:\n");
+        foreach (string k in windowrules.get_keys()) {
+            print (@"$k\n");
+        }
+        print(@"yay, new rules, location: $windowrule_location\n");
+    }
+
+    private void set_rulesmonitor () {
+        print ("setting up monitor\n");
+        if (use_windowrules) {
+            // setup monitor
+            File rulesdir = File.new_for_path(windowrule_location);
+            try {
+                monitor_ruleschange = rulesdir.monitor(FileMonitorFlags.NONE, null);
+                monitor_ruleschange.changed.connect(update_rulesdata);
+                // oh, and update now please
+                update_rulesdata();
+            }
+            catch (Error e) {
+            }
+        }
+        else {
+            if (monitor_ruleschange != null) {
+                monitor_ruleschange.cancel();
+            }
+        }
     }
 
     private void actonfile(File file, File? otherfile, FileMonitorEvent event) {
@@ -712,6 +921,8 @@ namespace ShufflerEssentialInfo {
         }
         // settings stuff
         shuffler_settings = get_settings("org.ubuntubudgie.windowshuffler");
+        windowrule_location = create_dirs_file(".config/budgie-extras/shuffler");
+        windowrules = new HashTable<string, Variant> (str_hash, str_equal);
         shuffler_settings.changed.connect(update_settings);
         update_settings();
         desktop_settings = get_settings("org.gnome.desktop.interface");
@@ -726,6 +937,7 @@ namespace ShufflerEssentialInfo {
         wnckscr = Wnck.Screen.get_default();
         wnckscr.force_update();
         monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
+
         window_essentials = new HashTable<string, Variant> (str_hash, str_equal);
         gdkdisplay = Gdk.Display.get_default();
         Gdk.Screen gdkscreen = Gdk.Screen.get_default();
@@ -735,6 +947,7 @@ namespace ShufflerEssentialInfo {
         gdkscreen.monitors_changed.connect(getscale);
         get_windata();
         wnckscr.window_opened.connect(acton_latestwin);
+
         wnckscr.window_closed.connect(()=> {
             if (showtarget != null && gridguiruns == false) {
                 showtarget.destroy();
