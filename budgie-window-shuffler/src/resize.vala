@@ -199,9 +199,6 @@ namespace ExtendWindow {
                         break;
                 }
                 if (overlap && resize_neighbour) {
-
-                    //////////////////////////////////////////////////////////////////////////////////////
-                    ///////////////////////////////
                     cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     //  cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                             @"$gridx $gridy $gridcols ",
@@ -214,9 +211,6 @@ namespace ExtendWindow {
                     }
                     catch (SpawnError e) {
                     }
-                    ///////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////
-
                 }
             }
         }
