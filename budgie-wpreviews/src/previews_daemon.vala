@@ -492,6 +492,11 @@ namespace NewPreviews {
             this.title = "PreviewsWindow";
             prev_winexists = true;
             this.add(maingrid);
+            // lazy patch, but for a rare situation, should do
+            if (reversed_buttons.length == 0) {
+                this.destroy();
+                cleanup();
+            }
         }
 
         private void check_ifactive () {
