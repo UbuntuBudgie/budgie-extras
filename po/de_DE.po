@@ -9,8 +9,8 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2019
 # Vinzenz Vietzke <vinz@vinzv.de>, 2019
 # Benjamin Piller <benpiller@gmail.com>, 2019
-# Rainer Bode <rainer.uwe@hotmail.com>, 2020
 # david mohammed <foss.freedom@gmail.com>, 2020
+# Rainer Bode <rainer.uwe@hotmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-14 21:18+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
+"Last-Translator: Rainer Bode <rainer.uwe@hotmail.com>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/ubuntu-budgie/teams/72251/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,12 +35,12 @@ msgstr "Zeige kürzlich verwendet"
 #. show tooltips section
 #: budgie-recentlyused/src/budgie-recentlyused.vala:44
 msgid "Show tooltips"
-msgstr "Werkzeuge anzeigen"
+msgstr "Tooltip anzeigen"
 
 #. hide path section
 #: budgie-recentlyused/src/budgie-recentlyused.vala:53
 msgid "Hide path in menu"
-msgstr "Pfad im Menü einklappen"
+msgstr "Pfad im Menü verstecken"
 
 #. tooltip
 #: budgie-recentlyused/src/budgie-recentlyused.vala:191
@@ -52,11 +52,11 @@ msgstr "Öffen"
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
-msgstr "Previews-Kontrolle"
+msgstr "Vorschaukontrolle"
 
 #: budgie-wpreviews/src/previews_controls.vala:55
 msgid "Run Previews"
-msgstr "Previews ausführen "
+msgstr "Vorschau ausführen "
 
 #: budgie-wpreviews/src/previews_controls.vala:58
 msgid "Show windows of all workspaces"
@@ -64,7 +64,7 @@ msgstr "Fenster von allen Arbeitsoberflächen zeigen "
 
 #: budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
-msgstr ""
+msgstr "Vollen Namen im Tooltip anzeigen"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
@@ -77,11 +77,11 @@ msgstr "Der Text wird automatisch während des Eingebens gespeichert."
 #. Gtk stuff, widgets etc. here
 #: budgie-quicknote/QuickNoteApplet.vala:143
 msgid "Text area width"
-msgstr "Textfeld Breite"
+msgstr "Textfeldbreite"
 
 #: budgie-quicknote/QuickNoteApplet.vala:150
 msgid "Text area height"
-msgstr "Textfeld Höhe"
+msgstr "Textfeldhöhe"
 
 #: budgie-quicknote/QuickNoteApplet.vala:166
 msgid "Set a custom directory"
@@ -151,6 +151,8 @@ msgid ""
 "Show a notification when attempting to resize a window below it's minimum "
 "size"
 msgstr ""
+"Nachricht beim Versuch anzeigen, das Fenster unter seine Minimalgröße zu "
+"verkleinern "
 
 #. margins
 #: budgie-window-shuffler/src/shuffler_control.vala:79
@@ -257,7 +259,7 @@ msgstr "Vertikal verkleinern (von oben)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:106
 msgid "Toggle resizing opposite window"
-msgstr ""
+msgstr "Größe des gegenüberliegenden Fensters ändern"
 
 #. GUI grid
 #: budgie-window-shuffler/src/shuffler_control.vala:108
@@ -346,7 +348,7 @@ msgstr "Animationen aktivieren "
 
 #: budgie-window-shuffler/src/shuffler_control.vala:194
 msgid "Show notification on incorrect window size"
-msgstr ""
+msgstr "Benachrichtigung bei inkorrekter Fenstergröße anzeigen "
 
 #. settingsgrid - spinbuttonsection
 #: budgie-window-shuffler/src/shuffler_control.vala:200
@@ -389,15 +391,15 @@ msgstr "Fenster innerer Rand "
 
 #: budgie-window-shuffler/src/shuffler_control.vala:650
 msgid "Sticky Neighbors switched off"
-msgstr ""
+msgstr "Sticky Neighbors ausgeschaltet"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:653
 msgid "Sticky Neighbors switched on"
-msgstr ""
+msgstr "Sticky Neighbors eingeschaltet"
 
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
 msgid "Minimum window size exceeds target"
-msgstr ""
+msgstr "Minimale Fenstergröße überschreitet Ziel"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -682,7 +684,7 @@ msgstr "Bitte Window-Shuffler aktivieren "
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:467
 msgid "Manage corners from panel icon"
-msgstr ""
+msgstr "Ecken über Ikone in der Bildschirmleiste verwalten"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:477
 msgid "Set pressure (0 = no pressure)"
@@ -768,7 +770,7 @@ msgstr "Eigene Position einstellen (px)"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:931
 msgid "Custom location name"
-msgstr ""
+msgstr "Benutzerdefinierter Standortname"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
 msgid "Please enter at least 3 characters"
@@ -1136,7 +1138,7 @@ msgstr "Licht"
 #. strings
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 msgid "Start"
@@ -1147,10 +1149,12 @@ msgid ""
 "Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
 " per workspace"
 msgstr ""
+"Hintergrundbildwechsler  merkt sich automatisch, welches Hintergrundbild pro"
+" Arbeitsbereich festgelegt wurde "
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
-msgstr ""
+msgstr "Applet funktioniert ohne Ikone in der Bildschirmleiste "
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "Could not determine original location of /home/budgie/file.txt"
@@ -1360,7 +1364,7 @@ msgstr "Helligkeitskontrolle "
 
 #: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
 msgid "Set a different wallpaper per workspace"
-msgstr ""
+msgstr "Anderes Hintergrundbild für jeden Arbeitsbereich festlegen "
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
