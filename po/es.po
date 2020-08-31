@@ -8,6 +8,7 @@
 # Adolfo Jayme-Barrientos, 2019
 # Borja Piñero, 2020
 # david mohammed <foss.freedom@gmail.com>, 2020
+# Víctor Pont <victor@pont.cat>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-14 21:18+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
+"Last-Translator: Víctor Pont <victor@pont.cat>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/ubuntu-budgie/teams/72251/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +62,7 @@ msgstr "Mostrar ventanas de todos los espacios de trabajo"
 
 #: budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
-msgstr ""
+msgstr "Mostrar el nombre completo de la ventana en una descripción emergente"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
@@ -116,12 +117,16 @@ msgid ""
 "When using move shortcuts, swap window size & position if a window moves to "
 "an existing window's position"
 msgstr ""
+"Al usar atajos de movimiento, intercambiar el tamaño de la ventana y su "
+"posición si esta se mueve a la posición de otra ventana"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:73
 msgid ""
 "Enable animation on move and tiling actions if general desktop animations "
 "are enabled"
 msgstr ""
+"Habilitar las animaciones en las acciones de mover o encajar siempre y "
+"cuando las animaciónes de escritorio generales estén habilitadas"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move the mouse over a button for an explanation"
@@ -142,6 +147,8 @@ msgid ""
 "Show a notification when attempting to resize a window below it's minimum "
 "size"
 msgstr ""
+"Mostrar una notificación al intentar redimensionar una ventana por debajo de"
+" su tamaño minimo"
 
 #. margins
 #: budgie-window-shuffler/src/shuffler_control.vala:79
@@ -248,7 +255,7 @@ msgstr "Contraer verticalmente (hacia abajo)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:106
 msgid "Toggle resizing opposite window"
-msgstr ""
+msgstr "Alternar el redimensionado de la ventana opuesta"
 
 #. GUI grid
 #: budgie-window-shuffler/src/shuffler_control.vala:108
@@ -330,15 +337,15 @@ msgstr "Habilitar la rejilla de Window Suffler"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:186
 msgid "Swap windows"
-msgstr ""
+msgstr "Intercambiar ventanas"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:190
 msgid "Enable animation"
-msgstr ""
+msgstr "Habilitar animación"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:194
 msgid "Show notification on incorrect window size"
-msgstr ""
+msgstr "Mostrar notificación por tamaño incorrecto de ventana"
 
 #. settingsgrid - spinbuttonsection
 #: budgie-window-shuffler/src/shuffler_control.vala:200
@@ -381,15 +388,15 @@ msgstr "Relleno de la ventana"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:650
 msgid "Sticky Neighbors switched off"
-msgstr ""
+msgstr "Vecinos Pegajosos desactivados"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:653
 msgid "Sticky Neighbors switched on"
-msgstr ""
+msgstr "Vecinos Pegajosos activados"
 
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
 msgid "Minimum window size exceeds target"
-msgstr ""
+msgstr "El tamaño de ventana mínimo excede el objetivo"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -674,7 +681,7 @@ msgstr "Por favor, habilite Window Suffler"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:467
 msgid "Manage corners from panel icon"
-msgstr ""
+msgstr "Gestionar las esquinas desde el icono del panel"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:477
 msgid "Set pressure (0 = no pressure)"
@@ -760,7 +767,7 @@ msgstr "Establecer posición personalizada (px)"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:931
 msgid "Custom location name"
-msgstr ""
+msgstr "Nombre de ubicación personalizado"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
 msgid "Please enter at least 3 characters"
@@ -1130,7 +1137,7 @@ msgstr "Luminosidad"
 #. strings
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
 msgid "Stop"
-msgstr ""
+msgstr "Detener"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 msgid "Start"
@@ -1141,10 +1148,12 @@ msgid ""
 "Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
 " per workspace"
 msgstr ""
+"El conmutador de fondo de área de trabajo recuerda automáticamente qué fondo"
+" se usaba en cada área de trabajo"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
-msgstr ""
+msgstr "El applet funciona sin un icono de panel"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "Could not determine original location of /home/budgie/file.txt"
@@ -1352,7 +1361,7 @@ msgstr "Control de Brillo"
 
 #: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
 msgid "Set a different wallpaper per workspace"
-msgstr ""
+msgstr "Fijar un fondo de pantalla distinto por área de trabajo"
 
 #: budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
