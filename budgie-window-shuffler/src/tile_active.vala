@@ -123,7 +123,7 @@ namespace TileActive {
                     overrule_monitor = set_arg.split("=")[1];
                     // applied ok
                 }
-                else if (set_arg.contains("softmove=")) {
+                else if (set_arg == "nosoftmove") {
                     overrule_softmove = true;
                     // applied ok
                 }

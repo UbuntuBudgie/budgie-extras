@@ -202,7 +202,7 @@ namespace ExtendWindow {
                     cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     //  cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                             @"$gridx $gridy $gridcols ",
-                            @"$gridrows $xspan $yspan softmove=false id=$winkey"
+                            @"$gridrows $xspan $yspan nosoftmove id=$winkey"
                             // add softmove=false here!
                             // add arg to tile_active, rearrange arg parsing
                     );
