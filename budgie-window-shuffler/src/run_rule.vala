@@ -30,6 +30,7 @@ namespace ApplyRule {
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
         public abstract GLib.HashTable<string, Variant> get_monitorgeometry () throws Error;
+        public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
     }
 
     private bool string_inlist (string lookfor, string[] arr) {
@@ -53,7 +54,37 @@ namespace ApplyRule {
         }
     }
 
+    private string fixed_newclass (string xid) {
+        /*
+        / fix for soffice (sillyoffice?) because it changes its wm_class
+        / shortly after creation
+        */
+        int n_attempt = 0;
+        while (n_attempt < 10) {
+            Thread.usleep(100000);
+            try {
+                GLib.HashTable<string, Variant> allwins = client.get_winsdata();
+                foreach (string key in allwins.get_keys()) {
+                    if (key == xid) {
+                        string alterclass = (string)allwins[key].get_child_value(8);
+                        if (alterclass.down() != "soffice") {
+                            return alterclass;
+                        }
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            n_attempt += 1;
+        }
+        return "noclass";
+    }
+
     void main (string[] args) {
+
+        string newclass = args[1].down();
+        string new_xid = args[2];
         string monitor = "";
         string xposition = "";
         string yposition = "";
@@ -69,8 +100,12 @@ namespace ApplyRule {
             // get data, geo on windows
             windowrules = client.get_rules();
             GLib.List<weak string> keys = windowrules.get_keys();
+
+            if (newclass.down() == "soffice") {
+                newclass = fixed_newclass(new_xid);
+            }
             foreach (string key in keys) {
-                if (args[1].down() == key.down()) {
+                if (newclass == key.down()) {
                     // get data from fields, move window id to set position
                     Variant windowrule = windowrules[key];
                     monitor = (string)windowrule.get_child_value(0);
@@ -104,10 +139,8 @@ namespace ApplyRule {
                             break;
                         }
                     }
-                    string w_id = args[2];
-                    // use .Config dir below
                     string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
-                        @"$xposition $yposition $cols $rows $xspan $yspan id=$w_id windowrule $monitor"
+                        @"$xposition $yposition $cols $rows $xspan $yspan id=$new_xid windowrule $monitor"
                     );
                     run_command(cmd);
                 }
