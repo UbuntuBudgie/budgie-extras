@@ -106,7 +106,7 @@ namespace ApplyRule {
                     }
                     string w_id = args[2];
                     // use .Config dir below
-                    string cmd = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
+                    string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
                         @"$xposition $yposition $cols $rows $xspan $yspan id=$w_id windowrule $monitor"
                     );
                     run_command(cmd);

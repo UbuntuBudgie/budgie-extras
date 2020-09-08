@@ -214,8 +214,7 @@ namespace NewTileActive {
                 "(sssiiiiss)", "", "", "", -1, -1, -1, -1, "", ""
             );
             foreach (string s in windata_keys) {
-                if (@"$xid" == s) {
-                    print(@"match found\n");
+                if (@"$xid" == s) {;
                     winsubject_data = windata[s];
                 }
             }
@@ -241,7 +240,6 @@ namespace NewTileActive {
             int tile_y = 0;
             foreach (string k in tiles.get_keys()) {
                 if (k == target_tilekey) {
-                    print("found tile!\n");
                     Variant target_tile = tiles[k];
                     tile_x = (int)target_tile.get_child_value(0);
                     tile_y = (int)target_tile.get_child_value(1);
@@ -253,12 +251,9 @@ namespace NewTileActive {
             int[] pos_indices = {3, 4, 5, 6};
             foreach (int i in pos_indices) {
                 winpos_data += (int)winsubject_data.get_child_value(i);
-                int addval = (int)winsubject_data.get_child_value(i);
-                print(@"$addval\n");
             }
             bool[] checked_equal = check_position_isequal(winpos_data, tilepos_data, margins);
             foreach (bool test in checked_equal) {
-                print(@"$test\n");
             }
             bool nosoftmove_forpositionarg = false;
             bool norun_forpositionarg = false;
@@ -289,14 +284,12 @@ namespace NewTileActive {
             // finally, let's get the job done, it's been long enough
             if (run) {
                 if (use_softmove) {
-                    print("use softmove\n");
                     client.move_window_animated(
                         xid, tile_x, tile_y - yshift,
                         target_width, target_height
                     );
                 }
                 else {
-                    print("nosoftmove\n");
                     client.move_window(
                         xid, tile_x, tile_y - yshift,
                         target_width, target_height

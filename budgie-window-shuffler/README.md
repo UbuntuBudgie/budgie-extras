@@ -12,5 +12,3 @@ Added WIndowRules; functionality to open specific WMCLASS windows to specific mo
 
 
 The first four are obligatory and refer to to position on grid. Furthermore, we need to set dconf key `/org/ubuntubudgie/windowshuffler/windowrules` -> true.
-
-todo: replace abs paths by paths from.Config.

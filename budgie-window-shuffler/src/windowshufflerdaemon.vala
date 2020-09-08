@@ -194,9 +194,7 @@ namespace ShufflerEssentialInfo {
 
         public HashTable<string, Variant> get_rules () throws Error {
             // get rules externally
-            print("sending data\n");
             foreach (string k in windowrules.get_keys()) {
-                //  print (@"(from dm) $k\n");
             }
             return windowrules;
         }
@@ -689,8 +687,7 @@ namespace ShufflerEssentialInfo {
     private void run_windowrules (Wnck.Window newwin, int? xid) {
         if (use_windowrules) {
             string groupname = newwin.get_class_group_name();
-            string cmnd = @"/usr/lib/budgie-window-shuffler/run_rule $groupname $xid";
-            print(@"dm_command $cmnd\n");
+            string cmnd = Config.SHUFFLER_DIR + @"/run_rule $groupname $xid";
             run_command(cmnd);
             /*
             / run execute_rule executable here with these args ^^^
@@ -826,15 +823,11 @@ namespace ShufflerEssentialInfo {
     private void update_rulesdata () {
 
         windowrules = GetWindowRules.find_rules(windowrule_location);
-        //  print ("from daemon:\n");
         foreach (string k in windowrules.get_keys()) {
-            //  print (@"$k\n");
         }
-        print(@"yay, new rules, location: $windowrule_location\n");
     }
 
     private void set_rulesmonitor () {
-        print ("setting up monitor\n");
         if (use_windowrules) {
             // setup monitor
             File rulesdir = File.new_for_path(windowrule_location);
@@ -910,7 +903,6 @@ namespace ShufflerEssentialInfo {
         // settings stuff
         shuffler_settings = get_settings("org.ubuntubudgie.windowshuffler");
         windowrule_location = create_dirs_file(".config/budgie-extras/shuffler");
-        print(@"$windowrule_location\n");
         windowrules = new HashTable<string, Variant> (str_hash, str_equal);
         shuffler_settings.changed.connect(update_settings);
         update_settings();

@@ -4,11 +4,8 @@ ShufflerValaArgs = [
     '--target-glib=2.38',
 ]
 
-
-
 ResizeSources = [
     'resize.vala'
-    
 ]
 
 ResizeDependencies = [
@@ -30,13 +27,14 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
-####################################
 RunRuleSources = [
     'run_rule.vala'
 ]
+
 RunRuleDependencies = [
     dependency('gio-2.0'),
 ]
+
 executable(
     'run_rule', RunRuleSources,
     dependencies: RunRuleDependencies,
@@ -45,7 +43,6 @@ executable(
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
-####################################
 
 SoftMoveSources = [
     'softmove.vala'
