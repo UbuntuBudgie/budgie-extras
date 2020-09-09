@@ -102,6 +102,13 @@ namespace NewTileActive {
         return tests;
     }
 
+    private int? try_isint (string stringarg) {
+        int foundint = int.parse (stringarg);
+        if (foundint != 0 ||(stringarg == "0" && foundint == 0)) {
+            return foundint;
+        }
+        return null;
+    }
 
     public static void main(string[] args) {
 
@@ -126,9 +133,8 @@ namespace NewTileActive {
         // parse args, first four or six are int
         int argindex = 0;
         foreach (string arg in args[1:args.length]) {
-            bool is_intarg = int.try_parse(arg);
-            if (is_intarg) {
-                int new_arg = int.parse(arg);
+            int? new_arg = try_isint(arg);
+            if (new_arg != null) {
                 switch (argindex) {
                     case 0:
                     // targeted xposition in grid
