@@ -112,10 +112,10 @@ namespace NewTileActive {
 
     public static void main(string[] args) {
 
-        int x_ongrid = -1;
-        int y_ongrid = -1;
-        int gridcols = -1;
-        int gridrows = -1;
+        int x_ongrid = 0;
+        int y_ongrid = 0;
+        int gridcols = 2;
+        int gridrows = 2;
         int xspan = 1;
         int yspan = 1;
         bool maximize = false;

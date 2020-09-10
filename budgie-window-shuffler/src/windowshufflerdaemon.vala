@@ -27,8 +27,6 @@ namespace GetWindowRules {
 
     HashTable<string, Variant> newrules;
 
-
-
     private bool endswith (string str, string tail ) {
         int str_len = str.length;
         int tail_len = tail.length;
@@ -801,7 +799,6 @@ namespace ShufflerEssentialInfo {
         stickyneighbors = shuffler_settings.get_boolean("stickyneighbors");
         use_windowrules = shuffler_settings.get_boolean("windowrules");
         set_rulesmonitor ();
-
     }
 
     private string create_dirs_file (string subpath) {
@@ -902,7 +899,7 @@ namespace ShufflerEssentialInfo {
         }
         // settings stuff
         shuffler_settings = get_settings("org.ubuntubudgie.windowshuffler");
-        windowrule_location = create_dirs_file(".config/budgie-extras/shuffler");
+        windowrule_location = create_dirs_file(".config/budgie-extras/shuffler/windowrules");
         windowrules = new HashTable<string, Variant> (str_hash, str_equal);
         shuffler_settings.changed.connect(update_settings);
         update_settings();
