@@ -1,6 +1,6 @@
 ## Comment on latest development
 
-Added WIndowRules; functionality to open specific WMCLASS windows to specific monitor & position. To use it, create a .rule file, named after the WMCLASS, in ~/.config/budgie-extras/shuffler. Possible fields are:
+Added WIndowRules; functionality to open specific WMCLASS windows to specific monitor & position. To use it, create a .windowrule file, named after the WMCLASS, in ~/.config/budgie-extras/shuffler. Possible fields are:
 
  - XPosition=int
  - XPosition=int
