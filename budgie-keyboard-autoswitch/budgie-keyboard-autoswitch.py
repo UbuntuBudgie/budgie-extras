@@ -144,7 +144,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
 
         # Use dbus connection to check for the screensaver activity
         self.bus = dbus.SessionBus()
-        self.session = self.bus.get_object("org.gnome.ScreenSaver", "/")
+        self.screensaver = None
 
         # thread
         GObject.threads_init()
@@ -171,8 +171,14 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
             return " ".join(lang)
 
     def lockscreen_check(self):
-        val = self.session.get_dbus_method('GetActive')
-        return val()
+        try:
+            if self.screensaver is None:
+                self.screensaver = self.bus.get_object("org.gnome.ScreenSaver", "/")
+            val = self.screensaver.get_dbus_method('GetActive')
+            return val()
+        except dbus.exceptions.DBusException:
+            self.screensaver = None
+            return False
 
     def change_ondeflang_select(self, widget):
         """
