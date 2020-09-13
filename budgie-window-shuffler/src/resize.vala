@@ -203,8 +203,6 @@ namespace ExtendWindow {
                     //  cm = "/usr/lib/budgie-window-shuffler/tile_active ".concat(
                             @"$gridx $gridy $gridcols ",
                             @"$gridrows $xspan $yspan nosoftmove id=$winkey"
-                            // add softmove=false here!
-                            // add arg to tile_active, rearrange arg parsing
                     );
                     try {
                         Process.spawn_command_line_sync(cm, null, null, null);

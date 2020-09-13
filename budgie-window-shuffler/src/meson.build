@@ -27,6 +27,23 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+RunRuleSources = [
+    'run_rule.vala'
+]
+
+RunRuleDependencies = [
+    dependency('gio-2.0'),
+]
+
+executable(
+    'run_rule', RunRuleSources,
+    dependencies: RunRuleDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
+
 SoftMoveSources = [
     'softmove.vala'
 ]

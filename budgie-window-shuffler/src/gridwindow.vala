@@ -260,7 +260,8 @@ namespace GridWindowSection {
                 string cmd_args = manage_selection(b);
                 // manage preview shade separately: different rules, algorithm (first make this work)
                 string cm = Config.SHUFFLER_DIR + "/tile_active ".concat(
-                    cmd_args, " id=", @"$previously_active");
+                    cmd_args, " id=", @"$previously_active", " fromgrid", " nosoftmove"
+                );
                 try {
                     Process.spawn_command_line_async(cm);
                 }
