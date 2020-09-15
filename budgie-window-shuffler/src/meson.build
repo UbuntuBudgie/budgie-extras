@@ -138,26 +138,26 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
-OpenInPositionSources = [
-    'open_inposition.vala'
+RunLayoutSources = [
+    'run_layout.vala'
 ]
 
-OpenInPositionDependencies = [
+RunLayoutDependencies = [
     dependency('gtk+-3.0'),
     dependency('libwnck-3.0'),
 ]
 
-OpenInPositionCArgs = [
+RunLayoutCArgs = [
     '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
     '-lm'
 ]
 
 executable(
-    'open_inposition', OpenInPositionSources,
-    dependencies: OpenInPositionDependencies,
+    'run_layout', RunLayoutSources,
+    dependencies: RunLayoutDependencies,
     install: true,
     vala_args: ShufflerValaArgs,
-    c_args: OpenInPositionCArgs,
+    c_args: RunLayoutCArgs,
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )

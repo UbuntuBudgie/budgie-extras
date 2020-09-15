@@ -174,6 +174,7 @@ namespace ShufflerEssentialInfo {
     bool stickyneighbors;
     Gtk.Window? showtarget = null;
     int remaining_warningtime = 0;
+    File layout_busy;
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
@@ -683,7 +684,9 @@ namespace ShufflerEssentialInfo {
     }
 
     private void run_windowrules (Wnck.Window newwin, int? xid) {
-        if (use_windowrules) {
+        // first check if run_layout is active, possibly need to overrule below
+        bool layout_isbusy = layout_busy.query_exists ();
+        if (use_windowrules && !layout_isbusy) {
             string groupname = newwin.get_class_group_name();
             string cmnd = Config.SHUFFLER_DIR + @"/run_rule $groupname $xid";
             run_command(cmnd);
@@ -881,6 +884,7 @@ namespace ShufflerEssentialInfo {
     }
 
     public static int main (string[] args) {
+
         // create warning image
         create_warningbg();
         Gtk.init(ref args);
@@ -888,6 +892,11 @@ namespace ShufflerEssentialInfo {
         gridguiruns = false;
         FileMonitor monitor;
         string user = Environment.get_user_name();
+        // layout_busy triggerfile for run_layout
+        layout_busy = File.new_for_path (
+            "/tmp/".concat(user, @"_running_layout")
+        );
+        // and one for grid
         File gridtrigger = File.new_for_path(
             "/tmp/".concat(user, "_gridtrigger")
         );

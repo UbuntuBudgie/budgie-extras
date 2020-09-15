@@ -15,6 +15,18 @@
 * <https://www.gnu.org/licenses/>.
 */
 
+/*
+/ ordered, -needed- arguments (type int):
+/ x_ongrid, y_ongrid, gridcols, gridrows <- this will tile the active window
+/ then optional ordered (unnamed, after the above) arguments (type int):
+/ xspan, yspan
+/ optional arguments after the above (unordered, type string):
+/ id=<xid>, monitor=<monitor>, "nosoftmove", "windowrule", "fromgrid"
+/ tile_active first reads all int args to create the position & size
+/ section of the command, then collects the other args to set parameters.
+/ the alternative (only) "maximize" argument will toggle maximize.
+*/
+
 
 namespace NewTileActive {
 
