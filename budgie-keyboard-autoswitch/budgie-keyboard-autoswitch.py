@@ -173,7 +173,8 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
     def lockscreen_check(self):
         try:
             if self.screensaver is None:
-                self.screensaver = self.bus.get_object("org.gnome.ScreenSaver", "/")
+                self.screensaver = self.bus.get_object("org.gnome.ScreenSaver",
+                                                       "/")
             val = self.screensaver.get_dbus_method('GetActive')
             return val()
         except dbus.exceptions.DBusException:
