@@ -1,4 +1,4 @@
-v1.0.90 beta release 1
+v1.1.0 Run Rabbit Run
  - Hotcorners: Option added to configure hotcorners via budgie-desktop-settings and therefore hide the icon from the panel
  - Dropby: Applet settings now has the ability to display the USB window notification in any corner you define
  - Dropby: Animation when copying media so that you now when copying is in progress/finished
@@ -8,6 +8,7 @@ v1.0.90 beta release 1
  - Application Menu: Hide the large number of Settings menu icons shown in the grid view and the System Tools category menu - its more elegant this way - use the search capabilities to find Settings options like bluetooth and sharing etc.
  - Application Menu: In a similar fashion the logout/restart/suspend/shutdown icons have now been removed.  Search actions are now available for these + the ability to "lock" the screen when searching and "hibernate" if you have enabled hibernation separately
  - Application Menu: Mouse rollover capability in the category view is now available via applet settings
+ - Application Menu: Handle fractions calculations correctly
  - Previews: auto close when app loses focus
  - Previews: enable/disabling the capability is now dynamic - there is no need to logout/login
  - Previews: Multiple Libreoffice windows are previewed correctly to allow switching
@@ -22,6 +23,9 @@ v1.0.90 beta release 1
  - Countdown: This applet is now vertical panel friendly with icons and text respecting the space available on vertical panels
  - General: Latest translations from the Transifex team
  - budgie-workspace-wallpaper-applet has been rewritten in Vala.  This has been done primarily to ensure no inadvertent panel crashes.  In addition it takes into account the budgie desktop changes we made to switch wallpapers almost instantaneously (without animation) when switching workspaces.
+ - Keyboard Autoswitcher: Stop crash when gnome-screensaver starts before the panel starts
+v1.0.91 beta release 2
+v1.0.90 beta release 1
 v1.0.2 Tippy Tap
  Service Release incorporating:
  - Previews - resolve refreshing when there are no windows such as showtime/weathershow on the desktop
