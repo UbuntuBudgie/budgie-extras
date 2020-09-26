@@ -1,6 +1,5 @@
-using Wnck;
 using Gtk;
-
+using Wnck;
 
 /*
 * ShufflerII
@@ -39,18 +38,27 @@ using Gtk;
 / same application are opened.
 */
 
-
 // valac --pkg gio-2.0 --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
 
+namespace ShufflerLayouts {
 
-namespace RunLayout {
-
-    LayoutElement[] layoutdata;
-    int[] currwindows;
+    int[] existingwindows;
     Wnck.Screen wnck_scr;
     int remaining_jobs;
+    LayoutElement[] layoutdata;
+    int elementindex;
+    /*
+    / we need to keep record on passed elements (looking up
+    / window match in data) as well as passed xids (looking up
+    / data match on windows). this is for situations on mixed
+    / TryExist settings on similar wm_classes.
+    / yeah, complicated, complicated...
+    */
+    int[] indices_done;
+    int[] xids_moved_windows;
 
     struct LayoutElement {
+        int index;
         string command;
         string x_ongrid;
         string y_ongrid;
@@ -61,6 +69,84 @@ namespace RunLayout {
         string wmclass;
         string wname;
         string monitor;
+        string tryexisting;
+    }
+
+    private LayoutElement extractlayout_fromfile (string path) {
+        string[] fields = {
+            "Exec", "XPosition", "YPosition", "Cols", "Rows",
+            "XSpan", "YSpan", "WMCLASS", "WName", "Monitor",
+            "TryExisting"
+        };
+        var newrecord = LayoutElement();
+        // let's set some defaults
+        newrecord.index = elementindex;
+        newrecord.command = "";
+        newrecord.x_ongrid = "0";
+        newrecord.y_ongrid = "0";
+        newrecord.cols = "2";
+        newrecord.rows = "2";
+        newrecord.xspan = "1";
+        newrecord.yspan = "1";
+        newrecord.wmclass = "";
+        newrecord.wname = "";
+        newrecord.monitor = "";
+        newrecord.tryexisting = "false";
+        DataInputStream? dis = null;
+        try {
+            var file = File.new_for_path (path);
+            dis = new DataInputStream (file.read ());
+            string line;
+            while ((line = dis.read_line (null)) != null) {
+                int fieldindex = 0;
+                foreach (string field in fields) {
+                    if (startswith (line, field)) {
+                        string new_value = line.split("=")[1];
+                        switch (fieldindex) {
+                        case 0:
+                            newrecord.command = new_value;
+                            break;
+                        case 1:
+                            newrecord.x_ongrid = new_value;
+                            break;
+                        case 2:
+                            newrecord.y_ongrid = new_value;
+                            break;
+                        case 3:
+                            newrecord.cols = new_value;
+                            break;
+                        case 4:
+                            newrecord.rows = new_value;
+                            break;
+                        case 5:
+                            newrecord.xspan = new_value;
+                            break;
+                        case 6:
+                            newrecord.yspan = new_value;
+                            break;
+                        case 7:
+                            newrecord.wmclass = new_value.down();
+                            break;
+                        case 8:
+                            newrecord.wname = new_value.down();
+                            break;
+                        case 9:
+                            newrecord.monitor = new_value;
+                            break;
+                        case 10:
+                            newrecord.tryexisting = new_value;
+                            break;
+                        }
+                    }
+                    fieldindex += 1;
+                }
+            }
+        }
+        catch (Error e) {
+            error ("%s", e.message);
+        }
+        elementindex += 1;
+        return newrecord;
     }
 
     private bool startswith (string str, string substr ) {
@@ -75,195 +161,122 @@ namespace RunLayout {
         return false;
     }
 
-    private LayoutElement[] find_data (string[] pathlist) {
-        // fetch data from the set of files inside layoutfolder
-        string[] fields = {
-            "Exec", "XPosition", "YPosition", "Cols", "Rows",
-            "XSpan", "YSpan", "WMCLASS", "WName", "Monitor"
-        };
-
-        LayoutElement[] tasklist = {};
-        foreach (string p in pathlist) {
-            var newrecord = LayoutElement();
-            // let's set some defaults
-            newrecord.command = "";
-            newrecord.x_ongrid = "0";
-            newrecord.y_ongrid = "0";
-            newrecord.cols = "2";
-            newrecord.rows = "2";
-            newrecord.xspan = "1";
-            newrecord.yspan = "1";
-            newrecord.wmclass = "";
-            newrecord.wname = "";
-            newrecord.monitor = "";
-            try {
-                var file = File.new_for_path (p);
-                var dis = new DataInputStream (file.read ());
-                string line;
-                // walk through lines, fetch arguments
-                while ((line = dis.read_line (null)) != null) {
-                    int fieldindex = 0;
-                    foreach (string field in fields) {
-                        if (startswith (line, field)) {
-                            string new_value = line.split("=")[1];
-                            switch (fieldindex) {
-                                case 0:
-                                newrecord.command = new_value;
-                                break;
-                                case 1:
-                                newrecord.x_ongrid = new_value;
-                                break;
-                                case 2:
-                                newrecord.y_ongrid = new_value;
-                                break;
-                                case 3:
-                                newrecord.cols = new_value;
-                                break;
-                                case 4:
-                                newrecord.rows = new_value;
-                                break;
-                                case 5:
-                                newrecord.xspan = new_value;
-                                break;
-                                case 6:
-                                newrecord.yspan = new_value;
-                                break;
-                                case 7:
-                                newrecord.wmclass = new_value;
-                                break;
-                                case 8:
-                                newrecord.wname = new_value;
-                                break;
-                                case 9:
-                                newrecord.monitor = new_value;
-                                break;
-                            }
-                        }
-                        fieldindex += 1;
-                    }
-                }
-                // now if content seems valid, add to database
-                if (
-                    newrecord.command != "" &&
-                    newrecord.wmclass  != ""
-                ) {
-                    tasklist += newrecord;
-                }
-            }
-            catch (Error e) {
-                error ("%s", e.message);
-            }
+    private void get_layoutdata (string[] files) {
+        foreach (string path in files) {
+            layoutdata  += extractlayout_fromfile(path);
         }
-        return tasklist;
     }
 
-    private int get_intinlist (int intval, int[] arr) {
+    private void create_busyfile (File busyfile) {
+        // create triggerfile to temporarily disable possibly set windowrules
+        string user = Environment.get_user_name();
+        File busy = File.new_for_path ("/tmp/".concat(user, "_running_layout"));
+        try {
+            if (!busy.query_exists()) {
+                busy.create(FileCreateFlags.REPLACE_DESTINATION);
+            }
+        }
+        catch (Error e) {
+            error ("%s", e.message);
+        }
+    }
+
+    private bool check_intinlist (int intval, int[] arr) {
         // check if in in array
         for (int i=0; i<arr.length; i++) {
             if (intval == arr[i]) {
-                return i;
+                return true;
             }
         }
-        return -1;
+        return false;
     }
 
-    private void run_command (string cmd) {
-        // well, seems clear
-        try {
-            Process.spawn_command_line_async(cmd);
+    private bool element_matcheswindow (LayoutElement le, string wname, string wmclass) {
+        // just comparing / checking strings (wname/wclass)
+        string element_name = le.wname;
+        string element_wmclass = le.wmclass;
+        if (wname.contains(element_name) &&  element_wmclass == wmclass) {
+            return true;
         }
-        catch (GLib.SpawnError err) {
-            /*
-            * in case an error occurs, the command most likely is
-            * incorrect not much use for any action
-            */
-        }
+        return false;
     }
 
-    private string create_dirs_file (string subpath) {
-        // defines, and if needed, creates directory for layouts
-        string homedir = Environment.get_home_dir();
-        string fullpath = GLib.Path.build_path(
-            GLib.Path.DIR_SEPARATOR_S, homedir, subpath
-        );
-        GLib.File file = GLib.File.new_for_path(fullpath);
-        try {
-            file.make_directory_with_parents();
-        }
-        catch (Error e) {
-            /* the directory exists, nothing to be done */
-        }
-        return fullpath;
-    }
-
-    private string fix_wmclassname (Wnck.Window new_window) {
+    private void findmatch_andmove (string wname, string wmclass, int xid) {
         /*
-        / since libreoffice fools us by changing the wm_class after
-        / creation of the window, make sure we have the final wm_class
+        / find matching LayoutElement, check if job hasn't been done yet*
+        / *the latter is to prevent the theoretical possiblity that, if
+        / multiple windows are called with the same specs but different
+        / target positions, windows repeatedly land on the position, defined
+        / in the first matching window name/wmclass combination of a
+        / LayoutElement.
         */
-        int tries = 0;
-        // we wouldn't wait forever
-        while (tries < 10) {
-            Thread.usleep(100000);
-            string classname = new_window.get_class_group_name().down();
-            if (classname != "soffice") {
-                return classname;
-            }
-            tries += 1;
-        }
-        return "invalid";
-    }
+        // check window name & class for layoutmatch, move window
 
-    private void act_onnewwindow (Wnck.Window new_window) {
-        /*
-        / on new window creation, look it up, move according to set
-        / corresponding arguments.
-        */
-        // 1. check if window is new
-        int xid = (int)new_window.get_xid();
-        string name = new_window.get_name();
-        string wm_class = new_window.get_class_group_name().down();
-        // fix for loffice changing classname
-        if (wm_class == "soffice") {
-            wm_class = fix_wmclassname(new_window);
-        }
-        if (get_intinlist(xid, currwindows) == -1) {
-            foreach (LayoutElement task in layoutdata) {
-                // 2. check if wmclass and (possibly set) name matches
-                bool winname_matches = true;
-                bool wmclass_matches = task.wmclass == wm_class;
-                string foundname = task.wname;
-                if (foundname != "" && !name.contains(foundname)) {
-                    winname_matches = false;
-                }
-                if (winname_matches && wmclass_matches) {
-                    // 3. if match, move window, remaining -= 1.
-                    string addmonitor = task.monitor;
-                    if (addmonitor != "") {
-                        addmonitor = @"monitor=$addmonitor";
-                    }
-                    // we're not using animation for now
-                    // let's keep below abs path for quick compiling on maintanance tasks
-                    //  string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
-                    string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
-                        task.x_ongrid, " ", task.y_ongrid, " ", task.cols, " ", task.rows,
-                        " ", task.xspan, " ", task.yspan, " ", addmonitor, " ",  @"id=$xid",
-                        " ", "nosoftmove"
-                    );
-                    run_command(cmd);
+        foreach (LayoutElement lel in layoutdata) {
+            int lel_index = lel.index;
+            bool xid_isused = check_intinlist(xid, xids_moved_windows);
+            if (!check_intinlist(lel_index, indices_done) && !xid_isused) {
+                bool ismatch = element_matcheswindow(lel, wname, wmclass);
+                if (ismatch) {
+                    indices_done += lel_index;
                     remaining_jobs -= 1;
-                    /*
-                    / if we run out of jobs, get out. on failure of one or
-                    / more jobs, we are bailing out after 12 seconds anyway
-                    / (as set in main())
-                    */
+                    makeyourmove(lel, xid);
+                    xids_moved_windows += xid;
                     if (remaining_jobs == 0) {
                         Gtk.main_quit();
                     }
                 }
             }
-
         }
+    }
+
+    private bool on_this_workspace (Wnck.Window win) {
+        Wnck.Workspace current = wnck_scr.get_active_workspace();
+        if (win.get_workspace() == current) {
+            return true;
+        }
+        return false;
+    }
+
+    private void act_onnewwindow(Wnck.Window new_win) {
+        int xid = (int)new_win.get_xid();
+        string firstname = new_win.get_name();
+        int i = 0;
+        string lastname = "";
+        /*
+        / due to the fact that window names change after creation,
+        / of some applications, we need a built-in timeout during which
+        / we allow the name to change
+        */
+        Timeout.add(20, ()=> {
+            lastname = new_win.get_name();
+            if (firstname != lastname || i > 20) {
+                bool existed = check_intinlist(xid, existingwindows);
+                string newclass = new_win.get_class_group_name().down();
+                if (!existed) {
+                    findmatch_andmove(lastname.down(), newclass, xid);
+                }
+                return false;
+            }
+            i += 1;
+            return true;
+        });
+    }
+
+    private void makeyourmove (LayoutElement le, int xid) {
+        // perform move action. we're not using animation for now
+        // see if we need to set monitor
+        string addmonitor = le.monitor;
+        if (addmonitor != "") {
+            addmonitor = @"monitor=$addmonitor";
+        }
+        string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+        //  string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
+            le.x_ongrid, " ", le.y_ongrid, " ", le.cols, " ", le.rows,
+            " ", le.xspan, " ", le.yspan, " ",   @"id=$xid", " ", addmonitor,
+            " ", "nosoftmove"
+        );
+        run_command(cmd);
     }
 
     private string[] validpathlist (string directory) {
@@ -289,64 +302,133 @@ namespace RunLayout {
         }
     }
 
-    public static void main (string[] args) {
-        // creat triggerfile to temporarily disable possibly set windowrules
-        string user = Environment.get_user_name();
-        File busy = File.new_for_path ("/tmp/".concat(user, "_running_layout"));
+    private string create_dirs_file (string subpath) {
+        // defines, and if needed, creates directory for layouts
+        string homedir = Environment.get_home_dir();
+        string fullpath = GLib.Path.build_path(
+            GLib.Path.DIR_SEPARATOR_S, homedir, subpath
+        );
+        GLib.File file = GLib.File.new_for_path(fullpath);
         try {
-            if (!busy.query_exists()) {
-                busy.create(FileCreateFlags.REPLACE_DESTINATION);
-            }
+            file.make_directory_with_parents();
         }
         catch (Error e) {
-            error ("%s", e.message);
+            /* the directory exists, nothing to be done */
         }
-        // make sure directories exist, get full path to layout dir
-        string layoutfolder = args[1];
+        return fullpath;
+    }
+
+    private void run_command (string cmd) {
+        // well, seems clear
+        try {
+            Process.spawn_command_line_async(cmd);
+        }
+        catch (GLib.SpawnError err) {
+            /*
+            * in case an error occurs, the command most likely is
+            * incorrect not much use for any action
+            */
+        }
+    }
+
+    public static void main(string[] args) {
+        /*
+        / in case we launch multiple exactly similar windows to different
+        / positions, we need a unique identifier
+        */
+        elementindex = 0;
+        indices_done = {};
+        xids_moved_windows = {};
+        // define & create triggerfile (putting rules on hold)
+        string user = Environment.get_user_name();
+        File busyfile = File.new_for_path (
+            "/tmp/".concat(user, "_running_layout")
+        );
+        create_busyfile(busyfile);
+        // get windowlist (xid) of windows that existed on launch
+        Gtk.init(ref args);
+        existingwindows = {};
+        wnck_scr = Wnck.Screen.get_default();
+        wnck_scr.force_update();
+        foreach (Wnck.Window w in wnck_scr.get_windows()) {
+        // using int - don't want to make extra method for ulong
+            existingwindows += (int)w.get_xid();
+        }
+        // take action on new windows
+        wnck_scr.window_opened.connect(act_onnewwindow);
+        // get layout data
         string searchpath = create_dirs_file(
             ".config/budgie-extras/shuffler/layouts"
         );
+        // subfolder and -> layoutpath
+        string layoutfolder = args[1];
         string layoutpath = searchpath.concat("/", layoutfolder);
-        // see if layoutname is valid, directory exists
+        string[] validpaths = {};
+        // and if all is correct, go fetch data
         if (FileUtils.test (layoutpath, FileTest.IS_DIR)) {
-            // create file list from dir
-            string[] validpaths = validpathlist(layoutpath);
-            // remaining jobs - to decide when to quit
-            remaining_jobs = validpaths.length;
-            // now run Gtk thread, read data, do the job
-            layoutdata = find_data(validpaths);
-            Gtk.init(ref args);
-            // limit max lifetime, quit after 12 seconds in any case
-            GLib.Timeout.add_seconds(12, ()=> {
-                Gtk.main_quit();
-                return false;
-            });
-            // ok, back to work
-            wnck_scr = Wnck.Screen.get_default ();
-            wnck_scr.force_update ();
-            // get existing windows on initial situation first
-            currwindows = {};
-            unowned GLib.List<Wnck.Window> currwins = wnck_scr.get_windows ();
-            // but store and check them as xid array, to prevent Wnck acting up
-            foreach (Wnck.Window w in currwins) {
-                int xid = (int)w.get_xid ();
-                currwindows += xid;
+        // create file list from dir
+            validpaths = validpathlist(layoutpath);
+        }
+        get_layoutdata(validpaths);
+        remaining_jobs = layoutdata.length;
+        foreach (LayoutElement lel in layoutdata) {
+            // first let's see if we need to grab an existing window
+            bool trybeforeyoubuy = lel.tryexisting == "true";
+            // if moving existing fails, we need to launch new window
+            bool found_match = false;
+            if (trybeforeyoubuy) {
+                string lookforclass = lel.wmclass;
+                string lookforwname = lel.wname;
+                // see if any of the windows matches name + class
+                foreach (
+                    Wnck.Window w_exists in wnck_scr.get_windows()
+                ) {
+                    bool xid_isused = check_intinlist((int)w_exists.get_xid(), xids_moved_windows);
+                    bool class_matches = w_exists.get_class_group_name().down() == lookforclass;
+                    bool name_matches = w_exists.get_name().down().contains(lookforwname);
+                    // check if job is already claimed to be done
+                    int exclude = lel.index;
+                    bool passed = check_intinlist(exclude, indices_done);
+                    if (
+                        name_matches && class_matches && !passed &&
+                        on_this_workspace(w_exists) && !xid_isused
+                    ) {
+                        // move existing
+                        int xid = (int)w_exists.get_xid();
+                        xids_moved_windows += xid;
+                        /*
+                        / nah, we could combine indices_done & remaining jobs
+                        / since their length implies the same, but we're lazy
+                        */
+                        indices_done += exclude;
+                        remaining_jobs -= 1;
+                        makeyourmove(lel, xid);
+                        found_match = true;
+                    }
+                }
             }
-            wnck_scr.window_opened.connect(act_onnewwindow);
-            // now we have all data we need, let's launch windows
-            foreach (LayoutElement le in layoutdata) {
-                run_command(le.command);
+            // if no existing window was moved, launch new
+            if (!found_match) {
+                run_command(lel.command);
             }
+        }
+        Timeout.add_seconds(12, ()=> {
+            Gtk.main_quit();
+            return false;
+        });
+        if (remaining_jobs != 0) {
+            /*
+            / if all jobs are done, no need to fire up connect & all
+            / e.g. in case all jobs were move-only jobs
+            */
             Gtk.main();
         }
-        else {
-            print ("layoutname is not valid\n");
-        }
         try {
-            busy.delete();
+            Thread.usleep(10000);
+            busyfile.delete();
         }
         catch (Error e) {
-            // file was deleted or not created at all
+            error ("%s", e.message);
         }
     }
 }

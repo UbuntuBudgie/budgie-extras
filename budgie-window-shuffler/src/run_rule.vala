@@ -61,6 +61,10 @@ namespace ApplyRule {
         */
         int n_attempt = 0;
         while (n_attempt < 10) {
+            /*
+            / we can safely use usleep here, since we are using the daemon's
+            / thread to update
+            */
             Thread.usleep(100000);
             try {
                 GLib.HashTable<string, Variant> allwins = client.get_winsdata();
