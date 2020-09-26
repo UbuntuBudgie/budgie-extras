@@ -162,8 +162,25 @@ namespace ShufflerLayouts {
     }
 
     private void get_layoutdata (string[] files) {
+        LayoutElement[] generic_elements = {};
         foreach (string path in files) {
-            layoutdata  += extractlayout_fromfile(path);
+            /*
+            / when looking up window match in layoutElements, we need to
+            / give priority to elements that include a window -name-
+            / ("WName=" field), to prevent "stealing" a match by a generic
+            / match (no wname set) from a more specific match (window name
+            / is set)
+            */
+            LayoutElement new_le = extractlayout_fromfile(path);
+            if (new_le.wname != "") {
+                layoutdata += new_le;
+            }
+            else {
+                generic_elements += new_le;
+            }
+        }
+        foreach (LayoutElement le in generic_elements) {
+            layoutdata += le;
         }
     }
 
