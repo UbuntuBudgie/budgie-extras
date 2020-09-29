@@ -20,11 +20,11 @@ using Wnck;
 /*
 / use this executable with a folder (named after an appropriate layoutname)
 / as argument. populate the folder with files with the extension
-/ .windowlayout. the folder needs to be located in
+/ .windowtask. the folder needs to be located in
 / ~/.config/budgie-extras/shuffler/layouts. Inside the folder, dump multiple
 / files containing the following fields:
 / Exec=
-/ WMCLASS=
+/ WMClASS=
 / XPosition=0
 / YPosition=0
 / Cols=
@@ -37,6 +37,8 @@ using Wnck;
 / be launched to specific positions in case multiple windows of one and the
 / same application are opened.
 */
+
+// todo: add SkipMinimized <- done
 
 // valac --pkg gio-2.0 --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
 
@@ -75,7 +77,7 @@ namespace ShufflerLayouts {
     private LayoutElement extractlayout_fromfile (string path) {
         string[] fields = {
             "Exec", "XPosition", "YPosition", "Cols", "Rows",
-            "XSpan", "YSpan", "WMCLASS", "WName", "Monitor",
+            "XSpan", "YSpan", "WMClass", "WName", "Monitor",
             "TryExisting"
         };
         var newrecord = LayoutElement();
@@ -146,6 +148,13 @@ namespace ShufflerLayouts {
             error ("%s", e.message);
         }
         elementindex += 1;
+        // test
+        string com = newrecord.command;
+        string cls = newrecord.wmclass;
+        string colss = newrecord.cols;
+        string rowss = newrecord.rows;
+        string xp = newrecord.x_ongrid;
+        string yp = newrecord.y_ongrid;
         return newrecord;
     }
 
@@ -169,7 +178,8 @@ namespace ShufflerLayouts {
             / give priority to elements that include a window -name-
             / ("WName=" field), to prevent "stealing" a match by a generic
             / match (no wname set) from a more specific match (window name
-            / is set)
+            / is set).
+            / we'll keep the unnamed separated first, adding them afterwards
             */
             LayoutElement new_le = extractlayout_fromfile(path);
             if (new_le.wname != "") {
@@ -256,7 +266,7 @@ namespace ShufflerLayouts {
     }
 
     private void act_onnewwindow(Wnck.Window new_win) {
-        int xid = (int)new_win.get_xid();
+        int? xid = (int)new_win.get_xid();
         string firstname = new_win.get_name();
         int i = 0;
         string lastname = "";
@@ -265,12 +275,14 @@ namespace ShufflerLayouts {
         / of some applications, we need a built-in timeout during which
         / we allow the name to change
         */
+
         Timeout.add(20, ()=> {
             lastname = new_win.get_name();
             if (firstname != lastname || i > 20) {
                 bool existed = check_intinlist(xid, existingwindows);
                 string newclass = new_win.get_class_group_name().down();
-                if (!existed) {
+                bool window_isnormal = new_win.get_window_type() == Wnck.WindowType.NORMAL;
+                if (!existed && window_isnormal) {
                     findmatch_andmove(lastname.down(), newclass, xid);
                 }
                 return false;
@@ -306,7 +318,7 @@ namespace ShufflerLayouts {
                 string candidate = Path.build_filename(directory, filename);
                 if (
                     (FileUtils.test (candidate, FileTest.IS_REGULAR)) &&
-                    candidate.contains(".windowlayout")
+                    candidate.contains(".windowtask")
                 )
                 {
                     found_valids += candidate;
@@ -406,9 +418,11 @@ namespace ShufflerLayouts {
                     // check if job is already claimed to be done
                     int exclude = lel.index;
                     bool passed = check_intinlist(exclude, indices_done);
+                    bool isvisible = !w_exists.is_minimized();
                     if (
                         name_matches && class_matches && !passed &&
-                        on_this_workspace(w_exists) && !xid_isused
+                        on_this_workspace(w_exists) && !xid_isused &&
+                        isvisible
                     ) {
                         // move existing
                         int xid = (int)w_exists.get_xid();
@@ -430,6 +444,7 @@ namespace ShufflerLayouts {
             }
         }
         Timeout.add_seconds(12, ()=> {
+            // make sure to quit after x time anyway
             Gtk.main_quit();
             return false;
         });
@@ -440,8 +455,8 @@ namespace ShufflerLayouts {
             */
             Gtk.main();
         }
+        Thread.usleep(10000);
         try {
-            Thread.usleep(10000);
             busyfile.delete();
         }
         catch (Error e) {

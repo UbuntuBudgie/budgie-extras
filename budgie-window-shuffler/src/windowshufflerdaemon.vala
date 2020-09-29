@@ -392,7 +392,6 @@ namespace ShufflerEssentialInfo {
         public HashTable<string, Variant> get_tiles (
             string mon_name, int cols, int rows
         ) throws Error {
-
             /* tiledata.keys:
             / "x_anchors" (as string)
             / "y_anchors" (as string)
