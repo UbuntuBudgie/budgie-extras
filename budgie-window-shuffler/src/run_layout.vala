@@ -148,13 +148,6 @@ namespace ShufflerLayouts {
             error ("%s", e.message);
         }
         elementindex += 1;
-        // test
-        string com = newrecord.command;
-        string cls = newrecord.wmclass;
-        string colss = newrecord.cols;
-        string rowss = newrecord.rows;
-        string xp = newrecord.x_ongrid;
-        string yp = newrecord.y_ongrid;
         return newrecord;
     }
 
@@ -266,30 +259,30 @@ namespace ShufflerLayouts {
     }
 
     private void act_onnewwindow(Wnck.Window new_win) {
-        int? xid = (int)new_win.get_xid();
-        string firstname = new_win.get_name();
-        int i = 0;
-        string lastname = "";
-        /*
-        / due to the fact that window names change after creation,
-        / of some applications, we need a built-in timeout during which
-        / we allow the name to change
-        */
-
-        Timeout.add(20, ()=> {
-            lastname = new_win.get_name();
-            if (firstname != lastname || i > 20) {
-                bool existed = check_intinlist(xid, existingwindows);
-                string newclass = new_win.get_class_group_name().down();
-                bool window_isnormal = new_win.get_window_type() == Wnck.WindowType.NORMAL;
-                if (!existed && window_isnormal) {
-                    findmatch_andmove(lastname.down(), newclass, xid);
+        if (new_win.get_window_type() == Wnck.WindowType.NORMAL) {
+            int? xid = (int)new_win.get_xid();
+            string firstname = new_win.get_name();
+            int i = 0;
+            string lastname = "";
+            /*
+            / due to the fact that window names change after creation,
+            / of some applications, we need a built-in timeout during which
+            / we allow the name to change
+            */
+            Timeout.add(20, ()=> {
+                lastname = new_win.get_name();
+                if (firstname != lastname || i > 20) {
+                    bool existed = check_intinlist(xid, existingwindows);
+                    string newclass = new_win.get_class_group_name().down();
+                    if (!existed) {
+                        findmatch_andmove(lastname.down(), newclass, xid);
+                    }
+                    return false;
                 }
-                return false;
-            }
-            i += 1;
-            return true;
-        });
+                i += 1;
+                return true;
+            });
+        }
     }
 
     private void makeyourmove (LayoutElement le, int xid) {
