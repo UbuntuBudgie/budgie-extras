@@ -1,48 +1,260 @@
+# #-#-#-#-#  ru.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  ru.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Alexey User <air108@gmail.com>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2020
-# 
+#
+# #-#-#-#-#  ru.po (slingshot)  #-#-#-#-#
+# Russian translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-14 21:18+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
-"Language-Team: Russian (https://www.transifex.com/ubuntu-budgie/teams/72251/ru/)\n"
+"POT-Creation-Date: 2020-10-20 23:09+0100\n"
+"PO-Revision-Date: 2018-05-20 15:10+0000\n"
+"Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
+"Language-Team: Russian <https://weblate.elementary.io/projects/wingpanel/"
+"wingpanel-indicator-network/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"#-#-#-#-#  ru.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  ru.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+"#-#-#-#-#  ru.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.6.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+"#-#-#-#-#  ru.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.18\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
+msgid "Open and search apps"
+msgstr "Откройте и ищите приложения"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Выбрать значок меню из файла"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Файлы изображений"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Все файлы"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Cancel"
+msgstr "Отмена"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Установить значок"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Выключить"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
+msgid "Suspend"
+msgstr "Ждущий режим"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
+msgid "Restart"
+msgstr "Перезагрузка"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
+msgid "Lock"
+msgstr "Заблокировать"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
+msgid "Logout"
+msgstr "Выйти"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Убрать из _док-панели"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Добавить на _док-панель"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Текст"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Приложения"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Файлы"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Действия"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Поиск"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Контакты"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Интернет"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:168
+msgid "Settings"
+msgstr "Параметры"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Действия приложения"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Прочие"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
+msgid "View as Grid"
+msgstr "В виде таблицы"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
+msgid "View by Category"
+msgstr "В виде категорий"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
+msgid "Search Apps"
+msgstr "Поиск приложений"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
+msgid "Clear all"
 msgstr ""
 
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr ""
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Запустить в терминале"
 
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr ""
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Запустить приложение или команду в терминале"
 
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Открыть"
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Выполнить"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Запустить приложение, действие или скрипт"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Копировать"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Копировать выделенное"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Выполнить команду…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Открыть %s в браузере по умолчанию"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Открыть %s в %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Открыть эту ссылку в браузере по умолчанию"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Ссылка"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Открыть ссылку в браузере по умолчанию"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Выполнить «%s»"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Выполнить команду"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Найти и выполнить произвольную команду."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Найти и запустить приложения на этом компьютере."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#, c-format
+msgid "Open with %s"
+msgstr "Открыть в %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Открыть выделенное с помощью %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Калькулятор"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Вычислить основные выражения."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "bc не установлена"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Попробуйте изменить запрос."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Нет результатов по запросу «%s»"
 
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
@@ -59,6 +271,594 @@ msgstr ""
 
 #: budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
+msgid "midnight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
+msgid "one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
+msgid "two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
+msgid "three"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
+msgid "four"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
+msgid "five"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
+msgid "six"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
+msgid "seven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
+msgid "eight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
+msgid "nine"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
+msgid "ten"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
+msgid "eleven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
+msgid "noon"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
+msgid "thirteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
+msgid "fourteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
+msgid "fifteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
+msgid "sixteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
+msgid "seventeen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
+msgid "eighteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
+msgid "nineteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
+msgid "twenty"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
+msgid "twenty-one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
+msgid "twenty-two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
+msgid "twenty-three"
+msgstr ""
+
+#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
+#, c-format
+msgid "%s-ish"
+msgstr ""
+
+#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
+#, c-format
+msgid "a bit past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:157
+#, c-format
+msgid "ten past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:160
+#, c-format
+msgid "quarter after %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
+#, c-format
+msgid "twenty past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
+#, c-format
+msgid "almost half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
+#, c-format
+msgid "half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:180
+#, c-format
+msgid "twenty-five 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:185
+#, c-format
+msgid "twenty 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:190
+#, c-format
+msgid "quarter 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:195
+#, c-format
+msgid "ten 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+#. by adding the characters +1 you can add a further hour i.e. 'almost three'
+#. by adding the characters -1 you can subtract one hour i.e. 'almost one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
+#, c-format
+msgid "almost %s"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
+msgid "Date and Time settings"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
+msgid "Calendar"
+msgstr "Календарь"
+
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#. pack page2
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
+msgid "Preferences"
+msgstr "Настройки"
+
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
+msgid "Show date"
+msgstr "Показывать дату"
+
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
+msgid "Use 24 hour time"
+msgstr "Использовать 24-часовой формат"
+
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:143
+msgid "Brightness"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:91
+msgid "Temperature"
+msgstr "Температура"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:141
+msgid "Light"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:110
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:135
+#, c-format
+msgid "%s restored."
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:142
+#, c-format
+msgid "%s already exists."
+msgstr ""
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:390
+msgid "Restore"
+msgstr "Восстановить"
+
+#. tooltip
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Открыть"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Удалить все объекты из Корзины?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Все объекты в Корзине будут удалены безвозвратно."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Очистить Корзину"
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr ""
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr ""
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr ""
+
+#. settingsgrid - bottomsection
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-window-shuffler/src/shuffler_control.vala:241
+msgid "Close"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr ""
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr ""
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
+msgid "Set text color"
+msgstr ""
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr ""
+
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Monday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Tuesday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Wednesday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Thursday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Friday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Saturday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Sunday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:800
+msgid "General"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "City"
+msgstr ""
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+msgid "Show on desktop"
+msgstr ""
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
+msgid "Show dynamic panel icon"
+msgstr ""
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
+msgid "Show forecast in popover"
+msgstr ""
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:876
+msgid "Transparency"
+msgstr "Прозрачность"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:909
+msgid "Set custom position (px)"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:931
+msgid "Custom location name"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
+msgid "Please enter at least 3 characters"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
+msgid "Connect to Hidden Network…"
+msgstr "Подключиться к скрытой сети…"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
+msgid "Network Settings…"
+msgstr "Параметры сети…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
+#, c-format
+msgid "Virtual network: %s"
+msgstr "Виртуальная сеть: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "Проводное"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
+msgid "No Access Points Available"
+msgstr "Нет доступных подключений Wi-Fi"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
+msgid "Scanning for Access Points…"
+msgstr "Сканирование доступных точек…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
+msgid "Wireless"
+msgstr "Беспроводная сеть"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
+msgid "This wireless network could not be connected to."
+msgstr "Эта беспроводная сеть не может быть подключена."
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
+msgid "This network uses 40/64-bit WEP encryption"
+msgstr "Эта сеть использует 40/64-битное WEP-шифрование"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
+msgid "This network uses 104/128-bit WEP encryption"
+msgstr "Эта сеть использует 104/128-битное WEP-шифрование"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
+msgid "This network uses WPA encryption"
+msgstr "Эта сеть использует WPA-шифрование"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+msgid "This network uses encryption"
+msgstr "Эта сеть использует шифрование"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
+msgid "This network is unsecured"
+msgstr "Эта сеть небезопасна"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
+msgid "Failed to connect"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
+msgid "Connecting"
+msgstr "Подключение"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
+msgid "Connected"
+msgstr "Подключено"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
+msgid "Disconnected"
+msgstr "Отключено"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr "VPN"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
+msgid "This Virtual Private Network could not be connected to."
+msgstr "Эта виртуальная приватная сеть не может быть подключена."
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
+msgid "Unknown device"
+msgstr "Неизвестное устройство"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
+#, c-format
+msgid "Unknown type: %s "
+msgstr "Неизвестный тип: %s "
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
+#, c-format
+msgid "Mobile Broadband: %s"
+msgstr "Мобильная сеть: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr "Мобильная сеть"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
+msgid "Modem"
+msgstr "Модем"
+
+#. strings
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+msgid "Stop"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+msgid "Start"
+msgstr "Начало"
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
+msgid ""
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
+msgid "Applet runs without a panel icon"
 msgstr ""
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
@@ -86,17 +886,48 @@ msgstr ""
 msgid "Choose directory"
 msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-msgid "Cancel"
-msgstr "Отмена"
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:147
+msgid "Corner"
+msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Use"
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:151
+msgid "Action"
+msgstr ""
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:155
+msgid "Custom"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:266
+#: budgie-hotcorners/src/HotCornersApplet.vala:275
+#: budgie-hotcorners/src/HotCornersApplet.vala:284
+msgid "Missing process"
+msgstr ""
+
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:270
+msgid "Please enable Window Previews"
+msgstr ""
+
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:279
+#: budgie-hotcorners/src/HotCornersApplet.vala:287
+msgid "Please enable Window Shuffler"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:467
+msgid "Manage corners from panel icon"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:477
+msgid "Set pressure (0 = no pressure)"
+msgstr ""
+
+#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
+msgid "Minimum window size exceeds target"
 msgstr ""
 
 #. STRINGS & THINGS
@@ -292,11 +1123,6 @@ msgstr ""
 msgid "Window Shuffler Control"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:168
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-msgid "Settings"
-msgstr "Параметры"
-
 #: budgie-window-shuffler/src/shuffler_control.vala:169
 msgid "Margins"
 msgstr ""
@@ -348,12 +1174,6 @@ msgstr ""
 msgid "Rows"
 msgstr ""
 
-#. settingsgrid - bottomsection
-#: budgie-window-shuffler/src/shuffler_control.vala:241
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-msgid "Close"
-msgstr ""
-
 #: budgie-window-shuffler/src/shuffler_control.vala:317
 msgid "Top"
 msgstr "Сверху"
@@ -382,599 +1202,27 @@ msgstr ""
 msgid "Sticky Neighbors switched on"
 msgstr ""
 
-#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
-msgid "Minimum window size exceeds target"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
-msgid "midnight"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
-msgid "one"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
-msgid "two"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
-msgid "three"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
-msgid "four"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
-msgid "five"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
-msgid "six"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
-msgid "seven"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
-msgid "eight"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
-msgid "nine"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
-msgid "ten"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
-msgid "eleven"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
-msgid "noon"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
-msgid "thirteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
-msgid "fourteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
-msgid "fifteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
-msgid "sixteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
-msgid "seventeen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
-msgid "eighteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
-msgid "nineteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
-msgid "twenty"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
-msgid "twenty-one"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
-msgid "twenty-two"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
-msgid "twenty-three"
-msgstr ""
-
-#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
-#, c-format
-msgid "%s-ish"
-msgstr ""
-
-#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
-#, c-format
-msgid "a bit past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:157
-#, c-format
-msgid "ten past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:160
-#, c-format
-msgid "quarter after %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
-#, c-format
-msgid "twenty past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
-#, c-format
-msgid "almost half-past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
-#, c-format
-msgid "half-past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:180
-#, c-format
-msgid "twenty-five 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:185
-#, c-format
-msgid "twenty 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:190
-#, c-format
-msgid "quarter 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:195
-#, c-format
-msgid "ten 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
-#. by adding the characters +1 you can add a further hour i.e. 'almost three'
-#. by adding the characters -1 you can subtract one hour i.e. 'almost one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
-#, c-format
-msgid "almost %s"
-msgstr ""
-
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
-msgid "Date and Time settings"
-msgstr ""
-
-#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
-msgid "Calendar"
-msgstr "Календарь"
-
-#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
-#. pack page2
-#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
-msgid "Preferences"
-msgstr "Настройки"
-
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
-msgid "Show date"
-msgstr "Показывать дату"
-
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
-msgid "Use 24 hour time"
-msgstr "Использовать 24-часовой формат"
-
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:147
-msgid "Corner"
-msgstr ""
-
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:151
-msgid "Action"
-msgstr ""
-
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:155
-msgid "Custom"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:266
-#: budgie-hotcorners/src/HotCornersApplet.vala:275
-#: budgie-hotcorners/src/HotCornersApplet.vala:284
-msgid "Missing process"
-msgstr ""
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:270
-msgid "Please enable Window Previews"
-msgstr ""
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:279
-#: budgie-hotcorners/src/HotCornersApplet.vala:287
-msgid "Please enable Window Shuffler"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:467
-msgid "Manage corners from panel icon"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:477
-msgid "Set pressure (0 = no pressure)"
-msgstr ""
-
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
 
-#. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Monday"
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Tuesday"
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Wednesday"
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
 msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Thursday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Friday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Saturday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Sunday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:800
-msgid "General"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
-msgid "Desktop"
-msgstr "Рабочий стол"
-
-#. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
-msgid "City"
-msgstr ""
-
-#. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
-msgid "Show on desktop"
-msgstr ""
-
-#. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
-msgid "Show dynamic panel icon"
-msgstr ""
-
-#. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
-msgid "Show forecast in popover"
-msgstr ""
-
-#. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:876
-msgid "Transparency"
-msgstr "Прозрачность"
-
-#. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
-#: budgie-weathershow/src/get_color/get_color.vala:50
-msgid "Set text color"
-msgstr ""
-
-#. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:909
-msgid "Set custom position (px)"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:931
-msgid "Custom location name"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
-msgid "Please enter at least 3 characters"
-msgstr ""
-
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
-msgid "Open and search apps"
-msgstr "Откройте и ищите приложения"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
-msgid "Run in Terminal"
-msgstr "Запустить в терминале"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
-msgid "Run application or command in terminal"
-msgstr "Запустить приложение или команду в терминале"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
-msgid "Run"
-msgstr "Выполнить"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
-msgid "Run an application, action or script"
-msgstr "Запустить приложение, действие или скрипт"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
-msgid "Copy to Clipboard"
-msgstr "Копировать"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
-msgid "Copy selection to clipboard"
-msgstr "Копировать выделенное"
-
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
-msgid "Run this command…"
-msgstr "Выполнить команду…"
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
-msgid "Try changing search terms."
-msgstr "Попробуйте изменить запрос."
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
-#, c-format
-msgid "No Results for “%s”"
-msgstr "Нет результатов по запросу «%s»"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
-msgid "View as Grid"
-msgstr "В виде таблицы"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
-msgid "View by Category"
-msgstr "В виде категорий"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
-msgid "Search Apps"
-msgstr "Поиск приложений"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
-msgid "Clear all"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
-msgid "Shutdown"
-msgstr "Выключить"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
-msgid "Suspend"
-msgstr "Ждущий режим"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
-msgid "Restart"
-msgstr "Перезагрузка"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
-msgid "Lock"
-msgstr "Заблокировать"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
-msgid "Logout"
-msgstr "Выйти"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
-msgid "Text"
-msgstr "Текст"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
-msgid "Applications"
-msgstr "Приложения"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
-msgid "Files"
-msgstr "Файлы"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
-msgid "Actions"
-msgstr "Действия"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
-msgid "Search"
-msgstr "Поиск"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
-msgid "Contacts"
-msgstr "Контакты"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
-msgid "Internet"
-msgstr "Интернет"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
-msgid "Application Actions"
-msgstr "Действия приложения"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
-msgid "Other"
-msgstr "Прочие"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
-msgid "Remove from _Dock"
-msgstr "Убрать из _док-панели"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
-msgid "Add to _Dock"
-msgstr "Добавить на _док-панель"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-msgid "Set menu icon from file"
-msgstr "Выбрать значок меню из файла"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
-msgid "Image files"
-msgstr "Файлы изображений"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
-msgid "Any file"
-msgstr "Все файлы"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-msgid "Set icon"
-msgstr "Установить значок"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
-msgid "Search for and run applications on your computer."
-msgstr "Найти и запустить приложения на этом компьютере."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
-#, c-format
-msgid "Open with %s"
-msgstr "Открыть в %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
-#, c-format
-msgid "Opens current selection using %s"
-msgstr "Открыть выделенное с помощью %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-#, c-format
-msgid "Execute '%s'"
-msgstr "Выполнить «%s»"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-msgid "Run command"
-msgstr "Выполнить команду"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
-msgid "Find and execute arbitrary commands."
-msgstr "Найти и выполнить произвольную команду."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
-msgid "Open %s in default web browser"
-msgstr "Открыть %s в браузере по умолчанию"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
-#, c-format
-msgid "Open %s in %s"
-msgstr "Открыть %s в %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
-msgid "Open this link in default browser"
-msgstr "Открыть эту ссылку в браузере по умолчанию"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
-msgid "Link"
-msgstr "Ссылка"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
-msgid "Open link in default browser"
-msgstr "Открыть ссылку в браузере по умолчанию"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
-msgid "Calculator"
-msgstr "Калькулятор"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
-msgid "Calculate basic expressions."
-msgstr "Вычислить основные выражения."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
-msgid "bc is not installed"
-msgstr "bc не установлена"
 
 #. hrs to double digits
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
@@ -1044,241 +1292,6 @@ msgstr ""
 msgid "Super + drag"
 msgstr ""
 
-#. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
-#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
-msgid "WallStreet Control"
-msgstr ""
-
-#. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
-msgid "Use default wallpapers"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
-msgid "Browse"
-msgstr ""
-
-#. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
-msgid "Change interval"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-msgid "Hours"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
-msgid "Minutes"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
-msgid "Seconds"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
-msgid "Please log out/in to initialize"
-msgstr ""
-
-#. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
-msgid "Select a directory"
-msgstr ""
-
-#: budgie-brightness-controller/src/Applet.vala:81
-msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:87
-msgid "Dim"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:89
-#: budgie-brightness-controller/src/widgets/Popover.vala:143
-msgid "Brightness"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:91
-msgid "Temperature"
-msgstr "Температура"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:141
-msgid "Light"
-msgstr ""
-
-#. strings
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
-msgid "Stop"
-msgstr ""
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
-msgid "Start"
-msgstr "Начало"
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
-msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
-msgstr ""
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
-msgid "Applet runs without a panel icon"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr ""
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
-msgid "Restore"
-msgstr "Восстановить"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Удалить все объекты из Корзины?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Все объекты в Корзине будут удалены безвозвратно."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Очистить Корзину"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
-msgid "Unknown device"
-msgstr "Неизвестное устройство"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
-#, c-format
-msgid "Unknown type: %s "
-msgstr "Неизвестный тип: %s "
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
-msgid "No Access Points Available"
-msgstr "Нет доступных подключений Wi-Fi"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
-msgid "Scanning for Access Points…"
-msgstr "Сканирование доступных точек…"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
-msgid "Wireless"
-msgstr "Беспроводная сеть"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
-msgid "This Virtual Private Network could not be connected to."
-msgstr "Эта виртуальная приватная сеть не может быть подключена."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
-msgid "This wireless network could not be connected to."
-msgstr "Эта беспроводная сеть не может быть подключена."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
-msgid "This network uses 40/64-bit WEP encryption"
-msgstr "Эта сеть использует 40/64-битное WEP-шифрование"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
-msgid "This network uses 104/128-bit WEP encryption"
-msgstr "Эта сеть использует 104/128-битное WEP-шифрование"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
-msgid "This network uses WPA encryption"
-msgstr "Эта сеть использует WPA-шифрование"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
-msgid "This network uses encryption"
-msgstr "Эта сеть использует шифрование"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
-msgid "This network is unsecured"
-msgstr "Эта сеть небезопасна"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
-msgid "Failed to connect"
-msgstr ""
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
-msgid "Connecting"
-msgstr "Подключение"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
-msgid "Connected"
-msgstr "Подключено"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
-msgid "Disconnected"
-msgstr "Отключено"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
-msgid "VPN"
-msgstr "VPN"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
-msgid "Virtual network: %s"
-msgstr "Виртуальная сеть: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
-msgid "Wired"
-msgstr "Проводное"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
-msgid "Mobile Broadband: %s"
-msgstr "Мобильная сеть: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
-msgid "Mobile Broadband"
-msgstr "Мобильная сеть"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
-msgid "Modem"
-msgstr "Модем"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
-msgid "Connect to Hidden Network…"
-msgstr "Подключиться к скрытой сети…"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
-msgid "Network Settings…"
-msgstr "Параметры сети…"
-
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
 msgstr "Значок меню"
@@ -1309,16 +1322,36 @@ msgstr ""
 msgid "Roll-over mouse"
 msgstr "Активация при наведении мыши"
 
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
 msgstr ""
 
 #: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
 msgid "Time of day in fuzzy way"
+msgstr ""
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr ""
+
+#: budgie-trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Корзина"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+msgid "Set a different wallpaper per workspace"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
 msgstr ""
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
@@ -1329,26 +1362,1060 @@ msgstr ""
 msgid "Workspace indicator and window list"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
-msgid "Stylish Desktop Application Menu"
-msgstr ""
+#~ msgid "Log out"
+#~ msgstr "Выйти"
 
-#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
-msgid "Brightness Controller"
-msgstr ""
+#~ msgid "Restart device"
+#~ msgstr "Перезагрузить устройство"
 
-#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
-msgid "Set a different wallpaper per workspace"
-msgstr ""
+#~ msgid "Power Off"
+#~ msgstr "Выключить"
 
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Корзина"
+#~ msgid "Change background"
+#~ msgstr "Изменить фон"
 
-#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
-msgid "Network Applet"
-msgstr ""
+#~ msgid "Displays"
+#~ msgstr "Дисплеи"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Caffeine Boost включен"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Caffeine Boost отключен"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Отключится через минуту"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Отключится через %d минут(ы,у)"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Режим Caffeine"
+
+#~ msgid "Applets"
+#~ msgstr "Апплеты"
+
+#~ msgid "Notifications"
+#~ msgstr "Уведомления"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Нет программ, проигрывающих аудио."
+
+#~ msgid "Play some music"
+#~ msgstr "Играть музыку"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Не на что смотреть"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "Непрочитанных уведомлений: %u"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 непрочитанное уведомление"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Нет непрочитанных уведомлений"
+
+#~ msgid "No new notifications"
+#~ msgstr "Нет новых уведомлений"
+
+#~ msgid "Apps"
+#~ msgstr "Приложения"
+
+#~ msgid "Devices"
+#~ msgstr "Устройства"
+
+#~ msgid "Only one instance of the System Tray can be active at a time."
+#~ msgstr ""
+#~ "Одновременно может быть активным только один экземпляр системного лотка."
+
+#~ msgid "The System Tray failed to initialize."
+#~ msgstr "Сбой инициализации системного лотка."
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Батарея полностью заряжена."
+
+#~ msgid "Battery charging"
+#~ msgstr "Батарея заряжается"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Осталось заряда"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Показать процент заряда батареи"
+
+#~ msgid "Power settings"
+#~ msgstr "Настройки питания"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Настройки Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Отправить файлы"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Режим в самолете для Bluetooth"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth выключен"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth включен"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Подключено к %d устройству"
+#~ msgstr[1] "Подключено к %d устройствам"
+#~ msgstr[2] "Подключено к %d устройствам"
+#~ msgstr[3] "Подключено к %d устройствам"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Запустить новый экземпляр"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Закрыть все окна"
+
+#~ msgid "Always On Top"
+#~ msgstr "Всегда наверху"
+
+#~ msgid "Maximize"
+#~ msgstr "Развернуть"
+
+#~ msgid "Minimize"
+#~ msgstr "Свернуть"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Удалить из избранного"
+
+#~ msgid "Favorite"
+#~ msgstr "Добавить в избранное"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Переместить на Рабочее место %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Восстановить размер"
+
+#~ msgid "Close Window"
+#~ msgstr "Закрыть окно"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Показать кнопки управления окном"
+
+#~ msgid "All"
+#~ msgstr "Все"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Извините, ничего не найдено"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Caps lock включен"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Caps lock выключен"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Num lock включен"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Num lock выключен"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Настройки времени и даты"
+
+#~ msgid "Show seconds"
+#~ msgstr "Показывать секунды"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Переключиться на рабочий стол"
+
+#~ msgid "Rename"
+#~ msgstr "Переименовать"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Таймер (минуты)"
+
+#~ msgid "User"
+#~ msgstr "Пользователь"
+
+#~ msgid "Places"
+#~ msgstr "Места"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Сейчас нечего показывать"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Смонтируйте какие-нибудь диски"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Включите больше секций"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Открыть \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Том используется другими процессами"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Операция прервана"
+
+#~ msgid "Type your password"
+#~ msgstr "Введите пароль"
+
+#~ msgid "Removable devices"
+#~ msgstr "Съемные устройства"
+
+#~ msgid "Local volumes"
+#~ msgstr "Локальные тома"
+
+#~ msgid "Network folders"
+#~ msgstr "Сетевые папки"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Смонтировать и открыть \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Извлечь"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Введите кодовую фразу шифрования для разблокировки этого тома"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Теперь можно безопасно извлечь"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Введенный пароль неверен"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Произошла неизвестная ошибка при попытке монтирования этого тома"
+
+#~ msgid "Unmount"
+#~ msgstr "Размонтировать"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Неизвестное устройство"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Ошибка при извлечении устройства"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Ошибка при размонтировании тома"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Ошибка аутентификации"
+
+#~ msgid "Group:"
+#~ msgstr "Группа:"
+
+#~ msgid "Appearance"
+#~ msgstr "Внешний вид"
+
+#~ msgid "Panels"
+#~ msgstr "Панели"
+
+#~ msgid "Session"
+#~ msgstr "Сессия"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Настройки рабочего стола Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Создать новую панель"
+
+#, fuzzy
+#~ msgid "Remove Panel"
+#~ msgstr "Удалить панель"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Убрать эту панель с экрана"
+
+#~ msgid "Top Dock"
+#~ msgstr "Верхний док"
+
+#~ msgid "Right Dock"
+#~ msgstr "Правый док"
+
+#~ msgid "Left Dock"
+#~ msgstr "Левый док"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Нижний док"
+
+#~ msgid "Top Panel"
+#~ msgstr "Верхняя панель"
+
+#~ msgid "Right Panel"
+#~ msgstr "Правая панель"
+
+#~ msgid "Left Panel"
+#~ msgstr "Левая панель"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Нижняя панель"
+
+#~ msgid "Always"
+#~ msgstr "Всегда"
+
+#~ msgid "Dynamic"
+#~ msgstr "Динамически"
+
+#~ msgid "None"
+#~ msgstr "Нет"
+
+#~ msgid "Intelligent"
+#~ msgstr "Умно"
+
+#~ msgid "Never"
+#~ msgstr "Никогда"
+
+#~ msgid "Position"
+#~ msgstr "Расположение"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Задать край экрана для привязки панели"
+
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Задать размер (ширину или высоту, в зависимости от ориентации) этой панели"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Автоматически скрывать"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Если задано, эта панель будет скрываться для максимизации экранного "
+#~ "пространства"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Задать прозрачность фона для этой панели"
+
+#~ msgid "Shadow"
+#~ msgstr "Тень"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Добавляет декоративную тень, идеально для прозрачных панелей"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Стилизовать регионы"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Настраивает панель так, что каждая из трех основных областей панели может "
+#~ "иметь свою тему."
+
+#~ msgid "Dock mode"
+#~ msgstr "Режим дока"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Находясь в режиме дока, панель будет использовать минимально возможную "
+#~ "площадь, освобождая полезное экранное пространство"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Разрешить увеличение громкости выше 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Позволяет увеличивать громкость в настройках звука, а также виджете "
+#~ "вывода звука на панели Raven до 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Включить отображение номеров недель в календаре"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Эта настройка включает отображение номеров недель в виджете календаря."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Показывать виджет календаря"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Показывает или скрывает виджет календаря в секции апплетов панели Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Показывать виджет вывода звука"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Показывает или скрывает виджет вывода звука в секции апплетов панели "
+#~ "Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Показывать виджет микрофонного ввода"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Показывает или скрывает виджет микрофонного ввода в секции апплетов "
+#~ "панели Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Показывать виджет управления воспроизведением медиа"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Показывает или скрывает виджет управления воспроизведением медиа (MPRIS) "
+#~ "в секции апплетов панели Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Показывать панель управления питанием"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr ""
+#~ "Показывает или скрывает полосу управления питанием внизу панели Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Подтвердить удаление панели"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Вы действительно хотите удалить эту панель? Это действие нельзя отменить."
+
+#~ msgid "Remove panel"
+#~ msgstr "Удалить панель"
+
+#~ msgid "Keep panel"
+#~ msgstr "Оставить панель"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Подтвердить удаление апплета"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Вы действительно хотите удалить этот апплет? Это действие нельзя отменить."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Не спрашивать меня снова"
+
+#~ msgid "Remove applet"
+#~ msgstr "Удалить апплет"
+
+#~ msgid "Keep applet"
+#~ msgstr "Оставить апплет"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Значки рабочего стола"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr ""
+#~ "Управляет возможностью использовать ярлыки и значки на рабочем столе."
+
+#~ msgid "Home directory"
+#~ msgstr "Домашняя папка"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Добавляет ярлык домашней папки на рабочий стол."
+
+#~ msgid "Network servers"
+#~ msgstr "Сетевые серверы"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Добавляет ярлык серверов локальной сети на рабочий стол."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Добавляет ярлык корзины на рабочий стол."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Смонтированные тома"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Смонтированные тома и диски будут отображаться на рабочем столе."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Число виртуальных рабочих столов"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Количество создаваемых при загрузке виртуальных рабочих столов/"
+#~ "пространств."
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Widgets"
+#~ msgstr "Виджеты"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Устанавливает внешний вид окон и элементов управления"
+
+#~ msgid "Icons"
+#~ msgstr "Значки"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Устанавливает глобально используемую тему значков"
+
+#~ msgid "Cursors"
+#~ msgstr "Курсоры"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Устанавливает глобально используемую тему курсоров мыши"
+
+#~ msgid "Notification Position"
+#~ msgstr "Позиция уведомлений"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Устанавливает местоположение всплывающих окон уведомлений"
+
+#~ msgid "Dark theme"
+#~ msgstr "Темная тема"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Встроенная тема"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Когда включено, стиль компонентов рабочего стола будет заменен встроенной "
+#~ "темой"
+
+#~ msgid "Animations"
+#~ msgstr "Анимации"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Управляет использованием анимаций окнами и элементами управления"
+
+#~ msgid "Top Left"
+#~ msgstr "Вверху слева"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Внизу слева"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Внизу справа"
+
+#~ msgid "Top Right"
+#~ msgstr "Вверху справа"
+
+#~ msgid "Untitled"
+#~ msgstr "Без названия"
+
+#~ msgid "No description"
+#~ msgstr "Нет описания"
+
+#~ msgid "running"
+#~ msgstr "работает"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Command"
+#~ msgstr "Команда"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Запись с таким названием уже существует"
+
+#~ msgid "Title"
+#~ msgstr "Название"
+
+#~ msgid "Required"
+#~ msgstr "Обязательно"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "Optional"
+#~ msgstr "Необязательно"
+
+#~ msgid "Autostart"
+#~ msgstr "Автозапуск"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Автозапуск приложений"
+
+#~ msgid "Configure applet"
+#~ msgstr "Настроить апплет"
+
+#~ msgid "Add applet"
+#~ msgstr "Добавить апплет"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Выбрать новый апплет для добавления на эту панель"
+
+#~ msgid "No settings available"
+#~ msgstr "Нет доступных настроек"
+
+#~ msgid "Center"
+#~ msgstr "Центр"
+
+#~ msgid "End"
+#~ msgstr "Конец"
+
+#~ msgid "Windows"
+#~ msgstr "Окна"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Прикреплять модальные диалоги к окнам"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Модальные диалоги станут прикрепленными к родительскому окну и будут "
+#~ "перемещаться вместе с ним при перетаскивании."
+
+#~ msgid "Button layout"
+#~ msgstr "Расположение кнопок"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Изменяет расположение кнопок в заголовках окон приложений."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Центрировать новые окна на экране"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Центрирует вновь запущенные окна на текущем экране."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Отключить режим ночного света, когда окна развернуты на весь экран"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Отключает режим ночного света, когда какое-либо окно развернуто на весь "
+#~ "экран. Включает обратно, когда осуществляется выход из полноэкранного "
+#~ "режима."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Автоматическое выравнивание"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Окна будут автоматически выравниваться при перетаскивании в верхнюю часть "
+#~ "или углы экрана."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr ""
+#~ "Включить изменение фокуса окна при перемещении курсора внутрь него и "
+#~ "наружу"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Позволяет захватывать фокус, когда курсор мыши перемещается внутрь окна, "
+#~ "и освобождать фокус, когда курсор мыши выходит за пределы окна."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Включить перенаправление окон"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Опция для продвинутых пользователей. Используйте при наличии проблем с "
+#~ "графикой или производительностью с дискретными видеокартами."
+
+#~ msgid "Show all windows in tab switcher"
+#~ msgstr "Показывать все окна в переключателе окон"
+
+#~ msgid ""
+#~ "All tabs will be displayed in tab switcher regardless of the workspace in "
+#~ "use."
+#~ msgstr ""
+#~ "В переключателе будут отображены все окна, независимо от используемого "
+#~ "рабочего места."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Справа (стандартное)"
+
+#~ msgid "Fonts"
+#~ msgstr "Шрифты"
+
+#~ msgid "Window Titles"
+#~ msgstr "Заголовки окон"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Задает шрифт для заголовков окон приложений."
+
+#~ msgid "Documents"
+#~ msgstr "Документы"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Задает шрифт, используемый для документов."
+
+#~ msgid "Interface"
+#~ msgstr "Интерфейс"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr ""
+#~ "Задает основной шрифт, используемый элементами управления приложениями."
+
+#~ msgid "Monospace"
+#~ msgstr "Моноширинный"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr "Задает моноширинный шрифт, используемый текстовыми приложениями."
+
+#~ msgid "Text scaling"
+#~ msgstr "Масштабирование текста"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Устанавливает коэффициент масштабирования текста."
+
+#~ msgid "Full"
+#~ msgstr "Полный"
+
+#~ msgid "Medium"
+#~ msgstr "Средний"
+
+#~ msgid "Slight"
+#~ msgstr "Легкий"
+
+#~ msgid "Hinting"
+#~ msgstr "Хинтинг"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Устанавливает тип используемого хинтинга."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Субпиксельное (для ЖК дисплеев)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Стандартное (оттенки серого)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Сглаживание"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Устанавливает тип используемого сглаживания."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Выберите апплет"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Вы уверены, что хотите завершить сессию?"
+
+#~ msgid "Icon Spacing"
+#~ msgstr "Отступ между значками"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Показывать все окна при нажатии"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Показывать только избранные приложения"
+
+#~ msgid "Lock icons"
+#~ msgstr "Закрепить значки"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Ограничить рабочим местом"
+
+#~ msgid "Window grouping"
+#~ msgstr "Группировка окон"
+
+#~ msgid "Middle click to launch new window"
+#~ msgstr "Открывать новое окно нажатием средней кнопки мыши"
+
+#, fuzzy
+#~ msgid "Require a double-click to launch new window"
+#~ msgstr "Открывать новое окно нажатием средней кнопки мыши"
+
+#~ msgid "Night Light"
+#~ msgstr "Ночной свет"
+
+#~ msgid "Schedule"
+#~ msgstr "Расписание"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "От заката до рассвета"
+
+#~ msgid "Manual"
+#~ msgstr "Вручную"
+
+#~ msgid "Display Settings"
+#~ msgstr "Настройки дисплея"
+
+#~ msgid "Spacer size"
+#~ msgstr "Размер расширителя"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Компактный режим"
+
+#~ msgid "Show Headers"
+#~ msgstr "Показывать заголовки"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "Видимость кнопки \"Добавить\""
+
+#~ msgid "Don't show"
+#~ msgstr "Не показывать"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Показывать при наведении курсора мыши"
+
+#~ msgid "Always show"
+#~ msgstr "Всегда показывать"
+
+#~ msgid "Enable notification"
+#~ msgstr "Включить уведомления"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Максимально увеличить яркость"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Уровень яркости"
+
+#~ msgid "Show label"
+#~ msgstr "Показывать подпись"
+
+#~ msgid "Show places"
+#~ msgstr "Показывать места"
+
+#~ msgid "Show network folders"
+#~ msgstr "Показывать сетевые папки"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Показывать съемные диски"
+
+#~ msgid "Always expand places"
+#~ msgstr "Всегда раскрывать места"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Требуется аутентификация"
+
+#~ msgid "Password:"
+#~ msgstr "Пароль:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Требуется аутентификация"
+
+#~ msgid "Authenticate"
+#~ msgstr "Аутентифицироваться"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Рабочий стол Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Вход в сеанс рабочего стола Budgie"
+
+#~ msgid "System Tray"
+#~ msgstr "Системный лоток"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Индикатор состояния"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Список значков задач"
+
+#~ msgid "Spacer"
+#~ msgstr "Расширитель"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Меню Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Индикатор Lock-клавиш"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Управление боковой панелью Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Часы"
+
+#~ msgid "Separator"
+#~ msgstr "Разделитель"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Кнопка показа рабочего стола"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Переключатель рабочих мест"
+
+#~ msgid "Task List"
+#~ msgstr "Список задач"
+
+#~ msgid "Caffeine"
+#~ msgstr "Caffeine"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Индикатор раскладки клавиатуры"
+
+#~ msgid "User Indicator"
+#~ msgstr "Индикатор пользователя"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Изменить внешний вид и поведение рабочего стола"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Панель Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Запуск других приложений и предоставление различных утилит для управления "
+#~ "окнами, отображения времени и т.д."
+
+#~ msgid "Network"
+#~ msgstr "Сеть"
+
+#~ msgid "Network indicator"
+#~ msgstr "Индикатор сети"
+
+#~ msgid "Uninstall"
+#~ msgstr "Удалить"
+
+#, fuzzy
+#~ msgid "View in AppCenter"
+#~ msgstr "AppCenter"
+
+#~ msgid "Search for %s in %s"
+#~ msgstr "Поиск %s в %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Поиск в магазине приложений"
+
+#~ msgid "AppCenter"
+#~ msgstr "AppCenter"
+
+#~ msgid "Search for applications"
+#~ msgstr "Поиск приложений"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "AppCenter не установлен"
+
+#~ msgid "Open %s settings"
+#~ msgstr "Открыть настройки %s"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Найти плагины Switchboard и открыть их."
+
+#~ msgid "Lock this device"
+#~ msgstr "Заблокировать это устройство"
+
+#~ msgid "Log Out"
+#~ msgstr "Выйти"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Закрыть все открытые приложения и выйти"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Перейти в режим ожидания"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "Ждущий режим"
+
+#~ msgid "Hibernate"
+#~ msgstr "Спящий режим"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Перейти в режим сна"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "Спящий режим"
+
+#~ msgid "Shut Down"
+#~ msgstr "Выключение"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Выключить компьютер"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Перезагрузить компьютер"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Заблокируйте сеанс или выйдите из него. Усыпите, перезагрузите или "
+#~ "выключите ваш компьютер."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "Не найден ConsoleKit"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Индикатор меню приложений"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Удалить"
+
+#~ msgid "Open using default application"
+#~ msgstr "Открыть, используя приложение по-умолчанию"
+
+#~ msgid "Open folder"
+#~ msgstr "Открыть папку"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Открыть папку, содержащую этот файл"
+
+#~ msgid "All Applications"
+#~ msgstr "Все приложения"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Создать новый фильтр"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "В пределах диапазона нет точек доступа."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Беспроводная связь отключена"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Позволить Wi-Fi обнаружить точки доступа."
+
+#~ msgid "No VPN Available"
+#~ msgstr "Нет доступных подключений VPN"
+
+#~ msgid "Hotspot"
+#~ msgstr "Точка доступа"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Точка доступа %s"
+
+#~ msgid "Failed"
+#~ msgstr "Не удалось"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Кабель не подключён"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Режим полёта включён"
+
+#~ msgid "Unknown"
+#~ msgstr "Неизвестно"

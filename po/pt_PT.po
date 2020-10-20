@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-14 21:18+0100\n"
+"POT-Creation-Date: 2020-10-20 23:09+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Portugal) (https://www.transifex.com/ubuntu-budgie/teams/72251/pt_PT/)\n"
@@ -23,27 +23,216 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Mostrar o último usado"
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
+msgid "Open and search apps"
+msgstr "Abrir e pesquisar aplicações"
 
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Mostrar dicas de ferramentas"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Definir o ícone de menu a partir do ficheiro"
 
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Ocultar caminho no menu"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Ficheiros de imagem"
 
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Abrir"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Qualquer ficheiro"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Definir ícone"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Encerrar"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
+msgid "Suspend"
+msgstr "Suspender"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
+msgid "Lock"
+msgstr "Bloquear"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
+msgid "Logout"
+msgstr "Terminar sessão"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Remover da _Doca"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Adicionar à _Doca"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Texto"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Aplicações"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Ficheiros"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Ações"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Procurar"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Contatos"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Internet"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:168
+msgid "Settings"
+msgstr "Definições"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Ações de aplicações"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Outro"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
+msgid "View as Grid"
+msgstr "Ver em Grelha"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
+msgid "View by Category"
+msgstr "Ver por Categoria"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
+msgid "Search Apps"
+msgstr "Procurar Aplicações"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
+msgid "Clear all"
+msgstr "Limpar tudo"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Executar no Terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Executar uma aplicação ou comando no terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Executar"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Executar uma aplicação, ação ou script"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Copiar para a área de transferência"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Copiar a seleção para a área de transferência"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Executar este comando…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Abrir o %s no navegador web predefinido"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Abrir %s em %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Abrir esta ligação no navegador web predefinido"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Ligação"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Abrir ligação no navegador web predefinido"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Executar '%s'"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Executar comando"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Encontre e execute comandos arbitrários."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Procure e execute aplicações no seu computador."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#, c-format
+msgid "Open with %s"
+msgstr "Abrir com %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Abre a seleção actual com %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Calculadora"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Calcule expressões básicas."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "O bc não está instalado"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Tente mudar os termos de pesquisa."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Sem resultados para \"%s\""
 
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
@@ -61,339 +250,6 @@ msgstr "Mostrar janelas de todas as áreas de trabalho"
 #: budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
 msgstr "Mostrar o nome completo da janela na dica"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Bem-vindo ao NotasRápidas."
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "O texto será guardado automaticamente enquanto escreve."
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Largura da área de texto"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Altura da área de texto"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Definir um diretório personalizado"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Escolha um diretório"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Use"
-msgstr "Utilizar"
-
-#. STRINGS & THINGS
-#. settings
-#: budgie-window-shuffler/src/shuffler_control.vala:70
-msgid "Enable tiling and window move shortcuts"
-msgstr "Ativar atalhos lado a lado e mover janelas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:71
-msgid "Enable grid tiling graphical shortcut"
-msgstr "Ativar atalho de lado a lado na grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:72
-msgid ""
-"When using move shortcuts, swap window size & position if a window moves to "
-"an existing window's position"
-msgstr ""
-"Ao usar atalhos de movimentação, troque o tamanho e a posição da janela se "
-"uma janela se mover para a posição de uma janela existente"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:73
-msgid ""
-"Enable animation on move and tiling actions if general desktop animations "
-"are enabled"
-msgstr ""
-"Ative a animação em ações de movimentação e lado a lado, se as animações "
-"gerais da área de trabalho estiverem ativadas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:74
-msgid "Move the mouse over a button for an explanation"
-msgstr "Passe o rato sobre um botão para obter uma explicação"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:75
-msgid "Number of columns, used by grid, move and tile-all shortcuts"
-msgstr ""
-"Número de colunas, usadas pela grelha, movimentação e mosaico os atalhos"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:76
-msgid "Number of rows, used by grid, move and tile-all shortcuts"
-msgstr ""
-"Número de linhas, usadas pela grelha, movimentação e mosaico os atalhos"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:77
-msgid ""
-"Show a notification when attempting to resize a window below it's minimum "
-"size"
-msgstr ""
-"Mostrar uma notificação ao tentar redimensionar uma janela abaixo de seu "
-"tamanho mínimo"
-
-#. margins
-#: budgie-window-shuffler/src/shuffler_control.vala:79
-msgid "Margins between virtual grid and screen edges "
-msgstr "Margens entre a grelha virtual e as margens do ecrã"
-
-#. tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:81
-msgid "Shortcuts for quarter and half tiling & tiling to grid"
-msgstr "Atalhos para cantos, metade e lado a lado na grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:82
-msgid "Top-left"
-msgstr "Superior esquerdo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:83
-msgid "Top-right"
-msgstr "Superior direito"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:84
-msgid "Bottom-right"
-msgstr "Inferior direito"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:85
-msgid "Bottom-left"
-msgstr "Inferior esquerdo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:86
-msgid "Left-half"
-msgstr "Metade-esquerda"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:87
-msgid "Top-half"
-msgstr "Metade-superior"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:88
-msgid "Right-half"
-msgstr "Metade-dirteita"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:89
-msgid "Bottom-half"
-msgstr "Metade-inferior"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:90
-msgid "Tile all windows to grid"
-msgstr "Arrume todas as janelas na grelha"
-
-#. Jump & resize
-#: budgie-window-shuffler/src/shuffler_control.vala:92
-msgid "Shortcuts for moving to the nearest grid cell"
-msgstr "Atalho para mover para a célula mais próxima na grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:93
-msgid "Move left"
-msgstr "Mover à esquerda"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:94
-msgid "Move right"
-msgstr "Mover à direita"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:95
-msgid "Move up"
-msgstr "Mover para cima"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:96
-msgid "Move down"
-msgstr "Mover para baixo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:97
-msgid "Shortcuts for resizing windows on grid"
-msgstr "Atalhos para redimensionar janelas na grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:98
-msgid "Expand horizontally (to the right)"
-msgstr "Expandir horizontalmente (à direita)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:99
-msgid "Shrink horizontally (from the right)"
-msgstr "Reduzir horizontalmente (da direita)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:100
-msgid "Expand vertically (down)"
-msgstr "Expandir verticalmente (abaixo)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:101
-msgid "Shrink vertically (from the bottom)"
-msgstr "Reduzir verticalmente (de baixo)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:102
-msgid "Expand horizontally (to the left)"
-msgstr "Expandir horizontalmente (à esquerda)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:103
-msgid "Shrink horizontally (from the left)"
-msgstr "Reduzir horizontalmente (da esquerda)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:104
-msgid "Expand vertically (up)"
-msgstr "Expandir verticalmente (acima)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:105
-msgid "Shrink vertically (from the top)"
-msgstr "Reduzir verticalmente (de cima)"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:106
-msgid "Toggle resizing opposite window"
-msgstr "Alternar o redimensionamento da janela oposta"
-
-#. GUI grid
-#: budgie-window-shuffler/src/shuffler_control.vala:108
-msgid "Shortcuts for the grid"
-msgstr "Atalhos para a grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:109
-msgid "Show the grid"
-msgstr "Mostrar a grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:110
-msgid "Add a column"
-msgstr "Adicionar uma coluna"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:111
-msgid "Add a row"
-msgstr "Adicionar uma linha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:112
-msgid "Remove a column"
-msgstr "Remover uma coluna"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:113
-msgid "Remove a row"
-msgstr "Remover uma linha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:114
-msgid "To select a range of tiles, use Shift + click"
-msgstr "Para selecionar um intervalo de blocos, use Shift + clique"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:115
-msgid "Set the shade of gray for the grid"
-msgstr "Definir o tom de cinza para a grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:116
-msgid "Press + or scroll up to lighten the grid shade"
-msgstr "Pressione + ou role para cima para clarear a sombra da grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:117
-msgid "Press - or scroll down to darken the grid shade"
-msgstr "Pressione - ou role para baixo para escurecer a sombra da grelha"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:146
-#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
-msgid "Window Shuffler Control"
-msgstr "Controlo do Window Shuffler"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:168
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-msgid "Settings"
-msgstr "Definições"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:169
-msgid "Margins"
-msgstr "Margens"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:170
-msgid "Tiling"
-msgstr "Mosaico"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:171
-msgid "Move & resize"
-msgstr "Mover e redimensionar"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:172
-msgid "Grid"
-msgstr "Grelha"
-
-#. STACK-PAGES
-#. 1. settingsgrid - checkbuttons
-#: budgie-window-shuffler/src/shuffler_control.vala:176
-msgid "Enable Window Shuffler"
-msgstr "Ativar Window Shuffler"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:180
-msgid "Enable Window Shuffler grid"
-msgstr "Ativar grelha do Windows Shuffler"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:186
-msgid "Swap windows"
-msgstr "Trocar janelas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:190
-msgid "Enable animation"
-msgstr "Ativar animações"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:194
-msgid "Show notification on incorrect window size"
-msgstr "Mostrar notificação no tamanho incorreto da janela"
-
-#. settingsgrid - spinbuttonsection
-#: budgie-window-shuffler/src/shuffler_control.vala:200
-msgid "Grid: columns & rows"
-msgstr "Grelha: colunas e linhas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:205
-msgid "Columns"
-msgstr "Colunas"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:210
-msgid "Rows"
-msgstr "Linhas"
-
-#. settingsgrid - bottomsection
-#: budgie-window-shuffler/src/shuffler_control.vala:241
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-msgid "Close"
-msgstr "Fechar"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:317
-msgid "Top"
-msgstr "Topo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:320
-msgid "Left"
-msgstr "Esquerda"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:323
-msgid "Right"
-msgstr "Direita"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:326
-msgid "Bottom"
-msgstr "Fundo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:332
-msgid "Window padding"
-msgstr "Preenchimento de janela"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:650
-msgid "Sticky Neighbors switched off"
-msgstr "Vizinhos pegajosos desligados"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:653
-msgid "Sticky Neighbors switched on"
-msgstr "Vizinhos pegajosos ligados"
-
-#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
-msgid "Minimum window size exceeds target"
-msgstr "O tamanho mínimo da janela excede o destino"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -642,52 +498,164 @@ msgstr "Mostrar data"
 msgid "Use 24 hour time"
 msgstr "Usar formato 24 horas"
 
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:147
-msgid "Corner"
-msgstr "Canto"
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr ""
+"Remova o plugin de cores do Gnome Settings Daemon da inicialização "
+"automática"
 
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:151
-msgid "Action"
-msgstr "Ação"
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr "Escuro"
 
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:155
-msgid "Custom"
-msgstr "Personalizado"
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:143
+msgid "Brightness"
+msgstr "Luminosidade"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:266
-#: budgie-hotcorners/src/HotCornersApplet.vala:275
-#: budgie-hotcorners/src/HotCornersApplet.vala:284
-msgid "Missing process"
-msgstr "Processo ausente"
+#: budgie-brightness-controller/src/widgets/Popover.vala:91
+msgid "Temperature"
+msgstr "Temperatura"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:270
-msgid "Please enable Window Previews"
-msgstr "Ative as visualizações das janelas"
+#: budgie-brightness-controller/src/widgets/Popover.vala:141
+msgid "Light"
+msgstr "Luz"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:279
-#: budgie-hotcorners/src/HotCornersApplet.vala:287
-msgid "Please enable Window Shuffler"
-msgstr "Ative o Window Shuffler"
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:110
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr "Não foi possível determinar a localização original de %s"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:467
-msgid "Manage corners from panel icon"
-msgstr "Gerir os cantos a partir do ícone do painel"
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:135
+#, c-format
+msgid "%s restored."
+msgstr "%s restaurado."
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:477
-msgid "Set pressure (0 = no pressure)"
-msgstr "Defina pressão (0 = sem pressão)"
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:142
+#, c-format
+msgid "%s already exists."
+msgstr "%s já existe."
 
-#. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:70
-msgid "Auto"
-msgstr "Automático"
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:390
+msgid "Restore"
+msgstr "Restaurar"
+
+#. tooltip
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Abrir"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr "Esvaziar"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr "Esvaziar todos os itens do Lixo?"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Todos os itens no Lixo serão eliminados permanentemente."
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr "Esvaziar o Lixo"
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr "Controlo do WallStreet"
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr "Executar o Wallstreet"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr "Usar papel de parede aleatório"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr "Sincronizar com a ecrã de bloqueio"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr "Utilizar papéis de parede predefinidos"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr "Explorar"
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr "Intervalo de mudança"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr "Horas"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr "Minutos"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr "Segundos"
+
+#. settingsgrid - bottomsection
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-window-shuffler/src/shuffler_control.vala:241
+msgid "Close"
+msgstr "Fechar"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr "Sair/entrar para iniciar"
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr "Selecione um diretório"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Utilizar"
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
+msgid "Set text color"
+msgstr "Definir cor do texto"
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "Vermelho"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "Verde"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "Azul"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "Escolha"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
@@ -751,12 +719,6 @@ msgstr "Mostrar previsão instantânea"
 msgid "Transparency"
 msgstr "Transparência"
 
-#. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
-#: budgie-weathershow/src/get_color/get_color.vala:50
-msgid "Set text color"
-msgstr "Definir cor do texto"
-
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:909
 msgid "Set custom position (px)"
@@ -770,220 +732,497 @@ msgstr "Nome do local personalizado"
 msgid "Please enter at least 3 characters"
 msgstr "Por favor insira pelo menos 3 caracteres"
 
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "Vermelho"
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
+msgid "Connect to Hidden Network…"
+msgstr "Ligar a rede oculta…"
 
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "Verde"
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
+msgid "Network Settings…"
+msgstr "Definições de Rede…"
 
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "Azul"
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "Escolha"
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
-msgid "Open and search apps"
-msgstr "Abrir e pesquisar aplicações"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
-msgid "Run in Terminal"
-msgstr "Executar no Terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
-msgid "Run application or command in terminal"
-msgstr "Executar uma aplicação ou comando no terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
-msgid "Run"
-msgstr "Executar"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
-msgid "Run an application, action or script"
-msgstr "Executar uma aplicação, ação ou script"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
-msgid "Copy to Clipboard"
-msgstr "Copiar para a área de transferência"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
-msgid "Copy selection to clipboard"
-msgstr "Copiar a seleção para a área de transferência"
-
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
-msgid "Run this command…"
-msgstr "Executar este comando…"
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
-msgid "Try changing search terms."
-msgstr "Tente mudar os termos de pesquisa."
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
 #, c-format
-msgid "No Results for “%s”"
-msgstr "Sem resultados para \"%s\""
+msgid "Virtual network: %s"
+msgstr "Rede virtual: %s"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
-msgid "View as Grid"
-msgstr "Ver em Grelha"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "Por cabo"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
-msgid "View by Category"
-msgstr "Ver por Categoria"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
+msgid "No Access Points Available"
+msgstr "Sem pontos de acesso disponivel"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
-msgid "Search Apps"
-msgstr "Procurar Aplicações"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
+msgid "Scanning for Access Points…"
+msgstr "À procura de Pontos de acesso…"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
-msgid "Clear all"
-msgstr "Limpar tudo"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
+msgid "Wireless"
+msgstr "Sem fios"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
-msgid "Shutdown"
-msgstr "Encerrar"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
+msgid "This wireless network could not be connected to."
+msgstr "Impossível ligar à rede sem fios."
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
-msgid "Suspend"
-msgstr "Suspender"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
+msgid "This network uses 40/64-bit WEP encryption"
+msgstr "Esta rede usa encriptação WEP 40/64-bit"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
-msgid "Restart"
-msgstr "Reiniciar"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
+msgid "This network uses 104/128-bit WEP encryption"
+msgstr "Esta rede usa encriptação WEP 104/128-bit"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
-msgid "Lock"
-msgstr "Bloquear"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
+msgid "This network uses WPA encryption"
+msgstr "Esta rede usa encriptação WPA"
 
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
-msgid "Logout"
-msgstr "Terminar sessão"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+msgid "This network uses encryption"
+msgstr "Esta rede usa encriptação"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
-msgid "Text"
-msgstr "Texto"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
+msgid "This network is unsecured"
+msgstr "Esta rede não está protegida"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
-msgid "Applications"
-msgstr "Aplicações"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
+msgid "Failed to connect"
+msgstr "Falha ao ligar"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
-msgid "Files"
-msgstr "Ficheiros"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
+msgid "Connecting"
+msgstr "A ligar"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
-msgid "Actions"
-msgstr "Ações"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
+msgid "Connected"
+msgstr "Ligado"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
-msgid "Search"
-msgstr "Procurar"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
+msgid "Disconnected"
+msgstr "Desligado"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
-msgid "Contacts"
-msgstr "Contatos"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr "VPN"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
-msgid "Internet"
-msgstr "Internet"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
+msgid "This Virtual Private Network could not be connected to."
+msgstr "Não é possível ligar a esta VPN."
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
-msgid "Application Actions"
-msgstr "Ações de aplicações"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
+msgid "Unknown device"
+msgstr "Dispositivo desconhecido"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
-msgid "Other"
-msgstr "Outro"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
-msgid "Remove from _Dock"
-msgstr "Remover da _Doca"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
-msgid "Add to _Dock"
-msgstr "Adicionar à _Doca"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-msgid "Set menu icon from file"
-msgstr "Definir o ícone de menu a partir do ficheiro"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
-msgid "Image files"
-msgstr "Ficheiros de imagem"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
-msgid "Any file"
-msgstr "Qualquer ficheiro"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-msgid "Set icon"
-msgstr "Definir ícone"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
-msgid "Search for and run applications on your computer."
-msgstr "Procure e execute aplicações no seu computador."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
 #, c-format
-msgid "Open with %s"
-msgstr "Abrir com %s"
+msgid "Unknown type: %s "
+msgstr "Tipo desconhecido: %s "
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
 #, c-format
-msgid "Opens current selection using %s"
-msgstr "Abre a seleção actual com %s"
+msgid "Mobile Broadband: %s"
+msgstr "Banda larga móvel: %s"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-#, c-format
-msgid "Execute '%s'"
-msgstr "Executar '%s'"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr "Banda larga móvel"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-msgid "Run command"
-msgstr "Executar comando"
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
+msgid "Modem"
+msgstr "Modem"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
-msgid "Find and execute arbitrary commands."
-msgstr "Encontre e execute comandos arbitrários."
+#. strings
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+msgid "Stop"
+msgstr "Parar"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
-msgid "Open %s in default web browser"
-msgstr "Abrir o %s no navegador web predefinido"
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+msgid "Start"
+msgstr "Iniciar"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
-#, c-format
-msgid "Open %s in %s"
-msgstr "Abrir %s em %s"
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
+msgid ""
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
+msgstr ""
+"O alternador da área de trabalho do papel de parede lembra-se "
+"automaticamente qual o papel de parede que foi definido por área de trabalho"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
-msgid "Open this link in default browser"
-msgstr "Abrir esta ligação no navegador web predefinido"
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
+msgid "Applet runs without a panel icon"
+msgstr "Mini-aplicação é executada sem um ícone no painel"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
-msgid "Link"
-msgstr "Ligação"
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Bem-vindo ao NotasRápidas."
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
-msgid "Open link in default browser"
-msgstr "Abrir ligação no navegador web predefinido"
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "O texto será guardado automaticamente enquanto escreve."
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
-msgid "Calculator"
-msgstr "Calculadora"
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Largura da área de texto"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
-msgid "Calculate basic expressions."
-msgstr "Calcule expressões básicas."
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Altura da área de texto"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
-msgid "bc is not installed"
-msgstr "O bc não está instalado"
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Definir um diretório personalizado"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Escolha um diretório"
+
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:147
+msgid "Corner"
+msgstr "Canto"
+
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:151
+msgid "Action"
+msgstr "Ação"
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:155
+msgid "Custom"
+msgstr "Personalizado"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:266
+#: budgie-hotcorners/src/HotCornersApplet.vala:275
+#: budgie-hotcorners/src/HotCornersApplet.vala:284
+msgid "Missing process"
+msgstr "Processo ausente"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:270
+msgid "Please enable Window Previews"
+msgstr "Ative as visualizações das janelas"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:279
+#: budgie-hotcorners/src/HotCornersApplet.vala:287
+msgid "Please enable Window Shuffler"
+msgstr "Ative o Window Shuffler"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:467
+msgid "Manage corners from panel icon"
+msgstr "Gerir os cantos a partir do ícone do painel"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:477
+msgid "Set pressure (0 = no pressure)"
+msgstr "Defina pressão (0 = sem pressão)"
+
+#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
+msgid "Minimum window size exceeds target"
+msgstr "O tamanho mínimo da janela excede o destino"
+
+#. STRINGS & THINGS
+#. settings
+#: budgie-window-shuffler/src/shuffler_control.vala:70
+msgid "Enable tiling and window move shortcuts"
+msgstr "Ativar atalhos lado a lado e mover janelas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:71
+msgid "Enable grid tiling graphical shortcut"
+msgstr "Ativar atalho de lado a lado na grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:72
+msgid ""
+"When using move shortcuts, swap window size & position if a window moves to "
+"an existing window's position"
+msgstr ""
+"Ao usar atalhos de movimentação, troque o tamanho e a posição da janela se "
+"uma janela se mover para a posição de uma janela existente"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:73
+msgid ""
+"Enable animation on move and tiling actions if general desktop animations "
+"are enabled"
+msgstr ""
+"Ative a animação em ações de movimentação e lado a lado, se as animações "
+"gerais da área de trabalho estiverem ativadas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:74
+msgid "Move the mouse over a button for an explanation"
+msgstr "Passe o rato sobre um botão para obter uma explicação"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:75
+msgid "Number of columns, used by grid, move and tile-all shortcuts"
+msgstr ""
+"Número de colunas, usadas pela grelha, movimentação e mosaico os atalhos"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:76
+msgid "Number of rows, used by grid, move and tile-all shortcuts"
+msgstr ""
+"Número de linhas, usadas pela grelha, movimentação e mosaico os atalhos"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:77
+msgid ""
+"Show a notification when attempting to resize a window below it's minimum "
+"size"
+msgstr ""
+"Mostrar uma notificação ao tentar redimensionar uma janela abaixo de seu "
+"tamanho mínimo"
+
+#. margins
+#: budgie-window-shuffler/src/shuffler_control.vala:79
+msgid "Margins between virtual grid and screen edges "
+msgstr "Margens entre a grelha virtual e as margens do ecrã"
+
+#. tiling
+#: budgie-window-shuffler/src/shuffler_control.vala:81
+msgid "Shortcuts for quarter and half tiling & tiling to grid"
+msgstr "Atalhos para cantos, metade e lado a lado na grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:82
+msgid "Top-left"
+msgstr "Superior esquerdo"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:83
+msgid "Top-right"
+msgstr "Superior direito"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:84
+msgid "Bottom-right"
+msgstr "Inferior direito"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:85
+msgid "Bottom-left"
+msgstr "Inferior esquerdo"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:86
+msgid "Left-half"
+msgstr "Metade-esquerda"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:87
+msgid "Top-half"
+msgstr "Metade-superior"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:88
+msgid "Right-half"
+msgstr "Metade-dirteita"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:89
+msgid "Bottom-half"
+msgstr "Metade-inferior"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:90
+msgid "Tile all windows to grid"
+msgstr "Arrume todas as janelas na grelha"
+
+#. Jump & resize
+#: budgie-window-shuffler/src/shuffler_control.vala:92
+msgid "Shortcuts for moving to the nearest grid cell"
+msgstr "Atalho para mover para a célula mais próxima na grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:93
+msgid "Move left"
+msgstr "Mover à esquerda"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:94
+msgid "Move right"
+msgstr "Mover à direita"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:95
+msgid "Move up"
+msgstr "Mover para cima"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:96
+msgid "Move down"
+msgstr "Mover para baixo"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:97
+msgid "Shortcuts for resizing windows on grid"
+msgstr "Atalhos para redimensionar janelas na grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:98
+msgid "Expand horizontally (to the right)"
+msgstr "Expandir horizontalmente (à direita)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:99
+msgid "Shrink horizontally (from the right)"
+msgstr "Reduzir horizontalmente (da direita)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:100
+msgid "Expand vertically (down)"
+msgstr "Expandir verticalmente (abaixo)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:101
+msgid "Shrink vertically (from the bottom)"
+msgstr "Reduzir verticalmente (de baixo)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:102
+msgid "Expand horizontally (to the left)"
+msgstr "Expandir horizontalmente (à esquerda)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:103
+msgid "Shrink horizontally (from the left)"
+msgstr "Reduzir horizontalmente (da esquerda)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:104
+msgid "Expand vertically (up)"
+msgstr "Expandir verticalmente (acima)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:105
+msgid "Shrink vertically (from the top)"
+msgstr "Reduzir verticalmente (de cima)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:106
+msgid "Toggle resizing opposite window"
+msgstr "Alternar o redimensionamento da janela oposta"
+
+#. GUI grid
+#: budgie-window-shuffler/src/shuffler_control.vala:108
+msgid "Shortcuts for the grid"
+msgstr "Atalhos para a grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:109
+msgid "Show the grid"
+msgstr "Mostrar a grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:110
+msgid "Add a column"
+msgstr "Adicionar uma coluna"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:111
+msgid "Add a row"
+msgstr "Adicionar uma linha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:112
+msgid "Remove a column"
+msgstr "Remover uma coluna"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:113
+msgid "Remove a row"
+msgstr "Remover uma linha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:114
+msgid "To select a range of tiles, use Shift + click"
+msgstr "Para selecionar um intervalo de blocos, use Shift + clique"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:115
+msgid "Set the shade of gray for the grid"
+msgstr "Definir o tom de cinza para a grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:116
+msgid "Press + or scroll up to lighten the grid shade"
+msgstr "Pressione + ou role para cima para clarear a sombra da grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:117
+msgid "Press - or scroll down to darken the grid shade"
+msgstr "Pressione - ou role para baixo para escurecer a sombra da grelha"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:146
+#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
+msgid "Window Shuffler Control"
+msgstr "Controlo do Window Shuffler"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:169
+msgid "Margins"
+msgstr "Margens"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:170
+msgid "Tiling"
+msgstr "Mosaico"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:171
+msgid "Move & resize"
+msgstr "Mover e redimensionar"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:172
+msgid "Grid"
+msgstr "Grelha"
+
+#. STACK-PAGES
+#. 1. settingsgrid - checkbuttons
+#: budgie-window-shuffler/src/shuffler_control.vala:176
+msgid "Enable Window Shuffler"
+msgstr "Ativar Window Shuffler"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:180
+msgid "Enable Window Shuffler grid"
+msgstr "Ativar grelha do Windows Shuffler"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:186
+msgid "Swap windows"
+msgstr "Trocar janelas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:190
+msgid "Enable animation"
+msgstr "Ativar animações"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:194
+msgid "Show notification on incorrect window size"
+msgstr "Mostrar notificação no tamanho incorreto da janela"
+
+#. settingsgrid - spinbuttonsection
+#: budgie-window-shuffler/src/shuffler_control.vala:200
+msgid "Grid: columns & rows"
+msgstr "Grelha: colunas e linhas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:205
+msgid "Columns"
+msgstr "Colunas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:210
+msgid "Rows"
+msgstr "Linhas"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:317
+msgid "Top"
+msgstr "Topo"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:320
+msgid "Left"
+msgstr "Esquerda"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:323
+msgid "Right"
+msgstr "Direita"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:326
+msgid "Bottom"
+msgstr "Fundo"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:332
+msgid "Window padding"
+msgstr "Preenchimento de janela"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:650
+msgid "Sticky Neighbors switched off"
+msgstr "Vizinhos pegajosos desligados"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:653
+msgid "Sticky Neighbors switched on"
+msgstr "Vizinhos pegajosos ligados"
+
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:70
+msgid "Auto"
+msgstr "Automático"
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Mostrar o último usado"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Mostrar dicas de ferramentas"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Ocultar caminho no menu"
 
 #. hrs to double digits
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
@@ -1055,245 +1294,6 @@ msgstr "Espaço entre linhas"
 msgid "Super + drag"
 msgstr "Super  + arrastar"
 
-#. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
-#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
-msgid "WallStreet Control"
-msgstr "Controlo do WallStreet"
-
-#. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr "Executar o Wallstreet"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr "Usar papel de parede aleatório"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr "Sincronizar com a ecrã de bloqueio"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
-msgid "Use default wallpapers"
-msgstr "Utilizar papéis de parede predefinidos"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
-msgid "Browse"
-msgstr "Explorar"
-
-#. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
-msgid "Change interval"
-msgstr "Intervalo de mudança"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-msgid "Hours"
-msgstr "Horas"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
-msgid "Minutes"
-msgstr "Minutos"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
-msgid "Seconds"
-msgstr "Segundos"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
-msgid "Please log out/in to initialize"
-msgstr "Sair/entrar para iniciar"
-
-#. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
-msgid "Select a directory"
-msgstr "Selecione um diretório"
-
-#: budgie-brightness-controller/src/Applet.vala:81
-msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
-"Remova o plugin de cores do Gnome Settings Daemon da inicialização "
-"automática"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:87
-msgid "Dim"
-msgstr "Escuro"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:89
-#: budgie-brightness-controller/src/widgets/Popover.vala:143
-msgid "Brightness"
-msgstr "Luminosidade"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:91
-msgid "Temperature"
-msgstr "Temperatura"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:141
-msgid "Light"
-msgstr "Luz"
-
-#. strings
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
-msgid "Stop"
-msgstr "Parar"
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
-msgid "Start"
-msgstr "Iniciar"
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
-msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
-msgstr ""
-"O alternador da área de trabalho do papel de parede lembra-se "
-"automaticamente qual o papel de parede que foi definido por área de trabalho"
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
-msgid "Applet runs without a panel icon"
-msgstr "Mini-aplicação é executada sem um ícone no painel"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "Não foi possível determinar a localização original de %s"
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr "%s restaurado."
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr "%s já existe."
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
-msgid "Restore"
-msgstr "Restaurar"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Esvaziar"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Esvaziar todos os itens do Lixo?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Todos os itens no Lixo serão eliminados permanentemente."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Esvaziar o Lixo"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
-msgid "Unknown device"
-msgstr "Dispositivo desconhecido"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
-#, c-format
-msgid "Unknown type: %s "
-msgstr "Tipo desconhecido: %s "
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
-msgid "No Access Points Available"
-msgstr "Sem pontos de acesso disponivel"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
-msgid "Scanning for Access Points…"
-msgstr "À procura de Pontos de acesso…"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
-msgid "Wireless"
-msgstr "Sem fios"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
-msgid "This Virtual Private Network could not be connected to."
-msgstr "Não é possível ligar a esta VPN."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
-msgid "This wireless network could not be connected to."
-msgstr "Impossível ligar à rede sem fios."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
-msgid "This network uses 40/64-bit WEP encryption"
-msgstr "Esta rede usa encriptação WEP 40/64-bit"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
-msgid "This network uses 104/128-bit WEP encryption"
-msgstr "Esta rede usa encriptação WEP 104/128-bit"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
-msgid "This network uses WPA encryption"
-msgstr "Esta rede usa encriptação WPA"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
-msgid "This network uses encryption"
-msgstr "Esta rede usa encriptação"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
-msgid "This network is unsecured"
-msgstr "Esta rede não está protegida"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
-msgid "Failed to connect"
-msgstr "Falha ao ligar"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
-msgid "Connecting"
-msgstr "A ligar"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
-msgid "Connected"
-msgstr "Ligado"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
-msgid "Disconnected"
-msgstr "Desligado"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
-msgid "VPN"
-msgstr "VPN"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
-msgid "Virtual network: %s"
-msgstr "Rede virtual: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
-msgid "Wired"
-msgstr "Por cabo"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
-msgid "Mobile Broadband: %s"
-msgstr "Banda larga móvel: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
-msgid "Mobile Broadband"
-msgstr "Banda larga móvel"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
-msgid "Modem"
-msgstr "Modem"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
-msgid "Connect to Hidden Network…"
-msgstr "Ligar a rede oculta…"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
-msgid "Network Settings…"
-msgstr "Definições de Rede…"
-
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
 msgstr "Ícone do Menu"
@@ -1324,17 +1324,37 @@ msgstr "Mostrar régua de energia"
 msgid "Roll-over mouse"
 msgstr "Passar o rato por cima"
 
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr "Mostrar itens usados recentemente"
-
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
-msgstr "Notas rápidas e fáceis"
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr "Menu da ambiente de trabalho elegante"
 
 #: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
 msgid "Time of day in fuzzy way"
 msgstr "Hora do dia de forma difusa"
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr "Controlador de luminosidade"
+
+#: budgie-trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Lixo"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr "Mostrar previsão do tempo"
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr "Mini-aplicação de Rede"
+
+#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+msgid "Set a different wallpaper per workspace"
+msgstr "Definir um papel de parede diferente por área de trabalho"
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
+msgstr "Notas rápidas e fáceis"
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
@@ -1344,26 +1364,6 @@ msgstr "Definir ações de cantos ativos"
 msgid "Workspace indicator and window list"
 msgstr "Indicador de área de trabalho e lista de janelas"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
-msgstr "Mostrar previsão do tempo"
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
-msgid "Stylish Desktop Application Menu"
-msgstr "Menu da ambiente de trabalho elegante"
-
-#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
-msgid "Brightness Controller"
-msgstr "Controlador de luminosidade"
-
-#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
-msgid "Set a different wallpaper per workspace"
-msgstr "Definir um papel de parede diferente por área de trabalho"
-
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Lixo"
-
-#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
-msgid "Network Applet"
-msgstr "Mini-aplicação de Rede"
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
+msgstr "Mostrar itens usados recentemente"

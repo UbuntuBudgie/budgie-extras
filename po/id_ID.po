@@ -1,48 +1,257 @@
+# #-#-#-#-#  id_ID.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Dendy Satriya Adi <inoktav@gmail.com>, 2020
 # david mohammed <foss.freedom@gmail.com>, 2020
-# 
+#
+# #-#-#-#-#  id.po (Budgie Desktop)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the budgie-desktop package.
+#
+# Translators:
+# Abdul Rohman Wahid <the@wahwahid.com>, 2015-2016
+# Yurizal Susanto <rizal.sagi@gmail.com>, 2016
+# Yurizal Susanto <rizal.sagi@gmail.com>, 2016
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: Budgie Desktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-14 21:18+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
-"Language-Team: Indonesian (Indonesia) (https://www.transifex.com/ubuntu-budgie/teams/72251/id_ID/)\n"
+"POT-Creation-Date: 2020-10-20 23:09+0100\n"
+"PO-Revision-Date: 2019-09-28 16:21+0000\n"
+"Last-Translator: Muhammad Ahfas An Nahri <ahfas.annahri@gmail.com>\n"
+"Language-Team: Indonesian <http://translate.getsol.us/projects/budgie-"
+"desktop/translations/id/>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id_ID\n"
+"#-#-#-#-#  id_ID.po (budgie-extras 10.4)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"#-#-#-#-#  id.po (Budgie Desktop)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.8\n"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Tampilkan yang terakhir dipakai"
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
+msgid "Open and search apps"
+msgstr ""
 
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Tampilkan Tooltip"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "Atur ikon dari berkas"
 
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Sembunyikan jalur di Menu"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "Berkas gambar"
 
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-trash/src/widgets/MenuRow.vala:52
-msgid "Open"
-msgstr "Buka"
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "Berkas apapun"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-trash/src/widgets/TrashPopover.vala:140
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Cancel"
+msgstr "Batal"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "Atur ikon"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "Matikan"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
+msgid "Suspend"
+msgstr "Suspen"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
+#, fuzzy
+msgid "Restart"
+msgstr ""
+"#-#-#-#-#  id_ID.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Nyalakan ulang\n"
+"#-#-#-#-#  id.po (Budgie Desktop)  #-#-#-#-#\n"
+"Ulangi"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
+msgid "Lock"
+msgstr "Kunci"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
+msgid "Logout"
+msgstr "Keluar"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+msgid "Remove from _Dock"
+msgstr "Hapus dari _Dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
+msgid "Add to _Dock"
+msgstr "Tambah ke _Dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "Teks"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "Berkas"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "Aksi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "Cari"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "Kontak"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "Internet"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-window-shuffler/src/shuffler_control.vala:168
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "Aksi Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "Lainnya"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
+msgid "View as Grid"
+msgstr "Tampilan Kisi"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
+msgid "View by Category"
+msgstr "Tampilan Kategori"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
+msgid "Search Apps"
+msgstr "Cari Aplikasi"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
+msgid "Clear all"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Jalankan di Terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Jalankan aplikasi atau perintah di terminal"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "Jalankan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "Jalankan aplikasi, aksi atau skrip"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Salin ke Papan Klip"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Salin pilihan ke papan klip"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "Jalankan perintah ini…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Buka %s di peramban web default"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Buka %s di %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Buka tautan ini di peramban bawaan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Tautan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Buka tautan di peramban bawaan"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Eksekusi '%s'"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Jalankan perintah"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Temukan dan jalankan perintah semaunya."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "Cari dan jalankan aplikasi di komputer Anda."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#, c-format
+msgid "Open with %s"
+msgstr "Buka dengan %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Buka pilihan saat ini menggunakan %s"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
+msgid "Calculate basic expressions."
+msgstr "Hitung ekspresi dasar."
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
+msgid "bc is not installed"
+msgstr "Bc tidak terpasang"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Coba ubah istilah pencarian."
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Tidak ada hasil untuk \"%s\""
 
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
@@ -59,6 +268,595 @@ msgstr "Tampilkan semua jendela di Ruang Kerja"
 
 #: budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
+msgid "midnight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
+msgid "one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
+msgid "two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
+msgid "three"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
+msgid "four"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
+msgid "five"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
+msgid "six"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
+msgid "seven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
+msgid "eight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
+msgid "nine"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
+msgid "ten"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
+msgid "eleven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
+msgid "noon"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
+msgid "thirteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
+msgid "fourteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
+msgid "fifteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
+msgid "sixteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
+msgid "seventeen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
+msgid "eighteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
+msgid "nineteen"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
+msgid "twenty"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
+msgid "twenty-one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
+msgid "twenty-two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
+msgid "twenty-three"
+msgstr ""
+
+#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
+#, c-format
+msgid "%s-ish"
+msgstr ""
+
+#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
+#, c-format
+msgid "a bit past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:157
+#, c-format
+msgid "ten past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:160
+#, c-format
+msgid "quarter after %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
+#, c-format
+msgid "twenty past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
+#, c-format
+msgid "almost half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
+#, c-format
+msgid "half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:180
+#, c-format
+msgid "twenty-five 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:185
+#, c-format
+msgid "twenty 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:190
+#, c-format
+msgid "quarter 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:195
+#, c-format
+msgid "ten 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+#. by adding the characters +1 you can add a further hour i.e. 'almost three'
+#. by adding the characters -1 you can subtract one hour i.e. 'almost one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
+#, c-format
+msgid "almost %s"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
+msgid "Date and Time settings"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
+msgid "Calendar"
+msgstr "Kalender"
+
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#. pack page2
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
+msgid "Preferences"
+msgstr "Pengaturan"
+
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
+msgid "Show date"
+msgstr "Tampilkan tanggal"
+
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
+msgid "Use 24 hour time"
+msgstr "Gunakan format waktu 24 jam"
+
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:143
+msgid "Brightness"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:91
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:141
+msgid "Light"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "Could not determine original location of /home/budgie/file.txt"
+#: budgie-trash/src/helpers/TrashHelper.vala:110
+#, c-format
+msgid "Could not determine original location of %s"
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt restored"
+#: budgie-trash/src/helpers/TrashHelper.vala:135
+#, c-format
+msgid "%s restored."
+msgstr ""
+
+#. TRANSLATORS: This is referring to a file path for example
+#. "/home/budgie/file.txt already exists"
+#: budgie-trash/src/helpers/TrashHelper.vala:142
+#, c-format
+msgid "%s already exists."
+msgstr ""
+
+#. fileButton.set_tooltip_text(destParentPath);
+#: budgie-trash/src/helpers/TrashHelper.vala:390
+msgid "Restore"
+msgstr ""
+
+#. tooltip
+#: budgie-trash/src/widgets/TrashPopover.vala:79
+#: budgie-trash/src/widgets/MenuRow.vala:52
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Buka"
+
+#: budgie-trash/src/widgets/TrashPopover.vala:87
+msgid "Empty"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:117
+msgid "Empty all items from the Trash?"
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:126
+msgid "All items in the Trash will be permanently deleted."
+msgstr ""
+
+#: budgie-trash/src/widgets/TrashPopover.vala:147
+msgid "Empty Trash"
+msgstr ""
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr ""
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr ""
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr ""
+
+#. settingsgrid - bottomsection
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-window-shuffler/src/shuffler_control.vala:241
+msgid "Close"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr "Silahkan masuk untuk memulai"
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-quicknote/QuickNoteApplet.vala:201
+msgid "Use"
+msgstr "Gunakan"
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
+msgid "Set text color"
+msgstr ""
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr ""
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr ""
+
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Monday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Tuesday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Wednesday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Thursday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Friday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Saturday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Sunday"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:800
+msgid "General"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
+msgid "Desktop"
+msgstr "Destop"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "City"
+msgstr ""
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+msgid "Show on desktop"
+msgstr ""
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
+msgid "Show dynamic panel icon"
+msgstr ""
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
+msgid "Show forecast in popover"
+msgstr ""
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:876
+msgid "Transparency"
+msgstr "Transparansi"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:909
+msgid "Set custom position (px)"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:931
+msgid "Custom location name"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
+msgid "Please enter at least 3 characters"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
+msgid "Connect to Hidden Network…"
+msgstr "Menyambung ke Jaringan Tersembunyi…"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
+msgid "Network Settings…"
+msgstr "Pengaturan Jaringan…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
+#, c-format
+msgid "Virtual network: %s"
+msgstr "Jaringan virtual: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "Kabel"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
+msgid "No Access Points Available"
+msgstr "Tidak ada Titik Akses yang Tersedia"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
+msgid "Scanning for Access Points…"
+msgstr "Memindai Titik Akses…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
+msgid "Wireless"
+msgstr "Nirkabel"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
+msgid "This wireless network could not be connected to."
+msgstr "Jaringan nirkabel ini tidak dapat dihubungkan."
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
+msgid "This network uses 40/64-bit WEP encryption"
+msgstr "Jaringan ini menggunakan enkripsi WEP 40/64-bit"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
+msgid "This network uses 104/128-bit WEP encryption"
+msgstr "Jaringan ini menggunakan enkripsi WEP 104/128-bit"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
+msgid "This network uses WPA encryption"
+msgstr "Jaringan ini menggunakan enkripsi WPA"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+msgid "This network uses encryption"
+msgstr "Jaringan ini menggunakan enkripsi"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
+msgid "This network is unsecured"
+msgstr "Jaringan ini tidak aman"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
+msgid "Failed to connect"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
+msgid "Connecting"
+msgstr "Menyambung"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
+msgid "Connected"
+msgstr "Tersambung"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
+msgid "Disconnected"
+msgstr "Terputus"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr "VPN"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
+msgid "This Virtual Private Network could not be connected to."
+msgstr ""
+"Jaringan Pribadi Virtual (Virtual Private Network) ini tidak dapat terhubung."
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
+msgid "Unknown device"
+msgstr "Perangkat tak dikenal"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
+#, c-format
+msgid "Unknown type: %s "
+msgstr "Jenis tidak diketahui: %s "
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
+#, c-format
+msgid "Mobile Broadband: %s"
+msgstr "Broadband Seluler: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr "Broadband Seluler"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
+msgid "Modem"
+msgstr "Modem"
+
+#. strings
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+msgid "Stop"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+msgid "Start"
+msgstr "Awal"
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
+msgid ""
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
+msgid "Applet runs without a panel icon"
 msgstr ""
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
@@ -86,18 +884,49 @@ msgstr "Set direktori kustom"
 msgid "Choose directory"
 msgstr "Pilih direktori"
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-msgid "Cancel"
-msgstr "Batal"
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:147
+msgid "Corner"
+msgstr ""
 
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Use"
-msgstr "Gunakan"
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:151
+msgid "Action"
+msgstr ""
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:155
+msgid "Custom"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:266
+#: budgie-hotcorners/src/HotCornersApplet.vala:275
+#: budgie-hotcorners/src/HotCornersApplet.vala:284
+msgid "Missing process"
+msgstr ""
+
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:270
+msgid "Please enable Window Previews"
+msgstr ""
+
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:279
+#: budgie-hotcorners/src/HotCornersApplet.vala:287
+msgid "Please enable Window Shuffler"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:467
+msgid "Manage corners from panel icon"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:477
+msgid "Set pressure (0 = no pressure)"
+msgstr ""
+
+#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
+msgid "Minimum window size exceeds target"
+msgstr ""
 
 #. STRINGS & THINGS
 #. settings
@@ -295,11 +1124,6 @@ msgstr ""
 msgid "Window Shuffler Control"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:168
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-msgid "Settings"
-msgstr "Pengaturan"
-
 #: budgie-window-shuffler/src/shuffler_control.vala:169
 msgid "Margins"
 msgstr ""
@@ -351,12 +1175,6 @@ msgstr ""
 msgid "Rows"
 msgstr ""
 
-#. settingsgrid - bottomsection
-#: budgie-window-shuffler/src/shuffler_control.vala:241
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-msgid "Close"
-msgstr ""
-
 #: budgie-window-shuffler/src/shuffler_control.vala:317
 msgid "Top"
 msgstr "Atas"
@@ -385,599 +1203,27 @@ msgstr ""
 msgid "Sticky Neighbors switched on"
 msgstr ""
 
-#: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
-msgid "Minimum window size exceeds target"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
-msgid "midnight"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
-msgid "one"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
-msgid "two"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
-msgid "three"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
-msgid "four"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
-msgid "five"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
-msgid "six"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
-msgid "seven"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
-msgid "eight"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
-msgid "nine"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
-msgid "ten"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
-msgid "eleven"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
-msgid "noon"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
-msgid "thirteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
-msgid "fourteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
-msgid "fifteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
-msgid "sixteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
-msgid "seventeen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
-msgid "eighteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
-msgid "nineteen"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
-msgid "twenty"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
-msgid "twenty-one"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
-msgid "twenty-two"
-msgstr ""
-
-#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
-msgid "twenty-three"
-msgstr ""
-
-#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
-#, c-format
-msgid "%s-ish"
-msgstr ""
-
-#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
-#, c-format
-msgid "a bit past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:157
-#, c-format
-msgid "ten past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:160
-#, c-format
-msgid "quarter after %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
-#, c-format
-msgid "twenty past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
-#, c-format
-msgid "almost half-past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
-#, c-format
-msgid "half-past %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:180
-#, c-format
-msgid "twenty-five 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:185
-#, c-format
-msgid "twenty 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:190
-#, c-format
-msgid "quarter 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
-#. by adding the characters +1 you can add a further hour i.e. 'til three'
-#. by adding the characters -1 you can subtract one hour i.e. 'til one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:195
-#, c-format
-msgid "ten 'til %s"
-msgstr ""
-
-#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
-#. by adding the characters +1 you can add a further hour i.e. 'almost three'
-#. by adding the characters -1 you can subtract one hour i.e. 'almost one'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
-#, c-format
-msgid "almost %s"
-msgstr ""
-
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
-msgid "Date and Time settings"
-msgstr ""
-
-#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
-msgid "Calendar"
-msgstr "Kalender"
-
-#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
-#. pack page2
-#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
-msgid "Preferences"
-msgstr "Pengaturan"
-
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
-msgid "Show date"
-msgstr "Tampilkan tanggal"
-
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
-msgid "Use 24 hour time"
-msgstr "Gunakan format waktu 24 jam"
-
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:147
-msgid "Corner"
-msgstr ""
-
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:151
-msgid "Action"
-msgstr ""
-
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:155
-msgid "Custom"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:266
-#: budgie-hotcorners/src/HotCornersApplet.vala:275
-#: budgie-hotcorners/src/HotCornersApplet.vala:284
-msgid "Missing process"
-msgstr ""
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:270
-msgid "Please enable Window Previews"
-msgstr ""
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:279
-#: budgie-hotcorners/src/HotCornersApplet.vala:287
-msgid "Please enable Window Shuffler"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:467
-msgid "Manage corners from panel icon"
-msgstr ""
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:477
-msgid "Set pressure (0 = no pressure)"
-msgstr ""
-
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
 
-#. get weekday by index
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Monday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Tuesday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Wednesday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
-msgid "Thursday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Friday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Saturday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
-msgid "Sunday"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:800
-msgid "General"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
-msgid "Desktop"
-msgstr "Destop"
-
-#. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
-msgid "City"
-msgstr ""
-
-#. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
-msgid "Show on desktop"
-msgstr ""
-
-#. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
-msgid "Show dynamic panel icon"
-msgstr ""
-
-#. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
-msgid "Show forecast in popover"
-msgstr ""
-
-#. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:876
-msgid "Transparency"
-msgstr "Transparansi"
-
-#. window props
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
-#: budgie-weathershow/src/get_color/get_color.vala:50
-msgid "Set text color"
-msgstr ""
-
-#. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:909
-msgid "Set custom position (px)"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:931
-msgid "Custom location name"
-msgstr ""
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
-msgid "Please enter at least 3 characters"
-msgstr ""
-
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr ""
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
-msgid "Open and search apps"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
-msgid "Run in Terminal"
-msgstr "Jalankan di Terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
-msgid "Run application or command in terminal"
-msgstr "Jalankan aplikasi atau perintah di terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
-msgid "Run"
-msgstr "Jalankan"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
-msgid "Run an application, action or script"
-msgstr "Jalankan aplikasi, aksi atau skrip"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
-msgid "Copy to Clipboard"
-msgstr "Salin ke Papan Klip"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
-msgid "Copy selection to clipboard"
-msgstr "Salin pilihan ke papan klip"
-
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
-msgid "Run this command…"
-msgstr "Jalankan perintah ini…"
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
-msgid "Try changing search terms."
-msgstr "Coba ubah istilah pencarian."
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
-#, c-format
-msgid "No Results for “%s”"
-msgstr "Tidak ada hasil untuk \"%s\""
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
-msgid "View as Grid"
-msgstr "Tampilan Kisi"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
-msgid "View by Category"
-msgstr "Tampilan Kategori"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
-msgid "Search Apps"
-msgstr "Cari Aplikasi"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
-msgid "Clear all"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
-msgid "Shutdown"
-msgstr "Matikan"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
-msgid "Suspend"
-msgstr "Suspen"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
-msgid "Restart"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:131
-msgid "Lock"
-msgstr "Kunci"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:149
-msgid "Logout"
-msgstr "Keluar"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
-msgid "Text"
-msgstr "Teks"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
-msgid "Applications"
-msgstr "Aplikasi"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
-msgid "Files"
-msgstr "Berkas"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
-msgid "Actions"
-msgstr "Aksi"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
-msgid "Search"
-msgstr "Cari"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
-msgid "Contacts"
-msgstr "Kontak"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
-msgid "Internet"
-msgstr "Internet"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
-msgid "Application Actions"
-msgstr "Aksi Aplikasi"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
-msgid "Other"
-msgstr "Lainnya"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
-msgid "Remove from _Dock"
-msgstr "Hapus dari _Dock"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:80
-msgid "Add to _Dock"
-msgstr "Tambah ke _Dock"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-msgid "Set menu icon from file"
-msgstr "Atur ikon dari berkas"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
-msgid "Image files"
-msgstr "Berkas gambar"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
-msgid "Any file"
-msgstr "Berkas apapun"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-msgid "Set icon"
-msgstr "Atur ikon"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
-msgid "Search for and run applications on your computer."
-msgstr "Cari dan jalankan aplikasi di komputer Anda."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
-#, c-format
-msgid "Open with %s"
-msgstr "Buka dengan %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:325
-#, c-format
-msgid "Opens current selection using %s"
-msgstr "Buka pilihan saat ini menggunakan %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-#, c-format
-msgid "Execute '%s'"
-msgstr "Eksekusi '%s'"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-msgid "Run command"
-msgstr "Jalankan perintah"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
-msgid "Find and execute arbitrary commands."
-msgstr "Temukan dan jalankan perintah semaunya."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
-msgid "Open %s in default web browser"
-msgstr "Buka %s di peramban web default"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
-#, c-format
-msgid "Open %s in %s"
-msgstr "Buka %s di %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
-msgid "Open this link in default browser"
-msgstr "Buka tautan ini di peramban bawaan"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
-msgid "Link"
-msgstr "Tautan"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
-msgid "Open link in default browser"
-msgstr "Buka tautan di peramban bawaan"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:44
-msgid "Calculator"
-msgstr "Kalkulator"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:45
-msgid "Calculate basic expressions."
-msgstr "Hitung ekspresi dasar."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:49
-msgid "bc is not installed"
-msgstr "Bc tidak terpasang"
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Tampilkan yang terakhir dipakai"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Tampilkan Tooltip"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Sembunyikan jalur di Menu"
 
 #. hrs to double digits
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
@@ -1047,243 +1293,6 @@ msgstr ""
 msgid "Super + drag"
 msgstr ""
 
-#. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
-#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
-msgid "WallStreet Control"
-msgstr ""
-
-#. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
-msgid "Use default wallpapers"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
-msgid "Browse"
-msgstr ""
-
-#. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
-msgid "Change interval"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-msgid "Hours"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
-msgid "Minutes"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
-msgid "Seconds"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
-msgid "Please log out/in to initialize"
-msgstr "Silahkan masuk untuk memulai"
-
-#. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
-msgid "Select a directory"
-msgstr ""
-
-#: budgie-brightness-controller/src/Applet.vala:81
-msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:87
-msgid "Dim"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:89
-#: budgie-brightness-controller/src/widgets/Popover.vala:143
-msgid "Brightness"
-msgstr ""
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:91
-msgid "Temperature"
-msgstr "Temperatur"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:141
-msgid "Light"
-msgstr ""
-
-#. strings
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
-msgid "Stop"
-msgstr ""
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
-msgid "Start"
-msgstr "Awal"
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
-msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
-msgstr ""
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
-msgid "Applet runs without a panel icon"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr ""
-
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr ""
-
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
-msgid "Restore"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr ""
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:23
-msgid "Unknown device"
-msgstr "Perangkat tak dikenal"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:38
-#, c-format
-msgid "Unknown type: %s "
-msgstr "Jenis tidak diketahui: %s "
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:47
-msgid "No Access Points Available"
-msgstr "Tidak ada Titik Akses yang Tersedia"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:61
-msgid "Scanning for Access Points…"
-msgstr "Memindai Titik Akses…"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:112
-msgid "Wireless"
-msgstr "Nirkabel"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
-msgid "This Virtual Private Network could not be connected to."
-msgstr ""
-"Jaringan Pribadi Virtual (Virtual Private Network) ini tidak dapat "
-"terhubung."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:58
-msgid "This wireless network could not be connected to."
-msgstr "Jaringan nirkabel ini tidak dapat dihubungkan."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:151
-msgid "This network uses 40/64-bit WEP encryption"
-msgstr "Jaringan ini menggunakan enkripsi WEP 40/64-bit"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:154
-msgid "This network uses 104/128-bit WEP encryption"
-msgstr "Jaringan ini menggunakan enkripsi WEP 104/128-bit"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:157
-msgid "This network uses WPA encryption"
-msgstr "Jaringan ini menggunakan enkripsi WPA"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
-msgid "This network uses encryption"
-msgstr "Jaringan ini menggunakan enkripsi"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:162
-msgid "This network is unsecured"
-msgstr "Jaringan ini tidak aman"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:173
-msgid "Failed to connect"
-msgstr ""
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:177
-msgid "Connecting"
-msgstr "Menyambung"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:184
-msgid "Connected"
-msgstr "Tersambung"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
-msgid "Disconnected"
-msgstr "Terputus"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
-msgid "VPN"
-msgstr "VPN"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
-msgid "Virtual network: %s"
-msgstr "Jaringan virtual: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
-msgid "Wired"
-msgstr "Kabel"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
-msgid "Mobile Broadband: %s"
-msgstr "Broadband Seluler: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
-msgid "Mobile Broadband"
-msgstr "Broadband Seluler"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:33
-msgid "Modem"
-msgstr "Modem"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:55
-msgid "Connect to Hidden Network…"
-msgstr "Menyambung ke Jaringan Tersembunyi…"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:59
-msgid "Network Settings…"
-msgstr "Pengaturan Jaringan…"
-
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
 msgstr "Ikon menu"
@@ -1314,16 +1323,36 @@ msgstr ""
 msgid "Roll-over mouse"
 msgstr "Putar mouse"
 
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr ""
-
-#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
-msgid "Quick & Easy Notes"
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
 msgstr ""
 
 #: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
 msgid "Time of day in fuzzy way"
+msgstr ""
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr ""
+
+#: budgie-trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Tempat sampah"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr ""
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr ""
+
+#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+msgid "Set a different wallpaper per workspace"
+msgstr ""
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
 msgstr ""
 
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
@@ -1334,26 +1363,1008 @@ msgstr ""
 msgid "Workspace indicator and window list"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
-msgid "Show weather & forecast"
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
-msgid "Stylish Desktop Application Menu"
-msgstr ""
+#~ msgid "Hibernate"
+#~ msgstr "Hibernasi"
 
-#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
-msgid "Brightness Controller"
-msgstr ""
+#~ msgid "Unknown"
+#~ msgstr "Tidak diketahui"
 
-#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
-msgid "Set a different wallpaper per workspace"
-msgstr ""
+#~ msgid "Log out"
+#~ msgstr "Keluar"
 
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Tempat sampah"
+#~ msgid "Restart device"
+#~ msgstr "Nyalakan ulang perangkat"
 
-#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
-msgid "Network Applet"
-msgstr ""
+#~ msgid "Power Off"
+#~ msgstr "Matikan"
+
+#~ msgid "Change background"
+#~ msgstr "Ganti latar belakang"
+
+#~ msgid "Displays"
+#~ msgstr "Tampilan"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Mengaktifkan Caffeine Boost"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Mematikan Caffeine Boost"
+
+#, fuzzy
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Akan mati dalam"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Akan mati dalam %d menit"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Mode Caffeine"
+
+#~ msgid "Applets"
+#~ msgstr "Aplet"
+
+#~ msgid "Notifications"
+#~ msgstr "Notifikasi"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Tidak ada aplikasi yang sedang memainkan suara."
+
+#~ msgid "Play some music"
+#~ msgstr "Mainkan musik"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Tidak ada apa-apa disini"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notifikasi belum dibaca"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notifikasi belum dibaca"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Semua notifikasi telah dibaca"
+
+#~ msgid "No new notifications"
+#~ msgstr "Tidak ada notifikasi baru"
+
+#~ msgid "Apps"
+#~ msgstr "Aplikasi"
+
+#~ msgid "Devices"
+#~ msgstr "Perangkat"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Baterai terisi penuh."
+
+#~ msgid "Battery charging"
+#~ msgstr "Mengisi baterai"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Sisa baterai"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Tampilkan persentase baterai"
+
+#~ msgid "Power settings"
+#~ msgstr "Pengaturan Daya"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Pengaturan Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Kirim Berkas"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Mode Pesawat Bluetooth"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth tidak aktif"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth aktif"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Terhubung dengan %d perangkat"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Luncurkan Jendela Baru"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Tutup Semua Jendela"
+
+#~ msgid "Always On Top"
+#~ msgstr "Selalu di Atas"
+
+#~ msgid "Maximize"
+#~ msgstr "Maksimalkan"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimalkan"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Batal Favorit"
+
+#~ msgid "Favorite"
+#~ msgstr "Favorit"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Pindah ke Ruang Kerja %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Batal Maksimalkan"
+
+#~ msgid "Close Window"
+#~ msgstr "Tutup Jendela"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Tampilkan Kendali Jendela"
+
+#~ msgid "All"
+#~ msgstr "Semua"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Maaf, tidak ada hasil"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Kunci huruf kapital aktif"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Kunci huruf kapital tidak aktif"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Kunci angka aktif"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Kunci angka nonaktif"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Pengaturan tanggal dan waktu"
+
+#~ msgid "Show seconds"
+#~ msgstr "Tampilkan detik"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Alihkan destop"
+
+#~ msgid "Rename"
+#~ msgstr "Ubah nama"
+
+#~ msgid "Remove"
+#~ msgstr "Hapus"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Pewaktu (menit)"
+
+#~ msgid "User"
+#~ msgstr "Pengguna"
+
+#~ msgid "Places"
+#~ msgstr "Tempat"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Tidak ada yang ditampilkan sekarang"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Kaitkan beberapa perangkat"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Izinkan lebih banyak bagian"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Buka \"%s\""
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Volume digunakan oleh proses lain"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operasi dibatalkan"
+
+#~ msgid "Type your password"
+#~ msgstr "Ketik kata sandi anda"
+
+#~ msgid "Removable devices"
+#~ msgstr "Perangkat yang dapat dilepas"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volume lokal"
+
+#~ msgid "Network folders"
+#~ msgstr "Folder jaringan"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Kaitkan dan buka \"%s\""
+
+#~ msgid "Eject"
+#~ msgstr "Mengeluarkan"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Masukkan kata sandi enkripsi untuk membuka volume ini"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Anda sekarang dapat melepas dengan aman"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Kata sandi yang dimasukkan salah"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr ""
+#~ "Sebuah kesalahan yang tidak diketahui terjadi saat memasang volume ini"
+
+#~ msgid "Unmount"
+#~ msgstr "Melepas"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Perangkat tidak dikenal"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Terjadi kesalahan saat melepas perangkat"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Terjadi kesalahan saat melepas volume"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Otentikasi gagal"
+
+#~ msgid "Group:"
+#~ msgstr "Kelompok:"
+
+#~ msgid "Appearance"
+#~ msgstr "Tampilan"
+
+#~ msgid "Panels"
+#~ msgstr "Panel"
+
+#~ msgid "Session"
+#~ msgstr "Sesi"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Pengaturan Desktop Budgie"
+
+#~ msgid "Create new panel"
+#~ msgstr "Buat panel baru"
+
+#, fuzzy
+#~ msgid "Remove Panel"
+#~ msgstr "Hapus panel"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Singkirkan panel ini dari layar"
+
+#~ msgid "Top Dock"
+#~ msgstr "Dok Atas"
+
+#~ msgid "Right Dock"
+#~ msgstr "Dok Kanan"
+
+#~ msgid "Left Dock"
+#~ msgstr "Dok Kiri"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Dok Bawah"
+
+#~ msgid "Top Panel"
+#~ msgstr "Panel Atas"
+
+#~ msgid "Right Panel"
+#~ msgstr "Panel Kanan"
+
+#~ msgid "Left Panel"
+#~ msgstr "Panel Kiri"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Panel Bawah"
+
+#~ msgid "Always"
+#~ msgstr "Selalu"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamis"
+
+#~ msgid "None"
+#~ msgstr "Nihil"
+
+#~ msgid "Intelligent"
+#~ msgstr "Pintar"
+
+#~ msgid "Never"
+#~ msgstr "Tidak pernah"
+
+#~ msgid "Position"
+#~ msgstr "Posisi"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Tentukan sisi layar yang akan digunakan panel ini"
+
+#~ msgid "Size"
+#~ msgstr "Ukuran"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Tentukan ukuran (lebar atau panjang, tergantung orientasi) panel ini"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Bersembunyi otomatis"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Saat disetel, panel ini akan bersembunyi untuk memaksimalkan tingkat "
+#~ "tampilan layar"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Mengatur kapan panel harus punya latar belakang yang solid"
+
+#~ msgid "Shadow"
+#~ msgstr "Bayangan"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Menambahkan bayangan dekoratif, ideal untuk panel yang samar"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Sesuaikan daerah"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Menambahkan hiasan ke panel sehingga masing-masing tiga area utama panel "
+#~ "dapat berbeda tema."
+
+#~ msgid "Dock mode"
+#~ msgstr "Mode dok"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Saat di mode dok, panel akan menggunakan ruang sekecil mungkin, "
+#~ "meluangkan ruang berharga untuk tampilan"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Ijinkan menaikkan volume diatas 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Ijinkan menaikkan volume melalui Pengaturan Suara serta Widget Output "
+#~ "Suara di Raven hingga 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Aktifkan tampilan minggu di Kalender"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr "Pengaturan ini memungkinkan tampilan minggu di widget Kalender."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Munculkan widget Kalender"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Perlihatkan atau sembunyikan Widget Kalender di bagian Applet Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Tampilkan Widget Output Suara"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Perlihatkan atau Sembunyikan Widget Output Suara di bagian Applet Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Tampilkan Widget masukan mikrofon"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Perlihatkan atau Sembunyikan Widget Input Mikrofon di bagian Applet Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Tampilkan Widget Kontrol Pemutaran Media"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Perlihatkan atau Sembunyikan Widget Media Playback Controls (MPRIS) di "
+#~ "bagian Applet Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Tampilkan Strip Daya"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Tampilkan atau Sembunyikan Strip Daya dibagian bawah Raven."
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Konfirmasi penghapusan panel"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Apakah kamu ingin menghapus panel ini? Aksi ini tidak dapat diulang."
+
+#~ msgid "Remove panel"
+#~ msgstr "Hapus panel"
+
+#~ msgid "Keep panel"
+#~ msgstr "Simpan panel"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Konfirmasi penghapusan applet"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Apakah kamu ingin menghapus applet ini? Aksi ini tidak dapat diurungkan."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Jangan tanyakan lagi"
+
+#~ msgid "Remove applet"
+#~ msgstr "Hapus applet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Simpan applet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Ikon Desktop"
+
+#~ msgid "Control whether to allow launchers and icons on the desktop."
+#~ msgstr "Pengaturan untuk mengizinkan peluncur dan ikon di desktop."
+
+#~ msgid "Home directory"
+#~ msgstr "Direktori rumah"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Tambah jalan pintas ke direktori rumah pada desktop."
+
+#~ msgid "Network servers"
+#~ msgstr "Server jaringan"
+
+#~ msgid "Add a shortcut to your local network servers on the desktop."
+#~ msgstr "Tambah jalan pintas ke server jaringan lokal pada desktop."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Tambah jalan pintas ke direktori tempat sampah pada desktop."
+
+#~ msgid "Mounted volumes"
+#~ msgstr "Volume yang terpasang"
+
+#~ msgid "Mounted volumes & drives will appear on the desktop."
+#~ msgstr "Volume dan perangkat yang terpasang akan tampil pada desktop."
+
+#~ msgid "Style"
+#~ msgstr "Gaya"
+
+#~ msgid "Widgets"
+#~ msgstr "Widget"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Tentukan tampilan dekorasi dan kontrol jendela"
+
+#~ msgid "Icons"
+#~ msgstr "Ikon"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Tentukan tema ikon global"
+
+#~ msgid "Cursors"
+#~ msgstr "Kursor"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Tentukan tema kursor global"
+
+#~ msgid "Notification Position"
+#~ msgstr "Posisi Notifikasi"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Atur lokasi untuk popup notifikasi"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tema gelap"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema bawaan"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Saat diaktifkan, gaya komponen desktop akan ditimpa dengan gaya bawaan"
+
+#~ msgid "Animations"
+#~ msgstr "Animasi"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Mengatur apakah jendela dan kontrol menggunakan animasi"
+
+#~ msgid "Top Left"
+#~ msgstr "Kiri Atas"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Kiri Bawah"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Kanan Bawah"
+
+#~ msgid "Top Right"
+#~ msgstr "Kanan Atas"
+
+#~ msgid "Untitled"
+#~ msgstr "Tak ada judul"
+
+#~ msgid "No description"
+#~ msgstr "Tanpa deskripsi"
+
+#~ msgid "running"
+#~ msgstr "berjalan"
+
+#~ msgid "Add"
+#~ msgstr "Tambah"
+
+#~ msgid "Command"
+#~ msgstr "Perintah"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Sebuah masukan dengan judul itu sudah ada"
+
+#~ msgid "Title"
+#~ msgstr "Gelar"
+
+#~ msgid "Required"
+#~ msgstr "Diperlukan"
+
+#~ msgid "Description"
+#~ msgstr "Keterangan"
+
+#~ msgid "Optional"
+#~ msgstr "Opsional"
+
+#~ msgid "Autostart"
+#~ msgstr "Mulai otomatis"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Aplikasi Mulai otomatis"
+
+#~ msgid "Configure applet"
+#~ msgstr "Mengatur applet"
+
+#~ msgid "Add applet"
+#~ msgstr "Tambah applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Pilih sebuah applet baru untuk ditambahkan ke panel ini"
+
+#~ msgid "No settings available"
+#~ msgstr "Tidak ada pengaturan yang tersedia"
+
+#~ msgid "Center"
+#~ msgstr "Tengah"
+
+#~ msgid "End"
+#~ msgstr "Akhir"
+
+#~ msgid "Windows"
+#~ msgstr "Jendela"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Tempelkan dialog modal ke jendela"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Dialog modal akan tertempel ke jendela induk dan bergerak bersama saat "
+#~ "digeser."
+
+#~ msgid "Button layout"
+#~ msgstr "Susunan tombol"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Ganti tata letak tombol di bar judul aplikasi."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Pusatkan jendela baru di layar"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Pusatkan jendela yang baru diluncurkan pada layar saat ini."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Nonaktifkan mode Cahaya Malam saat windows layar penuh"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Nonaktifkan mode Cahaya Malam saat jendela layar penuh. Aktifkan kembali "
+#~ "saat meninggalkan layar penuh."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Tempatkan diri otomatis"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Jendela akan menempatkan diri saat digeser ke atas atau sisi sudut layar."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Aktifkan perubahan fokus saat mouse masuk dan keluar dari jendela"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Aktifkan fokus jendela untuk diterapkan saat mouse memasuki jendela dan "
+#~ "berhenti fokus saat mouse meninggalkan jendela."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Matikan <i>unredirect</i> jendela"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Pilihan ini untuk pengguna tingkat lanjut. Gunakan ini jika anda "
+#~ "mengalami masalah grafis atau kinerja dengan GPU khusus."
+
+#, fuzzy
+#~ msgid "Show all windows in tab switcher"
+#~ msgstr "Tampilkan semua jendela saat klik"
+
+#~ msgid "Right (standard)"
+#~ msgstr "Kanan (standar)"
+
+#~ msgid "Fonts"
+#~ msgstr "Fonta"
+
+#~ msgid "Window Titles"
+#~ msgstr "Judul Jendela"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Tentukan fon yang digunakan pada bar judul aplikasi."
+
+#~ msgid "Documents"
+#~ msgstr "Dokumen"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Tentukan fon tampilan yang digunakan oleh dokumen."
+
+#~ msgid "Interface"
+#~ msgstr "Antarmuka"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Tentukan fon utama yang digunakan oleh kontrol aplikasi."
+
+#~ msgid "Monospace"
+#~ msgstr "Lebar tetap"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr "Tentukan fon lebar tetap yang digunakan oleh aplikasi dominan teks."
+
+#~ msgid "Text scaling"
+#~ msgstr "Skalakan teks"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Atur faktor skala teks."
+
+#~ msgid "Full"
+#~ msgstr "Penuh"
+
+#~ msgid "Medium"
+#~ msgstr "Sedang"
+
+#~ msgid "Slight"
+#~ msgstr "Kecil"
+
+#, fuzzy
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Atur faktor skala teks."
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Standar (Abu-abu)"
+
+#, fuzzy
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Atur faktor skala teks."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Pilih sebuah applet"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Apa Anda yakin akan mengakhiri sesi ini?"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Tampilkan semua jendela saat klik"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Hanya tampilkan yang disukai"
+
+#~ msgid "Lock icons"
+#~ msgstr "Kunci icon"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Batasi ke Ruang Kerja"
+
+#~ msgid "Window grouping"
+#~ msgstr "Pengelompokan jendela"
+
+#~ msgid "Night Light"
+#~ msgstr "Cahaya Malam"
+
+#~ msgid "Schedule"
+#~ msgstr "Jadwal"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Matahari terbenam sampai matahari terbit"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Pengaturan Tampilan"
+
+#~ msgid "Spacer size"
+#~ msgstr "Ukuran pembatas"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Mode Kompak"
+
+#~ msgid "Show Headers"
+#~ msgstr "Tampilkan Header"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "\"Tambahkan\" visibilitas tombol"
+
+#~ msgid "Don't show"
+#~ msgstr "Jangan tampilkan"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Tampilkan saat mouse diatas"
+
+#~ msgid "Always show"
+#~ msgstr "Selalu tampilkan"
+
+#~ msgid "Enable notification"
+#~ msgstr "Aktifkan notifikasi"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maksimalkan kecerahan"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Tingkat Kecerahan"
+
+#~ msgid "Show label"
+#~ msgstr "Tampilkan label"
+
+#~ msgid "Show places"
+#~ msgstr "Tampilkan tempat"
+
+#~ msgid "Show network folders"
+#~ msgstr "Tampilkan folder jaringan"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Tampilkan perangkat yang dapat dilepas"
+
+#~ msgid "Always expand places"
+#~ msgstr "Selalu memperluas tempat"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Otentikasi Diperlukan"
+
+#~ msgid "Password:"
+#~ msgstr "Sandi:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Otentikasi diperlukan"
+
+#~ msgid "Authenticate"
+#~ msgstr "Otentikasi"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Desktop Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Sesi ini membawa Anda masuk ke Desktop Budgie"
+
+#~ msgid "System Tray"
+#~ msgstr "Baki Sistem"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indikator Status"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Ikon Daftar Tugas"
+
+#~ msgid "Spacer"
+#~ msgstr "Pembatas"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menu Budgie"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indikator Papan Tik"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Pengaturan Panel Samping Raven"
+
+#~ msgid "Clock"
+#~ msgstr "Jam"
+
+#~ msgid "Separator"
+#~ msgstr "Pemisah"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Tampilkan tombol destop"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Pemindah Ruang Kerja"
+
+#~ msgid "Task List"
+#~ msgstr "Daftar Tugas"
+
+#~ msgid "Caffeine"
+#~ msgstr "Kafein"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indikator Susunan Papan Tik"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indikator Pengguna"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Ganti tampilan dan perilaku desktop"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Panel Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Luncurkan aplikasi yang lain dan sediakan utilitas untuk mengelola "
+#~ "jendela, tampilkan waktu, dll."
+
+#~ msgid "Network"
+#~ msgstr "Jaringan"
+
+#~ msgid "Network indicator"
+#~ msgstr "Indikator Jaringan"
+
+#~ msgid "Uninstall"
+#~ msgstr "Hapus Pemasangan"
+
+#, fuzzy
+#~ msgid "View in AppCenter"
+#~ msgstr "Pusat Aplikasi"
+
+#~ msgid "Search for %s in %s"
+#~ msgstr "Cari %s di %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Cari di toko aplikasi"
+
+#~ msgid "AppCenter"
+#~ msgstr "Pusat Aplikasi"
+
+#~ msgid "Search for applications"
+#~ msgstr "Cari aplikasi"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "TokoApl tidak terpasang"
+
+#~ msgid "Open %s settings"
+#~ msgstr "Buka pengaturan %s"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Temukan colokan switchboard dan buka."
+
+#~ msgid "Lock this device"
+#~ msgstr "Kunci perangkat ini"
+
+#~ msgid "Log Out"
+#~ msgstr "Log Keluar"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Tutup semua aplikasi yang terbuka dan keluar"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Letakkan komputer Anda ke mode suspend"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "Suspen"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Letakkan komputer Anda ke mode hibernasi"
+
+#, fuzzy
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "Hibernasi"
+
+#~ msgid "Shut Down"
+#~ msgstr "Matikan"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Matikan komputer Anda"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Nyalakan ulang komputer Anda"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Kunci sesi atau Log Keluar dari itu. Suspen, hibernasi, nyalakan ulang "
+#~ "atau matikan komputer Anda."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit tidak ditemukan"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Indikator menu-aplikasi"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Hapus Pemasangan"
+
+#~ msgid "Open using default application"
+#~ msgstr "Buka dengan aplikasi bawaan"
+
+#~ msgid "Open folder"
+#~ msgstr "Buka folder"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Buka folder yang berisi berkas ini"
+
+#~ msgid "All Applications"
+#~ msgstr "Semua Aplikasi"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Buat Penyaring baru"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Tidak ada titik akses nirkabel dalam jangkauan."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Nirkabel Dinonaktifkan"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Aktifkan nirkabel untuk menemukan titik akses nirkabel terdekat."
+
+#~ msgid "No VPN Available"
+#~ msgstr "Tidak ada VPN yang tersedia"
+
+#~ msgid "Hotspot"
+#~ msgstr "Area Bersinyal (Hotspot)"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Area Bersinyal (Hotspot) %s"
+
+#~ msgid "Failed"
+#~ msgstr "Gagal"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Kabel tercabut"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Mode pesawat terbang diaktifkan"
