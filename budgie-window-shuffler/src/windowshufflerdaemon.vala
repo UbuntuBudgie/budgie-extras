@@ -49,7 +49,7 @@ namespace GetWindowRules {
         return false;
     }
 
-    private void readfile (string rulesdir, string fname) {
+    private void read_rule (string rulesdir, string fname) {
         // read file & add resulting Variant to HashTable
         // since wm_class is filename, it's key. No need to make it a field
         string monitor = "";
@@ -73,7 +73,7 @@ namespace GetWindowRules {
             while ((line = dis.read_line (null)) != null) {
                 int fieldindex = 0;
                 foreach (string field in fields) {
-                    if (startswith (line, field)) {
+                    if (startswith(line, field)) {
                         string new_value = line.split("=")[1];
                         switch (fieldindex) {
                             case 0:
@@ -123,7 +123,7 @@ namespace GetWindowRules {
             // walk through relevant files
             while ((filename = dr.read_name()) != null) {
                 if (endswith(filename, ".windowrule")) {
-                    readfile (rulesdir, filename);
+                    read_rule (rulesdir, filename);
                 }
             }
         }
@@ -607,6 +607,86 @@ namespace ShufflerEssentialInfo {
             }
             return activemon_name;
         }
+
+        public Variant extracttask_fromfile (string? path) {
+            // read taskfile
+            string[] fields = {
+                "Exec", "XPosition", "YPosition", "Cols", "Rows",
+                "XSpan", "YSpan", "WMClass", "WName", "Monitor",
+                "TryExisting"
+            };
+            // let's set some defaults
+            string command = "";
+            string x_ongrid = "0";
+            string y_ongrid = "0";
+            string cols = "2";
+            string rows = "2";
+            string xspan = "1";
+            string yspan = "1";
+            string wmclass = "";
+            string wname = "";
+            string monitor = "";
+            string tryexisting = "false";
+            DataInputStream? dis = null;
+            try {
+                var file = File.new_for_path (path);
+                if (file.query_exists ()) {
+                    dis = new DataInputStream (file.read ());
+                    string line;
+                    while ((line = dis.read_line (null)) != null) {
+                        int fieldindex = 0;
+                        foreach (string field in fields) {
+                            if (GetWindowRules.startswith (line, field)) {
+                                string new_value = line.split("=")[1];
+                                switch (fieldindex) {
+                                case 0:
+                                    command = new_value;
+                                    break;
+                                case 1:
+                                    x_ongrid = new_value;
+                                    break;
+                                case 2:
+                                    y_ongrid = new_value;
+                                    break;
+                                case 3:
+                                    cols = new_value;
+                                    break;
+                                case 4:
+                                    rows = new_value;
+                                    break;
+                                case 5:
+                                    xspan = new_value;
+                                    break;
+                                case 6:
+                                    yspan = new_value;
+                                    break;
+                                case 7:
+                                    wmclass = new_value.down();
+                                    break;
+                                case 8:
+                                    wname = new_value.down();
+                                    break;
+                                case 9:
+                                    monitor = new_value;
+                                    break;
+                                case 10:
+                                    tryexisting = new_value;
+                                    break;
+                                }
+                            }
+                            fieldindex += 1;
+                        }
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            return new Variant(
+                "(sssssssssss)" , command, x_ongrid, y_ongrid, cols, rows, 
+                xspan, yspan, wmclass, wname, monitor, tryexisting
+            );
+        }
     }
 
     private void getscale() {
@@ -933,7 +1013,6 @@ namespace ShufflerEssentialInfo {
         gdkscreen.monitors_changed.connect(getscale);
         get_windata();
         wnckscr.window_opened.connect(acton_latestwin);
-
         wnckscr.window_closed.connect(()=> {
             if (showtarget != null && gridguiruns == false) {
                 showtarget.destroy();

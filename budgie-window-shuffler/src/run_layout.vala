@@ -33,7 +33,8 @@ using Wnck;
 / YSpan=
 / Monitor=
 / WName=
-/ the last two are optional; WName is to define specifically named files, to
+/ TryExisting=
+/ the last three are optional; WName is to define specifically named files, to
 / be launched to specific positions in case multiple windows of one and the
 / same application are opened.
 */
@@ -75,6 +76,7 @@ namespace ShufflerLayouts {
     }
 
     private LayoutElement extractlayout_fromfile (string path) {
+        // method below is now in Dbus call from daemon. convert someday
         string[] fields = {
             "Exec", "XPosition", "YPosition", "Cols", "Rows",
             "XSpan", "YSpan", "WMClass", "WName", "Monitor",
@@ -384,14 +386,39 @@ namespace ShufflerLayouts {
         );
         // subfolder and -> layoutpath
         string layoutfolder = args[1];
-        string layoutpath = searchpath.concat("/", layoutfolder);
+
+
         string[] validpaths = {};
-        // and if all is correct, go fetch data
-        if (FileUtils.test (layoutpath, FileTest.IS_DIR)) {
-        // create file list from dir
-            validpaths = validpathlist(layoutpath);
+
+
+        ///////////////////////////////////////////////////////////////////////////////
+        if (layoutfolder == "use_testing") {
+            if (args.length == 3) {
+                validpaths = {searchpath.concat("/", args[2])};
+            }
+            else {
+                string username = Environment.get_user_name();
+                validpaths = {"/tmp/".concat(username, "_istestingtask")};
+            }
+        }
+        else {
+            string layoutpath = searchpath.concat("/", layoutfolder);
+                // and if all is correct, go fetch data
+            if (FileUtils.test (layoutpath, FileTest.IS_DIR)) {
+                // create file list from dir
+                validpaths = validpathlist(layoutpath);
+            }
         }
         get_layoutdata(validpaths);
+        ///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
         remaining_jobs = layoutdata.length;
         foreach (LayoutElement lel in layoutdata) {
             // first let's see if we need to grab an existing window
@@ -436,7 +463,7 @@ namespace ShufflerLayouts {
                 run_command(lel.command);
             }
         }
-        Timeout.add_seconds(12, ()=> {
+        Timeout.add_seconds(15, ()=> {
             // make sure to quit after x time anyway
             Gtk.main_quit();
             return false;
@@ -450,7 +477,9 @@ namespace ShufflerLayouts {
         }
         Thread.usleep(10000);
         try {
-            busyfile.delete();
+            if (busyfile.query_exists ()) {
+                busyfile.delete();
+            }
         }
         catch (Error e) {
             error ("%s", e.message);
