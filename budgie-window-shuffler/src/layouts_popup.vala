@@ -637,7 +637,6 @@ namespace LayoutsPopup {
                     grid_ysize_spin, xspan_spin, yspan_spin, wmclass_entry,
                     wname_entry, screendropdown, tryexist_checkbox
                 );
-                // error: take path of original layout!
                 apply_taskedit(candidate_content);
             });
 
@@ -654,8 +653,6 @@ namespace LayoutsPopup {
                         combine_pathsteps(currlayout, currtask + ".windowtask")
                     );
                 }
-
-                print(@"currlayout: $currlayout\n");
                 apply_taskedit(
                     candidate_content, true,
                     combine_pathsteps(
