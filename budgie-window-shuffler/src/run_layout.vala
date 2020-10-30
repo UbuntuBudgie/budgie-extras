@@ -386,12 +386,7 @@ namespace ShufflerLayouts {
         );
         // subfolder and -> layoutpath
         string layoutfolder = args[1];
-
-
         string[] validpaths = {};
-
-
-        ///////////////////////////////////////////////////////////////////////////////
         if (layoutfolder == "use_testing") {
             if (args.length == 3) {
                 validpaths = {searchpath.concat("/", args[2])};
@@ -410,15 +405,6 @@ namespace ShufflerLayouts {
             }
         }
         get_layoutdata(validpaths);
-        ///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
         remaining_jobs = layoutdata.length;
         foreach (LayoutElement lel in layoutdata) {
             // first let's see if we need to grab an existing window
