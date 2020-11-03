@@ -8,6 +8,7 @@
 # Yasin ÇUKUR <yasincukur@gmail.com>, 2020
 # Emre JILTA <jilta.e@gmail.com>, 2020
 # david mohammed <foss.freedom@gmail.com>, 2020
+# Mücahid Aksel <mucahidaksel@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 23:09+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
+"Last-Translator: Mücahid Aksel <mucahidaksel@gmail.com>, 2020\n"
 "Language-Team: Turkish (https://www.transifex.com/ubuntu-budgie/teams/72251/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,7 +124,7 @@ msgstr "Diğer"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
 msgid "View as Grid"
-msgstr "Izgara olarak görüntüle"
+msgstr "Kılavuz olarak görüntüle"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
 msgid "View by Category"
@@ -501,7 +502,7 @@ msgstr "24 saatlik zaman formatını kullan"
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
+msgstr "Gnome Settings Daemon'un renk eklentisini otomatik başlattan kaldırın"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
@@ -586,7 +587,7 @@ msgstr "Rastgele duvar kâğıdı kullan"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
 msgid "Sync to lock-screen"
-msgstr ""
+msgstr "Kilit ekranına senkronize et"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
 msgid "Use default wallpapers"
@@ -725,7 +726,7 @@ msgstr "Özel pozisyonu ayarla (px)"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:931
 msgid "Custom location name"
-msgstr ""
+msgstr "Özel konum adı"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
 msgid "Please enter at least 3 characters"
@@ -798,7 +799,7 @@ msgstr "Bağlı"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:187
 msgid "Disconnected"
-msgstr "Bağlı değil"
+msgstr "Bağlantı kesildi"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
@@ -834,21 +835,23 @@ msgstr "Modem"
 #. strings
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
 msgid "Stop"
-msgstr ""
+msgstr "Durdur"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 msgid "Start"
-msgstr "Baş"
+msgstr "Başlat"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
 "Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
 " per workspace"
 msgstr ""
+"Duvar Kağıdı Çalışma Alanı Değiştirici, çalışma alanı başına hangi duvar "
+"kağıdının ayarlandığını otomatik olarak hatırlar"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
-msgstr ""
+msgstr "Uygulamacık panel simgesi olmadan çalışır"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
@@ -894,13 +897,13 @@ msgstr "Özel"
 #: budgie-hotcorners/src/HotCornersApplet.vala:275
 #: budgie-hotcorners/src/HotCornersApplet.vala:284
 msgid "Missing process"
-msgstr ""
+msgstr "Eksik süreç"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:270
 msgid "Please enable Window Previews"
-msgstr ""
+msgstr "Lütfen Pencere Önizlemelerini etkinleştirin"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
@@ -911,7 +914,7 @@ msgstr ""
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:467
 msgid "Manage corners from panel icon"
-msgstr ""
+msgstr "Panel simgesinden köşeleri yönetin"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:477
 msgid "Set pressure (0 = no pressure)"
@@ -919,7 +922,7 @@ msgstr "Basıncı ayarla (0 = basınç yok)"
 
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:46
 msgid "Minimum window size exceeds target"
-msgstr ""
+msgstr "Minimum pencere boyutu hedefi aşıyor"
 
 #. STRINGS & THINGS
 #. settings
@@ -945,7 +948,7 @@ msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:74
 msgid "Move the mouse over a button for an explanation"
-msgstr ""
+msgstr "Açıklama için fareyi bir düğmenin üzerine getirin"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:75
 msgid "Number of columns, used by grid, move and tile-all shortcuts"
@@ -1005,77 +1008,77 @@ msgstr "Yarım aşağı"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:90
 msgid "Tile all windows to grid"
-msgstr ""
+msgstr "Tüm pencereleri ızgaraya döşe"
 
 #. Jump & resize
 #: budgie-window-shuffler/src/shuffler_control.vala:92
 msgid "Shortcuts for moving to the nearest grid cell"
-msgstr ""
+msgstr "En yakın ızgara hücresine geçmek için kısayollar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:93
 msgid "Move left"
-msgstr ""
+msgstr "Sola kaydır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:94
 msgid "Move right"
-msgstr ""
+msgstr "Sağa kaydır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:95
 msgid "Move up"
-msgstr ""
+msgstr "Yukarı kaydır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:96
 msgid "Move down"
-msgstr ""
+msgstr "Aşağı kaydır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:97
 msgid "Shortcuts for resizing windows on grid"
-msgstr ""
+msgstr "Kılavuzdaki pencereleri yeniden boyutlandırmak için kısayollar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:98
 msgid "Expand horizontally (to the right)"
-msgstr ""
+msgstr "Yatay olarak genişlet (sağa doğru)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:99
 msgid "Shrink horizontally (from the right)"
-msgstr ""
+msgstr "Yatay olarak küçült (sağdan)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:100
 msgid "Expand vertically (down)"
-msgstr ""
+msgstr "Dikey olarak genişlet (aşağı)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:101
 msgid "Shrink vertically (from the bottom)"
-msgstr ""
+msgstr "Dikey olarak küçült (alttan)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:102
 msgid "Expand horizontally (to the left)"
-msgstr ""
+msgstr "Yatay olarak genişlet (sola doğru)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:103
 msgid "Shrink horizontally (from the left)"
-msgstr ""
+msgstr "Yatay olarak küçült (soldan)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:104
 msgid "Expand vertically (up)"
-msgstr ""
+msgstr "Dikey olarak genişlet (yukarı)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:105
 msgid "Shrink vertically (from the top)"
-msgstr ""
+msgstr "Dikey olarak küçült (üstten)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:106
 msgid "Toggle resizing opposite window"
-msgstr ""
+msgstr "Karşı pencereyi yeniden boyutlandırmayı aç / kapat"
 
 #. GUI grid
 #: budgie-window-shuffler/src/shuffler_control.vala:108
 msgid "Shortcuts for the grid"
-msgstr ""
+msgstr "Kılavuz kısayolları"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:109
 msgid "Show the grid"
-msgstr ""
+msgstr "Kılavuzu göster"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:110
 msgid "Add a column"
@@ -1095,7 +1098,7 @@ msgstr "Bir satır kaldır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:114
 msgid "To select a range of tiles, use Shift + click"
-msgstr ""
+msgstr "Bir dizi karo seçmek için Shift + tıklayın"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:115
 msgid "Set the shade of gray for the grid"
@@ -1112,7 +1115,7 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:146
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
-msgstr ""
+msgstr "Pencere Karıştırıcı Kontrolü"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:169
 msgid "Margins"
@@ -1120,33 +1123,33 @@ msgstr "Kenarlar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:170
 msgid "Tiling"
-msgstr ""
+msgstr "Döşeme"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:171
 msgid "Move & resize"
-msgstr ""
+msgstr "Taşı ve yeniden boyutlandır"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:172
 msgid "Grid"
-msgstr ""
+msgstr "Kılavuz"
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
 #: budgie-window-shuffler/src/shuffler_control.vala:176
 msgid "Enable Window Shuffler"
-msgstr ""
+msgstr "Pencere Karıştırıcıyı Etkinleştir"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:180
 msgid "Enable Window Shuffler grid"
-msgstr ""
+msgstr "Pencere Karıştırıcı ızgarasını etkinleştir"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:186
 msgid "Swap windows"
-msgstr ""
+msgstr "Pencereleri değiştir"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:190
 msgid "Enable animation"
-msgstr ""
+msgstr "Animasyonu etkinleştir"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:194
 msgid "Show notification on incorrect window size"
@@ -1155,7 +1158,7 @@ msgstr ""
 #. settingsgrid - spinbuttonsection
 #: budgie-window-shuffler/src/shuffler_control.vala:200
 msgid "Grid: columns & rows"
-msgstr ""
+msgstr "Kılavuz: sütunlar ve satırlar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:205
 msgid "Columns"
@@ -1279,7 +1282,7 @@ msgstr "Satır aralığı"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:519
 msgid "Super + drag"
-msgstr ""
+msgstr "Shift + sürükle"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
@@ -1337,7 +1340,7 @@ msgstr "Ağ uygulamacığı"
 
 #: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
 msgid "Set a different wallpaper per workspace"
-msgstr ""
+msgstr "Her çalışma alanı için farklı bir duvar kağıdı ayarlayın"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
