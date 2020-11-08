@@ -54,6 +54,7 @@ namespace ShufflerControls {
         SpinButton paddingspin;
         ToggleButton toggle_gui;
         ToggleButton toggle_shuffler;
+        ToggleButton toggle_layouts;
         ToggleButton toggle_swapgeo;
         ToggleButton toggle_softmove;
         ToggleButton toggle_warning;
@@ -69,6 +70,7 @@ namespace ShufflerControls {
             // settings
             string daemonexpl = (_("Enable tiling and window move shortcuts")) + ":";
             string guiexpl = (_("Enable grid tiling graphical shortcut"));
+            string layoutsexpl = (_("Enable Shuffler's feature to setup a combination of windows in a grid layout"));
             string swapgeoexpl = (_("When using move shortcuts, swap window size & position if a window moves to an existing window's position"));
             string softmoveexpl = (_("Enable animation on move and tiling actions if general desktop animations are enabled"));
             string default_expl = (_("Move the mouse over a button for an explanation"));
@@ -88,6 +90,8 @@ namespace ShufflerControls {
             string righthalf = "Ctrl + Alt + 6".concat("\t\t\t\t", (_("Right-half")));
             string bottomhalf = "Ctrl + Alt + 2".concat("\t\t\t\t", (_("Bottom-half")));
             string tileall = "Control + Super + A".concat("\t\t", (_("Tile all windows to grid")));
+            string calllayouts_header = (_("Layouts")) +":";
+            string calllayouts = "Super + Alt + L".concat("\t\t\t", (_("Call the layouts quicklist & settings")));
             // Jump & resize
             string jump_header = (_("Shortcuts for moving to the nearest grid cell")) + ":";
             string jumpleft = "Super + Alt + ←".concat("\t\t\t", (_("Move left")));
@@ -136,7 +140,6 @@ namespace ShufflerControls {
                 color: red;
             }
             """;
-
             // window basics
             this.set_default_size(10, 10);
             this.set_resizable(false);
@@ -144,7 +147,6 @@ namespace ShufflerControls {
             initialiseLocaleLanguageSupport();
             this.set_position(Gtk.WindowPosition.CENTER);
             this.title = (_("Window Shuffler Control"));
-
             // lay out essential window elements
             supergrid = new Gtk.Grid();
             this.add(supergrid);
@@ -167,7 +169,7 @@ namespace ShufflerControls {
             set_margins(supergrid);
             make_headerbutton ((_("Settings")), "stackbuttonleft", 1, "settings");
             make_headerbutton ((_("Margins")), "stackbuttons", 2, "marginsrid");
-            make_headerbutton ((_("Tiling")), "stackbuttons", 3, "qhshortcuts");
+            make_headerbutton ((_("Tiling & Layouts")), "stackbuttons", 3, "qhshortcuts");
             make_headerbutton ((_("Move & resize")), "stackbuttons", 4, "jumpshortcuts");
             make_headerbutton ((_("Grid")), "stackbuttonright", 5, "guigrid");
             // STACK-PAGES
@@ -180,20 +182,24 @@ namespace ShufflerControls {
                 (_("Enable Window Shuffler grid"))
             );
             settingsgrid.attach(toggle_gui, 1, 2, 1, 1);
+            toggle_layouts = new Gtk.CheckButton.with_label(
+                (_("Enable Window Layouts"))
+            );
+            settingsgrid.attach(toggle_layouts, 1, 3, 1, 1);
             var givemesomespace = new Gtk.Label("");
-            settingsgrid.attach(givemesomespace, 1, 3, 1, 1);
+            settingsgrid.attach(givemesomespace, 1, 4, 1, 1);
             toggle_swapgeo = new Gtk.CheckButton.with_label(
                 (_("Swap windows"))
             );
-            settingsgrid.attach(toggle_swapgeo, 1, 4, 1, 1);
+            settingsgrid.attach(toggle_swapgeo, 1, 5, 1, 1);
             toggle_softmove = new Gtk.CheckButton.with_label(
                 (_("Enable animation"))
             );
-            settingsgrid.attach(toggle_softmove, 1, 5, 1, 1);
+            settingsgrid.attach(toggle_softmove, 1, 6, 1, 1);
             toggle_warning = new Gtk.CheckButton.with_label(
                 (_("Show notification on incorrect window size"))
             );
-            settingsgrid.attach(toggle_warning, 1, 6, 1, 1);
+            settingsgrid.attach(toggle_warning, 1, 7, 1, 1);
             var empty = new Label("");
             settingsgrid.attach(empty, 1, 12, 1, 1);
             // settingsgrid - spinbuttonsection
@@ -235,7 +241,6 @@ namespace ShufflerControls {
             expl_label.set_max_width_chars(50);
             settingsgrid.attach(expl_label, 1, 21, 110, 1);
             set_textstyle(expl_label, {"explanation"});
-
             // settingsgrid - bottomsection
             var okbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
             var ok_button = new Button.with_label((_("Close")));
@@ -247,7 +252,6 @@ namespace ShufflerControls {
             supergrid.attach(okbox, 2, 99, 4, 1);
             ok_button.clicked.connect(Gtk.main_quit);
             this.destroy.connect(Gtk.main_quit);
-
             toggle_shuffler.enter_notify_event.connect(() => {
                 expl_label.set_text(daemonexpl);
                 return false;
@@ -261,6 +265,14 @@ namespace ShufflerControls {
                 return false;
             });
             toggle_gui.leave_notify_event.connect(() => {
+                expl_label.set_text(default_expl);
+                return false;
+            });
+            toggle_layouts.enter_notify_event.connect(() => {
+                expl_label.set_text(layoutsexpl);
+                return false;
+            });
+            toggle_layouts.leave_notify_event.connect(() => {
                 expl_label.set_text(default_expl);
                 return false;
             });
@@ -326,7 +338,6 @@ namespace ShufflerControls {
             marginsubgrid.attach(new Label((_("Bottom")) + "\n"), 2, 13, 1, 1);
             bottommarginspin = new Gtk.SpinButton.with_range(0, 200, 1);
             marginsubgrid.attach(bottommarginspin, 2, 14, 1, 1);
-
             var paddingbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
             paddingspin = new Gtk.SpinButton.with_range(0, 40, 1);
             var paddinglabel = new Label((_("Window padding")) + ":\t\t");
@@ -335,7 +346,6 @@ namespace ShufflerControls {
             paddingbox.pack_start(paddingspin, false, false, 0);
             marginsgrid.attach(new Label(""), 0, 2, 1, 1);
             marginsgrid.attach(paddingbox, 0, 3, 1, 1);
-
             // 3. shortcutsgrid
             var qhshortcutsheader = new Label(qtiling_header);
             set_textstyle(qhshortcutsheader, {"header"});
@@ -359,7 +369,14 @@ namespace ShufflerControls {
                 shortcutsgrid.attach(l, 0, n, 1, 1);
                 n += 1;
             }
-
+            shortcutsgrid.attach(new Label("\t"), 0, 20, 1, 1);
+            var calllayoutsheader = new Label(calllayouts_header);
+            calllayoutsheader.set_xalign(0);
+            set_textstyle(calllayoutsheader, {"header"});
+            shortcutsgrid.attach(calllayoutsheader, 0, 21, 1, 1);
+            var calllayouts_label = new Label(calllayouts);
+            calllayouts_label.set_xalign(0);
+            shortcutsgrid.attach(calllayouts_label, 0, 22, 1, 1);
             // 4. jumpgrid shortcuts
             var jumpshortcutsheader = new Label(jump_header);
             set_textstyle(jumpshortcutsheader, {"header"});
@@ -405,7 +422,6 @@ namespace ShufflerControls {
                 jumpgrid.attach(l, 0, n2, 1, 1);
                 n2 += 1;
             }
-
             // 5. guigrid
             var guigridheader = new Label(guigrid_header);
             set_textstyle(guigridheader, {"header"});
@@ -458,10 +474,10 @@ namespace ShufflerControls {
             setup_client();
             toggle_shuffler.toggled.connect(manage_boolean);
             toggle_gui.toggled.connect(manage_boolean);
+            toggle_layouts.toggled.connect(manage_boolean);
             toggle_swapgeo.toggled.connect(manage_boolean);
             toggle_softmove.toggled.connect(manage_boolean);
             toggle_warning.toggled.connect(manage_boolean);
-
             this.show_all();
         }
 
@@ -514,10 +530,12 @@ namespace ShufflerControls {
             bool currentlyactive = shuffler_settings.get_boolean("runshuffler");
             toggle_shuffler.set_active(currentlyactive);
             toggle_gui.set_sensitive(currentlyactive);
+            toggle_layouts.set_sensitive(currentlyactive);
             toggle_swapgeo.set_sensitive(currentlyactive);
             toggle_softmove.set_sensitive(currentlyactive);
             toggle_warning.set_sensitive(currentlyactive);
             toggle_gui.set_active(shuffler_settings.get_boolean("runshufflergui"));
+            toggle_layouts.set_active(shuffler_settings.get_boolean("runlayouts"));
             toggle_swapgeo.set_active(shuffler_settings.get_boolean("swapgeometry"));
             toggle_softmove.set_active(shuffler_settings.get_boolean("softmove"));
             toggle_warning.set_active(shuffler_settings.get_boolean("showwarning"));
@@ -535,10 +553,12 @@ namespace ShufflerControls {
             string match = "";
             bool newval = button.get_active();
             ToggleButton[] toggles = {
-                toggle_gui, toggle_shuffler, toggle_swapgeo, toggle_softmove, toggle_warning
+                toggle_gui, toggle_shuffler, toggle_swapgeo,
+                toggle_softmove, toggle_warning, toggle_layouts
             };
             string[] vals = {
-                "runshufflergui", "runshuffler", "swapgeometry", "softmove", "showwarning"
+                "runshufflergui", "runshuffler", "swapgeometry",
+                "softmove", "showwarning", "runlayouts"
             };
             foreach (ToggleButton b in toggles) {
                 if (b == button) {
@@ -556,6 +576,10 @@ namespace ShufflerControls {
                             string cm = Config.SHUFFLER_DIR + "/windowshufflerdaemon";
                             Process.spawn_command_line_sync(cm);
                         }
+                        // make sure if shuffler is switched off, layouts also quits
+                        else if (!newval) {
+                            toggle_layouts.set_active(false);
+                        }
                         client.ReloadShortcuts();
                     }
                     catch (Error e) {
@@ -564,6 +588,7 @@ namespace ShufflerControls {
                     return false;
                 });
                 toggle_gui.set_sensitive(newval);
+                toggle_layouts.set_sensitive(newval);
                 toggle_swapgeo.set_sensitive(newval);
                 toggle_softmove.set_sensitive(newval);
                 toggle_warning.set_sensitive(newval);

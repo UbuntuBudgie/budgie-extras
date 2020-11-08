@@ -24,6 +24,14 @@ shufflerguitargetauto = custom_target('shufflerguiautostart',
   install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
 )
 
+shufflerlayoutstargetauto = custom_target('layoutsautostart',
+  output : 'layoutspopup-autostart.desktop',
+  input : 'layoutspopup-autostart.desktop.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
+  install : true,
+  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
+)
+
 shufflertargetw = custom_target('shufflercontrols',
   output : 'shuffler-control.desktop',
   input : 'shuffler-control.desktop.in',
@@ -34,6 +42,23 @@ shufflertargetw = custom_target('shufflercontrols',
 
 BDE_LOC=join_paths(datadir, 'budgie-extras-daemon')
 
+
+
+#######################################################################################
+
+
+BDE_FILE='windowshuffler-toggle-layoutspopup.bde'
+shufflerbde01 = custom_target(BDE_FILE,
+  output : BDE_FILE,
+  input : BDE_FILE + '.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+  install : true,
+  install_dir : BDE_LOC
+)
+#######################################################################################
+
+
+
 BDE_FILE='windowshuffler-call_shufflergui.bde'
 shufflerbde01 = custom_target(BDE_FILE,
   output : BDE_FILE,
@@ -42,6 +67,13 @@ shufflerbde01 = custom_target(BDE_FILE,
   install : true,
   install_dir : BDE_LOC
 )
+
+
+
+
+
+
+
 
 BDE_FILE='windowshuffler-jump-down.bde'
 shufflerbde01 = custom_target(BDE_FILE,

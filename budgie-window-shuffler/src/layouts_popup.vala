@@ -55,32 +55,33 @@ namespace LayoutsPopup {
         Gtk.Box newlayout_box;
         Gtk.Box editlayout_box;
         string last_layoutname;
+        Gtk.Frame layoutframe;
+        Gtk.Frame newlayout_frame;
+        Gtk.Frame editlayout_frame;
 
         public PopupWindow() {
             // css stuff
-
             string layoutss_stylecss = """
-            .header {
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
-            .secondheader {
-                font-weight: bold;
-                margin-bottom: 10px;
+            .subheader {
+                margin-bottom: 20px;
                 margin-top: 10px;
+            }
+            .secondsubheader {
+                margin-bottom: 20px;
+                margin-top: 20px;
             }
             .justbold {
                 font-weight: bold;
             }
-            .entries {
-                margin-bottom: 2px;
-                margin-top: 2px;
+            .arrowbutton {
+                padding: 0px;
+                border-width: 0px;
             }
-            .windowcolor {
-                background-color: black;
+            .red_text {
+                color: white;
+                background-color: red;
             }
             """;
-
             Gdk.Screen gdk_scr = this.get_screen();
             gdk_dsp = Gdk.Display.get_default();
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
@@ -108,9 +109,6 @@ namespace LayoutsPopup {
                 }
                 makesure_offocus();
             });
-
-            //  set_widgetstyle(this, "windowcolor");
-
             // STACK
             layoutspopup_stack = new Stack();
             layoutspopup_stack.set_transition_type(
@@ -120,15 +118,16 @@ namespace LayoutsPopup {
             mastergrid = new Grid();
             mastergrid.attach(new Label(""), 1, 40, 1, 1);
             // corners spacing of mastergrid
-            set_cornerspacing(mastergrid);
+            set_margins(mastergrid, 35, 35, 35, 35);
             mastergrid.attach(layoutspopup_stack, 1, 1, 1, 1);
             this.add(mastergrid);
             // 1. PICK LAYOUT GRID
+            layoutframe = new Gtk.Frame("Layouts");
+            var widget_label = layoutframe.get_label_widget();
+            set_widgetstyle(widget_label, "justbold");
             stackgrid_layoutlist = new Grid(); // dynamically updated
-            Gtk.Label layout_header = new Gtk.Label("Layouts");
-            stackgrid_layoutlist.attach(layout_header, 1, 1, 5, 1);
-            layout_header.xalign = 0;
-            set_widgetstyle(layout_header, "header");
+            set_margins(stackgrid_layoutlist, 20, 20, 10, 20);
+            layoutframe.add(stackgrid_layoutlist);
             layoutlist_scrolledwindow = new ScrolledWindow(null, null);
             layoutlist_scrolledwindow_grid = new Gtk.Grid();
             layoutlist_scrolledwindow.set_size_request(430, 250);
@@ -156,11 +155,12 @@ namespace LayoutsPopup {
             addbutton.set_size_request(120, 10);
             addlayout_box.pack_end(addbutton, false, false, 2);
             // 2. NEW LAYOUTS GRID
-            stackgrid_newlayout = new Grid();
-            Label layoutname_label = new Label("New layout name");
-            layoutname_label.xalign = 0;
-            set_widgetstyle(layoutname_label, "header");
-            stackgrid_newlayout.attach(layoutname_label, 0, 0, 1, 1);
+            newlayout_frame = new Gtk.Frame("New layout");
+            var newlayout_widget_label = newlayout_frame.get_label_widget();
+            set_widgetstyle(newlayout_widget_label, "justbold");
+            stackgrid_newlayout = new Grid(); // dynamically updated
+            set_margins(stackgrid_newlayout, 20, 20, 20, 20);
+            newlayout_frame.add(stackgrid_newlayout);
             Entry layoutname_entry = new Entry();
             layoutname_entry.set_size_request(300, 10);
             stackgrid_newlayout.attach(layoutname_entry, 0, 1, 1, 1);
@@ -175,10 +175,16 @@ namespace LayoutsPopup {
             cancel_newlayoutbutton.set_size_request(120, 10);
             newlayout_box.pack_end(cancel_newlayoutbutton, false, false, 2);
             // 3. EDIT LAYOUT GRID
-            stackgrid_editlayout = new Grid();
-            Label editlayoutname_label = new Label("Edit Layout:");
+            editlayout_frame = new Gtk.Frame("Edit layout");
+            var editlayout_widget_label = editlayout_frame.get_label_widget();
+            set_widgetstyle(editlayout_widget_label, "justbold");
+            stackgrid_editlayout = new Grid(); // dynamically updated
+            set_margins(stackgrid_editlayout, 20, 20, 10, 20);
+            editlayout_frame.add(stackgrid_editlayout);
+            //  stackgrid_editlayout = new Grid();
+            Label editlayoutname_label = new Label("Layout name:");
             editlayoutname_label.xalign = 0;
-            set_widgetstyle(editlayoutname_label, "secondheader");
+            set_widgetstyle(editlayoutname_label, "subheader");
             stackgrid_editlayout.attach(editlayoutname_label, 0, 0, 1, 1);
             Box editlayoutname_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 5);
             editlayoutname_entry = new Entry();
@@ -191,7 +197,7 @@ namespace LayoutsPopup {
             editlayoutname_box.pack_start(reset_editlayoutname, false, false, 0);
             stackgrid_editlayout.attach(editlayoutname_box, 0, 1, 10, 1);
             Label tasklist_label = new Label("Window tasks" + ":");
-            set_widgetstyle(tasklist_label, "secondheader");
+            set_widgetstyle(tasklist_label, "secondsubheader");
             tasklist_label.xalign = 0;
             stackgrid_editlayout.attach(tasklist_label, 0, 2, 1, 1);
             tasklist_scrolledwindow = new ScrolledWindow(null, null);
@@ -208,9 +214,9 @@ namespace LayoutsPopup {
             addtaskbutton.label = "Add task";
             editlayout_box.pack_end(addtaskbutton, false, false, 2);
             // so, let's add stuff to stack
-            layoutspopup_stack.add_named(stackgrid_layoutlist, "picklayout");
-            layoutspopup_stack.add_named(stackgrid_newlayout, "newlayout");
-            layoutspopup_stack.add_named(stackgrid_editlayout, "editlayout");
+            layoutspopup_stack.add_named(layoutframe, "picklayout");
+            layoutspopup_stack.add_named(newlayout_frame, "newlayout");
+            layoutspopup_stack.add_named(editlayout_frame, "editlayout");
             // general window stuff
             this.decorated = false;
             this.title = "LayoutsPopup"; // don't change, it's identification
@@ -228,6 +234,7 @@ namespace LayoutsPopup {
             });
             addtaskbutton.clicked.connect(()=> {
                 call_dialog(last_layoutname, "", true);
+                //  get_task.set_skip_taskbar_hint();
             });
             editlayoutbutton_done.clicked.connect(()=> {
                 // editlayoutname_entry should have set_sensitive check!!
@@ -280,7 +287,7 @@ namespace LayoutsPopup {
                 catch (Error e) {
                     stderr.printf ("%s\n", e.message);
                 }
-                editlayoutname_label.set_text("Editing layout:");
+                //  editlayoutname_label.set_text("Editing layout:");
                 last_layoutname = newlayout_name;
                 change_page("editlayout", editlayout_box);
                 editlayoutname_entry.set_text(newlayout_name);
@@ -338,13 +345,6 @@ namespace LayoutsPopup {
             return monitors;
         }
 
-        private void set_cornerspacing (Gtk.Grid grid) {
-            int[,] corners = {{0, 0}, {100, 0}, {0, 100}, {100, 100}};
-            for (int i=0; i<4; i++) {
-                grid.attach(new Label("\t"), corners[i, 0], corners[i, 1], 1, 1);
-            }
-        }
-
         private int string_inlist (string s, string[] arr) {
             // check if in in array
             for (int i=0; i<arr.length; i++) {
@@ -355,7 +355,18 @@ namespace LayoutsPopup {
             return -1;
         }
 
+        private void set_margins(
+            Gtk.Grid grid, int left, int right, int top, int bottom
+        ) {
+            // lazy margins on a grid
+            grid.set_margin_start(left);
+            grid.set_margin_end(right);
+            grid.set_margin_top(top);
+            grid.set_margin_bottom(bottom);
+        }
+
         private void change_page(string newstackname, Gtk.Box newsection) {
+            // change stack page + button section
             layoutspopup_stack.set_visible_child_name(newstackname);
             Gtk.Box[] boxes = {addlayout_box, newlayout_box, editlayout_box};
             foreach (Gtk.Box b in boxes) {
@@ -363,11 +374,6 @@ namespace LayoutsPopup {
             }
             mastergrid.attach(newsection, 1, 51, 4, 1);
             mastergrid.show_all();
-        }
-
-        private void set_widgetstyle(Widget w, string css_style) {
-            var widgets_stylecontext = w.get_style_context();
-            widgets_stylecontext.add_class(css_style);
         }
 
         private void check_validentries(
@@ -431,7 +437,6 @@ namespace LayoutsPopup {
                     run_command(testcommand);
                 }
             }
-
             catch (Error e) {
                 stderr.printf ("Error: %s\n", e.message);
             }
@@ -448,133 +453,160 @@ namespace LayoutsPopup {
         private void call_dialog (
             string currlayout, string currtask = "", bool check_exist = false
         ) {
-
             // tooltips
             string command_tooltip = "Command to launch window or application (*mandatory)";
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
             string windowname_tooltip = "Window name - optional, to distinguish multiple windows of the same application";
-            //  string
-
-
             // todo: make numbers smart; only possible settings
             get_task = new Dialog();
+            get_task.set_transient_for(this);
             get_task.decorated = false;
             Gtk.Box contentarea = get_task.get_content_area();
             contentarea.orientation = Gtk.Orientation.VERTICAL;
-            Grid addtask_grid = new Gtk.Grid();
-            addtask_grid.attach(new Label("\t\t"), 2, 0, 1, 1);
-            addtask_grid.set_row_spacing(4);
-            set_cornerspacing(addtask_grid);
-            contentarea.pack_start(addtask_grid, false, false, 0);
+            // mastergrid
+            Grid master_grid = new Gtk.Grid();
+            set_margins(master_grid, 30, 30, 30, 30);
+            contentarea.pack_start(master_grid, false, false, 0);
             Gtk.Label curr_tasksubject = new Gtk.Label("Task name" + ": ");
             curr_tasksubject.xalign = 0;
             set_widgetstyle(curr_tasksubject, "justbold");
-            addtask_grid.attach(curr_tasksubject, 1, 1, 1, 1);
+            //  master_grid.attach(curr_tasksubject, 1, 1, 1, 1);
             Gtk.Entry taskname_entry = new Gtk.Entry();
             // get taskname
             taskname_entry.set_text(currtask);
-            addtask_grid.attach(taskname_entry, 3, 1, 20 , 1);
-            // app properties header
-            Label launchsection_header = new Label("Application properties");
-            addtask_grid.attach(launchsection_header, 1, 2, 1, 1);
-            // command
+            master_grid.attach(curr_tasksubject, 1, 1, 1, 1);
+            master_grid.attach(new Label(""), 2, 1, 1, 1);
+            master_grid.attach(taskname_entry, 3, 1, 1, 1);
+            master_grid.attach(new Label("\n"), 1, 2, 1, 1);
+            // 1. APPLICATION FRAME
+            Frame applicationframe = new Gtk.Frame("Application");
+            var app_label = applicationframe.get_label_widget();
+            set_widgetstyle(app_label, "justbold");
+            master_grid.attach(applicationframe, 1, 10, 10, 1);
+            // application grid
+            Grid applicationgrid = new Gtk.Grid();
+            set_margins(applicationgrid, 20, 20, 20, 20);
+            applicationgrid.set_row_spacing(4);
+            // - command
             Label exec_label = new Label("Command*");
-            addtask_grid.attach(exec_label, 1, 3, 1, 1);
             Entry exec_entry = new Entry();
-            exec_entry.set_tooltip_text("Command to launch the window or application");
             exec_entry.set_text("");
-            exec_entry.set_size_request(230, 10);
-            addtask_grid.attach(exec_entry, 3, 3, 20, 1);
-            // wmclass
+            exec_entry.set_size_request(250, 10);
+            exec_entry.set_tooltip_text("Command to launch the window or application");
+            applicationgrid.attach(exec_label, 1, 3, 1, 1);
+            applicationgrid.attach(new Label("\t\t"), 2, 3, 1, 1);
+            applicationgrid.attach(exec_entry, 3, 3, 20, 1);
+            // - wmclass
             Label wmclass_label = new Label("WM class group*");
-            addtask_grid.attach(wmclass_label, 1, 4, 1, 1);
             wmclass_entry = new Entry();
             wmclass_entry.set_text("");
+            wmclass_entry.set_size_request(250, 10);
             wmclass_entry.set_placeholder_text("Click a window to fetch");
-            addtask_grid.attach(wmclass_entry, 3, 4, 20, 1);
-            // wname
+            applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
+            applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
+            applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
+            // - wname
             Label wname_label = new Label("Window name");
-            addtask_grid.attach(wname_label, 1, 5, 1, 1);
             Entry wname_entry = new Entry();
             wname_entry.set_text("");
-            addtask_grid.attach(wname_entry, 3, 5, 20, 1);
-            // geometry_header
-            Label geometry_header = new Label("Grid & window geometry");
-            addtask_grid.attach(geometry_header, 1, 6, 1, 1);
-            // xsize
-            Label grid_xsize_label = new Label("Grid columns");
-            addtask_grid.attach(grid_xsize_label, 1, 7, 1, 1);
-            SpinButton grid_xsize_spin = new Gtk.SpinButton.with_range(1, 10, 1);
+            wname_entry.set_size_request(250, 10);
+            applicationgrid.attach(wname_label, 1, 5, 1, 1);
+            applicationgrid.attach(new Label("\t\t"), 2, 5, 1, 1);
+            applicationgrid.attach(wname_entry, 3, 5, 20, 1);
+            applicationframe.add(applicationgrid);
+            master_grid.attach(new Label(""), 1, 11, 1, 1);
+            // 2. GEOMETRY FRAME
+            Frame geometryframe = new Gtk.Frame("Window position & size");
+            var geo_label = geometryframe.get_label_widget();
+            set_widgetstyle(geo_label, "justbold");
+            master_grid.attach(geometryframe, 1, 30, 10, 1);
+            // gemetry grid
+            Grid geogrid = new Gtk.Grid();
+            set_margins(geogrid, 20, 20, 20, 20);
+            geogrid.set_row_spacing(0);
+            // grid cols / rows
+            Label grid_size_label = new Label("Grid size; colums & rows");
+            geogrid.attach(grid_size_label, 1, 10, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 10, 1, 1);
+            OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", 1, 10);
             grid_xsize_spin.set_value(2);
-            addtask_grid.attach(grid_xsize_spin, 3, 7, 1, 1);
-            // ysize
-            Label grid_ysize_label = new Label("Grid rows");
-            addtask_grid.attach(grid_ysize_label, 1, 8, 1, 1);
-            SpinButton grid_ysize_spin = new Gtk.SpinButton.with_range(1, 10, 1);
+            OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", 1, 10);
             grid_ysize_spin.set_value(2);
-            addtask_grid.attach(grid_ysize_spin, 3, 8, 1, 1);
-            // xpos
-            Label xpos_label = new Label("Horizontal target position");
-            addtask_grid.attach(xpos_label, 1, 9, 1, 1);
-            SpinButton xpos_spin = new Gtk.SpinButton.with_range(0, 10, 1);
+            Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
+            gridsize_box.pack_start(new Label("\t"), false, false, 0);
+            gridsize_box.pack_start(grid_ysize_spin, false, false, 0);
+            geogrid.attach(gridsize_box, 3, 10, 1, 1);
+            geogrid.attach(new Label(""), 1, 11, 1, 1);
+            // window position
+            Label winpos_label = new Label("Target window position, x / y");
+            geogrid.attach(winpos_label, 1, 12, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 12, 1, 1);
+            OwnSpinButton xpos_spin = new OwnSpinButton("hor", 0, 10);
             xpos_spin.set_value(0);
-            addtask_grid.attach(xpos_spin, 3, 9, 1, 1);
-            // ypos
-            Label ypos_label = new Label("Vertical target position");
-            addtask_grid.attach(ypos_label, 1, 10, 1, 1);
-            SpinButton ypos_spin = new Gtk.SpinButton.with_range(0, 10, 1);
+            OwnSpinButton ypos_spin = new OwnSpinButton("vert", 0, 10);
             ypos_spin.set_value(0);
-            addtask_grid.attach(ypos_spin, 3, 10, 1, 1);
-            // xspan
-            Label xspan_label = new Label("Horizontal cell span");
-            addtask_grid.attach(xspan_label, 1, 11, 1, 1);
-            SpinButton xspan_spin = new Gtk.SpinButton.with_range(1, 10, 1);
-            xspan_spin.set_value(1);
-            addtask_grid.attach(xspan_spin, 3, 11, 1, 1);
-            // yspan
-            Label yspan_label = new Label("Vertical cell span");
-            addtask_grid.attach(yspan_label, 1, 12, 1, 1);
-            SpinButton yspan_spin = new Gtk.SpinButton.with_range(1, 10, 1);
+            Box winpos_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            winpos_box.pack_start(xpos_spin, false, false, 0);
+            winpos_box.pack_start(new Label("\t"), false, false, 0);
+            winpos_box.pack_start(ypos_spin, false, false, 0);
+            geogrid.attach(winpos_box, 3, 12, 1, 1);
+            geogrid.attach(new Label(""), 1, 13, 1, 1);
+            // window span
+            Label cellspan_label = new Label("Window cell span, hor / vert");
+            geogrid.attach(cellspan_label, 1, 14, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 14, 1, 1);
+            OwnSpinButton yspan_spin = new OwnSpinButton("vert", 1, 10);
             yspan_spin.set_value(1);
-            addtask_grid.attach(yspan_spin, 3, 12, 1, 1);
-            // misc header
-            Label misc_header = new Label("Miscellaneous");
-            addtask_grid.attach(misc_header, 1, 13, 1, 1);
+            OwnSpinButton xspan_spin = new OwnSpinButton("hor", 1, 10);
+            xspan_spin.set_value(1);
+            Box winspan_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            winspan_box.pack_start(xspan_spin, false, false, 0);
+            winspan_box.pack_start(new Label("\t"), false, false, 0);
+            winspan_box.pack_start(yspan_spin, false, false, 0);
+            geogrid.attach(winspan_box, 3, 14, 1, 1);
+            geogrid.attach(new Label(""), 1, 13, 1, 1);
+            geometryframe.add(geogrid);
+            master_grid.attach(new Label(""), 1, 31, 1, 1);
+            Gtk.Frame miscframe = new Gtk.Frame("Miscellaneous");
+            var misc_label = miscframe.get_label_widget();
+            set_widgetstyle(misc_label, "justbold");
+            master_grid.attach(miscframe, 1, 50, 10, 1);
+            Grid miscgrid = new Gtk.Grid();
+            set_margins(miscgrid, 20, 20, 20, 20);
+            miscgrid.set_row_spacing(4);
+            miscframe.add(miscgrid);
             // targetmonitor
             Label targetmonitor_label = new Label("Target monitor");
-            addtask_grid.attach(targetmonitor_label, 1, 14, 1, 1);
+            miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
             ComboBoxText screendropdown = new ComboBoxText();
             string[] mons = get_monitornames();
             foreach (string m in mons) {
                 screendropdown.append_text(m);
             }
-            addtask_grid.attach(screendropdown, 3, 14, 1, 1);
+            miscgrid.attach(new Label("\t"), 2, 1, 1, 1);
+            miscgrid.attach(screendropdown, 3, 1, 1, 1);
             Label tryexisting_label = new Label("Try to move existing window");
-            addtask_grid.attach(tryexisting_label, 1, 15, 1, 1);
+            miscgrid.attach(tryexisting_label, 1, 2, 1, 1);
+            miscgrid.attach(new Label("\t"), 2, 2, 1, 1);
             CheckButton tryexist_checkbox = new Gtk.CheckButton();
-            addtask_grid.attach(tryexist_checkbox, 3, 15, 1, 1);
-            // set style on headers & fields / widgets
-            Label[] headers = {
-                launchsection_header, geometry_header, misc_header
-            };
-            foreach (Label l in headers) {
-                set_widgetstyle(l, "secondheader");
-            }
+            miscgrid.attach(tryexist_checkbox, 3, 2, 1, 1);
             Label[] all_labels = {
-                launchsection_header, exec_label, wmclass_label, wname_label,
-                geometry_header, grid_xsize_label, grid_ysize_label,
-                xpos_label, ypos_label, xspan_label, yspan_label, misc_header,
+                exec_label, wmclass_label, wname_label,
+                grid_size_label, winpos_label, cellspan_label,
                 targetmonitor_label, tryexisting_label
             };
             foreach (Label l in all_labels) {
                 l.xalign = 0;
             }
-            addtask_grid.attach(new Label(""), 1, 50, 1, 1);
+            // test section
+            master_grid.attach(new Label(""), 1, 100, 1, 1);
             Gtk.Box testaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            addtask_grid.attach(testaction_box, 1, 51, 2, 1);
+            master_grid.attach(testaction_box, 1, 101, 2, 1);
             Button testwindowtask_button = new Gtk.Button();
             testwindowtask_button.label = "Test";
             testaction_box.pack_start(testwindowtask_button, false, false, 0);
+            //
             Gtk.Box dialogaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             Button applytask_button = new Gtk.Button();
             applytask_button.label = "Apply";
@@ -584,11 +616,12 @@ namespace LayoutsPopup {
             canceltask_button.set_size_request(90, 10);
             canceltask_button.clicked.connect(()=> {
                 get_task.destroy();
-                //  get_task.close();// werkt pas na twee keer?
             });
             dialogaction_box.pack_end(canceltask_button, false, false, 2);
             dialogaction_box.pack_end(applytask_button, false, false, 2);
-            addtask_grid.attach(dialogaction_box, 1, 52, 50, 1);
+            master_grid.attach(dialogaction_box, 1, 110, 50, 1);
+            //  master_grid.attach(new Label(""), 1, 150, 1, 1);
+
             Gtk.Entry[] trythese_beforeyoubuy = {
                 exec_entry, wmclass_entry, taskname_entry
             };
@@ -630,6 +663,14 @@ namespace LayoutsPopup {
                     (string)currtask_data.get_child_value(10) == "true"
                 );
             }
+            OwnSpinButton[] allspins = {
+                grid_xsize_spin, grid_ysize_spin, xpos_spin, ypos_spin, xspan_spin, yspan_spin
+            };
+            foreach (OwnSpinButton spin in allspins) {
+                spin.spinvalue.changed.connect(()=> {
+                    set_spincolor(allspins);
+                });
+            };
             // optimize please
             testwindowtask_button.clicked.connect(()=> {
                 string candidate_content = create_filecontent(
@@ -639,7 +680,6 @@ namespace LayoutsPopup {
                 );
                 apply_taskedit(candidate_content);
             });
-
             applytask_button.clicked.connect(()=> {
                 string candidate_content = create_filecontent(
                     exec_entry, xpos_spin, ypos_spin, grid_xsize_spin,
@@ -666,6 +706,25 @@ namespace LayoutsPopup {
             get_task.run();
         }
 
+        private void set_spincolor(OwnSpinButton[] spins) {
+            var xsize = spins[0];
+            var ysize = spins[1];
+            var xpos = spins[2];
+            var ypos = spins[3];
+            var xspan = spins[4];
+            var yspan = spins[5];
+            OwnSpinButton[] xes = {xsize, xpos, xspan};
+            OwnSpinButton[] yses = {ysize, ypos, yspan};
+            bool xred = xsize.get_value() < (xpos.get_value() + xspan.get_value());
+            bool yred = ysize.get_value() < (ypos.get_value() + yspan.get_value());
+            foreach (OwnSpinButton spbx in xes) {
+                spbx.set_warning_color(xred);
+            }
+            foreach (OwnSpinButton spby in yses) {
+                spby.set_warning_color(yred);
+            }
+        }
+
         private void change_display_name(
             string newname, File? file = null, string? path = null
         ) {
@@ -687,9 +746,9 @@ namespace LayoutsPopup {
         }
 
         private string create_filecontent(
-            Entry exec_entry, SpinButton xpos_spin, SpinButton ypos_spin,
-            SpinButton grid_xsize_spin, SpinButton grid_ysize_spin,
-            SpinButton xspan_spin, SpinButton yspan_spin, Entry wmclass_entry,
+            Entry exec_entry, OwnSpinButton xpos_spin, OwnSpinButton ypos_spin,
+            OwnSpinButton grid_xsize_spin, OwnSpinButton grid_ysize_spin,
+            OwnSpinButton xspan_spin, OwnSpinButton yspan_spin, Entry wmclass_entry,
             Entry wname_entry, ComboBoxText screendropdown,
             ToggleButton tryexist_checkbox
         ) {
@@ -697,8 +756,8 @@ namespace LayoutsPopup {
             bool try_isset = tryexist_checkbox.get_active();
             int curr_xpos = (int)xpos_spin.get_value();
             int curr_ypos = (int)ypos_spin.get_value();
-            int curr_cols = (int)grid_xsize_spin.get_value();
-            int curr_rows = (int)grid_ysize_spin.get_value();
+            int curr_cols = grid_xsize_spin.get_value();
+            int curr_rows = grid_ysize_spin.get_value();
             int curr_xspan = (int)xspan_spin.get_value();
             int curr_yspan = (int)yspan_spin.get_value();
             return "Exec=" + exec_entry.get_text().concat(
@@ -733,7 +792,6 @@ namespace LayoutsPopup {
                 error ("%s", e.message);
             }
             return newtasks;
-
         }
 
         private void update_stackgrid_editlayout(string layoutsubject) {
@@ -866,6 +924,82 @@ namespace LayoutsPopup {
         }
     }
 
+
+    class OwnSpinButton : Gtk.Grid{
+
+        public Gtk.Entry spinvalue;
+        Gtk.Button up;
+        Gtk.Button down;
+
+        public OwnSpinButton(
+           string orientation, int min = 0, int max = 10
+        ) {
+            this.set_column_spacing(0);
+            spinvalue = new Gtk.Entry();
+            spinvalue.set_editable(false);
+            spinvalue.xalign = (float)0.50;
+            spinvalue.set_text("0");
+            spinvalue.set_width_chars(2);
+            spinvalue.set_max_width_chars(2);
+            up = new Gtk.Button();
+            set_widgetstyle(up, "arrowbutton");
+            up.set_size_request(1,1);
+            up.set_relief(Gtk.ReliefStyle.NONE);
+            down = new Gtk.Button();
+            set_widgetstyle(down, "arrowbutton");
+            down.set_size_request(1,1);
+            down.set_relief(Gtk.ReliefStyle.NONE);
+            if (orientation == "hor") {
+                up.label = "▶";
+                down.label = "◀";
+                this.attach(spinvalue, 0, 1, 1, 1);
+                this.attach(up, 2, 1, 1, 1);
+                this.attach(down, 1, 1, 1, 1);
+            }
+            else if (orientation == "vert") {
+                up.label = "▲";
+                down.label = "▼";
+                this.attach(spinvalue, 0, 1, 1, 1);
+                this.attach(up, 2, 1, 1, 1);
+                this.attach(down, 1, 1, 1, 1);
+            }
+            up.clicked.connect(()=> {
+                add_one(up, min, max);
+            });
+            down.clicked.connect(()=> {
+                add_one(down, min, max);
+            });
+        }
+
+        public int get_value() {
+            return int.parse(spinvalue.get_text());
+        }
+
+        public void set_value(int newvalue) {
+            spinvalue.set_text(@"$newvalue");
+        }
+
+        public void set_warning_color(bool warning = false) {
+            if (warning == true) {
+                set_widgetstyle(spinvalue, "red_text");
+            }
+            else {
+                set_widgetstyle(spinvalue, "red_text", true);
+            }
+        }
+
+        private void add_one(Button b, int min, int max) {
+            int curr = int.parse(spinvalue.get_text());
+            if (b == up && curr < max) {
+                curr += 1;
+            }
+            else if (b == down && curr > min) {
+                curr -= 1;
+            }
+            spinvalue.set_text(@"$curr");
+        }
+    }
+
     private void delete_file(File? file = null, string? path = null) {
         File? subject = null;
         if (file != null) {
@@ -957,8 +1091,18 @@ namespace LayoutsPopup {
         }
     }
 
-    public static int main(string[] args) {
+    private void set_widgetstyle(Widget w, string css_style, bool remove = false) {
+        var widgets_stylecontext = w.get_style_context();
+        if (!remove) {
+            widgets_stylecontext.add_class(css_style);
+        }
+        else {
+            widgets_stylecontext.remove_class(css_style);
+        }
+    }
 
+
+    public static int main(string[] args) {
         try {
             client = Bus.get_proxy_sync (
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",

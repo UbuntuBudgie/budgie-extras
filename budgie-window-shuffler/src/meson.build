@@ -93,6 +93,12 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+
+
+
+
+
+####################################################################
 GridWindowSources = [
     'gridwindow.vala'
 ]
@@ -116,6 +122,53 @@ executable(
     install: true,
     vala_args: ShufflerValaArgs,
     c_args: GridWindowCArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
+
+LayoutsPopupSources = [
+    'layouts_popup.vala'
+]
+
+LayoutsPopupDependencies = [
+    dependency('gtk+-3.0'),
+    dependency('gio-2.0'),
+    dependency('gdk-x11-3.0'),
+    dependency('gdk-3.0'),
+    dependency('libwnck-3.0'),
+]
+
+LayoutsPopupCArgs = [
+    '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
+]
+
+executable(
+    'layouts_popup', LayoutsPopupSources,
+    dependencies: LayoutsPopupDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: LayoutsPopupCArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
+
+ToggleLayoutsPopupSources = [
+    'toggle_layouts_popup.vala'
+]
+
+ToggleLayoutsPopupDependencies = [
+    dependency('gio-2.0'),
+]
+
+ToggleLayoutsPopupCArgs = [
+]
+
+executable(
+    'toggle_layouts_popup', ToggleLayoutsPopupSources,
+    dependencies: ToggleLayoutsPopupDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: ToggleLayoutsPopupCArgs,
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
