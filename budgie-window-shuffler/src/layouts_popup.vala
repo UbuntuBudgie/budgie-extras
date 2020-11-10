@@ -93,21 +93,27 @@ namespace LayoutsPopup {
             }
             catch (Error e) {
             }
-            // keep window above
+            // focus management / get wmclass of picked window
             wnck_scr.active_window_changed.connect( ()=> {
-                if (wmclass_entry != null && wmclass_entry.is_focus) {
-                    Wnck.Window newactive = wnck_scr.get_active_window();
+                Wnck.Window? newactive = wnck_scr.get_active_window();
+                if (newactive != null) {
                     string classname = newactive.get_class_group_name().down();
-                    if (
-                        newactive.get_window_type() == Wnck.WindowType.NORMAL &&
-                        classname != "layouts_popup"
+                    print(@"$classname\n");
+                    if (classname != "layouts_popup" && get_task == null) {
+                        print("destroy please\n");
+                        delete_file(popuptrigger);
+                        this.destroy();
+                    }
+                    else if (
+                        wmclass_entry != null &&
+                        newactive.get_window_type() == Wnck.WindowType.NORMAL
                     ) {
-                        if (get_task != null) {
+                        if (wmclass_entry.is_focus) {
                             wmclass_entry.set_text(classname);
                         }
+                        makesure_offocus();
                     }
                 }
-                makesure_offocus();
             });
             // STACK
             layoutspopup_stack = new Stack();
@@ -225,6 +231,7 @@ namespace LayoutsPopup {
             this.destroy.connect(() => {
                 if (get_task != null) {
                     get_task.destroy();
+                    get_task = null;
                     delete_file(popuptrigger);
                 }
             });
@@ -616,6 +623,8 @@ namespace LayoutsPopup {
             canceltask_button.set_size_request(90, 10);
             canceltask_button.clicked.connect(()=> {
                 get_task.destroy();
+                get_task = null;
+
             });
             dialogaction_box.pack_end(canceltask_button, false, false, 2);
             dialogaction_box.pack_end(applytask_button, false, false, 2);
@@ -701,6 +710,7 @@ namespace LayoutsPopup {
                 ));
                 update_stackgrid_editlayout(currlayout);
                 get_task.destroy();
+                get_task = null;
             });
             contentarea.show_all();
             get_task.run();
