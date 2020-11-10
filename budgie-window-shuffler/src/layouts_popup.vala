@@ -608,6 +608,7 @@ namespace LayoutsPopup {
             }
             // test section
             master_grid.attach(new Label(""), 1, 100, 1, 1);
+            master_grid.get_style_context().remove_class("horizontal");
             Gtk.Box testaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             master_grid.attach(testaction_box, 1, 101, 2, 1);
             Button testwindowtask_button = new Gtk.Button();
