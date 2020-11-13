@@ -3,6 +3,21 @@ using Wnck;
 using Gdk.X11;
 using Gdk;
 
+/*
+Budgie Window Shuffler II
+Author: Jacob Vlijm
+Copyright © 2017-2020 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 // todo: be consequent in var /no var/ widget naming - is ok
 // optimize set style & alignment, its all over the place - done
 // optimize button switch - done
@@ -456,6 +471,44 @@ namespace LayoutsPopup {
             return searchpath.concat("/", layoutname, task_step);
         }
 
+        private bool ask_confirm(string action) {
+            bool confirm = false;
+            var ask_confirmdialog = new Dialog();
+            ask_confirmdialog.decorated = false;
+            ask_confirmdialog.set_transient_for(this);
+            ask_confirmdialog.set_modal(true);
+            Gtk.Box contentarea = ask_confirmdialog.get_content_area();
+            var askgrid = new Gtk.Grid();
+            contentarea.pack_start(askgrid, false, false, 0);
+            set_margins(askgrid, 20, 20, 20, 20);
+            askgrid.attach(new Label(action + "?\t\t"), 0, 0, 2, 1);
+            askgrid.attach(new Label("\n"), 0, 1, 1, 1);
+            contentarea.orientation = Gtk.Orientation.VERTICAL;
+            Box buttonbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            Button cancel = new Gtk.Button();
+            cancel.label = "No";
+            cancel.get_style_context().add_class("suggested-action");
+            askgrid.get_style_context().remove_class("horizontal");
+            Button go_on = new Gtk.Button();
+            go_on.label = "Yes";
+            buttonbox.pack_end(go_on, false, false, 2);
+            buttonbox.pack_end(cancel, false, false, 2);
+            askgrid.attach(buttonbox, 1, 10, 1, 1);
+            go_on.set_size_request(70, 10);
+            cancel.set_size_request(70, 10);
+            go_on.clicked.connect(()=> {
+                confirm = true;
+                ask_confirmdialog.destroy();
+            });
+            cancel.clicked.connect(()=> {
+                confirm = false;
+                ask_confirmdialog.destroy();
+            });
+            askgrid.show_all();
+            ask_confirmdialog.run();
+            return confirm;
+        }
+
         private void call_dialog (
             string currlayout, string currtask = "", bool check_exist = false
         ) {
@@ -616,7 +669,7 @@ namespace LayoutsPopup {
             //
             Gtk.Box dialogaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             Button applytask_button = new Gtk.Button();
-            applytask_button.label = "Apply";
+            applytask_button.label = "Done";
             applytask_button.set_size_request(90, 10);
             Button canceltask_button = new Gtk.Button();
             canceltask_button.label = "Cancel";
@@ -626,8 +679,8 @@ namespace LayoutsPopup {
                 get_task = null;
 
             });
-            dialogaction_box.pack_end(canceltask_button, false, false, 2);
             dialogaction_box.pack_end(applytask_button, false, false, 2);
+            dialogaction_box.pack_end(canceltask_button, false, false, 2);
             master_grid.attach(dialogaction_box, 1, 110, 50, 1);
             //  master_grid.attach(new Label(""), 1, 150, 1, 1);
 
@@ -838,12 +891,14 @@ namespace LayoutsPopup {
                 taskeditbutton.set_can_focus(false);
                 taskeditbutton.set_relief(Gtk.ReliefStyle.NONE);
                 tasklist_scrolledlistgrid.attach(taskeditbutton, 1, b_index, 1, 1);
-                taskdeletebutton.clicked.connect(()=>{
-                    File todelete = File.new_for_path(
-                        searchpath.concat("/", layoutsubject, "/", s)
-                    );
-                    delete_file(todelete);
-                    update_stackgrid_editlayout(layoutsubject);
+                taskdeletebutton.clicked.connect(()=> {
+                    if (ask_confirm(@"Delete task: $s")) {
+                        File todelete = File.new_for_path(
+                            searchpath.concat("/", layoutsubject, "/", s)
+                        );
+                        delete_file(todelete);
+                        update_stackgrid_editlayout(layoutsubject);
+                    }
                 });
                 taskbutton.clicked.connect(()=> {
                     //  string exec_path = Config.SHUFFLER_DIR + "/run_layout";
@@ -903,8 +958,8 @@ namespace LayoutsPopup {
                     editlayoutname_entry.set_text(s);
                     mastergrid.attach(editlayout_box, 1, 51, 4, 1);
                     last_layoutname = s;
-                    editlayoutbutton_done.set_sensitive(true);
                     mastergrid.show_all();
+
                 });
                 newlauyoutbutton.set_size_request(300, 45);
                 neweditbutton.set_can_focus(false);
@@ -916,13 +971,15 @@ namespace LayoutsPopup {
                 newdeletebutton.set_can_focus(false);
                 newdeletebutton.set_relief(Gtk.ReliefStyle.NONE);
                 newdeletebutton.clicked.connect(()=> {
-                    File todelete = File.new_for_path(combine_pathsteps(s));
-                    string[] child_items = get_layouttasks(s);
-                    foreach (string sub in child_items) {
-                        string path = combine_pathsteps(s, sub);
-                        delete_file(null, path);
+                    if (ask_confirm(@"Delete layout: $s")) {
+                        File todelete = File.new_for_path(combine_pathsteps(s));
+                        string[] child_items = get_layouttasks(s);
+                        foreach (string sub in child_items) {
+                            string path = combine_pathsteps(s, sub);
+                            delete_file(null, path);
+                        }
+                        delete_file(todelete);
                     }
-                    delete_file(todelete);
                 });
                 layoutlist_scrolledwindow_grid.attach(newlauyoutbutton, 1, row_int, 1, 1);
                 layoutlist_scrolledwindow_grid.attach(neweditbutton, 2, row_int, 1, 1);
