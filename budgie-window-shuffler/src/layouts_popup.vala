@@ -957,6 +957,7 @@ namespace LayoutsPopup {
                     layoutspopup_stack.set_visible_child_name("editlayout");
                     editlayoutname_entry.set_text(s);
                     mastergrid.attach(editlayout_box, 1, 51, 4, 1);
+                    editlayoutbutton_done.set_sensitive(true);
                     last_layoutname = s;
                     mastergrid.show_all();
 
