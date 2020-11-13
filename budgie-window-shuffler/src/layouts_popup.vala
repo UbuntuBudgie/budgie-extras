@@ -58,6 +58,7 @@ namespace LayoutsPopup {
         Gtk.Frame layoutframe;
         Gtk.Frame newlayout_frame;
         Gtk.Frame editlayout_frame;
+        Gtk.Button? editlayoutbutton_done;
 
         public PopupWindow() {
             // css stuff
@@ -98,9 +99,7 @@ namespace LayoutsPopup {
                 Wnck.Window? newactive = wnck_scr.get_active_window();
                 if (newactive != null) {
                     string classname = newactive.get_class_group_name().down();
-                    print(@"$classname\n");
                     if (classname != "layouts_popup" && get_task == null) {
-                        print("destroy please\n");
                         delete_file(popuptrigger);
                         this.destroy();
                     }
@@ -211,7 +210,7 @@ namespace LayoutsPopup {
             stackgrid_editlayout.attach(tasklist_scrolledwindow, 0, 10, 1, 1);
             // buttons of mastergrid, corresponcing to stack "editlayout"
             editlayout_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            Gtk.Button editlayoutbutton_done = new Gtk.Button();
+            editlayoutbutton_done = new Gtk.Button();
             editlayoutbutton_done.set_size_request(120, 10);
             editlayoutbutton_done.label = "Done";
             editlayout_box.pack_end(editlayoutbutton_done, false, false, 2);
@@ -273,7 +272,7 @@ namespace LayoutsPopup {
                 }
                 else {
                     set_applybutton_sensitive(
-                        editlayoutbutton_done, editlayoutname_entry, "", false
+                        editlayoutbutton_done, editlayoutname_entry, "", true
                     );
                 }
             });
@@ -904,6 +903,7 @@ namespace LayoutsPopup {
                     editlayoutname_entry.set_text(s);
                     mastergrid.attach(editlayout_box, 1, 51, 4, 1);
                     last_layoutname = s;
+                    editlayoutbutton_done.set_sensitive(true);
                     mastergrid.show_all();
                 });
                 newlauyoutbutton.set_size_request(300, 45);
