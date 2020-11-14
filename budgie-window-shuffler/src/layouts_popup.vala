@@ -40,6 +40,7 @@ namespace LayoutsPopup {
     Gdk.X11.Window timestamp_window;
     Wnck.Screen wnck_scr;
     Gtk.Dialog? get_task;
+    Gtk.Dialog? ask_confirmdialog;
     string username;
     string homedir;
 
@@ -114,7 +115,11 @@ namespace LayoutsPopup {
                 Wnck.Window? newactive = wnck_scr.get_active_window();
                 if (newactive != null) {
                     string classname = newactive.get_class_group_name().down();
-                    if (classname != "layouts_popup" && get_task == null) {
+                    if (
+                        classname != "layouts_popup" &&
+                        get_task == null &&
+                        ask_confirmdialog == null
+                    ) {
                         delete_file(popuptrigger);
                         this.destroy();
                     }
@@ -473,7 +478,7 @@ namespace LayoutsPopup {
 
         private bool ask_confirm(string action) {
             bool confirm = false;
-            var ask_confirmdialog = new Dialog();
+            ask_confirmdialog = new Dialog();
             ask_confirmdialog.decorated = false;
             ask_confirmdialog.set_transient_for(this);
             ask_confirmdialog.set_modal(true);
@@ -499,10 +504,12 @@ namespace LayoutsPopup {
             go_on.clicked.connect(()=> {
                 confirm = true;
                 ask_confirmdialog.destroy();
+                ask_confirmdialog = null;
             });
             cancel.clicked.connect(()=> {
                 confirm = false;
                 ask_confirmdialog.destroy();
+                ask_confirmdialog = null;
             });
             askgrid.show_all();
             ask_confirmdialog.run();
@@ -516,7 +523,6 @@ namespace LayoutsPopup {
             string command_tooltip = "Command to launch window or application (*mandatory)";
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
             string windowname_tooltip = "Window name - optional, to distinguish multiple windows of the same application";
-            // todo: make numbers smart; only possible settings
             get_task = new Dialog();
             get_task.set_transient_for(this);
             get_task.decorated = false;
