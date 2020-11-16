@@ -98,6 +98,10 @@ namespace LayoutsPopup {
                 color: white;
                 background-color: red;
             }
+            .currbutton:focus {
+                font-weight: bold;
+            }
+
             """;
             Gdk.Screen gdk_scr = this.get_screen();
             gdk_dsp = Gdk.Display.get_default();
@@ -876,7 +880,7 @@ namespace LayoutsPopup {
                 Gtk.Button taskbutton = new Gtk.Button();
                 taskbutton.set_relief(Gtk.ReliefStyle.NONE);
                 taskbutton.set_size_request(300, 45);
-                taskbutton.label = s;
+                taskbutton.label = s.replace(".windowtask", "");
                 // optimize please! multiple similar occasions
                 foreach (Widget ch in taskbutton.get_children()) {
                     ch.set_halign(Gtk.Align.START);
@@ -969,6 +973,7 @@ namespace LayoutsPopup {
 
                 });
                 newlauyoutbutton.set_size_request(300, 45);
+                set_widgetstyle(newlauyoutbutton, "currbutton");
                 neweditbutton.set_can_focus(false);
                 neweditbutton.set_relief(Gtk.ReliefStyle.NONE);
                 Gtk.Button newdeletebutton = new Button.from_icon_name(
@@ -1175,7 +1180,6 @@ namespace LayoutsPopup {
             widgets_stylecontext.remove_class(css_style);
         }
     }
-
 
     public static int main(string[] args) {
         try {
