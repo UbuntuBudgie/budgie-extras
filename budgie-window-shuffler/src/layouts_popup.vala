@@ -32,6 +32,7 @@ namespace LayoutsPopup {
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
     interface ShufflerInfoClient : Object {
         public abstract Variant extracttask_fromfile (string path) throws Error;
+        public abstract int[] get_grid() throws Error;
     }
     // see what can be de-globalized from below please - done
     string searchpath;
@@ -43,6 +44,7 @@ namespace LayoutsPopup {
     Gtk.Dialog? ask_confirmdialog;
     string username;
     string homedir;
+    GLib.Settings shuffler_settings;
 
 
     class PopupWindow : Gtk.Window {
@@ -75,8 +77,14 @@ namespace LayoutsPopup {
         Gtk.Frame newlayout_frame;
         Gtk.Frame editlayout_frame;
         Gtk.Button? editlayoutbutton_done;
+        int set_gridxsize;
+        int set_gridysize;
 
         public PopupWindow() {
+            // settings
+            shuffler_settings = new GLib.Settings(
+                "org.ubuntubudgie.windowshuffler"
+            );
             // css stuff
             string layoutss_stylecss = """
             .subheader {
@@ -101,7 +109,6 @@ namespace LayoutsPopup {
             .currbutton:focus {
                 font-weight: bold;
             }
-
             """;
             Gdk.Screen gdk_scr = this.get_screen();
             gdk_dsp = Gdk.Display.get_default();
@@ -365,6 +372,7 @@ namespace LayoutsPopup {
             return taskdata;
         }
 
+
         private string[] get_monitornames() {
             int n_monitors = gdk_dsp.get_n_monitors();
             string[] monitors = {};
@@ -478,6 +486,20 @@ namespace LayoutsPopup {
                 task_step = "/" + taskname;
             }
             return searchpath.concat("/", layoutname, task_step);
+        }
+
+        private void read_currentgrid(ShufflerInfoClient client) {
+            // on failure, fallback to:
+            set_gridxsize = 2;
+            set_gridysize = 2;
+            try {
+                int[] currgrid = client.get_grid();
+                set_gridxsize = currgrid[0];
+                set_gridysize = currgrid[1];
+            }
+            catch (Error e) {
+                print("Can't read gridsize\n");
+            }
         }
 
         private bool ask_confirm(string action) {
@@ -597,10 +619,15 @@ namespace LayoutsPopup {
             Label grid_size_label = new Label("Grid size; colums & rows");
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
+
+            // get current gridsize
+            read_currentgrid(client);
             OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", 1, 10);
-            grid_xsize_spin.set_value(2);
+            grid_xsize_spin.set_value(set_gridxsize);
             OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", 1, 10);
-            grid_ysize_spin.set_value(2);
+            grid_ysize_spin.set_value(set_gridysize);
+
+
             Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
             gridsize_box.pack_start(new Label("\t"), false, false, 0);
