@@ -44,7 +44,7 @@ namespace LayoutsPopup {
     Gtk.Dialog? ask_confirmdialog;
     string username;
     string homedir;
-    GLib.Settings shuffler_settings;
+    //  GLib.Settings shuffler_settings;
 
 
     class PopupWindow : Gtk.Window {
@@ -79,6 +79,7 @@ namespace LayoutsPopup {
         Gtk.Button? editlayoutbutton_done;
         int set_gridxsize;
         int set_gridysize;
+        GLib.Settings shuffler_settings;
 
         public PopupWindow() {
             // settings
@@ -619,15 +620,12 @@ namespace LayoutsPopup {
             Label grid_size_label = new Label("Grid size; colums & rows");
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
-
             // get current gridsize
             read_currentgrid(client);
             OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", 1, 10);
             grid_xsize_spin.set_value(set_gridxsize);
             OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", 1, 10);
             grid_ysize_spin.set_value(set_gridysize);
-
-
             Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
             gridsize_box.pack_start(new Label("\t"), false, false, 0);
