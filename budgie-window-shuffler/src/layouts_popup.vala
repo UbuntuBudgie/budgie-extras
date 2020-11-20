@@ -151,7 +151,7 @@ namespace LayoutsPopup {
             mastergrid.attach(layoutspopup_stack, 1, 1, 1, 1);
             this.add(mastergrid);
             // 1. PICK LAYOUT GRID
-            layoutframe = new Gtk.Frame("Layouts");
+            layoutframe = new Gtk.Frame(_("Layouts"));
             var widget_label = layoutframe.get_label_widget();
             set_widgetstyle(widget_label, "justbold");
             stackgrid_layoutlist = new Grid(); // dynamically updated
@@ -180,11 +180,11 @@ namespace LayoutsPopup {
             addlayout_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             mastergrid.attach(addlayout_box, 1, 51, 4, 1); // since this is the "home" page
             Gtk.Button addbutton = new Gtk.Button();
-            addbutton.label = "Add New";
+            addbutton.label = _("Add New");
             addbutton.set_size_request(120, 10);
             addlayout_box.pack_end(addbutton, false, false, 2);
             // 2. NEW LAYOUTS GRID
-            newlayout_frame = new Gtk.Frame("New layout");
+            newlayout_frame = new Gtk.Frame(_("New layout"));
             var newlayout_widget_label = newlayout_frame.get_label_widget();
             set_widgetstyle(newlayout_widget_label, "justbold");
             stackgrid_newlayout = new Grid(); // dynamically updated
@@ -196,22 +196,22 @@ namespace LayoutsPopup {
             // buttons of mastergrid, corresponcing to stack "newlayout"
             newlayout_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             Gtk.Button apply_newlayoutbutton = new Gtk.Button();
-            apply_newlayoutbutton.label = "Create";
+            apply_newlayoutbutton.label = _("Create");
             apply_newlayoutbutton.set_size_request(120, 10);
             newlayout_box.pack_end(apply_newlayoutbutton, false, false, 2);
             Gtk.Button cancel_newlayoutbutton = new Gtk.Button();
-            cancel_newlayoutbutton.label = "Cancel";
+            cancel_newlayoutbutton.label = _("Cancel");
             cancel_newlayoutbutton.set_size_request(120, 10);
             newlayout_box.pack_end(cancel_newlayoutbutton, false, false, 2);
             // 3. EDIT LAYOUT GRID
-            editlayout_frame = new Gtk.Frame("Edit layout");
+            editlayout_frame = new Gtk.Frame(_("Edit layout"));
             var editlayout_widget_label = editlayout_frame.get_label_widget();
             set_widgetstyle(editlayout_widget_label, "justbold");
             stackgrid_editlayout = new Grid(); // dynamically updated
             set_margins(stackgrid_editlayout, 20, 20, 10, 20);
             editlayout_frame.add(stackgrid_editlayout);
             //  stackgrid_editlayout = new Grid();
-            Label editlayoutname_label = new Label("Layout name:");
+            Label editlayoutname_label = new Label(_("Layout name") + ":");
             editlayoutname_label.xalign = 0;
             set_widgetstyle(editlayoutname_label, "subheader");
             stackgrid_editlayout.attach(editlayoutname_label, 0, 0, 1, 1);
@@ -225,7 +225,7 @@ namespace LayoutsPopup {
             reset_editlayoutname.set_relief(Gtk.ReliefStyle.NONE);
             editlayoutname_box.pack_start(reset_editlayoutname, false, false, 0);
             stackgrid_editlayout.attach(editlayoutname_box, 0, 1, 10, 1);
-            Label tasklist_label = new Label("Window tasks" + ":");
+            Label tasklist_label = new Label(_("Window tasks") + ":");
             set_widgetstyle(tasklist_label, "secondsubheader");
             tasklist_label.xalign = 0;
             stackgrid_editlayout.attach(tasklist_label, 0, 2, 1, 1);
@@ -236,11 +236,11 @@ namespace LayoutsPopup {
             editlayout_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             editlayoutbutton_done = new Gtk.Button();
             editlayoutbutton_done.set_size_request(120, 10);
-            editlayoutbutton_done.label = "Done";
+            editlayoutbutton_done.label = _("Done");
             editlayout_box.pack_end(editlayoutbutton_done, false, false, 2);
             Gtk.Button addtaskbutton = new Gtk.Button();
             addtaskbutton.set_size_request(120, 10);
-            addtaskbutton.label = "Add task";
+            addtaskbutton.label = _("Add task");
             editlayout_box.pack_end(addtaskbutton, false, false, 2);
             // so, let's add stuff to stack
             layoutspopup_stack.add_named(layoutframe, "picklayout");
@@ -462,9 +462,9 @@ namespace LayoutsPopup {
                 var data_stream = new DataOutputStream (file_stream);
                 data_stream.put_string (candidate_file);
                 if (!apply) {
-                    //  string testcommand = Config.SHUFFLER_DIR + "/run_layout use_testing";
+                    string testcommand = Config.SHUFFLER_DIR + "/run_layout use_testing";
                     // keep for quick compile & test
-                    string testcommand = "/lib/budgie-window-shuffler/run_layout use_testing";
+                    //  string testcommand = "/lib/budgie-window-shuffler/run_layout use_testing";
                     run_command(testcommand);
                 }
             }
@@ -539,15 +539,17 @@ namespace LayoutsPopup {
             string currlayout, string currtask = "", bool check_exist = false
         ) {
             // tooltips
-            string command_tooltip = "Command to launch window or application (*mandatory)";
-            string class_tooltip = "Window class of the window to be launched (*mandatory)";
-            string windowname_tooltip = "Window name - optional, to distinguish multiple windows of the same application";
-            string gridxsize_tooltip = "Grid size - columns";
-            string gridysize_tooltip = "Grid size - rows";
-            string targetpositionx_tooltip = "Window target position on grid - horizontally";
-            string targetpositiony_tooltip = "Window target position on grid - vertically";
-            string xspan_tooltip = "Window size - columns";
-            string yspan_tooltip = "Window size - rows";
+            string command_tooltip = _("Command to launch window or application (*mandatory)");
+            string class_tooltip = _("Window class of the window to be launched (*mandatory)");
+            string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
+            string gridxsize_tooltip = _("Grid size - columns");
+            string gridysize_tooltip = _("Grid size - rows");
+            string targetpositionx_tooltip = _("Window target position on grid - horizontally");
+            string targetpositiony_tooltip = _("Window target position on grid - vertically");
+            string xspan_tooltip = _("Window size - columns");
+            string yspan_tooltip = _("Window size - rows");
+            string monitor_tooltip = _("Target monitor, default is on active monitor");
+            string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
             get_task = new Dialog();
             get_task.set_transient_for(this);
             get_task.decorated = false;
@@ -557,7 +559,7 @@ namespace LayoutsPopup {
             Grid master_grid = new Gtk.Grid();
             set_margins(master_grid, 30, 30, 30, 30);
             contentarea.pack_start(master_grid, false, false, 0);
-            Gtk.Label curr_tasksubject = new Gtk.Label("Task name" + ": ");
+            Gtk.Label curr_tasksubject = new Gtk.Label(_("Task name") + ": ");
             curr_tasksubject.xalign = 0;
             set_widgetstyle(curr_tasksubject, "justbold");
             //  master_grid.attach(curr_tasksubject, 1, 1, 1, 1);
@@ -569,7 +571,7 @@ namespace LayoutsPopup {
             master_grid.attach(taskname_entry, 3, 1, 1, 1);
             master_grid.attach(new Label("\n"), 1, 2, 1, 1);
             // 1. APPLICATION FRAME
-            Frame applicationframe = new Gtk.Frame("Application");
+            Frame applicationframe = new Gtk.Frame(_("Application"));
             var app_label = applicationframe.get_label_widget();
             set_widgetstyle(app_label, "justbold");
             master_grid.attach(applicationframe, 1, 10, 10, 1);
@@ -578,7 +580,7 @@ namespace LayoutsPopup {
             set_margins(applicationgrid, 20, 20, 20, 20);
             applicationgrid.set_row_spacing(4);
             // - command
-            Label exec_label = new Label("Command*");
+            Label exec_label = new Label(_("Command*"));
             Entry exec_entry = new Entry();
             exec_entry.set_text("");
             exec_entry.set_size_request(250, 10);
@@ -587,17 +589,17 @@ namespace LayoutsPopup {
             applicationgrid.attach(new Label("\t\t"), 2, 3, 1, 1);
             applicationgrid.attach(exec_entry, 3, 3, 20, 1);
             // - wmclass
-            Label wmclass_label = new Label("WM class group*");
+            Label wmclass_label = new Label(_("WM class group*"));
             wmclass_entry = new Entry();
             wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
             wmclass_entry.set_size_request(250, 10);
-            wmclass_entry.set_placeholder_text("Click a window to fetch");
+            wmclass_entry.set_placeholder_text(_("Click a window to fetch"));
             applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
             applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
             applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
             // - wname
-            Label wname_label = new Label("Window name");
+            Label wname_label = new Label(_("Window name"));
             Entry wname_entry = new Entry();
             wname_entry.set_tooltip_text(windowname_tooltip);
             wname_entry.set_text("");
@@ -608,7 +610,7 @@ namespace LayoutsPopup {
             applicationframe.add(applicationgrid);
             master_grid.attach(new Label(""), 1, 11, 1, 1);
             // 2. GEOMETRY FRAME
-            Frame geometryframe = new Gtk.Frame("Window position & size");
+            Frame geometryframe = new Gtk.Frame(_("Window position & size"));
             var geo_label = geometryframe.get_label_widget();
             set_widgetstyle(geo_label, "justbold");
             master_grid.attach(geometryframe, 1, 30, 10, 1);
@@ -617,7 +619,7 @@ namespace LayoutsPopup {
             set_margins(geogrid, 20, 20, 20, 20);
             geogrid.set_row_spacing(0);
             // grid cols / rows
-            Label grid_size_label = new Label("Grid size; colums & rows");
+            Label grid_size_label = new Label(_("Grid size; colums & rows"));
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
             // get current gridsize
@@ -635,7 +637,7 @@ namespace LayoutsPopup {
             geogrid.attach(gridsize_box, 3, 10, 1, 1);
             geogrid.attach(new Label(""), 1, 11, 1, 1);
             // window position
-            Label winpos_label = new Label("Target window position, x / y");
+            Label winpos_label = new Label(_("Target window position, x / y"));
             geogrid.attach(winpos_label, 1, 12, 1, 1);
             geogrid.attach(new Label("\t"), 2, 12, 1, 1);
             OwnSpinButton xpos_spin = new OwnSpinButton("hor", 0, 10);
@@ -651,9 +653,7 @@ namespace LayoutsPopup {
             geogrid.attach(winpos_box, 3, 12, 1, 1);
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             // window span
-            //  string xspan_tooltip = "Window size - columns";
-            //  string xspan_tooltip = "Window size - rows";
-            Label cellspan_label = new Label("Window cell span, hor / vert");
+            Label cellspan_label = new Label(_("Window cell span, hor / vert"));
             geogrid.attach(cellspan_label, 1, 14, 1, 1);
             geogrid.attach(new Label("\t"), 2, 14, 1, 1);
             OwnSpinButton yspan_spin = new OwnSpinButton("vert", 1, 10);
@@ -670,7 +670,7 @@ namespace LayoutsPopup {
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             geometryframe.add(geogrid);
             master_grid.attach(new Label(""), 1, 31, 1, 1);
-            Gtk.Frame miscframe = new Gtk.Frame("Miscellaneous");
+            Gtk.Frame miscframe = new Gtk.Frame(_("Miscellaneous"));
             var misc_label = miscframe.get_label_widget();
             set_widgetstyle(misc_label, "justbold");
             master_grid.attach(miscframe, 1, 50, 10, 1);
@@ -679,19 +679,21 @@ namespace LayoutsPopup {
             miscgrid.set_row_spacing(4);
             miscframe.add(miscgrid);
             // targetmonitor
-            Label targetmonitor_label = new Label("Target monitor");
+            Label targetmonitor_label = new Label(_("Target monitor"));
             miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
             ComboBoxText screendropdown = new ComboBoxText();
+            screendropdown.set_tooltip_text(monitor_tooltip);
             string[] mons = get_monitornames();
             foreach (string m in mons) {
                 screendropdown.append_text(m);
             }
             miscgrid.attach(new Label("\t"), 2, 1, 1, 1);
             miscgrid.attach(screendropdown, 3, 1, 1, 1);
-            Label tryexisting_label = new Label("Try to move existing window");
+            Label tryexisting_label = new Label(("Try to move existing window"));
             miscgrid.attach(tryexisting_label, 1, 2, 1, 1);
             miscgrid.attach(new Label("\t"), 2, 2, 1, 1);
             CheckButton tryexist_checkbox = new Gtk.CheckButton();
+            tryexist_checkbox.set_tooltip_text(tryexisting_tooltip);
             miscgrid.attach(tryexist_checkbox, 3, 2, 1, 1);
             Label[] all_labels = {
                 exec_label, wmclass_label, wname_label,
@@ -707,15 +709,15 @@ namespace LayoutsPopup {
             Gtk.Box testaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             master_grid.attach(testaction_box, 1, 101, 2, 1);
             Button testwindowtask_button = new Gtk.Button();
-            testwindowtask_button.label = "Test";
+            testwindowtask_button.label = _("Test");
             testaction_box.pack_start(testwindowtask_button, false, false, 0);
             //
             Gtk.Box dialogaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             Button applytask_button = new Gtk.Button();
-            applytask_button.label = "Done";
+            applytask_button.label = _("Done");
             applytask_button.set_size_request(90, 10);
             Button canceltask_button = new Gtk.Button();
-            canceltask_button.label = "Cancel";
+            canceltask_button.label = _("Cancel");
             canceltask_button.set_size_request(90, 10);
             canceltask_button.clicked.connect(()=> {
                 get_task.destroy();
@@ -944,9 +946,9 @@ namespace LayoutsPopup {
                     }
                 });
                 taskbutton.clicked.connect(()=> {
-                    //  string exec_path = Config.SHUFFLER_DIR + "/run_layout";
+                    string exec_path = Config.SHUFFLER_DIR + "/run_layout";
                     // keep for quick compile & test
-                    string exec_path = "/lib/budgie-window-shuffler/run_layout";
+                    // string exec_path = "/lib/budgie-window-shuffler/run_layout";
                     string testcommand = exec_path.concat(
                         " use_testing ", "'", "/", layoutsubject, "/", s, "'"
                     );
