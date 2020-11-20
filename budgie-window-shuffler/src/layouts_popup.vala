@@ -18,12 +18,6 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// todo: be consequent in var /no var/ widget naming - is ok
-// optimize set style & alignment, its all over the place - done
-// optimize button switch - done
-// make path combination a method ! -done
-// use paths from Config - done
-// add tooltips
 // translation
 
 namespace LayoutsPopup {
@@ -34,7 +28,6 @@ namespace LayoutsPopup {
         public abstract Variant extracttask_fromfile (string path) throws Error;
         public abstract int[] get_grid() throws Error;
     }
-    // see what can be de-globalized from below please - done
     string searchpath;
     Gtk.Window? layouts;
     File popuptrigger;
@@ -44,7 +37,6 @@ namespace LayoutsPopup {
     Gtk.Dialog? ask_confirmdialog;
     string username;
     string homedir;
-    //  GLib.Settings shuffler_settings;
 
 
     class PopupWindow : Gtk.Window {
@@ -550,6 +542,12 @@ namespace LayoutsPopup {
             string command_tooltip = "Command to launch window or application (*mandatory)";
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
             string windowname_tooltip = "Window name - optional, to distinguish multiple windows of the same application";
+            string gridxsize_tooltip = "Grid size - columns";
+            string gridysize_tooltip = "Grid size - rows";
+            string targetpositionx_tooltip = "Window target position on grid - horizontally";
+            string targetpositiony_tooltip = "Window target position on grid - vertically";
+            string xspan_tooltip = "Window size - columns";
+            string yspan_tooltip = "Window size - rows";
             get_task = new Dialog();
             get_task.set_transient_for(this);
             get_task.decorated = false;
@@ -584,13 +582,14 @@ namespace LayoutsPopup {
             Entry exec_entry = new Entry();
             exec_entry.set_text("");
             exec_entry.set_size_request(250, 10);
-            exec_entry.set_tooltip_text("Command to launch the window or application");
+            exec_entry.set_tooltip_text(command_tooltip);
             applicationgrid.attach(exec_label, 1, 3, 1, 1);
             applicationgrid.attach(new Label("\t\t"), 2, 3, 1, 1);
             applicationgrid.attach(exec_entry, 3, 3, 20, 1);
             // - wmclass
             Label wmclass_label = new Label("WM class group*");
             wmclass_entry = new Entry();
+            wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
             wmclass_entry.set_size_request(250, 10);
             wmclass_entry.set_placeholder_text("Click a window to fetch");
@@ -600,6 +599,7 @@ namespace LayoutsPopup {
             // - wname
             Label wname_label = new Label("Window name");
             Entry wname_entry = new Entry();
+            wname_entry.set_tooltip_text(windowname_tooltip);
             wname_entry.set_text("");
             wname_entry.set_size_request(250, 10);
             applicationgrid.attach(wname_label, 1, 5, 1, 1);
@@ -623,8 +623,10 @@ namespace LayoutsPopup {
             // get current gridsize
             read_currentgrid(client);
             OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", 1, 10);
+            grid_xsize_spin.set_tooltip_text(gridxsize_tooltip);
             grid_xsize_spin.set_value(set_gridxsize);
             OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", 1, 10);
+            grid_ysize_spin.set_tooltip_text(gridysize_tooltip);
             grid_ysize_spin.set_value(set_gridysize);
             Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
@@ -637,8 +639,10 @@ namespace LayoutsPopup {
             geogrid.attach(winpos_label, 1, 12, 1, 1);
             geogrid.attach(new Label("\t"), 2, 12, 1, 1);
             OwnSpinButton xpos_spin = new OwnSpinButton("hor", 0, 10);
+            xpos_spin.set_tooltip_text(targetpositionx_tooltip);
             xpos_spin.set_value(0);
             OwnSpinButton ypos_spin = new OwnSpinButton("vert", 0, 10);
+            ypos_spin.set_tooltip_text(targetpositiony_tooltip);
             ypos_spin.set_value(0);
             Box winpos_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             winpos_box.pack_start(xpos_spin, false, false, 0);
@@ -647,12 +651,16 @@ namespace LayoutsPopup {
             geogrid.attach(winpos_box, 3, 12, 1, 1);
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             // window span
+            //  string xspan_tooltip = "Window size - columns";
+            //  string xspan_tooltip = "Window size - rows";
             Label cellspan_label = new Label("Window cell span, hor / vert");
             geogrid.attach(cellspan_label, 1, 14, 1, 1);
             geogrid.attach(new Label("\t"), 2, 14, 1, 1);
             OwnSpinButton yspan_spin = new OwnSpinButton("vert", 1, 10);
+            yspan_spin.set_tooltip_text(yspan_tooltip);
             yspan_spin.set_value(1);
             OwnSpinButton xspan_spin = new OwnSpinButton("hor", 1, 10);
+            xspan_spin.set_tooltip_text(xspan_tooltip);
             xspan_spin.set_value(1);
             Box winspan_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             winspan_box.pack_start(xspan_spin, false, false, 0);
