@@ -58,6 +58,7 @@ namespace ShufflerControls {
         ToggleButton toggle_swapgeo;
         ToggleButton toggle_softmove;
         ToggleButton toggle_warning;
+        Button layoutsetup_button;
         Label expl_label;
         Label warninglabel;
         Gtk.Grid supergrid;
@@ -182,24 +183,44 @@ namespace ShufflerControls {
                 (_("Enable Window Shuffler grid"))
             );
             settingsgrid.attach(toggle_gui, 1, 2, 1, 1);
+
+
             toggle_layouts = new Gtk.CheckButton.with_label(
                 (_("Enable Window Layouts"))
             );
             settingsgrid.attach(toggle_layouts, 1, 3, 1, 1);
+
+            var layoutsetup_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
+
+            layoutsetup_button = new Gtk.Button();
+            layoutsetup_button.clicked.connect(()=> {
+                string layoutsetup_path = Config.SHUFFLER_DIR + "/toggle_layouts_popup";
+                print(@"$layoutsetup_path\n");
+
+                try {
+                    Process.spawn_command_line_sync(layoutsetup_path);
+                }
+                catch (Error e) {
+                }
+
+            });
+            layoutsetup_button.label = (_("Setup Layouts"));
+            layoutsetup_box.pack_start(layoutsetup_button, false, false, 2);
+            settingsgrid.attach(layoutsetup_box, 1, 4, 1, 1);
             var givemesomespace = new Gtk.Label("");
-            settingsgrid.attach(givemesomespace, 1, 4, 1, 1);
+            settingsgrid.attach(givemesomespace, 1, 8, 1, 1);
             toggle_swapgeo = new Gtk.CheckButton.with_label(
                 (_("Swap windows"))
             );
-            settingsgrid.attach(toggle_swapgeo, 1, 5, 1, 1);
+            settingsgrid.attach(toggle_swapgeo, 1, 9, 1, 1);
             toggle_softmove = new Gtk.CheckButton.with_label(
                 (_("Enable animation"))
             );
-            settingsgrid.attach(toggle_softmove, 1, 6, 1, 1);
+            settingsgrid.attach(toggle_softmove, 1, 10, 1, 1);
             toggle_warning = new Gtk.CheckButton.with_label(
                 (_("Show notification on incorrect window size"))
             );
-            settingsgrid.attach(toggle_warning, 1, 7, 1, 1);
+            settingsgrid.attach(toggle_warning, 1, 11, 1, 1);
             var empty = new Label("");
             settingsgrid.attach(empty, 1, 12, 1, 1);
             // settingsgrid - spinbuttonsection
@@ -475,6 +496,10 @@ namespace ShufflerControls {
             toggle_shuffler.toggled.connect(manage_boolean);
             toggle_gui.toggled.connect(manage_boolean);
             toggle_layouts.toggled.connect(manage_boolean);
+            toggle_layouts.toggled.connect(()=> {
+                manage_boolean(toggle_layouts);
+                layoutsetup_button.set_sensitive(toggle_layouts.get_active());
+            });
             toggle_swapgeo.toggled.connect(manage_boolean);
             toggle_softmove.toggled.connect(manage_boolean);
             toggle_warning.toggled.connect(manage_boolean);
@@ -535,7 +560,9 @@ namespace ShufflerControls {
             toggle_softmove.set_sensitive(currentlyactive);
             toggle_warning.set_sensitive(currentlyactive);
             toggle_gui.set_active(shuffler_settings.get_boolean("runshufflergui"));
-            toggle_layouts.set_active(shuffler_settings.get_boolean("runlayouts"));
+            bool layouts_isset = shuffler_settings.get_boolean("runlayouts");
+            toggle_layouts.set_active(layouts_isset);
+            layoutsetup_button.set_sensitive(layouts_isset);
             toggle_swapgeo.set_active(shuffler_settings.get_boolean("swapgeometry"));
             toggle_softmove.set_active(shuffler_settings.get_boolean("softmove"));
             toggle_warning.set_active(shuffler_settings.get_boolean("showwarning"));

@@ -103,6 +103,7 @@ namespace LayoutsPopup {
                 font-weight: bold;
             }
             """;
+            initialiseLocaleLanguageSupport();
             Gdk.Screen gdk_scr = this.get_screen();
             gdk_dsp = Gdk.Display.get_default();
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
@@ -329,6 +330,22 @@ namespace LayoutsPopup {
             mastergrid.show_all();
             addlayout_box.show_all();
             this.show_all();
+        }
+
+        /**
+        * Ensure translations are displayed correctly
+        * according to the locale
+        */
+
+        public void initialiseLocaleLanguageSupport() {
+            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+            GLib.Intl.bindtextdomain(
+                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+            );
+            GLib.Intl.bind_textdomain_codeset(
+                Config.GETTEXT_PACKAGE, "UTF-8"
+            );
+            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
 
         private void set_applybutton_sensitive(
