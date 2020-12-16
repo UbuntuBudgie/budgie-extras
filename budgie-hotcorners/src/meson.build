@@ -19,6 +19,7 @@ dependency('json-glib-1.0'),
 dependency('gio-2.0'),
 dependency('gdk-3.0'),
 dependency('libpeas-gtk-1.0'),
+dependency('libnotify'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 

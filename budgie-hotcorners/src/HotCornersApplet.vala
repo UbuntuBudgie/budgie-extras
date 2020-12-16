@@ -2,6 +2,7 @@ using Gtk;
 using Gdk;
 using GLib.Math;
 using Json;
+using Notify;
 
 /*
 * HotCornersII
@@ -297,17 +298,22 @@ namespace HotCornersApplet {
             }
         }
 
-        private void sendwarning (string msg_header, string message) {
-            string set_icon = Config.PACKAGE_BINDIR + "/notify-send -i budgie-hotcorners-symbolic ";
-            string header = "'" + msg_header + "'";
-            // WindowPreviews is the name of a Budgie Applet and does not need to be translated
-            string body = " '" + message + "'";
-            string command = set_icon.concat(header, body);
+        private void sendwarning(
+            string title, string body, string icon = "budgie-hotcorners-symbolic"
+        ) {
+            var notification = new Notify.Notification(title, body, icon);
+            notification.set_urgency(Notify.Urgency.NORMAL);
             try {
-                Process.spawn_command_line_async(command);
-            }
-            catch (Error e) {
-                print("Error sending notification\n");
+                new Thread<int>.try("clipboard-notify-thread", () => {
+                    try{
+                        notification.show();
+                    } catch (Error e) {
+                        error ("Unable to send notification: %s", e.message);
+                    }
+                    return 0;
+                });
+            } catch (Error e) {
+                error ("Error: %s", e.message);
             }
         }
 
@@ -429,7 +435,7 @@ namespace HotCornersApplet {
     }
 
     private bool procruns (string processname) {
-        string cmd = Config.PACKAGE_BINDIR + "/pgrep -f $processname";
+        string cmd = Config.PACKAGE_BINDIR + @"/pgrep -f $processname";
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd, out output);
@@ -459,10 +465,6 @@ namespace HotCornersApplet {
         public HotCornersSettings(GLib.Settings? settings)
         {
             this.settings = settings;
-            //  hc_settings = HCSupport.get_settings(
-            //      "org.ubuntubudgie.plugins.budgie-hotcorners"
-            //  );
-
             Gtk.CheckButton toggle_settingslocation = new Gtk.CheckButton.with_label(
                 (_("Manage corners from panel icon"))
             );
@@ -569,6 +571,8 @@ namespace HotCornersApplet {
         Gdk.Seat seat;
 
         public Applet() {
+            // initialize notifications
+            Notify.init("Hotcorners");
             hc_settings = HCSupport.get_settings(
                 "org.ubuntubudgie.plugins.budgie-hotcorners"
             );
