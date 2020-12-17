@@ -181,7 +181,7 @@ namespace LayoutsPopup {
             addlayout_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             mastergrid.attach(addlayout_box, 1, 51, 4, 1); // since this is the "home" page
             Gtk.Button addbutton = new Gtk.Button();
-            addbutton.label = _("Add New");
+            addbutton.label = _("Add new");
             addbutton.set_size_request(120, 10);
             addlayout_box.pack_end(addbutton, false, false, 2);
             // 2. NEW LAYOUTS GRID
