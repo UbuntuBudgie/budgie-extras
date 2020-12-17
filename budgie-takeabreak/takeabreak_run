@@ -7,6 +7,7 @@ import time
 import os
 import getkeys
 import psutil
+import notify2
 
 
 """
@@ -84,6 +85,11 @@ def write_nextbreak():
     open("/tmp/nextbreak_" + user, "wt").write(str(next_break))
 
 
+def sendmessage(title, message, icon=""):
+    notify2.init("TakeaBreak")
+    notify2.Notification(title, message, icon).show()
+
+
 def take_a_break():
     gdkdisplay = Gdk.Display.get_default()
     screens = [
@@ -155,12 +161,7 @@ while True:
     if not getkey():
         break
     if notify_msg:
-        subprocess_tasks(
-            "run_async", [
-                "notify-send", "-t", "8000", "-i", "takeabreak-symbolic",
-                "Take a break", message,
-            ]
-        )
+        sendmessage("Take a break", message, "takeabreak-symbolic")
     if not getkey():
         break
     time.sleep(notify_time)
