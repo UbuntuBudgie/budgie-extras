@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import os
 import time
+import notify2
 
 
 """
@@ -34,12 +35,12 @@ def notify_result(n):
         "Successfully copied " + source + " to " + target
     ]
     message = err[n]
-    subprocess.Popen([
-        "/usr/bin/notify-send",
-        "-i", "media-flash-symbolic",
-        "Copy result",
-        message
-    ])
+    sendmessage("Copy result", message, "media-flash-symbolic")
+
+
+def sendmessage(title, message, icon=""):
+    notify2.init("CopyFlash")
+    notify2.Notification(title, message, icon).show()
 
 
 def check_permissions(target):
