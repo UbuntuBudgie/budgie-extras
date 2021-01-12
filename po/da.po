@@ -1,45 +1,26 @@
-# #-#-#-#-#  da.po (slingshot)  #-#-#-#-#
-# #-#-#-#-#  da.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # scootergrisen, 2019
 # david mohammed <foss.freedom@gmail.com>, 2020
-#
-# #-#-#-#-#  da.po (slingshot)  #-#-#-#-#
-# Danish translation for slingshot
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the slingshot package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:30+0000\n"
-"PO-Revision-Date: 2018-05-06 00:12+0000\n"
-"Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish <https://weblate.elementary.io/projects/wingpanel/"
-"wingpanel-indicator-network/da/>\n"
-"Language: da\n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
+"Language-Team: Danish (https://www.transifex.com/ubuntu-budgie/teams/72251/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  da.po (slingshot)  #-#-#-#-#\n"
-"#-#-#-#-#  da.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"#-#-#-#-#  da.po (slingshot)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
-"#-#-#-#-#  da.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
-"X-Launchpad-Export-Date: 2017-03-19 06:49+0000\n"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
 msgid "Open and search apps"
@@ -416,24 +397,30 @@ msgid "quarter after %s"
 msgstr "kvart over %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "tyve over %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "næsten tredive over %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -479,7 +466,8 @@ msgstr "ti i %s"
 msgid "almost %s"
 msgstr "næsten %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Dato- og klokkeslætsindstillinger"
@@ -497,13 +485,16 @@ msgstr "Kalender"
 msgid "Preferences"
 msgstr "Præferencer"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Vis dato"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Brug 24-timers klokkeslæt"
@@ -852,8 +843,8 @@ msgstr "Start"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
-"per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -906,12 +897,14 @@ msgstr "Tilpasset"
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:271
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:280
 #: budgie-hotcorners/src/HotCornersApplet.vala:288
 msgid "Please enable Window Shuffler"
@@ -1372,9 +1365,7 @@ msgstr ""
 msgid "Sticky Neighbors switched on"
 msgstr ""
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr ""
@@ -1417,8 +1408,8 @@ msgstr "Gem placering"
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
 msgstr ""
-"Aktivér Super + træk for at indstille tidsplaceringen. Klik på ´Gem placering"
-"´ for at gemme."
+"Aktivér Super + træk for at indstille tidsplaceringen. Klik på ´Gem "
+"placering´ for at gemme."
 
 #. window content
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:172
@@ -1532,1044 +1523,3 @@ msgstr ""
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr "Vis elementer som er brugt for nyligt"
-
-#~ msgid "Authentication failed"
-#~ msgstr "Autentifikation mislykkede"
-
-#~ msgid "Group:"
-#~ msgstr "Gruppe:"
-
-#~ msgid "Configure applet"
-#~ msgstr "Konfigurer applet"
-
-#~ msgid "Add applet"
-#~ msgstr "Tilføj applet"
-
-#~ msgid "Choose a new applet to add to this panel"
-#~ msgstr "Vælg en ny applet som skal tilføjes til panelet"
-
-#~ msgid "No settings available"
-#~ msgstr "Ingen indstillinger tilgængelige"
-
-#~ msgid "Center"
-#~ msgstr "Midt"
-
-#~ msgid "End"
-#~ msgstr "Slut"
-
-#~ msgid "Confirm panel removal"
-#~ msgstr "Bekræft fjernelse af panel"
-
-#~ msgid ""
-#~ "Do you really want to remove this panel? This action cannot be undone."
-#~ msgstr "Vil du virkelig fjerne panelet? Handlingen kan ikke fortrydes."
-
-#~ msgid "Remove panel"
-#~ msgstr "Fjern panel"
-
-#~ msgid "Keep panel"
-#~ msgstr "Behold panel"
-
-#~ msgid "Confirm applet removal"
-#~ msgstr "Bekræft fjernelse af applet"
-
-#~ msgid ""
-#~ "Do you really want to remove this applet? This action cannot be undone."
-#~ msgstr "Vil du virkelig fjerne appleten? Handlingen kan ikke fortrydes."
-
-#~ msgid "Don't ask me again"
-#~ msgstr "Spørg mig ikke igen"
-
-#~ msgid "Remove applet"
-#~ msgstr "Fjern applet"
-
-#~ msgid "Keep applet"
-#~ msgstr "Behold applet"
-
-#~ msgid "Appearance"
-#~ msgstr "Udseende"
-
-#~ msgid "Panels"
-#~ msgstr "Paneler"
-
-#~ msgid "Session"
-#~ msgstr "Session"
-
-#~ msgid "Budgie Desktop Settings"
-#~ msgstr "Budgie-skrivebordsindstillinger"
-
-#~ msgid "Create new panel"
-#~ msgstr "Opret nyt panel"
-
-#~ msgid "Windows"
-#~ msgstr "Vinduer"
-
-#~ msgid "Attach modal dialogs to windows"
-#~ msgstr "Tilkobl modale dialoger til vinduer"
-
-#~ msgid ""
-#~ "Modal dialogs will become attached to the parent window and move together "
-#~ "when dragged."
-#~ msgstr ""
-#~ "Modale dialoger vil blive tilknyttet forældervinduet og flyt sammen når "
-#~ "der trækkes."
-
-#~ msgid "Button layout"
-#~ msgstr "Knaplayout"
-
-#~ msgid "Change the layout of buttons in application titlebars."
-#~ msgstr "Skift layoutet af knapper i programmers titellinjer."
-
-#~ msgid "Center new windows on screen"
-#~ msgstr "Centrer nye vinduer på skærmen"
-
-#~ msgid "Center newly launched windows on the current screen."
-#~ msgstr "Centrer nyåbnede vinduer på den aktuelle skærm."
-
-#~ msgid "Disable Night Light mode when windows are fullscreen"
-#~ msgstr "Slå Nattelys fra ved fuldskærmsvisning"
-
-#~ msgid ""
-#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
-#~ "leaving fullscreen."
-#~ msgstr ""
-#~ "Slå Night Light fra ved fuldskærmsvisning. Genaktiveres efter fuldskærm "
-#~ "forlades."
-
-#~ msgid "Automatic tiling"
-#~ msgstr "Automatisk fliselægning"
-
-#~ msgid ""
-#~ "Windows will automatically tile when dragged into the top of the screen "
-#~ "or the far corners."
-#~ msgstr ""
-#~ "Vinduer fliselægges automatisk når de trækkes ind i toppen af skærmen "
-#~ "eller de fjerne hjørner."
-
-#~ msgid "Enable window focus change on mouse enter and leave"
-#~ msgstr ""
-#~ "Aktiver fokusering af vindue når cursor føres henover eller væk fra vindue"
-
-#~ msgid ""
-#~ "Enables window focus to apply when the mouse enters the window and "
-#~ "unfocus when the mouse leaves the window."
-#~ msgstr ""
-#~ "Aktiverer vinduesfokus når cursor føres over vindue og fjernelse af fokus "
-#~ "når cursor forlader vindue."
-
-#~ msgid "Disable unredirection of windows"
-#~ msgstr "Deaktivér uomdirigering af vinduer"
-
-#~ msgid ""
-#~ "This option is for advanced users. Use this if you are having graphical "
-#~ "or performance issues with dedicated GPUs."
-#~ msgstr ""
-#~ "Denne indstilling er for avancerede brugere. Brug den hvis du har "
-#~ "problemer med ydelsen fra dedikerede grafikkort."
-
-#, fuzzy
-#~ msgid "Show all windows in tab switcher"
-#~ msgstr "Vis alle vinduer ved klik"
-
-#~ msgid "Right (standard)"
-#~ msgstr "Højre (standard)"
-
-#~ msgid "Style"
-#~ msgstr "Stil"
-
-#~ msgid "Widgets"
-#~ msgstr "Widgets"
-
-#~ msgid "Set the appearance of window decorations and controls"
-#~ msgstr "Sæt udseendet af vinduesdekorationer og kontroller"
-
-#~ msgid "Icons"
-#~ msgstr "Ikoner"
-
-#~ msgid "Set the globally used icon theme"
-#~ msgstr "Sæt det ikontema som skal bruges globalt"
-
-#~ msgid "Cursors"
-#~ msgstr "Markører"
-
-#~ msgid "Set the globally used mouse cursor theme"
-#~ msgstr "Sæt det musemarkørtema som skal bruges globalt"
-
-#~ msgid "Notification Position"
-#~ msgstr "Notifikationsposition"
-
-#~ msgid "Set the location for notification popups"
-#~ msgstr "Vælg notifikation-popup placering"
-
-#~ msgid "Dark theme"
-#~ msgstr "Mørkt tema"
-
-#~ msgid "Built-in theme"
-#~ msgstr "Indbygget tema"
-
-#~ msgid ""
-#~ "When enabled, the built-in theme will override the desktop component "
-#~ "styling"
-#~ msgstr ""
-#~ "Når aktiveret, tilsidesættes skrivebordskomponentstilen med den "
-#~ "indbyggede stil"
-
-#~ msgid "Animations"
-#~ msgstr "Animationer"
-
-#~ msgid "Control whether windows and controls use animations"
-#~ msgstr "Bestem hvorvidt vinduer og kontroller skal bruge animationer"
-
-#~ msgid "Top Left"
-#~ msgstr "Øverst til venstre"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Bunden til venstre"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Bunden til højre"
-
-#~ msgid "Top Right"
-#~ msgstr "Toppen til højre"
-
-#~ msgid "Allow raising volume above 100%"
-#~ msgstr "Tillad at volumen overstiger 100%"
-
-#~ msgid ""
-#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
-#~ "Widget in Raven up to 150%."
-#~ msgstr ""
-#~ "Tillader også styring af volumen via Lydindstillinger såvel som i Lyd "
-#~ "output widget op til 150%."
-
-#~ msgid "Enable display of week numbers in Calendar"
-#~ msgstr "Slå visning af ugenumre til i kalender"
-
-#~ msgid ""
-#~ "This setting enables the display of week numbers in the Calendar widget."
-#~ msgstr "Denne indstilling slår visning af ugenumre til i kalender widget."
-
-#~ msgid "Show Calendar Widget"
-#~ msgstr "Vis kalender widget"
-
-#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
-#~ msgstr "Viser eller skjuler kalender widget i Ravens Applet sektion."
-
-#~ msgid "Show Sound Output Widget"
-#~ msgstr "Vis lydudgang widget"
-
-#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
-#~ msgstr "Viser eller skjuler lydudgang widget i Ravens applet sektion."
-
-#~ msgid "Show Microphone Input Widget"
-#~ msgstr "Vis mikrofon indgang widget"
-
-#~ msgid ""
-#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Viser eller skjuler mikrofon indgang widget i Ravens appplet sektion."
-
-#~ msgid "Show Media Playback Controls Widget"
-#~ msgstr "Vis medieafspilnings kontroller widget"
-
-#~ msgid ""
-#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
-#~ "Applets section."
-#~ msgstr ""
-#~ "Viser eller skjuler medieafspilnings kontroller (MPRIS) widget i Ravens "
-#~ "applet sektion."
-
-#~ msgid "Show Power Strip"
-#~ msgstr "Vis power bjælke"
-
-#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
-#~ msgstr "Viser eller skjuler power bjælken i bunden af Raven."
-
-#~ msgid "Choose an applet"
-#~ msgstr "Vælg en applet"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Skrivebordsikoner"
-
-#, fuzzy
-#~ msgid "Control whether to allow icons on the desktop."
-#~ msgstr ""
-#~ "Bestemt hvorvidt programstartere og ikoner skal tillades på skrivebordet."
-
-#, fuzzy
-#~ msgid "Show all active mounts on the desktop."
-#~ msgstr ""
-#~ "Bestemt hvorvidt programstartere og ikoner skal tillades på skrivebordet."
-
-#~ msgid "Home directory"
-#~ msgstr "Hjemmemappe"
-
-#~ msgid "Add a shortcut to your home directory on the desktop."
-#~ msgstr "Tilføj en genvej til din hjemmemappe på skrivebordet."
-
-#~ msgid "Add a shortcut to the Trash directory on the desktop."
-#~ msgstr "Tilføj en genvej til papirkurvsmappen på skrivebordet."
-
-#, fuzzy
-#~ msgid "Icon Size"
-#~ msgstr "Størrelse"
-
-#, fuzzy
-#~ msgid "Set the desired size of icons on the desktop."
-#~ msgstr ""
-#~ "Bestemt hvorvidt programstartere og ikoner skal tillades på skrivebordet."
-
-#~ msgid "Number of virtual desktops"
-#~ msgstr "Antal af virtuelle skriveborde"
-
-#~ msgid ""
-#~ "Number of virtual desktops / workspaces to create automatically on "
-#~ "startup."
-#~ msgstr ""
-#~ "Antal af virtuelle skriveborde / arbejdsområder, der skal oprettes "
-#~ "automatisk ved systemstart."
-
-#~ msgid "Applets"
-#~ msgstr "Applets"
-
-#, fuzzy
-#~ msgid "Remove Panel"
-#~ msgstr "Fjern panel"
-
-#~ msgid "Remove this panel from the screen"
-#~ msgstr "Fjern panelet fra skærmen"
-
-#~ msgid "Top Dock"
-#~ msgstr "Øverste dok"
-
-#~ msgid "Right Dock"
-#~ msgstr "Højre dok"
-
-#~ msgid "Left Dock"
-#~ msgstr "Venstre dok"
-
-#~ msgid "Bottom Dock"
-#~ msgstr "Nederste dok"
-
-#~ msgid "Top Panel"
-#~ msgstr "Toppanel"
-
-#~ msgid "Right Panel"
-#~ msgstr "Højre panel"
-
-#~ msgid "Left Panel"
-#~ msgstr "Venstre panel"
-
-#~ msgid "Bottom Panel"
-#~ msgstr "Bundpanel"
-
-#~ msgid "Always"
-#~ msgstr "Altid"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dynamisk"
-
-#~ msgid "None"
-#~ msgstr "Ingen"
-
-#~ msgid "Intelligent"
-#~ msgstr "Intelligent"
-
-#~ msgid "Never"
-#~ msgstr "Aldrig"
-
-#~ msgid "Position"
-#~ msgstr "Placering"
-
-#~ msgid "Set the edge of the screen that this panel will stay on"
-#~ msgstr "Sæt skærmkanten hvor panelet skal være på"
-
-#~ msgid "Size"
-#~ msgstr "Størrelse"
-
-#~ msgid ""
-#~ "Set the size (width or height, depending on orientation) of this panel"
-#~ msgstr "Sæt panelets størrelse (bredde og højde, afhænger af orientering)"
-
-#~ msgid "Automatically hide"
-#~ msgstr "Skjul automatisk"
-
-#~ msgid "When set, this panel will hide from view to maximize screen estate"
-#~ msgstr ""
-#~ "Hvis den er sat, så skjules panelet fra visningen for at gøre bedst brug "
-#~ "af skærmens område"
-
-#~ msgid "Control when this panel should have a solid background"
-#~ msgstr "Bestem hvornår panelet skal bruge en ensfarvet baggrund"
-
-#~ msgid "Shadow"
-#~ msgstr "Skygge"
-
-#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
-#~ msgstr "Tilføj en dekorativ slagskygge, ideelt til uigennemsigtige paneler"
-
-#~ msgid "Stylize regions"
-#~ msgstr "Stilisér regioner"
-
-#~ msgid ""
-#~ "Adds a hint to the panel so that each of the panel's three main areas may "
-#~ "be themed differently."
-#~ msgstr ""
-#~ "Tilføjer et hint til panelet, så hver af panelernes tre hovedområder kan "
-#~ "bruge forskellige temaer."
-
-#~ msgid "Dock mode"
-#~ msgstr "Doktilstand"
-
-#~ msgid ""
-#~ "When in dock mode, the panel will use the minimal amount of space "
-#~ "possible, freeing up valuable screen estate"
-#~ msgstr ""
-#~ "I doktilstand, bruger panelet mindst muligt plads, så værdifulde områder "
-#~ "af skærmen frigøres"
-
-#~ msgid "Untitled"
-#~ msgstr "Unavngivet"
-
-#~ msgid "No description"
-#~ msgstr "Ingen beskrivelse"
-
-#~ msgid "running"
-#~ msgstr "kører"
-
-#~ msgid "Add"
-#~ msgstr "Tilføj"
-
-#~ msgid "Command"
-#~ msgstr "Kommando"
-
-#~ msgid "An entry with that title already exists"
-#~ msgstr "Der findes allerede et punkt med den titel"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Required"
-#~ msgstr "Krævet"
-
-#~ msgid "Description"
-#~ msgstr "Beskrivelse"
-
-#~ msgid "Optional"
-#~ msgstr "Valgfri"
-
-#~ msgid "Autostart"
-#~ msgstr "Autostart"
-
-#~ msgid "Autostart apps"
-#~ msgstr "Autostart applikationer"
-
-#, fuzzy
-#~ msgid "Add Application"
-#~ msgstr "Programmer"
-
-#, fuzzy
-#~ msgid "Add Command"
-#~ msgstr "Kommando"
-
-#~ msgid "Fonts"
-#~ msgstr "Skrifttyper"
-
-#~ msgid "Window Titles"
-#~ msgstr "Vinduestitler"
-
-#~ msgid "Set the font used in the titlebars of applications."
-#~ msgstr "Vælg skrifttypen som bruges i programmernes titellinjer."
-
-#~ msgid "Documents"
-#~ msgstr "Dokumenter"
-
-#~ msgid "Set the display font used by for documents."
-#~ msgstr "Sæt den primære skrifttype som skal bruges af dokumenter."
-
-#~ msgid "Interface"
-#~ msgstr "Brugerflade"
-
-#~ msgid "Set the primary font used by application controls."
-#~ msgstr "Vælg den primære skrifttype som bruges til programmenuer."
-
-#~ msgid "Monospace"
-#~ msgstr "Fast bredde"
-
-#~ msgid "Set the fixed-width font used by text dominant applications."
-#~ msgstr ""
-#~ "Indstil skrifttypen med fast bredde der anvendes af teksttunge programmer."
-
-#~ msgid "Text scaling"
-#~ msgstr "Tekstskalering"
-
-#~ msgid "Set the text scaling factor."
-#~ msgstr "Indstil tekstskaleringsfaktor."
-
-#~ msgid "Full"
-#~ msgstr "Fuld"
-
-#~ msgid "Medium"
-#~ msgstr "Mellem"
-
-#~ msgid "Slight"
-#~ msgstr "Let"
-
-#~ msgid "Hinting"
-#~ msgstr "Hinting"
-
-#~ msgid "Set the type of hinting to use."
-#~ msgstr "Indstil typen af hinting som skal bruges."
-
-#~ msgid "Subpixel (for LCD screens)"
-#~ msgstr "Underpixel (til LCD-skærme)"
-
-#~ msgid "Standard (grayscale)"
-#~ msgstr "Standard (sort/hvid)"
-
-#~ msgid "Antialiasing"
-#~ msgstr "Antialiasing"
-
-#~ msgid "Set the type of antialiasing to use."
-#~ msgstr "Indstil typen af antialiasing som skal bruges."
-
-#~ msgid "No apps are currently playing audio."
-#~ msgstr "Ingen programmer afspiller i øjeblikket lyd."
-
-#~ msgid "Play some music"
-#~ msgstr "Spil noget musik"
-
-#~ msgid "Nothing to see here"
-#~ msgstr "Intet at se her"
-
-#~ msgid "%u unread notifications"
-#~ msgstr "%u ulæste notifikationer"
-
-#~ msgid "1 unread notification"
-#~ msgstr "1 ulæst notifikation"
-
-#~ msgid "No unread notifications"
-#~ msgstr "Ingen ulæste notifikationer"
-
-#~ msgid "No new notifications"
-#~ msgstr "Ingen nye notifikationer"
-
-#~ msgid "Apps"
-#~ msgstr "Applikationer"
-
-#~ msgid "Devices"
-#~ msgstr "Enheder"
-
-#~ msgid "Notifications"
-#~ msgstr "Notifikationer"
-
-#~ msgid "Caffeine Mode"
-#~ msgstr "Caffeine-tilstand"
-
-#, fuzzy
-#~ msgid "System Settings"
-#~ msgstr "Indstillinger"
-
-#~ msgid "Log out"
-#~ msgstr "Log ud"
-
-#~ msgid "Restart device"
-#~ msgstr "Genstart enhed"
-
-#~ msgid "Power Off"
-#~ msgstr "Sluk"
-
-#~ msgid "Turned on Caffeine Boost"
-#~ msgstr "Caffeine Boost slået til"
-
-#~ msgid "Turned off Caffeine Boost"
-#~ msgstr "Caffeine Boost slået fra"
-
-#~ msgid "Will turn off in a minute"
-#~ msgstr "Slukker om et minut"
-
-#~ msgid "Will turn off in %d minutes"
-#~ msgstr "Slukker om %d minutter"
-
-#~ msgid "User"
-#~ msgstr "Bruger"
-
-#~ msgid "Caps lock is active"
-#~ msgstr "Caps Lock er aktiv"
-
-#~ msgid "Caps lock is not active"
-#~ msgstr "Caps Lock er ikke aktiv"
-
-#~ msgid "Num lock is active"
-#~ msgstr "Num Lock er aktiv"
-
-#~ msgid "Num lock is not active"
-#~ msgstr "Num Lock er ikke aktiv"
-
-#~ msgid "Removable devices"
-#~ msgstr "Flytbare enheder"
-
-#~ msgid "Local volumes"
-#~ msgstr "Lokale diskenheder"
-
-#~ msgid "Network folders"
-#~ msgstr "Netværksmapper"
-
-#~ msgid "Eject"
-#~ msgstr "Skub ud"
-
-#~ msgid "Unmount"
-#~ msgstr "Afmonter"
-
-#~ msgid "Open \"%s\""
-#~ msgstr "Åbn \"%s\""
-
-#~ msgid "You can now safely remove"
-#~ msgstr "Du kan nu sikkert fjerne"
-
-#~ msgid "Unknown Device"
-#~ msgstr "Ukendt enhed"
-
-#~ msgid "Error while ejecting device"
-#~ msgstr "Fejl ved udskubning af enhed"
-
-#~ msgid "Error while unmounting volume"
-#~ msgstr "Fejl ved afmontering af diskenhed"
-
-#~ msgid "Mount and open \"%s\""
-#~ msgstr "Monter og åbn \"%s\""
-
-#~ msgid "Enter the encryption passphrase to unlock this volume"
-#~ msgstr "Indtast den krypterede adgangsfrase for at låse diskenheden op"
-
-#~ msgid "The password you entered is incorrect"
-#~ msgstr "Adgangskoden som du har indtastet er forkert"
-
-#~ msgid "An unknown error occurred while attempting to mount this volume"
-#~ msgstr "Der opstod en fejl ved forsøg på at montere diskenheden"
-
-#~ msgid "Volume is in use by other processes"
-#~ msgstr "Diskenheden bruges af andre processer"
-
-#~ msgid "Operation aborted"
-#~ msgstr "Handling afbrudt"
-
-#~ msgid "Type your password"
-#~ msgstr "Skriv din adgangskode"
-
-#~ msgid "Places"
-#~ msgstr "Steder"
-
-#~ msgid "Nothing to display right now"
-#~ msgstr "Intet at vise lige nu"
-
-#~ msgid "Mount some drives"
-#~ msgstr "Monter nogle drev"
-
-#~ msgid "Enable more sections"
-#~ msgstr "Aktivér flere afsnit"
-
-#~ msgid "Bluetooth Settings"
-#~ msgstr "Indstillinger for Bluetooth"
-
-#~ msgid "Send Files"
-#~ msgstr "Send filer"
-
-#~ msgid "Bluetooth Airplane Mode"
-#~ msgstr "Flytilstand for Bluetooth"
-
-#~ msgid "Bluetooth is disabled"
-#~ msgstr "Bluetooth er deaktiveret"
-
-#~ msgid "Bluetooth is active"
-#~ msgstr "Bluetooth er aktiv"
-
-#~ msgid "Connected to %d device"
-#~ msgid_plural "Connected to %d devices"
-#~ msgstr[0] "Tilsluttet til %d enhed"
-#~ msgstr[1] "Tilsluttet til %d enheder"
-
-#~ msgid "Battery fully charged."
-#~ msgstr "Batteriet er fuldt opladet."
-
-#~ msgid "Battery charging"
-#~ msgstr "Batteriet oplades"
-
-#~ msgid "Battery remaining"
-#~ msgstr "Tilbageværende batteri"
-
-#~ msgid "Show battery percentage"
-#~ msgstr "Vis batteriets procent"
-
-#~ msgid "Power settings"
-#~ msgstr "Strømindstillinger"
-
-#~ msgid "Rename"
-#~ msgstr "Omdøb"
-
-#~ msgid "Remove"
-#~ msgstr "Fjern"
-
-#~ msgid "Timer (minutes)"
-#~ msgstr "Timer (minutter)"
-
-#~ msgid "Toggle the desktop"
-#~ msgstr "Skrivebord til/fra"
-
-#~ msgid "All"
-#~ msgstr "Alle"
-
-#~ msgid "Sorry, no items found"
-#~ msgstr "Beklager, ingenting fundet"
-
-#~ msgid "Time and date settings"
-#~ msgstr "Indstillinger for klokkeslæt og dato"
-
-#~ msgid "Show seconds"
-#~ msgstr "Vis sekunder"
-
-#~ msgid "Launch New Instance"
-#~ msgstr "Start ny instans"
-
-#~ msgid "Close All Windows"
-#~ msgstr "Luk alle vinduer"
-
-#~ msgid "Always On Top"
-#~ msgstr "Altid øverst"
-
-#~ msgid "Maximize"
-#~ msgstr "Maksimér"
-
-#~ msgid "Minimize"
-#~ msgstr "Minimér"
-
-#~ msgid "Unfavorite"
-#~ msgstr "Fjern favorit"
-
-#~ msgid "Favorite"
-#~ msgstr "Tilføj favorit"
-
-#~ msgid "Move To Workspace %i"
-#~ msgstr "Flyt til arbejdsområde %i"
-
-#~ msgid "Unmaximize"
-#~ msgstr "Gendan"
-
-#~ msgid "Close Window"
-#~ msgstr "Luk vindue"
-
-#~ msgid "Show Window Controls"
-#~ msgstr "Vis vindueskontroller"
-
-#~ msgid "Authentication Required"
-#~ msgstr "Autentifikation kræves"
-
-#~ msgid "Password:"
-#~ msgstr "Adgangskode:"
-
-#~ msgid "Authentication is required"
-#~ msgstr "Autentifikation kræves"
-
-#~ msgid "Authenticate"
-#~ msgstr "Autentificer"
-
-#~ msgid "Are you sure you want to end your session?"
-#~ msgstr "Er du sikker på, at du vil afslutte din session?"
-
-#~ msgid "Show label"
-#~ msgstr "Vis etiket"
-
-#~ msgid "Show places"
-#~ msgstr "Vis steder"
-
-#~ msgid "Show network folders"
-#~ msgstr "Vis netværksmapper"
-
-#~ msgid "Show removable drives"
-#~ msgstr "Vis drev der kan fjernes"
-
-#~ msgid "Always expand places"
-#~ msgstr "Udvid altid steder"
-
-#~ msgid "Spacer size"
-#~ msgstr "Størrelse på afstandsstykke"
-
-#~ msgid "\"Add\" button visibility"
-#~ msgstr "Synlighed for \"tilføj\"-knap"
-
-#~ msgid "Don't show"
-#~ msgstr "Vis ikke"
-
-#~ msgid "Show on mouseover"
-#~ msgstr "Vis ved cursoroverføring"
-
-#~ msgid "Always show"
-#~ msgstr "Vis altid"
-
-#~ msgid "Enable notification"
-#~ msgstr "Slå notifikation til"
-
-#~ msgid "Maximize brightness"
-#~ msgstr "Maksimer lysstyrke"
-
-#~ msgid "Brightness Level"
-#~ msgstr "Lysstyrke"
-
-#~ msgid "Night Light"
-#~ msgstr "Nattelys"
-
-#~ msgid "Schedule"
-#~ msgstr "Planlægning"
-
-#~ msgid "Sunset to Sunrise"
-#~ msgstr "Solnedgang til solopgang"
-
-#~ msgid "Manual"
-#~ msgstr "Manuelt"
-
-#~ msgid "Display Settings"
-#~ msgstr "Visningsindstillinger"
-
-#~ msgid "Compact Mode"
-#~ msgstr "Kompakt tilstand"
-
-#~ msgid "Show Headers"
-#~ msgstr "Vis hoveder"
-
-#~ msgid "Show all windows on click"
-#~ msgstr "Vis alle vinduer ved klik"
-
-#~ msgid "Only show favorited"
-#~ msgstr "Vis kun favoriserede"
-
-#~ msgid "Lock icons"
-#~ msgstr "Lås ikoner"
-
-#~ msgid "Restrict to Workspace"
-#~ msgstr "Fastlås til arbejdsområde"
-
-#~ msgid "Window grouping"
-#~ msgstr "Vinduegruppering"
-
-#~ msgid "Budgie Desktop"
-#~ msgstr "Budgie-skrivebord"
-
-#~ msgid "This session logs you into the Budgie Desktop"
-#~ msgstr "Sessionen logger dig ind i Budgie-skrivebordet"
-
-#~ msgid "Budgie Panel"
-#~ msgstr "Budgie-panel"
-
-#~ msgid ""
-#~ "Launch other applications and provide various utilities to manage "
-#~ "windows, show the time, etc."
-#~ msgstr ""
-#~ "Start andre programmer og giv diverse redskaber til at håndtere vinduer, "
-#~ "vise klokkeslættet, osv."
-
-#~ msgid "Change desktop appearance and behavior"
-#~ msgstr "Skift skrivebordsudseende og -opførsel"
-
-#~ msgid "User Indicator"
-#~ msgstr "Brugerindikator"
-
-#~ msgid "Lock Keys Indicator"
-#~ msgstr "Indikator for låsetaster"
-
-#~ msgid "Status Indicator"
-#~ msgstr "Statusindikator"
-
-#~ msgid "Spacer"
-#~ msgstr "Afstandsstykke"
-
-#~ msgid "Separator"
-#~ msgstr "Separator"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Arbejdsområdeskifter"
-
-#~ msgid "Keyboard Layout Indicator"
-#~ msgstr "Indikator for tastaturlayout"
-
-#~ msgid "Caffeine"
-#~ msgstr "Caffeine"
-
-#~ msgid "System Tray"
-#~ msgstr "Statusbakke"
-
-#~ msgid "Raven Sidebar Control"
-#~ msgstr "Raven sidepanel-kontrol"
-
-#~ msgid "Show Desktop Button"
-#~ msgstr "Vis skrivebordsknap"
-
-#~ msgid "Budgie Menu"
-#~ msgstr "Budgie-menu"
-
-#~ msgid "Clock"
-#~ msgstr "Ur"
-
-#~ msgid "Task List"
-#~ msgstr "Opgaveliste"
-
-#~ msgid "Icon Task List"
-#~ msgstr "Opgaveliste med ikoner"
-
-#~ msgid "Network"
-#~ msgstr "Netværk"
-
-#~ msgid "Network indicator"
-#~ msgstr "Netværksindikator"
-
-#~ msgid "Uninstall"
-#~ msgstr "Afinstaller"
-
-#~ msgid "View in AppCenter"
-#~ msgstr "Se i AppCenteret"
-
-#~ msgid "Search for %s in %s"
-#~ msgstr "Søg efter %s i %s"
-
-#~ msgid "Search the app store"
-#~ msgstr "Søg i app butikken"
-
-#~ msgid "AppCenter"
-#~ msgstr "AppCenter"
-
-#~ msgid "Search for applications"
-#~ msgstr "Søg efter applikationer"
-
-#~ msgid "AppCenter is not installed"
-#~ msgstr "AppCenter er ikke installeret"
-
-#~ msgid "Open %s settings"
-#~ msgstr "Åbn %s-indstillinger"
-
-#~ msgid "Find switchboard plugs and open them."
-#~ msgstr "Find switchboardstik og åbn dem."
-
-#~ msgid "Lock this device"
-#~ msgstr "Lås denne enhed"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "lock"
-#~ msgstr "Lås"
-
-#~ msgid "Log Out"
-#~ msgstr "Log ud"
-
-#~ msgid "Close all open applications and quit"
-#~ msgstr "Luk alle åbne applikationer og afslut"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "logout"
-#~ msgstr "log ud"
-
-#~ msgid "Put your computer into suspend mode"
-#~ msgstr "Sæt din computer i hviletilstand"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "suspend"
-#~ msgstr "Hvile"
-
-#~ msgid "Hibernate"
-#~ msgstr "Dvale"
-
-#~ msgid "Put your computer into hibernation mode"
-#~ msgstr "Sæt din computer i dvaletilstand"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "hibernate"
-#~ msgstr "Dvale"
-
-#~ msgid "Shut Down"
-#~ msgstr "Sluk"
-
-#~ msgid "Turn your computer off"
-#~ msgstr "Sluk din computer"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "shutdown;turn off"
-#~ msgstr "luk ned;sluk"
-
-#~ msgid "Restart your computer"
-#~ msgstr "Genstart din computer"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "restart;reboot"
-#~ msgstr "genstart"
-
-#~ msgid ""
-#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
-#~ "shutdown your computer."
-#~ msgstr ""
-#~ "Lås sessionen eller log ud fra den. Hvil, dvale, genstart eller sluk din "
-#~ "computer."
-
-#~ msgid "ConsoleKit wasn't found"
-#~ msgstr "ConsoleKit blev ikke fundet"
-
-#~ msgid "Slingshot"
-#~ msgstr "Slingshot"
-
-#~ msgid "The app-menu indicator"
-#~ msgstr "Appmenu-indikatoren"
-
-#, fuzzy
-#~ msgid "Uninstall “%s”?"
-#~ msgstr "Afinstaller"
-
-#~ msgid "Open using default application"
-#~ msgstr "Åbn med standard applikation"
-
-#~ msgid "Open folder"
-#~ msgstr "Åbn mappe"
-
-#~ msgid "Open folder containing this file"
-#~ msgstr "Åbn mappen der indeholder denne fil"
-
-#~ msgid "All Applications"
-#~ msgstr "Alle Applikationer"
-
-#~ msgid "Create a new Filter"
-#~ msgstr "Opret et nyt Filter"
-
-#~ msgid "Shift"
-#~ msgstr "Shift"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Alt"
-#~ msgstr "Alt"
-
-#~ msgid "There are no wireless access points within range."
-#~ msgstr "Der er ingen trådløse adgangspunkter inden for rækkevidde."
-
-#~ msgid "Wireless Is Disabled"
-#~ msgstr "Trådløs er deaktiveret"
-
-#~ msgid "Enable wireless to discover nearby wireless access points."
-#~ msgstr ""
-#~ "Aktivér trådløs for at opdage trådløse netværksadgangspunkter i nærheden."
-
-#~ msgid "No VPN Available"
-#~ msgstr "Ingen VPN Tilgængelig"
-
-#~ msgid "Hotspot"
-#~ msgstr "Hotspot"
-
-#~ msgid "Hotspot %s"
-#~ msgstr "Hotspot %s"
-
-#~ msgid "Failed"
-#~ msgstr "Mislykkedes"
-
-#~ msgid "Cable unplugged"
-#~ msgstr "Kablet er taget ud"
-
-#~ msgid "Airplane mode enabled"
-#~ msgstr "Flytilstand er aktiveret"
-
-#~ msgid "Unknown"
-#~ msgstr "Ukendt"

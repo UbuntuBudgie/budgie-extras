@@ -1,9 +1,8 @@
-# #-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Rients Bootsma <rainmachine@hotmail.com>, 2019
@@ -11,50 +10,29 @@
 # david mohammed <foss.freedom@gmail.com>, 2020
 # Chris Bristol <chrisofbristol@ymail.com>, 2020
 # Jacob Vlijm <vlijm@planet.nl>, 2020
-#
-# #-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the budgie-desktop package.
-#
-# Translators:
-# Geert Verheyde <geert.verheyde@gmail.com>, 2016-2017
-# Jente Hidskes <Unia@users.noreply.github.com>, 2015
-# Kim Vande Walle, 2015
-# Maxim Van Damme <maxim_vandamme@hotmail.com>, 2015
-# Thimo dZ <tsdezwart@protonmail.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Budgie Desktop\n"
+"Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-17 19:30+0000\n"
-"PO-Revision-Date: 2020-12-02 22:41+0000\n"
-"Last-Translator: Geert Verheyde <geert.verheyde@gmail.com>\n"
-"Language-Team: Dutch <http://translate.getsol.us/projects/budgie-desktop/"
-"translations/nl/>\n"
-"Language: nl\n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: Jacob Vlijm <vlijm@planet.nl>, 2020\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
 msgid "Open and search apps"
 msgstr "Zoek en open toepassingen"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-#, fuzzy
 msgid "Set menu icon from file"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Menupictogram instellen via bestand\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Wijzig het menu icoon via bestand"
+msgstr "Menupictogram instellen via bestand"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
 msgid "Image files"
@@ -75,26 +53,16 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-#, fuzzy
 msgid "Set icon"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Pictogram wijzigen\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Icoon wijzigen"
+msgstr "Pictogram wijzigen"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "Afsluiten"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:112
-#, fuzzy
 msgid "Suspend"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Slaapstand\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Stand-by"
+msgstr "Slaapstand"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:121
 msgid "Restart"
@@ -433,24 +401,30 @@ msgid "quarter after %s"
 msgstr "kwart over %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "tien voor half %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "bijna half %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -496,7 +470,8 @@ msgstr "tien voor %s"
 msgid "almost %s"
 msgstr "bijna %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Datum- en tijdinstellingen"
@@ -514,26 +489,19 @@ msgstr "Kalender"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
-#, fuzzy
 msgid "Show date"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Datum tonen\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Toon datum"
+msgstr "Datum tonen"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
-#, fuzzy
 msgid "Use 24 hour time"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"24-uursindeling\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"24-uurs indeling"
+msgstr "24-uursindeling"
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
@@ -751,13 +719,8 @@ msgstr "Voorspelling tonen in het panelmenu"
 
 #. optional settings: show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:876
-#, fuzzy
 msgid "Transparency"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Doorzichtigheid\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Transparantie"
+msgstr "Doorzichtigheid"
 
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:909
@@ -883,8 +846,8 @@ msgstr "Begin"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
-"per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -937,12 +900,14 @@ msgstr "Aangepast"
 msgid "Missing process"
 msgstr "Proces ontbreekt"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:271
 msgid "Please enable Window Previews"
 msgstr "Schakel Previews in"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:280
 #: budgie-hotcorners/src/HotCornersApplet.vala:288
 msgid "Please enable Window Shuffler"
@@ -1404,9 +1369,7 @@ msgstr ""
 msgid "Sticky Neighbors switched on"
 msgstr ""
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Automatisch"
@@ -1492,13 +1455,8 @@ msgid "Super + drag"
 msgstr "Super + verslepen"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
-#, fuzzy
 msgid "Menu Icon"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Menupictogram\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Menu Icoon"
+msgstr "Menupictogram"
 
 #. Number of rows for the grid of icons
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:3
@@ -1511,22 +1469,12 @@ msgid "Grid Columns"
 msgstr "Aantal kolommen in het raster"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:6
-#, fuzzy
 msgid "Show Menu Label"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Menulabel tonen\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Toon Menu Label"
+msgstr "Menulabel tonen"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:7
-#, fuzzy
 msgid "Menu Label"
-msgstr ""
-"#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-"Menulabel\n"
-"#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-"Menu Label"
+msgstr "Menulabel"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
 msgid "Show Power-strip"
@@ -1579,1104 +1527,3 @@ msgstr "Werkbladindicator en vensterlijst"
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr "Onlangs gebruikte items tonen"
-
-#, fuzzy
-#~ msgid "Hibernate"
-#~ msgstr ""
-#~ "#-#-#-#-#  nl_NL.po (budgie-extras 10.4)  #-#-#-#-#\n"
-#~ "Sluimerstand\n"
-#~ "#-#-#-#-#  nl.po (Budgie Desktop)  #-#-#-#-#\n"
-#~ "Sluimeren"
-
-#~ msgid "Unknown"
-#~ msgstr "Onbekend"
-
-#~ msgid "Authentication failed"
-#~ msgstr "Authenticatie mislukt"
-
-#~ msgid "Group:"
-#~ msgstr "Groep:"
-
-#~ msgid "Configure applet"
-#~ msgstr "De applet instellen"
-
-#~ msgid "Add applet"
-#~ msgstr "Applet toevoegen"
-
-#~ msgid "Choose a new applet to add to this panel"
-#~ msgstr "Kies een nieuwe applet om aan het paneel toe te voegen"
-
-#~ msgid "No settings available"
-#~ msgstr "Geen instellingen beschikbaar"
-
-#~ msgid "Center"
-#~ msgstr "Midden"
-
-#~ msgid "End"
-#~ msgstr "Einde"
-
-#~ msgid "Confirm panel removal"
-#~ msgstr "Verwijdering paneel bevestigen"
-
-#~ msgid ""
-#~ "Do you really want to remove this panel? This action cannot be undone."
-#~ msgstr ""
-#~ "Wil je werkelijk dit paneel verwijderen? Deze actie kan niet ongedaan "
-#~ "gemaakt worden."
-
-#~ msgid "Remove panel"
-#~ msgstr "Paneel verwijderen"
-
-#~ msgid "Keep panel"
-#~ msgstr "Paneel behouden"
-
-#~ msgid "Confirm applet removal"
-#~ msgstr "Verwijdering applet bevestigen"
-
-#~ msgid ""
-#~ "Do you really want to remove this applet? This action cannot be undone."
-#~ msgstr ""
-#~ "Wil je werkelijk deze applet verwijderen? Deze actie kan niet ongedaan "
-#~ "gemaakt worden."
-
-#~ msgid "Don't ask me again"
-#~ msgstr "Niet meer vragen"
-
-#~ msgid "Remove applet"
-#~ msgstr "Applet verwijderen"
-
-#~ msgid "Keep applet"
-#~ msgstr "Applet behouden"
-
-#~ msgid "Appearance"
-#~ msgstr "Uiterlijk"
-
-#~ msgid "Panels"
-#~ msgstr "Panelen"
-
-#~ msgid "Session"
-#~ msgstr "Sessie"
-
-#~ msgid "Budgie Desktop Settings"
-#~ msgstr "Budgie Bureaublad Instellingen"
-
-#~ msgid "Create new panel"
-#~ msgstr "Nieuw paneel"
-
-#~ msgid "Windows"
-#~ msgstr "Vensters"
-
-#~ msgid "Attach modal dialogs to windows"
-#~ msgstr "Koppel modale dialoogvensters"
-
-#~ msgid ""
-#~ "Modal dialogs will become attached to the parent window and move together "
-#~ "when dragged."
-#~ msgstr ""
-#~ "Modale dialoogvensters zullen gekoppeld worden aan hun moedervenster en "
-#~ "samen bewegen indien versleept."
-
-#~ msgid "Button layout"
-#~ msgstr "Positionering knoppen"
-
-#~ msgid "Change the layout of buttons in application titlebars."
-#~ msgstr "Wijzig de positie van de toepassingsbedieningsknoppen."
-
-#~ msgid "Center new windows on screen"
-#~ msgstr "Centreer nieuwe vensters op het scherm"
-
-#~ msgid "Center newly launched windows on the current screen."
-#~ msgstr "Centreer nieuw geopende vensters op het huidig scherm."
-
-#~ msgid "Disable Night Light mode when windows are fullscreen"
-#~ msgstr "Schakel Night Light uit bij schermvullende vensters"
-
-#~ msgid ""
-#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
-#~ "leaving fullscreen."
-#~ msgstr ""
-#~ "Schakelt Night Light modus uit wanneer een venster schermvullend is. "
-#~ "Schakelt het terug in wanneer schermvullend verlaten wordt."
-
-#~ msgid "Automatic tiling"
-#~ msgstr "Automatisch uitvouwen"
-
-#~ msgid ""
-#~ "Windows will automatically tile when dragged into the top of the screen "
-#~ "or the far corners."
-#~ msgstr ""
-#~ "Vensters vouwen zich automatisch uit wanneer ze naar de bovenkant van het "
-#~ "scherm of naar een van de hoekranden gesleept worden."
-
-#~ msgid "Enable window focus change on mouse enter and leave"
-#~ msgstr ""
-#~ "Activeer wijzing vensterfocus bij in- en uitgaan van de muisaanwijzer"
-
-#~ msgid ""
-#~ "Enables window focus to apply when the mouse enters the window and "
-#~ "unfocus when the mouse leaves the window."
-#~ msgstr ""
-#~ "Activeert het toepassen van de vensterfocus bij het in- en uitgaan van de "
-#~ "muisaanwijzer."
-
-#~ msgid "Disable unredirection of windows"
-#~ msgstr "Unredirection of windows uitzetten"
-
-#~ msgid ""
-#~ "This option is for advanced users. Use this if you are having graphical "
-#~ "or performance issues with dedicated GPUs."
-#~ msgstr ""
-#~ "Deze optie is voor geavanceerde gebruikers. Gebruik dit wanneer je "
-#~ "grafische- of performantieproblemen hebt met bepaalde GPU's."
-
-#~ msgid "Show all windows in tab switcher"
-#~ msgstr "Toon alle vensters in de tab switcher"
-
-#~ msgid ""
-#~ "All tabs will be displayed in tab switcher regardless of the workspace in "
-#~ "use."
-#~ msgstr ""
-#~ "Alle vensters zullen getoond worden in de tab switcher ongeacht welk "
-#~ "virtueel bureaublad in gebruik is."
-
-#~ msgid "Right (standard)"
-#~ msgstr "Rechts (standaard)"
-
-#~ msgid "Style"
-#~ msgstr "Stijl"
-
-#~ msgid "Widgets"
-#~ msgstr "Widgets"
-
-#~ msgid "Set the appearance of window decorations and controls"
-#~ msgstr "Stel het uiterlijk in van de vensters en hun bedieningen"
-
-#~ msgid "Icons"
-#~ msgstr "Iconen"
-
-#~ msgid "Set the globally used icon theme"
-#~ msgstr "Kies het standaard icoon thema"
-
-#~ msgid "Cursors"
-#~ msgstr "Cursors"
-
-#~ msgid "Set the globally used mouse cursor theme"
-#~ msgstr "Kies het standaard muisaanwijzer thema"
-
-#~ msgid "Notification Position"
-#~ msgstr "Positie Meldingen"
-
-#~ msgid "Set the location for notification popups"
-#~ msgstr "Bepaal de plaats voor de meldingenpop-ups"
-
-#~ msgid "Dark theme"
-#~ msgstr "Donker thema"
-
-#~ msgid "Built-in theme"
-#~ msgstr "Ingebouwd thema"
-
-#~ msgid ""
-#~ "When enabled, the built-in theme will override the desktop component "
-#~ "styling"
-#~ msgstr ""
-#~ "Wanneer ingeschakeld wordt de bureaublad componentenstijl vervangen door "
-#~ "het ingebouwde thema"
-
-#~ msgid "Animations"
-#~ msgstr "Animatie"
-
-#~ msgid "Control whether windows and controls use animations"
-#~ msgstr "Bepaal of vensters of bedieningen animatie gebruiken"
-
-#~ msgid "Top Left"
-#~ msgstr "Boven Links"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Onder Links"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Onder Rechts"
-
-#~ msgid "Top Right"
-#~ msgstr "Boven Rechts"
-
-#~ msgid "Set Raven position"
-#~ msgstr "Bepaal de positie van Raven"
-
-#~ msgid ""
-#~ "Set which side of the screen Raven will open on. If set to Automatic, "
-#~ "Raven will open where its parent panel is."
-#~ msgstr ""
-#~ "Bepaal aan welke kant van het scherm Raven zich opent. Indien ingesteld "
-#~ "op Automatisch, zal Raven zich openen aan de kant van het ouder paneel."
-
-#~ msgid "Allow raising volume above 100%"
-#~ msgstr "Laat volumeverhoging boven de 100% toe"
-
-#~ msgid ""
-#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
-#~ "Widget in Raven up to 150%."
-#~ msgstr ""
-#~ "Laat volumeverhoging tot 150% toe, zowel via Geluidsinstellingen alsook "
-#~ "via de Sound Output Widget in Raven."
-
-#~ msgid "Enable display of week numbers in Calendar"
-#~ msgstr "Toon weeknummers in Kalender"
-
-#~ msgid ""
-#~ "This setting enables the display of week numbers in the Calendar widget."
-#~ msgstr "Instelling om de weeknummers te tonen in de Kalender Widget."
-
-#~ msgid "Show Calendar Widget"
-#~ msgstr "Toon Kalender Widget"
-
-#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
-#~ msgstr "Toont of verbergt de Kalender Widget in Raven's Applets sectie."
-
-#~ msgid "Show Sound Output Widget"
-#~ msgstr "Toon Geluidsweergave Widget"
-
-#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Toont of verbergt de Geluidsweergave Widget in Raven's Applets sectie."
-
-#~ msgid "Show Microphone Input Widget"
-#~ msgstr "Toon de Microfooninvoer Widget"
-
-#~ msgid ""
-#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Toont of verbergt de Microfooninvoer Widget in Raven's Applets sectie."
-
-#~ msgid "Show Media Playback Controls Widget"
-#~ msgstr "Toon Media-Afspeel-bediening Widget"
-
-#~ msgid ""
-#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
-#~ "Applets section."
-#~ msgstr ""
-#~ "Toont of verbergt de Media Afspeel Bediening (MPRIS) Widget in Raven's "
-#~ "Applet sectie."
-
-#~ msgid "Show Power Strip"
-#~ msgstr "Toon de \"Power\" Strook"
-
-#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
-#~ msgstr "Toont of verbergt de \"Power\" strook onderaan in Raven."
-
-#~ msgid "Choose an applet"
-#~ msgstr "Kies een applet"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Bureaublad Iconen"
-
-#~ msgid "Control whether to allow icons on the desktop."
-#~ msgstr ""
-#~ "Laat al dan niet  programma- en bestands-iconen op het bureaublad toe."
-
-#~ msgid "Active Mounts"
-#~ msgstr "Actieve aankoppelingen"
-
-#~ msgid "Show all active mounts on the desktop."
-#~ msgstr "Toon alle actieve aankoppelingen op het bureaublad."
-
-#~ msgid "Home directory"
-#~ msgstr "Persoonlijke map"
-
-#~ msgid "Add a shortcut to your home directory on the desktop."
-#~ msgstr ""
-#~ "Plaats een snelkoppeling naar je persoonlijke map op het bureaublad."
-
-#~ msgid "Add a shortcut to the Trash directory on the desktop."
-#~ msgstr "Plaats een snelkoppeling naar de Prullenbak op het bureaublad."
-
-#~ msgid "Icon Size"
-#~ msgstr "Icoon grootte"
-
-#~ msgid "Set the desired size of icons on the desktop."
-#~ msgstr "Stel de gewenste grootte van iconen op het bureaublad in."
-
-#~ msgid "Number of virtual desktops"
-#~ msgstr "Aantal virtuele bureaubladen"
-
-#~ msgid ""
-#~ "Number of virtual desktops / workspaces to create automatically on "
-#~ "startup."
-#~ msgstr ""
-#~ "Aantal virtuele bureaubladen/werkruimtes automatisch te creëren bij het "
-#~ "opstarten."
-
-#~ msgid "Single"
-#~ msgstr "Enkele"
-
-#~ msgid "Double"
-#~ msgstr "Dubbel"
-
-#~ msgid "Click Policy"
-#~ msgstr "Klik Instelling"
-
-#~ msgid ""
-#~ "Click Policy determines if we should open items on a single or double "
-#~ "click."
-#~ msgstr ""
-#~ "Klik Instelling bepaalt of we items met een enkele of een dubbele klik "
-#~ "open."
-
-#~ msgid "Normal"
-#~ msgstr "Normaal"
-
-#~ msgid "Small"
-#~ msgstr "Klein"
-
-#~ msgid "Large"
-#~ msgstr "Groot"
-
-#~ msgid "Massive"
-#~ msgstr "Enorm"
-
-#~ msgid "Applets"
-#~ msgstr "Applets"
-
-#~ msgid "Remove Panel"
-#~ msgstr "Paneel verwijderen"
-
-#~ msgid "Remove this panel from the screen"
-#~ msgstr "Verwijder dit paneel van het scherm"
-
-#~ msgid "Top Dock"
-#~ msgstr "Bovenste Dock"
-
-#~ msgid "Right Dock"
-#~ msgstr "Rechtse Dock"
-
-#~ msgid "Left Dock"
-#~ msgstr "Linkse Dock"
-
-#~ msgid "Bottom Dock"
-#~ msgstr "Onderste Dock"
-
-#~ msgid "Top Panel"
-#~ msgstr "Paneel Boven"
-
-#~ msgid "Right Panel"
-#~ msgstr "Paneel Rechts"
-
-#~ msgid "Left Panel"
-#~ msgstr "Paneel Links"
-
-#~ msgid "Bottom Panel"
-#~ msgstr "Paneel Onder"
-
-#~ msgid "Always"
-#~ msgstr "Altijd"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dynamisch"
-
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#~ msgid "Intelligent"
-#~ msgstr "Intelligent"
-
-#~ msgid "Never"
-#~ msgstr "Nooit"
-
-#~ msgid "Position"
-#~ msgstr "Positie"
-
-#~ msgid "Set the edge of the screen that this panel will stay on"
-#~ msgstr "Op welke rand van het scherm moet het paneel vastgepind worden"
-
-#~ msgid "Size"
-#~ msgstr "Grootte"
-
-#~ msgid ""
-#~ "Set the size (width or height, depending on orientation) of this panel"
-#~ msgstr ""
-#~ "Bepaal het formaat (hoogte of breedte, afhankelijk van de oriëntatie) van "
-#~ "dit paneel"
-
-#~ msgid "Automatically hide"
-#~ msgstr "Automatisch verbergen"
-
-#~ msgid "When set, this panel will hide from view to maximize screen estate"
-#~ msgstr ""
-#~ "Wanneer zo ingesteld zal het paneel zich verbergen om maximale "
-#~ "schermoppervlakte te voorzien"
-
-#~ msgid "Control when this panel should have a solid background"
-#~ msgstr "Bepaal de opaciteit van het paneel"
-
-#~ msgid "Shadow"
-#~ msgstr "Schaduw"
-
-#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
-#~ msgstr ""
-#~ "Voegt onderaan een decoratieve schaduw toe, ideaal voor opaque panelen"
-
-#~ msgid "Stylize regions"
-#~ msgstr "Paneelzones stileren"
-
-#~ msgid ""
-#~ "Adds a hint to the panel so that each of the panel's three main areas may "
-#~ "be themed differently."
-#~ msgstr ""
-#~ "Geeft een speciale toets aan het paneel om de drie hoofdzones te "
-#~ "onderscheiden."
-
-#~ msgid "Dock mode"
-#~ msgstr "Dock modus"
-
-#~ msgid ""
-#~ "When in dock mode, the panel will use the minimal amount of space "
-#~ "possible, freeing up valuable screen estate"
-#~ msgstr ""
-#~ "Eens in dock modus, zal het paneel de kleinst mogelijke ruimte gebruiken,"
-#~ "om zoveel mogelijk nuttige plaats op het scherm vrij te maken"
-
-#~ msgid "Untitled"
-#~ msgstr "Naamloos"
-
-#~ msgid "No description"
-#~ msgstr "Geen beschrijving"
-
-#~ msgid "running"
-#~ msgstr "actief"
-
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
-#~ msgid "Command"
-#~ msgstr "Commando"
-
-#~ msgid "An entry with that title already exists"
-#~ msgstr "Er bestaat al een opdracht met deze titel"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Required"
-#~ msgstr "Vereist"
-
-#~ msgid "Description"
-#~ msgstr "Beschrijving"
-
-#~ msgid "Optional"
-#~ msgstr "Optioneel"
-
-#~ msgid "Autostart"
-#~ msgstr "Autostart"
-
-#~ msgid "Autostart apps"
-#~ msgstr "Autostart apps"
-
-#~ msgid "Add Application"
-#~ msgstr "Toepassingen"
-
-#~ msgid "Add Command"
-#~ msgstr "Commando toevoegen"
-
-#~ msgid "Fonts"
-#~ msgstr "Lettertypes"
-
-#~ msgid "Window Titles"
-#~ msgstr "Venster titels"
-
-#~ msgid "Set the font used in the titlebars of applications."
-#~ msgstr "Het lettertype van de titelbalken instellen."
-
-#~ msgid "Documents"
-#~ msgstr "Documenten"
-
-#~ msgid "Set the display font used by for documents."
-#~ msgstr "Bepaal het lettertype gebruikt in documenten."
-
-#~ msgid "Interface"
-#~ msgstr "Interface"
-
-#~ msgid "Set the primary font used by application controls."
-#~ msgstr "Bepaal het hoofd-lettertype gebruikt door toepassingsbedieningen."
-
-#~ msgid "Monospace"
-#~ msgstr "Monospace"
-
-#~ msgid "Set the fixed-width font used by text dominant applications."
-#~ msgstr ""
-#~ "Bepaal het vaste-breedte lettertype gebruikt door tekst-dominante "
-#~ "toepassingen."
-
-#~ msgid "Text scaling"
-#~ msgstr "Tekstschaling"
-
-#~ msgid "Set the text scaling factor."
-#~ msgstr "Stel de tekstschalingsfactor in."
-
-#~ msgid "Full"
-#~ msgstr "Volledig"
-
-#~ msgid "Medium"
-#~ msgstr "Middelmatig"
-
-#~ msgid "Slight"
-#~ msgstr "Gering"
-
-#~ msgid "Hinting"
-#~ msgstr "Hinten"
-
-#~ msgid "Set the type of hinting to use."
-#~ msgstr "De wijze van hinting instellen."
-
-#~ msgid "Subpixel (for LCD screens)"
-#~ msgstr "Subpixel (voor LCD schermen)"
-
-#~ msgid "Standard (grayscale)"
-#~ msgstr "Standaard (grijstinten)"
-
-#~ msgid "Antialiasing"
-#~ msgstr "Antialiasing"
-
-#~ msgid "Set the type of antialiasing to use."
-#~ msgstr "Stel het type van anti-aliasing in."
-
-#~ msgid "No apps are currently playing audio."
-#~ msgstr "Geen enkele app gebruikt momenteel audio."
-
-#~ msgid "Play some music"
-#~ msgstr "Speel muziek af"
-
-#~ msgid "Nothing to see here"
-#~ msgstr "Helemaal niets"
-
-#~ msgid "%u unread notifications"
-#~ msgstr "%u ongelezen meldingen"
-
-#~ msgid "1 unread notification"
-#~ msgstr "1 ongelezen melding"
-
-#~ msgid "No unread notifications"
-#~ msgstr "Geen ongelezen meldingen"
-
-#~ msgid "No new notifications"
-#~ msgstr "Geen nieuwe meldingen"
-
-#~ msgid "Apps"
-#~ msgstr "Apps"
-
-#~ msgid "Devices"
-#~ msgstr "Apparaten"
-
-#~ msgid "Notifications"
-#~ msgstr "Meldingen"
-
-#~ msgid "Caffeine Mode"
-#~ msgstr "Cafeïne Mode"
-
-#~ msgid "System Settings"
-#~ msgstr "Instellingen"
-
-#~ msgid "Log out"
-#~ msgstr "Afmelden"
-
-#~ msgid "Restart device"
-#~ msgstr "Opnieuw opstarten"
-
-#~ msgid "Power Off"
-#~ msgstr "Afsluiten"
-
-#~ msgid "Turned on Caffeine Boost"
-#~ msgstr "Cafeïne Boost werd ingeschakeld"
-
-#~ msgid "Turned off Caffeine Boost"
-#~ msgstr "Cafeïne Boost werd uitgeschakeld"
-
-#~ msgid "Will turn off in a minute"
-#~ msgstr "Wordt binnen één minuut  uitgeschakeld"
-
-#~ msgid "Will turn off in %d minutes"
-#~ msgstr "Wordt uitgeschakeld binnen %d minuten"
-
-#~ msgid "User"
-#~ msgstr "Gebruiker"
-
-#~ msgid "Caps lock is active"
-#~ msgstr "Caps lock ingeschakeld"
-
-#~ msgid "Caps lock is not active"
-#~ msgstr "Caps lock uitgeschakeld"
-
-#~ msgid "Num lock is active"
-#~ msgstr "Num lock ingeschakeld"
-
-#~ msgid "Num lock is not active"
-#~ msgstr "Num lock uitgeschakeld"
-
-#~ msgid "Removable devices"
-#~ msgstr "Verwijderbare schijven"
-
-#~ msgid "Local volumes"
-#~ msgstr "Lokale schijven"
-
-#~ msgid "Network folders"
-#~ msgstr "Netwerk mappen"
-
-#~ msgid "Eject"
-#~ msgstr "Uitwerpen"
-
-#~ msgid "Unmount"
-#~ msgstr "Ontkoppelen"
-
-#~ msgid "Open \"%s\""
-#~ msgstr "Open \"%s\""
-
-#~ msgid "You can now safely remove"
-#~ msgstr "Kan nu veilig verwijderd worden"
-
-#~ msgid "Unknown Device"
-#~ msgstr "Onbekend apparaat"
-
-#~ msgid "Error while ejecting device"
-#~ msgstr "Fout tijdens het uitwerpen van het apparaat"
-
-#~ msgid "Error while unmounting volume"
-#~ msgstr "Fout tijdens het afkoppelen van het volume"
-
-#~ msgid "Mount and open \"%s\""
-#~ msgstr "\"%s\" aankoppelen en openen"
-
-#~ msgid "Enter the encryption passphrase to unlock this volume"
-#~ msgstr ""
-#~ "Voer het encryptie-wachtwoord in om toegang te hebben tot dit volume"
-
-#~ msgid "The password you entered is incorrect"
-#~ msgstr "Het ingevoerde wachtwoord is niet correct"
-
-#~ msgid "An unknown error occurred while attempting to mount this volume"
-#~ msgstr ""
-#~ "Een onbekende fout deed zich voor tijdens het aankoppelen van dit volume"
-
-#~ msgid "Volume is in use by other processes"
-#~ msgstr "Dit volume wordt gebruikt door andere processen"
-
-#~ msgid "Operation aborted"
-#~ msgstr "Operatie gestopt"
-
-#~ msgid "Type your password"
-#~ msgstr "Voer uw wachtwoord in"
-
-#~ msgid "Places"
-#~ msgstr "Locaties"
-
-#~ msgid "Nothing to display right now"
-#~ msgstr "Momenteel niets weer te geven"
-
-#~ msgid "Mount some drives"
-#~ msgstr "Schijven aankoppelen"
-
-#~ msgid "Enable more sections"
-#~ msgstr "Meer secties activeren"
-
-#~ msgid "Bluetooth Settings"
-#~ msgstr "Bluetooth Instellingen"
-
-#~ msgid "Send Files"
-#~ msgstr "Zend Bestanden"
-
-#~ msgid "Bluetooth Airplane Mode"
-#~ msgstr "Bluetooth Vliegtuig Modus"
-
-#~ msgid "Bluetooth is disabled"
-#~ msgstr "Bluetooth is uitgeschakeld"
-
-#~ msgid "Bluetooth is active"
-#~ msgstr "Bluetooth is ingeschakeld"
-
-#~ msgid "Connected to %d device"
-#~ msgid_plural "Connected to %d devices"
-#~ msgstr[0] "Verbonden met %d apparaat"
-#~ msgstr[1] "Verbonden met %d apparaten"
-
-#~ msgid "Battery fully charged."
-#~ msgstr "Accu vol."
-
-#~ msgid "Battery charging"
-#~ msgstr "Accu laadt op"
-
-#~ msgid "Battery remaining"
-#~ msgstr "Accu resterend"
-
-#~ msgid "Show battery percentage"
-#~ msgstr "Toon accu %"
-
-#~ msgid "Power settings"
-#~ msgstr "Energie instellingen"
-
-#~ msgid "Rename"
-#~ msgstr "Hernoem"
-
-#~ msgid "Remove"
-#~ msgstr "Verwijder"
-
-#~ msgid "Timer (minutes)"
-#~ msgstr "Timer (minuten)"
-
-#~ msgid "Only one instance of the System Tray can be active at a time."
-#~ msgstr "Er kan slechts één System Tray tegelijk actief zijn."
-
-#~ msgid "The System Tray failed to initialize."
-#~ msgstr "Fout bij het initialiseren van de System Tray."
-
-#~ msgid "Toggle the desktop"
-#~ msgstr "Bureaublad zichtbaar"
-
-#~ msgid "All"
-#~ msgstr "Alle"
-
-#~ msgid "Sorry, no items found"
-#~ msgstr "Helaas, niets gevonden"
-
-#~ msgid "Time and date settings"
-#~ msgstr "Instellingen datum en tijd"
-
-#~ msgid "Show seconds"
-#~ msgstr "Toon seconden"
-
-#~ msgid "Launch New Instance"
-#~ msgstr "Nieuw Venster"
-
-#~ msgid "Close All Windows"
-#~ msgstr "Alle Vensters Sluiten"
-
-#~ msgid "Always On Top"
-#~ msgstr "Altijd bovenop"
-
-#~ msgid "Maximize"
-#~ msgstr "Maximaliseren"
-
-#~ msgid "Minimize"
-#~ msgstr "Minimaliseren"
-
-#~ msgid "Unfavorite"
-#~ msgstr "Losmaken"
-
-#~ msgid "Favorite"
-#~ msgstr "Vastpinnen"
-
-#~ msgid "Move To Workspace %i"
-#~ msgstr "Verplaats naar Werkblad %i"
-
-#~ msgid "Unmaximize"
-#~ msgstr "Verkleinen"
-
-#~ msgid "Close Window"
-#~ msgstr "Venster Sluiten"
-
-#~ msgid "Show Window Controls"
-#~ msgstr "Toon Vensterknoppen"
-
-#~ msgid "Authentication Required"
-#~ msgstr "Authentificatie Vereist"
-
-#~ msgid "Password:"
-#~ msgstr "Wachtwoord:"
-
-#~ msgid "Authentication is required"
-#~ msgstr "Authentificatie is vereist"
-
-#~ msgid "Authenticate"
-#~ msgstr "Authentificeer"
-
-#~ msgid "Are you sure you want to end your session?"
-#~ msgstr "Bent u zeker dat u uw sessie wilt beëindigen?"
-
-#~ msgid "Show label"
-#~ msgstr "Label weergeven"
-
-#~ msgid "Show places"
-#~ msgstr "Locaties weergeven"
-
-#~ msgid "Show network folders"
-#~ msgstr "Netwerkmappen weergeven"
-
-#~ msgid "Show removable drives"
-#~ msgstr "Verwijderbare schijven weergeven"
-
-#~ msgid "Always expand places"
-#~ msgstr "Altijd locaties uitvouwen"
-
-#~ msgid "Spacer size"
-#~ msgstr "Grootte Tussenstuk"
-
-#~ msgid "\"Add\" button visibility"
-#~ msgstr "Zichtbaarheid \"Toevoegen\"-knop"
-
-#~ msgid "Don't show"
-#~ msgstr "Niet tonen"
-
-#~ msgid "Show on mouseover"
-#~ msgstr "Toon bij mouseover"
-
-#~ msgid "Always show"
-#~ msgstr "Altijd tonen"
-
-#~ msgid "Enable notification"
-#~ msgstr "Activeer meldingen"
-
-#~ msgid "Maximize brightness"
-#~ msgstr "Helderheid maximaliseren"
-
-#~ msgid "Brightness Level"
-#~ msgstr "Helderheidsniveau"
-
-#~ msgid "Night Light"
-#~ msgstr "Gedimd  licht"
-
-#~ msgid "Schedule"
-#~ msgstr "Schema"
-
-#~ msgid "Sunset to Sunrise"
-#~ msgstr "Van zonsondergang tot zonsopgang"
-
-#~ msgid "Manual"
-#~ msgstr "Manueel"
-
-#~ msgid "Display Settings"
-#~ msgstr "Beeldscherm instellingen"
-
-#~ msgid "Icon Spacing"
-#~ msgstr "Ruimte tussen iconen"
-
-#~ msgid "Compact Mode"
-#~ msgstr "Compacte Modus"
-
-#~ msgid "Show Headers"
-#~ msgstr "Toon de rubrieken"
-
-#~ msgid "Show all windows on click"
-#~ msgstr "Toon alle venster met een klik"
-
-#~ msgid "Only show favorited"
-#~ msgstr "Toon enkel de vastgepinde"
-
-#~ msgid "Lock icons"
-#~ msgstr "Iconen vastpinnen"
-
-#~ msgid "Restrict to Workspace"
-#~ msgstr "Beperk tot Werkruimte"
-
-#~ msgid "Window grouping"
-#~ msgstr "Venstergroepering"
-
-#~ msgid "Middle click to launch new window"
-#~ msgstr "Middelklik opent een nieuw venster"
-
-#~ msgid "Require a double-click to launch new window"
-#~ msgstr "Dubbelklik vereist om nieuwe vensters te openen"
-
-#~ msgid "Budgie Desktop"
-#~ msgstr "Budgie Bureaublad"
-
-#~ msgid "This session logs you into the Budgie Desktop"
-#~ msgstr "Aanmelden in de Budgie Desktop"
-
-#~ msgid "Budgie Panel"
-#~ msgstr "Budgie Paneel"
-
-#~ msgid ""
-#~ "Launch other applications and provide various utilities to manage "
-#~ "windows, show the time, etc."
-#~ msgstr ""
-#~ "Andere toepassingen opstarten die diverse tools verstrekken om vensters "
-#~ "in te stellen ,de tijd tonen, etc."
-
-#~ msgid "Change desktop appearance and behavior"
-#~ msgstr "Wijzig uiterlijk en gedrag van het bureaublad"
-
-#~ msgid "User Indicator"
-#~ msgstr "Gebruikersindicator"
-
-#~ msgid "Lock Keys Indicator"
-#~ msgstr "Caps en Num Lock verklikker"
-
-#~ msgid "Status Indicator"
-#~ msgstr "Status Aanwijzer"
-
-#~ msgid "Spacer"
-#~ msgstr "Tussenstuk"
-
-#~ msgid "Separator"
-#~ msgstr "Afscheider"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Werkblad Wisselaar"
-
-#~ msgid "Keyboard Layout Indicator"
-#~ msgstr "Toetsenbordindeling Indicator"
-
-#~ msgid "Caffeine"
-#~ msgstr "Cafeïne"
-
-#~ msgid "System Tray"
-#~ msgstr "Systeemvak"
-
-#~ msgid "Raven Sidebar Control"
-#~ msgstr "Raven zijpaneel Bediener"
-
-#~ msgid "Show Desktop Button"
-#~ msgstr "Toon Bureaublad Knop"
-
-#~ msgid "Budgie Menu"
-#~ msgstr "Budgie Menu"
-
-#~ msgid "Clock"
-#~ msgstr "Klok"
-
-#~ msgid "Task List"
-#~ msgstr "Takenlijst"
-
-#~ msgid "Icon Task List"
-#~ msgstr "Icoon Takenlijst"
-
-#~ msgid "Network"
-#~ msgstr "Netwerk"
-
-#~ msgid "Network indicator"
-#~ msgstr "Netwerkindicator"
-
-#~ msgid "Uninstall"
-#~ msgstr "Verwijderen"
-
-#~ msgid "View in AppCenter"
-#~ msgstr "Bekijk in AppCenter"
-
-#~ msgid "Search for %s in %s"
-#~ msgstr "Zoek voor %s in %s"
-
-#~ msgid "Search the app store"
-#~ msgstr "Zoek in de applicatiewinkel"
-
-#~ msgid "AppCenter"
-#~ msgstr "AppCenter"
-
-#~ msgid "Search for applications"
-#~ msgstr "Zoek voor applicaties"
-
-#~ msgid "AppCenter is not installed"
-#~ msgstr "AppCenter is niet geïnstalleerd"
-
-#~ msgid "Open %s settings"
-#~ msgstr "open %s instellingen"
-
-#~ msgid "Find switchboard plugs and open them."
-#~ msgstr "Vind switchboard plugs en open ze."
-
-#~ msgid "Lock this device"
-#~ msgstr "Vergrendel dit apparaat"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "lock"
-#~ msgstr "vergrendel"
-
-#~ msgid "Log Out"
-#~ msgstr "Afmelden"
-
-#~ msgid "Close all open applications and quit"
-#~ msgstr "Sluit all open applicaties en schakel uit"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "logout"
-#~ msgstr "uitloggen"
-
-#~ msgid "Put your computer into suspend mode"
-#~ msgstr "Zet je computer in slaapstand"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "suspend"
-#~ msgstr "slaapstand"
-
-#~ msgid "Put your computer into hibernation mode"
-#~ msgstr "Zet je computer in Sluimerstand"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "hibernate"
-#~ msgstr "sluimerstand"
-
-#~ msgid "Shut Down"
-#~ msgstr "Afsluiten"
-
-#~ msgid "Turn your computer off"
-#~ msgstr "De computer uitschakelen"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "shutdown;turn off"
-#~ msgstr "afsluiten;uitschakelen"
-
-#~ msgid "Restart your computer"
-#~ msgstr "Computer opnieuw opstarten"
-
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "restart;reboot"
-#~ msgstr "herstarten;opnieuw opstarten"
-
-#~ msgid ""
-#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
-#~ "shutdown your computer."
-#~ msgstr ""
-#~ "Vergrendel deze sessie of meld af. Zet uw computer in slaapstand, "
-#~ "sluimerstand, herstart de computer of schakel deze uit."
-
-#~ msgid "ConsoleKit wasn't found"
-#~ msgstr "ConsoleKit was niet gevonden"
-
-#~ msgid "Slingshot"
-#~ msgstr "Slingshot"
-
-#~ msgid "The app-menu indicator"
-#~ msgstr "De applicatie-menu indicator"
-
-#, fuzzy
-#~ msgid "Uninstall “%s”?"
-#~ msgstr "Verwijderen"
-
-#~ msgid "Open using default application"
-#~ msgstr "Openen met de standaard applicatie"
-
-#~ msgid "Open folder"
-#~ msgstr "Open map"
-
-#~ msgid "Open folder containing this file"
-#~ msgstr "Open de map waarin dit bestand zich bevindt"
-
-#~ msgid "All Applications"
-#~ msgstr "Alle apps"
-
-#~ msgid "Create a new Filter"
-#~ msgstr "Maak een nieuwe filter"
-
-#~ msgid "There are no wireless access points within range."
-#~ msgstr "Er bevinden zich geen draadloze toegangspunten binnen bereik."
-
-#~ msgid "Wireless Is Disabled"
-#~ msgstr "Draadloos is uitgeschakeld"
-
-#~ msgid "Enable wireless to discover nearby wireless access points."
-#~ msgstr ""
-#~ "Schakel wifi in om naar draadloze toegangspunten in de buurt te zoeken."
-
-#~ msgid "No VPN Available"
-#~ msgstr "Geen VPN beschikbaar"
-
-#~ msgid "Hotspot"
-#~ msgstr "Hotspot"
-
-#~ msgid "Hotspot %s"
-#~ msgstr "Hotspot %s"
-
-#~ msgid "Failed"
-#~ msgstr "Mislukt"
-
-#~ msgid "Cable unplugged"
-#~ msgstr "Kabel niet verbonden"
-
-#~ msgid "Airplane mode enabled"
-#~ msgstr "Vliegtuigmodus ingeschakeld"
