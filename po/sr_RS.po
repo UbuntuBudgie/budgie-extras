@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Nikola Stojic <nikolas@grindam.com>, 2020
 # david mohammed <foss.freedom@gmail.com>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,12 +15,14 @@ msgstr ""
 "POT-Creation-Date: 2020-12-17 19:30+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2020\n"
-"Language-Team: Serbian (Serbia) (https://www.transifex.com/ubuntu-budgie/teams/72251/sr_RS/)\n"
+"Language-Team: Serbian (Serbia) (https://www.transifex.com/ubuntu-budgie/"
+"teams/72251/sr_RS/)\n"
+"Language: sr_RS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr_RS\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
 msgid "Open and search apps"
@@ -397,30 +399,24 @@ msgid "quarter after %s"
 msgstr "petnaest minuta posle %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
 msgid "twenty past %s"
 msgstr "dvadeset minuta posle %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
 msgid "almost half-past %s"
 msgstr "skoro pola %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
 msgid "half-past %s"
@@ -466,8 +462,7 @@ msgstr "deset minuta do %s"
 msgid "almost %s"
 msgstr "skoro %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
 msgstr "Podešavanja datuma i vremena"
@@ -485,24 +480,20 @@ msgstr "Kalendar"
 msgid "Preferences"
 msgstr "Odredbe prikaza vremena"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
 msgstr "Pokaži datum"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
 msgstr "Koristi 24 časovni format."
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
-"Ukloni plugin Podešavanja boje Gnome Daemona sa automatskog pokretanja"
+msgstr "Ukloni plugin Podešavanja boje Gnome Daemona sa automatskog pokretanja"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
@@ -843,8 +834,8 @@ msgstr "Почетак"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -897,14 +888,12 @@ msgstr "Custom"
 msgid "Missing process"
 msgstr "Nedostajući proces"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:271
 msgid "Please enable Window Previews"
 msgstr "Omogućite Pregled prozora"
 
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:280
 #: budgie-hotcorners/src/HotCornersApplet.vala:288
 msgid "Please enable Window Shuffler"
@@ -1369,7 +1358,9 @@ msgstr ""
 msgid "Sticky Neighbors switched on"
 msgstr ""
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:70
 msgid "Auto"
 msgstr "Auto"
@@ -1527,3 +1518,808 @@ msgstr "Indikator desktopova i lista prozora"
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
 msgstr "Prikaži nedavno korišćene iteme"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Овера није важећа"
+
+#~ msgid "Group:"
+#~ msgstr "Скупина:"
+
+#~ msgid "Add applet"
+#~ msgstr "Додај прибор"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Изабери и додај нови прибор на радну траку"
+
+#~ msgid "Center"
+#~ msgstr "Средина"
+
+#~ msgid "End"
+#~ msgstr "Крај"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Потврди уклањање радне траке"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Да ли заиста желите уклонити ову радну траку? \n"
+#~ "Ова одлука не може бити опозвана."
+
+#~ msgid "Remove panel"
+#~ msgstr "Уклони радну траку"
+
+#~ msgid "Keep panel"
+#~ msgstr "Задржи радну траку"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Потврди уклањање прибора"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Да ли заиста желите уклонити овај прибор? \n"
+#~ "Ова одлука не може бити опозвана."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Не понављај ово питање"
+
+#~ msgid "Remove applet"
+#~ msgstr "Уклони прибор"
+
+#~ msgid "Keep applet"
+#~ msgstr "Задржи прибор"
+
+#~ msgid "Appearance"
+#~ msgstr "Изглед"
+
+#~ msgid "Panels"
+#~ msgstr "Радне траке"
+
+#~ msgid "Session"
+#~ msgstr "Седница"
+
+#~ msgid "Budgie Desktop Settings"
+#~ msgstr "Подешавање Budgie радне површине"
+
+#~ msgid "Create new panel"
+#~ msgstr "Додај радну траку"
+
+#~ msgid "Windows"
+#~ msgstr "Прозори"
+
+#~ msgid "Button layout"
+#~ msgstr "Распоред дугмади"
+
+#~ msgid "Style"
+#~ msgstr "Budgie изглед"
+
+#~ msgid "Widgets"
+#~ msgstr "Изглед Budgie окружења"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Подесите изглед украса и дугмади прозора"
+
+#~ msgid "Icons"
+#~ msgstr "Иконице"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Подесите изглед иконица"
+
+#~ msgid "Cursors"
+#~ msgstr "Показивачи"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Подесите изглед показивача"
+
+#~ msgid "Notification Position"
+#~ msgstr "Позиција обавештења"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Подесите место појаве обавештења"
+
+#~ msgid "Dark theme"
+#~ msgstr "Тамна варијанта теме"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Уграђена тема"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr "Када је укључена, уграђена тема мења изглед радне површине"
+
+#~ msgid "Animations"
+#~ msgstr "Анимације"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Изабери да ли ће прозори и њихови дугмићи користити анимације"
+
+#~ msgid "Top Left"
+#~ msgstr "Горе лево"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Доле лево"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Горе десно"
+
+#~ msgid "Top Right"
+#~ msgstr "Горе десно"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Одобри појачавање звука преко 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Омогућава појачавање у подешавању звука, као и звучног Виџета у Рејвену "
+#~ "на 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Омогући приказ броја недеље у Календару."
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Ово подешавање омогућава приказ редног броја недеље у виџету Календар."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Прикажи виџет Календар."
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет Календар у Рејвеновом одељку Програмчићи."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Прикажи виџет за звучни излаз"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет за звучни излаз у Рејвеновом одељку "
+#~ "Програмчићи."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr " Прикажи виџет за микрофон"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Приказује или сакрива виџет за микрофон у Рејвеновом одељку Програмчићи."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Прикажи виџет са контролама репродукције звучних медија."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Изабери прибор"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Иконице радне површине"
+
+#, fuzzy
+#~ msgid "Control whether to allow icons on the desktop."
+#~ msgstr "Управљајте могућношћу коришћења пречица и икона на радној површини."
+
+#, fuzzy
+#~ msgid "Show all active mounts on the desktop."
+#~ msgstr "Управљајте могућношћу коришћења пречица и икона на радној површини."
+
+#~ msgid "Home directory"
+#~ msgstr "Лична фасцикла"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Додај пречицу Личне фасцикле на радну површину."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Додај пречицу за Смеће на радну површину."
+
+#, fuzzy
+#~ msgid "Icon Size"
+#~ msgstr "Величина"
+
+#, fuzzy
+#~ msgid "Set the desired size of icons on the desktop."
+#~ msgstr "Управљајте могућношћу коришћења пречица и икона на радној површини."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Број виртуалних радних површина"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Број виртуалних радних површина створених приликом покретању рачунара."
+
+#~ msgid "Applets"
+#~ msgstr "Прибори"
+
+#, fuzzy
+#~ msgid "Remove Panel"
+#~ msgstr "Уклони радну траку"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Уклони ову радну траку с екрана"
+
+#~ msgid "Top Panel"
+#~ msgstr "Горња радна трака"
+
+#~ msgid "Right Panel"
+#~ msgstr "Десна радна трака"
+
+#~ msgid "Left Panel"
+#~ msgstr "Лева радна трака"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Доња радна трака"
+
+#~ msgid "Always"
+#~ msgstr "Увек"
+
+#~ msgid "Dynamic"
+#~ msgstr "Динамички"
+
+#~ msgid "None"
+#~ msgstr "Нема"
+
+#~ msgid "Intelligent"
+#~ msgstr "Интелигентно"
+
+#~ msgid "Never"
+#~ msgstr "Никад"
+
+#~ msgid "Position"
+#~ msgstr "Позиција"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Одредите ивицу заслона на којој ће стајати радна трака"
+
+#~ msgid "Size"
+#~ msgstr "Величина"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Одредите димензије (ширину или висину, зависно од положаја) ове радне "
+#~ "траке"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Аутоматски сакриј"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Када је постављена, радна трака се аутоматски сакрива, да би се добила "
+#~ "максимална корисна површина заслона"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Контролишите када би ова радна трака требало да буде непровидна"
+
+#~ msgid "Shadow"
+#~ msgstr "Сенка"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr ""
+#~ "Додаје декоративну падајућу сенку, идеалну за непровидне радне траке"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Стилизуј области"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Додаје репер тамо где ће бити крај сваке, од три, главне области радне "
+#~ "траке, тако да би сваки одељак могао да има посебну тему."
+
+#~ msgid "Untitled"
+#~ msgstr "Неименовано"
+
+#~ msgid "No description"
+#~ msgstr "Нема опис"
+
+#~ msgid "Add"
+#~ msgstr "Додај"
+
+#~ msgid "Command"
+#~ msgstr "Наредба"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Унос са истим називом већ постоји"
+
+#~ msgid "Title"
+#~ msgstr "Наслов"
+
+#~ msgid "Required"
+#~ msgstr "Обавезно"
+
+#~ msgid "Description"
+#~ msgstr "Опис"
+
+#~ msgid "Optional"
+#~ msgstr "Необавезно"
+
+#~ msgid "Autostart"
+#~ msgstr "Почетни прибор"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Изабери почетни прибор"
+
+#, fuzzy
+#~ msgid "Add Application"
+#~ msgstr "Програми"
+
+#, fuzzy
+#~ msgid "Add Command"
+#~ msgstr "Наредба"
+
+#~ msgid "Fonts"
+#~ msgstr "Словолик"
+
+#~ msgid "Window Titles"
+#~ msgstr "Наслови прозора"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Подесите словолик који се користи у наслову траке програма."
+
+#~ msgid "Documents"
+#~ msgstr "Документи"
+
+#~ msgid "Interface"
+#~ msgstr "Интерфејс"
+
+#~ msgid "Monospace"
+#~ msgstr "Моноспејс"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Тренутно ниједан прозор не пушта звук."
+
+#~ msgid "Play some music"
+#~ msgstr "Пусти музику"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Ништа за приказати"
+
+#~ msgid "%u unread notifications"
+#~ msgstr "%u непрочитаних обавештења"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 непрочитано обавештење"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Нема непрочитаних обавештења"
+
+#~ msgid "No new notifications"
+#~ msgstr "Нема нових обавештења"
+
+#~ msgid "Apps"
+#~ msgstr "Програми"
+
+#~ msgid "Devices"
+#~ msgstr "Уређаји"
+
+#~ msgid "Notifications"
+#~ msgstr "Обавештења"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Радна Кафа"
+
+#, fuzzy
+#~ msgid "System Settings"
+#~ msgstr "Подешавања"
+
+#~ msgid "Log out"
+#~ msgstr "Одјави се"
+
+#~ msgid "Restart device"
+#~ msgstr "Поново покрени уређај"
+
+#~ msgid "Power Off"
+#~ msgstr "Искључи рачунар"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Радна кафа је укључена"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Радна кафа је искључена"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Искључиће се за минут"
+
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Искључиће се за %d минута"
+
+#~ msgid "User"
+#~ msgstr "Корисник"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Тастер за велика слова је активан"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Тастер за велика слова није активан"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Тастер за закључавање бројчане тастатуре је активан"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Тастер за закључавање бројчане тастатуре није активан"
+
+#~ msgid "Removable devices"
+#~ msgstr "Преносиви уређаји"
+
+#~ msgid "Local volumes"
+#~ msgstr "Локалне партиције"
+
+#~ msgid "Network folders"
+#~ msgstr "Мрежни фолдери"
+
+#~ msgid "Eject"
+#~ msgstr "Избаци"
+
+#~ msgid "Unmount"
+#~ msgstr "Одвоји"
+
+#~ msgid "Open \"%s\""
+#~ msgstr "Отвори \"%s\""
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Можете сигурно уклонити"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Непознат уређај"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Грешка приликом уклањања уређаја"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Грешка приликом демонтаже меморијског капацитета"
+
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Повежи и отвори \"%s\""
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr ""
+#~ "Овај уређај је заштићен шифром, да би сте приступили подацима укуцајте "
+#~ "одговарајућу лозинку"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Лозинка коју сте укуцали није тачна"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr ""
+#~ "Дошло је до непознате грешке, приликом покушаја монтаже овог меморијског "
+#~ "капацитета"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Други процеси користе капацитет диска"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Задатак је отказан"
+
+#~ msgid "Type your password"
+#~ msgstr "Упиши лозинку"
+
+#~ msgid "Places"
+#~ msgstr "Локације"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Ништа за приказати тренутно"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Повежи дискове"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Омогући још секција"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth подешавања"
+
+#~ msgid "Send Files"
+#~ msgstr "Пошаљи датотеке"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth режим летења"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth је искључен"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth је укључен"
+
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Повезан на %d уређај"
+#~ msgstr[1] "Повезан на %d уређаја"
+#~ msgstr[2] "Повезан на %d уређаја"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Батерија је пуна."
+
+#~ msgid "Battery charging"
+#~ msgstr "Батерија се пуни"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Преостало батерије"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Прикажи проценат батерије"
+
+#~ msgid "Power settings"
+#~ msgstr "Подешавање напајања"
+
+#~ msgid "Rename"
+#~ msgstr "Преименуј"
+
+#~ msgid "Remove"
+#~ msgstr "Уклони"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Одбројавање (минути)"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Прикажи/Сакриј радну површину"
+
+#~ msgid "All"
+#~ msgstr "Све"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Нема нађених предмета"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Подешавање времена и датума"
+
+#~ msgid "Show seconds"
+#~ msgstr "Покажи секунде"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Покрени нови прозор"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Затвори све прозоре"
+
+#~ msgid "Always On Top"
+#~ msgstr "Увек на врху"
+
+#~ msgid "Maximize"
+#~ msgstr "Подигни прозор на радну површину"
+
+#~ msgid "Minimize"
+#~ msgstr "Спусти прозор на радну траку"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Искључи са радне траке"
+
+#~ msgid "Favorite"
+#~ msgstr "Прикључи радној траци"
+
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Премести на радну површину %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Одређени приказ прозора"
+
+#~ msgid "Close Window"
+#~ msgstr "Затвори прозор"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Прикажи управности прозора"
+
+#~ msgid "Password:"
+#~ msgstr "Лозинка:"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Сигурни сте, да желите окончати тренутну седницу?"
+
+#~ msgid "Show label"
+#~ msgstr "Прикажи ознаку"
+
+#~ msgid "Show places"
+#~ msgstr "Прикажи локације"
+
+#~ msgid "Show network folders"
+#~ msgstr "Прикажи мрежне фолдере"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Прикажи преносиве уређаје"
+
+#~ msgid "Spacer size"
+#~ msgstr "Величина размакнице"
+
+#~ msgid "Enable notification"
+#~ msgstr "Омогући обавештења"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie радна површина"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Ова седница те пријављује у Budgie радну површину"
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Мења изглед и понашање радне површине"
+
+#~ msgid "User Indicator"
+#~ msgstr "Кориснички мени"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Индикатор тастера за закључавање"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Статусни индикатор"
+
+#~ msgid "Spacer"
+#~ msgstr "Размакница"
+
+#~ msgid "Separator"
+#~ msgstr "Одвајач"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Пребацивач радних окружења"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Показивач тастатурног уноса"
+
+#~ msgid "Caffeine"
+#~ msgstr "Кафа"
+
+#~ msgid "System Tray"
+#~ msgstr "Системска трака"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Контрола Равен бочне траке"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Дугме за приказивање радне површине"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie изборник"
+
+#~ msgid "Clock"
+#~ msgstr "Часовник"
+
+#~ msgid "Task List"
+#~ msgstr "Картице отворених задатака"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Иконе на радној траци"
+
+#~ msgid "Network"
+#~ msgstr "Мрежа"
+
+#~ msgid "Network indicator"
+#~ msgstr "Указивач мреже"
+
+#~ msgid "Uninstall"
+#~ msgstr "Уклони"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "Прикажи у Програмском центру"
+
+#~ msgid "Search for %s in %s"
+#~ msgstr "Потражите „%s“ у %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Претражујте радњу програма"
+
+#~ msgid "AppCenter"
+#~ msgstr "Програмски центар"
+
+#~ msgid "Search for applications"
+#~ msgstr "Тражите програме"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "Програмски центар није инсталиран"
+
+#~ msgid "Open %s settings"
+#~ msgstr "Отвори „%s“ подешавања"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Налази прикључке промене табле и отвара их."
+
+#~ msgid "Lock this device"
+#~ msgstr "Закључајте овај уређај"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "закључај"
+
+#~ msgid "Log Out"
+#~ msgstr "Одјави ме"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Затворите све отворене програме и изађите"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "одјави"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Обуставите рад вашег рачунара"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "обустави"
+
+#~ msgid "Hibernate"
+#~ msgstr "Замрзни"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Замрзните ваш рачунар"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "замрзни"
+
+#~ msgid "Shut Down"
+#~ msgstr "Угаси"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Угасите ваш рачунар"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "угаси;искључи"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Поново покрените ваш рачунар"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "поново покрени;поново подигни систем"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Закључајте сесију или се одјавите са ње. Обуставите, замрзните, поново "
+#~ "покрените или угасите ваш рачунар."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "Нисам нашао „ConsoleKit“"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Деинсталирај"
+
+#~ msgid "Open using default application"
+#~ msgstr "Отвори подразумевајућом апликацијом"
+
+#~ msgid "Open folder"
+#~ msgstr "Отвори фасциклу"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Отвори фасциклу у којој се налази ова датотека"
+
+#~ msgid "All Applications"
+#~ msgstr "Сви програми"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Направи нови филтер"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Нема бежичних приступних тачака у опсегу."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Бежична је искључена"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Укључите бежичну да откријете бежичне приступне тачке у суседству."
+
+#~ msgid "No VPN Available"
+#~ msgstr "ВПН није доступно"
+
+#~ msgid "Hotspot"
+#~ msgstr "Врућа тачка"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Врућа тачка „%s“"
+
+#~ msgid "Failed"
+#~ msgstr "Није успело"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Кабал је искључен"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Укључен је режим у авиону"
+
+#~ msgid "Unknown"
+#~ msgstr "Непознато"
