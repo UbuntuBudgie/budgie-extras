@@ -87,8 +87,10 @@ public class Popover : Budgie.Popover
         var menuButton = new CustomMenuButton(_("Dim"));
         dimLabel = new Gtk.Label("");
         dimLabel.set_tooltip_text(_("Brightness"));
+        dimLabel.set_width_chars(5);
         blueLabel = new Gtk.Label("");
         blueLabel.set_tooltip_text(_("Temperature"));
+        blueLabel.set_width_chars(5);
         dimScale = new CustomScale(0, 10, 0, 1, 0.1, 0);
         blueScale = new CustomScale(0, 10, 0, 1, 0.1, 0);
 
@@ -125,8 +127,12 @@ public class Popover : Budgie.Popover
             dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
         });
 
-        dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
-
+        Timeout.add_seconds(5, ()=>
+        {
+            dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
+            return(false);
+        });
+        
         grid.attach(menuButton, 1, 0, 2, 1);
 
         grid.attach(dimScale, 1, 1, 1, 1);
@@ -141,6 +147,7 @@ public class Popover : Budgie.Popover
         var menuButton = new CustomMenuButton(_("Light"));
         lightLabel = new Gtk.Label("");
         lightLabel.set_tooltip_text(_("Brightness"));
+        lightLabel.set_width_chars(5);
         lightScale = new CustomScale(0, 0, 0, 1, 1, 0);
 
         lightHelper.list.foreach((light) =>
@@ -168,7 +175,11 @@ public class Popover : Budgie.Popover
             lightLabel.set_text(CurrentLight.BrightnessText);
             lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
         });
-        lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+
+        Timeout.add_seconds(5, ()=> {
+            lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+            return(false);
+        });
 
         grid.attach(menuButton, 0, 0, 1, 1);
         grid.attach(lightScale, 0, 1, 1, 1);
