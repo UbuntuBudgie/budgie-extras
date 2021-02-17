@@ -49,14 +49,13 @@ mytarget4a = custom_target('preview_currentforward_grave',
   install_dir : BDE_LOC
 )
 
-AUTOSTART_LOC=join_paths(sysconfdir, 'xdg', 'autostart')
 
 mytarget5 = custom_target('preview_creator',
   output : 'previews-creator-autostart.desktop',
   input : 'previews-creator-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
-  install_dir : AUTOSTART_LOC
+  install_dir : xdg_appdir
 )
 
 mytarget6 = custom_target('previews_daemon',
@@ -64,7 +63,7 @@ mytarget6 = custom_target('previews_daemon',
   input : 'previews-daemon-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
-  install_dir : AUTOSTART_LOC
+  install_dir : xdg_appdir
 )
 
 APP_LOC=join_paths(datadir, 'applications')

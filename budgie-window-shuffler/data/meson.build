@@ -13,7 +13,7 @@ shufflertargetauto = custom_target('shufflerautostart',
   input : 'shufflerdaemon-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
+  install_dir : xdg_appdir
 )
 
 shufflerguitargetauto = custom_target('shufflerguiautostart',
@@ -21,7 +21,7 @@ shufflerguitargetauto = custom_target('shufflerguiautostart',
   input : 'shufflergui-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
+  install_dir : xdg_appdir
 )
 
 shufflerlayoutstargetauto = custom_target('layoutsautostart',

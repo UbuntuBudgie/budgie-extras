@@ -6,7 +6,8 @@ custom_target('desktop-file-daemon',
     output : 'budgie-extras-daemon.desktop',
     command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
     install : true,
-    install_dir : join_paths(get_option('sysconfdir'), 'xdg', 'autostart'))
+    install_dir : xdg_appdir
+)
 
 subdir('config')
 

@@ -4,7 +4,6 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
-AUTOSTART_LOC=join_paths(sysconfdir, 'xdg', 'autostart')
 substprog = find_program('subst.py')
 
 mytarget = custom_target('autoworkspace',
@@ -12,5 +11,5 @@ mytarget = custom_target('autoworkspace',
   input : 'visualspace-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
-  install_dir : AUTOSTART_LOC
+  install_dir : xdg_appdir
 )

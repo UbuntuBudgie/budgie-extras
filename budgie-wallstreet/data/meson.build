@@ -9,7 +9,7 @@ mytargeta = custom_target('wallstreetautostart',
   input : 'wallstreet-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
+  install_dir : xdg_appdir
 )
 
 mytargetw = custom_target('wallstreetcontrols',

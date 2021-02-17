@@ -69,6 +69,20 @@ conf.set_quoted('PREVIEWS_DIR', join_paths(libdir, PREVIEWS))
 WSWITCHER = 'budgie-wswitcher'
 conf.set_quoted('WSWITCHER_DIR', join_paths(PLUGINS_INSTALL_DIR, WSWITCHER))
 
+with_stateless = get_option('with-stateless')
+if with_stateless == true
+    warning('Only use stateless option with a supported OS like Solus')
+endif
+
+xdg_appdir = get_option('xdg-appdir')
+if xdg_appdir == ''
+    if with_stateless == true
+        xdg_appdir = join_paths(datadir, 'xdg', 'autostart')
+    else
+        xdg_appdir = join_paths(get_option('sysconfdir'), 'xdg', 'autostart')
+    endif
+endif
+
 
 config_h = configure_file(
 	output: 'config.h',
