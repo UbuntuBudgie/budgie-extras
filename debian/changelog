@@ -1,3 +1,16 @@
+budgie-extras (1.1.90-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New release
+    - git tag v1.1.90 beta 1 release
+    - See ChangeLog
+  * Packaging Changes:
+    - control: bump StandardsVersion - no changes required
+    - control: budgie-app-launcher-applet add runtime dependency
+      gir1.2-gmenu-3.0
+    - control: add build-dependency libnotify-dev
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 20 Feb 2021 23:24:56 +0000
+
 budgie-extras (1.1.0-1) unstable; urgency=medium
 
   * New Release
