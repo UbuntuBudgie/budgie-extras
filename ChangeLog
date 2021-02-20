@@ -1,3 +1,17 @@
+v1.1.90 beta release 1
+ - Window Shuffler - Window Rules: Add ability to set the position and size together with the monitor location to open an application on
+ - Window Shuffler - Layouts: Add the ability to launch and group together multiple applications
+ - Applications Menu: 
+    - Cosmetic - labels on budgie-desktop-settings are left aligned.
+    from upstream
+    - Terminal apps are no-longer shown in the menu such as xterm 
+ - QuickChar installation is now easier on other on Debian based distro's - should not now need to patch your install locations
+ - Bug fix for the applications menu so that rollover menus settings is remembered on logon.
+ - The number of cities that our weather applet can now search has increased from 22.6k to 185k
+ - Applets now support stateless based distros and the XDG autostart path can both be defined at compilation time
+ - Bug fix for the brightness applet to not change the popup width when percentage changes between 100% and 0%
+ - Translations have been updated from all our Transifex translators
+ - Take-a-break applet now depends on libnotify-dev
 v1.1.0 Run Rabbit Run
  - Hotcorners: Option added to configure hotcorners via budgie-desktop-settings and therefore hide the icon from the panel
  - Dropby: Applet settings now has the ability to display the USB window notification in any corner you define
