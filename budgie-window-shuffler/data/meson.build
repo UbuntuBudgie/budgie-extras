@@ -29,7 +29,7 @@ shufflerlayoutstargetauto = custom_target('layoutsautostart',
   input : 'layoutspopup-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
+  install_dir : xdg_appdir
 )
 
 shufflertargetw = custom_target('shufflercontrols',
