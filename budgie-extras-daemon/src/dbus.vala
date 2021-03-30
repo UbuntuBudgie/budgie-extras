@@ -69,15 +69,6 @@ public class DbusManager : Object
      }
 
      /**
-     * Perform a desktop panel restart
-     */
-
-     public void RestartPanel() throws Error {
-        debug("restart panel");
-        layoutmanager.restartpanel();
-     }
-
-     /**
      * Perform a desktop layout reset
      */
 

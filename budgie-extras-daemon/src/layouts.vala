@@ -155,10 +155,6 @@ namespace Layouts {
             run_cmd ("nohup budgie-panel --reset --replace &>/dev/null", true);
         }
 
-        public void restartpanel() {
-            run_cmd ("nohup budgie-panel --replace &>/dev/null", true);
-        }
-
         public void reset(string layout_name) {
 
             stop_plank();
