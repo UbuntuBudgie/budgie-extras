@@ -31,8 +31,8 @@ namespace create_previews {
     Gdk.X11.Display gdkdisp;
     double threshold;
     string previewspath;
-    Wnck.Screen wnck_scr;
-    Gdk.Screen gdk_scr;
+    Wnck.Screen? wnck_scr;
+    Gdk.Screen? gdk_scr;
     GLib.List<Gdk.Window> gdk_winlist;
     bool idle_state;
 
@@ -43,7 +43,9 @@ namespace create_previews {
         idle_state = false;
         Gtk.init(ref args);
         wnck_scr = Wnck.Screen.get_default();
+        if (wnck_scr == null) return; // usually if not run on X11
         gdk_scr = Gdk.Screen.get_default();
+        if (gdk_scr == null) return; // usually if there is no display
         string user = Environment.get_user_name();
         previewspath = "/tmp/".concat(user, "_window-previews");
         update_winlist();
