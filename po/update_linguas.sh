@@ -1,5 +1,5 @@
 #!/bin/sh
-tx pull -f -a --minimum-perc=5
+tx pull -f -a --minimum-perc=40
 
 cd po
 rm LINGUAS
