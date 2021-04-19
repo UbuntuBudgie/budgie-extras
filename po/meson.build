@@ -1,28 +1,8 @@
 i18n = import('i18n')
 
-# for i in *.po; do echo "    '$i'," | sed 's/\.po//'; done
-langs = [
-    'ca',
-    'da',
-    'de_DE',
-    'en_GB',
-    'es',
-    'fr',
-    'hu',
-    'it',
-    'ms_MY',
-    'nl_NL',
-    'oc',
-    'pl',
-    'pt_BR',
-    'pt_PT',
-    'sr_RS',
-    'tr',
-]
-
 # Stole this from gnome-twitch, ty TingPing
 # https://github.com/vinszent/gnome-twitch/tree/master/po
-i18n.gettext(meson.project_name(), languages : langs, args : [
+i18n.gettext(meson.project_name(), args : [
     '--from-code=UTF-8',
     '--add-comments',
     '--package-name=' + meson.project_name(),
