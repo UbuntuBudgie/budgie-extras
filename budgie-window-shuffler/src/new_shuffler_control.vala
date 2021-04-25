@@ -1,7 +1,38 @@
 using Gtk;
 using Gdk;
 
+/* Shuffler
+Main categories for the control interface:
+ - Tiling
+    - enable tiling shortcuts for quarter/half tiling (default: on)
+    - enable custom shortcuts for tiling, resizing & moving windows* (default: off)
+      (add explanation! add shortcut overview, add customize option for shortcuts?)
+      * only an active option if quarter/half tiling is on
+        - grid size
+        - swap windows (default: off, checkbox only active if shortcuts is on)
+        - sticky neighbours (default: off, checkbox only active if shortcuts is on)
+        - GUI grid** (default: on, checkbox only active if shortcuts is on)
+          **should we ditch this?
+        - show notification on incorrect (target) window size (default:on, checkboxonly active if shortcuts is on) (appearance currently too short!)
+ - Layouts
+    - enable layouts (default: on)
+    - setup layouts -> external setup window (button only active if layouts is on)
+ - Rules
+    - enable window rules -> external setup window (button only active if rules is on) <- nope, make it internal. No reason for calling an extra window
+ - Miscelaneous
+    - set margins & padding
+    - enable animation (default:on, or depending on processor? checkbox only active if any of the shortcuts is on)
+ */
+
+ // todo: all strings to translate in one place
+ // optimize labels {one step less}
+
+
 namespace ShufflerControls2 {
+
+    ////////////////////
+    // Spinbutton
+    ////////////////////
 
     class OwnSpinButton : Gtk.Grid{
 
@@ -97,11 +128,31 @@ namespace ShufflerControls2 {
         }
     }
 
+    ////////////////////
+    //Window
+    ////////////////////
+
+    private void scroll_up(Gtk.ScrolledWindow scrw, int upper_val) {
+        /*
+        Since stack pages have different size, we need to:
+         - scroll up on page switching
+         - recalculate page vsize to prevent small pages rom having
+           a silly vscroll size. The result is updated by this method
+        */
+        var adj = scrw.get_vadjustment();
+        // for smooth looks, let's scroll up after switching pages to prevent flashing
+        GLib.Timeout.add(300, () => {
+            adj.set_value(0);
+            return false;
+        });
+        // update scroll vsize
+        adj.set_upper(upper_val);
+    }
+
     class ShufflerControlsWindow : Gtk.Window {
 
         Gtk.ScrolledWindow settings_scrolledwindow;
         Stack allsettings_stack;
-
         string controls_css = """
         .somebox {
             border-left: 0px;
@@ -111,26 +162,44 @@ namespace ShufflerControls2 {
         .justbold {
             font-weight: bold;
         }
+        .justitalic {
+            font-style: italic;
+        }
         """;
+
+        Grid tilinggrid;
+        Grid layoutsgrid;
+        Grid rulesgrid;
+        Grid general_settingsgrid;
+
+        private void add_series_toggrid(
+            Grid grid, string[] leftitems, string[] rightitems,
+            int startint = 0) {
+            // just an optimizasition to add arrays of items to a grid
+            for (int i = 0; i < leftitems.length; i++) {
+                Label newlabel = new Label(leftitems[i]);
+                newlabel.xalign = 0;
+                grid.attach(newlabel, 0, i + startint, 1, 1);
+                grid.attach(new Label("\t\t"), 1, i + startint, 1, 1);
+                Label newshortcut = new Label(rightitems[i]);
+                grid.attach(newshortcut, 2, i + startint, 1, 1);
+                newshortcut.xalign = 0;
+            }
+        }
 
         public ShufflerControlsWindow() {
 
             this.title = "Window Shuffler Controls";
+            this.set_resizable(false);
 
-            // icons
-            string iconpath = "/usr/share/pixmaps/";
-            Pixbuf tilingicon = new Pixbuf.from_file_at_size(
-                iconpath + "tilingicon.svg", 32, 32
-            );
-            Pixbuf layoutsicon = new Pixbuf.from_file_at_size(
-                iconpath + "layoutsicon.svg", 32, 32
-            );
-            Pixbuf rulesicon = new Pixbuf.from_file_at_size(
-                iconpath + "rulesicon.svg", 32, 32
-            );
-            Pixbuf generalprefs = new Pixbuf.from_file_at_size(
-                iconpath + "shuffler-generalprefs.svg", 32, 32
-            );
+            var tilingicon = new Gtk.Image.from_icon_name(
+                "tilingicon-symbolic", Gtk.IconSize.DND);
+            var layoutsicon = new Gtk.Image.from_icon_name(
+                "layouticon-symbolic", Gtk.IconSize.DND);
+            var rulesicon = new Gtk.Image.from_icon_name(
+                "rulesicon-symbolic", Gtk.IconSize.DND);
+            var generalprefs = new Gtk.Image.from_icon_name(
+                "miscellaneousprefs-symbolic", Gtk.IconSize.DND);
 
             // css stuff
             Gdk.Screen gdk_scr = this.get_screen();
@@ -147,39 +216,342 @@ namespace ShufflerControls2 {
                 Gtk.main_quit();
             });
             Grid maingrid = new Gtk.Grid();
-
             // Listbox section
             ListBox listbox = new Gtk.ListBox();
             Frame listboxframe = new Gtk.Frame(null);
             listboxframe.get_style_context().add_class("somebox");
             listboxframe.add(listbox);
             maingrid.attach(listboxframe, 1, 1, 1, 1);
-            listbox.set_size_request(200, 500);
+            listbox.set_size_request(200, 450);
             // content
-            Label title0 = new Label("General Preferences");
-            title0.set_xalign(0);
             Label title1 = new Label("Tiling");
+            string title1_hint =  "Window tiling & shortcuts";
             title1.set_xalign(0);
             Label title2 = new Label("Layouts");
+            string title2_hint = "Automatic window & application presets";
             title2.set_xalign(0);
             Label title3 = new Label("Window rules");
+            string title3_hint = "Define where application windows should be opened";
             title3.set_xalign(0);
-            listbox.insert(get_rowgrid(title0, generalprefs), 1);
-            listbox.insert(get_rowgrid(title1, tilingicon), 1);
-            listbox.insert(get_rowgrid(title2, layoutsicon), 2);
-            listbox.insert(get_rowgrid(title3, rulesicon), 3);
+            Label title4 = new Label("Miscellaneous");
+            string title4_hint = "General preferences";
+            title4.set_xalign(0);
+            listbox.insert(get_rowgrid(title1, tilingicon, title1_hint), 1);
+            listbox.insert(get_rowgrid(title2, layoutsicon, title2_hint), 2);
+            listbox.insert(get_rowgrid(title3, rulesicon, title3_hint), 3);
+            listbox.insert(get_rowgrid(title4, generalprefs,title4_hint), 4);
             // Scrolled Window
             settings_scrolledwindow = new ScrolledWindow(null, null);
-            settings_scrolledwindow.set_min_content_height(500);
-            settings_scrolledwindow.set_min_content_width(600);
+            settings_scrolledwindow.set_min_content_height(400);
+            //  settings_scrolledwindow.set_min_content_width(800);
+            settings_scrolledwindow.set_propagate_natural_width(true);
             maingrid.attach(settings_scrolledwindow, 2, 1, 1, 1);
             // stack
             allsettings_stack = new Gtk.Stack();
-            allsettings_stack.set_transition_type(StackTransitionType.OVER_UP_DOWN);
+            allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
             settings_scrolledwindow.add(allsettings_stack);
 
+            // TILING PAGE
+            tilinggrid = new Gtk.Grid();
+            tilinggrid.set_row_spacing(10);
+            set_margins(tilinggrid, 50, 50, 50, 50);
+
+            // header + switch (in subgrid)
+            Grid switchgrid_basicshortcuts = new Gtk.Grid();
+            Label basicshortcutsheader = new Label(
+                "Basic quarter & half tiling"
+            );
+            basicshortcutsheader.xalign = 0;
+            basicshortcutsheader.get_style_context().add_class("justbold");
+            switchgrid_basicshortcuts.attach(basicshortcutsheader, 0, 0, 1, 1);
+            switchgrid_basicshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_basictilingswitch = new Gtk.Switch();
+            switchgrid_basicshortcuts.attach(enable_basictilingswitch, 2, 0, 1, 1);
+            tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
+
+            // basic shortcutlist (in subgrid)
+            Grid basicshortcutlist_subgrid = new Gtk.Grid();
+
+            // translations!
+            string[] basics = {
+                "Top-left", "Top-right", "Bottom-right", "Bottom-left",
+                "Left-half", "Top-half", "Right-half", "Bottom-half"
+            };
+            string[] basicshortcuts = {
+                "Ctrl + Alt + 7", "Ctrl + Alt + 9", "Ctrl + Alt + 3",
+                "Ctrl + Alt + 1", "Ctrl + Alt + 4", "Ctrl + Alt + 8",
+                "Ctrl + Alt + 6", "Ctrl + Alt + 2"
+            };
+            add_series_toggrid(basicshortcutlist_subgrid, basics, basicshortcuts); // optimized
+            tilinggrid.attach(basicshortcutlist_subgrid, 0, 1, 10, 1);
+            basicshortcutlist_subgrid.show_all();
+
+            // spacer
+            tilinggrid.attach(new Label(""), 1, 2, 1, 1);
+            // custom size header + switch (in subgrid)
+            Grid switchgrid_advancedshortcuts = new Gtk.Grid();
+            Label advancedcutsheader = new Label(
+                "Tiling, resizing & moving windows in a custom grid"
+            );
+            advancedcutsheader.xalign = 0;
+            advancedcutsheader.get_style_context().add_class("justbold");
+            switchgrid_advancedshortcuts.attach(advancedcutsheader, 0, 0, 1, 1);
+            switchgrid_advancedshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_advancedtilingswitch = new Gtk.Switch();
+            switchgrid_advancedshortcuts.attach(enable_advancedtilingswitch, 2, 0, 1, 1);
+            tilinggrid.attach(switchgrid_advancedshortcuts, 0, 15, 10, 1);
+
+            Label customgridsettings_label = new Label("Grid size" + ":");
+            customgridsettings_label.xalign = 0;
+            customgridsettings_label.get_style_context().add_class("justitalic");
+            tilinggrid.attach(customgridsettings_label, 0, 16, 10, 1);
+            Grid gridsizegrid = new Gtk.Grid();
+
+            Label gridsize_cols_label = new Label("Columns");
+            gridsize_cols_label.xalign = 0;
+            gridsizegrid.attach(gridsize_cols_label, 0, 0, 1, 1);
+            gridsizegrid.attach(new Label(" "), 1, 0, 1, 1);
+            OwnSpinButton grid_horsize = new OwnSpinButton("hor", 0, 10);
+            gridsizegrid.attach(grid_horsize, 2, 0, 1, 1);
+            gridsizegrid.attach(new Label("\t"), 3, 0, 1, 1);
+            Label grid_vertsize_label = new Label("Rows");
+            grid_vertsize_label.xalign = 0;
+            gridsizegrid.attach(grid_vertsize_label, 4, 0, 1, 1);
+            gridsizegrid.attach(new Label(" "), 5, 0, 1, 1);
+            OwnSpinButton grid_vertsize = new OwnSpinButton("vert", 0, 10);
+            gridsizegrid.attach(grid_vertsize, 6, 0, 1, 1);
+            tilinggrid.attach(gridsizegrid, 0, 17, 10, 1);
+
+            // options
+            Label options_label = new Label("Options" + ":");
+            options_label.xalign = 0;
+            options_label.get_style_context().add_class("justitalic");
+            tilinggrid.attach(options_label, 0, 18, 10, 1);
+            Grid optionsgrid = new Grid();
+
+            // sticky
+            Label stickylabel = new Label("Resize opposite window");
+            stickylabel.xalign = 0; // optimize please
+            optionsgrid.attach(stickylabel, 0, 0, 1, 1);
+            optionsgrid.attach(new Label("\t"), 1, 0, 1, 1);
+            CheckButton toggle_sticky = new CheckButton();
+            optionsgrid.attach(toggle_sticky, 2, 0, 1, 1);
+
+            // swap
+            Label swaplabel = new Label("Swap windows");
+            swaplabel.xalign = 0; // optimize please
+            optionsgrid.attach(swaplabel, 0, 1, 1, 1);
+            optionsgrid.attach(new Label("\t"), 1, 1, 1, 1);
+            CheckButton toggle_swap = new CheckButton();
+            optionsgrid.attach(toggle_swap, 2, 1, 1, 1);
+
+            // notification
+            Label notificationlabel = new Label("Show notification on incorrect window size");
+            notificationlabel.xalign = 0; // optimize please
+            optionsgrid.attach(notificationlabel, 0, 2, 1, 1);
+            optionsgrid.attach(new Label("\t"), 1, 2, 1, 1);
+            CheckButton toggle_notification = new CheckButton();
+            optionsgrid.attach(toggle_notification, 2, 2, 1, 1);
+
+            // guigrid
+            Label useguigridlabel = new Label("Enable GUI grid");
+            useguigridlabel.xalign = 0; // optimize please
+            optionsgrid.attach(useguigridlabel, 0, 3, 1, 1);
+            optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
+            CheckButton toggle_guigrid = new CheckButton();
+            optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
+
+            tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
+
+            ////////////////////////
+            ///////////////// gui shortcuts here
+            Label guishortcutsheader = new Label("GUI grid shortcuts" + ":");
+            guishortcutsheader.xalign = 0;
+            guishortcutsheader.get_style_context().add_class("justitalic");
+            tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
+
+            string[] guis = {
+                "Toggle GUI grid", "Add a column",
+                "Add a row", "Remove column", "Remove row",
+            };
+
+            string[] guishortcuts = {
+                "Ctrl + Alt + S", "→", "↓", "←", "↑"
+            };
+
+            Grid guishortcuts_subgrid = new Grid();
+
+            add_series_toggrid(guishortcuts_subgrid, guis, guishortcuts); // optimized
+            tilinggrid.attach(guishortcuts_subgrid, 0, 21, 10, 1);
+
+            ////////////////////////
+
+            // shortcutlist custom grid
+            Label jump_header_label = new Label(
+                "Shortcuts for moving a window to the nearest grid cell" + ":"
+            );
+            jump_header_label.xalign = 0;
+            jump_header_label.get_style_context().add_class("justitalic");
+            tilinggrid.attach(jump_header_label, 0, 26, 10, 1);
+
+            Grid advancedshortcutlist_subgrid = new Gtk.Grid();
+            string[] movers = {
+                "Move left", "Move right", "Move up", "Move down"
+            };
+
+            string[] movershortcuts = {
+                "Super + Alt + ←", "Super + Alt + →",
+                "Super + Alt + ↑", "Super + Alt + ↓"
+            };
+
+            add_series_toggrid(
+                advancedshortcutlist_subgrid, movers, movershortcuts
+            );
+            tilinggrid.attach(advancedshortcutlist_subgrid, 0, 27, 10, 1); // optimized
+
+            string resize_header = "Shortcuts for resizing a window" + ":";
+            Label resize_header_label = new Label(resize_header);
+            resize_header_label.xalign = 0;
+            resize_header_label.get_style_context().add_class("justitalic");
+            Grid workarounspace_1 = new Grid();
+            workarounspace_1.attach(resize_header_label, 0, 0, 1, 1);
+            set_margins(workarounspace_1, 0, 10, 10, 10);
+            advancedshortcutlist_subgrid.attach(workarounspace_1, 0, 6, 10, 1);
+            string[] resizers = {
+                "Expand horizontally (to the right)",
+                "Shrink horizontally (from the right)",
+                "Expand vertically (down)",
+                "Shrink vertically (from the bottom)",
+                "Expand horizontally (to the left)",
+                "Shrink horizontally (from the left)",
+                "Expand vertically (up)",
+                "Shrink vertically (from the top)",
+                "Toggle resizing opposite window"
+            };
+            string[] resizershortcuts = {
+                "Control + Super + →", "Control + Super + ←",
+                "Control + Super + ↓", "Control + Super + ↑",
+                "Control + Super + Alt + ←", "Control + Super + Alt + →",
+                "Control + Super + Alt + ↑", "Control + Super + Alt + ↓",
+                "Control + Super + N"
+            };
+            int currrow = 8;
+
+            add_series_toggrid(
+                advancedshortcutlist_subgrid, resizers, resizershortcuts, 8
+            );
+
+            //  for (int i = 0; i < 9; i++) {
+            //      Label newlabel = new Label(resizers[i]);
+            //      newlabel.xalign = 0;
+            //      advancedshortcutlist_subgrid.attach(newlabel, 0, i + currrow, 1, 1);
+            //      advancedshortcutlist_subgrid.attach(new Label("\t\t"), 1, i + currrow, 1, 1);
+            //      Label newshortcut = new Label(resizershortcuts[i]);
+            //      advancedshortcutlist_subgrid.attach(newshortcut, 2, i + currrow, 1, 1);
+            //      newshortcut.xalign = 0;
+            //  }
+
+            Label other_header_label = new Label("Other" + ":");
+            other_header_label.xalign = 0;
+            other_header_label.get_style_context().add_class("justitalic");
+
+            Grid workarounspace_2 = new Grid();
+            workarounspace_2.attach(other_header_label, 0, 0, 1, 1);
+            set_margins(workarounspace_2, 0, 0, 10, 10);
+            advancedshortcutlist_subgrid.attach(workarounspace_2, 0, 21, 10, 1); //optimize!
+
+            Label tileall_label = new Label("Tile all windows to grid");
+            tileall_label.xalign = 0;
+            advancedshortcutlist_subgrid.attach(tileall_label, 0, 23, 1, 1);
+            advancedshortcutlist_subgrid.attach(new Label("\t\t"), 1, 23, 1, 1);
+            Label tileall_shortcut = new Label("Control + Super + A");
+            tileall_shortcut.xalign = 0;
+            advancedshortcutlist_subgrid.attach(tileall_shortcut, 2, 23, 1, 1);
+
+            Label toggle_opposite_label = new Label("Toggle resizing opposite window");
+            toggle_opposite_label.xalign = 0;
+            advancedshortcutlist_subgrid.attach(toggle_opposite_label, 0, 24, 1, 1);
+            advancedshortcutlist_subgrid.attach(new Label("\t\t"), 1, 24, 1, 1);
+            Label toggle_opposite_shortcut = new Label("Control + Super + N");
+            toggle_opposite_shortcut.xalign = 0;
+            advancedshortcutlist_subgrid.attach(toggle_opposite_shortcut, 2, 24, 1, 1);
+
+
+            advancedshortcutlist_subgrid.show_all();
+
+            tilinggrid.attach(new Label(""), 1, 49, 1, 1);
+
+
+            allsettings_stack.add_named(tilinggrid, "tiling");
+
+
+
+            //////////////////
+            //////////////////
+            //////////////////
+
+            // LAYOUTS PAGE
+            layoutsgrid = new Gtk.Grid();
+            layoutsgrid.set_row_spacing(20);
+            set_margins(layoutsgrid, 50, 50, 50, 50);
+
+            // optimize please with similar grids
+            Grid switchgrid_layouts = new Gtk.Grid();
+            Label layoutssheader = new Label(
+                "Layouts"
+            );
+            layoutssheader.xalign = 0;
+            layoutssheader.get_style_context().add_class("justbold");
+            switchgrid_layouts.attach(layoutssheader, 0, 0, 1, 1);
+            switchgrid_layouts.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_layouts = new Gtk.Switch();
+            switchgrid_layouts.attach(enable_layouts, 2, 0, 1, 1);
+            layoutsgrid.attach(switchgrid_layouts, 0, 0, 10, 1);
+
+            Grid layoutshortcutgrid = new Grid();
+            Label layoutshortcutlabel = new Label(
+                "Toggle layouts quicklist & manager"
+            );
+            layoutshortcutlabel.xalign = 0;
+            layoutshortcutgrid.attach(layoutshortcutlabel, 0, 0, 1, 1);
+            layoutshortcutgrid.attach(new Label("\t"), 1, 0, 1, 1);
+            layoutshortcutgrid.attach(new Label("Super + Alt + L"), 2, 0, 1, 1);
+            layoutsgrid.attach(layoutshortcutgrid, 0, 1, 10, 10);
+
+
+            layoutsgrid.attach(new Label(""), 0, 2, 1, 1);
+            Button manage_layoutsbutton = new Gtk.Button();
+            manage_layoutsbutton.label = "Setup now";
+            //  manage_layoutsbutton.get_style_context().add_class("CIRCULAR");
+            layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
+            allsettings_stack.add_named(layoutsgrid, "layouts");
+
+
+            //////////////////
+            //////////////////
+            //////////////////
+
+            // RULES PAGE
+            rulesgrid = new Gtk.Grid();
+            rulesgrid.set_row_spacing(20);
+            set_margins(rulesgrid, 50, 50, 50, 50);
+
+            // optimize please with similar grids
+            Grid switchgrid_rules = new Gtk.Grid();
+            Label rulessheader = new Label(
+                "Window rules"
+            );
+            rulessheader.xalign = 0;
+            rulessheader.get_style_context().add_class("justbold");
+            switchgrid_rules.attach(rulessheader, 0, 0, 1, 1);
+            switchgrid_rules.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_rules = new Gtk.Switch();
+            switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
+            rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
+            allsettings_stack.add_named(rulesgrid, "rules");
+
             // GENERAL SETTINGS PAGE
-            Grid general_settingsgrid = new Gtk.Grid();
+            general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
             set_margins(general_settingsgrid, 50, 50, 50, 50);
             // margin header
@@ -232,112 +604,64 @@ namespace ShufflerControls2 {
             misc_header.get_style_context().add_class("justbold");
             misc_header.xalign = 0;
             general_settingsgrid.attach(misc_header, 0, 9, 3, 1);
-            // animation
-            Label animtionlabel = new Label("Enable animation");
-            animtionlabel.xalign = 0; // optimize please
-            general_settingsgrid.attach(animtionlabel, 0, 10, 1, 1);
-            general_settingsgrid.attach(new Label("\t"), 1, 10, 1, 1);
-            CheckButton toggle_animation = new CheckButton();
-            general_settingsgrid.attach(toggle_animation, 2, 10, 1, 1);
-            // notification
-            Label notificationlabel = new Label("Show notification on incorrect window size");
-            notificationlabel.xalign = 0; // optimize please
-            general_settingsgrid.attach(notificationlabel, 0, 11, 1, 1);
-            general_settingsgrid.attach(new Label("\t"), 1, 11, 1, 1);
-            CheckButton toggle_notification = new CheckButton();
-            general_settingsgrid.attach(toggle_notification, 2, 11, 1, 1);
             allsettings_stack.add_named(general_settingsgrid, "general");
 
-            // TILING PAGE
-            Grid tilinggrid = new Gtk.Grid();
-            tilinggrid.set_row_spacing(10);
-            set_margins(tilinggrid, 50, 50, 50, 50);
-            // enable tiling shortcuts
-            Grid subtilinggrid_enable = new Grid();
-            subtilinggrid_enable.set_row_spacing(10);
-            Label enable_tiling_label = new Label("Enable tiling shortcuts");
-            enable_tiling_label.xalign = 0;
-            subtilinggrid_enable.attach(enable_tiling_label, 0, 0, 1, 1);
-            subtilinggrid_enable.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_tilingswitch = new Gtk.Switch();
-            subtilinggrid_enable.attach(enable_tilingswitch, 2, 0, 1, 1);
-            tilinggrid.attach(subtilinggrid_enable, 0, 0, 10, 1);
-            Label enable_gridgui_label = new Label("Enable grid GUI");
-            enable_gridgui_label.xalign = 0;
-            subtilinggrid_enable.attach(enable_gridgui_label, 0, 1, 1, 1);
-            subtilinggrid_enable.attach(new Label("\t"), 1, 1, 1, 1);
-            Gtk.Switch enable_gridguiswitch = new Gtk.Switch();
-            subtilinggrid_enable.attach(enable_gridguiswitch, 2, 1, 1, 1);
-            subtilinggrid_enable.attach(new Label(""), 0, 10, 1, 1);
-            // gridsize
-            Grid gridsizegrid = new Gtk.Grid();
-            gridsizegrid.set_row_spacing(10);
-            Label gridsize_header = new Label(
-                "Default gridsize for moving & resizing"
-            );
-            gridsize_header.xalign = 0;
-            gridsize_header.get_style_context().add_class("justbold");
-            gridsizegrid.attach(gridsize_header, 0, 0, 1, 1);
-            tilinggrid.attach(gridsizegrid, 0, 1, 10, 1);
-
-
-
-
-            // swap windows
-            Label swap_label = new Label(
-                "Swap windows when moving window to an occupied position"
-            );
-            tilinggrid.attach(swap_label, 0, 10, 2, 1);
-            swap_label.xalign = 0;
-            tilinggrid.attach(new Label("\t"), 2, 10, 1, 1);
-            CheckButton toggle_swapwindows = new CheckButton();
-            tilinggrid.attach(toggle_swapwindows, 3, 10, 1, 1);
-            allsettings_stack.add_named(tilinggrid, "tiling");
-
-
             // Layouts page
-            Grid layoutsgrid = new Gtk.Grid();
-            layoutsgrid.attach(new Label("layouts"), 0, 0, 1, 1);
-            allsettings_stack.add_named(layoutsgrid, "layouts");
+            //  Grid layoutsgrid = new Gtk.Grid();
+            //  layoutsgrid.attach(new Label("layouts"), 0, 0, 1, 1);
+            //  allsettings_stack.add_named(layoutsgrid, "layouts");
             // Rules page
-            Grid rulesgrid = new Gtk.Grid();
-            rulesgrid.attach(new Label("rules"), 0, 0, 1, 1);
-            allsettings_stack.add_named(rulesgrid, "rules");
+            //  Grid rulesgrid = new Gtk.Grid();
+            //  rulesgrid.attach(new Label("rules"), 0, 0, 1, 1);
+
+
+
 
             listbox.row_activated.connect(get_row);
             listbox.select_row(listbox.get_row_at_index(0));
             this.add(maingrid);
             listbox.show_all();
             maingrid.show_all();
+            //  this.resize(900,10);
             this.show_all();
         }
 
-        private Grid get_rowgrid(Label label, Pixbuf pixbuf) {
-            Image sectionimage = new Gtk.Image();
-            sectionimage.set_from_pixbuf(pixbuf);
+        private Grid get_rowgrid(Label label, Image img, string hint) {
+            //  Image sectionimage = new Gtk.Image();
+            //  sectionimage.set_from_pixbuf(pixbuf);
             Grid rowgrid = new Gtk.Grid();
             rowgrid.set_column_spacing(6);
             set_margins(rowgrid, 10, 3, 7, 7);
-            rowgrid.attach(sectionimage, 0, 0, 1, 1);
+            rowgrid.attach(img, 0, 0, 1, 1);
             rowgrid.attach(label, 1, 0, 1, 1);
+            rowgrid.set_tooltip_text(hint);
             return rowgrid;
         }
 
         private void get_row(ListBoxRow row) {
             int row_index = row.get_index();
+            int height = 0;
+            Gtk.Requisition? wh = null;
             switch (row_index) {
                 case 0:
-                allsettings_stack.set_visible_child_name("general");
+                allsettings_stack.set_visible_child_name("tiling");
+                wh = tilinggrid.size_request();
                 break;
                 case 1:
-                allsettings_stack.set_visible_child_name("tiling");
+                allsettings_stack.set_visible_child_name("layouts");
+                wh = layoutsgrid.size_request();
                 break;
                 case 2:
-                allsettings_stack.set_visible_child_name("layouts");
+                allsettings_stack.set_visible_child_name("rules");
+                wh = rulesgrid.size_request();
                 break;
                 case 3:
-                allsettings_stack.set_visible_child_name("rules");
+                allsettings_stack.set_visible_child_name("general");
+                wh = general_settingsgrid.size_request();
                 break;
+            }
+            if (wh != null) {
+                scroll_up(settings_scrolledwindow, wh.height);
             }
         }
 
