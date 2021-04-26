@@ -140,12 +140,14 @@ namespace ShufflerControls2 {
            a silly vscroll size. The result is updated by this method
         */
         var adj = scrw.get_vadjustment();
+        //  adj.set_value(0);
         // for smooth looks, let's scroll up after switching pages to prevent flashing
-        GLib.Timeout.add(300, () => {
+        GLib.Timeout.add(500, () => {
             adj.set_value(0);
             return false;
         });
         // update scroll vsize
+        
         adj.set_upper(upper_val);
     }
 
@@ -248,7 +250,7 @@ namespace ShufflerControls2 {
             maingrid.attach(settings_scrolledwindow, 2, 1, 1, 1);
             // stack
             allsettings_stack = new Gtk.Stack();
-            allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
+            //  allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
             settings_scrolledwindow.add(allsettings_stack);
 
             // TILING PAGE
@@ -550,6 +552,16 @@ namespace ShufflerControls2 {
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
             allsettings_stack.add_named(rulesgrid, "rules");
 
+            Label activerules = new Label(
+                "Active rules" + ":"
+            );
+            activerules.xalign = 0;
+            activerules.get_style_context().add_class("justitalic");
+            rulesgrid.attach(activerules, 0, 1, 10, 1);
+
+
+
+
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
@@ -641,23 +653,24 @@ namespace ShufflerControls2 {
         private void get_row(ListBoxRow row) {
             int row_index = row.get_index();
             int height = 0;
-            Gtk.Requisition? wh = null;
+            Requisition? minsize;
+            Requisition? wh = null;
             switch (row_index) {
                 case 0:
                 allsettings_stack.set_visible_child_name("tiling");
-                wh = tilinggrid.size_request();
+                tilinggrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 1:
                 allsettings_stack.set_visible_child_name("layouts");
-                wh = layoutsgrid.size_request();
+                layoutsgrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 2:
                 allsettings_stack.set_visible_child_name("rules");
-                wh = rulesgrid.size_request();
+                rulesgrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
-                wh = general_settingsgrid.size_request();
+                general_settingsgrid.get_preferred_size(out minsize, out wh);
                 break;
             }
             if (wh != null) {
