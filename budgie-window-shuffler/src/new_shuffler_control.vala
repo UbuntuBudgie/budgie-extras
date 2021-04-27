@@ -149,24 +149,6 @@ namespace ShufflerControls2 {
     //Window
     ////////////////////
 
-    private void scroll_up(Gtk.ScrolledWindow scrw, int upper_val) {
-        /*
-        Since stack pages have different size, we need to:
-         - scroll up on page switching
-         - recalculate page vsize to prevent small pages rom having
-           a silly vscroll size. The result is updated by this method
-        */
-        var adj = scrw.get_vadjustment();
-        //  adj.set_value(0);
-        // for smooth looks, let's scroll up after switching pages to prevent flashing
-        GLib.Timeout.add(500, () => {
-            adj.set_value(0);
-            return false;
-        });
-        // update scroll vsize
-
-        adj.set_upper(upper_val);
-    }
 
     class ShufflerControlsWindow : Gtk.Window {
 
@@ -177,10 +159,10 @@ namespace ShufflerControls2 {
             public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
         }
         GLib.HashTable<string, Variant> foundrules;
-        ScrolledWindow ruleslist;
+        //  ScrolledWindow ruleslist;
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Gtk.ScrolledWindow settings_scrolledwindow;
+        //  Gtk.ScrolledWindow settings_scrolledwindow;
         Stack allsettings_stack;
         string controls_css = """
         .somebox {
@@ -200,18 +182,27 @@ namespace ShufflerControls2 {
         Grid layoutsgrid;
         Grid rulesgrid;
         Grid general_settingsgrid;
+        Grid newrulesgrid;
 
 
         private void update_currentrules() {
-            foreach (Widget w in ruleslist.get_children()) {
+            foreach (Widget w in newrulesgrid.get_children()) {
                 w.destroy();
             }
-            Grid newrulesgrid = new Gtk.Grid();
+            //  Grid newrulesgrid = new Gtk.Grid();
+            newrulesgrid.set_column_spacing(15);
             // headers
-            Label wmclassheader = new Label("WM-class");
-            wmclassheader.xalign = 0;
-            wmclassheader.get_style_context().add_class("justbold");
-            newrulesgrid.attach(wmclassheader, 0, 0, 1, 1);
+            string[] rules_columnheaders = {
+                "WM-class", "Grid", "Position", "Span", "Display"
+            };
+            int col = 0;
+            foreach (string s in rules_columnheaders) {
+                Label newheader = new Label(s);
+                newheader.xalign = 0;
+                newheader.get_style_context().add_class("justbold");
+                newrulesgrid.attach(newheader, col, 0, 1, 1);
+                col += 1;
+            }
             int currow = 1;
             try {
                 client = Bus.get_proxy_sync (
@@ -221,14 +212,40 @@ namespace ShufflerControls2 {
                 foundrules = client.get_rules();
                 GLib.List<weak string> keys = foundrules.get_keys();
                 foreach (string k in keys) {
+                    Variant windowrule = foundrules[k];
+                    string monitor = (string)windowrule.get_child_value(0);
+                    string xposition = (string)windowrule.get_child_value(1);
+                    string yposition = (string)windowrule.get_child_value(2);
+                    string rows = (string)windowrule.get_child_value(3);
+                    string cols = (string)windowrule.get_child_value(4);
+                    string xspan = (string)windowrule.get_child_value(5);
+                    string yspan = (string)windowrule.get_child_value(6);
                     print(@"$k\n");
                     Label newlabel = new Label(k);
                     newlabel.xalign = 0;
                     newrulesgrid.attach(newlabel, 0, currow, 1, 1);
+
+                    Label newgridsize = new Label(cols + "x" + rows);
+                    newrulesgrid.attach(newgridsize, 1, currow, 1, 1);
+
+                    Label newposition = new Label(xposition + ", " + yposition);
+                    newrulesgrid.attach(newposition, 2, currow, 1, 1);
+
+                    Label newspan = new Label(xspan + "x" + yspan);
+                    newrulesgrid.attach(newspan, 3, currow, 1, 1);
+
+                    Label newmonitor = new Label(monitor);
+                    newrulesgrid.attach(newmonitor, 4, currow, 1, 1);
+
                     currow += 1;
+
                 }
-                ruleslist.add(newrulesgrid);
-                ruleslist.show_all();
+                newrulesgrid.show_all();
+                rulesgrid.show_all();
+                //  rulesgrid.attach(newrulesgrid, 0, 10, 10, 1);
+                //  ruleslist.set_propagate_natural_width(true);
+                //  ruleslist.add(newrulesgrid);
+                //  ruleslist.show_all();
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
@@ -256,7 +273,8 @@ namespace ShufflerControls2 {
 
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
-            ruleslist = new ScrolledWindow(null, null);
+            //  ruleslist = new ScrolledWindow(null, null);
+            //  ruleslist.set_min_content_height(300);
 
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
@@ -266,7 +284,6 @@ namespace ShufflerControls2 {
                 "rulesicon-symbolic", Gtk.IconSize.DND);
             var generalprefs = new Gtk.Image.from_icon_name(
                 "miscellaneousprefs-symbolic", Gtk.IconSize.DND);
-            //  update_currentrules(); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // css stuff
             Gdk.Screen gdk_scr = this.get_screen();
@@ -307,16 +324,11 @@ namespace ShufflerControls2 {
             listbox.insert(get_rowgrid(title2, layoutsicon, title2_hint), 2);
             listbox.insert(get_rowgrid(title3, rulesicon, title3_hint), 3);
             listbox.insert(get_rowgrid(title4, generalprefs,title4_hint), 4);
-            // Scrolled Window
-            settings_scrolledwindow = new ScrolledWindow(null, null);
-            settings_scrolledwindow.set_min_content_height(400);
-            //  settings_scrolledwindow.set_min_content_width(800);
-            settings_scrolledwindow.set_propagate_natural_width(true);
-            maingrid.attach(settings_scrolledwindow, 2, 1, 1, 1);
             // stack
             allsettings_stack = new Gtk.Stack();
+            maingrid.attach(allsettings_stack, 2, 1, 1, 1);
             //  allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
-            settings_scrolledwindow.add(allsettings_stack);
+            //  settings_scrolledwindow.add(allsettings_stack);
 
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
@@ -502,21 +514,10 @@ namespace ShufflerControls2 {
                 "Control + Super + Alt + ↑", "Control + Super + Alt + ↓",
                 "Control + Super + N"
             };
-            int currrow = 8;
 
             add_series_toggrid(
                 advancedshortcutlist_subgrid, resizers, resizershortcuts, 8
             );
-
-            //  for (int i = 0; i < 9; i++) {
-            //      Label newlabel = new Label(resizers[i]);
-            //      newlabel.xalign = 0;
-            //      advancedshortcutlist_subgrid.attach(newlabel, 0, i + currrow, 1, 1);
-            //      advancedshortcutlist_subgrid.attach(new Label("\t\t"), 1, i + currrow, 1, 1);
-            //      Label newshortcut = new Label(resizershortcuts[i]);
-            //      advancedshortcutlist_subgrid.attach(newshortcut, 2, i + currrow, 1, 1);
-            //      newshortcut.xalign = 0;
-            //  }
 
             Label other_header_label = new Label("Other" + ":");
             other_header_label.xalign = 0;
@@ -542,20 +543,17 @@ namespace ShufflerControls2 {
             Label toggle_opposite_shortcut = new Label("Control + Super + N");
             toggle_opposite_shortcut.xalign = 0;
             advancedshortcutlist_subgrid.attach(toggle_opposite_shortcut, 2, 24, 1, 1);
-
-
             advancedshortcutlist_subgrid.show_all();
-
             tilinggrid.attach(new Label(""), 1, 49, 1, 1);
 
+            ScrolledWindow scrolled_tiling = new ScrolledWindow(null, null);
+            scrolled_tiling.add(tilinggrid);
+            scrolled_tiling.set_propagate_natural_width(true);
+            allsettings_stack.add_named(scrolled_tiling, "tiling");
 
-            allsettings_stack.add_named(tilinggrid, "tiling");
-
-
-
-            //////////////////
-            //////////////////
-            //////////////////
+            //  //////////////////
+            //  //////////////////
+            //  //////////////////
 
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
@@ -591,12 +589,14 @@ namespace ShufflerControls2 {
             manage_layoutsbutton.label = "Setup now"; // why does scroll reset here?
             //  manage_layoutsbutton.get_style_context().add_class("CIRCULAR");
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
+
+            //  allsettings_stack.add_named(scrolled_tiling, "tiling");
             allsettings_stack.add_named(layoutsgrid, "layouts");
 
 
-            //////////////////
-            //////////////////
-            //////////////////
+            //  //////////////////
+            //  //////////////////
+            //  //////////////////
 
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
@@ -615,26 +615,21 @@ namespace ShufflerControls2 {
             Gtk.Switch enable_rules = new Gtk.Switch();
             switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
-            allsettings_stack.add_named(rulesgrid, "rules");
+
             Label activerules = new Label(
                 "Active rules" + ":"
             );
             activerules.xalign = 0;
             activerules.get_style_context().add_class("justitalic");
             rulesgrid.attach(activerules, 0, 1, 10, 1);
-
-            // scrolled ruleslist
-            //  ruleslist = new ScrolledWindow(null, null);
-            
-            ruleslist.set_size_request(100, 100);
-            //  ruleslist.set_min_content_width(430);
-            //  ruleslist.set_min_content_height(430);
-            //  ruleslist.add(new Label("Blub"));
-            rulesgrid.attach(ruleslist, 0, 10, 10, 10);
+            newrulesgrid = new Grid();
+            rulesgrid.attach(newrulesgrid, 0, 10, 10, 1);
 
 
-
-
+            ScrolledWindow scrolled_rules = new ScrolledWindow(null, null);
+            scrolled_rules.add(rulesgrid);
+            scrolled_rules.set_propagate_natural_width(true);
+            allsettings_stack.add_named(scrolled_rules, "rules");
 
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
@@ -690,17 +685,12 @@ namespace ShufflerControls2 {
             misc_header.get_style_context().add_class("justbold");
             misc_header.xalign = 0;
             general_settingsgrid.attach(misc_header, 0, 9, 3, 1);
-            allsettings_stack.add_named(general_settingsgrid, "general");
-
-            // Layouts page
-            //  Grid layoutsgrid = new Gtk.Grid();
-            //  layoutsgrid.attach(new Label("layouts"), 0, 0, 1, 1);
-            //  allsettings_stack.add_named(layoutsgrid, "layouts");
-            // Rules page
-            //  Grid rulesgrid = new Gtk.Grid();
-            //  rulesgrid.attach(new Label("rules"), 0, 0, 1, 1);
 
 
+            ScrolledWindow scrolled_misc = new ScrolledWindow(null, null);
+            scrolled_misc.add(general_settingsgrid);
+            scrolled_misc.set_propagate_natural_width(true);
+            allsettings_stack.add_named(scrolled_misc, "general");
 
 
             listbox.row_activated.connect(get_row);
@@ -710,10 +700,6 @@ namespace ShufflerControls2 {
             maingrid.show_all();
             this.show_all();
         }
-
-        //  private string get_current_rules(){
-        //      string[] current_rules = {};
-        //  }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
             //  Image sectionimage = new Gtk.Image();
@@ -729,31 +715,31 @@ namespace ShufflerControls2 {
 
         private void get_row(ListBoxRow row) {
             int row_index = row.get_index();
-            Requisition? minsize;
-            Requisition? wh = null;
+            //  Requisition? minsize;
+            //  Requisition? wh = null;
             switch (row_index) {
                 case 0:
                 allsettings_stack.set_visible_child_name("tiling");
-                tilinggrid.get_preferred_size(out minsize, out wh);
+                //  tilinggrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 1:
                 allsettings_stack.set_visible_child_name("layouts");
-                layoutsgrid.get_preferred_size(out minsize, out wh);
+                //  layoutsgrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 2:
                 allsettings_stack.set_visible_child_name("rules");
-                rulesgrid.get_preferred_size(out minsize, out wh);
+                //  rulesgrid.get_preferred_size(out minsize, out wh);
                 //  GLib.HashTable<string, Variant> foundrules;
                 update_currentrules(); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
-                general_settingsgrid.get_preferred_size(out minsize, out wh);
+                //  general_settingsgrid.get_preferred_size(out minsize, out wh);
                 break;
             }
-            if (wh != null) {
-                scroll_up(settings_scrolledwindow, wh.height);
-            }
+            //  if (wh != null) {
+            //      //  scroll_up(settings_scrolledwindow, wh.height);
+            //  }
         }
 
         private void set_margins(
