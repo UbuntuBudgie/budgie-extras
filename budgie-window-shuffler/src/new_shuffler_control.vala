@@ -1,6 +1,23 @@
 using Gtk;
 using Gdk;
 
+// valac --pkg gtk+-3.0 --pkg gdk-3.0 --pkg gio-2.0
+
+/*
+Budgie Window Shuffler II
+Author: Jacob Vlijm
+Copyright © 2017-2021 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 /* Shuffler
 Main categories for the control interface:
  - Tiling
@@ -147,11 +164,21 @@ namespace ShufflerControls2 {
             return false;
         });
         // update scroll vsize
-        
+
         adj.set_upper(upper_val);
     }
 
     class ShufflerControlsWindow : Gtk.Window {
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ShufflerInfoClient? client;
+        [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
+        interface ShufflerInfoClient : Object {
+            public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
+        }
+        GLib.HashTable<string, Variant> foundrules;
+        ScrolledWindow ruleslist;
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Gtk.ScrolledWindow settings_scrolledwindow;
         Stack allsettings_stack;
@@ -174,10 +201,46 @@ namespace ShufflerControls2 {
         Grid rulesgrid;
         Grid general_settingsgrid;
 
+
+        private void update_currentrules() {
+            foreach (Widget w in ruleslist.get_children()) {
+                w.destroy();
+            }
+            Grid newrulesgrid = new Gtk.Grid();
+            // headers
+            Label wmclassheader = new Label("WM-class");
+            wmclassheader.xalign = 0;
+            wmclassheader.get_style_context().add_class("justbold");
+            newrulesgrid.attach(wmclassheader, 0, 0, 1, 1);
+            int currow = 1;
+            try {
+                client = Bus.get_proxy_sync (
+                    BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
+                    ("/org/ubuntubudgie/shufflerinfodaemon")
+                );
+                foundrules = client.get_rules();
+                GLib.List<weak string> keys = foundrules.get_keys();
+                foreach (string k in keys) {
+                    print(@"$k\n");
+                    Label newlabel = new Label(k);
+                    newlabel.xalign = 0;
+                    newrulesgrid.attach(newlabel, 0, currow, 1, 1);
+                    currow += 1;
+                }
+                ruleslist.add(newrulesgrid);
+                ruleslist.show_all();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            //  return newrulesgrid;
+        }
+
         private void add_series_toggrid(
             Grid grid, string[] leftitems, string[] rightitems,
             int startint = 0) {
             // just an optimizasition to add arrays of items to a grid
+
             for (int i = 0; i < leftitems.length; i++) {
                 Label newlabel = new Label(leftitems[i]);
                 newlabel.xalign = 0;
@@ -193,6 +256,7 @@ namespace ShufflerControls2 {
 
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
+            ruleslist = new ScrolledWindow(null, null);
 
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
@@ -202,6 +266,7 @@ namespace ShufflerControls2 {
                 "rulesicon-symbolic", Gtk.IconSize.DND);
             var generalprefs = new Gtk.Image.from_icon_name(
                 "miscellaneousprefs-symbolic", Gtk.IconSize.DND);
+            //  update_currentrules(); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // css stuff
             Gdk.Screen gdk_scr = this.get_screen();
@@ -523,7 +588,7 @@ namespace ShufflerControls2 {
 
             layoutsgrid.attach(new Label(""), 0, 2, 1, 1);
             Button manage_layoutsbutton = new Gtk.Button();
-            manage_layoutsbutton.label = "Setup now";
+            manage_layoutsbutton.label = "Setup now"; // why does scroll reset here?
             //  manage_layoutsbutton.get_style_context().add_class("CIRCULAR");
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
@@ -551,13 +616,22 @@ namespace ShufflerControls2 {
             switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
             allsettings_stack.add_named(rulesgrid, "rules");
-
             Label activerules = new Label(
                 "Active rules" + ":"
             );
             activerules.xalign = 0;
             activerules.get_style_context().add_class("justitalic");
             rulesgrid.attach(activerules, 0, 1, 10, 1);
+
+            // scrolled ruleslist
+            //  ruleslist = new ScrolledWindow(null, null);
+            
+            ruleslist.set_size_request(100, 100);
+            //  ruleslist.set_min_content_width(430);
+            //  ruleslist.set_min_content_height(430);
+            //  ruleslist.add(new Label("Blub"));
+            rulesgrid.attach(ruleslist, 0, 10, 10, 10);
+
 
 
 
@@ -634,9 +708,12 @@ namespace ShufflerControls2 {
             this.add(maingrid);
             listbox.show_all();
             maingrid.show_all();
-            //  this.resize(900,10);
             this.show_all();
         }
+
+        //  private string get_current_rules(){
+        //      string[] current_rules = {};
+        //  }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
             //  Image sectionimage = new Gtk.Image();
@@ -652,7 +729,6 @@ namespace ShufflerControls2 {
 
         private void get_row(ListBoxRow row) {
             int row_index = row.get_index();
-            int height = 0;
             Requisition? minsize;
             Requisition? wh = null;
             switch (row_index) {
@@ -667,6 +743,8 @@ namespace ShufflerControls2 {
                 case 2:
                 allsettings_stack.set_visible_child_name("rules");
                 rulesgrid.get_preferred_size(out minsize, out wh);
+                //  GLib.HashTable<string, Variant> foundrules;
+                update_currentrules(); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
