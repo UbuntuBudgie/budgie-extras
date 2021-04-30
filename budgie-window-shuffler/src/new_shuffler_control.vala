@@ -45,13 +45,10 @@ Main categories for the control interface:
  // todo: all strings to translate in one place
  // optimize labels {one step less}
  // optimize creation of switchrids
+ // make update rules conditional (rules is on in gsettings)
 
 
 namespace ShufflerControls2 {
-
-    ////////////////////
-    // Spinbutton
-    ////////////////////
 
     class OwnSpinButton : Gtk.Grid{
 
@@ -147,10 +144,6 @@ namespace ShufflerControls2 {
         }
     }
 
-    ////////////////////
-    //Window
-    ////////////////////
-
 
     class ShufflerControlsWindow : Gtk.Window {
 
@@ -160,6 +153,8 @@ namespace ShufflerControls2 {
             public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
         }
         GLib.HashTable<string, Variant> foundrules;
+
+        FileMonitor monitor_ruleschange;
 
         Stack allsettings_stack;
 
@@ -182,6 +177,22 @@ namespace ShufflerControls2 {
         Grid rulesgrid;
         Grid general_settingsgrid;
         Grid newrulesgrid;
+
+        private string create_dirs_file (string subpath) {
+            // defines, and if needed, creates directory for rules
+            string homedir = Environment.get_home_dir();
+            string fullpath = GLib.Path.build_path(
+                GLib.Path.DIR_SEPARATOR_S, homedir, subpath
+            );
+            GLib.File file = GLib.File.new_for_path(fullpath);
+            try {
+                file.make_directory_with_parents();
+            }
+            catch (Error e) {
+                /* the directory exists, nothing to be done */
+            }
+            return fullpath;
+        }
 
 
         private void update_currentrules() {
@@ -276,8 +287,20 @@ namespace ShufflerControls2 {
 
         public ShufflerControlsWindow() {
 
+            // window stuff
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
+            // watch rulesdir
+            string windowrule_location = create_dirs_file(".config/budgie-extras/shuffler/windowrules");
+            try {
+                File rulesdir = File.new_for_path(windowrule_location);
+                monitor_ruleschange = rulesdir.monitor(FileMonitorFlags.NONE, null);
+                monitor_ruleschange.changed.connect(update_currentrules);
+            }
+            catch (Error e) {
+            }
+            print(@"$windowrule_location\n");
+
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
             var layoutsicon = new Gtk.Image.from_icon_name(
