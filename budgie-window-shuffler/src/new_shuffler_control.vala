@@ -30,7 +30,8 @@ Main categories for the control interface:
         - sticky neighbours (default: off, checkbox only active if shortcuts is on)
         - GUI grid** (default: on, checkbox only active if shortcuts is on)
           **should we ditch this?
-        - show notification on incorrect (target) window size (default:on, checkboxonly active if shortcuts is on) (appearance currently too short!)
+        - show notification on incorrect (target) window size (default:on,
+          checkboxonly active if shortcuts is on) (appearance currently too short!)
  - Layouts
     - enable layouts (default: on)
     - setup layouts -> external setup window (button only active if layouts is on)
@@ -43,6 +44,7 @@ Main categories for the control interface:
 
  // todo: all strings to translate in one place
  // optimize labels {one step less}
+ // optimize creation of switchrids
 
 
 namespace ShufflerControls2 {
@@ -152,18 +154,15 @@ namespace ShufflerControls2 {
 
     class ShufflerControlsWindow : Gtk.Window {
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ShufflerInfoClient? client;
         [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
         interface ShufflerInfoClient : Object {
             public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
         }
         GLib.HashTable<string, Variant> foundrules;
-        //  ScrolledWindow ruleslist;
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //  Gtk.ScrolledWindow settings_scrolledwindow;
         Stack allsettings_stack;
+
         string controls_css = """
         .somebox {
             border-left: 0px;
@@ -189,20 +188,24 @@ namespace ShufflerControls2 {
             foreach (Widget w in newrulesgrid.get_children()) {
                 w.destroy();
             }
-            //  Grid newrulesgrid = new Gtk.Grid();
+            // update ruleslist
             newrulesgrid.set_column_spacing(15);
             // headers
             string[] rules_columnheaders = {
-                "WM-class", "Grid", "Position", "Span", "Display"
+                "WM-class", "Grid", "X, Y", "Span", "Display"
             };
             int col = 0;
             foreach (string s in rules_columnheaders) {
                 Label newheader = new Label(s);
-                newheader.xalign = 0;
+                if (col == 0) {
+                    newheader.set_size_request(120, 10);
+                    newheader.xalign = 0;
+                }
                 newheader.get_style_context().add_class("justbold");
                 newrulesgrid.attach(newheader, col, 0, 1, 1);
                 col += 1;
             }
+
             int currow = 1;
             try {
                 client = Bus.get_proxy_sync (
@@ -212,6 +215,18 @@ namespace ShufflerControls2 {
                 foundrules = client.get_rules();
                 GLib.List<weak string> keys = foundrules.get_keys();
                 foreach (string k in keys) {
+
+                    Gtk.Button taskeditbutton = new Button.from_icon_name(
+                        "document-edit-symbolic", Gtk.IconSize.BUTTON
+                    );
+                    Gtk.Button taskdeletebutton = new Button.from_icon_name(
+                        "user-trash-symbolic", Gtk.IconSize.BUTTON
+                    );
+                    taskdeletebutton.set_size_request(10, 10);
+                    taskdeletebutton.set_relief(Gtk.ReliefStyle.NONE);
+                    taskeditbutton.set_size_request(10, 10);
+                    taskeditbutton.set_relief(Gtk.ReliefStyle.NONE);
+
                     Variant windowrule = foundrules[k];
                     string monitor = (string)windowrule.get_child_value(0);
                     string xposition = (string)windowrule.get_child_value(1);
@@ -220,44 +235,34 @@ namespace ShufflerControls2 {
                     string cols = (string)windowrule.get_child_value(4);
                     string xspan = (string)windowrule.get_child_value(5);
                     string yspan = (string)windowrule.get_child_value(6);
-                    print(@"$k\n");
                     Label newlabel = new Label(k);
                     newlabel.xalign = 0;
-                    newrulesgrid.attach(newlabel, 0, currow, 1, 1);
-
                     Label newgridsize = new Label(cols + "x" + rows);
-                    newrulesgrid.attach(newgridsize, 1, currow, 1, 1);
-
                     Label newposition = new Label(xposition + ", " + yposition);
-                    newrulesgrid.attach(newposition, 2, currow, 1, 1);
-
                     Label newspan = new Label(xspan + "x" + yspan);
-                    newrulesgrid.attach(newspan, 3, currow, 1, 1);
-
                     Label newmonitor = new Label(monitor);
+                    newrulesgrid.attach(newlabel, 0, currow, 1, 1);
+                    newrulesgrid.attach(newgridsize, 1, currow, 1, 1);
+                    newrulesgrid.attach(newposition, 2, currow, 1, 1);
+                    newrulesgrid.attach(newspan, 3, currow, 1, 1);
                     newrulesgrid.attach(newmonitor, 4, currow, 1, 1);
-
+                    newrulesgrid.attach(new Label(" "), 5, currow, 1, 1);
+                    newrulesgrid.attach(taskeditbutton, 6, currow, 1, 1);
+                    newrulesgrid.attach(taskdeletebutton, 7, currow, 1, 1);
                     currow += 1;
-
                 }
                 newrulesgrid.show_all();
                 rulesgrid.show_all();
-                //  rulesgrid.attach(newrulesgrid, 0, 10, 10, 1);
-                //  ruleslist.set_propagate_natural_width(true);
-                //  ruleslist.add(newrulesgrid);
-                //  ruleslist.show_all();
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
-            //  return newrulesgrid;
         }
 
         private void add_series_toggrid(
             Grid grid, string[] leftitems, string[] rightitems,
             int startint = 0) {
             // just an optimizasition to add arrays of items to a grid
-
             for (int i = 0; i < leftitems.length; i++) {
                 Label newlabel = new Label(leftitems[i]);
                 newlabel.xalign = 0;
@@ -273,9 +278,6 @@ namespace ShufflerControls2 {
 
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
-            //  ruleslist = new ScrolledWindow(null, null);
-            //  ruleslist.set_min_content_height(300);
-
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
             var layoutsicon = new Gtk.Image.from_icon_name(
@@ -327,14 +329,12 @@ namespace ShufflerControls2 {
             // stack
             allsettings_stack = new Gtk.Stack();
             maingrid.attach(allsettings_stack, 2, 1, 1, 1);
-            //  allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
-            //  settings_scrolledwindow.add(allsettings_stack);
+            allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
 
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
             tilinggrid.set_row_spacing(10);
-            set_margins(tilinggrid, 50, 50, 50, 50);
-
+            set_margins(tilinggrid, 40, 40, 40, 40);
             // header + switch (in subgrid)
             Grid switchgrid_basicshortcuts = new Gtk.Grid();
             Label basicshortcutsheader = new Label(
@@ -347,10 +347,8 @@ namespace ShufflerControls2 {
             Gtk.Switch enable_basictilingswitch = new Gtk.Switch();
             switchgrid_basicshortcuts.attach(enable_basictilingswitch, 2, 0, 1, 1);
             tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
-
             // basic shortcutlist (in subgrid)
             Grid basicshortcutlist_subgrid = new Gtk.Grid();
-
             // translations!
             string[] basics = {
                 "Top-left", "Top-right", "Bottom-right", "Bottom-left",
@@ -364,8 +362,6 @@ namespace ShufflerControls2 {
             add_series_toggrid(basicshortcutlist_subgrid, basics, basicshortcuts); // optimized
             tilinggrid.attach(basicshortcutlist_subgrid, 0, 1, 10, 1);
             basicshortcutlist_subgrid.show_all();
-
-            // spacer
             tilinggrid.attach(new Label(""), 1, 2, 1, 1);
             // custom size header + switch (in subgrid)
             Grid switchgrid_advancedshortcuts = new Gtk.Grid();
@@ -439,11 +435,7 @@ namespace ShufflerControls2 {
             optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
             CheckButton toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
-
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
-
-            ////////////////////////
-            ///////////////// gui shortcuts here
             Label guishortcutsheader = new Label("GUI grid shortcuts" + ":");
             guishortcutsheader.xalign = 0;
             guishortcutsheader.get_style_context().add_class("justitalic");
@@ -457,13 +449,9 @@ namespace ShufflerControls2 {
             string[] guishortcuts = {
                 "Ctrl + Alt + S", "→", "↓", "←", "↑"
             };
-
             Grid guishortcuts_subgrid = new Grid();
-
-            add_series_toggrid(guishortcuts_subgrid, guis, guishortcuts); // optimized
+            add_series_toggrid(guishortcuts_subgrid, guis, guishortcuts);
             tilinggrid.attach(guishortcuts_subgrid, 0, 21, 10, 1);
-
-            ////////////////////////
 
             // shortcutlist custom grid
             Label jump_header_label = new Label(
@@ -486,7 +474,7 @@ namespace ShufflerControls2 {
             add_series_toggrid(
                 advancedshortcutlist_subgrid, movers, movershortcuts
             );
-            tilinggrid.attach(advancedshortcutlist_subgrid, 0, 27, 10, 1); // optimized
+            tilinggrid.attach(advancedshortcutlist_subgrid, 0, 27, 10, 1);
 
             string resize_header = "Shortcuts for resizing a window" + ":";
             Label resize_header_label = new Label(resize_header);
@@ -551,15 +539,10 @@ namespace ShufflerControls2 {
             scrolled_tiling.set_propagate_natural_width(true);
             allsettings_stack.add_named(scrolled_tiling, "tiling");
 
-            //  //////////////////
-            //  //////////////////
-            //  //////////////////
-
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
             layoutsgrid.set_row_spacing(20);
-            set_margins(layoutsgrid, 50, 50, 50, 50);
-
+            set_margins(layoutsgrid, 40, 40, 40, 40);
             // optimize please with similar grids
             Grid switchgrid_layouts = new Gtk.Grid();
             Label layoutssheader = new Label(
@@ -572,7 +555,6 @@ namespace ShufflerControls2 {
             Gtk.Switch enable_layouts = new Gtk.Switch();
             switchgrid_layouts.attach(enable_layouts, 2, 0, 1, 1);
             layoutsgrid.attach(switchgrid_layouts, 0, 0, 10, 1);
-
             Grid layoutshortcutgrid = new Grid();
             Label layoutshortcutlabel = new Label(
                 "Toggle layouts quicklist & manager"
@@ -582,27 +564,16 @@ namespace ShufflerControls2 {
             layoutshortcutgrid.attach(new Label("\t"), 1, 0, 1, 1);
             layoutshortcutgrid.attach(new Label("Super + Alt + L"), 2, 0, 1, 1);
             layoutsgrid.attach(layoutshortcutgrid, 0, 1, 10, 10);
-
-
             layoutsgrid.attach(new Label(""), 0, 2, 1, 1);
             Button manage_layoutsbutton = new Gtk.Button();
-            manage_layoutsbutton.label = "Setup now"; // why does scroll reset here?
-            //  manage_layoutsbutton.get_style_context().add_class("CIRCULAR");
+            manage_layoutsbutton.label = "Setup now";
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
-
-            //  allsettings_stack.add_named(scrolled_tiling, "tiling");
             allsettings_stack.add_named(layoutsgrid, "layouts");
-
-
-            //  //////////////////
-            //  //////////////////
-            //  //////////////////
 
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
             rulesgrid.set_row_spacing(20);
-            set_margins(rulesgrid, 50, 50, 50, 50);
-
+            set_margins(rulesgrid, 40, 40, 40, 40);
             // optimize please with similar grids
             Grid switchgrid_rules = new Gtk.Grid();
             Label rulessheader = new Label(
@@ -615,26 +586,28 @@ namespace ShufflerControls2 {
             Gtk.Switch enable_rules = new Gtk.Switch();
             switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
-
+            rulesgrid.attach(new Label(""), 0, 1, 10, 1);
             Label activerules = new Label(
                 "Active rules" + ":"
             );
             activerules.xalign = 0;
             activerules.get_style_context().add_class("justitalic");
-            rulesgrid.attach(activerules, 0, 1, 10, 1);
+            rulesgrid.attach(activerules, 0, 2, 10, 1);
             newrulesgrid = new Grid();
             rulesgrid.attach(newrulesgrid, 0, 10, 10, 1);
-
-
             ScrolledWindow scrolled_rules = new ScrolledWindow(null, null);
             scrolled_rules.add(rulesgrid);
             scrolled_rules.set_propagate_natural_width(true);
+            Gtk.Button newrulebutton = new Button();
+            newrulebutton.label = "Add new rule";
+            newrulebutton.set_size_request(1,1);
+            rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
 
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
-            set_margins(general_settingsgrid, 50, 50, 50, 50);
+            set_margins(general_settingsgrid, 40, 40, 40, 40);
             // margin header
             Label margins_header = new Label("Margins between virtual grid and screen edges");
             margins_header.get_style_context().add_class("justbold");
@@ -680,19 +653,21 @@ namespace ShufflerControls2 {
             paddinggrid.attach(paddingspin, 2, 0, 1, 1);
             general_settingsgrid.attach(paddinggrid, 0, 7, 10, 1);
             general_settingsgrid.attach(new Label(""), 0, 8, 1, 1);
-            // misc header
-            Label misc_header = new Label("Miscellaneous");
-            misc_header.get_style_context().add_class("justbold");
-            misc_header.xalign = 0;
-            general_settingsgrid.attach(misc_header, 0, 9, 3, 1);
-
-
+            Grid useanimationsubgrid = new Gtk.Grid();
+            Label useanimationheader = new Label(
+                "Use animation"
+            );
+            useanimationheader.xalign = 0;
+            useanimationheader.get_style_context().add_class("justbold");
+            useanimationsubgrid.attach(useanimationheader, 0, 0, 1, 1);
+            useanimationsubgrid.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_animationswich = new Gtk.Switch();
+            useanimationsubgrid.attach(enable_animationswich, 2, 0, 1, 1);
+            general_settingsgrid.attach(useanimationsubgrid, 0, 9, 3, 1);
             ScrolledWindow scrolled_misc = new ScrolledWindow(null, null);
             scrolled_misc.add(general_settingsgrid);
             scrolled_misc.set_propagate_natural_width(true);
             allsettings_stack.add_named(scrolled_misc, "general");
-
-
             listbox.row_activated.connect(get_row);
             listbox.select_row(listbox.get_row_at_index(0));
             this.add(maingrid);
@@ -702,8 +677,6 @@ namespace ShufflerControls2 {
         }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
-            //  Image sectionimage = new Gtk.Image();
-            //  sectionimage.set_from_pixbuf(pixbuf);
             Grid rowgrid = new Gtk.Grid();
             rowgrid.set_column_spacing(6);
             set_margins(rowgrid, 10, 3, 7, 7);
@@ -715,31 +688,21 @@ namespace ShufflerControls2 {
 
         private void get_row(ListBoxRow row) {
             int row_index = row.get_index();
-            //  Requisition? minsize;
-            //  Requisition? wh = null;
             switch (row_index) {
                 case 0:
                 allsettings_stack.set_visible_child_name("tiling");
-                //  tilinggrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 1:
                 allsettings_stack.set_visible_child_name("layouts");
-                //  layoutsgrid.get_preferred_size(out minsize, out wh);
                 break;
                 case 2:
                 allsettings_stack.set_visible_child_name("rules");
-                //  rulesgrid.get_preferred_size(out minsize, out wh);
-                //  GLib.HashTable<string, Variant> foundrules;
-                update_currentrules(); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                update_currentrules();
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
-                //  general_settingsgrid.get_preferred_size(out minsize, out wh);
                 break;
             }
-            //  if (wh != null) {
-            //      //  scroll_up(settings_scrolledwindow, wh.height);
-            //  }
         }
 
         private void set_margins(
@@ -751,7 +714,6 @@ namespace ShufflerControls2 {
             grid.set_margin_top(top);
             grid.set_margin_bottom(bottom);
         }
-
     }
 
     public static void main(string[] args) {
