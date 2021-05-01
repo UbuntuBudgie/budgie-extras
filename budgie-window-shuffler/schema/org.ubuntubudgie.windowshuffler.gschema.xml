@@ -4,15 +4,25 @@
             id="org.ubuntubudgie.windowshuffler">
         <key type="i" name="cols">
             <summary>Number of grid columns</summary>
-            <description>Default umber of columns in the window grid</description>
+            <description>Default number of columns for a custom grid size</description>
             <default>2</default>
 	    <range min="1" max="10"/>
         </key>
         <key type="i" name="rows">
             <summary>Number of grid rows</summary>
-            <description>Default umber of rows in the window grid</description>
+            <description>Default number of columns for a custom grid size</description>
             <default>2</default>
 	    <range min="1" max="10"/>
+        </key>
+        <key type="b" name="basictiling">
+            <summary>Enable basic tiling</summary>
+            <description>Enable basic quarter / half tiling shortcuts</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="customgridtiling">
+            <summary>Enable custom grid tiling</summary>
+            <description>Enable tiling, resizing and moving shortcuts to be used in a custom grid size</description>
+            <default>false</default>
         </key>
         <key type="b" name="swapgeometry">
             <summary>Swap window geometry between windows on grid when jumping</summary>
@@ -26,7 +36,7 @@
         </key>
         <key type="b" name="windowrules">
             <summary>Whether to use window rules or not</summary>
-            <description>This setting is to enable set rules for wm classes</description>
+            <description>This setting is to enable to set position, size and display rules for wm classes</description>
             <default>false</default>
         </key>
         <key type="b" name="stickyneighbors">
@@ -47,7 +57,7 @@
         <key type="b" name="runshuffler">
             <summary>Run the WindowShuffler daemon</summary>
             <description>Run the daemon to be able to use shortcuts and cli options of Window Shuffler</description>
-            <default>false</default>
+            <default>true</default>
         </key>
         <key type="b" name="runshufflergui">
             <summary>Run the WindowShuffler GUI daemon</summary>
@@ -56,12 +66,12 @@
         </key>
         <key type="s" name="newwindowaction">
             <summary>Command to run on creation of new windows</summary>
-            <description>On creation of a new window, run a command</description>
+            <description>On creation of a new window, run a command. This setting is not available in Shuffler control. Window rules should be off to prevent clashing actions</description>
             <default>""</default>
         </key>
         <key type="s" name="closedwindowaction">
             <summary>Comaand to run on closing windows</summary>
-            <description>On closure of a window, run a command</description>
+            <description>On closure of a window, run a command. This setting is not available in Shuffler control</description>
             <default>""</default>
         </key>
         <key type="i" name="greyshade">

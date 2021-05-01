@@ -900,7 +900,6 @@ namespace ShufflerEssentialInfo {
     }
 
     private void update_rulesdata () {
-
         windowrules = GetWindowRules.find_rules(windowrule_location);
         foreach (string k in windowrules.get_keys()) {
         }

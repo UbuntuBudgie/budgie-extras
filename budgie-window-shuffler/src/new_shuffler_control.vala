@@ -178,6 +178,10 @@ namespace ShufflerControls2 {
         Grid general_settingsgrid;
         Grid newrulesgrid;
 
+        private void update_settings_gui(Settings settings) { /////////////////////////////////////////////////////////////////////////////////////////////
+
+        };
+
         private string create_dirs_file (string subpath) {
             // defines, and if needed, creates directory for rules
             string homedir = Environment.get_home_dir();
@@ -290,6 +294,7 @@ namespace ShufflerControls2 {
             // window stuff
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
+
             // watch rulesdir
             string windowrule_location = create_dirs_file(".config/budgie-extras/shuffler/windowrules");
             try {
@@ -299,7 +304,8 @@ namespace ShufflerControls2 {
             }
             catch (Error e) {
             }
-            print(@"$windowrule_location\n");
+            // watch settings
+            GLib.Settings shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
 
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
