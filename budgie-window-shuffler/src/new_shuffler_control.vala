@@ -178,9 +178,79 @@ namespace ShufflerControls2 {
         Grid general_settingsgrid;
         Grid newrulesgrid;
 
-        private void update_settings_gui(Settings settings) { /////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////
+        GLib.Settings shufflersettings;
+        Gtk.Switch enable_basictilingswitch;
+        Gtk.Switch enable_advancedtilingswitch;
+        Gtk.Switch enable_layouts;
+        Gtk.Switch enable_rules;
+        Gtk.Switch enable_animationswich;
 
-        };
+
+
+        CheckButton toggle_sticky;
+        CheckButton toggle_swap;
+        CheckButton toggle_notification;
+        CheckButton toggle_guigrid;
+
+        OwnSpinButton grid_horsize;
+        OwnSpinButton grid_vertsize;
+        OwnSpinButton leftmarginspin;
+        OwnSpinButton rightmarginspin;
+        OwnSpinButton topmarginspin;
+        OwnSpinButton bottommarginspin;
+        OwnSpinButton paddingspin;
+
+        bool follow_up;
+        ///////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////
+
+
+        private void update_settings_gui() { /////////////////////////////////////////////////////////////////////////////////////////////
+            // lazy programming: all-in-one widget update
+            // prevent circular effect; set widget's connect off
+            follow_up = false;
+            print("action\n");
+            // switches
+            Gtk.Switch[] switches = {
+                enable_basictilingswitch, enable_advancedtilingswitch,
+                enable_layouts, enable_rules, enable_animationswich
+            };
+            string[] read_switchsettings = {
+                "basictiling", "customgridtiling", "runlayouts",
+                "windowrules", "softmove"
+            };
+            for (int i=0; i<switches.length; i++) {
+                switches[i].set_active(shufflersettings.get_boolean(read_switchsettings[i]));
+            }
+            // checkbuttons
+            Gtk.CheckButton[] checkbuttons = {
+                toggle_sticky, toggle_swap, toggle_notification,
+                toggle_guigrid
+            };
+            string[] read_checkbutton = {
+                "stickyneighbors", "swapgeometry", "showwarning",
+                "runshufflergui"
+            };
+            for (int i=0; i<checkbuttons.length; i++) {
+                checkbuttons[i].set_active(shufflersettings.get_boolean(read_checkbutton[i]));
+            }
+            // spinbutons
+            OwnSpinButton[] spins = {
+                grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
+                topmarginspin, bottommarginspin, paddingspin
+            };
+            string[] read_spins = {
+                "cols", "rows", "marginleft", "marginright", "margintop",
+                "marginbottom", "padding"
+            };
+            for (int i=0; i<spins.length; i++) {
+                spins[i].set_value(shufflersettings.get_int(read_spins[i]));
+            }
+
+            follow_up = true;
+        }
 
         private string create_dirs_file (string subpath) {
             // defines, and if needed, creates directory for rules
@@ -305,7 +375,9 @@ namespace ShufflerControls2 {
             catch (Error e) {
             }
             // watch settings
-            GLib.Settings shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
+            shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler"); /////////////////////////////////////////////////////////////////////////////////////////////
+            shufflersettings.changed.connect(update_settings_gui);
+
 
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
@@ -373,7 +445,7 @@ namespace ShufflerControls2 {
             basicshortcutsheader.get_style_context().add_class("justbold");
             switchgrid_basicshortcuts.attach(basicshortcutsheader, 0, 0, 1, 1);
             switchgrid_basicshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_basictilingswitch = new Gtk.Switch();
+            enable_basictilingswitch = new Gtk.Switch();
             switchgrid_basicshortcuts.attach(enable_basictilingswitch, 2, 0, 1, 1);
             tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
             // basic shortcutlist (in subgrid)
@@ -401,7 +473,7 @@ namespace ShufflerControls2 {
             advancedcutsheader.get_style_context().add_class("justbold");
             switchgrid_advancedshortcuts.attach(advancedcutsheader, 0, 0, 1, 1);
             switchgrid_advancedshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_advancedtilingswitch = new Gtk.Switch();
+            enable_advancedtilingswitch = new Gtk.Switch();
             switchgrid_advancedshortcuts.attach(enable_advancedtilingswitch, 2, 0, 1, 1);
             tilinggrid.attach(switchgrid_advancedshortcuts, 0, 15, 10, 1);
 
@@ -415,14 +487,14 @@ namespace ShufflerControls2 {
             gridsize_cols_label.xalign = 0;
             gridsizegrid.attach(gridsize_cols_label, 0, 0, 1, 1);
             gridsizegrid.attach(new Label(" "), 1, 0, 1, 1);
-            OwnSpinButton grid_horsize = new OwnSpinButton("hor", 0, 10);
+            grid_horsize = new OwnSpinButton("hor", 0, 10);
             gridsizegrid.attach(grid_horsize, 2, 0, 1, 1);
             gridsizegrid.attach(new Label("\t"), 3, 0, 1, 1);
             Label grid_vertsize_label = new Label("Rows");
             grid_vertsize_label.xalign = 0;
             gridsizegrid.attach(grid_vertsize_label, 4, 0, 1, 1);
             gridsizegrid.attach(new Label(" "), 5, 0, 1, 1);
-            OwnSpinButton grid_vertsize = new OwnSpinButton("vert", 0, 10);
+            grid_vertsize = new OwnSpinButton("vert", 0, 10);
             gridsizegrid.attach(grid_vertsize, 6, 0, 1, 1);
             tilinggrid.attach(gridsizegrid, 0, 17, 10, 1);
 
@@ -438,7 +510,7 @@ namespace ShufflerControls2 {
             stickylabel.xalign = 0; // optimize please
             optionsgrid.attach(stickylabel, 0, 0, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            CheckButton toggle_sticky = new CheckButton();
+            toggle_sticky = new CheckButton();
             optionsgrid.attach(toggle_sticky, 2, 0, 1, 1);
 
             // swap
@@ -446,7 +518,7 @@ namespace ShufflerControls2 {
             swaplabel.xalign = 0; // optimize please
             optionsgrid.attach(swaplabel, 0, 1, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 1, 1, 1);
-            CheckButton toggle_swap = new CheckButton();
+            toggle_swap = new CheckButton();
             optionsgrid.attach(toggle_swap, 2, 1, 1, 1);
 
             // notification
@@ -454,7 +526,7 @@ namespace ShufflerControls2 {
             notificationlabel.xalign = 0; // optimize please
             optionsgrid.attach(notificationlabel, 0, 2, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 2, 1, 1);
-            CheckButton toggle_notification = new CheckButton();
+            toggle_notification = new CheckButton();
             optionsgrid.attach(toggle_notification, 2, 2, 1, 1);
 
             // guigrid
@@ -462,7 +534,7 @@ namespace ShufflerControls2 {
             useguigridlabel.xalign = 0; // optimize please
             optionsgrid.attach(useguigridlabel, 0, 3, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
-            CheckButton toggle_guigrid = new CheckButton();
+            toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
             Label guishortcutsheader = new Label("GUI grid shortcuts" + ":");
@@ -581,7 +653,7 @@ namespace ShufflerControls2 {
             layoutssheader.get_style_context().add_class("justbold");
             switchgrid_layouts.attach(layoutssheader, 0, 0, 1, 1);
             switchgrid_layouts.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_layouts = new Gtk.Switch();
+            enable_layouts = new Gtk.Switch();
             switchgrid_layouts.attach(enable_layouts, 2, 0, 1, 1);
             layoutsgrid.attach(switchgrid_layouts, 0, 0, 10, 1);
             Grid layoutshortcutgrid = new Grid();
@@ -612,7 +684,7 @@ namespace ShufflerControls2 {
             rulessheader.get_style_context().add_class("justbold");
             switchgrid_rules.attach(rulessheader, 0, 0, 1, 1);
             switchgrid_rules.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_rules = new Gtk.Switch();
+            enable_rules = new Gtk.Switch();
             switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
             rulesgrid.attach(new Label(""), 0, 1, 10, 1);
@@ -642,10 +714,10 @@ namespace ShufflerControls2 {
             margins_header.get_style_context().add_class("justbold");
             margins_header.xalign = 0;
             general_settingsgrid.attach(margins_header, 0, 0, 100, 1);
-            OwnSpinButton leftmarginspin = new OwnSpinButton("vert", 0, 200);
-            OwnSpinButton rightmarginspin = new OwnSpinButton("vert", 0, 200);
-            OwnSpinButton topmarginspin = new OwnSpinButton("vert", 0, 200);
-            OwnSpinButton bottommarginspin = new OwnSpinButton("vert", 0, 200);
+            leftmarginspin = new OwnSpinButton("vert", 0, 200);
+            rightmarginspin = new OwnSpinButton("vert", 0, 200);
+            topmarginspin = new OwnSpinButton("vert", 0, 200);
+            bottommarginspin = new OwnSpinButton("vert", 0, 200);
             general_settingsgrid.attach(new Label(""), 0, 5, 1, 1);
             Grid marginsgrid = new Grid();
             marginsgrid.set_row_spacing(10);
@@ -678,7 +750,7 @@ namespace ShufflerControls2 {
             paddinglabel.xalign = 0; // optimize please
             paddinggrid.attach(paddinglabel, 0, 0, 1, 1);
             paddinggrid.attach(new Label("\t"), 1, 0, 1, 1);
-            OwnSpinButton paddingspin = new OwnSpinButton("vert", 0, 200);
+            paddingspin = new OwnSpinButton("vert", 0, 200);
             paddinggrid.attach(paddingspin, 2, 0, 1, 1);
             general_settingsgrid.attach(paddinggrid, 0, 7, 10, 1);
             general_settingsgrid.attach(new Label(""), 0, 8, 1, 1);
@@ -690,7 +762,7 @@ namespace ShufflerControls2 {
             useanimationheader.get_style_context().add_class("justbold");
             useanimationsubgrid.attach(useanimationheader, 0, 0, 1, 1);
             useanimationsubgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_animationswich = new Gtk.Switch();
+            enable_animationswich = new Gtk.Switch();
             useanimationsubgrid.attach(enable_animationswich, 2, 0, 1, 1);
             general_settingsgrid.attach(useanimationsubgrid, 0, 9, 3, 1);
             ScrolledWindow scrolled_misc = new ScrolledWindow(null, null);
@@ -703,6 +775,7 @@ namespace ShufflerControls2 {
             listbox.show_all();
             maingrid.show_all();
             this.show_all();
+            update_settings_gui();
         }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
