@@ -181,13 +181,6 @@ namespace ShufflerControls2 {
         ///////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////
         GLib.Settings shufflersettings;
-        Gtk.Switch enable_basictilingswitch;
-        Gtk.Switch enable_advancedtilingswitch;
-        Gtk.Switch enable_layouts;
-        Gtk.Switch enable_rules;
-        Gtk.Switch enable_animationswich;
-
-
 
         CheckButton toggle_sticky;
         CheckButton toggle_swap;
@@ -215,15 +208,7 @@ namespace ShufflerControls2 {
             // prevent circular effect; set widget's connect off
             follow_up = false;
             print("action\n");
-            // switches
-            switches = {
-                enable_basictilingswitch, enable_advancedtilingswitch,
-                enable_layouts, enable_rules, enable_animationswich
-            };
-            read_switchsettings = {
-                "basictiling", "customgridtiling", "runlayouts",
-                "windowrules", "softmove"
-            };
+
             for (int i=0; i<switches.length; i++) {
                 switches[i].set_active(shufflersettings.get_boolean(read_switchsettings[i]));
             }
@@ -378,8 +363,8 @@ namespace ShufflerControls2 {
             catch (Error e) {
             }
             // watch settings
-            shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler"); /////////////////////////////////////////////////////////////////////////////////////////////
-            shufflersettings.changed.connect(update_settings_gui);
+            shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
+            //  shufflersettings.changed.connect(update_settings_gui);
 
 
             var tilingicon = new Gtk.Image.from_icon_name(
@@ -448,7 +433,7 @@ namespace ShufflerControls2 {
             basicshortcutsheader.get_style_context().add_class("justbold");
             switchgrid_basicshortcuts.attach(basicshortcutsheader, 0, 0, 1, 1);
             switchgrid_basicshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
-            enable_basictilingswitch = new Gtk.Switch();
+            Gtk.Switch enable_basictilingswitch = new Gtk.Switch();
             switchgrid_basicshortcuts.attach(enable_basictilingswitch, 2, 0, 1, 1);
             tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
             // basic shortcutlist (in subgrid)
@@ -476,7 +461,7 @@ namespace ShufflerControls2 {
             advancedcutsheader.get_style_context().add_class("justbold");
             switchgrid_advancedshortcuts.attach(advancedcutsheader, 0, 0, 1, 1);
             switchgrid_advancedshortcuts.attach(new Label("\t"), 1, 0, 1, 1);
-            enable_advancedtilingswitch = new Gtk.Switch();
+            Gtk.Switch enable_advancedtilingswitch = new Gtk.Switch();
             switchgrid_advancedshortcuts.attach(enable_advancedtilingswitch, 2, 0, 1, 1);
             tilinggrid.attach(switchgrid_advancedshortcuts, 0, 15, 10, 1);
 
@@ -656,7 +641,7 @@ namespace ShufflerControls2 {
             layoutssheader.get_style_context().add_class("justbold");
             switchgrid_layouts.attach(layoutssheader, 0, 0, 1, 1);
             switchgrid_layouts.attach(new Label("\t"), 1, 0, 1, 1);
-            enable_layouts = new Gtk.Switch();
+            Gtk.Switch enable_layouts = new Gtk.Switch();
             switchgrid_layouts.attach(enable_layouts, 2, 0, 1, 1);
             layoutsgrid.attach(switchgrid_layouts, 0, 0, 10, 1);
             Grid layoutshortcutgrid = new Grid();
@@ -687,7 +672,7 @@ namespace ShufflerControls2 {
             rulessheader.get_style_context().add_class("justbold");
             switchgrid_rules.attach(rulessheader, 0, 0, 1, 1);
             switchgrid_rules.attach(new Label("\t"), 1, 0, 1, 1);
-            enable_rules = new Gtk.Switch();
+            Gtk.Switch enable_rules = new Gtk.Switch();
             switchgrid_rules.attach(enable_rules, 2, 0, 1, 1);
             rulesgrid.attach(switchgrid_rules, 0, 0, 10, 1);
             rulesgrid.attach(new Label(""), 0, 1, 10, 1);
@@ -765,7 +750,7 @@ namespace ShufflerControls2 {
             useanimationheader.get_style_context().add_class("justbold");
             useanimationsubgrid.attach(useanimationheader, 0, 0, 1, 1);
             useanimationsubgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            enable_animationswich = new Gtk.Switch();
+            Gtk.Switch enable_animationswich = new Gtk.Switch();
             useanimationsubgrid.attach(enable_animationswich, 2, 0, 1, 1);
             general_settingsgrid.attach(useanimationsubgrid, 0, 9, 3, 1);
             ScrolledWindow scrolled_misc = new ScrolledWindow(null, null);
@@ -778,19 +763,31 @@ namespace ShufflerControls2 {
             listbox.show_all();
             maingrid.show_all();
             this.show_all();
-            update_settings_gui();
+            //  update_settings_gui();
 
             // connect stuff
+            switches = {
+                enable_basictilingswitch, enable_advancedtilingswitch,
+                enable_layouts, enable_rules, enable_animationswich
+            };
+            read_switchsettings = {
+                "basictiling", "customgridtiling", "runlayouts",
+                "windowrules", "softmove"
+            };
+            update_settings_gui();
+            shufflersettings.changed.connect(update_settings_gui);
+
             // 1. switches
             for (int i=0; i<switches.length; i++) {
                 Switch currswitch = switches[i];
                 string currsett = read_switchsettings[i];
                 currswitch.state_set.connect(() => {
-                    bool newstate = !currswitch.get_state();
                     set_switchvalue(currswitch, currsett);
                     return false;
                 });
             }
+
+
         }
 
         private void set_switchvalue (
