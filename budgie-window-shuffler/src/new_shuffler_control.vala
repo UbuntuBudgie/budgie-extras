@@ -202,6 +202,9 @@ namespace ShufflerControls2 {
         OwnSpinButton bottommarginspin;
         OwnSpinButton paddingspin;
 
+        Gtk.Switch[] switches;
+        string[] read_switchsettings;
+
         bool follow_up;
         ///////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////
@@ -213,11 +216,11 @@ namespace ShufflerControls2 {
             follow_up = false;
             print("action\n");
             // switches
-            Gtk.Switch[] switches = {
+            switches = {
                 enable_basictilingswitch, enable_advancedtilingswitch,
                 enable_layouts, enable_rules, enable_animationswich
             };
-            string[] read_switchsettings = {
+            read_switchsettings = {
                 "basictiling", "customgridtiling", "runlayouts",
                 "windowrules", "softmove"
             };
@@ -776,7 +779,30 @@ namespace ShufflerControls2 {
             maingrid.show_all();
             this.show_all();
             update_settings_gui();
+
+            // connect stuff
+            // 1. switches
+            for (int i=0; i<switches.length; i++) {
+                Switch currswitch = switches[i];
+                string currsett = read_switchsettings[i];
+                currswitch.state_set.connect(() => {
+                    bool newstate = !currswitch.get_state();
+                    set_switchvalue(currswitch, currsett);
+                    return false;
+                });
+            }
         }
+
+        private void set_switchvalue (
+            Switch sw, string settingname) {
+                print(@"settingname: $settingname\n");
+                if (follow_up == true) {
+                    bool newstate = !sw.get_state();
+                    shufflersettings.set_boolean(settingname, newstate);
+                }
+        }
+
+
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
             Grid rowgrid = new Gtk.Grid();
