@@ -187,16 +187,10 @@ namespace ShufflerControls2 {
         CheckButton toggle_notification;
         CheckButton toggle_guigrid;
 
-        OwnSpinButton grid_horsize;
-        OwnSpinButton grid_vertsize;
-        OwnSpinButton leftmarginspin;
-        OwnSpinButton rightmarginspin;
-        OwnSpinButton topmarginspin;
-        OwnSpinButton bottommarginspin;
-        OwnSpinButton paddingspin;
-
         Gtk.Switch[] switches;
         string[] read_switchsettings;
+        OwnSpinButton[] spins;
+        string[] read_spins;
 
         bool follow_up;
         ///////////////////////////////////////////////////////////////////////////////////
@@ -224,15 +218,6 @@ namespace ShufflerControls2 {
             for (int i=0; i<checkbuttons.length; i++) {
                 checkbuttons[i].set_active(shufflersettings.get_boolean(read_checkbutton[i]));
             }
-            // spinbutons
-            OwnSpinButton[] spins = {
-                grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
-                topmarginspin, bottommarginspin, paddingspin
-            };
-            string[] read_spins = {
-                "cols", "rows", "marginleft", "marginright", "margintop",
-                "marginbottom", "padding"
-            };
             for (int i=0; i<spins.length; i++) {
                 spins[i].set_value(shufflersettings.get_int(read_spins[i]));
             }
@@ -348,13 +333,13 @@ namespace ShufflerControls2 {
         }
 
         public ShufflerControlsWindow() {
-
             // window stuff
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
-
             // watch rulesdir
-            string windowrule_location = create_dirs_file(".config/budgie-extras/shuffler/windowrules");
+            string windowrule_location = create_dirs_file(
+                ".config/budgie-extras/shuffler/windowrules"
+            );
             try {
                 File rulesdir = File.new_for_path(windowrule_location);
                 monitor_ruleschange = rulesdir.monitor(FileMonitorFlags.NONE, null);
@@ -362,10 +347,8 @@ namespace ShufflerControls2 {
             }
             catch (Error e) {
             }
-            // watch settings
+            // settings
             shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
-            //  shufflersettings.changed.connect(update_settings_gui);
-
 
             var tilingicon = new Gtk.Image.from_icon_name(
                 "tilingicon-symbolic", Gtk.IconSize.DND);
@@ -475,14 +458,14 @@ namespace ShufflerControls2 {
             gridsize_cols_label.xalign = 0;
             gridsizegrid.attach(gridsize_cols_label, 0, 0, 1, 1);
             gridsizegrid.attach(new Label(" "), 1, 0, 1, 1);
-            grid_horsize = new OwnSpinButton("hor", 0, 10);
+            OwnSpinButton grid_horsize = new OwnSpinButton("hor", 0, 10);
             gridsizegrid.attach(grid_horsize, 2, 0, 1, 1);
             gridsizegrid.attach(new Label("\t"), 3, 0, 1, 1);
             Label grid_vertsize_label = new Label("Rows");
             grid_vertsize_label.xalign = 0;
             gridsizegrid.attach(grid_vertsize_label, 4, 0, 1, 1);
             gridsizegrid.attach(new Label(" "), 5, 0, 1, 1);
-            grid_vertsize = new OwnSpinButton("vert", 0, 10);
+            OwnSpinButton grid_vertsize = new OwnSpinButton("vert", 0, 10);
             gridsizegrid.attach(grid_vertsize, 6, 0, 1, 1);
             tilinggrid.attach(gridsizegrid, 0, 17, 10, 1);
 
@@ -702,10 +685,10 @@ namespace ShufflerControls2 {
             margins_header.get_style_context().add_class("justbold");
             margins_header.xalign = 0;
             general_settingsgrid.attach(margins_header, 0, 0, 100, 1);
-            leftmarginspin = new OwnSpinButton("vert", 0, 200);
-            rightmarginspin = new OwnSpinButton("vert", 0, 200);
-            topmarginspin = new OwnSpinButton("vert", 0, 200);
-            bottommarginspin = new OwnSpinButton("vert", 0, 200);
+            OwnSpinButton leftmarginspin = new OwnSpinButton("vert", 0, 200);
+            OwnSpinButton rightmarginspin = new OwnSpinButton("vert", 0, 200);
+            OwnSpinButton topmarginspin = new OwnSpinButton("vert", 0, 200);
+            OwnSpinButton bottommarginspin = new OwnSpinButton("vert", 0, 200);
             general_settingsgrid.attach(new Label(""), 0, 5, 1, 1);
             Grid marginsgrid = new Grid();
             marginsgrid.set_row_spacing(10);
@@ -738,7 +721,7 @@ namespace ShufflerControls2 {
             paddinglabel.xalign = 0; // optimize please
             paddinggrid.attach(paddinglabel, 0, 0, 1, 1);
             paddinggrid.attach(new Label("\t"), 1, 0, 1, 1);
-            paddingspin = new OwnSpinButton("vert", 0, 200);
+            OwnSpinButton paddingspin = new OwnSpinButton("vert", 0, 200);
             paddinggrid.attach(paddingspin, 2, 0, 1, 1);
             general_settingsgrid.attach(paddinggrid, 0, 7, 10, 1);
             general_settingsgrid.attach(new Label(""), 0, 8, 1, 1);
@@ -763,7 +746,6 @@ namespace ShufflerControls2 {
             listbox.show_all();
             maingrid.show_all();
             this.show_all();
-            //  update_settings_gui();
 
             // connect stuff
             switches = {
@@ -774,8 +756,6 @@ namespace ShufflerControls2 {
                 "basictiling", "customgridtiling", "runlayouts",
                 "windowrules", "softmove"
             };
-            update_settings_gui();
-            shufflersettings.changed.connect(update_settings_gui);
 
             // 1. switches
             for (int i=0; i<switches.length; i++) {
@@ -787,16 +767,49 @@ namespace ShufflerControls2 {
                 });
             }
 
+            // 2. OwnSpinButtons
+            spins = {
+                grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
+                topmarginspin, bottommarginspin, paddingspin
+            };
+            read_spins = {
+                "cols", "rows", "marginleft", "marginright", "margintop",
+                "marginbottom", "padding"
+            };
 
+            for (int i=0; i<spins.length; i++) {
+                OwnSpinButton currspin = spins[i];
+                string currsett = read_spins[i];
+                currspin.spinvalue.changed.connect(() => {
+                    set_ownspinvalue(currspin, currsett);
+                });
+            }
+
+            update_settings_gui();
+            shufflersettings.changed.connect(update_settings_gui);
+        }
+
+
+        private void set_ownspinvalue (
+            OwnSpinButton sp, string settingname
+        ) {
+            print(@"settingname: $settingname\n");
+            if (follow_up == true) {
+                int newval = sp.get_value();
+                print(@"$newval\n");
+                shufflersettings.set_int(settingname, newval);
+
+            }
         }
 
         private void set_switchvalue (
-            Switch sw, string settingname) {
-                print(@"settingname: $settingname\n");
-                if (follow_up == true) {
-                    bool newstate = !sw.get_state();
-                    shufflersettings.set_boolean(settingname, newstate);
-                }
+            Switch sw, string settingname
+        ) {
+            print(@"settingname: $settingname\n");
+            if (follow_up == true) {
+                bool newstate = !sw.get_state();
+                shufflersettings.set_boolean(settingname, newstate);
+            }
         }
 
 
