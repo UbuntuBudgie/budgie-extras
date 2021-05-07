@@ -44,13 +44,13 @@ Main categories for the control interface:
 
  // todo: all strings to translate in one place
  // optimize labels {one step less}
- // optimize creation of switchrids
+ // optimize creation of switchgrids
  // make update rules conditional (rules is on in gsettings)
 
 
 namespace ShufflerControls2 {
 
-    GLib.Settings shufflersettings; /////////////////////////////////////////////
+    GLib.Settings shufflersettings;
 
     class OwnSpinButton : Gtk.Grid{
 
@@ -369,7 +369,7 @@ namespace ShufflerControls2 {
             // stack
             allsettings_stack = new Gtk.Stack();
             maingrid.attach(allsettings_stack, 2, 1, 1, 1);
-            allsettings_stack.set_transition_type(StackTransitionType.CROSSFADE);
+            allsettings_stack.set_transition_type(StackTransitionType.OVER_RIGHT_LEFT);
 
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
@@ -607,6 +607,21 @@ namespace ShufflerControls2 {
             layoutsgrid.attach(new Label(""), 0, 2, 1, 1);
             Button manage_layoutsbutton = new Gtk.Button();
             manage_layoutsbutton.label = "Setup now";
+
+
+            manage_layoutsbutton.clicked.connect(()=> {
+                //  string layoutsetup_path = Config.SHUFFLER_DIR + "/toggle_layouts_popup";
+                string layoutsetup_path = "/usr/lib/budgie-window-shuffler" + "/toggle_layouts_popup";
+                print(@"$layoutsetup_path\n");
+                try {
+                    Process.spawn_command_line_sync(layoutsetup_path);
+                }
+                catch (Error e) {
+                }
+            });
+
+
+
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
 
