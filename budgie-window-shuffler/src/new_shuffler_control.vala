@@ -181,16 +181,12 @@ namespace ShufflerControls2 {
         ///////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////
         GLib.Settings shufflersettings;
-
-        CheckButton toggle_sticky;
-        CheckButton toggle_swap;
-        CheckButton toggle_notification;
-        CheckButton toggle_guigrid;
-
         Gtk.Switch[] switches;
         string[] read_switchsettings;
         OwnSpinButton[] spins;
         string[] read_spins;
+        Gtk.CheckButton[] checkbuttons;
+        string[] read_checkbutton;
 
         bool follow_up;
         ///////////////////////////////////////////////////////////////////////////////////
@@ -206,15 +202,6 @@ namespace ShufflerControls2 {
             for (int i=0; i<switches.length; i++) {
                 switches[i].set_active(shufflersettings.get_boolean(read_switchsettings[i]));
             }
-            // checkbuttons
-            Gtk.CheckButton[] checkbuttons = {
-                toggle_sticky, toggle_swap, toggle_notification,
-                toggle_guigrid
-            };
-            string[] read_checkbutton = {
-                "stickyneighbors", "swapgeometry", "showwarning",
-                "runshufflergui"
-            };
             for (int i=0; i<checkbuttons.length; i++) {
                 checkbuttons[i].set_active(shufflersettings.get_boolean(read_checkbutton[i]));
             }
@@ -481,7 +468,7 @@ namespace ShufflerControls2 {
             stickylabel.xalign = 0; // optimize please
             optionsgrid.attach(stickylabel, 0, 0, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            toggle_sticky = new CheckButton();
+            CheckButton toggle_sticky = new CheckButton();
             optionsgrid.attach(toggle_sticky, 2, 0, 1, 1);
 
             // swap
@@ -489,7 +476,7 @@ namespace ShufflerControls2 {
             swaplabel.xalign = 0; // optimize please
             optionsgrid.attach(swaplabel, 0, 1, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 1, 1, 1);
-            toggle_swap = new CheckButton();
+            CheckButton toggle_swap = new CheckButton();
             optionsgrid.attach(toggle_swap, 2, 1, 1, 1);
 
             // notification
@@ -497,7 +484,7 @@ namespace ShufflerControls2 {
             notificationlabel.xalign = 0; // optimize please
             optionsgrid.attach(notificationlabel, 0, 2, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 2, 1, 1);
-            toggle_notification = new CheckButton();
+            CheckButton toggle_notification = new CheckButton();
             optionsgrid.attach(toggle_notification, 2, 2, 1, 1);
 
             // guigrid
@@ -505,7 +492,7 @@ namespace ShufflerControls2 {
             useguigridlabel.xalign = 0; // optimize please
             optionsgrid.attach(useguigridlabel, 0, 3, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
-            toggle_guigrid = new CheckButton();
+            CheckButton toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
             Label guishortcutsheader = new Label("GUI grid shortcuts" + ":");
@@ -785,8 +772,39 @@ namespace ShufflerControls2 {
                 });
             }
 
+            // 3. checkbuttons
+            checkbuttons = {
+                toggle_sticky, toggle_swap, toggle_notification,
+                toggle_guigrid
+            };
+            read_checkbutton = {
+                "stickyneighbors", "swapgeometry", "showwarning",
+                "runshufflergui"
+            };
+
+            for (int i=0; i<checkbuttons.length; i++) {
+                CheckButton cb = checkbuttons[i];
+                string currsett = read_checkbutton[i];
+                cb.toggled.connect(() => {
+                    set_checkbuttonvalue(cb, currsett);
+                });
+            }
+
             update_settings_gui();
             shufflersettings.changed.connect(update_settings_gui);
+        }
+
+
+        private void set_checkbuttonvalue (
+            CheckButton cb, string settingname
+        ) {
+            print(@"settingname: $settingname\n");
+            if (follow_up == true) {
+                bool newval = cb.get_active();
+                print(@"$newval\n");
+                shufflersettings.set_boolean(settingname, newval);
+
+            }
         }
 
 
