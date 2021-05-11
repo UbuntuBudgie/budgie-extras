@@ -50,14 +50,25 @@ Main categories for the control interface:
 
 namespace ShufflerControls2 {
 
+
+    private void set_widgetstyle(Widget w, string css_style, bool remove = false) {
+        var widgets_stylecontext = w.get_style_context();
+        if (!remove) {
+            widgets_stylecontext.add_class(css_style);
+        }
+        else {
+            widgets_stylecontext.remove_class(css_style);
+        }
+    }
+
     GLib.Settings shufflersettings;
 
     class OwnSpinButton : Gtk.Grid{
 
         public Gtk.Entry spinvalue;
-        public int set_spinvalue { get; set; }
         Gtk.Button up;
         Gtk.Button down;
+        bool act_onchange;
         // css stuff
         string spin_stylecss = """
         .arrowbutton {
@@ -65,20 +76,13 @@ namespace ShufflerControls2 {
             border-width: 0px;
         }
         """;
-        private void set_widgetstyle(Widget w, string css_style, bool remove = false) {
-            var widgets_stylecontext = w.get_style_context();
-            if (!remove) {
-                widgets_stylecontext.add_class(css_style);
-            }
-            else {
-                widgets_stylecontext.remove_class(css_style);
-            }
-        }
 
         public OwnSpinButton(
            string orientation, string key, int min = 0, int max = 10
         ) {
             // css stuff
+            act_onchange = true;
+
             Gdk.Screen gdk_scr = this.get_screen();
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
             try {
@@ -96,13 +100,27 @@ namespace ShufflerControls2 {
             spinvalue.set_text("0");
             spinvalue.set_width_chars(2);
             spinvalue.set_max_width_chars(2);
+
             spinvalue.changed.connect(()=>{
-                set_spinvalue = get_value();
-                print(@"$set_spinvalue\n");
+                if (key != "") {
+                    if (act_onchange == true) {
+                        int set_spinvalue = get_value();
+                        shufflersettings.set_int(key, set_spinvalue);
+                        print(@"$set_spinvalue\n");
+                    }
+                }
             });
-            shufflersettings.changed[key].connect(()=> {
-                update_value(key);
-            });
+
+            if (key != "") {
+                print(@"$key, key is valid\n");
+                shufflersettings.changed[key].connect(()=> {
+                    act_onchange = false;
+                    update_value(key);
+                    act_onchange = true;
+                });
+            }
+
+
             up = new Gtk.Button();
             set_widgetstyle(up, "arrowbutton");
             up.set_size_request(1,1);
@@ -131,7 +149,9 @@ namespace ShufflerControls2 {
             down.clicked.connect(()=> {
                 add_one(down, min, max);
             });
-            update_value(key);
+            if (key != "") {
+                update_value(key);
+            }
         }
 
         private void update_value (string key) {
@@ -189,12 +209,204 @@ namespace ShufflerControls2 {
         Grid general_settingsgrid;
         Grid newrulesgrid;
 
+        Dialog get_task;
+
         Gtk.Switch[] switches;
         string[] read_switchsettings;
         OwnSpinButton[] spins;
         string[] read_spins;
         Gtk.CheckButton[] checkbuttons;
         string[] read_checkbutton;
+
+
+        private string[] get_monitornames() {
+            Gdk.Display gdk_dsp = Gdk.Display.get_default();
+            int n_monitors = gdk_dsp.get_n_monitors();
+            string[] monitors = {};
+            for (int i=0; i < n_monitors; i++) {
+                monitors += gdk_dsp.get_monitor(i).get_model();
+
+            }
+            return monitors;
+        }
+
+        private void call_dialog (
+        ) {
+            //  // tooltips
+            //  string command_tooltip = _("Command to launch window or application (*mandatory)");
+            string class_tooltip = "Window class of the window to be launched (*mandatory)";
+            //  string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
+            string gridxsize_tooltip = "Grid size - columns";
+            string gridysize_tooltip = "Grid size - rows";
+            string targetpositionx_tooltip = "Window target position on grid - horizontally";
+            string targetpositiony_tooltip = "Window target position on grid - vertically";
+            string xspan_tooltip = "Window size - columns";
+            string yspan_tooltip = "Window size - rows";
+            string monitor_tooltip = "Target monitor, default is on active monitor";
+            //  string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
+            get_task = new Dialog();
+            var contentarea = get_task.get_content_area();
+            contentarea.orientation = Gtk.Orientation.VERTICAL;
+            // mastergrid
+            Grid master_grid = new Gtk.Grid();
+            set_margins(master_grid, 30, 30, 30, 30);
+            contentarea.pack_start(master_grid, false, false, 0);
+            ////////////////////
+            ////////////////////
+            // 1. APPLICATION FRAME
+            Frame applicationframe = new Gtk.Frame("Application");
+            var app_label = applicationframe.get_label_widget();
+            set_widgetstyle(app_label, "justbold");
+            // application grid
+            Grid applicationgrid = new Gtk.Grid();
+            set_margins(applicationgrid, 20, 20, 20, 20);
+            applicationgrid.set_row_spacing(4);
+            // - wmclass
+            Label wmclass_label = new Label("WM class group*");
+            wmclass_label.xalign = 0;
+            Entry wmclass_entry = new Entry();    ////// other scope?
+            wmclass_entry.set_tooltip_text(class_tooltip);
+            wmclass_entry.set_text("");
+            wmclass_entry.set_size_request(250, 10);
+            wmclass_entry.set_placeholder_text("Click a window to fetch");
+            applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
+            applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
+            applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
+
+            applicationframe.add(applicationgrid);
+            master_grid.attach(applicationframe, 1, 10, 10, 1);
+            master_grid.attach(new Label(""), 1, 20, 1, 1);
+            ////////////////////
+            ////////////////////
+            //  2. GEOMETRY FRAME
+            Frame geometryframe = new Gtk.Frame("Window position & size");
+            var geo_label = geometryframe.get_label_widget();
+            set_widgetstyle(geo_label, "justbold");
+            master_grid.attach(geometryframe, 1, 30, 10, 1);
+            // geometry grid
+            Grid geogrid = new Gtk.Grid();
+            set_margins(geogrid, 20, 20, 20, 20);
+            geogrid.set_row_spacing(0);
+            // grid cols / rows
+            Label grid_size_label = new Label("Grid size; colums & rows");
+            grid_size_label.xalign = 0;
+            geogrid.attach(grid_size_label, 1, 10, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 10, 1, 1);
+            //  // get current gridsize
+            //  //  read_currentgrid(client);
+            OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", "", 1, 10);
+            grid_xsize_spin.set_tooltip_text(gridxsize_tooltip);
+
+
+            //  grid_xsize_spin.set_value(set_gridxsize);
+            OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", "", 1, 10);
+            grid_ysize_spin.set_tooltip_text(gridysize_tooltip);
+            //  grid_ysize_spin.set_value(set_gridysize);
+            Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
+            gridsize_box.pack_start(new Label("\t"), false, false, 0);
+            gridsize_box.pack_start(grid_ysize_spin, false, false, 0);
+            geogrid.attach(gridsize_box, 3, 10, 1, 1);
+            geogrid.attach(new Label(""), 1, 11, 1, 1);
+            // window position
+            Label winpos_label = new Label("Target window position, x / y");
+            winpos_label.xalign = 0;
+            geogrid.attach(winpos_label, 1, 12, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 12, 1, 1);
+            OwnSpinButton xpos_spin = new OwnSpinButton("hor", "", 0, 10);
+            xpos_spin.set_tooltip_text(targetpositionx_tooltip);
+            xpos_spin.set_value(0);
+            OwnSpinButton ypos_spin = new OwnSpinButton("vert", "", 0, 10);
+            ypos_spin.set_tooltip_text(targetpositiony_tooltip);
+            ypos_spin.set_value(0);
+            Box winpos_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            winpos_box.pack_start(xpos_spin, false, false, 0);
+            winpos_box.pack_start(new Label("\t"), false, false, 0);
+            winpos_box.pack_start(ypos_spin, false, false, 0);
+            geogrid.attach(winpos_box, 3, 12, 1, 1);
+            geogrid.attach(new Label(""), 1, 13, 1, 1);
+            // window span
+            Label cellspan_label = new Label("Window cell span, hor / vert");
+            cellspan_label.xalign = 0;
+
+            geogrid.attach(cellspan_label, 1, 14, 1, 1);
+            geogrid.attach(new Label("\t"), 2, 14, 1, 1);
+            OwnSpinButton yspan_spin = new OwnSpinButton("vert", "", 1, 10);
+            yspan_spin.set_tooltip_text(yspan_tooltip);
+            yspan_spin.set_value(1);
+            OwnSpinButton xspan_spin = new OwnSpinButton("hor", "", 1, 10);
+            xspan_spin.set_tooltip_text(xspan_tooltip);
+            xspan_spin.set_value(1);
+            Box winspan_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            winspan_box.pack_start(xspan_spin, false, false, 0);
+            winspan_box.pack_start(new Label("\t"), false, false, 0);
+            winspan_box.pack_start(yspan_spin, false, false, 0);
+            geogrid.attach(winspan_box, 3, 14, 1, 1);
+            geogrid.attach(new Label(""), 1, 13, 1, 1);
+            geometryframe.add(geogrid);
+            master_grid.attach(new Label(""), 1, 31, 1, 1);
+            Gtk.Frame miscframe = new Gtk.Frame("Miscellaneous");
+            var misc_label = miscframe.get_label_widget();
+            set_widgetstyle(misc_label, "justbold");
+            master_grid.attach(miscframe, 1, 50, 10, 1);
+            Grid miscgrid = new Gtk.Grid();
+            set_margins(miscgrid, 20, 20, 20, 20);
+            miscgrid.set_row_spacing(4);
+            miscframe.add(miscgrid);
+            ///////////////////////
+            // targetmonitor
+            Label targetmonitor_label = new Label("Target monitor");
+            miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
+            ComboBoxText screendropdown = new ComboBoxText();
+            screendropdown.set_tooltip_text(monitor_tooltip);
+            string[] mons = get_monitornames();
+            foreach (string m in mons) {
+                screendropdown.append_text(m);
+            }
+            miscgrid.attach(new Label("\t"), 2, 1, 1, 1);
+            miscgrid.attach(screendropdown, 3, 1, 1, 1);
+            ////////////////////
+            ////////////////////
+
+            master_grid.attach(new Label(""), 1, 109, 1, 1);
+
+            Gtk.Box dialogaction_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            Button applytask_button = new Gtk.Button();
+            applytask_button.label = "Done";
+            applytask_button.set_size_request(90, 10);
+            applytask_button.clicked.connect(()=> {
+                apply_newrule(wmclass_entry);
+            });
+            Button canceltask_button = new Gtk.Button();
+            canceltask_button.label = "Cancel";
+            canceltask_button.set_size_request(90, 10);
+            canceltask_button.clicked.connect(()=> {
+                get_task.destroy();
+                get_task = null;
+            });
+            dialogaction_box.pack_end(applytask_button, false, false, 2);
+            dialogaction_box.pack_end(canceltask_button, false, false, 2);
+            master_grid.attach(dialogaction_box, 1, 110, 10, 1); //
+
+            get_task.set_transient_for(this);
+            get_task.decorated = false;
+            contentarea.show_all();
+            get_task.run();
+        }
+
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        private void apply_newrule(Entry e) {
+            foreach (string k in foundrules.get_keys()) {
+                print(@"$k\n");
+                if (e.get_text() == k) {
+                    print("already exists\n");
+                }
+
+            }
+        }
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
 
         private string create_dirs_file (string subpath) {
             // defines, and if needed, creates directory for rules
@@ -369,7 +581,7 @@ namespace ShufflerControls2 {
             // stack
             allsettings_stack = new Gtk.Stack();
             maingrid.attach(allsettings_stack, 2, 1, 1, 1);
-            allsettings_stack.set_transition_type(StackTransitionType.OVER_RIGHT_LEFT);
+            allsettings_stack.set_transition_type(StackTransitionType.OVER_UP_DOWN);
 
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
@@ -656,6 +868,14 @@ namespace ShufflerControls2 {
             Gtk.Button newrulebutton = new Button();
             newrulebutton.label = "Add new rule";
             newrulebutton.set_size_request(1,1);
+
+
+            newrulebutton.clicked.connect(()=> {
+                print("dialog?\n");
+                call_dialog();
+            });
+
+
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
 
@@ -745,19 +965,19 @@ namespace ShufflerControls2 {
                     "state", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
             // 2. OwnSpinButtons
-            spins = {
-                grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
-                topmarginspin, bottommarginspin, paddingspin
-            };
-            read_spins = {
-                "cols", "rows", "marginleft", "marginright", "margintop",
-                "marginbottom", "padding"
-            };
+            //  spins = {
+            //      grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
+            //      topmarginspin, bottommarginspin, paddingspin
+            //  };
+            //  read_spins = {
+            //      "cols", "rows", "marginleft", "marginright", "margintop",
+            //      "marginbottom", "padding"
+            //  };
 
-            for (int i=0; i<spins.length; i++) {
-                shufflersettings.bind(read_spins[i], spins[i],
-                    "set_spinvalue", SettingsBindFlags.SET);
-            }
+            //  for (int i=0; i<spins.length; i++) {
+            //      shufflersettings.bind(read_spins[i], spins[i],
+            //          "set_spinvalue", SettingsBindFlags.SET);
+            //  }
 
             checkbuttons = {
                 toggle_sticky, toggle_swap, toggle_notification,
