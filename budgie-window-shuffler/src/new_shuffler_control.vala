@@ -75,7 +75,20 @@ namespace ShufflerControls2 {
             padding: 0px;
             border-width: 0px;
         }
+        .red_text {
+            color: white;
+            background-color: red;
+        }
         """;
+
+        public void set_warning_color(bool warning = false) {
+            if (warning == true) {
+                set_widgetstyle(spinvalue, "red_text");
+            }
+            else {
+                set_widgetstyle(spinvalue, "red_text", true);
+            }
+        }
 
         public OwnSpinButton(
            string orientation, string key, int min = 0, int max = 10
@@ -375,7 +388,10 @@ namespace ShufflerControls2 {
             applytask_button.label = "Done";
             applytask_button.set_size_request(90, 10);
             applytask_button.clicked.connect(()=> {
-                apply_newrule(wmclass_entry);
+                apply_newrule(
+                    wmclass_entry, grid_xsize_spin, grid_ysize_spin,
+                    xpos_spin, ypos_spin, xspan_spin, yspan_spin
+                );
             });
             Button canceltask_button = new Gtk.Button();
             canceltask_button.label = "Cancel";
@@ -391,20 +407,72 @@ namespace ShufflerControls2 {
             get_task.set_transient_for(this);
             get_task.decorated = false;
             contentarea.show_all();
+
+            ///
+            OwnSpinButton[] allspins = {
+                grid_xsize_spin, grid_ysize_spin, xpos_spin, ypos_spin, xspan_spin, yspan_spin
+            };
+            foreach (OwnSpinButton spin in allspins) {
+                spin.spinvalue.changed.connect(()=> {
+                    set_spincolor(allspins);
+                });
+            };
+            ///
+
+
+
             get_task.run();
         }
 
         ///////////////////////////////////////////////////
         ///////////////////////////////////////////////////
-        private void apply_newrule(Entry e) {
+        private void apply_newrule(
+            Entry e, OwnSpinButton x, OwnSpinButton y, OwnSpinButton xpos,
+            OwnSpinButton ypos, OwnSpinButton xspan, OwnSpinButton yspan
+        ) {
+            string classname = e.get_text();
+            int xval = x.get_value();
+            int yval = y.get_value();
+            int xposval = xpos.get_value();
+            int yposval = ypos.get_value();
+            int xspanval = xspan.get_value();
+            int yspanval = yspan.get_value();
+            print(@"$classname, $xval, $yval, $xposval, $yposval, $xspanval, $yspanval\n");
+
             foreach (string k in foundrules.get_keys()) {
-                print(@"$k\n");
                 if (e.get_text() == k) {
                     print("already exists\n");
                 }
-
             }
         }
+
+        private void set_spincolor(OwnSpinButton[] spins) {
+            var xsize = spins[0];
+            var ysize = spins[1];
+            var xpos = spins[2];
+            var ypos = spins[3];
+            var xspan = spins[4];
+            var yspan = spins[5];
+            OwnSpinButton[] xes = {xsize, xpos, xspan};
+            OwnSpinButton[] yses = {ysize, ypos, yspan};
+            bool xred = xsize.get_value() < (xpos.get_value() + xspan.get_value());
+            bool yred = ysize.get_value() < (ypos.get_value() + yspan.get_value());
+            foreach (OwnSpinButton spbx in xes) {
+                spbx.set_warning_color(xred);
+            }
+            foreach (OwnSpinButton spby in yses) {
+                spby.set_warning_color(yred);
+            }
+        }
+
+        //  public void set_warning_color(bool warning = false) {
+        //      if (warning == true) {
+        //          set_widgetstyle(spinvalue, "red_text");
+        //      }
+        //      else {
+        //          set_widgetstyle(spinvalue, "red_text", true);
+        //      }
+        //  }
         ///////////////////////////////////////////////////
         ///////////////////////////////////////////////////
 
