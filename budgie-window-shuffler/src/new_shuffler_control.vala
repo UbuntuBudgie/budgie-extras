@@ -1,7 +1,9 @@
 using Gtk;
 using Gdk;
+using Wnck;
+using Gdk.X11;
 
-// valac --pkg gtk+-3.0 --pkg gdk-3.0 --pkg gio-2.0
+// valac --pkg gtk+-3.0 --pkg gdk-x11-3.0 --pkg gdk-3.0 --pkg gio-2.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
 
 /*
 Budgie Window Shuffler II
@@ -50,6 +52,7 @@ Main categories for the control interface:
 
 namespace ShufflerControls2 {
 
+    GLib.Settings shufflersettings;
 
     private void set_widgetstyle(Widget w, string css_style, bool remove = false) {
         var widgets_stylecontext = w.get_style_context();
@@ -61,7 +64,6 @@ namespace ShufflerControls2 {
         }
     }
 
-    GLib.Settings shufflersettings;
 
     class OwnSpinButton : Gtk.Grid{
 
@@ -82,7 +84,7 @@ namespace ShufflerControls2 {
         """;
 
         public void set_warning_color(bool warning = false) {
-            if (warning == true) {
+            if (warning) {
                 set_widgetstyle(spinvalue, "red_text");
             }
             else {
@@ -95,7 +97,6 @@ namespace ShufflerControls2 {
         ) {
             // css stuff
             act_onchange = true;
-
             Gdk.Screen gdk_scr = this.get_screen();
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
             try {
@@ -113,17 +114,15 @@ namespace ShufflerControls2 {
             spinvalue.set_text("0");
             spinvalue.set_width_chars(2);
             spinvalue.set_max_width_chars(2);
-
             spinvalue.changed.connect(()=>{
                 if (key != "") {
-                    if (act_onchange == true) {
+                    if (act_onchange) {
                         int set_spinvalue = get_value();
                         shufflersettings.set_int(key, set_spinvalue);
                         print(@"$set_spinvalue\n");
                     }
                 }
             });
-
             if (key != "") {
                 print(@"$key, key is valid\n");
                 shufflersettings.changed[key].connect(()=> {
@@ -132,8 +131,6 @@ namespace ShufflerControls2 {
                     act_onchange = true;
                 });
             }
-
-
             up = new Gtk.Button();
             set_widgetstyle(up, "arrowbutton");
             up.set_size_request(1,1);
@@ -194,6 +191,7 @@ namespace ShufflerControls2 {
 
     class ShufflerControlsWindow : Gtk.Window {
 
+        Gdk.X11.Window timestamp_window;
         ShufflerInfoClient? client;
         [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
         interface ShufflerInfoClient : Object {
@@ -216,6 +214,8 @@ namespace ShufflerControls2 {
         }
         """;
 
+        Wnck.Screen wnck_scr;
+
         Grid tilinggrid;
         Grid layoutsgrid;
         Grid rulesgrid;
@@ -231,20 +231,23 @@ namespace ShufflerControls2 {
         Gtk.CheckButton[] checkbuttons;
         string[] read_checkbutton;
 
-
         private string[] get_monitornames() {
             Gdk.Display gdk_dsp = Gdk.Display.get_default();
             int n_monitors = gdk_dsp.get_n_monitors();
             string[] monitors = {};
             for (int i=0; i < n_monitors; i++) {
                 monitors += gdk_dsp.get_monitor(i).get_model();
-
             }
             return monitors;
         }
 
         private void call_dialog (
         ) {
+            unowned X.Window xwindow = Gdk.X11.get_default_root_xwindow();
+            unowned X.Display xdisplay = Gdk.X11.get_default_xdisplay();
+            Gdk.X11.Display display = Gdk.X11.Display.lookup_for_xdisplay(xdisplay);
+            timestamp_window = new Gdk.X11.Window.foreign_for_display(display, xwindow);
+            bool initial_change = true;
             //  // tooltips
             //  string command_tooltip = _("Command to launch window or application (*mandatory)");
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
@@ -278,6 +281,9 @@ namespace ShufflerControls2 {
             Label wmclass_label = new Label("WM class group*");
             wmclass_label.xalign = 0;
             Entry wmclass_entry = new Entry();    ////// other scope?
+            wmclass_entry.changed.connect(()=> {
+                set_widgetstyle(wmclass_entry, "red_text", true);
+            });
             wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
             wmclass_entry.set_size_request(250, 10);
@@ -285,7 +291,6 @@ namespace ShufflerControls2 {
             applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
             applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
             applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
-
             applicationframe.add(applicationgrid);
             master_grid.attach(applicationframe, 1, 10, 10, 1);
             master_grid.attach(new Label(""), 1, 20, 1, 1);
@@ -308,13 +313,11 @@ namespace ShufflerControls2 {
             //  // get current gridsize
             //  //  read_currentgrid(client);
             OwnSpinButton grid_xsize_spin = new OwnSpinButton("hor", "", 1, 10);
+            grid_xsize_spin.set_value(shufflersettings.get_int("cols"));
             grid_xsize_spin.set_tooltip_text(gridxsize_tooltip);
-
-
-            //  grid_xsize_spin.set_value(set_gridxsize);
             OwnSpinButton grid_ysize_spin = new OwnSpinButton("vert", "", 1, 10);
+            grid_ysize_spin.set_value(shufflersettings.get_int("rows"));
             grid_ysize_spin.set_tooltip_text(gridysize_tooltip);
-            //  grid_ysize_spin.set_value(set_gridysize);
             Box gridsize_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             gridsize_box.pack_start(grid_xsize_spin, false, false, 0);
             gridsize_box.pack_start(new Label("\t"), false, false, 0);
@@ -341,7 +344,6 @@ namespace ShufflerControls2 {
             // window span
             Label cellspan_label = new Label("Window cell span, hor / vert");
             cellspan_label.xalign = 0;
-
             geogrid.attach(cellspan_label, 1, 14, 1, 1);
             geogrid.attach(new Label("\t"), 2, 14, 1, 1);
             OwnSpinButton yspan_spin = new OwnSpinButton("vert", "", 1, 10);
@@ -390,7 +392,8 @@ namespace ShufflerControls2 {
             applytask_button.clicked.connect(()=> {
                 apply_newrule(
                     wmclass_entry, grid_xsize_spin, grid_ysize_spin,
-                    xpos_spin, ypos_spin, xspan_spin, yspan_spin
+                    xpos_spin, ypos_spin, xspan_spin, yspan_spin,
+                    screendropdown
                 );
             });
             Button canceltask_button = new Gtk.Button();
@@ -407,7 +410,6 @@ namespace ShufflerControls2 {
             get_task.set_transient_for(this);
             get_task.decorated = false;
             contentarea.show_all();
-
             ///
             OwnSpinButton[] allspins = {
                 grid_xsize_spin, grid_ysize_spin, xpos_spin, ypos_spin, xspan_spin, yspan_spin
@@ -419,25 +421,75 @@ namespace ShufflerControls2 {
             };
             ///
 
-
-
+            wnck_scr.active_window_changed.connect(()=> {
+                if (wmclass_entry.is_focus && initial_change == false) {
+                    Wnck.Window? newactive = wnck_scr.get_active_window();
+                    if (newactive != null) {
+                        Wnck.WindowType wtype = newactive.get_window_type();
+                        string classname = newactive.get_class_group_name().down();
+                        if (
+                            classname != "new_shuffler_control" &&
+                            wtype == Wnck.WindowType.NORMAL
+                        ) {
+                            wmclass_entry.set_text(classname);
+                        }
+                    }
+                    makesure_offocus();
+                };
+                initial_change = false;
+            });
             get_task.run();
+        }
+
+        private uint get_now() {
+            // get timestamp
+            return Gdk.X11.get_server_time(timestamp_window);
+        }
+
+        private void makesure_offocus () {
+            foreach (Wnck.Window w in wnck_scr.get_windows()) {
+                if (w.get_name().down() == "Window Shuffler Controls") {
+                    w.activate(get_now());
+                    break;
+                }
+                else if (w.get_name() == "new_shuffler_control") {
+                    w.activate(get_now());
+                }
+            }
         }
 
         ///////////////////////////////////////////////////
         ///////////////////////////////////////////////////
         private void apply_newrule(
             Entry e, OwnSpinButton x, OwnSpinButton y, OwnSpinButton xpos,
-            OwnSpinButton ypos, OwnSpinButton xspan, OwnSpinButton yspan
+            OwnSpinButton ypos, OwnSpinButton xspan, OwnSpinButton yspan,
+            ComboBoxText dropdown
         ) {
+            bool apply = true;
+            string monitorline = "";
             string classname = e.get_text();
-            int xval = x.get_value();
-            int yval = y.get_value();
+            if (classname == "") {
+                apply = false;
+                print("set red now\n");
+                set_widgetstyle(e, "red_text");
+            }
+            int cols = x.get_value();
+            int rows = y.get_value();
             int xposval = xpos.get_value();
             int yposval = ypos.get_value();
             int xspanval = xspan.get_value();
             int yspanval = yspan.get_value();
-            print(@"$classname, $xval, $yval, $xposval, $yposval, $xspanval, $yspanval\n");
+            string disp = dropdown.get_active_text();
+            if (disp != null) {
+                monitorline = @"\nMonitor=$disp";
+            }
+            string filecontent =  @"\nCols=$cols".concat(
+                @"\nRows=$rows", @"\nXPosition=$xposval",
+                @"\nYPosition=$yposval",@"\nXSpan=$xspanval",
+                @"\nYSpan=$yspanval", monitorline
+            );
+
+            print(@"$filecontent\n");
 
             foreach (string k in foundrules.get_keys()) {
                 if (e.get_text() == k) {
@@ -445,6 +497,40 @@ namespace ShufflerControls2 {
                 }
             }
         }
+
+        // keep a bit longer for possible spare parts
+
+        //  private void apply_taskedit(
+        //      string candidate_file, bool apply = false, string? path = null
+        //  ) {
+        //      try {
+        //          File targetfile;
+        //          if (apply && path != null) {
+        //              targetfile = File.new_for_path(path);
+        //          }
+        //          else {
+        //              string runfile =  "/tmp/".concat(username, "_istestingtask");
+        //              targetfile = File.new_for_path(runfile);
+        //          }
+        //          if (targetfile.query_exists ()) {
+        //              delete_file(targetfile);
+        //          }
+        //          // Create a new file with this name
+        //          var file_stream = targetfile.create (FileCreateFlags.REPLACE_DESTINATION);
+        //          var data_stream = new DataOutputStream (file_stream);
+        //          data_stream.put_string (candidate_file);
+        //          if (!apply) {
+        //              string testcommand = Config.SHUFFLER_DIR + "/run_layout use_testing";
+        //              // keep for quick compile & test
+        //              //  string testcommand = "/lib/budgie-window-shuffler/run_layout use_testing";
+        //              run_command(testcommand);
+        //          }
+        //      }
+        //      catch (Error e) {
+        //          stderr.printf ("Error: %s\n", e.message);
+        //      }
+        //  }
+
 
         private void set_spincolor(OwnSpinButton[] spins) {
             var xsize = spins[0];
@@ -465,14 +551,6 @@ namespace ShufflerControls2 {
             }
         }
 
-        //  public void set_warning_color(bool warning = false) {
-        //      if (warning == true) {
-        //          set_widgetstyle(spinvalue, "red_text");
-        //      }
-        //      else {
-        //          set_widgetstyle(spinvalue, "red_text", true);
-        //      }
-        //  }
         ///////////////////////////////////////////////////
         ///////////////////////////////////////////////////
 
@@ -583,6 +661,7 @@ namespace ShufflerControls2 {
         }
 
         public ShufflerControlsWindow() {
+            wnck_scr = Wnck.Screen.get_default();
             // window stuff
             this.title = "Window Shuffler Controls";
             this.set_resizable(false);
@@ -887,8 +966,6 @@ namespace ShufflerControls2 {
             layoutsgrid.attach(new Label(""), 0, 2, 1, 1);
             Button manage_layoutsbutton = new Gtk.Button();
             manage_layoutsbutton.label = "Setup now";
-
-
             manage_layoutsbutton.clicked.connect(()=> {
                 //  string layoutsetup_path = Config.SHUFFLER_DIR + "/toggle_layouts_popup";
                 string layoutsetup_path = "/usr/lib/budgie-window-shuffler" + "/toggle_layouts_popup";
@@ -899,12 +976,8 @@ namespace ShufflerControls2 {
                 catch (Error e) {
                 }
             });
-
-
-
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
-
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
             rulesgrid.set_row_spacing(20);
@@ -936,17 +1009,12 @@ namespace ShufflerControls2 {
             Gtk.Button newrulebutton = new Button();
             newrulebutton.label = "Add new rule";
             newrulebutton.set_size_request(1,1);
-
-
             newrulebutton.clicked.connect(()=> {
                 print("dialog?\n");
                 call_dialog();
             });
-
-
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
-
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
@@ -1017,7 +1085,6 @@ namespace ShufflerControls2 {
             listbox.show_all();
             maingrid.show_all();
             this.show_all();
-
             // connect stuff
             switches = {
                 enable_basictilingswitch, enable_advancedtilingswitch,
@@ -1032,21 +1099,6 @@ namespace ShufflerControls2 {
                 shufflersettings.bind(read_switchsettings[i], switches[i],
                     "state", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
-            // 2. OwnSpinButtons
-            //  spins = {
-            //      grid_horsize, grid_vertsize, leftmarginspin, rightmarginspin,
-            //      topmarginspin, bottommarginspin, paddingspin
-            //  };
-            //  read_spins = {
-            //      "cols", "rows", "marginleft", "marginright", "margintop",
-            //      "marginbottom", "padding"
-            //  };
-
-            //  for (int i=0; i<spins.length; i++) {
-            //      shufflersettings.bind(read_spins[i], spins[i],
-            //          "set_spinvalue", SettingsBindFlags.SET);
-            //  }
-
             checkbuttons = {
                 toggle_sticky, toggle_swap, toggle_notification,
                 toggle_guigrid
@@ -1055,7 +1107,6 @@ namespace ShufflerControls2 {
                 "stickyneighbors", "swapgeometry", "showwarning",
                 "runshufflergui"
             };
-
             for (int i=0; i<checkbuttons.length; i++) {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
