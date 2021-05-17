@@ -36,7 +36,7 @@ budgie mini-apps - see the individual components for details
  - Budgie Wallstreet
  - Budgie Quickchar (needs the extras daemon as a runtime dependency)
  - Budgie Window Previews (needs the extras daemon as a runtime dependency)
- - Budgie Shuffler
+ - Budgie Shuffler (needs the extras daemon as a runtime dependency)
  
  ## Installation
 
@@ -63,7 +63,7 @@ We love Budgie-Extras to work across as many distro's as possible.  So please le
 
  - Arch - https://www.archlinux.org/packages/community/x86_64/budgie-extras/
  - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
- - Debian - packages are available in Buster named "budgie-insertname-applet" https://goo.gl/R4eF7q
+ - Debian - packages are available in Buster/Bullseye named "budgie-insertname-applet" https://goo.gl/R4eF7q
  
  [![Packaging status](https://repology.org/badge/vertical-allrepos/budgie-extras.svg)](https://repology.org/project/budgie-extras/versions)
 
