@@ -45,7 +45,6 @@ Main categories for the control interface:
  */
 
  // todo: all strings to translate in one place
- // make update rules conditional (rules is on in gsettings) !!
 
 
 namespace ShufflerControls2 {
@@ -211,22 +210,17 @@ namespace ShufflerControls2 {
             font-style: italic;
         }
         """;
-
         Wnck.Screen wnck_scr;
-
         Grid tilinggrid;
         Grid layoutsgrid;
         Grid rulesgrid;
         Grid general_settingsgrid;
         Grid newrulesgrid;
-
         Dialog? get_task;
         bool surpass_connect = false;
 
         Gtk.Switch[] switches;
         string[] read_switchsettings;
-        //  OwnSpinButton[] spins;
-        //  string[] read_spins;
         Gtk.CheckButton[] checkbuttons;
         string[] read_checkbutton;
         string windowrule_location;
@@ -316,9 +310,7 @@ namespace ShufflerControls2 {
             // if wm class is given, we obviously are updating existing rule
             bool update = (wmclass != null);
               //  // tooltips
-            //  string command_tooltip = _("Command to launch window or application (*mandatory)");
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
-            //  string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
             string gridxsize_tooltip = "Grid size - columns";
             string gridysize_tooltip = "Grid size - rows";
             string targetpositionx_tooltip = "Window target position on grid - horizontally";
@@ -326,7 +318,6 @@ namespace ShufflerControls2 {
             string xspan_tooltip = "Window size - columns";
             string yspan_tooltip = "Window size - rows";
             string monitor_tooltip = "Target monitor, default is on active monitor";
-            //  string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
             get_task = new Dialog();
             var contentarea = get_task.get_content_area();
             contentarea.orientation = Gtk.Orientation.VERTICAL;
@@ -334,7 +325,6 @@ namespace ShufflerControls2 {
             Grid master_grid = new Gtk.Grid();
             set_margins(master_grid, 30, 30, 30, 30);
             contentarea.pack_start(master_grid, false, false, 0);
-
             // 1. APPLICATION FRAME
             Frame applicationframe = new Gtk.Frame("Application");
             var app_label = applicationframe.get_label_widget();
@@ -365,7 +355,6 @@ namespace ShufflerControls2 {
             applicationframe.add(applicationgrid);
             master_grid.attach(applicationframe, 1, 10, 10, 1);
             master_grid.attach(new Label(""), 1, 20, 1, 1);
-
             //  2. GEOMETRY FRAME
             Frame geometryframe = new Gtk.Frame("Window position & size");
             var geo_label = geometryframe.get_label_widget();
@@ -969,7 +958,6 @@ namespace ShufflerControls2 {
             Widget[] checkswitch = {
                 optionsgrid, gridsizegrid, customgridsettings_label, options_label
             };
-
             set_widget_sensitive(checkswitch, "customgridtiling");
             shufflersettings.changed["customgridtiling"].connect(()=>{
                 set_widget_sensitive(checkswitch, "customgridtiling");
@@ -980,7 +968,6 @@ namespace ShufflerControls2 {
                 "Toggle GUI grid", "Add a column",
                 "Add a row", "Remove column", "Remove row",
             };
-
             string[] guishortcuts = {
                 "Ctrl + Alt + S", "→", "↓", "←", "↑"
             };
@@ -1144,7 +1131,6 @@ namespace ShufflerControls2 {
             });
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
-
             Widget[] ruleswidgets = {newrulesgrid, newrulebutton};
             set_widget_sensitive(ruleswidgets, "windowrules");
             // GENERAL SETTINGS PAGE
@@ -1251,7 +1237,6 @@ namespace ShufflerControls2 {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
-
             shufflersettings.changed.connect(()=> {
                 manage_daemon();
                 surpass_connect = false;
@@ -1274,18 +1259,27 @@ namespace ShufflerControls2 {
                 // we wouldn't have a gsettings update cause another one
                 surpass_connect = true;
                 shufflersettings.set_boolean("runshuffler", sens);
+                if (!sens) {
+                    // and again, we need to surpass
+                    surpass_connect = true;
+                    /*
+                    if shuffler daemon is off, we need gui to be off as well
+                    to prevent shortcuts to be active set in vain, since we
+                    split up functionality now
+                    */
+                    shufflersettings.set_boolean("runshufflergui", false);
+                }
                 general_settingsgrid.set_sensitive(sens);
             }
-
         }
 
         private void set_widget_sensitive(
-            Widget[] widgets, string key) {
-                foreach (Widget w in widgets) {
-                    bool newval = shufflersettings.get_boolean(key);
-                    w.set_sensitive(newval);
-                }
-
+            Widget[] widgets, string key
+        ) {
+            foreach (Widget w in widgets) {
+                bool newval = shufflersettings.get_boolean(key);
+                w.set_sensitive(newval);
+            }
         }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
@@ -1312,7 +1306,6 @@ namespace ShufflerControls2 {
                 if (shufflersettings.get_boolean("runshuffler")) {
                     update_currentrules();
                 }
-                //  update_currentrules();
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
