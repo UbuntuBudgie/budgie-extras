@@ -45,9 +45,7 @@ Main categories for the control interface:
  */
 
  // todo: all strings to translate in one place
- // optimize labels {one step less}
- // optimize creation of switchgrids
- // make update rules conditional (rules is on in gsettings)
+ // make update rules conditional (rules is on in gsettings) !!
 
 
 namespace ShufflerControls2 {
@@ -223,6 +221,7 @@ namespace ShufflerControls2 {
         Grid newrulesgrid;
 
         Dialog? get_task;
+        bool surpass_connect = false;
 
         Gtk.Switch[] switches;
         string[] read_switchsettings;
@@ -807,7 +806,12 @@ namespace ShufflerControls2 {
             try {
                 File rulesdir = File.new_for_path(windowrule_location);
                 monitor_ruleschange = rulesdir.monitor(FileMonitorFlags.NONE, null);
-                monitor_ruleschange.changed.connect(update_currentrules);
+                monitor_ruleschange.changed.connect(()=> {
+                    // prevent Dbus error
+                    if (shufflersettings.get_boolean("runshuffler")) {
+                        update_currentrules();
+                    }
+                });
             }
             catch (Error e) {
             }
@@ -962,6 +966,14 @@ namespace ShufflerControls2 {
             CheckButton toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
+            Widget[] checkswitch = {
+                optionsgrid, gridsizegrid, customgridsettings_label, options_label
+            };
+
+            set_widget_sensitive(checkswitch, "customgridtiling");
+            shufflersettings.changed["customgridtiling"].connect(()=>{
+                set_widget_sensitive(checkswitch, "customgridtiling");
+            });
             Label guishortcutsheader = makelabel("GUI grid shortcuts" + ":", 0, "justitalic");
             tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
             string[] guis = {
@@ -1092,6 +1104,14 @@ namespace ShufflerControls2 {
             });
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
+            shufflersettings.changed["runlayouts"].connect(()=> {
+                manage_layoutsbutton.set_sensitive(
+                    shufflersettings.get_boolean("runlayouts")
+                );
+            });
+            manage_layoutsbutton.set_sensitive(
+                shufflersettings.get_boolean("runlayouts")
+            );
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
             rulesgrid.set_row_spacing(20);
@@ -1117,7 +1137,6 @@ namespace ShufflerControls2 {
             scrolled_rules.add(rulesgrid);
             scrolled_rules.set_propagate_natural_width(true);
             Gtk.Button newrulebutton = new Button();
-            newrulebutton.set_sensitive(enable_rules.get_state());
             newrulebutton.label = "Add new rule";
             newrulebutton.set_size_request(1,1);
             newrulebutton.clicked.connect(()=> {
@@ -1125,9 +1144,9 @@ namespace ShufflerControls2 {
             });
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
-            bool currstate = shufflersettings.get_boolean("windowrules");
-            newrulesgrid.set_sensitive(currstate);
-            newrulebutton.set_sensitive(currstate);
+
+            Widget[] ruleswidgets = {newrulesgrid, newrulebutton};
+            set_widget_sensitive(ruleswidgets, "windowrules");
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
@@ -1214,9 +1233,7 @@ namespace ShufflerControls2 {
                 "windowrules", "softmove"
             };
             shufflersettings.changed["windowrules"].connect(()=>{
-                bool curr_set = shufflersettings.get_boolean("windowrules");
-                newrulesgrid.set_sensitive(curr_set);
-                newrulebutton.set_sensitive(curr_set);
+                set_widget_sensitive(ruleswidgets, "windowrules");
             });
             for (int i=0; i<switches.length; i++) {
                 shufflersettings.bind(read_switchsettings[i], switches[i],
@@ -1234,6 +1251,41 @@ namespace ShufflerControls2 {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
+
+            shufflersettings.changed.connect(()=> {
+                manage_daemon();
+                surpass_connect = false;
+            });
+            manage_daemon();
+        }
+
+        private void manage_daemon() {
+            string[] relevant_keys = {
+                "basictiling", "customgridtiling", "runlayouts", "windowrules"
+            };
+            bool sens = false;
+            if (!surpass_connect) {
+                foreach (string k in relevant_keys) {
+                    sens = shufflersettings.get_boolean(k);
+                    if (sens) {
+                        break;
+                    }
+                }
+                // we wouldn't have a gsettings update cause another one
+                surpass_connect = true;
+                shufflersettings.set_boolean("runshuffler", sens);
+                general_settingsgrid.set_sensitive(sens);
+            }
+
+        }
+
+        private void set_widget_sensitive(
+            Widget[] widgets, string key) {
+                foreach (Widget w in widgets) {
+                    bool newval = shufflersettings.get_boolean(key);
+                    w.set_sensitive(newval);
+                }
+
         }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
@@ -1257,7 +1309,10 @@ namespace ShufflerControls2 {
                 break;
                 case 2:
                 allsettings_stack.set_visible_child_name("rules");
-                update_currentrules();
+                if (shufflersettings.get_boolean("runshuffler")) {
+                    update_currentrules();
+                }
+                //  update_currentrules();
                 break;
                 case 3:
                 allsettings_stack.set_visible_child_name("general");
