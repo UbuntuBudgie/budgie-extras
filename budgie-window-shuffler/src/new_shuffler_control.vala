@@ -188,6 +188,25 @@ namespace ShufflerControls2 {
 
     class ShufflerControlsWindow : Gtk.Window {
 
+        ExtrasDaemon bd_client;
+
+        [DBus (name = "org.UbuntuBudgie.ExtrasDaemon")]
+        interface ExtrasDaemon : Object {
+            public abstract bool ReloadShortcuts () throws Error;
+        }
+
+        private void setup_client () {
+            try {
+                bd_client = Bus.get_proxy_sync (
+                    BusType.SESSION, "org.UbuntuBudgie.ExtrasDaemon",
+                    ("/org/ubuntubudgie/extrasdaemon")
+                );
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+        }
+
         Gdk.X11.Window timestamp_window;
         ShufflerInfoClient? client;
         [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -782,6 +801,7 @@ namespace ShufflerControls2 {
         }
 
         public ShufflerControlsWindow() {
+            setup_client();
             wnck_scr = Wnck.Screen.get_default();
             // window stuff
             this.title = "Window Shuffler Controls";
@@ -1263,6 +1283,12 @@ namespace ShufflerControls2 {
                 shufflersettings.set_boolean("runshufflergui", false);
             }
             general_settingsgrid.set_sensitive(sens);
+            try {
+                bd_client.ReloadShortcuts();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
         }
 
         private void set_widget_sensitive(
