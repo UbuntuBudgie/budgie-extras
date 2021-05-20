@@ -896,12 +896,13 @@ namespace ShufflerControls2 {
             // translations!
             string[] basics = {
                 "Top-left", "Top-right", "Bottom-right", "Bottom-left",
-                "Left-half", "Top-half", "Right-half", "Bottom-half"
+                "Left-half", "Top-half", "Right-half", "Bottom-half",
+                "Toggle maximize"
             };
             string[] basicshortcuts = {
                 "Ctrl + Alt + 7", "Ctrl + Alt + 9", "Ctrl + Alt + 3",
                 "Ctrl + Alt + 1", "Ctrl + Alt + 4", "Ctrl + Alt + 8",
-                "Ctrl + Alt + 6", "Ctrl + Alt + 2"
+                "Ctrl + Alt + 6", "Ctrl + Alt + 2", "Ctrl + Alt + 5"
             };
             add_series_toggrid(
                 basicshortcutlist_subgrid, basics, basicshortcuts
