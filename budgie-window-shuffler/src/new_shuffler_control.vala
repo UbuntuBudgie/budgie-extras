@@ -217,8 +217,6 @@ namespace ShufflerControls2 {
         Grid general_settingsgrid;
         Grid newrulesgrid;
         Dialog? get_task;
-        bool surpass_connect = false;
-
         Gtk.Switch[] switches;
         string[] read_switchsettings;
         Gtk.CheckButton[] checkbuttons;
@@ -961,6 +959,7 @@ namespace ShufflerControls2 {
             set_widget_sensitive(checkswitch, "customgridtiling");
             shufflersettings.changed["customgridtiling"].connect(()=>{
                 set_widget_sensitive(checkswitch, "customgridtiling");
+                manage_daemon();
             });
             Label guishortcutsheader = makelabel("GUI grid shortcuts" + ":", 0, "justitalic");
             tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
@@ -1095,6 +1094,7 @@ namespace ShufflerControls2 {
                 manage_layoutsbutton.set_sensitive(
                     shufflersettings.get_boolean("runlayouts")
                 );
+                manage_daemon();
             });
             manage_layoutsbutton.set_sensitive(
                 shufflersettings.get_boolean("runlayouts")
@@ -1218,8 +1218,9 @@ namespace ShufflerControls2 {
                 "basictiling", "customgridtiling", "runlayouts",
                 "windowrules", "softmove"
             };
-            shufflersettings.changed["windowrules"].connect(()=>{
+            shufflersettings.changed["windowrules"].connect(()=> {
                 set_widget_sensitive(ruleswidgets, "windowrules");
+                manage_daemon();
             });
             for (int i=0; i<switches.length; i++) {
                 shufflersettings.bind(read_switchsettings[i], switches[i],
@@ -1237,11 +1238,7 @@ namespace ShufflerControls2 {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
-            shufflersettings.changed.connect(()=> {
-                manage_daemon();
-                surpass_connect = false;
-            });
-            manage_daemon();
+            shufflersettings.changed["basictiling"].connect(manage_daemon);
         }
 
         private void manage_daemon() {
@@ -1249,28 +1246,23 @@ namespace ShufflerControls2 {
                 "basictiling", "customgridtiling", "runlayouts", "windowrules"
             };
             bool sens = false;
-            if (!surpass_connect) {
-                foreach (string k in relevant_keys) {
-                    sens = shufflersettings.get_boolean(k);
-                    if (sens) {
-                        break;
-                    }
+
+            foreach (string k in relevant_keys) {
+                sens = shufflersettings.get_boolean(k);
+                if (sens) {
+                    break;
                 }
-                // we wouldn't have a gsettings update cause another one
-                surpass_connect = true;
-                shufflersettings.set_boolean("runshuffler", sens);
-                if (!sens) {
-                    // and again, we need to surpass
-                    surpass_connect = true;
-                    /*
-                    if shuffler daemon is off, we need gui to be off as well
-                    to prevent shortcuts to be active set in vain, since we
-                    split up functionality now
-                    */
-                    shufflersettings.set_boolean("runshufflergui", false);
-                }
-                general_settingsgrid.set_sensitive(sens);
             }
+            shufflersettings.set_boolean("runshuffler", sens);
+            if (!sens) {
+                /*
+                if shuffler daemon is off, we need gui to be off as well
+                to prevent shortcuts to be active set in vain, since we
+                split up functionality now
+                */
+                shufflersettings.set_boolean("runshufflergui", false);
+            }
+            general_settingsgrid.set_sensitive(sens);
         }
 
         private void set_widget_sensitive(
