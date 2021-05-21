@@ -326,7 +326,7 @@ namespace ShufflerControls2 {
             bool initial_change = true;
             // if wm class is given, we obviously are updating existing rule
             bool update = (wmclass != null);
-              //  // tooltips
+            // tooltips
             string class_tooltip = "Window class of the window to be launched (*mandatory)";
             string gridxsize_tooltip = "Grid size - columns";
             string gridysize_tooltip = "Grid size - rows";
@@ -913,7 +913,7 @@ namespace ShufflerControls2 {
             // custom size header + switch (in subgrid)
             Grid switchgrid_advancedshortcuts = new Gtk.Grid();
             Label advancedcutsheader = makelabel(
-                "Tiling, resizing & moving windows in a custom grid", 0, "justbold"
+                "Resizing & moving windows in a custom grid", 0, "justbold"
             );
             switchgrid_advancedshortcuts.attach(
                 advancedcutsheader, 0, 0, 1, 1
@@ -1241,6 +1241,12 @@ namespace ShufflerControls2 {
             };
             shufflersettings.changed["windowrules"].connect(()=> {
                 set_widget_sensitive(ruleswidgets, "windowrules");
+                if (shufflersettings.get_boolean("windowrules")) {
+                    GLib.Timeout.add(500, ()=> {
+                        update_currentrules();
+                        return false;
+                    });
+                }
                 manage_daemon();
             });
             for (int i=0; i<switches.length; i++) {
@@ -1260,6 +1266,7 @@ namespace ShufflerControls2 {
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
             shufflersettings.changed["basictiling"].connect(manage_daemon);
+            manage_daemon();
         }
 
         private void manage_daemon() {
@@ -1275,7 +1282,19 @@ namespace ShufflerControls2 {
                 }
             }
             shufflersettings.set_boolean("runshuffler", sens);
-            if (!sens) {
+
+            if (sens) {
+                GLib.Timeout.add(100, ()=> {
+                    try {
+                    bd_client.ReloadShortcuts();
+                    }
+                    catch (Error e) {
+                        stderr.printf ("%s\n", e.message);
+                    }
+                    return false;
+                });
+            }
+            else {
                 /*
                 if shuffler daemon is off, we need gui to be off as well
                 to prevent shortcuts to be active set in vain, since we
@@ -1284,12 +1303,6 @@ namespace ShufflerControls2 {
                 shufflersettings.set_boolean("runshufflergui", false);
             }
             general_settingsgrid.set_sensitive(sens);
-            try {
-                bd_client.ReloadShortcuts();
-            }
-            catch (Error e) {
-                stderr.printf ("%s\n", e.message);
-            }
         }
 
         private void set_widget_sensitive(
