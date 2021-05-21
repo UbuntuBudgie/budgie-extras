@@ -360,7 +360,7 @@ namespace ShufflerControls2 {
             set_margins(geogrid, 20, 20, 20, 20);
             geogrid.set_row_spacing(0);
             // grid cols / rows
-            Label grid_size_label = makelabel("Grid size; colums & rows", 0);
+            Label grid_size_label = makelabel("Grid size; columns & rows", 0);
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
             // get current gridsize

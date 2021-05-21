@@ -636,7 +636,7 @@ namespace LayoutsPopup {
             set_margins(geogrid, 20, 20, 20, 20);
             geogrid.set_row_spacing(0);
             // grid cols / rows
-            Label grid_size_label = new Label(_("Grid size; colums & rows"));
+            Label grid_size_label = new Label(_("Grid size; columns & rows"));
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
             // get current gridsize
