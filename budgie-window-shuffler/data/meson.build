@@ -42,11 +42,6 @@ shufflertargetw = custom_target('shufflercontrols',
 
 BDE_LOC=join_paths(datadir, 'budgie-extras-daemon')
 
-
-
-#######################################################################################
-
-
 BDE_FILE='windowshuffler-toggle-layoutspopup.bde'
 shufflerbde01 = custom_target(BDE_FILE,
   output : BDE_FILE,
@@ -55,9 +50,19 @@ shufflerbde01 = custom_target(BDE_FILE,
   install : true,
   install_dir : BDE_LOC
 )
-#######################################################################################
 
-
+install_data('shuffler-layouticon-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
+install_data('shuffler-miscellaneousprefs-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
+install_data('shuffler-rulesicon-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
+install_data('shuffler-tilingicon-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
 
 BDE_FILE='windowshuffler-call_shufflergui.bde'
 shufflerbde01 = custom_target(BDE_FILE,
@@ -67,13 +72,6 @@ shufflerbde01 = custom_target(BDE_FILE,
   install : true,
   install_dir : BDE_LOC
 )
-
-
-
-
-
-
-
 
 BDE_FILE='windowshuffler-jump-down.bde'
 shufflerbde01 = custom_target(BDE_FILE,

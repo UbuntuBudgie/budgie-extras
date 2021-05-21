@@ -93,11 +93,6 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
-
-
-
-
-
 ####################################################################
 GridWindowSources = [
     'gridwindow.vala'
@@ -295,19 +290,35 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+#######################################################################
+
 ShufflerControlSources = [
     'shuffler_control.vala'
 ]
 
 ShufflerControlDependencies = [
     dependency('gtk+-3.0'),
+    dependency('libwnck-3.0'),
+    dependency('gdk-3.0'),
+    dependency('gio-2.0'),
+    dependency('gdk-x11-3.0')
+]
+
+ShufflerControlCArgs = [
+    '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
+    '-lm'
 ]
 
 executable(
     'shuffler_control', ShufflerControlSources,
     dependencies: ShufflerControlDependencies,
     install: true,
+    c_args: ShufflerControlCArgs,
     vala_args: ShufflerValaArgs,
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
+
+
+
+#######################################################################
