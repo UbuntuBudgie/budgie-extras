@@ -20,39 +20,16 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/* Shuffler
-Main categories for the control interface:
- - Tiling
-    - enable tiling shortcuts for quarter/half tiling (default: on)
-    - enable custom shortcuts for tiling, resizing & moving windows* (default: off)
-      (add explanation! add shortcut overview, add customize option for shortcuts?)
-      * only an active option if quarter/half tiling is on
-        - grid size
-        - swap windows (default: off, checkbox only active if shortcuts is on)
-        - sticky neighbours (default: off, checkbox only active if shortcuts is on)
-        - GUI grid** (default: on, checkbox only active if shortcuts is on)
-          **should we ditch this?
-        - show notification on incorrect (target) window size (default:on,
-          checkboxonly active if shortcuts is on) (appearance currently too short!)
- - Layouts
-    - enable layouts (default: on)
-    - setup layouts -> external setup window (button only active if layouts is on)
- - Rules
-    - enable window rules -> external setup window (button only active if rules is on) <- nope, make it internal. No reason for calling an extra window
- - Miscelaneous
-    - set margins & padding
-    - enable animation (default:on, or depending on processor? checkbox only active if any of the shortcuts is on)
- */
-
- // todo: all strings to translate in one place
-
+//todo: translations, paths
 
 namespace ShufflerControls2 {
 
     GLib.Settings shufflersettings;
     Button applytask_button;
 
-    private void set_widgetstyle(Widget w, string css_style, bool remove = false) {
+    private void set_widgetstyle(
+        Widget w, string css_style, bool remove = false
+    ) {
         var widgets_stylecontext = w.get_style_context();
         if (!remove) {
             widgets_stylecontext.add_class(css_style);
@@ -211,7 +188,8 @@ namespace ShufflerControls2 {
         ShufflerInfoClient? client;
         [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
         interface ShufflerInfoClient : Object {
-            public abstract GLib.HashTable<string, Variant> get_rules () throws Error;
+            public abstract GLib.HashTable<string,
+            Variant> get_rules () throws Error;
         }
         GLib.HashTable<string, Variant> foundrules;
         FileMonitor monitor_ruleschange;
@@ -611,7 +589,9 @@ namespace ShufflerControls2 {
                 // if updating
                 foreach (string k in foundrules.get_keys()) {
                     if (e.get_text() == k) {
-                        apply = ask_confirm(@"$warninghead $classname windowrule?");
+                        apply = ask_confirm(
+                            @"$warninghead $classname windowrule?"
+                        );
                         break;
                         // send dialog
                     }
@@ -652,7 +632,9 @@ namespace ShufflerControls2 {
                     targetfile.delete();
                 }
                 // Create a new file with this name
-                var file_stream = targetfile.create (FileCreateFlags.REPLACE_DESTINATION);
+                var file_stream = targetfile.create (
+                    FileCreateFlags.REPLACE_DESTINATION
+                );
                 var data_stream = new DataOutputStream (file_stream);
                 data_stream.put_string (filecontent);
             }
