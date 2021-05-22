@@ -750,7 +750,8 @@ namespace ShufflerControls2 {
                     );
                     taskdeletebutton.clicked.connect(()=> {
                         string del = (_("Delete"));
-                        if (ask_confirm(@"$del $k windowrule?")) {
+                        string wrule = (_("windowrule"));
+                        if (ask_confirm(@"$del $wrule $k?")) {
                             File targetfile = File.new_for_path(filepath);
                             try {
                                 targetfile.delete();
