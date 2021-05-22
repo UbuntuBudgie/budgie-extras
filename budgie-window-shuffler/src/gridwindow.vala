@@ -5,7 +5,7 @@ using Gdk.X11;
 
 
 /*
-* ShufflerII
+* ShufflerIII
 * Author: Jacob Vlijm
 * Copyright © 2017-2021 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org

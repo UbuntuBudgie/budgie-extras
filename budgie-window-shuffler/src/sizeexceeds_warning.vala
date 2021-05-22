@@ -1,6 +1,21 @@
 using Gtk;
 using Cairo;
 
+/*
+Budgie Window Shuffler III
+Author: Jacob Vlijm
+Copyright © 2017-2021 Ubuntu Budgie Developers
+Website=https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 namespace ShufflerExceedsWarning {
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -79,6 +94,7 @@ namespace ShufflerExceedsWarning {
 
     public static void main (string[] args) {
 
+
         try {
             ShufflerInfoClient client = Bus.get_proxy_sync (
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
@@ -86,19 +102,26 @@ namespace ShufflerExceedsWarning {
             );
             Gtk.init (ref args);
             var warn = new SizeExceedsWarning();
-
             int lifetime = client.show_warningage();
-
             GLib.Timeout.add (100, ()=> {
                 if (lifetime <= 0) {
-                    warn.destroy ();
+                    warn.destroy();
                     return false;
                 }
                 else {
-                    lifetime = client.show_warningage();
+                    try {
+                        lifetime = client.show_warningage();
+                    }
+                    catch (Error e) {
+                        // on fail, make sure window warning doesn't stick
+                        warn.destroy();
+                        return false;
+                    }
                     return true;
                 }
             });
+
+
             Gtk.main ();
         }
         catch (Error e) {

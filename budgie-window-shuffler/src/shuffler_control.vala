@@ -6,7 +6,7 @@ using Gdk.X11;
 // valac --pkg gtk+-3.0 --pkg gdk-x11-3.0 --pkg gdk-3.0 --pkg gio-2.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE"
 
 /*
-Budgie Window Shuffler II
+Budgie Window Shuffler III
 Author: Jacob Vlijm
 Copyright © 2017-2021 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org

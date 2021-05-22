@@ -4,7 +4,7 @@ using Gdk.X11;
 using Gdk;
 
 /*
-Budgie Window Shuffler II
+Budgie Window Shuffler III
 Author: Jacob Vlijm
 Copyright © 2017-2021 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org

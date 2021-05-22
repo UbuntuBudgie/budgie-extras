@@ -5,7 +5,7 @@ using Gdk;
 using Math;
 
 /*
-* ShufflerII
+* ShufflerIII
 * Author: Jacob Vlijm
 * Copyright © 2017-2021 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
@@ -608,7 +608,7 @@ namespace ShufflerEssentialInfo {
             return activemon_name;
         }
 
-        public Variant extracttask_fromfile (string? path) {
+        public Variant extracttask_fromfile (string? path) throws Error {
             // read taskfile
             string[] fields = {
                 "Exec", "XPosition", "YPosition", "Cols", "Rows",
