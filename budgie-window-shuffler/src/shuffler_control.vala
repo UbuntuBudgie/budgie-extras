@@ -575,7 +575,6 @@ namespace ShufflerControls2 {
             - an existing file changed
             - a new file will overwrite an existing file
             */
-
             // defaults:
             bool apply = true;
             string monitorline = "";
@@ -583,11 +582,7 @@ namespace ShufflerControls2 {
             if (update) {
                 warninghead = (_("Save changes to window-rule")); // when just updating
             }
-
             string classname = e.get_text();
-
-
-
             // 1. let's first check if input classname is correct
             if (classname == "") {
                 apply = false;
@@ -609,9 +604,6 @@ namespace ShufflerControls2 {
                     }
                 }
             }
-
-
-
             int cols = x.get_value();
             int rows = y.get_value();
             int xposval = xpos.get_value();
@@ -974,8 +966,6 @@ namespace ShufflerControls2 {
             toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
-
-
             Label guishortcutsheader = makelabel((_("GUI grid shortcuts")) + ":", 0, "justitalic");
             tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
             Grid guishortcuts_subgrid = new Grid();
@@ -1109,7 +1099,6 @@ namespace ShufflerControls2 {
             manage_layoutsbutton.label = (_("Setup now"));
             manage_layoutsbutton.clicked.connect(()=> {
                 string layoutsetup_path = Config.SHUFFLER_DIR + "/toggle_layouts_popup";
-                //  string layoutsetup_path = "/usr/lib/budgie-window-shuffler" + "/toggle_layouts_popup";
                 try {
                     Process.spawn_command_line_sync(layoutsetup_path);
                 }
