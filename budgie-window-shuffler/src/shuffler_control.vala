@@ -217,6 +217,7 @@ namespace ShufflerControls2 {
         Gtk.Switch[] switches;
         string[] read_switchsettings;
         Gtk.CheckButton[] checkbuttons;
+        CheckButton toggle_guigrid;
         string[] read_checkbutton;
         string windowrule_location;
 
@@ -569,34 +570,48 @@ namespace ShufflerControls2 {
             OwnSpinButton ypos, OwnSpinButton xspan, OwnSpinButton yspan,
             ComboBoxText dropdown, bool update, bool wmclass_changed
         ) {
+            /*
+            only ask for confirmation if
+            - an existing file changed
+            - a new file will overwrite an existing file
+            */
+
+            // defaults:
             bool apply = true;
             string monitorline = "";
-            string warninghead = (_("Replace"));
+            string warninghead = (_("Replace window-rule")); // when creating new file, but name exists
             if (update) {
-                warninghead = (_("Save changes to"));
+                warninghead = (_("Save changes to window-rule")); // when just updating
             }
+
             string classname = e.get_text();
+
+
+
+            // 1. let's first check if input classname is correct
             if (classname == "") {
                 apply = false;
                 set_widgetstyle(e, "red_text");
             }
-            // if wm entry changes, still ask for confirmation.
+            // 2. if so, if wm entry, thus filename changes:
             else if (wmclass_changed) {
-                warninghead = (_("Save changes to renamed"));
-                apply = ask_confirm(@"$warninghead $classname windowrule?");
+                warninghead = (_("Save changes to renamed window-rule"));
+                apply = ask_confirm(@"$warninghead: $classname?");
             }
+            // 3. if file is "only" updated:
             else {
-                // if updating
                 foreach (string k in foundrules.get_keys()) {
                     if (e.get_text() == k) {
                         apply = ask_confirm(
-                            @"$warninghead $classname windowrule?"
+                            @"$warninghead: $classname?"
                         );
                         break;
-                        // send dialog
                     }
                 }
             }
+
+
+
             int cols = x.get_value();
             int rows = y.get_value();
             int xposval = xpos.get_value();
@@ -956,19 +971,14 @@ namespace ShufflerControls2 {
             Label useguigridlabel = makelabel((_("Enable GUI grid")), 0);
             optionsgrid.attach(useguigridlabel, 0, 3, 1, 1);
             optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
-            CheckButton toggle_guigrid = new CheckButton();
+            toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
             tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
-            Widget[] checkswitch = {
-                optionsgrid, gridsizegrid, customgridsettings_label, options_label
-            };
-            set_widget_sensitive(checkswitch, "customgridtiling");
-            shufflersettings.changed["customgridtiling"].connect(()=>{
-                set_widget_sensitive(checkswitch, "customgridtiling");
-                manage_daemon();
-            });
+
+
             Label guishortcutsheader = makelabel((_("GUI grid shortcuts")) + ":", 0, "justitalic");
             tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
+            Grid guishortcuts_subgrid = new Grid();
             string[] guis = {
                 (_("Toggle GUI grid")), (_("Add a column")),
                 (_("Add a row")), (_("Remove column")), (_("Remove row")),
@@ -976,7 +986,6 @@ namespace ShufflerControls2 {
             string[] guishortcuts = {
                 "Ctrl + Alt + S", "→", "↓", "←", "↑"
             };
-            Grid guishortcuts_subgrid = new Grid();
             add_series_toggrid(guishortcuts_subgrid, guis, guishortcuts);
             tilinggrid.attach(guishortcuts_subgrid, 0, 21, 10, 1);
             // shortcutlist custom grid
@@ -1037,7 +1046,7 @@ namespace ShufflerControls2 {
             advancedshortcutlist_subgrid.attach(
                 new Label("\t\t"), 1, 23, 1, 1
             );
-            Label tileall_shortcut = makelabel((_("Control + Super + A")), 0);
+            Label tileall_shortcut = makelabel("Control + Super + A", 0);
             advancedshortcutlist_subgrid.attach(
                 tileall_shortcut, 2, 23, 1, 1
             );
@@ -1054,6 +1063,19 @@ namespace ShufflerControls2 {
             advancedshortcutlist_subgrid.attach(
                 toggle_opposite_shortcut, 2, 24, 1, 1
             );
+            Widget[] checkswitch = {
+                optionsgrid, gridsizegrid, customgridsettings_label,
+                options_label, guishortcutsheader, guishortcuts_subgrid,
+                jump_header_label, advancedshortcutlist_subgrid,
+                resize_header_label, other_header_label, tileall_label,
+                tileall_shortcut, toggle_opposite_label,
+                toggle_opposite_shortcut
+            };
+            set_widget_sensitive(checkswitch, "customgridtiling");
+            shufflersettings.changed["customgridtiling"].connect(()=>{
+                set_widget_sensitive(checkswitch, "customgridtiling");
+                manage_daemon();
+            });
             advancedshortcutlist_subgrid.show_all();
             tilinggrid.attach(new Label(""), 1, 49, 1, 1);
             ScrolledWindow scrolled_tiling = new ScrolledWindow(null, null);
@@ -1096,15 +1118,12 @@ namespace ShufflerControls2 {
             });
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
+            Widget[] layotwidgets = {manage_layoutsbutton, layoutshortcutgrid};
             shufflersettings.changed["runlayouts"].connect(()=> {
-                manage_layoutsbutton.set_sensitive(
-                    shufflersettings.get_boolean("runlayouts")
-                );
+                set_widget_sensitive(layotwidgets, "runlayouts");
                 manage_daemon();
             });
-            manage_layoutsbutton.set_sensitive(
-                shufflersettings.get_boolean("runlayouts")
-            );
+            set_widget_sensitive(layotwidgets, "runlayouts");
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
             rulesgrid.set_row_spacing(20);
@@ -1137,7 +1156,9 @@ namespace ShufflerControls2 {
             });
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
-            Widget[] ruleswidgets = {newrulesgrid, newrulebutton};
+            Widget[] ruleswidgets = {
+                newrulesgrid, newrulebutton, activerules
+            };
             set_widget_sensitive(ruleswidgets, "windowrules");
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
@@ -1250,7 +1271,15 @@ namespace ShufflerControls2 {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
-            shufflersettings.changed["basictiling"].connect(manage_daemon);
+            Widget[] basicwidget = {basicshortcutlist_subgrid};
+            shufflersettings.changed["basictiling"].connect(()=> {
+                manage_daemon();
+                set_widget_sensitive(basicwidget, "basictiling");
+            });
+            set_widget_sensitive(basicwidget, "basictiling");
+            shufflersettings.changed["runshufflergui"].connect(()=> {
+                reload_shortcuts();
+            });
             manage_daemon();
         }
 
@@ -1280,15 +1309,7 @@ namespace ShufflerControls2 {
             shufflersettings.set_boolean("runshuffler", sens);
 
             if (sens) {
-                GLib.Timeout.add(100, ()=> {
-                    try {
-                    bd_client.ReloadShortcuts();
-                    }
-                    catch (Error e) {
-                        stderr.printf ("%s\n", e.message);
-                    }
-                    return false;
-                });
+                reload_shortcuts();
             }
             else {
                 /*
@@ -1308,6 +1329,23 @@ namespace ShufflerControls2 {
                 bool newval = shufflersettings.get_boolean(key);
                 w.set_sensitive(newval);
             }
+            // let's allow ourselves a bit of patchwork
+            if (key == "customgridtiling" &&
+            !shufflersettings.get_boolean("customgridtiling")) {
+                toggle_guigrid.set_active(false);
+            }
+        }
+
+        private void reload_shortcuts () {
+            GLib.Timeout.add(100, ()=> {
+                try {
+                bd_client.ReloadShortcuts();
+                }
+                catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
+                }
+                return false;
+            });
         }
 
         private Grid get_rowgrid(Label label, Image img, string hint) {
