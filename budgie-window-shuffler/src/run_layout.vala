@@ -294,8 +294,8 @@ namespace ShufflerLayouts {
         if (addmonitor != "") {
             addmonitor = @"monitor=$addmonitor";
         }
-        string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
-        //  string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
+        //  string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+        string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
             le.x_ongrid, " ", le.y_ongrid, " ", le.cols, " ", le.rows,
             " ", le.xspan, " ", le.yspan, " ",   @"id=$xid", " ", addmonitor,
             " ", "nosoftmove"
