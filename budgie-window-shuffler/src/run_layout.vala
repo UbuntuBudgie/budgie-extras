@@ -73,14 +73,16 @@ namespace ShufflerLayouts {
         string wname;
         string monitor;
         string tryexisting;
+        string moveto_ws;
     }
+
 
     private LayoutElement extractlayout_fromfile (string path) {
         // method below is now in Dbus call from daemon. convert someday
         string[] fields = {
             "Exec", "XPosition", "YPosition", "Cols", "Rows",
             "XSpan", "YSpan", "WMClass", "WName", "Monitor",
-            "TryExisting"
+            "TryExisting", "TargetWorkspace"
         };
         var newrecord = LayoutElement();
         // let's set some defaults
@@ -96,6 +98,7 @@ namespace ShufflerLayouts {
         newrecord.wname = "";
         newrecord.monitor = "";
         newrecord.tryexisting = "false";
+        newrecord.moveto_ws = "";
         DataInputStream? dis = null;
         try {
             var file = File.new_for_path (path);
@@ -139,6 +142,10 @@ namespace ShufflerLayouts {
                             break;
                         case 10:
                             newrecord.tryexisting = new_value;
+                            break;
+                        case 11:
+                            newrecord.moveto_ws = new_value;
+                            //  print(@"$new_value\n");
                             break;
                         }
                     }
@@ -298,8 +305,9 @@ namespace ShufflerLayouts {
         string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
             le.x_ongrid, " ", le.y_ongrid, " ", le.cols, " ", le.rows,
             " ", le.xspan, " ", le.yspan, " ",   @"id=$xid", " ", addmonitor,
-            " ", "nosoftmove"
+            " ", "nosoftmove", " ", "movetows=" + le.moveto_ws
         );
+        //  print(@"$cmd\n");
         run_command(cmd);
     }
 

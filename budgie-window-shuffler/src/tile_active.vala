@@ -48,6 +48,7 @@ namespace NewTileActive {
         public abstract int[] get_margins () throws Error;
         public abstract void toggle_maximize (int w_arg) throws Error;
         public abstract GLib.HashTable<string, Variant> get_monitorgeometry () throws Error;
+        public abstract void move_toworkspace(int w_id, int target_workspace) throws Error;
     }
 
     private bool string_inlist (string lookfor, string[] arr) {
@@ -142,6 +143,8 @@ namespace NewTileActive {
         int xid = -1;
         // set_xid is the possibly set argument
         int set_xid = -1;
+        // default targetws
+        int? targetws = null;
         // parse args, first four or six are int
         int argindex = 0;
         foreach (string arg in args[1:args.length]) {
@@ -188,17 +191,24 @@ namespace NewTileActive {
                     // this is a.o. for secondary windows if sticky windows is set
                     set_nosoftmove = true;
                 }
-                if (arg == "windowrule") {
+                else if (arg == "windowrule") {
                     // why was this again? ->
                     call_fromwindowrule = true;
                 }
-                if (arg == "fromgrid") { // arg is set from gui grid, applied?
+                else if (arg == "fromgrid") { // arg is set from gui grid, applied?
                     // why was this again? -> because then we need to run, despite the fact that gui runs
                     call_fromgrid = true;
                 }
                 else if (arg.contains("id=")) {
                     set_xid = int.parse(arg.split("=")[1]);
                 }
+
+                else if (arg.contains("movetows=")) { // new
+                    print("foundmatch\n");
+                    targetws = int.parse(arg.split("=")[1]);
+                    //  print("foundmatch\n");
+                }
+
             }
             argindex += 1;
         }
@@ -313,6 +323,14 @@ namespace NewTileActive {
                         target_width, target_height
                     );
                 }
+            }
+            if (targetws != null) {
+                /*
+                this can be done savely without gui check, since it only runs
+                from layouts or rules
+                */
+                print(@"moving to workspace $xid, $targetws\n");
+                client.move_toworkspace(xid, targetws);
             }
             // add if samepos && samesize here -> done
         }

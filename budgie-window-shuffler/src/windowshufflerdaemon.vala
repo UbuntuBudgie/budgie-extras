@@ -235,14 +235,18 @@ namespace ShufflerEssentialInfo {
         public void move_toworkspace (int w_id, int workspace) throws Error {
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
-                unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
-                foreach (Wnck.Workspace ws in spaces) {
-                    if (ws.get_number() == workspace) {
-                        GLib.Timeout.add(50, ()=> {
-                            w.move_to_workspace(ws);
-                            return false;
-                        });
-                        break;
+                foreach (string k in window_essentials.get_keys()) {
+                    if (k == @"$w_id" && w.get_workspace().get_number() != workspace) {
+                        unowned GLib.List<Wnck.Workspace> spaces = wnckscr.get_workspaces();
+                        foreach (Wnck.Workspace ws in spaces) {
+                            if (ws.get_number() == workspace) {
+                                GLib.Timeout.add(50, ()=> {
+                                    w.move_to_workspace(ws);
+                                    return false;
+                                });
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -610,6 +614,7 @@ namespace ShufflerEssentialInfo {
 
         public Variant extracttask_fromfile (string? path) throws Error {
             // read taskfile
+            // huh? why do we also have this in run_layout? optimize please.
             string[] fields = {
                 "Exec", "XPosition", "YPosition", "Cols", "Rows",
                 "XSpan", "YSpan", "WMClass", "WName", "Monitor",
@@ -683,7 +688,7 @@ namespace ShufflerEssentialInfo {
                 stderr.printf ("%s\n", e.message);
             }
             return new Variant(
-                "(sssssssssss)" , command, x_ongrid, y_ongrid, cols, rows, 
+                "(sssssssssss)" , command, x_ongrid, y_ongrid, cols, rows,
                 xspan, yspan, wmclass, wname, monitor, tryexisting
             );
         }
