@@ -96,6 +96,7 @@ namespace ApplyRule {
         string cols = "";
         string xspan = "";
         string yspan = "";
+        string targetws = "";
         try {
             client = Bus.get_proxy_sync (
                 BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
@@ -119,6 +120,12 @@ namespace ApplyRule {
                     cols = (string)windowrule.get_child_value(4);
                     xspan = (string)windowrule.get_child_value(5);
                     yspan = (string)windowrule.get_child_value(6);
+                    targetws = (string)windowrule.get_child_value(7);
+                    int t = 0;
+                    if (targetws != "" && targetws != "Not set") {
+                        t = 500;
+                    }
+
                     // see if monitor arg is valid (monitor connected)
                     string[] found_monitors = {};
                     monitordata = client.get_monitorgeometry ();
@@ -144,7 +151,8 @@ namespace ApplyRule {
                         }
                     }
                     string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
-                        @"$xposition $yposition $cols $rows $xspan $yspan id=$new_xid windowrule $monitor"
+                        @"$xposition $yposition $cols $rows $xspan $yspan id=$new_xid windowrule $monitor", " ",
+                        @"movetows=$targetws"
                     );
                     run_command(cmd);
                 }

@@ -59,11 +59,12 @@ namespace GetWindowRules {
         string cols = "";
         string xspan = "1";
         string yspan = "1";
+        string targetws = "";
 
         var file = File.new_for_path (rulesdir.concat("/", fname));
         string[] fields = {
             "Monitor", "XPosition", "YPosition",
-            "Rows", "Cols", "XSpan", "YSpan"
+            "Rows", "Cols", "XSpan", "YSpan", "TargetWorkspace"
         };
 
         try {
@@ -97,6 +98,9 @@ namespace GetWindowRules {
                             case 6:
                                 yspan = new_value;
                                 break;
+                            case 7:
+                                targetws = new_value;
+                                break;
                         }
                     }
                     fieldindex += 1;
@@ -108,8 +112,8 @@ namespace GetWindowRules {
         }
         // populate HashTable here
         Variant newrule = new Variant(
-            "(sssssss)" , monitor, xposition,
-            yposition, rows, cols, xspan, yspan
+            "(ssssssss)" , monitor, xposition,
+            yposition, rows, cols, xspan, yspan, targetws
         );
         newrules.insert(fname.split(".")[0], newrule);
     }

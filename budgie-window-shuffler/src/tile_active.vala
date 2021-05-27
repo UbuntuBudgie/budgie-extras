@@ -202,16 +202,11 @@ namespace NewTileActive {
                 else if (arg.contains("id=")) {
                     set_xid = int.parse(arg.split("=")[1]);
                 }
-
                 else if (arg.contains("movetows=")) { // new
-                    print("foundmatch\n");
                     string setval = arg.split("=")[1];
                     if (setval != "Not set" && setval != "") {
                         targetws = int.parse(setval);
                     }
-                    //  targetws
-                    //  targetws = int.parse(arg.split("=")[1]);
-                    //  print("foundmatch\n");
                 }
 
             }
@@ -290,8 +285,6 @@ namespace NewTileActive {
             }
             bool nosoftmove_forpositionarg = false;
             bool norun_forpositionarg = false;
-
-
             if (checked_equal[0] == true && checked_equal[1] == false) {
                 nosoftmove_forpositionarg = true;
             }
@@ -334,7 +327,11 @@ namespace NewTileActive {
                 this can be done savely without gui check, since it only runs
                 from layouts or rules
                 */
-                print(@"moving to workspace $xid, $targetws\n");
+                if (call_fromwindowrule) {
+                    // to prevent flashing to the target ws
+                    Thread.usleep(500000);
+                }
+                
                 client.move_toworkspace(xid, targetws);
             }
             // add if samepos && samesize here -> done
