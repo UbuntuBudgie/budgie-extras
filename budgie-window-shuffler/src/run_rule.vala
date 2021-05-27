@@ -121,11 +121,6 @@ namespace ApplyRule {
                     xspan = (string)windowrule.get_child_value(5);
                     yspan = (string)windowrule.get_child_value(6);
                     targetws = (string)windowrule.get_child_value(7);
-                    int t = 0;
-                    if (targetws != "" && targetws != "Not set") {
-                        t = 500;
-                    }
-
                     // see if monitor arg is valid (monitor connected)
                     string[] found_monitors = {};
                     monitordata = client.get_monitorgeometry ();
