@@ -27,6 +27,7 @@ namespace LayoutsPopup {
     interface ShufflerInfoClient : Object {
         public abstract Variant extracttask_fromfile (string path) throws Error;
         public abstract int[] get_grid() throws Error;
+        public abstract int get_numberof_workspaces() throws Error;
     }
     string searchpath;
     Gtk.Window? layouts;
@@ -40,6 +41,7 @@ namespace LayoutsPopup {
 
 
     class PopupWindow : Gtk.Window {
+
         /*
         / master widget in this window is a mastergrid, for we can easily
         / set cornerspacing, to align all widgets on the right edge of the
@@ -49,6 +51,7 @@ namespace LayoutsPopup {
         / layoutlist (stack page 1) is dynamically updated by signal, wating
         / for changes in the layouts config directory.
         */
+
         Grid mastergrid;
         Gtk.Grid layoutlist_scrolledwindow_grid;
         Gtk.Grid stackgrid_layoutlist;
@@ -72,8 +75,11 @@ namespace LayoutsPopup {
         int set_gridxsize;
         int set_gridysize;
         GLib.Settings shuffler_settings;
+        string default_set;
 
         public PopupWindow() {
+
+            default_set = _("Not set");
             // settings
             shuffler_settings = new GLib.Settings(
                 "org.ubuntubudgie.windowshuffler"
@@ -382,7 +388,6 @@ namespace LayoutsPopup {
             return taskdata;
         }
 
-
         private string[] get_monitornames() {
             int n_monitors = gdk_dsp.get_n_monitors();
             string[] monitors = {};
@@ -567,6 +572,7 @@ namespace LayoutsPopup {
             string yspan_tooltip = _("Window size - rows");
             string monitor_tooltip = _("Target monitor, default is on active monitor");
             string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
+            string workspaces_tooltip = _("Target workspace, default is on active workspace");
             get_task = new Dialog();
             get_task.set_transient_for(this);
             get_task.decorated = false;
@@ -700,22 +706,50 @@ namespace LayoutsPopup {
             miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
             ComboBoxText screendropdown = new ComboBoxText();
             screendropdown.set_tooltip_text(monitor_tooltip);
+
+            string[] monlist = {default_set};
+            screendropdown.append_text(default_set);
+            screendropdown.active = 0;
             string[] mons = get_monitornames();
             foreach (string m in mons) {
                 screendropdown.append_text(m);
+                monlist += m;
             }
             miscgrid.attach(new Label("\t"), 2, 1, 1, 1);
             miscgrid.attach(screendropdown, 3, 1, 1, 1);
-            Label tryexisting_label = new Label(("Try to move existing window"));
-            miscgrid.attach(tryexisting_label, 1, 2, 1, 1);
+            // targetworkspace
+            Label targetworkspace_label = new Label(_("Target workspace"));
+            miscgrid.attach(targetworkspace_label, 1, 2, 1, 1);
+            ComboBoxText workspacedropdown = new ComboBoxText();
+            workspacedropdown.set_tooltip_text(workspaces_tooltip);
+            string[] allspaceslist = {default_set};
+            workspacedropdown.append_text(default_set);
+            workspacedropdown.active = 0;
+            int n_ws = 1;
+            try {
+                n_ws = client.get_numberof_workspaces();
+                for (int i=0; i<n_ws; i++) {
+                    string newitem = (i + 1).to_string();
+                    allspaceslist += newitem;
+                    workspacedropdown.append_text(newitem);
+                }
+            }
+            catch (Error e) {
+                error ("%s", e.message);
+            }
             miscgrid.attach(new Label("\t"), 2, 2, 1, 1);
+            miscgrid.attach(workspacedropdown, 3, 2, 1, 1);
+            // TryExisting
+            Label tryexisting_label = new Label(("Try to move existing window"));
+            miscgrid.attach(tryexisting_label, 1, 3, 1, 1);
+            miscgrid.attach(new Label("\t"), 2, 3, 1, 1);
             CheckButton tryexist_checkbox = new Gtk.CheckButton();
             tryexist_checkbox.set_tooltip_text(tryexisting_tooltip);
-            miscgrid.attach(tryexist_checkbox, 3, 2, 1, 1);
+            miscgrid.attach(tryexist_checkbox, 3, 3, 1, 1);
             Label[] all_labels = {
                 exec_label, wmclass_label, wname_label,
                 grid_size_label, winpos_label, cellspan_label,
-                targetmonitor_label, tryexisting_label
+                targetmonitor_label, targetworkspace_label, tryexisting_label
             };
             foreach (Label l in all_labels) {
                 l.xalign = 0;
@@ -778,11 +812,34 @@ namespace LayoutsPopup {
                 xspan_spin.set_value(int.parse((string)currtask_data.get_child_value(5)));
                 yspan_spin.set_value(int.parse((string)currtask_data.get_child_value(6)));
                 string set_monitor = (string)currtask_data.get_child_value(9);
-                if (set_monitor != "" && string_inlist(set_monitor, mons) == -1) {
-                    screendropdown.append_text(set_monitor);
+                if (set_monitor == "") {
+                    set_monitor = default_set;
                 }
-                int foundindex = string_inlist((string)currtask_data.get_child_value(9), mons);
-                screendropdown.active = foundindex;
+                int set_monitorindex = string_inlist(set_monitor, monlist);
+                if (set_monitor != "" && set_monitorindex == -1) {
+                    screendropdown.append_text(set_monitor);
+                    monlist += set_monitor;
+                    // then renew the index, set monitor needs to be in list
+                    set_monitorindex = string_inlist(set_monitor, monlist);
+                }
+                screendropdown.active = set_monitorindex;
+                string set_workspace = (string)currtask_data.get_child_value(11);
+                if (set_workspace == "") {
+                    set_workspace = default_set;
+                }
+                else {
+                    // make readable workspace numbers
+                    set_workspace = (int.parse(set_workspace) + 1).to_string();
+                }
+                int set_workspaceindex = string_inlist(set_workspace, allspaceslist);
+                if (set_workspaceindex == -1) {
+                    // if workspace does not exist, still keep its set value
+                    allspaceslist += set_workspace;
+                    workspacedropdown.append_text(set_workspace);
+                    // and renew index
+                    set_workspaceindex = string_inlist(set_workspace, allspaceslist);
+                }
+                workspacedropdown.active = set_workspaceindex;
                 tryexist_checkbox.set_active(
                     (string)currtask_data.get_child_value(10) == "true"
                 );
@@ -800,7 +857,8 @@ namespace LayoutsPopup {
                 string candidate_content = create_filecontent(
                     exec_entry, xpos_spin, ypos_spin, grid_xsize_spin,
                     grid_ysize_spin, xspan_spin, yspan_spin, wmclass_entry,
-                    wname_entry, screendropdown, tryexist_checkbox
+                    wname_entry, screendropdown, workspacedropdown,
+                    tryexist_checkbox
                 );
                 apply_taskedit(candidate_content);
             });
@@ -808,7 +866,8 @@ namespace LayoutsPopup {
                 string candidate_content = create_filecontent(
                     exec_entry, xpos_spin, ypos_spin, grid_xsize_spin,
                     grid_ysize_spin, xspan_spin, yspan_spin, wmclass_entry,
-                    wname_entry, screendropdown, tryexist_checkbox
+                    wname_entry, screendropdown, workspacedropdown,
+                    tryexist_checkbox
                 );
                 string newtaskname = taskname_entry.get_text();
                 if (currtask != "" && newtaskname != currtask) {
@@ -875,7 +934,7 @@ namespace LayoutsPopup {
             OwnSpinButton grid_xsize_spin, OwnSpinButton grid_ysize_spin,
             OwnSpinButton xspan_spin, OwnSpinButton yspan_spin, Entry wmclass_entry,
             Entry wname_entry, ComboBoxText screendropdown,
-            ToggleButton tryexist_checkbox
+            ComboBoxText workspacedropdown, ToggleButton tryexist_checkbox
         ) {
             // creates the content of a task file from the fields
             bool try_isset = tryexist_checkbox.get_active();
@@ -885,6 +944,12 @@ namespace LayoutsPopup {
             int curr_rows = grid_ysize_spin.get_value();
             int curr_xspan = (int)xspan_spin.get_value();
             int curr_yspan = (int)yspan_spin.get_value();
+            // for reasons of clarity, lets distinguish readable and real
+            string readable_ws = workspacedropdown.get_active_text();
+            string real_ws = readable_ws;
+            if (readable_ws != "" && readable_ws != default_set) {
+                real_ws = (int.parse(readable_ws) - 1).to_string();
+            }
             return "Exec=" + exec_entry.get_text().concat(
                 "\nXPosition=" + @"$curr_xpos", "\nYPosition=" + @"$curr_ypos",
                 "\nCols=" + @"$curr_cols", "\nRows=" + @"$curr_rows",
@@ -892,6 +957,7 @@ namespace LayoutsPopup {
                 "\nWMClass=" + wmclass_entry.get_text(),
                 "\nWName=" + wname_entry.get_text(),
                 "\nMonitor=" + screendropdown.get_active_text(),
+                "\nTargetWorkspace=" + real_ws,
                 "\nTryExisting=" + @"$try_isset"
             );
         }

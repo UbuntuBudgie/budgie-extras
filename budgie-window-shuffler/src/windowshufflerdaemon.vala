@@ -232,6 +232,10 @@ namespace ShufflerEssentialInfo {
             }
         }
 
+        public int get_numberof_workspaces () throws Error {
+            return wnckscr.get_workspace_count();
+        }
+
         public void move_toworkspace (int w_id, int workspace) throws Error {
             Wnck.Window? w = get_matchingwnckwin(w_id);
             if (w != null) {
@@ -618,7 +622,7 @@ namespace ShufflerEssentialInfo {
             string[] fields = {
                 "Exec", "XPosition", "YPosition", "Cols", "Rows",
                 "XSpan", "YSpan", "WMClass", "WName", "Monitor",
-                "TryExisting"
+                "TryExisting", "TargetWorkspace"
             };
             // let's set some defaults
             string command = "";
@@ -632,6 +636,7 @@ namespace ShufflerEssentialInfo {
             string wname = "";
             string monitor = "";
             string tryexisting = "false";
+            string targetws = "";
             DataInputStream? dis = null;
             try {
                 var file = File.new_for_path (path);
@@ -677,6 +682,9 @@ namespace ShufflerEssentialInfo {
                                 case 10:
                                     tryexisting = new_value;
                                     break;
+                                case 11:
+                                    targetws = new_value;
+                                    break;
                                 }
                             }
                             fieldindex += 1;
@@ -688,8 +696,8 @@ namespace ShufflerEssentialInfo {
                 stderr.printf ("%s\n", e.message);
             }
             return new Variant(
-                "(sssssssssss)" , command, x_ongrid, y_ongrid, cols, rows,
-                xspan, yspan, wmclass, wname, monitor, tryexisting
+                "(ssssssssssss)" , command, x_ongrid, y_ongrid, cols, rows,
+                xspan, yspan, wmclass, wname, monitor, tryexisting, targetws
             );
         }
     }
@@ -861,7 +869,6 @@ namespace ShufflerEssentialInfo {
             ctx.set_operator(Cairo.Operator.OVER);
             return false;
         }
-
     }
 
     private GLib.Settings get_settings (string path) {
@@ -967,7 +974,6 @@ namespace ShufflerEssentialInfo {
     }
 
     public static int main (string[] args) {
-
         // create warning image
         create_warningbg();
         Gtk.init(ref args);
@@ -1007,7 +1013,6 @@ namespace ShufflerEssentialInfo {
         wnckscr = Wnck.Screen.get_default();
         wnckscr.force_update();
         monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
-
         window_essentials = new HashTable<string, Variant> (str_hash, str_equal);
         gdkdisplay = Gdk.Display.get_default();
         Gdk.Screen gdkscreen = Gdk.Screen.get_default();

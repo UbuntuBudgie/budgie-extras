@@ -205,7 +205,12 @@ namespace NewTileActive {
 
                 else if (arg.contains("movetows=")) { // new
                     print("foundmatch\n");
-                    targetws = int.parse(arg.split("=")[1]);
+                    string setval = arg.split("=")[1];
+                    if (setval != "Not set" && setval != "") {
+                        targetws = int.parse(setval);
+                    }
+                    //  targetws
+                    //  targetws = int.parse(arg.split("=")[1]);
                     //  print("foundmatch\n");
                 }
 
