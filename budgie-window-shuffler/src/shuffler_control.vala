@@ -190,10 +190,12 @@ namespace ShufflerControls2 {
         interface ShufflerInfoClient : Object {
             public abstract GLib.HashTable<string,
             Variant> get_rules () throws Error;
+            public abstract int get_numberof_workspaces() throws Error;
         }
         GLib.HashTable<string, Variant> foundrules;
         FileMonitor monitor_ruleschange;
         Stack allsettings_stack;
+        string default_set = _("Not set");
         string controls_css = """
         .somebox {
             border-left: 0px;
@@ -291,6 +293,32 @@ namespace ShufflerControls2 {
             ask_confirmdialog.run();
             return confirm;
         }
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        private string get_value_forrule (string? found, bool tofile = false) {
+            // converting readable value of workspace from filedata and vice versa
+            /*
+            we need to keep: if set_workspace != default_set (in -> togui),
+            in case someone already used the dev version,
+            but it won't end up in new rules files, because it is language-dependent
+            (files wouldn't work anymore if set language would change)
+            */
+            string set_forrule = default_set;
+            int add = 1;
+            if (tofile) {
+                add = -1;
+                set_forrule = "";
+            }
+
+            if (found != "" && found != default_set && found != null) {
+                set_forrule = (int.parse(found) + add).to_string();
+            }
+            print(@"set for rule: $set_forrule\n");
+            return set_forrule;
+        }
+        //////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
 
         private void call_dialog (string? wmclass = null) {
             bool wmclass_changed = false;
@@ -314,6 +342,7 @@ namespace ShufflerControls2 {
             string xspan_tooltip = (_("Window size - columns"));
             string yspan_tooltip = (_("Window size - rows"));
             string monitor_tooltip = (_("Target monitor, default is on active monitor"));
+            string workspace_tooltip = (_("Target workspace, default is on active workspace"));
             get_task = new Dialog();
             var contentarea = get_task.get_content_area();
             contentarea.orientation = Gtk.Orientation.VERTICAL;
@@ -338,7 +367,6 @@ namespace ShufflerControls2 {
                 if (initial_wm != null &&
                     initial_wm != wmclass_entry.get_text()) {
                     wmclass_changed = true;
-
                 }
             });
             wmclass_entry.set_tooltip_text(class_tooltip);
@@ -423,18 +451,48 @@ namespace ShufflerControls2 {
                 grid_xsize_spin, grid_ysize_spin, xpos_spin,
                 ypos_spin, xspan_spin, yspan_spin
             };
-            // targetmonitor
+            // target monitor
             Label targetmonitor_label = new Label((_("Target monitor")));
+            targetmonitor_label.xalign = 0;
             miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
             ComboBoxText screendropdown = new ComboBoxText();
             screendropdown.set_tooltip_text(monitor_tooltip);
-            string[] mons = get_monitornames();
-            foreach (string m in mons) {
+            screendropdown.append_text(default_set);
+            screendropdown.active = 0;
+            string[] mons = {default_set};
+            foreach (string m in get_monitornames()) {
                 screendropdown.append_text(m);
+                mons += m;
             }
             miscgrid.attach(new Label("\t"), 2, 1, 1, 1);
             miscgrid.attach(screendropdown, 3, 1, 1, 1);
             master_grid.attach(new Label(""), 1, 109, 1, 1);
+            // target workspace
+            Label targetworkspace_label = new Label((_("Target workspace")));
+            targetworkspace_label.xalign = 0;
+            miscgrid.attach(targetworkspace_label, 1, 2, 1, 1);
+            ComboBoxText workspacedropdown = new ComboBoxText();
+            workspacedropdown.set_tooltip_text(workspace_tooltip);
+            int nspaces = 1;
+            string[] allspaces = {default_set};
+            workspacedropdown.append_text(default_set);
+            workspacedropdown.active = 0;
+            try {
+                // populate workspace-dropdown & list
+                nspaces = client.get_numberof_workspaces();
+                for (int i=0;i<nspaces; i++) {
+                    int readable_space = i + 1;
+                    allspaces += @"$readable_space";
+                    workspacedropdown.append_text(@"$readable_space");
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("Error: %s\n", e.message);
+            }
+            miscgrid.attach(new Label("\t"), 2, 2, 1, 1);
+            miscgrid.attach(workspacedropdown, 3, 2, 1, 1);
+            master_grid.attach(new Label(""), 1, 109, 1, 1);
+            // Done button
             Gtk.Box dialogaction_box = new Gtk.Box(
                 Gtk.Orientation.HORIZONTAL, 0
             );
@@ -443,14 +501,16 @@ namespace ShufflerControls2 {
             applytask_button.set_size_request(90, 10);
             applytask_button.clicked.connect(()=> {
                 string tocompare = makecheckstring(
-                    wmclass_entry, allspins, screendropdown
+                    wmclass_entry, allspins, screendropdown, workspacedropdown
                 );
-                bool anythingchanged = tocompare != check_changes;
+                bool anythingchanged = tocompare != check_changes; /////////////////////////////////////////////////////////////////////////////////////
+                print(@"changed? $anythingchanged\n");
                 if (anythingchanged) {
                     if (apply_newrule(
                         wmclass_entry, grid_xsize_spin, grid_ysize_spin,
                         xpos_spin, ypos_spin, xspan_spin, yspan_spin,
-                        screendropdown, update, wmclass_changed
+                        screendropdown, workspacedropdown, update,
+                        wmclass_changed
                     ) && wmclass_changed) {
                         /*
                         when updating, we need to keep in mind the possibility
@@ -519,16 +579,30 @@ namespace ShufflerControls2 {
                         int grid_xsize = int.parse((string)match.get_child_value(4));
                         int xspan = int.parse((string)match.get_child_value(5));
                         int yspan = int.parse((string)match.get_child_value(6));
+                        string set_workspace = (string)match.get_child_value(7);
                         // lazy check; instead of checking all fields separately, create a string of all
-                        check_changes = @"$k$set_monitor$grid_xsize$grid_ysize$xpos$ypos$xspan$yspan";
+                        //  check_changes = @"$k$set_monitor$grid_xsize$grid_ysize$xpos$ypos$xspan$yspan"; /////////////////////////////////////////////////////////////
                         xpos_spin.set_value(xpos);
                         ypos_spin.set_value(ypos);
                         grid_ysize_spin.set_value(grid_ysize);
                         grid_xsize_spin.set_value(grid_xsize);
                         xspan_spin.set_value(xspan);
                         yspan_spin.set_value(yspan);
-                        int foundindex = string_inlist(set_monitor, mons);
-                        screendropdown.active = foundindex;
+                        int foundmonindex = string_inlist(set_monitor, mons);
+                        screendropdown.active = foundmonindex;
+                        string readable_workspace = get_value_forrule(set_workspace);
+                        int foundwsindex = string_inlist(readable_workspace, allspaces);
+                        if (foundwsindex == -1) {
+                            // if a workspace outside range is set, keep it!
+                            allspaces += readable_workspace;
+                            workspacedropdown.append_text(readable_workspace);
+                            // renew index
+                            foundwsindex = string_inlist(readable_workspace, allspaces);
+                            print(@"foundwsindex: $foundwsindex\n");
+                            //  workspacedropdown.active = foundwsindex;
+                        }
+                        workspacedropdown.active = foundwsindex;
+                        check_changes = @"$k$set_monitor$readable_workspace$grid_xsize$grid_ysize$xpos$ypos$xspan$yspan"; /////////////////////////////////////////////////////////////
                     }
                 }
             }
@@ -536,10 +610,11 @@ namespace ShufflerControls2 {
         }
 
         private string makecheckstring(
-            Gtk.Entry wmclass, OwnSpinButton[] allspins, ComboBoxText screendropdown
+            Gtk.Entry wmclass, OwnSpinButton[] allspins,
+            ComboBoxText screendropdown, ComboBoxText workspacedropdown
         ) {
             string valuestring = wmclass.get_text().concat(
-                screendropdown.get_active_text()
+                screendropdown.get_active_text().concat(workspacedropdown.get_active_text())
             );
             foreach (OwnSpinButton sp in allspins) {
                 valuestring += sp.get_value().to_string();
@@ -568,7 +643,8 @@ namespace ShufflerControls2 {
         private bool apply_newrule(
             Entry e, OwnSpinButton x, OwnSpinButton y, OwnSpinButton xpos,
             OwnSpinButton ypos, OwnSpinButton xspan, OwnSpinButton yspan,
-            ComboBoxText dropdown, bool update, bool wmclass_changed
+            ComboBoxText dropdown, ComboBoxText wsdropdown, bool update,
+            bool wmclass_changed
         ) {
             /*
             only ask for confirmation if
@@ -578,6 +654,7 @@ namespace ShufflerControls2 {
             // defaults:
             bool apply = true;
             string monitorline = "";
+            string workspaceline = "";
             string warninghead = (_("Replace window-rule")); // when creating new file, but name exists
             if (update) {
                 warninghead = (_("Save changes to window-rule")); // when just updating
@@ -610,14 +687,23 @@ namespace ShufflerControls2 {
             int yposval = ypos.get_value();
             int xspanval = xspan.get_value();
             int yspanval = yspan.get_value();
-            string disp = dropdown.get_active_text();
+            string? disp = dropdown.get_active_text();
+            /////////////////////////////////////////////////////////////
+            //add get-from-workspacedropdown here
+            workspaceline = "";
+            //  string? ws = wsdropdown.get_active_text();
+            string ws = get_value_forrule(wsdropdown.get_active_text(), true);
+            if (ws != "") {
+                workspaceline = @"\nTargetWorkspace=$ws";
+            }
+            /////////////////////////////////////////////////////////////
             if (disp != null) {
                 monitorline = @"\nMonitor=$disp";
             }
             string filecontent =  @"Cols=$cols".concat(
                 @"\nRows=$rows", @"\nXPosition=$xposval",
                 @"\nYPosition=$yposval",@"\nXSpan=$xspanval",
-                @"\nYSpan=$yspanval", monitorline
+                @"\nYSpan=$yspanval", monitorline, workspaceline
             );
             if (apply) {
                 write_edit(filecontent, classname);
@@ -695,7 +781,7 @@ namespace ShufflerControls2 {
             newrulesgrid.set_column_spacing(15);
             // headers
             string[] rules_columnheaders = {
-                "WM-class", (_("Grid")), "X, Y", (_("Span")), (_("Display"))
+                "WM-class", (_("Grid")), "X, Y", (_("Span")), (_("Display")), (_("Workspace"))
             };
             int col = 0;
             foreach (string s in rules_columnheaders) {
@@ -739,19 +825,24 @@ namespace ShufflerControls2 {
                     string cols = (string)windowrule.get_child_value(4);
                     string xspan = (string)windowrule.get_child_value(5);
                     string yspan = (string)windowrule.get_child_value(6);
+                    string ws = get_value_forrule(
+                        (string)windowrule.get_child_value(7)
+                    );
                     Label newlabel = makelabel(k, 0);
                     Label newgridsize = new Label(cols + "x" + rows);
                     Label newposition = new Label(xposition + ", " + yposition);
                     Label newspan = new Label(xspan + "x" + yspan);
                     Label newmonitor = new Label(monitor);
+                    Label newworkspace = new Label(ws);
                     newrulesgrid.attach(newlabel, 0, currow, 1, 1);
                     newrulesgrid.attach(newgridsize, 1, currow, 1, 1);
                     newrulesgrid.attach(newposition, 2, currow, 1, 1);
                     newrulesgrid.attach(newspan, 3, currow, 1, 1);
                     newrulesgrid.attach(newmonitor, 4, currow, 1, 1);
-                    newrulesgrid.attach(new Label(" "), 5, currow, 1, 1);
-                    newrulesgrid.attach(taskeditbutton, 6, currow, 1, 1);
-                    newrulesgrid.attach(taskdeletebutton, 7, currow, 1, 1);
+                    newrulesgrid.attach(newworkspace, 5, currow, 1, 1);
+                    newrulesgrid.attach(new Label(" "), 6, currow, 1, 1);
+                    newrulesgrid.attach(taskeditbutton, 7, currow, 1, 1);
+                    newrulesgrid.attach(taskdeletebutton, 8, currow, 1, 1);
                     string filepath = windowrule_location.concat(
                         @"/$k.windowrule"
                     );
@@ -797,6 +888,7 @@ namespace ShufflerControls2 {
             wnck_scr = Wnck.Screen.get_default();
             // window stuff
             this.title = (_("Window Shuffler Controls"));
+            //  this.default_width = 800;
             this.set_resizable(false);
             // watch rulesdir
             windowrule_location = create_dirs_file(
@@ -845,7 +937,7 @@ namespace ShufflerControls2 {
             listboxframe.get_style_context().add_class("somebox");
             listboxframe.add(listbox);
             maingrid.attach(listboxframe, 1, 1, 1, 1);
-            listbox.set_size_request(200, 450);
+            listbox.set_size_request(170, 450);
             // content
             Label title1 = makelabel((_("Tiling")), 0);
             string title1_hint =  (_("Window tiling & shortcuts"));
@@ -868,7 +960,7 @@ namespace ShufflerControls2 {
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
             tilinggrid.set_row_spacing(10);
-            set_margins(tilinggrid, 40, 40, 40, 40);
+            set_margins(tilinggrid, 30, 30, 30, 30);
             // header + switch (in subgrid)
             Grid switchgrid_basicshortcuts = new Gtk.Grid();
             Label basicshortcutsheader = makelabel(
@@ -1069,13 +1161,14 @@ namespace ShufflerControls2 {
             advancedshortcutlist_subgrid.show_all();
             tilinggrid.attach(new Label(""), 1, 49, 1, 1);
             ScrolledWindow scrolled_tiling = new ScrolledWindow(null, null);
+            scrolled_tiling.set_min_content_width(620);
             scrolled_tiling.add(tilinggrid);
             scrolled_tiling.set_propagate_natural_width(true);
             allsettings_stack.add_named(scrolled_tiling, "tiling");
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
             layoutsgrid.set_row_spacing(20);
-            set_margins(layoutsgrid, 40, 40, 40, 40);
+            set_margins(layoutsgrid, 30, 30, 30, 30);
             // optimize please with similar grids
             Grid switchgrid_layouts = new Gtk.Grid();
             Label layoutssheader = makelabel((_("Layouts")), 0, "justbold");
@@ -1116,7 +1209,7 @@ namespace ShufflerControls2 {
             // RULES PAGE
             rulesgrid = new Gtk.Grid();
             rulesgrid.set_row_spacing(20);
-            set_margins(rulesgrid, 40, 40, 40, 40);
+            set_margins(rulesgrid, 30, 30, 30, 30);
             // optimize please with similar grids
             Grid switchgrid_rules = new Gtk.Grid();
             Label rulessheader = makelabel(
@@ -1135,6 +1228,7 @@ namespace ShufflerControls2 {
             newrulesgrid = new Grid();
             rulesgrid.attach(newrulesgrid, 0, 10, 10, 1);
             ScrolledWindow scrolled_rules = new ScrolledWindow(null, null);
+            scrolled_rules.set_min_content_width(620);
             scrolled_rules.add(rulesgrid);
             scrolled_rules.set_propagate_natural_width(true);
             Gtk.Button newrulebutton = new Button();
@@ -1152,7 +1246,7 @@ namespace ShufflerControls2 {
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
-            set_margins(general_settingsgrid, 40, 40, 40, 40);
+            set_margins(general_settingsgrid, 30, 30, 30, 30);
             // margin header
             Label margins_header = makelabel(
                 (_("Margins between virtual grid and screen edges")), 0, "justbold"

@@ -578,7 +578,6 @@ namespace ShufflerEssentialInfo {
             catch (SpawnError e) {
                 // nothing to do
             }
-
             if (output != null) {
                 string[] lookfordata = output.split("\n");
                 foreach (string s in lookfordata) {
