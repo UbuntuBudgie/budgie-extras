@@ -485,8 +485,6 @@ namespace LayoutsPopup {
                 data_stream.put_string (candidate_file);
                 if (!apply) {
                     string testcommand = Config.SHUFFLER_DIR + "/run_layout use_testing";
-                    // keep for quick compile & test
-                    //  string testcommand = "/lib/budgie-window-shuffler/run_layout use_testing";
                     run_command(testcommand);
                 }
             }
@@ -555,6 +553,26 @@ namespace LayoutsPopup {
             askgrid.show_all();
             ask_confirmdialog.run();
             return confirm;
+        }
+
+        private string get_value_forrule (string? found, bool tofile = false) {
+            // converting readable value of workspace from filedata and vice versa
+            /*
+            we need to keep: if set_workspace != default_set (in -> togui),
+            in case someone already used the dev version,
+            but it won't end up in new rules files, because it is language-dependent
+            (files wouldn't work anymore if set language would change)
+            */
+            string set_forrule = default_set;
+            int add = 1;
+            if (tofile) {
+                add = -1;
+                set_forrule = "";
+            }
+            if (found != "" && found != default_set && found != null) {
+                set_forrule = (int.parse(found) + add).to_string();
+            }
+            return set_forrule;
         }
 
         private void call_dialog (
@@ -823,14 +841,7 @@ namespace LayoutsPopup {
                     set_monitorindex = string_inlist(set_monitor, monlist);
                 }
                 screendropdown.active = set_monitorindex;
-                string set_workspace = (string)currtask_data.get_child_value(11);
-                if (set_workspace == "") {
-                    set_workspace = default_set;
-                }
-                else {
-                    // make readable workspace numbers
-                    set_workspace = (int.parse(set_workspace) + 1).to_string();
-                }
+                string set_workspace = get_value_forrule((string)currtask_data.get_child_value(11));
                 int set_workspaceindex = string_inlist(set_workspace, allspaceslist);
                 if (set_workspaceindex == -1) {
                     // if workspace does not exist, still keep its set value
@@ -944,11 +955,16 @@ namespace LayoutsPopup {
             int curr_rows = grid_ysize_spin.get_value();
             int curr_xspan = (int)xspan_spin.get_value();
             int curr_yspan = (int)yspan_spin.get_value();
-            // for reasons of clarity, lets distinguish readable and real
-            string readable_ws = workspacedropdown.get_active_text();
-            string real_ws = readable_ws;
-            if (readable_ws != "" && readable_ws != default_set) {
-                real_ws = (int.parse(readable_ws) - 1).to_string();
+            string file_ws = get_value_forrule(workspacedropdown.get_active_text(), true);
+            string wsline = "";
+            if (file_ws != "") {
+                wsline = "\nTargetWorkspace=" + file_ws;
+            }
+
+            string monitorline = "";
+            string newset_monitor = screendropdown.get_active_text();
+            if (newset_monitor != default_set && newset_monitor != "") {
+                monitorline = "\nMonitor=" + newset_monitor;
             }
             return "Exec=" + exec_entry.get_text().concat(
                 "\nXPosition=" + @"$curr_xpos", "\nYPosition=" + @"$curr_ypos",
@@ -956,8 +972,7 @@ namespace LayoutsPopup {
                 "\nXSpan=" + @"$curr_xspan", "\nYSpan=" + @"$curr_yspan",
                 "\nWMClass=" + wmclass_entry.get_text(),
                 "\nWName=" + wname_entry.get_text(),
-                "\nMonitor=" + screendropdown.get_active_text(),
-                "\nTargetWorkspace=" + real_ws,
+                monitorline, wsline,
                 "\nTryExisting=" + @"$try_isset"
             );
         }
