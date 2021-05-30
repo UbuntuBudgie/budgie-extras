@@ -499,6 +499,7 @@ namespace ShufflerControls2 {
                     wmclass_entry, allspins, screendropdown, workspacedropdown
                 );
                 bool anythingchanged = tocompare != check_changes;
+                print(@"anythingchanged?\n$anythingchanged\n$tocompare\n$check_changes\n");
                 if (anythingchanged) {
                     if (apply_newrule(
                         wmclass_entry, grid_xsize_spin, grid_ysize_spin,
@@ -567,6 +568,9 @@ namespace ShufflerControls2 {
                         // lookup values, set widgets
                         Variant match = foundrules[k];
                         string set_monitor = (string)match.get_child_value(0);
+                        if (set_monitor == "") {
+                            set_monitor = default_set;
+                        }
                         int xpos = int.parse((string)match.get_child_value(1));
                         int ypos = int.parse((string)match.get_child_value(2));
                         int grid_ysize = int.parse((string)match.get_child_value(3));
@@ -807,6 +811,9 @@ namespace ShufflerControls2 {
                     });
                     Variant windowrule = foundrules[k];
                     string monitor = (string)windowrule.get_child_value(0);
+                    if (monitor == "") {
+                        monitor = default_set;
+                    }
                     string xposition = (string)windowrule.get_child_value(1);
                     string yposition = (string)windowrule.get_child_value(2);
                     string rows = (string)windowrule.get_child_value(3);
