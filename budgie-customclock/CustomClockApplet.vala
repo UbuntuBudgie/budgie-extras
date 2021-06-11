@@ -27,8 +27,6 @@ public class CustomClockApplet : Budgie.Applet {
 	AppInfo? calprov = null;
 	Gtk.Button cal_button;
 
-	Gtk.Orientation orient = Gtk.Orientation.HORIZONTAL;
-
 	private unowned Budgie.PopoverManager? manager = null;
 
 	private TimeZone clock_timezone;
