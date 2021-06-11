@@ -2,6 +2,8 @@
 
 gnome = import('gnome')
 
+LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', 'budgie-customclock')
+
 custom_target('plugin-file-customclock',
     input : 'CustomClockApplet.plugin.in',
     output : 'CustomClockApplet.plugin',
