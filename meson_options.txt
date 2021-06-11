@@ -30,3 +30,4 @@ option('build-window-shuffler', type: 'boolean', value: false, description: 'Bui
 option('with-zeitgeist', type : 'boolean', value : 'true', description : 'Add Zeitgeist support')
 option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
 option('xdg-appdir', type: 'string', description: 'XDG autostart path')
+option('build-customclock', type: 'boolean', value: false, description: 'Build customclock applet')

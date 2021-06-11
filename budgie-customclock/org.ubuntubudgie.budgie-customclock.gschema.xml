@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="budgie">
+<schema id="org.ubuntubudgie.budgie-customclock">
+    <key type="s" name="format">
+      <default>"%H:%M:%S %d.%m.%Y"</default>
+      <summary>Format</summary>
+      <description>Format of the clock</description>
+    </key>
+    <key type="s" name="timezone">
+      <default>"UTC"</default>
+      <summary>Timezone</summary>
+      <description>Timezone of the clock, leave empty for system default.</description>
+    </key>
+  </schema>
+</schemalist>

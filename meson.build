@@ -243,3 +243,8 @@ build_window_shuffler = get_option('build-window-shuffler')
 if build_all == true or build_window_shuffler == true
 	subdir('budgie-window-shuffler')
 endif
+
+build_customclock = get_option('build-customclock')
+if build_all == true or build_customclock == true
+	subdir('budgie-customclock')
+endif
