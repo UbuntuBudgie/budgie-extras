@@ -21,7 +21,6 @@ namespace Layouts {
     const string plank_path="/net/launchpad/plank/docks/xyz/";
     const string panel_schema="com.solus-project.budgie-panel";
     const string plank_global_path="/usr/share/applications/plank.desktop";
-    const string appmenu_elementary_schema="io.elementary.desktop.wingpanel.applications-menu";
     const string appmenu_budgie_schema="org.ubuntubudgie.plugins.budgie-appmenu";
     const string budgiewm_schema="com.solus-project.budgie-wm";
     const string nemo_window_schema="org.nemo.window-state";
@@ -134,10 +133,10 @@ namespace Layouts {
         }
 
         private void appmenu_categoryview(bool show_category) {
-            var schema = GLib.SettingsSchemaSource.get_default ().lookup (appmenu_elementary_schema, true);
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (appmenu_budgie_schema, true);
             if (schema == null)
                 return;
-            var settings = new GLib.Settings(appmenu_elementary_schema);
+            var settings = new GLib.Settings(appmenu_budgie_schema);
             settings.set_boolean("use-category", show_category);
         }
 
