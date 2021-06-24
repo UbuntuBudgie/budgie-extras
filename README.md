@@ -64,6 +64,7 @@ We love Budgie-Extras to work across as many distro's as possible.  So please le
  - Arch - https://www.archlinux.org/packages/community/x86_64/budgie-extras/
  - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
  - Debian - packages are available in Buster/Bullseye named "budgie-insertname-applet" https://goo.gl/R4eF7q
+ - Gentoo - Overlay for budgie desktop including budgie-extras https://gitlab.com/SarahMia/sarahmiaoverlay
  
  [![Packaging status](https://repology.org/badge/vertical-allrepos/budgie-extras.svg)](https://repology.org/project/budgie-extras/versions)
 
