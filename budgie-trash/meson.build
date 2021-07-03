@@ -1,34 +1,12 @@
-am_cflags = [
-    '-fstack-protector',
-    '-pedantic',
-    '-Wstrict-prototypes',
-    '-Wundef',
-    '-Werror-implicit-function-declaration',
-    '-Wformat',
-    '-Wformat-security',
-    '-Werror=format-security',
-    '-Wconversion',
-    '-Wunused-variable',
-    '-Wunreachable-code',
-    '-Wall',
-    '-W'
-]
 
-#add_global_arguments(am_cflags, language: 'c')
+# Dependencies
+dep_budgie = dependency('budgie-1.0', version: '>= 2')
+dep_gtk3 = dependency('gtk+-3.0', version: '>= 3.22.0')
+dep_glib = dependency('glib-2.0', version: '>= 2.46.0')
 
-# Global path variable
-prefix = get_option('prefix')
-libdir = join_paths(prefix, get_option('libdir'))
-datadir = join_paths(prefix, get_option('datadir'))
-
-LOCALE_DIR = join_paths(prefix, get_option('localedir'))
 PLUGIN = 'budgie-trash'
+SRC_DIR = join_paths(meson.source_root(), PLUGIN, 'trash')
+APPLET_INSTALL_DIR = join_paths(libdir, 'budgie-desktop', 'plugins', PLUGIN)
+data_dir = join_paths(SRC_DIR, 'data')
 
-PIXMAPS_DIR = join_paths(datadir, 'pixmaps')
-
-LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
-
-message('Installing applet...')
-
-subdir('src')
-subdir('icons')
+subdir('trash/src')
