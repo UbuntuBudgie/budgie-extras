@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 19:25+0100\n"
+"POT-Creation-Date: 2021-07-04 11:49+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2021\n"
 "Language-Team: Portuguese (Portugal) (https://www.transifex.com/ubuntu-budgie/teams/72251/pt_PT/)\n"
@@ -23,78 +23,133 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "Não foi possível determinar a localização original de %s"
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
+msgid "Restore all items"
+msgstr "Restaurar todos os itens"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr "%s restaurado."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
+msgid "Delete all items"
+msgstr "Eliminar todos os itens"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr "%s já existe."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
+#: budgie-window-shuffler/src/shuffler_control.vala:272
+msgid "No"
+msgstr "Não"
 
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
+#: budgie-window-shuffler/src/shuffler_control.vala:276
+msgid "Yes"
+msgstr "Sim"
+
+#. I hate this and want to do this more programmaticly with libnotify.
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-trash/trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Lixo"
+
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
+msgid "Go to applet options"
+msgstr "Ir para as opções da mini-aplicação"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
+msgid "Trash Settings"
+msgstr "Opções do Lixo"
+
+#. Sorting section
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
+msgid "Sort"
+msgstr "Ordenar"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
+msgid "Type"
+msgstr "Tipo"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
+msgid "A-Z"
+msgstr "A-Z"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
+msgid "Z-A"
+msgstr "Z-A"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
+msgid "Oldest First"
+msgstr "Mais antigo primeiro"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
+msgid "Newest First"
+msgstr "Mais recente primeiro"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
+msgid "Return to main view"
+msgstr "Voltar à vista principal"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
+msgid "Restore item"
+msgstr "Restaurar item"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
+msgid "Delete item"
+msgstr "Eliminar item"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
+#, c-format
+msgid "Path: %s"
+msgstr "Caminho: %s"
+
+#. TRANSLATORS: this is the time of when the file was deleted
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
+#, c-format
+msgid "Deleted on: %s"
+msgstr "Eliminado em: %s"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
+msgid "Restore this item?"
+msgstr "Restaurar este item?"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
+msgid "Delete this item?"
+msgstr "Eliminar este item?"
+
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#, c-format
+msgid "Unable to access trash for '%s': %s"
+msgstr "Incapaz de aceder ao lixo para '%s': %s"
+
+#: budgie-trash/trash/src/TrashApplet.vala:149
+msgid "Error moving to trash:"
+msgstr "Erro ao mover para o lixo:"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+msgid "Empty Trash"
+msgstr "Esvaziar o Lixo"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+#, c-format
+msgid "Unable to permanently delete '%s': %s"
+msgstr "Incapaz de eliminar permanentemente '%s': %s"
+
+#: budgie-trash/trash/src/TrashStore.vala:192
 msgid "Restore"
 msgstr "Restaurar"
 
-#. tooltip
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-msgid "Open"
-msgstr "Abrir"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Esvaziar"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Esvaziar todos os itens do Lixo?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Todos os itens no Lixo serão eliminados permanentemente."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-window-shuffler/src/shuffler_control.vala:531
-#: budgie-window-shuffler/src/layouts_popup.vala:210
-#: budgie-window-shuffler/src/layouts_popup.vala:789
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Esvaziar o Lixo"
+#: budgie-trash/trash/src/TrashStore.vala:192
+#, c-format
+msgid "Unable to restore '%s' to %s: %s"
+msgstr "Incapaz de restaurar '%s' para %s: %s"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:198
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Não configurado"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:272
-msgid "No"
-msgstr "Não"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:276
-msgid "Yes"
-msgstr "Sim"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -213,6 +268,16 @@ msgstr "Área de trabalho de destino"
 #: budgie-window-shuffler/src/layouts_popup.vala:786
 msgid "Done"
 msgstr "Concluído"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:531
+#: budgie-window-shuffler/src/layouts_popup.vala:210
+#: budgie-window-shuffler/src/layouts_popup.vala:789
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Cancel"
+msgstr "Cancelar"
 
 #. window stuff
 #: budgie-window-shuffler/src/shuffler_control.vala:628
@@ -690,6 +755,11 @@ msgstr "Mostrar dicas de ferramentas"
 #: budgie-recentlyused/src/budgie-recentlyused.vala:53
 msgid "Hide path in menu"
 msgstr "Ocultar caminho no menu"
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Abrir"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -1539,10 +1609,6 @@ msgid ""
 msgstr ""
 "Ajustar Categoria\n"
 "Espaçamento"
-
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Lixo"
 
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
