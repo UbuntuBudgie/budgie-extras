@@ -8,5 +8,7 @@ PLUGIN = 'budgie-trash'
 SRC_DIR = join_paths(meson.source_root(), PLUGIN, 'trash')
 APPLET_INSTALL_DIR = join_paths(libdir, 'budgie-desktop', 'plugins', PLUGIN)
 data_dir = join_paths(SRC_DIR, 'data')
+LOCALE_DIR = join_paths(prefix, get_option('localedir'))
+
 
 subdir('trash/src')
