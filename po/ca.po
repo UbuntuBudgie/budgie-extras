@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Adolfo Jayme-Barrientos, 2019
+# Adolfo Jayme Barrientos, 2019
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Víctor Pont <victor@pont.cat>, 2019
 # david mohammed <foss.freedom@gmail.com>, 2021
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 20:51+0100\n"
+"POT-Creation-Date: 2021-07-04 11:49+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2021\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -25,79 +25,133 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "No s'ha pogut determinar la ubicació original de %s"
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
+msgid "Restore all items"
+msgstr "Restaura tots els elements"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr "%s s'ha restaurat."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
+msgid "Delete all items"
+msgstr "Suprimeix tots els elements"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr "%s ja existeix."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
+#: budgie-window-shuffler/src/shuffler_control.vala:272
+msgid "No"
+msgstr "No"
 
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
+#: budgie-window-shuffler/src/shuffler_control.vala:276
+msgid "Yes"
+msgstr "Sí"
+
+#. I hate this and want to do this more programmaticly with libnotify.
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-trash/trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Paperera"
+
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
+msgid "Go to applet options"
+msgstr "Ves a les opcions de la miniaplicació"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
+msgid "Trash Settings"
+msgstr "Paràmetres de la paperera"
+
+#. Sorting section
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
+msgid "Sort"
+msgstr "Classifica"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
+msgid "Type"
+msgstr "Tipus"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
+msgid "A-Z"
+msgstr "A-Z"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
+msgid "Z-A"
+msgstr "Z-A"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
+msgid "Oldest First"
+msgstr "Els més antics primer"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
+msgid "Newest First"
+msgstr "Els més nous primer"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
+msgid "Return to main view"
+msgstr "Torna a la vista principal"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
+msgid "Restore item"
+msgstr "Restaura l'element"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
+msgid "Delete item"
+msgstr "Suprimeix l'element"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
+#, c-format
+msgid "Path: %s"
+msgstr "Camí: %s"
+
+#. TRANSLATORS: this is the time of when the file was deleted
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
+#, c-format
+msgid "Deleted on: %s"
+msgstr "Hora de supressió: %s"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
+msgid "Restore this item?"
+msgstr "Voleu restaurar aquest element?"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
+msgid "Delete this item?"
+msgstr "Voleu suprimir aquest element?"
+
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#, c-format
+msgid "Unable to access trash for '%s': %s"
+msgstr "No es pot accedir a la paperera per a %s: %s"
+
+#: budgie-trash/trash/src/TrashApplet.vala:149
+msgid "Error moving to trash:"
+msgstr "Error en moure-ho a la paperera:"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+msgid "Empty Trash"
+msgstr "Buida la paperera"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+#, c-format
+msgid "Unable to permanently delete '%s': %s"
+msgstr "No es pot suprimir permanentment %s: %s"
+
+#: budgie-trash/trash/src/TrashStore.vala:192
 msgid "Restore"
 msgstr "Restaura"
 
-#. tooltip
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-msgid "Open"
-msgstr "Obre"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Buida"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Voleu buidar la paperera?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-"Se suprimiran permanentment tots els elements que hi ha a la paperera."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-window-shuffler/src/shuffler_control.vala:531
-#: budgie-window-shuffler/src/layouts_popup.vala:210
-#: budgie-window-shuffler/src/layouts_popup.vala:789
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Buida la paperera"
+#: budgie-trash/trash/src/TrashStore.vala:192
+#, c-format
+msgid "Unable to restore '%s' to %s: %s"
+msgstr "No es pot restaurar %s a %s: %s"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:198
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "No s'ha establert"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:272
-msgid "No"
-msgstr "No"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:276
-msgid "Yes"
-msgstr "Sí"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -215,6 +269,16 @@ msgstr "Espai de treball de destinació"
 #: budgie-window-shuffler/src/layouts_popup.vala:786
 msgid "Done"
 msgstr "Fet"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:531
+#: budgie-window-shuffler/src/layouts_popup.vala:210
+#: budgie-window-shuffler/src/layouts_popup.vala:789
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Cancel"
+msgstr "Cancel·la"
 
 #. window stuff
 #: budgie-window-shuffler/src/shuffler_control.vala:628
@@ -695,6 +759,11 @@ msgstr "Mostra els indicadors de funció"
 msgid "Hide path in menu"
 msgstr "Amaga el camí al menú"
 
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Obre"
+
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
 msgid "midnight"
@@ -995,23 +1064,23 @@ msgstr "Proveu de canviar els termes de la cerca."
 msgid "No Results for “%s”"
 msgstr "Cap resultat per a “%s”"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
 msgid "View as Grid"
 msgstr "Visualitza com a graella"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
 msgid "View by Category"
 msgstr "Visualitza per categories"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
 msgid "Search Apps"
 msgstr "Cerca aplicacions"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
 msgid "Clear all"
 msgstr "Neteja-ho tot"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
 msgid "Open and search apps"
 msgstr "Cerqueu i obriu aplicacions"
 
@@ -1535,9 +1604,14 @@ msgstr "Mostra la barra d'energia."
 msgid "Roll-over mouse"
 msgstr "Pas del ratolí"
 
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Paperera"
+#. Spacing around each category name
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+msgid ""
+"Adjust Category\n"
+"Spacing"
+msgstr ""
+"Ajusta la categoria\n"
+"Espaiat"
 
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
