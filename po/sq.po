@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 20:51+0100\n"
+"POT-Creation-Date: 2021-07-04 11:49+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Algent Albrahimi <algent@protonmail.com>, 2021\n"
 "Language-Team: Albanian (https://www.transifex.com/ubuntu-budgie/teams/72251/sq/)\n"
@@ -21,78 +21,133 @@ msgstr ""
 "Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "Could not determine original location of /home/budgie/file.txt"
-#: budgie-trash/src/helpers/TrashHelper.vala:110
-#, c-format
-msgid "Could not determine original location of %s"
-msgstr "Nuk mund të përcaktohet vendndodhja origjinale e %s"
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
+msgid "Restore all items"
+msgstr "Rikthe të gjithë artikujt"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt restored"
-#: budgie-trash/src/helpers/TrashHelper.vala:135
-#, c-format
-msgid "%s restored."
-msgstr "%s rikthyer."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
+msgid "Delete all items"
+msgstr "Fshini të gjithë artikujt"
 
-#. TRANSLATORS: This is referring to a file path for example
-#. "/home/budgie/file.txt already exists"
-#: budgie-trash/src/helpers/TrashHelper.vala:142
-#, c-format
-msgid "%s already exists."
-msgstr "%s tashmë ekzistojnë."
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
+#: budgie-window-shuffler/src/shuffler_control.vala:272
+msgid "No"
+msgstr "Jo"
 
-#. fileButton.set_tooltip_text(destParentPath);
-#: budgie-trash/src/helpers/TrashHelper.vala:390
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
+#: budgie-window-shuffler/src/shuffler_control.vala:276
+msgid "Yes"
+msgstr "Po"
+
+#. I hate this and want to do this more programmaticly with libnotify.
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-trash/trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "Koshi"
+
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
+msgid "Go to applet options"
+msgstr "Shko tek opsionet e appletit"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
+msgid "Trash Settings"
+msgstr "Cilësimet e Koshit"
+
+#. Sorting section
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
+msgid "Sort"
+msgstr "Rendit"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
+msgid "Type"
+msgstr "Lloji"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
+msgid "A-Z"
+msgstr "A-Z"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
+msgid "Z-A"
+msgstr "Z-A"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
+msgid "Oldest First"
+msgstr "Të vjetrat më parë"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
+msgid "Newest First"
+msgstr "Të rejat më parë"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
+msgid "Return to main view"
+msgstr "Kthehuni te pamja kryesore"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
+msgid "Restore item"
+msgstr "Rikthe artikullin"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
+msgid "Delete item"
+msgstr "Fshini artikullin"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
+#, c-format
+msgid "Path: %s"
+msgstr "Shtegu: %s"
+
+#. TRANSLATORS: this is the time of when the file was deleted
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
+#, c-format
+msgid "Deleted on: %s"
+msgstr "Fshirë më: %s"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
+msgid "Restore this item?"
+msgstr "A të rikthehet ky artikull?"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
+msgid "Delete this item?"
+msgstr "A të fshihet ky artikull?"
+
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#, c-format
+msgid "Unable to access trash for '%s': %s"
+msgstr "Nuk mund të aksesohet te plehrat për '%s': %s"
+
+#: budgie-trash/trash/src/TrashApplet.vala:149
+msgid "Error moving to trash:"
+msgstr "Gabim në hedhjen te koshi:"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+msgid "Empty Trash"
+msgstr "Zbrazni Koshin"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+#, c-format
+msgid "Unable to permanently delete '%s': %s"
+msgstr "Nuk mund të fshihet përgjithmonë '%s': %s"
+
+#: budgie-trash/trash/src/TrashStore.vala:192
 msgid "Restore"
 msgstr "Rikthe"
 
-#. tooltip
-#: budgie-trash/src/widgets/MenuRow.vala:52
-#: budgie-trash/src/widgets/TrashPopover.vala:79
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-msgid "Open"
-msgstr "Hap"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:87
-msgid "Empty"
-msgstr "Bosh"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:117
-msgid "Empty all items from the Trash?"
-msgstr "Të zbrazen të gjithë artikujt nga Plehrat?"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:126
-msgid "All items in the Trash will be permanently deleted."
-msgstr "Të gjithë artikujt në Kosh do të fshihen përgjithmonë."
-
-#: budgie-trash/src/widgets/TrashPopover.vala:140
-#: budgie-window-shuffler/src/shuffler_control.vala:531
-#: budgie-window-shuffler/src/layouts_popup.vala:210
-#: budgie-window-shuffler/src/layouts_popup.vala:789
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Cancel"
-msgstr "Anulo"
-
-#: budgie-trash/src/widgets/TrashPopover.vala:147
-msgid "Empty Trash"
-msgstr "Zbrazni Koshin"
+#: budgie-trash/trash/src/TrashStore.vala:192
+#, c-format
+msgid "Unable to restore '%s' to %s: %s"
+msgstr "Nuk mund të rikthejë '%s' në %s: %s"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:198
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "E pavendosur"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:272
-msgid "No"
-msgstr "Jo"
-
-#: budgie-window-shuffler/src/shuffler_control.vala:276
-msgid "Yes"
-msgstr "Po"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -212,11 +267,21 @@ msgstr "Hapësira e punës e synuar"
 msgid "Done"
 msgstr "U krye"
 
+#: budgie-window-shuffler/src/shuffler_control.vala:531
+#: budgie-window-shuffler/src/layouts_popup.vala:210
+#: budgie-window-shuffler/src/layouts_popup.vala:789
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Cancel"
+msgstr "Anulo"
+
 #. window stuff
 #: budgie-window-shuffler/src/shuffler_control.vala:628
 #: budgie-window-shuffler/src/shuffler_control.vala:885
 msgid "Window Shuffler Controls"
-msgstr ""
+msgstr "Kontrollet e Window Shuffler"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:653
 msgid "Replace window-rule"
@@ -277,7 +342,7 @@ msgstr "Paraqitjet"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:940
 msgid "Automatic window & application presets"
-msgstr ""
+msgstr "Parametrat automatike të dritares dhe aplikacionit"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:941
 #: budgie-window-shuffler/src/shuffler_control.vala:1215
@@ -662,11 +727,11 @@ msgstr ""
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
-msgstr ""
+msgstr "Kontrolli i pamjeve paraprake"
 
 #: budgie-wpreviews/src/previews_controls.vala:55
 msgid "Run Previews"
-msgstr ""
+msgstr "Ekzekuto pamjet paraprake"
 
 #: budgie-wpreviews/src/previews_controls.vala:58
 msgid "Show windows of all workspaces"
@@ -690,6 +755,11 @@ msgstr "Shfaq këshillat e mjeteve"
 #: budgie-recentlyused/src/budgie-recentlyused.vala:53
 msgid "Hide path in menu"
 msgstr "Fshih shtegun në menu"
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Hap"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -922,13 +992,13 @@ msgstr "Kalendari"
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencat"
 
 #. TRANSLATORS: When this checkbox is enabled the current date will be
 #. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
-msgstr ""
+msgstr "Shfaq datën"
 
 #. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
 #. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
@@ -936,7 +1006,7 @@ msgstr ""
 #. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
-msgstr ""
+msgstr "Përdor formatin 24 orë"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
 msgid "Text"
@@ -984,30 +1054,30 @@ msgstr "Shto në _Dok"
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
 msgid "Try changing search terms."
-msgstr ""
+msgstr "Provo të ndryshosh termat e kërkimit."
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
 #, c-format
 msgid "No Results for “%s”"
-msgstr ""
+msgstr "Asnjë rezultat për \"%s\""
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:66
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
 msgid "View as Grid"
 msgstr "Shfaq si Rrjetë"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:70
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
 msgid "View by Category"
 msgstr "Shfaq sipas Kategorive"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:83
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
 msgid "Search Apps"
 msgstr "Kërko aplikacione"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:87
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
 msgid "Clear all"
 msgstr "Pastro të gjitha"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:320
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
 msgid "Open and search apps"
 msgstr "Hapni dhe kërkoni aplikacione"
 
@@ -1033,28 +1103,28 @@ msgstr "Shkyç"
 
 #: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
 msgid "Run this command…"
-msgstr ""
+msgstr "Ekzekuto këtë komandë ..."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
-msgstr ""
+msgstr "Makinë Llogaritëse"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
 msgid "Calculate basic expressions."
-msgstr ""
+msgstr "Llogarit shprehjet themelore."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
 msgid "bc is not installed"
-msgstr ""
+msgstr "bc nuk është instaluar"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
 msgid "Click to copy result to clipboard"
-msgstr ""
+msgstr "Kliko për të kopjuar rezultatin në kujtesën e fragmenteve"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
 msgid "Search for and run applications on your computer."
-msgstr ""
+msgstr "Kërkoni dhe ekzekutoni aplikacione në kompjuterin tuaj."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
 #, c-format
@@ -1111,11 +1181,11 @@ msgstr "Ekzekuto aplikacionin ose komandën në terminal"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopjo në kujtesën e fragmenteve"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
 msgid "Copy selection to clipboard"
-msgstr ""
+msgstr "Kopjo zgjedhjen në kujtesë të fragmenteve"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
 msgid "Run"
@@ -1144,6 +1214,7 @@ msgstr "Vendos ikonën"
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
 msgstr ""
+"Hiq shtojcën e ngjyrave te Cilësimet e Gnome Daemon nga fillimi automatik"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
@@ -1164,7 +1235,7 @@ msgstr "Drita"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
-msgstr ""
+msgstr "Mirësevini në QuickNote."
 
 #: budgie-quicknote/QuickNoteApplet.vala:48
 msgid "Text will be saved automatically while typing."
@@ -1270,7 +1341,7 @@ msgstr "Shfaq ikonën dinamike të panelit"
 #. forecast
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:855
 msgid "Show forecast in popover"
-msgstr ""
+msgstr "Shfaq parashikimin e motit në popover"
 
 #. optional settings: show on desktop
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:876
@@ -1294,12 +1365,12 @@ msgstr "Ju lutemi vendosni të paktën 3 karaktere"
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
 #: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
 msgid "WallStreet Control"
-msgstr ""
+msgstr "Cilësimet e WallStreet"
 
 #. instruction to autostart the application
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
 msgid "Run WallStreet"
-msgstr ""
+msgstr "Ekzekuto WallStreet"
 
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
 msgid "Use random wallpaper"
@@ -1372,14 +1443,14 @@ msgstr "Mungon procesi"
 #. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:271
 msgid "Please enable Window Previews"
-msgstr ""
+msgstr "Ju lutemi aktivizoni Window Previews"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
 #: budgie-hotcorners/src/HotCornersApplet.vala:280
 #: budgie-hotcorners/src/HotCornersApplet.vala:288
 msgid "Please enable Window Shuffler"
-msgstr ""
+msgstr "Ju lutem aktivizoni Window Shuffler"
 
 #: budgie-hotcorners/src/HotCornersApplet.vala:469
 msgid "Manage corners from panel icon"
@@ -1527,13 +1598,16 @@ msgstr "Shfaq Shiritin me Opsionet e Energjisë"
 msgid "Roll-over mouse"
 msgstr ""
 
-#: budgie-trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Koshi"
+#. Spacing around each category name
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+msgid ""
+"Adjust Category\n"
+"Spacing"
+msgstr ""
 
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
-msgstr "Kontrolli i Dritareve Shuffler"
+msgstr "Kontrolli i Window Shuffler"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
