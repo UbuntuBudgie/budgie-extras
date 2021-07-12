@@ -20,6 +20,9 @@ using Notify;
 */
 
 // todo: run only if shuffler runs -> done
+// todo: translations/meson stuff etc etc
+// todo; paths from Config
+// todo: organize latest n- windows into grid, latest takes biggest section
 
 
 namespace ShufflerApplet {
