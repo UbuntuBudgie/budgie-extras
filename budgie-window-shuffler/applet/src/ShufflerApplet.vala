@@ -74,7 +74,6 @@ namespace ShufflerApplet {
             */
             this.set_row_spacing(10);
 
-
             Label onhoverlabel = new Label("Show popover on hover (without click)");
             onhoverlabel.xalign = 0;
             this.attach(onhoverlabel, 0, 0, 1, 1);
@@ -83,12 +82,15 @@ namespace ShufflerApplet {
             onhoverswitchbox.pack_start(onhoverswitch, false, false, 0);
             this.attach(onhoverswitchbox, 2, 0, 1, 1);
 
-            Label gridsynclabel = new Label("Update gridsize for resizing & moving windows to layout");
+            Label gridsynclabel = new Label("Synchronize grid size");
             gridsynclabel.xalign = 0;
             this.attach(gridsynclabel, 0, 1, 1, 1);
             this.attach(new Label("\t"), 1, 1, 1, 1);
             Box gridsyncswitchbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             gridsyncswitchbox.pack_start(gridsyncswitch, false, false, 0);
+            gridsyncswitch.set_tooltip_text(
+                "Update grid size for moving & resizing to latest picked layout"
+            );
             this.attach(gridsyncswitchbox, 2, 1, 1, 1);
 
             Label maxcols_spin_label = new Label("Popover columns (0 is automatic)");
@@ -199,7 +201,6 @@ namespace ShufflerApplet {
             int area_ysize = (int)(previewsize*0.67);
             int currcol = 0;
             int currow = 0;
-            /////////////////////////////////
             if (maxcols == 0) {
                 maxcols = (int)rint(Math.pow(grids.length, 0.5));
             }
@@ -209,12 +210,6 @@ namespace ShufflerApplet {
                     currow += 1;
                 }
                 Grid layoutgrid = new Grid();
-                ////
-                layoutgrid.enter_notify_event.connect(()=> {
-                    print("works\n");
-                    return false;
-                });
-                ///
                 string[] layout_def = d.split("|");
                 string grid_string = layout_def[0];
                 string[] gridcolsrows = grid_string.split("x");
@@ -222,7 +217,6 @@ namespace ShufflerApplet {
                 int gridrows = int.parse(gridcolsrows[1]);
                 foreach (string s in layout_def) {
                     if (s != grid_string) {
-                        //  print(@"$s\n");
                         int[] coords = {};
                         foreach (string c in s.split(",")) {
                             coords += int.parse(c);
@@ -249,7 +243,7 @@ namespace ShufflerApplet {
                                 Process.spawn_command_line_async(cmd);
                                 }
                                 catch (Error e) {
-                                    print ("Oops\n");
+                                    stderr.printf ("%s\n", e.message);
                                 }
                             }
                             else {
@@ -257,18 +251,10 @@ namespace ShufflerApplet {
                                     "Shuffler warning", "Please activate Window Shuffler"
                                 );
                             }
-
-
-                            ///////////////////////////////////////
-
                             if (gridsync) {
-                                shufflersettings.set_int("cols", gridcols);////////////////////////////////////
-                                shufflersettings.set_int("rows", gridrows);////////////////////////////////////
+                                shufflersettings.set_int("cols", gridcols);
+                                shufflersettings.set_int("rows", gridrows);
                             }
-
-                            ///////////////////////////////////////
-
-
                             popover.set_visible(false);
                         });
                         layoutgrid.attach(
@@ -301,20 +287,17 @@ namespace ShufflerApplet {
                 "org.ubuntubudgie.plugins.budgie-shufflerapplet"
             );
             // settings section widgets
-            onhoverswitch = new Gtk.Switch(); // settings section
+            onhoverswitch = new Gtk.Switch();
             settings.bind(
                 "showonhover", onhoverswitch, "state",
                 SettingsBindFlags.GET|SettingsBindFlags.SET
             );
 
-            gridsyncswitch = new Gtk.Switch(); // settings section
+            gridsyncswitch = new Gtk.Switch();
             settings.bind(
                 "gridsync", gridsyncswitch, "state",
                 SettingsBindFlags.GET|SettingsBindFlags.SET
             );
-
-
-
             maxcols_spin = new Gtk.SpinButton.with_range(0, 10, 1);
             settings.bind(
                 "maxcols", maxcols_spin, "value",
@@ -334,6 +317,7 @@ namespace ShufflerApplet {
                 );
             }
             catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
             /* box */
             indicatorBox = new Gtk.EventBox();
