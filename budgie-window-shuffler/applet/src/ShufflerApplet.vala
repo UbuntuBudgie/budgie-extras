@@ -247,7 +247,7 @@ namespace ShufflerApplet {
                 wins = client.get_winsdata ();
             }
             catch (Error e) {
-                print("Can't get window data from daemon");
+                message("Can't get window data from daemon");
             }
 
             try {
@@ -264,7 +264,7 @@ namespace ShufflerApplet {
                 }
             }
             catch (Error e) {
-                print("Something went wrong creating valid window list");
+                message("Something went wrong creating valid window list");
             }
             int n_windows = valid_wins.length;
             if (n_windows > 2) {
