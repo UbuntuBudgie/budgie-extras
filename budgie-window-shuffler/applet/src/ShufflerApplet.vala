@@ -2,6 +2,7 @@ using Gtk;
 using Gdk;
 using GLib.Math;
 using Notify;
+using Wnck;
 
 /*
 * ShufflerApplet
@@ -22,58 +23,77 @@ using Notify;
 // todo: run only if shuffler runs -> done
 // todo: translations/meson stuff etc etc
 // todo; paths from Config
-// todo: organize latest n- windows into grid, latest takes biggest section
 
 
 namespace ShufflerApplet {
 
-    // check scope please. Needed here?
-    GLib.Settings settings;
-    int maxcols;
+    GLib.Settings shufflerappletsettings;
+    GLib.Settings shufflersettings;
     private int previewsize;
     string[] grids;
     bool showonhover;
     bool gridsync;
-    Gtk.Switch onhoverswitch;
-    Gtk.Switch gridsyncswitch;
-    SpinButton maxcols_spin;
-    SpinButton previewsize_spin;
-
     private Grid maingrid;
 
-    // keep below section for further development!
-    //  ShufflerInfoClient client;
+    ShufflerInfoClient client;
 
-    //  [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
+    [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
-    //  interface ShufflerInfoClient : Object {
-    //      public abstract int[] get_grid () throws Error;
-    //      public abstract int get_greyshade () throws Error;
-    //      public abstract void set_greyshade (int newbrightness) throws Error;
-    //      public abstract void set_grid (int cols, int rows) throws Error;
-    //  }
+    interface ShufflerInfoClient : Object {
+        public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
+        public abstract void set_grid (int cols, int rows) throws Error;
+        public abstract int check_windowvalid (int xid) throws Error;
+        public abstract int[] get_winspecs (int w_id) throws Error;
+        public abstract void move_window(
+            int w_id, int x, int y, int width, int height,
+            bool nowarning = false
+        ) throws Error;
+    }
 
-    //  private void setup_client () {
-    //      try {
-    //          client = Bus.get_proxy_sync (
-    //              BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
-    //              ("/org/ubuntubudgie/shufflerinfodaemon")
-    //          );
-    //      }
-    //      catch (Error e) {
-    //          stderr.printf ("%s\n", e.message);
-    //      }
-    //  }
+    private void setup_client () {
+        try {
+            client = Bus.get_proxy_sync (
+                BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
+                ("/org/ubuntubudgie/shufflerinfodaemon")
+            );
+        }
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
+    }
+
 
     public class ShufflerAppletSettings : Gtk.Grid {
         /* Budgie Settings -section */
+        Gtk.Switch onhoverswitch;
+        Gtk.Switch gridsyncswitch;
+        SpinButton maxcols_spin;
+        SpinButton previewsize_spin;
 
         public ShufflerAppletSettings(GLib.Settings? settings) {
-            /*
-            * Gtk stuff, widgets etc. here
-            */
+
             this.set_row_spacing(10);
 
+            onhoverswitch = new Gtk.Switch();
+            shufflerappletsettings.bind(
+                "showonhover", onhoverswitch, "state",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            gridsyncswitch = new Gtk.Switch();
+            shufflerappletsettings.bind(
+                "gridsync", gridsyncswitch, "state",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            maxcols_spin = new Gtk.SpinButton.with_range(0, 10, 1);
+            shufflerappletsettings.bind(
+                "maxcols", maxcols_spin, "value",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            previewsize_spin = new Gtk.SpinButton.with_range(120, 240, 1);
+            shufflerappletsettings.bind(
+                "previewsize", previewsize_spin, "value",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
             Label onhoverlabel = new Label("Show popover on hover (without click)");
             onhoverlabel.xalign = 0;
             this.attach(onhoverlabel, 0, 0, 1, 1);
@@ -126,22 +146,21 @@ namespace ShufflerApplet {
         grid.set_margin_bottom(bottom);
     }
 
+
     public class ShufflerAppletPopover : Budgie.Popover {
+
         private Gtk.Image indicatorIcon;
-        /* misc stuff */
+
         public ShufflerAppletPopover(Gtk.EventBox indicatorBox) {
             GLib.Object(relative_to: indicatorBox);
-            /* set icon */
             indicatorIcon = new Gtk.Image.from_icon_name(
                 "shufflerapplet-symbolic", Gtk.IconSize.MENU
             );
             indicatorBox.add(this.indicatorIcon);
-            /* grid */
             maingrid = new Gtk.Grid();
             maingrid.set_column_spacing(20);
             maingrid.set_row_spacing(20);
             set_margins(maingrid, 20, 20, 20, 20);
-            //  fillgrid(maingrid);
             this.add(maingrid);
         }
     }
@@ -149,6 +168,7 @@ namespace ShufflerApplet {
     private void sendwarning(
         string title, string body, string icon = "shufflerapplet-symbolic"
     ) {
+        Notify.init("ShufflerApplet");
         var notification = new Notify.Notification(title, body, icon);
         notification.set_urgency(Notify.Urgency.NORMAL);
         try {
@@ -167,9 +187,11 @@ namespace ShufflerApplet {
 
 
     public class Applet : Budgie.Applet {
+
         Gtk.CssProvider css_provider;
         Gdk.Screen gdk_scr;
-        GLib.Settings shufflersettings;
+        Wnck.Screen wnck_scr;
+        int maxcols;
         private Gtk.EventBox indicatorBox;
         private ShufflerAppletPopover popover = null;
         private unowned Budgie.PopoverManager? manager = null;
@@ -184,12 +206,96 @@ namespace ShufflerApplet {
             return new ShufflerAppletSettings(this.get_applet_settings(uuid));
         }
 
-        private void getsettings_values(GLib. Settings settings) {
-            maxcols = settings.get_int("maxcols");
-            previewsize = settings.get_int("previewsize");
-            grids = settings.get_strv("layouts");
-            showonhover = settings.get_boolean("showonhover");
-            gridsync = settings.get_boolean("gridsync");
+        private void getsettings_values(GLib. Settings shufflerappletsettings) {
+            maxcols = shufflerappletsettings.get_int("maxcols");
+            previewsize = shufflerappletsettings.get_int("previewsize");
+            grids = shufflerappletsettings.get_strv("layouts");
+            showonhover = shufflerappletsettings.get_boolean("showonhover");
+            gridsync = shufflerappletsettings.get_boolean("gridsync");
+        }
+
+        private Variant? check_visible(HashTable<string, Variant>? wins, int wid) {
+            // check if window is on this workspace & not minimized
+            if (wins != null) {
+                foreach (string k in wins.get_keys()) {
+                    if (@"$wid" == k) {
+                        Variant match = wins[k];
+                        if (
+                            (string)match.get_child_value(1) == "true" &&
+                            (string)match.get_child_value(7) == "false"
+                        ) {
+                            Variant newdata = new Variant(
+                                "(iiiii)", wid, (int)match.get_child_value(3),
+                                (int)match.get_child_value(4),
+                                (int)match.get_child_value(5),
+                                (int)match.get_child_value(6)
+                            );
+                            return newdata;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void swap_recent_windows() {
+            // swap positions of the two latest visoble windows with focus
+            Variant[] valid_wins = {};
+
+            HashTable<string, Variant>? wins = null;
+            try {
+                wins = client.get_winsdata ();
+            }
+            catch (Error e) {
+                print("Can't get window data from daemon");
+            }
+
+            try {
+                foreach (Wnck.Window w in wnck_scr.get_windows_stacked()) {
+                    int w_id = (int)w.get_xid();
+                    Variant visible_win = check_visible(wins, w_id);
+                    if (
+                        // check valid & visible (on this ws, not minimized)
+                        client.check_windowvalid(w_id) != -1 &&
+                        visible_win != null
+                    ) {
+                        valid_wins += visible_win;
+                    }
+                }
+            }
+            catch (Error e) {
+                print("Something went wrong creating valid window list");
+            }
+            int n_windows = valid_wins.length;
+            if (n_windows > 2) {
+                valid_wins = valid_wins[(n_windows-2):n_windows];
+            }
+            // so, if we finally got our windows to work with...
+            if (valid_wins.length == 2) {
+                int curr_index = 0;
+                foreach (Variant winsubject in valid_wins) {
+                    int target_index = 0;
+                    if (curr_index == 0) {
+                        target_index = 1;
+                    }
+                    try {
+                        Variant usetarget = valid_wins[target_index];
+                        int use_win = (int)winsubject.get_child_value(0);
+                        int y_shift = client.get_winspecs(use_win)[0];
+                        int targetx = (int)usetarget.get_child_value(1);
+                        int targety = (int)usetarget.get_child_value(2);
+                        int targetw = (int)usetarget.get_child_value(3);
+                        int targeth = (int)usetarget.get_child_value(4);
+                        client.move_window(
+                            use_win, targetx, targety - y_shift, targetw, targeth
+                        );
+                    }
+                    catch (Error e) {
+                        error ("Error: %s", e.message);
+                    }
+                    curr_index += 1;
+                }
+            }
         }
 
         private void refresh_layouts() {
@@ -201,10 +307,15 @@ namespace ShufflerApplet {
             int area_ysize = (int)(previewsize*0.67);
             int currcol = 0;
             int currow = 0;
+            // real cols (for swapbutton alignment)
+            int realcols = 0;
             if (maxcols == 0) {
                 maxcols = (int)rint(Math.pow(grids.length, 0.5));
             }
             foreach (string d in grids) {
+                if (currcol > realcols) {
+                    realcols = currcol;
+                }
                 if (currcol == maxcols) {
                     currcol = 0;
                     currow += 1;
@@ -222,6 +333,7 @@ namespace ShufflerApplet {
                             coords += int.parse(c);
                         }
                         Button sectionbutton = new Button();
+                        //  MenuButton sectionbutton = new MenuButton();
                         sectionbutton.get_style_context().add_class("windowbutton");
                         int xpos = coords[0];
                         int ypos = coords[1];
@@ -264,14 +376,35 @@ namespace ShufflerApplet {
                 }
                 maingrid.attach(layoutgrid, currcol, currow, 1, 1);
                 currcol += 1;
-                maingrid.show_all();
             }
+
+            Gtk.Box swapbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            Button swapbutton = new Gtk.Button();
+            swapbox.pack_start(swapbutton, true, false, 0);
+            swapbutton.set_tooltip_text(
+                "Swap position and size of the two most recently focussed windows"
+            );
+            swapbutton.set_relief(Gtk.ReliefStyle.NONE);
+            swapbutton.get_style_context().add_class("otherbutton");
+            swapbutton.clicked.connect(()=> {
+                swap_recent_windows();
+                popover.set_visible(false);
+            });
+            swapbutton.label = "🠰 🠲";
+            maingrid.attach(
+                swapbox, 0, 100, realcols + 1, 1
+            );
+            maingrid.show_all();
         }
 
         public Applet() {
 
-            //  setup_client();
+            setup_client();
+            wnck_scr = Wnck.Screen.get_default();
             shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
+            shufflerappletsettings = new GLib.Settings(
+                "org.ubuntubudgie.plugins.budgie-shufflerapplet"
+            );
             string buttoncss = """
             .windowbutton {
                 margin: 2px;
@@ -282,32 +415,16 @@ namespace ShufflerApplet {
             .windowbutton:hover {
                 background-color: rgb(0, 100, 148);
             }
-            """;
-            settings = new GLib.Settings(
-                "org.ubuntubudgie.plugins.budgie-shufflerapplet"
-            );
-            // settings section widgets
-            onhoverswitch = new Gtk.Switch();
-            settings.bind(
-                "showonhover", onhoverswitch, "state",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
+            .otherbutton {
+                color: rgb(210, 210, 210);
+                background-color: rgba(0, 100, 148, 0)
+            }
+            .otherbutton:hover {
+                color: rgb(105, 105, 105);
+                background-color: rgba(0, 100, 148, 0)
+            }
 
-            gridsyncswitch = new Gtk.Switch();
-            settings.bind(
-                "gridsync", gridsyncswitch, "state",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            maxcols_spin = new Gtk.SpinButton.with_range(0, 10, 1);
-            settings.bind(
-                "maxcols", maxcols_spin, "value",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            previewsize_spin = new Gtk.SpinButton.with_range(120, 240, 1);
-            settings.bind(
-                "previewsize", previewsize_spin, "value",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
+            """;
             gdk_scr = Gdk.Screen.get_default();
             css_provider = new Gtk.CssProvider();
             try {
@@ -328,7 +445,6 @@ namespace ShufflerApplet {
             // if hover is set
             indicatorBox.enter_notify_event.connect(()=> {
                 if (showonhover) {
-                    //  print("entering\n");
                     popover.set_visible(true);
                     return Gdk.EVENT_STOP;
                 }
@@ -349,10 +465,10 @@ namespace ShufflerApplet {
                 }
                 return false;
             });
-            getsettings_values(settings);
+            getsettings_values(shufflerappletsettings);
             refresh_layouts();
-            settings.changed.connect(()=> {
-                getsettings_values(settings);
+            shufflerappletsettings.changed.connect(()=> {
+                getsettings_values(shufflerappletsettings);
                 refresh_layouts();
             });
             popover.get_child().show_all();

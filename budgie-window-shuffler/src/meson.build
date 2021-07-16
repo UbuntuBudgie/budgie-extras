@@ -92,12 +92,9 @@ executable(
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
-
-####################################################################
 GridWindowSources = [
     'gridwindow.vala'
 ]
-
 GridWindowDependencies = [
     dependency('gtk+-3.0'),
     dependency('gio-2.0'),

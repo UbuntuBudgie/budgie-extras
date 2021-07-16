@@ -15,6 +15,7 @@ dependency('gdk-3.0'),
 dependency('budgie-1.0'),
 dependency('libpeas-gtk-1.0'),
 dependency('libnotify'),
+dependency('libwnck-3.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
@@ -27,6 +28,7 @@ ShufflerAppletValaArgs = [
 ShufflerAppletCArgs = [
 '-include', 
 'config.h',
+'-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
 '-lm'
 ]
 
