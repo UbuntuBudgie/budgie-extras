@@ -48,6 +48,9 @@ namespace ShufflerApplet {
             int w_id, int x, int y, int width, int height,
             bool nowarning = false
         ) throws Error;
+        public abstract void move_window_animated(
+            int w_id, int x, int y, int width, int height
+        ) throws Error;
     }
 
     private void setup_client () {
@@ -189,6 +192,7 @@ namespace ShufflerApplet {
     public class Applet : Budgie.Applet {
 
         Gtk.CssProvider css_provider;
+        GLib.Settings general_desktopsettings;
         Gdk.Screen gdk_scr;
         Wnck.Screen wnck_scr;
         int maxcols;
@@ -236,6 +240,18 @@ namespace ShufflerApplet {
                 }
             }
             return null;
+        }
+
+        private bool get_animated() {
+            bool general_animation = general_desktopsettings.get_boolean("enable-animations");
+            bool shuffler_animation = shufflersettings.get_boolean("softmove");
+            bool generalfirst = shufflersettings.get_boolean("usegeneralanimation");
+            if (generalfirst) {
+                return general_animation;
+            }
+            else {
+                return shuffler_animation;
+            }
         }
 
         private void swap_recent_windows() {
@@ -286,9 +302,23 @@ namespace ShufflerApplet {
                         int targety = (int)usetarget.get_child_value(2);
                         int targetw = (int)usetarget.get_child_value(3);
                         int targeth = (int)usetarget.get_child_value(4);
-                        client.move_window(
-                            use_win, targetx, targety - y_shift, targetw, targeth
-                        );
+
+
+                        //  client.move_window(
+                        //      use_win, targetx, targety - y_shift, targetw, targeth
+                        //  );
+
+                        if (get_animated()) {
+                            client.move_window_animated(
+                                use_win, targetx, targety - y_shift, targetw, targeth
+                            );
+                            Thread.usleep(250000);
+                        }
+                        else {
+                            client.move_window(
+                             use_win, targetx, targety - y_shift, targetw, targeth
+                            );
+                        }
                     }
                     catch (Error e) {
                         error ("Error: %s", e.message);
@@ -312,6 +342,7 @@ namespace ShufflerApplet {
             if (maxcols == 0) {
                 maxcols = (int)rint(Math.pow(grids.length, 0.5));
             }
+            int add = 1;
             foreach (string d in grids) {
                 if (currcol > realcols) {
                     realcols = currcol;
@@ -319,6 +350,7 @@ namespace ShufflerApplet {
                 if (currcol == maxcols) {
                     currcol = 0;
                     currow += 1;
+                    add = 0;
                 }
                 Grid layoutgrid = new Grid();
                 string[] layout_def = d.split("|");
@@ -379,7 +411,11 @@ namespace ShufflerApplet {
             }
 
             Gtk.Box swapbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            Button swapbutton = new Gtk.Button();
+            // Button swapbutton = new Gtk.Button();
+
+            Button swapbutton = new Button.from_icon_name(
+                "shufflerswapwindows-symbolic", Gtk.IconSize.DND
+            );
             swapbox.pack_start(swapbutton, true, false, 0);
             swapbutton.set_tooltip_text(
                 "Swap position and size of the two most recently focussed windows"
@@ -390,9 +426,9 @@ namespace ShufflerApplet {
                 swap_recent_windows();
                 popover.set_visible(false);
             });
-            swapbutton.label = "🠰 🠲";
+            // swapbutton.label = "🠰 🠲";
             maingrid.attach(
-                swapbox, 0, 100, realcols + 1, 1
+                swapbox, 0, 100, realcols + add, 1
             );
             maingrid.show_all();
         }
@@ -404,6 +440,9 @@ namespace ShufflerApplet {
             shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
             shufflerappletsettings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-shufflerapplet"
+            );
+            general_desktopsettings = new GLib.Settings(
+                "org.gnome.desktop.interface"
             );
             string buttoncss = """
             .windowbutton {

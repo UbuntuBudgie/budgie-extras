@@ -222,6 +222,8 @@ namespace ShufflerControls2 {
         CheckButton toggle_guigrid;
         string[] read_checkbutton;
         string windowrule_location;
+        Label useanimationlabel; // still needed here?
+        Gtk.Switch enable_animationswich; // still needed here
 
         private Gtk.Label makelabel (
             string labeltext, float halign, string? cssclass = null
@@ -1145,6 +1147,7 @@ namespace ShufflerControls2 {
                 toggle_opposite_shortcut, 2, 24, 1, 1
             );
             Widget[] checkswitch = {
+                // widgets that need to set unsensitive if customgridtiling is off
                 optionsgrid, gridsizegrid, customgridsettings_label,
                 options_label, guishortcutsheader, guishortcuts_subgrid,
                 jump_header_label, advancedshortcutlist_subgrid,
@@ -1199,7 +1202,10 @@ namespace ShufflerControls2 {
             });
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
             allsettings_stack.add_named(layoutsgrid, "layouts");
-            Widget[] layotwidgets = {manage_layoutsbutton, layoutshortcutgrid};
+            Widget[] layotwidgets = {
+                // widgets that need to be unsensitive if runlayouts is off
+                manage_layoutsbutton, layoutshortcutgrid
+            };
             shufflersettings.changed["runlayouts"].connect(()=> {
                 set_widget_sensitive(layotwidgets, "runlayouts");
                 manage_daemon();
@@ -1239,6 +1245,7 @@ namespace ShufflerControls2 {
             rulesgrid.attach(newrulebutton, 0, 21, 1, 1);
             allsettings_stack.add_named(scrolled_rules, "rules");
             Widget[] ruleswidgets = {
+                // widgets that need to be unsensitive if rules is off
                 newrulesgrid, newrulebutton, activerules
             };
             set_widget_sensitive(ruleswidgets, "windowrules");
@@ -1298,13 +1305,35 @@ namespace ShufflerControls2 {
             paddinggrid.attach(paddingspin, 2, 0, 1, 1);
             general_settingsgrid.attach(paddinggrid, 0, 7, 10, 1);
             general_settingsgrid.attach(new Label(""), 0, 8, 1, 1);
+            Label useanimationheader = makelabel((_("Animation")), 0, "justbold");
+            general_settingsgrid.attach(useanimationheader, 0, 9, 3, 1);
             Grid useanimationsubgrid = new Gtk.Grid();
-            Label useanimationheader = makelabel((_("Use animation")), 0, "justbold");
-            useanimationsubgrid.attach(useanimationheader, 0, 0, 1, 1);
-            useanimationsubgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_animationswich = new Gtk.Switch();
-            useanimationsubgrid.attach(enable_animationswich, 2, 0, 1, 1);
-            general_settingsgrid.attach(useanimationsubgrid, 0, 9, 3, 1);
+            Label usegeneral = makelabel((_("Use general animation settings")), 0);
+            useanimationsubgrid.attach(usegeneral, 0, 2, 1, 1);
+            useanimationsubgrid.attach(new Label("\t"), 1, 2, 1, 1);
+            CheckButton toggle_usegeneral = new CheckButton();
+            useanimationsubgrid.attach(toggle_usegeneral, 2, 2, 1, 1);
+
+            useanimationlabel = makelabel((_("Use animation")), 0);
+            useanimationsubgrid.attach(useanimationlabel, 0, 3, 1, 1);
+            useanimationsubgrid.attach(new Label("\t"), 1, 3, 1, 1);
+            enable_animationswich = new Gtk.Switch();
+            useanimationsubgrid.attach(enable_animationswich, 2, 3, 1, 1);
+            general_settingsgrid.attach(useanimationsubgrid, 0, 10, 3, 1);
+            Widget[] customanimation = {
+                // widgets that need to be unsensitive if general animation is on
+                useanimationlabel, enable_animationswich
+            };
+            shufflersettings.changed.connect(()=>{
+                set_widget_sensitive(customanimation, "usegeneralanimation", true);
+                manage_daemon();
+            });
+            GLib.Timeout.add_seconds(1, ()=> {
+                // No clue why, but need to set a timeout for it to work.
+                // probably something isn't ready. nah, won't spend time on it
+                set_widget_sensitive(customanimation, "usegeneralanimation", true);
+                return false;
+            });
             ScrolledWindow scrolled_misc = new ScrolledWindow(null, null);
             scrolled_misc.add(general_settingsgrid);
             scrolled_misc.set_propagate_natural_width(true);
@@ -1322,7 +1351,7 @@ namespace ShufflerControls2 {
             // connect stuff
             switches = {
                 enable_basictilingswitch, enable_advancedtilingswitch,
-                enable_layouts, enable_rules, enable_animationswich
+                enable_layouts, enable_rules, enable_animationswich // conflicting!
             };
             read_switchsettings = {
                 "basictiling", "customgridtiling", "runlayouts",
@@ -1344,17 +1373,20 @@ namespace ShufflerControls2 {
             }
             checkbuttons = {
                 toggle_sticky, toggle_swap, toggle_notification,
-                toggle_guigrid
+                toggle_guigrid, toggle_usegeneral
             };
             read_checkbutton = {
                 "stickyneighbors", "swapgeometry", "showwarning",
-                "runshufflergui"
+                "runshufflergui", "usegeneralanimation"
             };
             for (int i=0; i<checkbuttons.length; i++) {
                 shufflersettings.bind(read_checkbutton[i], checkbuttons[i],
                     "active", SettingsBindFlags.GET|SettingsBindFlags.SET);
             }
-            Widget[] basicwidget = {basicshortcutlist_subgrid};
+            Widget[] basicwidget = {
+                // needs to be unsensitive if basic tiling is off
+                basicshortcutlist_subgrid
+            };
             shufflersettings.changed["basictiling"].connect(()=> {
                 manage_daemon();
                 set_widget_sensitive(basicwidget, "basictiling");
@@ -1405,12 +1437,17 @@ namespace ShufflerControls2 {
             general_settingsgrid.set_sensitive(sens);
         }
 
+
         private void set_widget_sensitive(
-            Widget[] widgets, string key
+            Widget[] widgets, string key, bool opposite = false
         ) {
             foreach (Widget w in widgets) {
                 bool newval = shufflersettings.get_boolean(key);
                 w.set_sensitive(newval);
+                ///////
+                if (opposite) {
+                    w.set_sensitive(!newval);
+                }
             }
             // let's allow ourselves a bit of patchwork
             if (key == "customgridtiling" &&
