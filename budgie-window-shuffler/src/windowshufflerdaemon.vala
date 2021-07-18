@@ -500,6 +500,18 @@ namespace ShufflerEssentialInfo {
             return desktop_animations_set;
         }
 
+        public bool useanimation() throws Error {
+            bool general_animation = desktop_settings.get_boolean("enable-animations");
+            bool shuffler_animation = shuffler_settings.get_boolean("softmove");
+            bool generalfirst = shuffler_settings.get_boolean("usegeneralanimation");
+            if (generalfirst) {
+                return general_animation;
+            }
+            else {
+                return shuffler_animation;
+            }
+        }
+
         public bool swapgeo() throws Error {
             return swapgeometry;
         }

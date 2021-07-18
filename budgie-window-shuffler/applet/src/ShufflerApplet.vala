@@ -44,6 +44,7 @@ namespace ShufflerApplet {
         public abstract void set_grid (int cols, int rows) throws Error;
         public abstract int check_windowvalid (int xid) throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
+        public abstract bool useanimation () throws Error;
         public abstract void move_window(
             int w_id, int x, int y, int width, int height,
             bool nowarning = false
@@ -242,19 +243,26 @@ namespace ShufflerApplet {
             return null;
         }
 
-        private bool get_animated() {
-            bool general_animation = general_desktopsettings.get_boolean("enable-animations");
-            bool shuffler_animation = shufflersettings.get_boolean("softmove");
-            bool generalfirst = shufflersettings.get_boolean("usegeneralanimation");
-            if (generalfirst) {
-                return general_animation;
-            }
-            else {
-                return shuffler_animation;
-            }
-        }
+        // private bool get_animated() {
+        //     bool general_animation = general_desktopsettings.get_boolean("enable-animations");
+        //     bool shuffler_animation = shufflersettings.get_boolean("softmove");
+        //     bool generalfirst = shufflersettings.get_boolean("usegeneralanimation");
+        //     if (generalfirst) {
+        //         return general_animation;
+        //     }
+        //     else {
+        //         return shuffler_animation;
+        //     }
+        // }
 
         private void swap_recent_windows() {
+            bool useanimation = false;
+            try {
+                useanimation = client.useanimation();
+            }
+            catch (Error e) {
+                message("Can't get animation settings from daemon");
+            }
             // swap positions of the two latest visoble windows with focus
             Variant[] valid_wins = {};
 
@@ -302,13 +310,7 @@ namespace ShufflerApplet {
                         int targety = (int)usetarget.get_child_value(2);
                         int targetw = (int)usetarget.get_child_value(3);
                         int targeth = (int)usetarget.get_child_value(4);
-
-
-                        //  client.move_window(
-                        //      use_win, targetx, targety - y_shift, targetw, targeth
-                        //  );
-
-                        if (get_animated()) {
+                        if (useanimation) {
                             client.move_window_animated(
                                 use_win, targetx, targety - y_shift, targetw, targeth
                             );
