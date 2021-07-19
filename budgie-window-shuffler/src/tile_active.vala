@@ -43,8 +43,7 @@ namespace NewTileActive {
         public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool check_ifguiruns () throws Error;
         public abstract int check_windowvalid (int wid) throws Error;
-        public abstract bool get_softmove () throws Error;
-        public abstract bool get_general_animations_set () throws Error;
+        public abstract bool useanimation () throws Error;
         public abstract int[] get_margins () throws Error;
         public abstract void toggle_maximize (int w_arg) throws Error;
         public abstract GLib.HashTable<string, Variant> get_monitorgeometry () throws Error;
@@ -293,7 +292,8 @@ namespace NewTileActive {
             }
             // see if any disqualifying args for softmove
             bool use_softmove = true;
-            bool global_animation = client.get_softmove();
+            bool global_animation = client.useanimation();
+            // if (!global_animation || set_nosoftmove || nosoftmove_forpositionarg) {
             if (!global_animation || set_nosoftmove || nosoftmove_forpositionarg) {
                 use_softmove = false;
             }

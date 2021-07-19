@@ -1444,7 +1444,6 @@ namespace ShufflerControls2 {
             foreach (Widget w in widgets) {
                 bool newval = shufflersettings.get_boolean(key);
                 w.set_sensitive(newval);
-                ///////
                 if (opposite) {
                     w.set_sensitive(!newval);
                 }

@@ -243,18 +243,6 @@ namespace ShufflerApplet {
             return null;
         }
 
-        // private bool get_animated() {
-        //     bool general_animation = general_desktopsettings.get_boolean("enable-animations");
-        //     bool shuffler_animation = shufflersettings.get_boolean("softmove");
-        //     bool generalfirst = shufflersettings.get_boolean("usegeneralanimation");
-        //     if (generalfirst) {
-        //         return general_animation;
-        //     }
-        //     else {
-        //         return shuffler_animation;
-        //     }
-        // }
-
         private void swap_recent_windows() {
             bool useanimation = false;
             try {
