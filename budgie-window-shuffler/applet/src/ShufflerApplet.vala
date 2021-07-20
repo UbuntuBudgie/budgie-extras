@@ -403,9 +403,14 @@ namespace ShufflerApplet {
             Gtk.Box swapbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             // Button swapbutton = new Gtk.Button();
 
-            Button swapbutton = new Button.from_icon_name(
-                "shufflerswapwindows-symbolic", Gtk.IconSize.DND
-            );
+            //  Button swapbutton = new Button.from_icon_name(
+            //      "shufflerswapwindows-symbolic", Gtk.IconSize.DND
+            //  );
+            Button swapbutton = new Button();
+            swapbutton.label = "🠟🠝";
+
+
+
             swapbox.pack_start(swapbutton, true, false, 0);
             swapbutton.set_tooltip_text(
                 "Swap position and size of the two most recently focussed windows"
