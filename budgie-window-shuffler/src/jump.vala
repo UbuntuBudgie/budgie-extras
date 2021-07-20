@@ -41,9 +41,8 @@ namespace JumpActive {
         public abstract int[] get_grid () throws Error;
         public abstract bool swapgeo () throws Error;
         public abstract bool check_ifguiruns () throws Error;
-        public abstract bool get_softmove () throws Error;
         public abstract int[] get_margins () throws Error;
-        public abstract bool get_general_animations_set () throws Error;
+        public abstract bool useanimation () throws Error;
     }
 
     private bool procruns (string processname) {
@@ -208,8 +207,7 @@ namespace JumpActive {
                 }
                 // move subject to targeted position
                 if (!samewindow) {
-                    bool softmove = client.get_softmove() && client.get_general_animations_set();
-                    if (softmove) {
+                    if (client.useanimation()) {
                         client.move_window_animated(
                             activewin, nextx, nexty - yshift,
                             tilewidth + correct_padding,

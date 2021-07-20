@@ -501,14 +501,11 @@ namespace ShufflerEssentialInfo {
         }
 
         public bool useanimation() throws Error {
-            bool general_animation = desktop_settings.get_boolean("enable-animations");
-            bool shuffler_animation = shuffler_settings.get_boolean("softmove");
-            bool generalfirst = shuffler_settings.get_boolean("usegeneralanimation");
-            if (generalfirst) {
-                return general_animation;
+            if (shuffler_settings.get_boolean("usegeneralanimation")) {
+                return desktop_settings.get_boolean("enable-animations");
             }
             else {
-                return shuffler_animation;
+                return shuffler_settings.get_boolean("softmove");;
             }
         }
 

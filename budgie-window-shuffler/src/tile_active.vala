@@ -293,7 +293,6 @@ namespace NewTileActive {
             // see if any disqualifying args for softmove
             bool use_softmove = true;
             bool global_animation = client.useanimation();
-            // if (!global_animation || set_nosoftmove || nosoftmove_forpositionarg) {
             if (!global_animation || set_nosoftmove || nosoftmove_forpositionarg) {
                 use_softmove = false;
             }
@@ -331,7 +330,6 @@ namespace NewTileActive {
                     // to prevent flashing to the target ws
                     Thread.usleep(500000);
                 }
-                
                 client.move_toworkspace(xid, targetws);
             }
             // add if samepos && samesize here -> done
