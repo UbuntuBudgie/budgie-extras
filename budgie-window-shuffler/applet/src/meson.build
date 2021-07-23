@@ -3,7 +3,7 @@ configurationData.set('PACKAGE_NAME', meson.project_name())
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
-install_data('ShufflerApplet.plugin', install_dir: LIB_INSTALL_DIR)
+install_data('ShufflerApplet.plugin', install_dir: APPLET_INSTALL_DIR)
 
 ShufflerAppletSources = [
 'ShufflerApplet.vala'
@@ -39,7 +39,7 @@ shared_library(
     vala_args: ShufflerAppletValaArgs, 
     c_args: ShufflerAppletCArgs, 
     install: true, 
-    install_dir: LIB_INSTALL_DIR
+    install_dir: APPLET_INSTALL_DIR
 )
 
 
