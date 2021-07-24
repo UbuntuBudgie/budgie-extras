@@ -3,7 +3,12 @@ configurationData.set('PACKAGE_NAME', meson.project_name())
 configurationData.set('LOCALE_DIR', LOCALE_DIR)
 configure_file(input: 'config.h.in', output: 'config.h', configuration: configurationData)
 
-install_data('ShufflerApplet.plugin', install_dir: APPLET_INSTALL_DIR)
+custom_target('plugin-file-windowshuffler',
+    input : 'ShufflerApplet.plugin.in',
+    output : 'ShufflerAPplet.plugin',
+    command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
+    install : true,
+    install_dir : APPLET_INSTALL_DIR)
 
 ShufflerAppletSources = [
 'ShufflerApplet.vala'
