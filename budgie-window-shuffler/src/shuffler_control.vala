@@ -1021,7 +1021,7 @@ namespace ShufflerControls2 {
             Label title3 = makelabel((_("Window rules")),0);
             string title3_hint = (_("Define where application windows should be opened"));
             Label title4 = makelabel((_("Applet")), 0);
-            string title4_hint = (_("SHuffler Applet settings"));
+            string title4_hint = (_("Shuffler Applet settings"));
             Label title5 = makelabel((_("Miscellaneous")), 0);
             string title5_hint = (_("General preferences"));
 
