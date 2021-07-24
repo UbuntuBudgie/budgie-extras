@@ -25,7 +25,11 @@ program.  If not, see <https://www.gnu.org/licenses/>.
 namespace ShufflerControls2 {
 
     GLib.Settings shufflersettings;
+    GLib.Settings shufflerappletsettings;
     Button applytask_button;
+    Gtk.Stack appletgallery_stack;
+    string[] gallery_options;
+    ListBox listbox;
 
     private void set_widgetstyle(
         Widget w, string css_style, bool remove = false
@@ -36,6 +40,72 @@ namespace ShufflerControls2 {
         }
         else {
             widgets_stylecontext.remove_class(css_style);
+        }
+    }
+
+    private void set_margins(
+        Gtk.Grid grid, int left, int right, int top, int bottom
+    ) {
+        // lazy margins on a grid
+        grid.set_margin_start(left);
+        grid.set_margin_end(right);
+        grid.set_margin_top(top);
+        grid.set_margin_bottom(bottom);
+    }
+
+    public void makegallery() {
+        gallery_options = {
+            "2x1|0,0,1,1|1,0,1,1",
+            "2x2|0,0,1,1|1,0,1,1|0,1,1,1|1,1,1,1",
+            "5x1|0,0,3,1|4,0,2,1",
+            "5x2|0,0,3,1|0,1,3,1|4,0,2,1|4,1,2,1",
+            "3x1|0,0,1,1|1,0,1,1|2,0,1,1",
+            "3x2|0,0,1,1|1,0,1,1|2,0,1,1|0,1,1,1|1,1,1,1|2,1,1,1",
+            "4x2|0,0,1,2|1,0,2,2|3,0,1,2",
+            "4x2|0,0,1,1|1,0,1,1|2,0,1,1|3,0,1,1|0,1,1,1|1,1,1,1|2,1,1,1|3,1,1,1"
+        };
+        appletgallery_stack = new Gtk.Stack();
+        appletgallery_stack.set_transition_type(
+            StackTransitionType.NONE
+        );
+
+        int previewsize = 120;
+        int area_ysize = (int)(previewsize*0.67);
+        int currindex = 0;
+
+
+        foreach (string s in gallery_options) {
+            Grid showcurrgrid = new Grid();
+            string[] layout_def = s.split("|");
+            string grid_string = layout_def[0];
+            string[] gridcolsrows = grid_string.split("x");
+            int gridcols = int.parse(gridcolsrows[0]);
+            int gridrows = int.parse(gridcolsrows[1]);
+            layout_def = layout_def[1:(layout_def.length)];
+            foreach (string data in layout_def) {
+                int[] coords = {};
+                foreach (string c in data.split(",")) {
+                    coords += int.parse(c);
+                }
+                Button sectionbutton = new Button();
+                //  MenuButton sectionbutton = new MenuButton();
+                sectionbutton.get_style_context().add_class("windowbutton");
+                sectionbutton.set_sensitive(false);
+                int xpos = coords[0];
+                int ypos = coords[1];
+                int xspan = coords[2];
+                int yspan = coords[3];
+                sectionbutton.set_relief(Gtk.ReliefStyle.NONE);
+                sectionbutton.set_size_request((int)(
+                    xspan * (previewsize/gridcols)),
+                    (int)(yspan * (area_ysize/gridrows))
+                );
+                showcurrgrid.attach(
+                    sectionbutton, xpos, ypos, xspan, yspan
+                );
+            }
+            appletgallery_stack.add_named(showcurrgrid, @"$currindex");
+            currindex += 1;
         }
     }
 
@@ -82,6 +152,7 @@ namespace ShufflerControls2 {
                 );
             }
             catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
             this.set_column_spacing(0);
             spinvalue = new Gtk.Entry();
@@ -162,6 +233,17 @@ namespace ShufflerControls2 {
         }
     }
 
+    private Gtk.Label makelabel (
+        string labeltext, float halign, string? cssclass = null
+    ){
+        Gtk.Label newlabel = new Gtk.Label(labeltext);
+        newlabel.xalign = 0;
+        if (cssclass != null) {
+            newlabel.get_style_context().add_class(cssclass);
+        }
+        return newlabel;
+    }
+
 
     class ShufflerControlsWindow : Gtk.Window {
 
@@ -184,6 +266,7 @@ namespace ShufflerControls2 {
             }
         }
 
+        Stack allsettings_stack;
         Gdk.X11.Window timestamp_window;
         ShufflerInfoClient? client;
         [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -194,7 +277,7 @@ namespace ShufflerControls2 {
         }
         GLib.HashTable<string, Variant> foundrules;
         FileMonitor monitor_ruleschange;
-        Stack allsettings_stack;
+
         string default_set = _("Not set");
         string controls_css = """
         .somebox {
@@ -214,6 +297,7 @@ namespace ShufflerControls2 {
         Grid layoutsgrid;
         Grid rulesgrid;
         Grid general_settingsgrid;
+        Grid applet_settingsgrid;
         Grid newrulesgrid;
         Dialog? get_task;
         Gtk.Switch[] switches;
@@ -222,19 +306,8 @@ namespace ShufflerControls2 {
         CheckButton toggle_guigrid;
         string[] read_checkbutton;
         string windowrule_location;
-        Label useanimationlabel; // still needed here?
-        Gtk.Switch enable_animationswich; // still needed here
-
-        private Gtk.Label makelabel (
-            string labeltext, float halign, string? cssclass = null
-        ){
-            Gtk.Label newlabel = new Gtk.Label(labeltext);
-            newlabel.xalign = 0;
-            if (cssclass != null) {
-                newlabel.get_style_context().add_class(cssclass);
-            }
-            return newlabel;
-        }
+        Label useanimationlabel;
+        Gtk.Switch enable_animationswich;
 
         private string[] get_monitornames() {
             Gdk.Display gdk_dsp = Gdk.Display.get_default();
@@ -501,7 +574,7 @@ namespace ShufflerControls2 {
                     wmclass_entry, allspins, screendropdown, workspacedropdown
                 );
                 bool anythingchanged = tocompare != check_changes;
-                print(@"anythingchanged?\n$anythingchanged\n$tocompare\n$check_changes\n");
+                //  print(@"anythingchanged?\n$anythingchanged\n$tocompare\n$check_changes\n");
                 if (anythingchanged) {
                     if (apply_newrule(
                         wmclass_entry, grid_xsize_spin, grid_ysize_spin,
@@ -879,7 +952,8 @@ namespace ShufflerControls2 {
             }
         }
 
-        public ShufflerControlsWindow() {
+        public ShufflerControlsWindow(int page=0) {
+
             setup_client();
             initialiseLocaleLanguageSupport();
             wnck_scr = Wnck.Screen.get_default();
@@ -902,6 +976,7 @@ namespace ShufflerControls2 {
                 });
             }
             catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
             // settings
             shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
@@ -911,6 +986,8 @@ namespace ShufflerControls2 {
                 "shuffler-layouticon-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             var rulesicon = new Gtk.Image.from_icon_name(
                 "shuffler-rulesicon-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+            var appleticon = new Gtk.Image.from_icon_name(
+                "shuffler-applet-settings-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             var generalprefs = new Gtk.Image.from_icon_name(
                 "shuffler-miscellaneousprefs-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             // css stuff
@@ -923,13 +1000,14 @@ namespace ShufflerControls2 {
                 );
             }
             catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
             this.destroy.connect(()=> {
                 Gtk.main_quit();
             });
             Grid maingrid = new Gtk.Grid();
             // Listbox section
-            ListBox listbox = new Gtk.ListBox();
+            listbox = new Gtk.ListBox();
             Frame listboxframe = new Gtk.Frame(null);
             listboxframe.get_style_context().add_class("somebox");
             listboxframe.add(listbox);
@@ -942,12 +1020,16 @@ namespace ShufflerControls2 {
             string title2_hint = (_("Automatic window & application presets"));
             Label title3 = makelabel((_("Window rules")),0);
             string title3_hint = (_("Define where application windows should be opened"));
-            Label title4 = makelabel((_("Miscellaneous")), 0);
-            string title4_hint = (_("General preferences"));
+            Label title4 = makelabel((_("Applet")), 0);
+            string title4_hint = (_("SHuffler Applet settings"));
+            Label title5 = makelabel((_("Miscellaneous")), 0);
+            string title5_hint = (_("General preferences"));
+
             listbox.insert(get_rowgrid(title1, tilingicon, title1_hint), 1);
             listbox.insert(get_rowgrid(title2, layoutsicon, title2_hint), 2);
             listbox.insert(get_rowgrid(title3, rulesicon, title3_hint), 3);
-            listbox.insert(get_rowgrid(title4, generalprefs,title4_hint), 4);
+            listbox.insert(get_rowgrid(title4, appleticon, title4_hint), 4);
+            listbox.insert(get_rowgrid(title5, generalprefs,title5_hint), 5);
             // stack
             allsettings_stack = new Gtk.Stack();
             maingrid.attach(allsettings_stack, 2, 1, 1, 1);
@@ -1198,6 +1280,7 @@ namespace ShufflerControls2 {
                     Process.spawn_command_line_sync(layoutsetup_path);
                 }
                 catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
                 }
             });
             layoutsgrid.attach(manage_layoutsbutton, 0, 3, 1, 1);
@@ -1249,6 +1332,20 @@ namespace ShufflerControls2 {
                 newrulesgrid, newrulebutton, activerules
             };
             set_widget_sensitive(ruleswidgets, "windowrules");
+
+            // APPLET SETTINGS PAGE
+            applet_settingsgrid = new Gtk.Grid();
+            applet_settingsgrid.set_row_spacing(10);
+            set_margins(applet_settingsgrid, 30, 30, 30, 30);
+
+            Grid appletsettingssubgrid1 = new ShufflerAppletSettings();
+            applet_settingsgrid.attach(appletsettingssubgrid1, 0, 0, 10, 1);
+
+            ScrolledWindow scrolled_appletsettings = new ScrolledWindow(null, null);
+            scrolled_appletsettings.add(applet_settingsgrid);
+
+            scrolled_appletsettings.set_propagate_natural_width(true);
+            allsettings_stack.add_named(scrolled_appletsettings, "applet");
             // GENERAL SETTINGS PAGE
             general_settingsgrid = new Gtk.Grid();
             general_settingsgrid.set_row_spacing(10);
@@ -1343,7 +1440,7 @@ namespace ShufflerControls2 {
             listbox.row_selected.connect(()=> {
                 get_row(listbox.get_selected_row());
             });
-            listbox.select_row(listbox.get_row_at_index(0));
+            listbox.select_row(listbox.get_row_at_index(page));
             this.add(maingrid);
             listbox.show_all();
             maingrid.show_all();
@@ -1437,7 +1534,6 @@ namespace ShufflerControls2 {
             general_settingsgrid.set_sensitive(sens);
         }
 
-
         private void set_widget_sensitive(
             Widget[] widgets, string key, bool opposite = false
         ) {
@@ -1493,25 +1589,279 @@ namespace ShufflerControls2 {
                 }
                 break;
                 case 3:
+                allsettings_stack.set_visible_child_name("applet");
+                break;
+                case 4:
                 allsettings_stack.set_visible_child_name("general");
                 break;
             }
         }
+    }
 
-        private void set_margins(
-            Gtk.Grid grid, int left, int right, int top, int bottom
-        ) {
-            // lazy margins on a grid
-            grid.set_margin_start(left);
-            grid.set_margin_end(right);
-            grid.set_margin_top(top);
-            grid.set_margin_bottom(bottom);
+    private void delete_file(File file) {
+        try {
+            file.delete();
+        }
+        catch (Error e) {
+            // nothing to be done
         }
     }
 
     public static void main(string[] args) {
         Gtk.init(ref args);
-        new ShufflerControlsWindow();
+        shufflerappletsettings = new GLib.Settings(
+            "org.ubuntubudgie.plugins.budgie-shufflerapplet"
+        );
+        int page = 0;
+        if (args.length > 1) {
+            page = int.parse(args[1]);
+        }
+        new ShufflerControlsWindow(page);
+        // watch trigger to switch to applet settings
+        string user = Environment.get_user_name();
+        File showpage_trigger = File.new_for_path(
+            @"/tmp/shufflerapplettrigger_$user"
+        );
+        delete_file(showpage_trigger);
+        FileMonitor monitor_showpage_trigger;
+        try {
+            monitor_showpage_trigger = showpage_trigger.monitor(
+                FileMonitorFlags.NONE, null
+            );
+            monitor_showpage_trigger.changed.connect((src, dest, event)=> {
+                if (@"$event" == "G_FILE_MONITOR_EVENT_CREATED") {
+                    listbox.select_row(listbox.get_row_at_index(3));
+                    delete_file(showpage_trigger);
+                }
+            });
+        }
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
         Gtk.main();
+    }
+
+    public class ShufflerAppletSettings : Gtk.Grid {
+        /* Budgie Settings -section */
+        Gtk.Switch onhoverswitch;
+        Gtk.Switch gridsyncswitch;
+        SpinButton maxcols_spin;
+        SpinButton previewsize_spin;
+
+        string appletcss = """
+        .windowbutton {
+            background-color: rgb(210, 210, 210);
+            margin: 2px;
+            min-width: 4px;
+        }
+        .windowbutton:hover {
+            background-color: rgb(100, 100, 100);
+        }
+        .windowbutton_lighter {
+            background-color: rgb(230, 230, 230);
+            margin: 2px;
+            min-width: 4px;
+        }
+        .windowbutton_lighter:hover {
+            background-color: rgb(210, 210, 210);
+            margin: 2px;
+            min-width: 4px;
+        }
+        .otherbutton {
+            color: rgb(210, 210, 210);
+            min-width: 4px;
+            background-color: rgba(0, 100, 148, 0);
+            margin: 0px;
+        }
+        .otherbutton:hover {
+            color: rgb(105, 105, 105);
+            background-color: rgba(0, 100, 148, 0)
+        }
+        """;
+
+        Popover showlayout;
+        Gdk.Screen gdk_scr;
+        Gtk.CssProvider css_provider;
+
+        public ShufflerAppletSettings() {
+            /*
+            below section was originally located in budgie settings ->
+            applet settings. It was simply picked up and dropped here and
+            edited.
+            */
+
+            gdk_scr = this.get_screen();
+            css_provider = new Gtk.CssProvider();
+            try {
+                css_provider.load_from_data(appletcss);
+                Gtk.StyleContext.add_provider_for_screen(
+                    gdk_scr, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                );
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+
+            this.set_row_spacing(10);
+
+            onhoverswitch = new Gtk.Switch();
+            shufflerappletsettings.bind(
+                "showonhover", onhoverswitch, "state",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            gridsyncswitch = new Gtk.Switch();
+            shufflerappletsettings.bind(
+                "gridsync", gridsyncswitch, "state",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            maxcols_spin = new Gtk.SpinButton.with_range(0, 10, 1);
+            shufflerappletsettings.bind(
+                "maxcols", maxcols_spin, "value",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+            previewsize_spin = new Gtk.SpinButton.with_range(120, 240, 1);
+            shufflerappletsettings.bind(
+                "previewsize", previewsize_spin, "value",
+                SettingsBindFlags.GET|SettingsBindFlags.SET
+            );
+
+            Label appletsettingslabel = makelabel(
+                (_("Applet settings")),
+                0, "justbold"
+            );
+            Label appletpopoversettingslabel = makelabel(
+                (_("Applet popover content")),
+                0, "justbold"
+            );
+
+            this.attach(appletsettingslabel, 0, 0, 10, 1);
+            this.attach(new Label(""), 0, 49, 1, 1);
+            this.attach(appletpopoversettingslabel, 0, 50, 10, 1);
+
+            Label onhoverlabel = new Label(_("Show popover on hover (without click)"));
+            onhoverlabel.xalign = 0;
+            this.attach(onhoverlabel, 0, 1, 1, 1);
+            this.attach(new Label("\t"), 1, 1, 1, 1);
+            Box onhoverswitchbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            onhoverswitchbox.pack_start(onhoverswitch, false, false, 0);
+            this.attach(onhoverswitchbox, 2, 1, 1, 1);
+
+            Label gridsynclabel = new Label(_("Synchronize grid size"));
+            gridsynclabel.xalign = 0;
+            this.attach(gridsynclabel, 0, 2, 1, 1);
+            this.attach(new Label("\t"), 1, 2, 1, 1);
+            Box gridsyncswitchbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            gridsyncswitchbox.pack_start(gridsyncswitch, false, false, 0);
+            gridsyncswitch.set_tooltip_text(
+                _("Update grid size for moving & resizing to latest picked layout")
+            );
+            this.attach(gridsyncswitchbox, 2, 2, 1, 1);
+            Label previewsize_label = new Label(_("Layout preview size (width in px)"));
+            previewsize_label.xalign = 0;
+            this.attach(previewsize_label, 0, 4, 1, 1);
+            this.attach(new Label("\t"), 1, 4, 1, 1);
+            this.attach(previewsize_spin, 2, 4, 2, 1);
+            Grid appletmap = new Gtk.Grid();
+            // popover positions
+            makeappletlayoutbutton(appletmap, 0, 0, 0);
+            makeappletlayoutbutton(appletmap, 1, 0, 1);
+            makeappletlayoutbutton(appletmap, 0, 1, 2);
+            makeappletlayoutbutton(appletmap, 1, 1, 3);
+            this.attach(new Label("\n"), 0, 50, 1, 1);
+            this.attach(appletmap, 0, 100, 100, 1);
+            this.show_all();
+        }
+
+        private int get_stringindex (string somestring, string[] arr) {
+            for (int i=0; i < arr.length; i++) {
+                if(somestring == arr[i]) return i;
+            } return -1;
+        }
+
+        private void get_popover(Button b, int x, int y, int index) {
+            // We COULD keep the gallery, but much simpler to destroy the popover,
+            // starting over on the next popup request.
+            makegallery();
+            Label currshow = new Label("0 / 0");
+            currshow.xalign = (float)0.5;
+            int maxlen = gallery_options.length;
+            // find right string for this popover
+            string currlayout = shufflerappletsettings.get_strv("layouts")[index].strip();
+            // activate the right stack page
+            int match = get_stringindex(currlayout, gallery_options);
+            showlayout = new Popover(b);
+            showlayout.set_position(Gtk.PositionType.LEFT);
+            Grid layoutpopovergrid = new Grid();
+            set_margins(layoutpopovergrid, 0, 0, 10, 0);
+            Gtk.Box setlayoutbox_left = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            Button setlayoutbutton_prev = new Button();
+            setlayoutbutton_prev.clicked.connect(()=> {
+                if (match > 0) {
+                    match -= 1;
+                    appletgallery_stack.set_visible_child_name(@"$match");
+                    currshow.set_text(@"$(match+1) / $maxlen");
+                    string newlayout = gallery_options[match];
+                    update_layoutsettings(newlayout, index);
+                }
+            });
+            //  setlayoutbutton_prev.set_size_request(4, 4);
+            setlayoutbutton_prev.label = "🡄";
+            setlayoutbutton_prev.set_relief(Gtk.ReliefStyle.NONE);
+            setlayoutbutton_prev.get_style_context().add_class("otherbutton");
+            setlayoutbox_left.pack_start(setlayoutbutton_prev, true, false, 0);
+            Gtk.Box setlayoutbox_right = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            Button setlayoutbutton_nxt = new Button();
+            setlayoutbutton_nxt.clicked.connect(()=> {
+                if (match < maxlen - 1) {
+                    match += 1;
+                    appletgallery_stack.set_visible_child_name(@"$match");
+                    string newlayout = gallery_options[match];
+                    update_layoutsettings(newlayout, index);
+                    currshow.set_text(@"$(match+1) / $maxlen");
+                }
+            });
+            setlayoutbutton_nxt.label = "🡆";
+            setlayoutbutton_nxt.set_relief(Gtk.ReliefStyle.NONE);
+            setlayoutbutton_nxt.get_style_context().add_class("otherbutton");
+            setlayoutbox_right.pack_end(setlayoutbutton_nxt, true, false, 0);
+            layoutpopovergrid.attach(setlayoutbox_left, 0, 0, 1, 1);
+            layoutpopovergrid.attach(setlayoutbox_right, 2, 0, 1, 1);
+            layoutpopovergrid.attach(appletgallery_stack, 1, 0, 1, 1);
+            currshow.set_text(@"$(match+1) / $maxlen");
+            layoutpopovergrid.attach(currshow, 0, 5, 3, 1);
+            showlayout.add(layoutpopovergrid);
+            layoutpopovergrid.show_all();
+            showlayout.popup();
+            if (match != -1) {
+                appletgallery_stack.set_visible_child_name(@"$match");
+            }
+        }
+
+        private void update_layoutsettings(string newlayout, int position) {
+            string[] currlayouts = shufflerappletsettings.get_strv("layouts");
+            currlayouts[position] = newlayout;
+            shufflerappletsettings.set_strv("layouts", currlayouts);
+        }
+
+        private Button makeappletlayoutbutton(
+            Gtk.Grid appletmap, int hpos, int vpos, int index
+        ) {
+            Button newbutton = new Button();
+            newbutton.set_relief(Gtk.ReliefStyle.NONE);
+            newbutton.get_style_context().add_class("windowbutton_lighter");
+            newbutton.clicked.connect(()=> {
+                if (showlayout == null || showlayout.get_visible() == false) {
+                    get_popover(newbutton, hpos, vpos, index);
+                }
+                else {
+                    showlayout.popdown();
+                    showlayout.destroy();
+                    showlayout = null;
+                }
+            });
+            newbutton.set_size_request(60, 40);
+            appletmap.attach(newbutton, hpos, vpos, 1, 1);
+            return newbutton;
+        }
     }
 }

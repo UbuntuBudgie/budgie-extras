@@ -20,10 +20,6 @@ using Wnck;
 * <https://www.gnu.org/licenses/>.
 */
 
-// todo: run only if shuffler runs -> done
-// todo: translations/meson stuff etc etc
-// todo; paths from Config
-
 
 namespace ShufflerApplet {
 
@@ -41,7 +37,6 @@ namespace ShufflerApplet {
 
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
-        public abstract void set_grid (int cols, int rows) throws Error;
         public abstract int check_windowvalid (int xid) throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool useanimation () throws Error;
@@ -66,73 +61,58 @@ namespace ShufflerApplet {
         }
     }
 
+    private bool procruns (string processname) {
+        string cmd = Config.PACKAGE_BINDIR + @"/pgrep -f $processname";
+        string output;
+        try {
+            GLib.Process.spawn_command_line_sync(cmd, out output);
+            if (output != "") {
+                return true;
+            }
+        }
+        /* on an unlike to happen exception, return false */
+        catch (SpawnError e) {
+            return false;
+        }
+        return false;
+    }
+
 
     public class ShufflerAppletSettings : Gtk.Grid {
         /* Budgie Settings -section */
-        Gtk.Switch onhoverswitch;
-        Gtk.Switch gridsyncswitch;
-        SpinButton maxcols_spin;
-        SpinButton previewsize_spin;
-
         public ShufflerAppletSettings(GLib.Settings? settings) {
-
             this.set_row_spacing(10);
+            Button callsettings = new Gtk.Button();
+            callsettings.label = _("Open Shuffler settings");
+            callsettings.clicked.connect(()=> {
+                if (procruns(Config.SHUFFLER_DIR + "/shuffler_control")) {
+                    string user = Environment.get_user_name();
+                    try {
+                        File showpage_trigger = File.new_for_path(
+                            @"/tmp/shufflerapplettrigger_$user"
+                        );
+                        showpage_trigger.create(FileCreateFlags.NONE);
+                    }
+                    catch (Error e) {
+                        message("something went wrong creating trigger file");
 
-            onhoverswitch = new Gtk.Switch();
-            shufflerappletsettings.bind(
-                "showonhover", onhoverswitch, "state",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            gridsyncswitch = new Gtk.Switch();
-            shufflerappletsettings.bind(
-                "gridsync", gridsyncswitch, "state",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            maxcols_spin = new Gtk.SpinButton.with_range(0, 10, 1);
-            shufflerappletsettings.bind(
-                "maxcols", maxcols_spin, "value",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            previewsize_spin = new Gtk.SpinButton.with_range(120, 240, 1);
-            shufflerappletsettings.bind(
-                "previewsize", previewsize_spin, "value",
-                SettingsBindFlags.GET|SettingsBindFlags.SET
-            );
-            Label onhoverlabel = new Label("Show popover on hover (without click)");
-            onhoverlabel.xalign = 0;
-            this.attach(onhoverlabel, 0, 0, 1, 1);
-            this.attach(new Label("\t"), 1, 0, 1, 1);
-            Box onhoverswitchbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            onhoverswitchbox.pack_start(onhoverswitch, false, false, 0);
-            this.attach(onhoverswitchbox, 2, 0, 1, 1);
-
-            Label gridsynclabel = new Label("Synchronize grid size");
-            gridsynclabel.xalign = 0;
-            this.attach(gridsynclabel, 0, 1, 1, 1);
-            this.attach(new Label("\t"), 1, 1, 1, 1);
-            Box gridsyncswitchbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            gridsyncswitchbox.pack_start(gridsyncswitch, false, false, 0);
-            gridsyncswitch.set_tooltip_text(
-                "Update grid size for moving & resizing to latest picked layout"
-            );
-            this.attach(gridsyncswitchbox, 2, 1, 1, 1);
-
-            Label maxcols_spin_label = new Label("Popover columns (0 is automatic)");
-            maxcols_spin_label.xalign = 0;
-            this.attach(maxcols_spin_label, 0, 2, 1, 1);
-            this.attach(new Label("\t"), 1, 2, 1, 1);
-            this.attach(maxcols_spin, 2, 2, 2, 1);
-
-            Label previewsize_label = new Label("Layout preview size (width in px)");
-            previewsize_label.xalign = 0;
-            this.attach(previewsize_label, 0, 3, 1, 1);
-            this.attach(new Label("\t"), 1, 3, 1, 1);
-            this.attach(previewsize_spin, 2, 3, 2, 1);
-
+                    }
+                }
+                else {
+                    string cmd = Config.SHUFFLER_DIR + "/shuffler_control 3";
+                    // string cmd = "/usr/lib/budgie-window-shuffler" + "/shuffler_control 3";
+                    try {
+                    Process.spawn_command_line_async(cmd);
+                    }
+                    catch (Error e) {
+                        stderr.printf ("%s\n", e.message);
+                    }
+                }
+            });
+            this.attach(callsettings, 0, 0, 1, 1);
             this.show_all();
         }
     }
-
 
     public class Plugin : Budgie.Plugin, Peas.ExtensionBase {
         public Budgie.Applet get_panel_widget(string uuid) {
@@ -209,6 +189,18 @@ namespace ShufflerApplet {
         public override Gtk.Widget? get_settings_ui()
         {
             return new ShufflerAppletSettings(this.get_applet_settings(uuid));
+        }
+
+        public void initialiseLocaleLanguageSupport() {
+            // Initialize gettext
+            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+            GLib.Intl.bindtextdomain(
+                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+            );
+            GLib.Intl.bind_textdomain_codeset(
+                Config.GETTEXT_PACKAGE, "UTF-8"
+            );
+            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
 
         private void getsettings_values(GLib. Settings shufflerappletsettings) {
@@ -367,8 +359,8 @@ namespace ShufflerApplet {
                             (int)(yspan * (area_ysize/gridrows))
                         );
                         sectionbutton.clicked.connect(()=> {
-                            //  string cm = Config.SHUFFLER_DIR + "/softmove ".concat(
-                            string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+                            string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
+                            // string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
                                 @"$xpos $ypos $gridcols $gridrows $xspan $yspan"
                             );
                             bool shufflerruns = shufflersettings.get_boolean("runshuffler");
@@ -382,7 +374,7 @@ namespace ShufflerApplet {
                             }
                             else {
                                 sendwarning(
-                                    "Shuffler warning", "Please activate Window Shuffler"
+                                    _("Shuffler warning"), _("Please activate Window Shuffler")
                                 );
                             }
                             if (gridsync) {
@@ -399,21 +391,13 @@ namespace ShufflerApplet {
                 maingrid.attach(layoutgrid, currcol, currow, 1, 1);
                 currcol += 1;
             }
-
             Gtk.Box swapbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            // Button swapbutton = new Gtk.Button();
-
-            //  Button swapbutton = new Button.from_icon_name(
-            //      "shufflerswapwindows-symbolic", Gtk.IconSize.DND
-            //  );
-            Button swapbutton = new Button();
-            swapbutton.label = "🠟🠝";
-
-
-
+            Button swapbutton = new Button.from_icon_name(
+                "shuffler-swapwindows-symbolic", Gtk.IconSize.DND
+            );
             swapbox.pack_start(swapbutton, true, false, 0);
             swapbutton.set_tooltip_text(
-                "Swap position and size of the two most recently focussed windows"
+                _("Swap position and size of the two most recently focussed windows")
             );
             swapbutton.set_relief(Gtk.ReliefStyle.NONE);
             swapbutton.get_style_context().add_class("otherbutton");
@@ -429,8 +413,8 @@ namespace ShufflerApplet {
         }
 
         public Applet() {
-
             setup_client();
+            initialiseLocaleLanguageSupport();
             wnck_scr = Wnck.Screen.get_default();
             shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
             shufflerappletsettings = new GLib.Settings(
@@ -451,7 +435,8 @@ namespace ShufflerApplet {
             }
             .otherbutton {
                 color: rgb(210, 210, 210);
-                background-color: rgba(0, 100, 148, 0)
+                background-color: rgba(0, 100, 148, 0);
+                margin: 0px;
             }
             .otherbutton:hover {
                 color: rgb(105, 105, 105);
