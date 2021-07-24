@@ -29,7 +29,6 @@ Build-Depends:
  libplank-dev,
  libsoup2.4-dev,
  libwnck-3-dev,
- libzeitgeist-2.0-dev,
  meson,
  pkg-config,
  pycodestyle,
@@ -65,7 +64,6 @@ Description: Applet to provide an alternative means to launch applications
 Package: budgie-applications-menu-applet
 Architecture: any
 Depends: budgie-extras-common, gnome-menus, ${misc:Depends}, ${shlibs:Depends}
-Suggests: zeitgeist-core
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -78,10 +76,6 @@ Description: Stylish Applications Menu for Budgie-Desktop
  can be opened in your default browser. Applications that have additional
  desktop options show via a right-click menu. Applications with associated
  actions show those actions are additional searchable entries.
- .
- With the optional zeitgeist package search entries learn your menu actions
- and results are automatically biased to allow you to find and execute
- applications quickly.
  .
  Variety of options are available including grid sizing and displaying a
  powerstrip.
