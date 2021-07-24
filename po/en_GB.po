@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-04 11:49+0100\n"
+"POT-Creation-Date: 2021-07-25 00:01+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/ubuntu-budgie/teams/72251/en_GB/)\n"
@@ -24,21 +24,21 @@ msgstr ""
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
-msgstr ""
+msgstr "Restore all items"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
 msgid "Delete all items"
-msgstr ""
+msgstr "Delete all items"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:272
+#: budgie-window-shuffler/src/shuffler_control.vala:347
 msgid "No"
 msgstr "No"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:276
+#: budgie-window-shuffler/src/shuffler_control.vala:351
 msgid "Yes"
 msgstr "Yes"
 
@@ -52,76 +52,76 @@ msgstr "Rubbish Bin"
 
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:79
 msgid "Go to applet options"
-msgstr ""
+msgstr "Go to applet options"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:61
 msgid "Trash Settings"
-msgstr ""
+msgstr "Rubbish Bin Settings"
 
 #. Sorting section
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:76
 msgid "Sort"
-msgstr ""
+msgstr "Sort"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:80
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:81
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:82
 msgid "Z-A"
-msgstr ""
+msgstr "Z-A"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:83
 msgid "Oldest First"
-msgstr ""
+msgstr "Oldest First"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:84
 msgid "Newest First"
-msgstr ""
+msgstr "Newest First"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:105
 msgid "Return to main view"
-msgstr ""
+msgstr "Return to main view"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:80
 msgid "Restore item"
-msgstr ""
+msgstr "Restore item"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:82
 msgid "Delete item"
-msgstr ""
+msgstr "Delete item"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:95
 #, c-format
 msgid "Path: %s"
-msgstr ""
+msgstr "Path: %s"
 
 #. TRANSLATORS: this is the time of when the file was deleted
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:103
 #, c-format
 msgid "Deleted on: %s"
-msgstr ""
+msgstr "Deleted on: %s"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:186
 msgid "Restore this item?"
-msgstr ""
+msgstr "Restore this item?"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:188
 msgid "Delete this item?"
-msgstr ""
+msgstr "Delete this item?"
 
 #: budgie-trash/trash/src/TrashHandler.vala:110
 #, c-format
 msgid "Unable to access trash for '%s': %s"
-msgstr ""
+msgstr "Unable to access trash for '%s': %s"
 
 #: budgie-trash/trash/src/TrashApplet.vala:149
 msgid "Error moving to trash:"
-msgstr ""
+msgstr "Error moving to rubbish bin:"
 
 #: budgie-trash/trash/src/TrashStore.vala:133
 #: budgie-trash/trash/src/TrashStore.vala:144
@@ -134,7 +134,7 @@ msgstr "Empty Rubbish Bin"
 #: budgie-trash/trash/src/TrashStore.vala:151
 #, c-format
 msgid "Unable to permanently delete '%s': %s"
-msgstr ""
+msgstr "Unable to permanently delete '%s': %s"
 
 #: budgie-trash/trash/src/TrashStore.vala:192
 msgid "Restore"
@@ -143,9 +143,9 @@ msgstr "Restore"
 #: budgie-trash/trash/src/TrashStore.vala:192
 #, c-format
 msgid "Unable to restore '%s' to %s: %s"
-msgstr ""
+msgstr "Unable to restore '%s' to %s: %s"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:198
+#: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Not set"
@@ -153,95 +153,95 @@ msgstr "Not set"
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
 #. tooltips
-#: budgie-window-shuffler/src/shuffler_control.vala:332
+#: budgie-window-shuffler/src/shuffler_control.vala:407
 #: budgie-window-shuffler/src/layouts_popup.vala:583
 msgid "Window class of the window to be launched (*mandatory)"
 msgstr "Window class of the window to be launched (*mandatory)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:333
+#: budgie-window-shuffler/src/shuffler_control.vala:408
 #: budgie-window-shuffler/src/layouts_popup.vala:585
 msgid "Grid size - columns"
 msgstr "Grid size - columns"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:334
+#: budgie-window-shuffler/src/shuffler_control.vala:409
 #: budgie-window-shuffler/src/layouts_popup.vala:586
 msgid "Grid size - rows"
 msgstr "Grid size - rows"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:335
+#: budgie-window-shuffler/src/shuffler_control.vala:410
 #: budgie-window-shuffler/src/layouts_popup.vala:587
 msgid "Window target position on grid - horizontally"
 msgstr "Window target position on grid - horizontally"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:336
+#: budgie-window-shuffler/src/shuffler_control.vala:411
 #: budgie-window-shuffler/src/layouts_popup.vala:588
 msgid "Window target position on grid - vertically"
 msgstr "Window target position on grid - vertically"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:337
+#: budgie-window-shuffler/src/shuffler_control.vala:412
 #: budgie-window-shuffler/src/layouts_popup.vala:589
 msgid "Window size - columns"
 msgstr "Window size - columns"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:338
+#: budgie-window-shuffler/src/shuffler_control.vala:413
 #: budgie-window-shuffler/src/layouts_popup.vala:590
 msgid "Window size - rows"
 msgstr "Window size - rows"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:339
+#: budgie-window-shuffler/src/shuffler_control.vala:414
 #: budgie-window-shuffler/src/layouts_popup.vala:591
 msgid "Target monitor, default is on active monitor"
 msgstr "Target monitor, default is on active monitor"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:340
+#: budgie-window-shuffler/src/shuffler_control.vala:415
 #: budgie-window-shuffler/src/layouts_popup.vala:593
 msgid "Target workspace, default is on active workspace"
 msgstr "Target workspace, default is on active workspace"
 
 #. 1. APPLICATION FRAME
-#: budgie-window-shuffler/src/shuffler_control.vala:349
+#: budgie-window-shuffler/src/shuffler_control.vala:424
 #: budgie-window-shuffler/src/layouts_popup.vala:615
 msgid "Application"
 msgstr "Application"
 
 #. - wmclass
-#: budgie-window-shuffler/src/shuffler_control.vala:357
+#: budgie-window-shuffler/src/shuffler_control.vala:432
 #: budgie-window-shuffler/src/layouts_popup.vala:633
 msgid "WM class group*"
 msgstr "WM class group*"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:370
+#: budgie-window-shuffler/src/shuffler_control.vala:445
 #: budgie-window-shuffler/src/layouts_popup.vala:638
 msgid "Click a window to fetch"
 msgstr "Click a window to fetch"
 
 #. 2. GEOMETRY FRAME
-#: budgie-window-shuffler/src/shuffler_control.vala:378
+#: budgie-window-shuffler/src/shuffler_control.vala:453
 #: budgie-window-shuffler/src/layouts_popup.vala:654
 msgid "Window position & size"
 msgstr "Window position & size"
 
 #. grid cols / rows
-#: budgie-window-shuffler/src/shuffler_control.vala:387
+#: budgie-window-shuffler/src/shuffler_control.vala:462
 #: budgie-window-shuffler/src/layouts_popup.vala:663
 msgid "Grid size; columns & rows"
 msgstr "Grid size; columns & rows"
 
 #. window position
-#: budgie-window-shuffler/src/shuffler_control.vala:404
+#: budgie-window-shuffler/src/shuffler_control.vala:479
 #: budgie-window-shuffler/src/layouts_popup.vala:681
 msgid "Target window position, x / y"
 msgstr "Target window position, x / y"
 
 #. window span
-#: budgie-window-shuffler/src/shuffler_control.vala:420
+#: budgie-window-shuffler/src/shuffler_control.vala:495
 #: budgie-window-shuffler/src/layouts_popup.vala:697
 msgid "Window cell span, hor / vert"
 msgstr "Window cell span, hor / vert"
 
 #. miscellaneous section
-#: budgie-window-shuffler/src/shuffler_control.vala:437
-#: budgie-window-shuffler/src/shuffler_control.vala:943
+#: budgie-window-shuffler/src/shuffler_control.vala:512
+#: budgie-window-shuffler/src/shuffler_control.vala:1025
 #: budgie-window-shuffler/src/layouts_popup.vala:714
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:241
 msgid "Miscellaneous"
@@ -249,25 +249,25 @@ msgstr "Miscellaneous"
 
 #. target monitor
 #. targetmonitor
-#: budgie-window-shuffler/src/shuffler_control.vala:450
+#: budgie-window-shuffler/src/shuffler_control.vala:525
 #: budgie-window-shuffler/src/layouts_popup.vala:723
 msgid "Target monitor"
 msgstr "Target monitor"
 
 #. target workspace
 #. targetworkspace
-#: budgie-window-shuffler/src/shuffler_control.vala:466
+#: budgie-window-shuffler/src/shuffler_control.vala:541
 #: budgie-window-shuffler/src/layouts_popup.vala:739
 msgid "Target workspace"
 msgstr "Target workspace"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:495
+#: budgie-window-shuffler/src/shuffler_control.vala:570
 #: budgie-window-shuffler/src/layouts_popup.vala:246
 #: budgie-window-shuffler/src/layouts_popup.vala:786
 msgid "Done"
 msgstr "Done"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:531
+#: budgie-window-shuffler/src/shuffler_control.vala:606
 #: budgie-window-shuffler/src/layouts_popup.vala:210
 #: budgie-window-shuffler/src/layouts_popup.vala:789
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
@@ -278,312 +278,352 @@ msgid "Cancel"
 msgstr "Cancel"
 
 #. window stuff
-#: budgie-window-shuffler/src/shuffler_control.vala:628
-#: budgie-window-shuffler/src/shuffler_control.vala:885
+#: budgie-window-shuffler/src/shuffler_control.vala:703
+#: budgie-window-shuffler/src/shuffler_control.vala:961
 msgid "Window Shuffler Controls"
 msgstr "Window Shuffler Controls"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:653
+#: budgie-window-shuffler/src/shuffler_control.vala:728
 msgid "Replace window-rule"
 msgstr "Replace window-rule"
 
 #. when creating new file, but name exists
-#: budgie-window-shuffler/src/shuffler_control.vala:655
+#: budgie-window-shuffler/src/shuffler_control.vala:730
 msgid "Save changes to window-rule"
 msgstr "Save changes to window-rule"
 
 #. 2. if so, if wm entry, thus filename changes:
-#: budgie-window-shuffler/src/shuffler_control.vala:665
+#: budgie-window-shuffler/src/shuffler_control.vala:740
 msgid "Save changes to renamed window-rule"
 msgstr "Save changes to renamed window-rule"
 
 #. update ruleslist
 #. headers
-#: budgie-window-shuffler/src/shuffler_control.vala:775
+#: budgie-window-shuffler/src/shuffler_control.vala:850
 msgid "Grid"
 msgstr "Grid"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:775
+#: budgie-window-shuffler/src/shuffler_control.vala:850
 msgid "Span"
 msgstr "Span"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:776
+#: budgie-window-shuffler/src/shuffler_control.vala:851
 msgid "Display"
 msgstr "Display"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:776
+#: budgie-window-shuffler/src/shuffler_control.vala:851
 msgid "Workspace"
 msgstr "Workspace"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:845
+#: budgie-window-shuffler/src/shuffler_control.vala:920
 msgid "Delete"
 msgstr "Delete"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:846
+#: budgie-window-shuffler/src/shuffler_control.vala:921
 msgid "windowrule"
 msgstr "windowrule"
 
 #. content
-#: budgie-window-shuffler/src/shuffler_control.vala:937
+#: budgie-window-shuffler/src/shuffler_control.vala:1017
 msgid "Tiling"
 msgstr "Tiling"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:938
+#: budgie-window-shuffler/src/shuffler_control.vala:1018
 msgid "Window tiling & shortcuts"
 msgstr "Window tiling & shortcuts"
 
 #. optimize please with similar grids
 #. 1. PICK LAYOUT GRID
-#: budgie-window-shuffler/src/shuffler_control.vala:939
-#: budgie-window-shuffler/src/shuffler_control.vala:1173
+#: budgie-window-shuffler/src/shuffler_control.vala:1019
+#: budgie-window-shuffler/src/shuffler_control.vala:1258
 #: budgie-window-shuffler/src/layouts_popup.vala:161
 msgid "Layouts"
 msgstr "Layouts"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:940
+#: budgie-window-shuffler/src/shuffler_control.vala:1020
 msgid "Automatic window & application presets"
 msgstr "Automatic window & application presets"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:941
-#: budgie-window-shuffler/src/shuffler_control.vala:1215
+#: budgie-window-shuffler/src/shuffler_control.vala:1021
+#: budgie-window-shuffler/src/shuffler_control.vala:1304
 msgid "Window rules"
 msgstr "Window rules"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:942
+#: budgie-window-shuffler/src/shuffler_control.vala:1022
 msgid "Define where application windows should be opened"
 msgstr "Define where application windows should be opened"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:944
+#: budgie-window-shuffler/src/shuffler_control.vala:1023
+msgid "Applet"
+msgstr "Applet"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1024
+msgid "Shuffler Applet settings"
+msgstr "Shuffler Applet settings"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1026
 msgid "General preferences"
 msgstr "General preferences"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:962
+#: budgie-window-shuffler/src/shuffler_control.vala:1046
 msgid "Basic quarter & half tiling"
 msgstr "Basic quarter & half tiling"
 
 #. basic shortcutlist (in subgrid)
 #. translations!
-#: budgie-window-shuffler/src/shuffler_control.vala:977
+#: budgie-window-shuffler/src/shuffler_control.vala:1061
 msgid "Top-left"
 msgstr "Top-left"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:977
+#: budgie-window-shuffler/src/shuffler_control.vala:1061
 msgid "Top-right"
 msgstr "Top-right"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:977
+#: budgie-window-shuffler/src/shuffler_control.vala:1061
 msgid "Bottom-right"
 msgstr "Bottom-right"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:978
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
 msgid "Bottom-left"
 msgstr "Bottom-left"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:978
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
 msgid "Left-half"
 msgstr "Left-half"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:978
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
 msgid "Top-half"
 msgstr "Top-half"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:979
+#: budgie-window-shuffler/src/shuffler_control.vala:1063
 msgid "Right-half"
 msgstr "Right-half"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:979
+#: budgie-window-shuffler/src/shuffler_control.vala:1063
 msgid "Bottom-half"
 msgstr "Bottom-half"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:979
+#: budgie-window-shuffler/src/shuffler_control.vala:1063
 msgid "Toggle maximize"
 msgstr "Toggle maximise"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:995
+#: budgie-window-shuffler/src/shuffler_control.vala:1079
 msgid "Resizing & moving windows in a custom grid"
 msgstr "Resizing & moving windows in a custom grid"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1006
+#: budgie-window-shuffler/src/shuffler_control.vala:1090
 msgid "Grid size"
 msgstr "Grid size"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1009
+#: budgie-window-shuffler/src/shuffler_control.vala:1093
 msgid "Columns"
 msgstr "Columns"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1017
+#: budgie-window-shuffler/src/shuffler_control.vala:1101
 msgid "Rows"
 msgstr "Rows"
 
 #. options
-#: budgie-window-shuffler/src/shuffler_control.vala:1026
+#: budgie-window-shuffler/src/shuffler_control.vala:1110
 msgid "Options"
 msgstr "Options"
 
 #. sticky
-#: budgie-window-shuffler/src/shuffler_control.vala:1030
+#: budgie-window-shuffler/src/shuffler_control.vala:1114
 msgid "Resize opposite window"
 msgstr "Resize opposite window"
 
 #. swap
-#: budgie-window-shuffler/src/shuffler_control.vala:1036
+#: budgie-window-shuffler/src/shuffler_control.vala:1120
 msgid "Swap windows"
 msgstr "Swap windows"
 
 #. notification
-#: budgie-window-shuffler/src/shuffler_control.vala:1043
+#: budgie-window-shuffler/src/shuffler_control.vala:1127
 msgid "Show notification on incorrect window size"
 msgstr "Show notification on incorrect window size"
 
 #. guigrid
-#: budgie-window-shuffler/src/shuffler_control.vala:1050
+#: budgie-window-shuffler/src/shuffler_control.vala:1134
 msgid "Enable GUI grid"
 msgstr "Enable GUI grid"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1057
+#: budgie-window-shuffler/src/shuffler_control.vala:1141
 msgid "GUI grid shortcuts"
 msgstr "GUI grid shortcuts"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1062
+#: budgie-window-shuffler/src/shuffler_control.vala:1146
 msgid "Toggle GUI grid"
 msgstr "Toggle GUI grid"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1062
+#: budgie-window-shuffler/src/shuffler_control.vala:1146
 msgid "Add a column"
 msgstr "Add a column"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1063
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Add a row"
 msgstr "Add a row"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1063
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Remove column"
 msgstr "Remove column"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1063
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Remove row"
 msgstr "Remove row"
 
 #. shortcutlist custom grid
-#: budgie-window-shuffler/src/shuffler_control.vala:1072
+#: budgie-window-shuffler/src/shuffler_control.vala:1156
 msgid "Shortcuts for moving a window to the nearest grid cell"
 msgstr "Shortcuts for moving a window to the nearest grid cell"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1078
+#: budgie-window-shuffler/src/shuffler_control.vala:1162
 msgid "Move left"
 msgstr "Move left"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1078
+#: budgie-window-shuffler/src/shuffler_control.vala:1162
 msgid "Move right"
 msgstr "Move right"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1079
+#: budgie-window-shuffler/src/shuffler_control.vala:1163
 msgid "Move up"
 msgstr "Move up"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1079
+#: budgie-window-shuffler/src/shuffler_control.vala:1163
 msgid "Move down"
 msgstr "Move down"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1089
+#: budgie-window-shuffler/src/shuffler_control.vala:1173
 msgid "Shortcuts for resizing a window"
 msgstr "Shortcuts for resizing a window"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1098
+#: budgie-window-shuffler/src/shuffler_control.vala:1182
 msgid "Expand horizontally (to the right)"
 msgstr "Expand horizontally (to the right)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1099
+#: budgie-window-shuffler/src/shuffler_control.vala:1183
 msgid "Shrink horizontally (from the right)"
 msgstr "Shrink horizontally (from the right)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1100
+#: budgie-window-shuffler/src/shuffler_control.vala:1184
 msgid "Expand vertically (down)"
 msgstr "Expand vertically (down)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1101
+#: budgie-window-shuffler/src/shuffler_control.vala:1185
 msgid "Shrink vertically (from the bottom)"
 msgstr "Shrink vertically (from the bottom)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1102
+#: budgie-window-shuffler/src/shuffler_control.vala:1186
 msgid "Expand horizontally (to the left)"
 msgstr "Expand horizontally (to the left)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1103
+#: budgie-window-shuffler/src/shuffler_control.vala:1187
 msgid "Shrink horizontally (from the left)"
 msgstr "Shrink horizontally (from the left)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1104
+#: budgie-window-shuffler/src/shuffler_control.vala:1188
 msgid "Expand vertically (up)"
 msgstr "Expand vertically (up)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1105
+#: budgie-window-shuffler/src/shuffler_control.vala:1189
 msgid "Shrink vertically (from the top)"
 msgstr "Shrink vertically (from the top)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1106
-#: budgie-window-shuffler/src/shuffler_control.vala:1135
+#: budgie-window-shuffler/src/shuffler_control.vala:1190
+#: budgie-window-shuffler/src/shuffler_control.vala:1219
 msgid "Toggle resizing opposite window"
 msgstr "Toggle resizing opposite window"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1118
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
 msgid "Other"
 msgstr "Other"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1125
+#: budgie-window-shuffler/src/shuffler_control.vala:1209
 msgid "Tile all windows to grid"
 msgstr "Tile all windows to grid"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1181
+#: budgie-window-shuffler/src/shuffler_control.vala:1266
 msgid "Toggle layouts quicklist & manager"
 msgstr "Toggle layouts quicklist & manager"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1191
+#: budgie-window-shuffler/src/shuffler_control.vala:1276
 msgid "Setup now"
 msgstr "Setup now"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1224
+#: budgie-window-shuffler/src/shuffler_control.vala:1313
 msgid "Stored rules"
 msgstr "Stored rules"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1234
+#: budgie-window-shuffler/src/shuffler_control.vala:1323
 msgid "Add new rule"
 msgstr "Add new rule"
 
 #. margin header
-#: budgie-window-shuffler/src/shuffler_control.vala:1251
+#: budgie-window-shuffler/src/shuffler_control.vala:1355
 msgid "Margins between virtual grid and screen edges"
 msgstr "Margins between virtual grid and screen edges"
 
 #. top margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1271
+#: budgie-window-shuffler/src/shuffler_control.vala:1375
 msgid "Top margin"
 msgstr "Top margin"
 
 #. left/right margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1275
+#: budgie-window-shuffler/src/shuffler_control.vala:1379
 msgid "Left & right margins"
 msgstr "Left & right margins"
 
 #. bottom margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1280
+#: budgie-window-shuffler/src/shuffler_control.vala:1384
 msgid "Bottom margin"
 msgstr "Bottom margin"
 
 #. padding header
-#: budgie-window-shuffler/src/shuffler_control.vala:1287
+#: budgie-window-shuffler/src/shuffler_control.vala:1391
 msgid "Padding"
 msgstr "Padding"
 
 #. padding
-#: budgie-window-shuffler/src/shuffler_control.vala:1292
+#: budgie-window-shuffler/src/shuffler_control.vala:1396
 msgid "Window padding"
 msgstr "Window padding"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1302
+#: budgie-window-shuffler/src/shuffler_control.vala:1405
+msgid "Animation"
+msgstr "Animation"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1408
+msgid "Use general animation settings"
+msgstr "Use general animation settings"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1414
 msgid "Use animation"
 msgstr "Use animation"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1729
+msgid "Applet settings"
+msgstr "Applet settings"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1733
+msgid "Applet popover content"
+msgstr "Applet popover content"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1741
+msgid "Show popover on hover (without click)"
+msgstr "Show popover on hover (without click)"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1749
+msgid "Synchronize grid size"
+msgstr "Synchronise grid size"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1756
+msgid "Update grid size for moving & resizing to latest picked layout"
+msgstr "Update grid size for moving & resizing to latest picked layout"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1759
+msgid "Layout preview size (width in px)"
+msgstr "Layout preview size (width in px)"
 
 #. buttons of mastergrid, corresponcing to stack "picklayout"
 #. since this is the "home" page
@@ -656,6 +696,22 @@ msgstr "Test"
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
 msgid "Minimum window size exceeds target"
 msgstr "Minimum window size exceeds target"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:86
+msgid "Open Shuffler settings"
+msgstr "Open Shuffler settings"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:377
+msgid "Shuffler warning"
+msgstr "Shuffler warning"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:377
+msgid "Please activate Window Shuffler"
+msgstr "Please activate Window Shuffler"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:400
+msgid "Swap position and size of the two most recently focussed windows"
+msgstr "Swap position and size of the two most recently focussed windows"
 
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:162
@@ -1608,6 +1664,10 @@ msgstr ""
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr "Window Shuffler Control"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
+msgid "Place a window in a predefined layout"
+msgstr "Place a window in a predefined layout"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
