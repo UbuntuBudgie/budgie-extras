@@ -22,7 +22,7 @@ program.  If not, see <https://www.gnu.org/licenses/>.
 
 //todo: translations, paths
 
-namespace ShufflerControls2 {
+namespace ShufflerControl2 {
 
     GLib.Settings shufflersettings;
     GLib.Settings shufflerappletsettings;
@@ -245,7 +245,7 @@ namespace ShufflerControls2 {
     }
 
 
-    class ShufflerControlsWindow : Gtk.Window {
+    class ShufflerControlWindow : Gtk.Window {
 
         ExtrasDaemon bd_client;
 
@@ -279,7 +279,7 @@ namespace ShufflerControls2 {
         FileMonitor monitor_ruleschange;
 
         string default_set = _("Not set");
-        string controls_css = """
+        string control_css = """
         .somebox {
             border-left: 0px;
             border-bottom: 0px;
@@ -700,7 +700,7 @@ namespace ShufflerControls2 {
 
         private void makesure_offocus () {
             foreach (Wnck.Window w in wnck_scr.get_windows()) {
-                if (w.get_name().down() == (_("Window Shuffler Controls"))) {
+                if (w.get_name().down() == (_("Window Shuffler Control"))) {
                     w.activate(get_now());
                     break;
                 }
@@ -952,13 +952,13 @@ namespace ShufflerControls2 {
             }
         }
 
-        public ShufflerControlsWindow(int page=0) {
+        public ShufflerControlWindow(int page=0) {
 
             setup_client();
             initialiseLocaleLanguageSupport();
             wnck_scr = Wnck.Screen.get_default();
             // window stuff
-            this.title = (_("Window Shuffler Controls"));
+            this.title = (_("Window Shuffler Control"));
             //  this.default_width = 800;
             this.set_resizable(false);
             // watch rulesdir
@@ -994,7 +994,7 @@ namespace ShufflerControls2 {
             Gdk.Screen gdk_scr = this.get_screen();
             Gtk.CssProvider css_provider = new Gtk.CssProvider();
             try {
-                css_provider.load_from_data(controls_css);
+                css_provider.load_from_data(control_css);
                 Gtk.StyleContext.add_provider_for_screen(
                     gdk_scr, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
                 );
@@ -1616,7 +1616,7 @@ namespace ShufflerControls2 {
         if (args.length > 1) {
             page = int.parse(args[1]);
         }
-        new ShufflerControlsWindow(page);
+        new ShufflerControlWindow(page);
         // watch trigger to switch to applet settings
         string user = Environment.get_user_name();
         File showpage_trigger = File.new_for_path(
