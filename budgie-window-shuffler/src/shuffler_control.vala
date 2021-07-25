@@ -1730,7 +1730,7 @@ namespace ShufflerControl2 {
                 0, "justbold"
             );
             Label appletpopoversettingslabel = makelabel(
-                (_("Applet popover content")),
+                _("Applet popover content"),
                 0, "justbold"
             );
 
@@ -1769,6 +1769,12 @@ namespace ShufflerControl2 {
             makeappletlayoutbutton(appletmap, 1, 1, 3);
             this.attach(new Label("\n"), 0, 50, 1, 1);
             this.attach(appletmap, 0, 100, 100, 1);
+            this.attach(new Label(""), 0, 109, 1, 1);
+            Label hint_for_the_obvious = makelabel(
+                _("The applet needs to be on the panel to see the changes"),
+                0, "justitalic"
+            );
+            this.attach(hint_for_the_obvious, 0, 110, 10, 1);
             this.show_all();
         }
 
