@@ -1329,7 +1329,6 @@ namespace LayoutsPopup {
         }
     }
 
-    /////////////////////////////////////////////////////////////////
     private string readfile (string path) {
         try {
             string read;
@@ -1339,7 +1338,6 @@ namespace LayoutsPopup {
             return "";
         }
     }
-    /////////////////////////////////////////////////////////////////
 
     public static int main(string[] args) {
         try {
