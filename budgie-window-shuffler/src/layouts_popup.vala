@@ -38,6 +38,7 @@ namespace LayoutsPopup {
     Gtk.Dialog? ask_confirmdialog;
     string username;
     string homedir;
+    string triggerfpath;
 
 
     class PopupWindow : Gtk.Window {
@@ -77,7 +78,7 @@ namespace LayoutsPopup {
         GLib.Settings shuffler_settings;
         string default_set;
 
-        public PopupWindow() {
+        public PopupWindow(bool fromcontrol) {
 
             default_set = _("Not set");
             // settings
@@ -189,7 +190,20 @@ namespace LayoutsPopup {
             Gtk.Button addbutton = new Gtk.Button();
             addbutton.label = _("Add new");
             addbutton.set_size_request(120, 10);
+
+            if (fromcontrol) {
+                Button donefromcontrol = new Gtk.Button();
+                donefromcontrol.clicked.connect(()=> {
+                    this.destroy();
+                    delete_file(popuptrigger);
+                });
+                donefromcontrol.label = _("Done");
+                donefromcontrol.set_size_request(120, 10);
+                addlayout_box.pack_end(donefromcontrol, false, false, 2);
+            }
             addlayout_box.pack_end(addbutton, false, false, 2);
+
+
             // 2. NEW LAYOUTS GRID
             newlayout_frame = new Gtk.Frame(_("New layout"));
             var newlayout_widget_label = newlayout_frame.get_label_widget();
@@ -1276,7 +1290,8 @@ namespace LayoutsPopup {
             popuptrigger.query_exists() &&
             layouts == null
         ) {
-            layouts = new PopupWindow();
+            bool fromcontrol = readfile(triggerfpath) == "fromcontrol";
+            layouts = new PopupWindow(fromcontrol);
         }
         else if (
             !popuptrigger.query_exists() &&
@@ -1314,6 +1329,18 @@ namespace LayoutsPopup {
         }
     }
 
+    /////////////////////////////////////////////////////////////////
+    private string readfile (string path) {
+        try {
+            string read;
+            FileUtils.get_contents (path, out read);
+            return read;
+        } catch (FileError error) {
+            return "";
+        }
+    }
+    /////////////////////////////////////////////////////////////////
+
     public static int main(string[] args) {
         try {
             client = Bus.get_proxy_sync (
@@ -1334,8 +1361,11 @@ namespace LayoutsPopup {
             "/tmp/".concat(username, "_shufflertriggers")
         );
         // watch triggerfile
+        // containing dir
         File triggerdir = File.new_for_path(triggerpath);
-        popuptrigger = File.new_for_path(triggerpath.concat("/layoutspopup"));
+        // triggerfilepath
+        triggerfpath = triggerpath.concat("/layoutspopup");
+        popuptrigger = File.new_for_path(triggerfpath);
         FileMonitor? triggerpath_monitor = null;
         try {
             triggerpath_monitor = triggerdir.monitor(

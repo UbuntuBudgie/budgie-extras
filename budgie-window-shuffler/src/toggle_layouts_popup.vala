@@ -18,12 +18,16 @@
 
 namespace ToggleShufflerGUI {
 
-    private void create_trigger (File trigger) {
+    private void create_trigger (File trigger, bool fromcontrol) {
+        string arg = "";
+        if (fromcontrol) {
+            arg = "fromcontrol";
+        }
         try {
             FileOutputStream createtrigger = trigger.create (
                 FileCreateFlags.PRIVATE
             );
-            createtrigger.write("".data);
+            createtrigger.write(arg.data);
         }
         catch (Error e) {
         }
@@ -49,6 +53,9 @@ namespace ToggleShufflerGUI {
     }
 
     public static void main (string[] args) {
+        bool fromcontrol = args.length != 1 && args[1] == "fromcontrol";
+        print(@"$fromcontrol\n");
+
         // make sure triggerdir exists
         string username = Environment.get_user_name();
         string triggerpath = create_dirs_file(
@@ -58,7 +65,7 @@ namespace ToggleShufflerGUI {
         File popuptrigger = File.new_for_path(triggerpath.concat("/layoutspopup"));
         bool popuptriggerexists = popuptrigger.query_exists();
         if (!popuptriggerexists) {
-             create_trigger(popuptrigger);
+             create_trigger(popuptrigger, fromcontrol);
             }
         else {
             try {

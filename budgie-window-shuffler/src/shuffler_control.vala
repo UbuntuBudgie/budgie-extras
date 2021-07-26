@@ -1275,7 +1275,13 @@ namespace ShufflerControl2 {
             Button manage_layoutsbutton = new Gtk.Button();
             manage_layoutsbutton.label = (_("Setup now"));
             manage_layoutsbutton.clicked.connect(()=> {
-                string layoutsetup_path = Config.SHUFFLER_DIR + "/toggle_layouts_popup";
+                /*
+                / when launching layouts popu from control, it should
+                /  have a "done" button to match behavior of rules setup
+                */
+                string layoutsetup_path = Config.SHUFFLER_DIR.concat(
+                    "/toggle_layouts_popup", " fromcontrol"
+                );
                 try {
                     Process.spawn_command_line_sync(layoutsetup_path);
                 }
@@ -1505,6 +1511,8 @@ namespace ShufflerControl2 {
             );
             GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
+
+
 
         private void manage_daemon() {
             string[] relevant_keys = {
