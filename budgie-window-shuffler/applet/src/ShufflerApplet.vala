@@ -440,7 +440,7 @@ namespace ShufflerApplet {
             }
             .otherbutton:hover {
                 color: rgb(105, 105, 105);
-                background-color: rgba(0, 100, 148, 0)
+                background-color: rgba(0, 100, 148, 0);
             }
 
             """;
