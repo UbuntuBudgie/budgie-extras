@@ -189,6 +189,10 @@ namespace Layouts {
                     appmenu_categoryview(true);
                     break;
                 }
+                case "eleven": {
+                    appmenu_powerstrip(true);
+                    break;
+                }
                 default: {
                     break;
                 }
