@@ -38,6 +38,8 @@ namespace ShufflerApplet {
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
         public abstract int check_windowvalid (int xid) throws Error;
+        public abstract void activate_window (int xid) throws Error;
+        public abstract int getactivewin () throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool useanimation () throws Error;
         public abstract void move_window(
@@ -222,10 +224,12 @@ namespace ShufflerApplet {
                             (string)match.get_child_value(7) == "false"
                         ) {
                             Variant newdata = new Variant(
-                                "(iiiii)", wid, (int)match.get_child_value(3),
+                                "(iiiiis)", wid, (int)match.get_child_value(3),
                                 (int)match.get_child_value(4),
                                 (int)match.get_child_value(5),
-                                (int)match.get_child_value(6)
+                                (int)match.get_child_value(6),
+                                (string)match.get_child_value(0)
+
                             );
                             return newdata;
                         }
@@ -243,33 +247,7 @@ namespace ShufflerApplet {
             catch (Error e) {
                 message("Can't get animation settings from daemon");
             }
-            // swap positions of the two latest visoble windows with focus
-            Variant[] valid_wins = {};
-
-            HashTable<string, Variant>? wins = null;
-            try {
-                wins = client.get_winsdata ();
-            }
-            catch (Error e) {
-                message("Can't get window data from daemon");
-            }
-
-            try {
-                foreach (Wnck.Window w in wnck_scr.get_windows_stacked()) {
-                    int w_id = (int)w.get_xid();
-                    Variant visible_win = check_visible(wins, w_id);
-                    if (
-                        // check valid & visible (on this ws, not minimized)
-                        client.check_windowvalid(w_id) != -1 &&
-                        visible_win != null
-                    ) {
-                        valid_wins += visible_win;
-                    }
-                }
-            }
-            catch (Error e) {
-                message("Something went wrong creating valid window list");
-            }
+            Variant[] valid_wins = getvalidwins();
             int n_windows = valid_wins.length;
             if (n_windows > 2) {
                 valid_wins = valid_wins[(n_windows-2):n_windows];
@@ -278,6 +256,7 @@ namespace ShufflerApplet {
             if (valid_wins.length == 2) {
                 int curr_index = 0;
                 foreach (Variant winsubject in valid_wins) {
+
                     int target_index = 0;
                     if (curr_index == 0) {
                         target_index = 1;
@@ -311,6 +290,7 @@ namespace ShufflerApplet {
         }
 
         private void refresh_layouts() {
+            // after gsettings change, repopulate popovergrid
             // remove old stuff
             foreach (Widget w in maingrid.get_children()) {
                 w.destroy();
@@ -325,6 +305,7 @@ namespace ShufflerApplet {
                 maxcols = (int)rint(Math.pow(grids.length, 0.5));
             }
             int add = 1;
+            int group_number = 0;
             foreach (string d in grids) {
                 if (currcol > realcols) {
                     realcols = currcol;
@@ -340,14 +321,15 @@ namespace ShufflerApplet {
                 string[] gridcolsrows = grid_string.split("x");
                 int gridcols = int.parse(gridcolsrows[0]);
                 int gridrows = int.parse(gridcolsrows[1]);
+
                 foreach (string s in layout_def) {
+                    int n_tiles = layout_def.length - 1; //so:  minus grid definition
                     if (s != grid_string) {
                         int[] coords = {};
                         foreach (string c in s.split(",")) {
                             coords += int.parse(c);
                         }
                         Button sectionbutton = new Button();
-                        //  MenuButton sectionbutton = new MenuButton();
                         sectionbutton.get_style_context().add_class("windowbutton");
                         int xpos = coords[0];
                         int ypos = coords[1];
@@ -358,9 +340,9 @@ namespace ShufflerApplet {
                             xspan * (previewsize/gridcols)),
                             (int)(yspan * (area_ysize/gridrows))
                         );
-                        sectionbutton.clicked.connect(()=> {
+                        int currpos = group_number;
+                        sectionbutton.clicked.connect((currposition)=> {
                             string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
-                            // string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
                                 @"$xpos $ypos $gridcols $gridrows $xspan $yspan"
                             );
                             bool shufflerruns = shufflersettings.get_boolean("runshuffler");
@@ -370,6 +352,9 @@ namespace ShufflerApplet {
                                 }
                                 catch (Error e) {
                                     stderr.printf ("%s\n", e.message);
+                                }
+                                if (shufflerappletsettings.get_boolean("tilemultiple")) {
+                                    tile_abunch(currpos, n_tiles, s, gridcols, gridrows);
                                 }
                             }
                             else {
@@ -390,12 +375,13 @@ namespace ShufflerApplet {
                 }
                 maingrid.attach(layoutgrid, currcol, currow, 1, 1);
                 currcol += 1;
+                group_number += 1;
             }
             Gtk.Box swapbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             Button swapbutton = new Button.from_icon_name(
                 "shuffler-swapwindows-symbolic", Gtk.IconSize.DND
             );
-            swapbox.pack_start(swapbutton, true, false, 0);
+            //  swapbox.pack_start(swapbutton, true, false, 0);
             swapbutton.set_tooltip_text(
                 _("Swap position and size of the two most recently focussed windows")
             );
@@ -405,11 +391,141 @@ namespace ShufflerApplet {
                 swap_recent_windows();
                 popover.set_visible(false);
             });
-            // swapbutton.label = "🠰 🠲";
+            string currcolor = "tilebunch_off";
+            if (shufflerappletsettings.get_boolean("tilemultiple")) {
+                currcolor = "tilebunch_on";
+            }
+            Gtk.Button toggle_gridall = new Button.from_icon_name(
+                "shuffler-applet-tileall-symbolic", Gtk.IconSize.DND
+            );
+            toggle_gridall.set_tooltip_text(
+                _("Reorganize secundary windows into layout").concat(
+                    " - ", _("Toggle mode")
+            ));
+            toggle_gridall.get_style_context().add_class(currcolor);
+            toggle_gridall.clicked.connect(set_tilebunchcolor);
+            toggle_gridall.set_relief(Gtk.ReliefStyle.NONE);
+            Gtk.Box subbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            subbox.pack_start(swapbutton, false, false, 0);
+            subbox.pack_start(toggle_gridall, false, false, 0);
+            swapbox.pack_start(subbox, true, false, 0);
+            maingrid.show_all();
             maingrid.attach(
                 swapbox, 0, 100, realcols + add, 1
             );
             maingrid.show_all();
+        }
+
+        private Variant[] getvalidwins () {
+            HashTable<string, Variant>? wins = null;
+            try {
+                wins = client.get_winsdata ();
+            }
+            catch (Error e) {
+                message("Can't get window data from daemon");
+            }
+            Variant[] valid_wins = {};
+            try {
+                foreach (Wnck.Window w in wnck_scr.get_windows_stacked()) {
+                    int w_id = (int)w.get_xid();
+                    Variant visible_win = check_visible(wins, w_id);
+                    if (
+                        // check valid & visible (on this ws, not minimized)
+                        client.check_windowvalid(w_id) != -1 &&
+                        visible_win != null
+                    ) {
+                        // but now we only need xid
+                        // currwindows += w_id;
+                        valid_wins += visible_win;
+                    }
+                }
+            }
+            catch (Error e) {
+                message("Something went wrong creating valid window list (int)");
+            }
+            return valid_wins;
+        }
+
+        private void tile_abunch(
+            int currpos, int n_tiles, string active_target,
+            int gridcols, int gridrows
+        ) {
+            // visually separate main action from reorganizing secundary windows
+            Thread.usleep(250000);
+            // 1. GET TASKS
+            string[] currtaskdata =  grids[currpos].split("|");
+            // remove gridsize
+            currtaskdata = currtaskdata[1:currtaskdata.length];
+            // remove task, if already done in area button action
+            string[] filtered_taskdata = {};
+            foreach (string st in currtaskdata) {
+                if (st != active_target) {
+                    filtered_taskdata += st;
+                }
+            }
+            currtaskdata = filtered_taskdata;
+            // 2. GET WINDOW SUBJECTS
+            Variant[] currwins = getvalidwins(); // <- newest = last
+            // let's get the xid of most recent window first (for re- focus)
+            int mostrecent_xid = -1;
+            int ncurrwins = currwins.length;
+            if (ncurrwins != 0) {
+                mostrecent_xid = (int)currwins[ncurrwins - 1].get_child_value(0);
+            }
+            // reverse and filter out active window (last in array, is already moved)
+            Variant[] reversed_wins = {};
+            int nwins = currwins.length - 1; // -1, since we want to skip active window
+            while (nwins > 0) {
+                reversed_wins += currwins[nwins - 1];
+                nwins -= 1;
+            }
+            currwins = reversed_wins; // <- first is newest
+            // 3. OK, get the job done
+            // see how many tasks we actually have
+            int ntasks = currtaskdata.length;
+            // let's say we don't know:
+            nwins = currwins.length;
+            if (nwins < ntasks) {
+                ntasks = nwins;
+            }
+            int taskindex = 0;
+            while (taskindex < ntasks) {
+                /*
+                / additional data in Variant could come handy if we would
+                / want to do more with it in future (magnetic reorganize)
+                */
+                Variant currwinsubject = currwins[taskindex];
+                int winkey = (int)currwinsubject.get_child_value(0);
+                string[] currtask = filtered_taskdata[taskindex].split(",");
+                string gridx = currtask[0];
+                string gridy = currtask[1];
+                string xspan = currtask[2];
+                string yspan = currtask[3];
+                // softmove is off if we move more then one or two
+                string newcommand = Config.SHUFFLER_DIR + "/tile_active ".concat(
+                    @"$gridx $gridy $gridcols ",
+                    @"$gridrows $xspan $yspan nosoftmove id=$winkey"
+                );
+                try {
+                    Process.spawn_command_line_async(newcommand);
+                }
+                catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
+                }
+                Thread.usleep(100000);
+                try {
+                    client.activate_window(mostrecent_xid);
+                }
+                catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
+                }
+                taskindex += 1;
+            }
+        }
+
+        private void set_tilebunchcolor (Button tabutton) {
+            bool oldval = shufflerappletsettings.get_boolean("tilemultiple");
+            shufflerappletsettings.set_boolean("tilemultiple", !oldval);
         }
 
         public Applet() {
@@ -440,6 +556,19 @@ namespace ShufflerApplet {
             }
             .otherbutton:hover {
                 color: rgb(105, 105, 105);
+                background-color: rgba(0, 100, 148, 0);
+            }
+            .tilebunch_off {
+                color: rgb(210, 210, 210);
+                background-color: rgba(0, 100, 148, 0);
+                margin: 0px;
+            }
+            .tilebunch_off:hover {
+                color: rgb(105, 105, 105);
+                background-color: rgba(0, 100, 148, 0);
+            }
+            .tilebunch_on {
+                color: rgb(150, 150, 150);
                 background-color: rgba(0, 100, 148, 0);
             }
 
@@ -511,3 +640,5 @@ public void peas_register_types(TypeModule module){
         Budgie.Plugin), typeof(ShufflerApplet.Plugin)
     );
 }
+
+// 779
