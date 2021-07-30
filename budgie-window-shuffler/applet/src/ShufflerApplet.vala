@@ -399,7 +399,7 @@ namespace ShufflerApplet {
                 "shuffler-applet-tileall-symbolic", Gtk.IconSize.DND
             );
             toggle_gridall.set_tooltip_text(
-                _("Reorganize secundary windows into layout").concat(
+                _("Shuffle remaining windows to the layout").concat(
                     " - ", _("Toggle mode")
             ));
             toggle_gridall.get_style_context().add_class(currcolor);
@@ -450,7 +450,7 @@ namespace ShufflerApplet {
             int currpos, int n_tiles, string active_target,
             int gridcols, int gridrows
         ) {
-            // visually separate main action from reorganizing secundary windows
+            // visually separate main action from reorganizing secondary windows
             Thread.usleep(250000);
             // 1. GET TASKS
             string[] currtaskdata =  grids[currpos].split("|");
