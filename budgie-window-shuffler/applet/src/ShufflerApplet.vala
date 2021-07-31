@@ -49,6 +49,7 @@ namespace ShufflerApplet {
         public abstract void move_window_animated(
             int w_id, int x, int y, int width, int height
         ) throws Error;
+        public abstract string getactivemon_name () throws Error;
     }
 
     private void setup_client () {
@@ -213,6 +214,18 @@ namespace ShufflerApplet {
             gridsync = shufflerappletsettings.get_boolean("gridsync");
         }
 
+        private bool check_onthismonitor (string monname) {
+            string mon_name = "none";
+            try {
+                // get active monitorname by active window ("" if null)
+                mon_name = client.getactivemon_name();
+            }
+            catch (Error e) {
+                error ("Error: %s", e.message);
+            }
+            return monname == mon_name;
+        }
+
         private Variant? check_visible(HashTable<string, Variant>? wins, int wid) {
             // check if window is on this workspace & not minimized
             if (wins != null) {
@@ -221,7 +234,9 @@ namespace ShufflerApplet {
                         Variant match = wins[k];
                         if (
                             (string)match.get_child_value(1) == "true" &&
-                            (string)match.get_child_value(7) == "false"
+                            (string)match.get_child_value(7) == "false" &&
+                            // monitorcheck
+                            check_onthismonitor((string)match.get_child_value(2))
                         ) {
                             Variant newdata = new Variant(
                                 "(iiiiis)", wid, (int)match.get_child_value(3),
@@ -417,6 +432,7 @@ namespace ShufflerApplet {
         }
 
         private Variant[] getvalidwins () {
+            
             HashTable<string, Variant>? wins = null;
             try {
                 wins = client.get_winsdata ();
