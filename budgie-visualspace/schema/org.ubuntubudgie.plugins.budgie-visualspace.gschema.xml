@@ -7,6 +7,11 @@
             <description>Automatically add one workspace if the last in row has a window on it</description>
             <default>false</default>
         </key>
+        <key type="i" name="scrollinstruction">
+            <summary>Number of times the popover has closed</summary>
+            <description>Increments - when 2 or more then scroll instruction is no longer displayed</description>
+            <default>1</default>
+        </key>
     </schema>
 </schemalist>
 

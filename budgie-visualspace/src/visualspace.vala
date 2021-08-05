@@ -40,8 +40,10 @@ namespace VisualSpaceApplet {
         private Gtk.EventBox indicatorBox;
         private Grid maingrid;
         private Label nspaces_show;
+        private Label? topspace1=null;
         Button nspaces_down;
         Button nspaces_up;
+        const string INSTRUCTION = "scrollinstruction";
 
         public VisualSpacePopover(Gtk.EventBox indicatorBox) {
             GLib.Object(relative_to: indicatorBox);
@@ -100,12 +102,16 @@ namespace VisualSpaceApplet {
             // autobutton.toggled.connect(toggle_auto);
             // set_widgets_sensitive(!autospace);
 
-            // linespacing_topspacelabel
-            //Label topspace1 = new Gtk.Label("");
+            // topspacelabel
+            int closednumber = visualspace_settings.get_int(INSTRUCTION);
+            if (closednumber != 2) {
+                topspace1 = new Gtk.Label(null);
+                topspace1.set_markup("<b>" + _("Scroll over panel icon to change workspace") + "</b>");
+                supergrid.attach(topspace1, 0, 0, 1, 1);
+            }
             //set_spacing(gdkscreen, topspace1, "linespacing_top");
             supergrid.attach(scrollwin, 0, 10, 1, 1);
-            supergrid.attach(ws_managebox, 0, 0, 1, 1);
-            //supergrid.attach(topspace1, 0, 0, 1, 1);
+            supergrid.attach(ws_managebox, 0, 1, 1, 1);
             // throw all stuff at each other
             scrollwin.add(maingrid);
             this.add(supergrid);
@@ -114,6 +120,17 @@ namespace VisualSpaceApplet {
             wnckscr.window_opened.connect(acton_newwin);
             wnckscr.workspace_created.connect(update_interface);
             wnckscr.workspace_destroyed.connect(update_interface);
+            this.closed.connect(() => {
+                int closed = visualspace_settings.get_int(INSTRUCTION);
+                if (closed >= 2) {
+                    if (topspace1 != null) {
+                        topspace1.set_visible(false);
+                    }
+                }
+                else {
+                    visualspace_settings.set_int(INSTRUCTION, ++closed);
+                }
+            });
         }
 
         //  private void set_widgets_sensitive (bool opposite_active) {
