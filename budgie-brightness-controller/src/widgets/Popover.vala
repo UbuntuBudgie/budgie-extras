@@ -208,25 +208,18 @@ public class Popover : Budgie.Popover
     //[START Update]
     private async void UpdateLight()
     {
-        var name = CurrentLight.Name;
+        PopulateLight(CurrentLight);
+        /*var name = CurrentLight.Name;
         string output = "";
         var subprocessLauncher = new SubprocessLauncher (SubprocessFlags.STDOUT_PIPE);
 
         try
         {
-            if(lightHelper.haveGnomeSettingsDaemon332)
-            {
-                yield subprocessLauncher.spawnv(
-                    {Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}
-                ).communicate_utf8_async(null, null, out output, null);
-            }
-            else if(lightHelper.haveGnomeSettingsDaemonOlderThan332)
-            {
-                yield subprocessLauncher.spawnv(
-                    {Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", "--get-brightness"}
-                ).communicate_utf8_async(null, null, out output, null);
-            }
-
+            
+            yield subprocessLauncher.spawnv(
+                {Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}
+            ).communicate_utf8_async(null, null, out output, null);
+        
             if(output == "")
             {
                 return;
@@ -242,7 +235,7 @@ public class Popover : Budgie.Popover
         catch (Error e)
         {
             GLib.message("Failed to run : %s", e.message);
-        }
+        }*/
     }
     //[END Update]
 

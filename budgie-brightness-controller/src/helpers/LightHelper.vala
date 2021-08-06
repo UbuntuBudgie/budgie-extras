@@ -16,27 +16,35 @@ using BrightnessController.Models;
 
 namespace BrightnessController.Helpers
 {
+
+    [DBus (name = "org.gnome.SettingsDaemon.Power.Screen")]
+    private interface BrightnessSettings : GLib.Object {
+        public abstract int brightness {owned get; set; }
+    }
 /**
  * LightHelper is a helper to work with
  * GNOME/gnome-settings-daemon gsd-backlight-helper
- * Currently working correctly with GNOME_SETTINGS_DAEMON_3_32_0
- *
- * https://github.com/GNOME/gnome-settings-daemon/releases
  *
  */
 public class LightHelper
 {
     public bool IsAvailable {get; set;}
-    public bool haveGnomeSettingsDaemon336 = false;
-    public bool haveGnomeSettingsDaemon332 = false;
-    public bool haveGnomeSettingsDaemonOlderThan332 = false;
     public List<Light> list;
 
     private SubprocessHelper subprocessHelper;
     private ConfigHelper configHelper;
 
+    private BrightnessSettings? brightness_settings;
+
     public LightHelper()
     {
+        try {
+            brightness_settings = Bus.get_proxy_sync (BusType.SESSION, "org.gnome.SettingsDaemon.Power",
+                "/org/gnome/SettingsDaemon/Power", DBusProxyFlags.GET_INVALIDATED_PROPERTIES);
+        } catch (IOError e) {
+            warning (e.message);
+        }
+
         subprocessHelper = new SubprocessHelper();
         configHelper  = new ConfigHelper("budgie-advanced-brightness-controller", "light");
         Load();
@@ -44,19 +52,6 @@ public class LightHelper
 
     private void Load()
     {
-
-#if HAVE_GNOME_SETTINGS_DAEMON_3_36_0
-        haveGnomeSettingsDaemon336 = true;
-#endif
-
-#if HAVE_GNOME_SETTINGS_DAEMON_3_32_0
-        haveGnomeSettingsDaemon332 = true;
-#endif
-
-#if HAVE_GNOME_SETTINGS_DAEMON_OLDER_THAN_3_32_0
-        haveGnomeSettingsDaemonOlderThan332 = true;
-#endif
-
         list = new List<Light>();
 
         //Load Lights From Config
@@ -71,11 +66,10 @@ public class LightHelper
                 var light = new Light();
                 light.Name = properties[0];
                 retrivedLightNames += light.Name;
-                light.MaxBrightness = properties[1].to_double();
-                light.Brightness = properties[2].to_double();
+                light.MaxBrightness = 100.0;//properties[1].to_double();
+                light.Brightness = brightness_settings.brightness;//properties[2].to_double();
                 light.IsActive = properties[3].to_bool();
 
-                //print(@"Load Lighs From Config: %s, %s, %s, %s \n", light.Name, light.MaxBrightnessText, light.BrightnessText, light.IsActive.to_string());
                 list.append(light);
             }
         }
@@ -117,11 +111,7 @@ public class LightHelper
             }
         }
 
-        if(haveGnomeSettingsDaemon332 && list.length() > 0)
-        {
-            IsAvailable = true;
-        }
-        else if(haveGnomeSettingsDaemonOlderThan332)
+        if( list.length() > 0 )
         {
             IsAvailable = true;
         }
@@ -131,36 +121,26 @@ public class LightHelper
             IsAvailable = false;
 
             var lightListLength = list.length();
-            GLib.message(@"Light is not available (Gnome Settings Daemon version >= 3.32.0: $haveGnomeSettingsDaemon332, Number of Lights: $lightListLength)\n");
+            GLib.message(@"Light is not available Number of Lights: $lightListLength)\n");
         }
     }
 
     private double GetMaxBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
+        return 100.0;//subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
     }
 
     public double GetBrightness(string name)
     {
-        return subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
+        return brightness_settings.brightness;//subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
     }
 
     public void SetBrightness(string name, double brightness)
     {
         var brightnessInt = (int)brightness;
-        if(haveGnomeSettingsDaemon336)
-        {
-            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBEXECDIR + "/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
-        }
-        else if(haveGnomeSettingsDaemon332)
-        {
-            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", @"/sys/class/backlight/$name", @"$brightnessInt"});
-        }
-        else if(haveGnomeSettingsDaemonOlderThan332)
-        {
-            subprocessHelper.Run({Config.PACKAGE_BINDIR + "/pkexec", Config.PACKAGE_LIBDIR + "/gnome-settings-daemon/gsd-backlight-helper", "--set-brightness", @"$brightnessInt"});
-        }
 
+        brightness_settings.brightness = brightnessInt;
+        
         Save();
     }
 
