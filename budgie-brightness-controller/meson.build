@@ -17,7 +17,7 @@ am_cflags = [
 PLUGIN = 'budgie-brightness-controller'
 LIB_INSTALL_DIR = join_paths(prefix, libdir, 'budgie-desktop', 'plugins', PLUGIN)
 
-DEPENDENCY_GNOME_SETTINGS_DAEMON = dependency('gnome-settings-daemon', version: '>=3.28.0')
+DEPENDENCY_GNOME_SETTINGS_DAEMON = dependency('gnome-settings-daemon', version: '>=3.36.0')
 DEPENDENCY_XRANDR = dependency('xrandr', version: '>=1.5.0')
 DEPENDENCY_GTK = dependency('gtk+-3.0', version: '>=3.18')
 DEPENDENCY_BUDGIE = dependency('budgie-1.0', version: '>=2')
