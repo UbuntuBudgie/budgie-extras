@@ -132,7 +132,7 @@ public class Popover : Budgie.Popover
             dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
             return(false);
         });
-        
+
         grid.attach(menuButton, 1, 0, 2, 1);
 
         grid.attach(dimScale, 1, 1, 1, 1);
@@ -173,11 +173,14 @@ public class Popover : Budgie.Popover
         {
             CurrentLight.Brightness = lightScale.Value;
             lightLabel.set_text(CurrentLight.BrightnessText);
-            lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+            //lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+            lightHelper.SetBrightness((int)((double)CurrentLight.Brightness / (double)CurrentLight.MaxBrightness * 100.0));
+
         });
 
         Timeout.add_seconds(5, ()=> {
-            lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+            //lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
+            lightHelper.SetBrightness((int)((double)CurrentLight.Brightness / (double)CurrentLight.MaxBrightness * 100.0));
             return(false);
         });
 
@@ -215,11 +218,11 @@ public class Popover : Budgie.Popover
 
         try
         {
-            
+
             yield subprocessLauncher.spawnv(
                 {Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}
             ).communicate_utf8_async(null, null, out output, null);
-        
+
             if(output == "")
             {
                 return;

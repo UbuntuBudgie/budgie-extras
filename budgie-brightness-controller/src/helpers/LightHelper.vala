@@ -66,8 +66,8 @@ public class LightHelper
                 var light = new Light();
                 light.Name = properties[0];
                 retrivedLightNames += light.Name;
-                light.MaxBrightness = 100.0;//properties[1].to_double();
-                light.Brightness = brightness_settings.brightness;//properties[2].to_double();
+                light.MaxBrightness = properties[1].to_double();
+                light.Brightness = properties[2].to_double();
                 light.IsActive = properties[3].to_bool();
 
                 list.append(light);
@@ -75,7 +75,7 @@ public class LightHelper
         }
 
         // Load Lights Frome Device
-        var lightsString = subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/ls", "/sys/class/backlight"});
+        var lightsString = subprocessHelper.RunAndGetResult({"ls", "/sys/class/backlight"});
 
         lightsString = lightsString._strip();
         if (lightsString == "")
@@ -106,7 +106,7 @@ public class LightHelper
                 }
                 list.append(light);
 
-                //print(@"Load Lighs From Device: %s, %s, %s, %s \n", light.Name, light.MaxBrightnessText, light.BrightnessText, light.IsActive.to_string());
+                print(@"Load Lights From Device: %s, %s, %s, %s \n", light.Name, light.MaxBrightnessText, light.BrightnessText, light.IsActive.to_string());
                 lightNamesCount++;
             }
         }
@@ -127,20 +127,18 @@ public class LightHelper
 
     private double GetMaxBrightness(string name)
     {
-        return 100.0;//subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({"cat", @"/sys/class/backlight/$name/max_brightness"}).to_double();
     }
 
     public double GetBrightness(string name)
     {
-        return brightness_settings.brightness;//subprocessHelper.RunAndGetResult({Config.PACKAGE_BINDIR + "/cat", @"/sys/class/backlight/$name/brightness"}).to_double();
+        return subprocessHelper.RunAndGetResult({"cat", @"/sys/class/backlight/$name/brightness"}).to_double();
     }
 
-    public void SetBrightness(string name, double brightness)
+    public void SetBrightness(int brightness_percentage)
     {
-        var brightnessInt = (int)brightness;
+        brightness_settings.brightness = brightness_percentage;
 
-        brightness_settings.brightness = brightnessInt;
-        
         Save();
     }
 
