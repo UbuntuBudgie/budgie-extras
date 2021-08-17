@@ -50,6 +50,10 @@ namespace ShufflerApplet {
             int w_id, int x, int y, int width, int height
         ) throws Error;
         public abstract string getactivemon_name () throws Error;
+
+        public abstract HashTable<string, Variant> get_tiles (
+            string mon_name, int cols, int rows
+        ) throws Error;
     }
 
     private void setup_client () {
@@ -209,7 +213,7 @@ namespace ShufflerApplet {
         private void getsettings_values(GLib. Settings shufflerappletsettings) {
             maxcols = shufflerappletsettings.get_int("maxcols");
             previewsize = shufflerappletsettings.get_int("previewsize");
-            grids = shufflerappletsettings.get_strv("layouts");
+            grids = shufflerappletsettings.get_strv("layoutslist");
             showonhover = shufflerappletsettings.get_boolean("showonhover");
             gridsync = shufflerappletsettings.get_boolean("gridsync");
         }
@@ -238,11 +242,13 @@ namespace ShufflerApplet {
                             // monitorcheck
                             check_onthismonitor((string)match.get_child_value(2))
                         ) {
+                            // xid, x, y, width, height, wname
                             Variant newdata = new Variant(
                                 "(iiiiis)", wid, (int)match.get_child_value(3),
                                 (int)match.get_child_value(4),
                                 (int)match.get_child_value(5),
                                 (int)match.get_child_value(6),
+                                // name
                                 (string)match.get_child_value(0)
 
                             );
@@ -357,6 +363,8 @@ namespace ShufflerApplet {
                         );
                         int currpos = group_number;
                         sectionbutton.clicked.connect((currposition)=> {
+
+
                             string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
                                 @"$xpos $ypos $gridcols $gridrows $xspan $yspan"
                             );
@@ -432,7 +440,7 @@ namespace ShufflerApplet {
         }
 
         private Variant[] getvalidwins () {
-            
+            // this returns valid wins in the format xid, x, y, width, height, wname
             HashTable<string, Variant>? wins = null;
             try {
                 wins = client.get_winsdata ();
@@ -462,17 +470,59 @@ namespace ShufflerApplet {
             return valid_wins;
         }
 
+        private int get_distance(int x1, int x2, int y1, int y2) {
+            /* decide if the pressure is enough */
+            double xdistance = Math.pow(
+                ((double)x1 - (double)x2), 2
+            );
+            double ydistance = Math.pow(
+                ((double)y1 - (double)y2), 2
+            );
+            double distance = Math.pow((xdistance + ydistance), 0.5);
+            return (int)distance;
+        }
+
+        private Variant[] remove_var (Variant v, Variant[] arr) {
+            // remove a Variant from an array
+            Variant[] newarr = {};
+            foreach (Variant item in arr) {
+                if (item != v) {
+                    newarr += item;
+                }
+            }
+            return newarr;
+        }
+
         private void tile_abunch(
             int currpos, int n_tiles, string active_target,
             int gridcols, int gridrows
         ) {
-            // visually separate main action from reorganizing secondary windows
+            /*
+            / this is the procedure:
+            / 1. create array of Variants of tasks
+            / 2. create array of Variants of windows to move
+            /    (the active window is already moved)
+            / 3. find the nearest window for each of the tasks
+            / 4. find out which task has the smallest distance to the (any) window
+            / 5. execute the move
+            / 6. remove the executed task from tasks, moved window from windows
+            / 7. do this (3-6) for n-tasks (n-tasks is the number of tiles in the layout)
+             */
+
             Thread.usleep(250000);
-            // 1. GET TASKS
+
+            // 1. CREATE ARRAY OF VARIANTS OF TASKS
+            // format of newtaskdata: "(iiiiii)", gridx, gridy, spanx, spany, x_px, y_px
+
+            // split matching gsettings string for current layout
             string[] currtaskdata =  grids[currpos].split("|");
             // remove gridsize
             currtaskdata = currtaskdata[1:currtaskdata.length];
-            // remove task, if already done in area button action
+            /*
+            / remove task, already done in area button action
+            / we'll first get a "raw" -currtaskdata-  containing
+            / xpos, ypos, spanx, spany, like {"2,1,1,1", ...}
+            */
             string[] filtered_taskdata = {};
             foreach (string st in currtaskdata) {
                 if (st != active_target) {
@@ -480,14 +530,58 @@ namespace ShufflerApplet {
                 }
             }
             currtaskdata = filtered_taskdata;
-            // 2. GET WINDOW SUBJECTS
+
+            // now we'll make an array of Variants (newtaskdata) from it, adding info on xy -in px-
+            Variant[] newtaskdata = {};
+
+            try {
+                // we get the xy positions (px) of the tiles
+                // fetch monitor for tiledata
+                string activemon = client.getactivemon_name();
+                // get tiledata HashTable
+                HashTable<string, Variant> currtiles = client.get_tiles(
+                    activemon, gridcols, gridrows
+                );
+                // then get the targeted xy positions (px) of each of the tasks
+                foreach (string currtask in currtaskdata) {
+                    // so first create the key of the task to look up in tiles:
+                    string[] taskdata = currtask.split(",");
+                    string check_ifkey = taskdata[0] + "*" + taskdata[1];
+                    // .. and extend task data, adding x/y info to tasks (px)
+                    foreach (string s in currtiles.get_keys()) {
+                        if (s == check_ifkey) {
+                            Variant currtile = currtiles[s];
+                            Variant extended_data = new Variant(
+                                "(iiiiii)",
+                                int.parse(taskdata[0]),
+                                int.parse(taskdata[1]),
+                                int.parse(taskdata[2]),
+                                int.parse(taskdata[3]),
+                                // add xpos/ypos (px) of tile
+                                (int)currtile.get_child_value(0),
+                                (int)currtile.get_child_value(1)
+                            );
+                            newtaskdata += extended_data;
+                        }
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            // 2. CREATE ARRAY OF VARIANTS OF WINDOWS
+            // --------------------------------------
+
+            // all current valid windows. format: (i,i,i,i,i,s), xid, x, y, width, height, wname
             Variant[] currwins = getvalidwins(); // <- newest = last
-            // let's get the xid of most recent window first (for re- focus)
+
+            // let's get the xid of most recent window first (for re- focus afterwards)
             int mostrecent_xid = -1;
             int ncurrwins = currwins.length;
             if (ncurrwins != 0) {
                 mostrecent_xid = (int)currwins[ncurrwins - 1].get_child_value(0);
             }
+
             // reverse and filter out active window (last in array, is already moved)
             Variant[] reversed_wins = {};
             int nwins = currwins.length - 1; // -1, since we want to skip active window
@@ -496,46 +590,76 @@ namespace ShufflerApplet {
                 nwins -= 1;
             }
             currwins = reversed_wins; // <- first is newest
-            // 3. OK, get the job done
-            // see how many tasks we actually have
-            int ntasks = currtaskdata.length;
+
+            // now make currwins and newtaskdata equally sized, smallest counts:
+            int ntasks = newtaskdata.length;
             // let's say we don't know:
             nwins = currwins.length;
             if (nwins < ntasks) {
                 ntasks = nwins;
             }
-            int taskindex = 0;
-            while (taskindex < ntasks) {
-                /*
-                / additional data in Variant could come handy if we would
-                / want to do more with it in future (magnetic reorganize)
-                */
-                Variant currwinsubject = currwins[taskindex];
-                int winkey = (int)currwinsubject.get_child_value(0);
-                string[] currtask = filtered_taskdata[taskindex].split(",");
-                string gridx = currtask[0];
-                string gridy = currtask[1];
-                string xspan = currtask[2];
-                string yspan = currtask[3];
+            currwins = currwins[0:ntasks];
+            newtaskdata = newtaskdata[0:ntasks];
+
+
+            int jobindex = 0;
+
+            while (jobindex < ntasks) {
+                //  print("--------------------------------------\n");
+                //  print(@"jobindex $jobindex\n");
+                Variant pickwindow = null;
+                Variant picktask = null;
+                // 3./4. FIND NEAREST WINDOW FOR EACH OF THE TASKS< KEEP SHORTEST DISTANCE OF ALL
+                int min_distance = 20000;
+                foreach (Variant taskvar in newtaskdata) {
+                    int taskx = (int)taskvar.get_child_value(4);
+                    int tasky = (int)taskvar.get_child_value(5);
+                    //  print(@"Task xy: $taskx $tasky\n");
+                    foreach (Variant winvar in currwins) {
+                        int winx = (int)winvar.get_child_value(1);
+                        int winy = (int)winvar.get_child_value(2);
+                        int checkdistance = get_distance(taskx, winx, tasky, winy);
+                        if (checkdistance < min_distance) {
+                            pickwindow = winvar;
+                            picktask = taskvar;
+                            min_distance = checkdistance;
+                        }
+                    }
+                }
+                //  print(@"\nshortest is: $min_distance\n\n");
+                // 5./ 6. EXECUTE CLOSEST, REMOVE TASK & WINDOW SUBJECT
                 // softmove is off if we move more then one or two
+                int gridx = (int)picktask.get_child_value(0);
+                int gridy = (int)picktask.get_child_value(1);
+                int spanx = (int)picktask.get_child_value(2);
+                int spany = (int)picktask.get_child_value(3);
+                int winkey = (int)pickwindow.get_child_value(0);
+                // even if position is exactly same, still run move; size might be different
+                // checking size might be more work then sinply always execute
                 string newcommand = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     @"$gridx $gridy $gridcols ",
-                    @"$gridrows $xspan $yspan nosoftmove id=$winkey"
+                    @"$gridrows $spanx $spany nosoftmove id=$winkey"
                 );
+                //  print(@"$newcommand\n");
                 try {
                     Process.spawn_command_line_async(newcommand);
                 }
                 catch (Error e) {
                     stderr.printf ("%s\n", e.message);
                 }
-                Thread.usleep(100000);
-                try {
-                    client.activate_window(mostrecent_xid);
-                }
-                catch (Error e) {
-                    stderr.printf ("%s\n", e.message);
-                }
-                taskindex += 1;
+
+                // remove items which are taken care of
+                newtaskdata = remove_var(picktask, newtaskdata);
+                currwins = remove_var(pickwindow, currwins);
+                jobindex += 1;
+            }
+            // refocus previously active window
+            Thread.usleep(100000);
+            try {
+                client.activate_window(mostrecent_xid);
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
         }
 
@@ -657,4 +781,4 @@ public void peas_register_types(TypeModule module){
     );
 }
 
-// 779
+// 821

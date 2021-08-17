@@ -57,9 +57,9 @@ namespace ShufflerControl2 {
         gallery_options = {
             "2x1|0,0,1,1|1,0,1,1",
             "2x2|0,0,1,1|1,0,1,1|0,1,1,1|1,1,1,1",
-            "5x1|0,0,3,1|4,0,2,1",
-            "5x2|0,0,3,1|0,1,3,1|4,0,2,1|4,1,2,1",
-            "5x2|0,0,3,2|4,0,2,1|4,1,2,1",
+            "5x1|0,0,3,1|3,0,2,1",
+            "5x2|0,0,3,1|0,1,3,1|3,0,2,1|3,1,2,1",
+            "5x2|0,0,3,2|3,0,2,1|3,1,2,1",
             "3x1|0,0,1,1|1,0,1,1|2,0,1,1",
             "3x2|0,0,1,1|1,0,1,1|2,0,1,1|0,1,1,1|1,1,1,1|2,1,1,1",
             "4x2|0,0,1,2|1,0,2,2|3,0,1,2",
@@ -1803,7 +1803,7 @@ namespace ShufflerControl2 {
             currshow.xalign = (float)0.5;
             int maxlen = gallery_options.length;
             // find right string for this popover
-            string currlayout = shufflerappletsettings.get_strv("layouts")[index].strip();
+            string currlayout = shufflerappletsettings.get_strv("layoutslist")[index].strip();
             // activate the right stack page
             int match = get_stringindex(currlayout, gallery_options);
             showlayout = new Popover(b);
@@ -1855,9 +1855,9 @@ namespace ShufflerControl2 {
         }
 
         private void update_layoutsettings(string newlayout, int position) {
-            string[] currlayouts = shufflerappletsettings.get_strv("layouts");
+            string[] currlayouts = shufflerappletsettings.get_strv("layoutslist");
             currlayouts[position] = newlayout;
-            shufflerappletsettings.set_strv("layouts", currlayouts);
+            shufflerappletsettings.set_strv("layoutslist", currlayouts);
         }
 
         private Button makeappletlayoutbutton(
