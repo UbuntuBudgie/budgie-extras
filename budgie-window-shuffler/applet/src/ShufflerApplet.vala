@@ -107,7 +107,6 @@ namespace ShufflerApplet {
                 }
                 else {
                     string cmd = Config.SHUFFLER_DIR + "/shuffler_control 3";
-                    // string cmd = "/usr/lib/budgie-window-shuffler" + "/shuffler_control 3";
                     try {
                     Process.spawn_command_line_async(cmd);
                     }
@@ -363,8 +362,6 @@ namespace ShufflerApplet {
                         );
                         int currpos = group_number;
                         sectionbutton.clicked.connect((currposition)=> {
-
-
                             string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
                                 @"$xpos $ypos $gridcols $gridrows $xspan $yspan"
                             );
@@ -459,7 +456,6 @@ namespace ShufflerApplet {
                         visible_win != null
                     ) {
                         // but now we only need xid
-                        // currwindows += w_id;
                         valid_wins += visible_win;
                     }
                 }
@@ -471,7 +467,7 @@ namespace ShufflerApplet {
         }
 
         private int get_distance(int x1, int x2, int y1, int y2) {
-            /* decide if the pressure is enough */
+            // get the distance between two positions
             double xdistance = Math.pow(
                 ((double)x1 - (double)x2), 2
             );
@@ -513,7 +509,6 @@ namespace ShufflerApplet {
 
             // 1. CREATE ARRAY OF VARIANTS OF TASKS
             // format of newtaskdata: "(iiiiii)", gridx, gridy, spanx, spany, x_px, y_px
-
             // split matching gsettings string for current layout
             string[] currtaskdata =  grids[currpos].split("|");
             // remove gridsize
@@ -530,10 +525,8 @@ namespace ShufflerApplet {
                 }
             }
             currtaskdata = filtered_taskdata;
-
             // now we'll make an array of Variants (newtaskdata) from it, adding info on xy -in px-
             Variant[] newtaskdata = {};
-
             try {
                 // we get the xy positions (px) of the tiles
                 // fetch monitor for tiledata
@@ -570,18 +563,14 @@ namespace ShufflerApplet {
                 stderr.printf ("%s\n", e.message);
             }
             // 2. CREATE ARRAY OF VARIANTS OF WINDOWS
-            // --------------------------------------
-
             // all current valid windows. format: (i,i,i,i,i,s), xid, x, y, width, height, wname
             Variant[] currwins = getvalidwins(); // <- newest = last
-
             // let's get the xid of most recent window first (for re- focus afterwards)
             int mostrecent_xid = -1;
             int ncurrwins = currwins.length;
             if (ncurrwins != 0) {
                 mostrecent_xid = (int)currwins[ncurrwins - 1].get_child_value(0);
             }
-
             // reverse and filter out active window (last in array, is already moved)
             Variant[] reversed_wins = {};
             int nwins = currwins.length - 1; // -1, since we want to skip active window
@@ -590,7 +579,6 @@ namespace ShufflerApplet {
                 nwins -= 1;
             }
             currwins = reversed_wins; // <- first is newest
-
             // now make currwins and newtaskdata equally sized, smallest counts:
             int ntasks = newtaskdata.length;
             // let's say we don't know:
@@ -600,12 +588,8 @@ namespace ShufflerApplet {
             }
             currwins = currwins[0:ntasks];
             newtaskdata = newtaskdata[0:ntasks];
-
-
             int jobindex = 0;
-
             while (jobindex < ntasks) {
-                //  print("--------------------------------------\n");
                 //  print(@"jobindex $jobindex\n");
                 Variant pickwindow = null;
                 Variant picktask = null;
@@ -635,7 +619,7 @@ namespace ShufflerApplet {
                 int spany = (int)picktask.get_child_value(3);
                 int winkey = (int)pickwindow.get_child_value(0);
                 // even if position is exactly same, still run move; size might be different
-                // checking size might be more work then sinply always execute
+                // checking size might be more work then simply always execute
                 string newcommand = Config.SHUFFLER_DIR + "/tile_active ".concat(
                     @"$gridx $gridy $gridcols ",
                     @"$gridrows $spanx $spany nosoftmove id=$winkey"
@@ -653,7 +637,7 @@ namespace ShufflerApplet {
                 currwins = remove_var(pickwindow, currwins);
                 jobindex += 1;
             }
-            // refocus previously active window
+            // re- focus previously active window
             Thread.usleep(100000);
             try {
                 client.activate_window(mostrecent_xid);
