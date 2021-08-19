@@ -1431,12 +1431,15 @@ namespace ShufflerControl2 {
                 useanimationlabel, enable_animationswich
             };
             shufflersettings.changed.connect(()=>{
-                set_widget_sensitive(customanimation, "usegeneralanimation", true);
-                manage_daemon();
+                GLib.Timeout.add_seconds(1, ()=> {
+                    // No clue why, but need to set a timeout for it to work.
+                    // probably something isn't ready. nah, won't spend time on it
+                    set_widget_sensitive(customanimation, "usegeneralanimation", true);
+                    manage_daemon();
+                    return false;
+                });
             });
             GLib.Timeout.add_seconds(1, ()=> {
-                // No clue why, but need to set a timeout for it to work.
-                // probably something isn't ready. nah, won't spend time on it
                 set_widget_sensitive(customanimation, "usegeneralanimation", true);
                 return false;
             });
