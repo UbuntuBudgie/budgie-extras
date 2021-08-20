@@ -84,6 +84,30 @@ namespace ShufflerApplet {
         return false;
     }
 
+    private void open_shufflersettings() {
+        if (procruns(Config.SHUFFLER_DIR + "/shuffler_control")) {
+            string user = Environment.get_user_name();
+            try {
+                File showpage_trigger = File.new_for_path(
+                    @"/tmp/shufflerapplettrigger_$user"
+                );
+                showpage_trigger.create(FileCreateFlags.NONE);
+            }
+            catch (Error e) {
+                message("something went wrong creating trigger file");
+            }
+        }
+        else {
+            string cmd = Config.SHUFFLER_DIR + "/shuffler_control 3";
+            try {
+            Process.spawn_command_line_async(cmd);
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+        }
+    }
+
 
     public class ShufflerAppletSettings : Gtk.Grid {
         /* Budgie Settings -section */
@@ -92,28 +116,7 @@ namespace ShufflerApplet {
             Button callsettings = new Gtk.Button();
             callsettings.label = _("Open Shuffler settings");
             callsettings.clicked.connect(()=> {
-                if (procruns(Config.SHUFFLER_DIR + "/shuffler_control")) {
-                    string user = Environment.get_user_name();
-                    try {
-                        File showpage_trigger = File.new_for_path(
-                            @"/tmp/shufflerapplettrigger_$user"
-                        );
-                        showpage_trigger.create(FileCreateFlags.NONE);
-                    }
-                    catch (Error e) {
-                        message("something went wrong creating trigger file");
-
-                    }
-                }
-                else {
-                    string cmd = Config.SHUFFLER_DIR + "/shuffler_control 3";
-                    try {
-                    Process.spawn_command_line_async(cmd);
-                    }
-                    catch (Error e) {
-                        stderr.printf ("%s\n", e.message);
-                    }
-                }
+                open_shufflersettings();
             });
             this.attach(callsettings, 0, 0, 1, 1);
             this.show_all();
@@ -418,16 +421,25 @@ namespace ShufflerApplet {
             Gtk.Button toggle_gridall = new Button.from_icon_name(
                 "shuffler-applet-tileall-symbolic", Gtk.IconSize.DND
             );
-            toggle_gridall.set_tooltip_text(
-                _("Shuffle remaining windows to the layout").concat(
-                    " - ", _("Toggle mode")
-            ));
+            Gtk.Button call_shufflersettings = new Button.from_icon_name(
+                "gnome-control-center-symbolic", Gtk.IconSize.DND
+            );
+            call_shufflersettings.clicked.connect(open_shufflersettings);
+
+            call_shufflersettings.set_tooltip_text(
+                _("Open Shuffler Applet settings")
+            );
+            call_shufflersettings.set_relief(Gtk.ReliefStyle.NONE);
+            call_shufflersettings.get_style_context().add_class("otherbutton");
+
             toggle_gridall.get_style_context().add_class(currcolor);
             toggle_gridall.clicked.connect(set_tilebunchcolor);
             toggle_gridall.set_relief(Gtk.ReliefStyle.NONE);
             Gtk.Box subbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             subbox.pack_start(swapbutton, false, false, 0);
             subbox.pack_start(toggle_gridall, false, false, 0);
+            subbox.pack_end(call_shufflersettings, false, false, 0);
+
             swapbox.pack_start(subbox, true, false, 0);
             maingrid.show_all();
             maingrid.attach(
