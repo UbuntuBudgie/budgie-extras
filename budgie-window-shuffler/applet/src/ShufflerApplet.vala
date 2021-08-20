@@ -427,12 +427,16 @@ namespace ShufflerApplet {
             call_shufflersettings.clicked.connect(open_shufflersettings);
 
             call_shufflersettings.set_tooltip_text(
-                _("Open Shuffler Applet settings")
+                _("Open Shuffler settings")
             );
             call_shufflersettings.set_relief(Gtk.ReliefStyle.NONE);
             call_shufflersettings.get_style_context().add_class("otherbutton");
 
             toggle_gridall.get_style_context().add_class(currcolor);
+            toggle_gridall.set_tooltip_text(
+                _("Shuffle remaining windows to the layout").concat(
+                    " - ", _("Toggle mode")
+            ));
             toggle_gridall.clicked.connect(set_tilebunchcolor);
             toggle_gridall.set_relief(Gtk.ReliefStyle.NONE);
             Gtk.Box subbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
