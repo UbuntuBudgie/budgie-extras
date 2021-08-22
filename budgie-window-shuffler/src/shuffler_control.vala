@@ -1046,7 +1046,12 @@ namespace ShufflerControl2 {
             // header + switch (in subgrid)
             Grid switchgrid_basicshortcuts = new Gtk.Grid();
             Label basicshortcutsheader = makelabel(
-                (_("Basic quarter & half tiling")), 0, "justbold"
+                /* TRANSLATORS:
+                / Quarter & half = basic tiling.
+                / Moving, resizing in a custom grid = advanced tiling.
+                / The "basic" is to make the difference clear.
+                */
+                _("Basic quarter & half tiling"), 0, "justbold"
             );
             switchgrid_basicshortcuts.attach(
                 basicshortcutsheader, 0, 0, 1, 1
