@@ -422,7 +422,7 @@ namespace ShufflerApplet {
                 "shuffler-applet-tileall-symbolic", Gtk.IconSize.DND
             );
             Gtk.Button call_shufflersettings = new Button.from_icon_name(
-                "gnome-control-center-symbolic", Gtk.IconSize.DND
+                "shuffler-callsettings-symbolic", Gtk.IconSize.DND
             );
             call_shufflersettings.clicked.connect(open_shufflersettings);
 
