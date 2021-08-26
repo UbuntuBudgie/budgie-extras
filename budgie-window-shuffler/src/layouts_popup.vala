@@ -637,7 +637,7 @@ namespace LayoutsPopup {
             set_margins(applicationgrid, 20, 20, 20, 20);
             applicationgrid.set_row_spacing(4);
             // - command
-            Label exec_label = new Label(_("Command") + "");
+            Label exec_label = new Label(_("Command") + "*");
             Entry exec_entry = new Entry();
             exec_entry.set_text("");
             exec_entry.set_size_request(250, 10);
