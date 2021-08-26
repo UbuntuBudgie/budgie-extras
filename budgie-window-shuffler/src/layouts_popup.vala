@@ -593,7 +593,9 @@ namespace LayoutsPopup {
             string currlayout, string currtask = "", bool check_exist = false
         ) {
             // tooltips
-            string command_tooltip = _("Command to launch window or application (*mandatory)");
+            string command_tooltip = _("Command to launch window or application").concat(
+                " (", "*", _("mandatory"), ")"
+            );
             string class_tooltip = _("Window class of the window to be launched (*mandatory)");
             string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
             string gridxsize_tooltip = _("Grid size - columns");
@@ -635,7 +637,7 @@ namespace LayoutsPopup {
             set_margins(applicationgrid, 20, 20, 20, 20);
             applicationgrid.set_row_spacing(4);
             // - command
-            Label exec_label = new Label(_("Command*"));
+            Label exec_label = new Label(_("Command") + "");
             Entry exec_entry = new Entry();
             exec_entry.set_text("");
             exec_entry.set_size_request(250, 10);
@@ -644,7 +646,7 @@ namespace LayoutsPopup {
             applicationgrid.attach(new Label("\t\t"), 2, 3, 1, 1);
             applicationgrid.attach(exec_entry, 3, 3, 20, 1);
             // - wmclass
-            Label wmclass_label = new Label(_("WM class group*"));
+            Label wmclass_label = new Label(_("WM class group") + "*");
             wmclass_entry = new Entry();
             wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
