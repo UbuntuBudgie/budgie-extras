@@ -593,19 +593,33 @@ namespace LayoutsPopup {
             string currlayout, string currtask = "", bool check_exist = false
         ) {
             // tooltips
+            // tooltip, so not particularly critical qua length
             string command_tooltip = _("Command to launch window or application").concat(
                 " (", "*", _("mandatory"), ")"
             );
-            string class_tooltip = _("Window class of the window to be launched (*mandatory)");
+            // tooltip, so not particularly critical qua length
+            string class_tooltip = _("Window class of the window to be launched").concat(
+                " (", "*", _("mandatory"), ")"
+            );
+            // tooltip, so not particularly critical qua length
             string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
+            // tooltip, so not particularly critical qua length
             string gridxsize_tooltip = _("Grid size - columns");
+            // tooltip, so not particularly critical qua length
             string gridysize_tooltip = _("Grid size - rows");
+            // tooltip, so not particularly critical qua length
             string targetpositionx_tooltip = _("Window target position on grid - horizontally");
+            // tooltip, so not particularly critical qua length
             string targetpositiony_tooltip = _("Window target position on grid - vertically");
+            // tooltip, so not particularly critical qua length
             string xspan_tooltip = _("Window size - columns");
+            // tooltip, so not particularly critical qua length
             string yspan_tooltip = _("Window size - rows");
+            // tooltip, so not particularly critical qua length
             string monitor_tooltip = _("Target monitor, default is on active monitor");
+            // tooltip, so not particularly critical qua length
             string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
+            // tooltip, so not particularly critical qua length
             string workspaces_tooltip = _("Target workspace, default is on active workspace");
             get_task = new Dialog();
             get_task.set_transient_for(this);
@@ -651,7 +665,8 @@ namespace LayoutsPopup {
             wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
             wmclass_entry.set_size_request(250, 10);
-            wmclass_entry.set_placeholder_text(_("Click a window to fetch"));
+            // this is a placeholder text
+            wmclass_entry.set_placeholder_text(_("Click a window to fetch WM-class"));
             applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
             applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
             applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
