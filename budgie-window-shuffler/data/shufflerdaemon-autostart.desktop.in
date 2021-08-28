@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Window Shuffler Daemon
+Comment=Helper process that has helper dbus functions called by shuffler
 Exec=PATH_LOC/windowshufflerdaemon
 NoDisplay=true
 AutostartCondition=GSettings org.ubuntubudgie.windowshuffler runshuffler
