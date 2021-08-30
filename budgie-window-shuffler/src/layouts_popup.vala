@@ -593,33 +593,33 @@ namespace LayoutsPopup {
             string currlayout, string currtask = "", bool check_exist = false
         ) {
             // tooltips
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string command_tooltip = _("Command to launch window or application").concat(
                 " (", "*", _("mandatory"), ")"
             );
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string class_tooltip = _("Window class of the window to be launched").concat(
                 " (", "*", _("mandatory"), ")"
             );
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string windowname_tooltip = _("Window name - optional, to distinguish multiple windows of the same application");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string gridxsize_tooltip = _("Grid size - columns");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string gridysize_tooltip = _("Grid size - rows");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string targetpositionx_tooltip = _("Window target position on grid - horizontally");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string targetpositiony_tooltip = _("Window target position on grid - vertically");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string xspan_tooltip = _("Window size - columns");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string yspan_tooltip = _("Window size - rows");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string monitor_tooltip = _("Target monitor, default is on active monitor");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string tryexisting_tooltip = _("Try to move an existing window before launching a new instance");
-            // tooltip, so not particularly critical qua length
+            // tooltip, so string length is not particularly critical
             string workspaces_tooltip = _("Target workspace, default is on active workspace");
             get_task = new Dialog();
             get_task.set_transient_for(this);

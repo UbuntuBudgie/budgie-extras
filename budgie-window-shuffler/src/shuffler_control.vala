@@ -91,7 +91,6 @@ namespace ShufflerControl2 {
                     coords += int.parse(c);
                 }
                 Button sectionbutton = new Button();
-                //  MenuButton sectionbutton = new MenuButton();
                 sectionbutton.get_style_context().add_class("windowbutton");
                 sectionbutton.set_sensitive(false);
                 int xpos = coords[0];
@@ -281,7 +280,7 @@ namespace ShufflerControl2 {
         GLib.HashTable<string, Variant> foundrules;
         FileMonitor monitor_ruleschange;
         // This is about target monitor and - workspace for new windows
-        // not particularly critical qua string length
+        // string length is not particularly critical
         string default_set = _("Not set");
         string control_css = """
         .somebox {
@@ -408,25 +407,25 @@ namespace ShufflerControl2 {
             // if wm class is given, we obviously are updating existing rule
             bool update = (wmclass != null);
             // tooltips
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string class_tooltip = _("Window class of the window to be launched").concat(
                 " (", "*", _("mandatory"), ")"
             );
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string gridxsize_tooltip = _("Grid size - columns");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string gridysize_tooltip = _("Grid size - rows");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string targetpositionx_tooltip = _("Window target position on grid - horizontally");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string targetpositiony_tooltip = _("Window target position on grid - vertically");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string xspan_tooltip = _("Window size - columns");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string yspan_tooltip = _("Window size - rows");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string monitor_tooltip = _("Target monitor, default is on active monitor");
-            // This is a tooltip, not particularly critical qua string length
+            // This is a tooltip, string length is not particularly critical
             string workspace_tooltip = _("Target workspace, default is on active workspace");
             get_task = new Dialog();
             var contentarea = get_task.get_content_area();
@@ -436,7 +435,7 @@ namespace ShufflerControl2 {
             set_margins(master_grid, 30, 30, 30, 30);
             contentarea.pack_start(master_grid, false, false, 0);
             // 1. APPLICATION FRAME
-            // This is a Frame title, not particularly critical qua string length
+            // This is a Frame title, string length is not particularly critical
             Frame applicationframe = new Gtk.Frame(_("Application"));
             var app_label = applicationframe.get_label_widget();
             set_widgetstyle(app_label, "justbold");
@@ -459,8 +458,8 @@ namespace ShufflerControl2 {
             wmclass_entry.set_tooltip_text(class_tooltip);
             wmclass_entry.set_text("");
             wmclass_entry.set_size_request(250, 10);
-            // Placeholder text, should be as short as possible
-            wmclass_entry.set_placeholder_text(_("Click a window to fetch"));
+            // Placeholder text
+            wmclass_entry.set_placeholder_text(_("Click a window to fetch WM-class"));
             applicationgrid.attach(wmclass_label, 1, 4, 1, 1);
             applicationgrid.attach(new Label("\t\t"), 2, 4, 1, 1);
             applicationgrid.attach(wmclass_entry, 3, 4, 20, 1);
@@ -468,7 +467,7 @@ namespace ShufflerControl2 {
             master_grid.attach(applicationframe, 1, 10, 10, 1);
             master_grid.attach(new Label(""), 1, 20, 1, 1);
             //  2. GEOMETRY FRAME
-            // This is a Frame title, not particularly critical qua string length
+            // This is a Frame title, string length is not particularly critical
             Frame geometryframe = new Gtk.Frame(_("Window position & size"));
             var geo_label = geometryframe.get_label_widget();
             set_widgetstyle(geo_label, "justbold");
@@ -478,7 +477,7 @@ namespace ShufflerControl2 {
             set_margins(geogrid, 20, 20, 20, 20);
             geogrid.set_row_spacing(0);
             // grid cols / rows
-            // This is a field label, should be as short as possible
+            // This is a field label, should be short
             Label grid_size_label = makelabel(_("Grid size; columns & rows"), 0);
             geogrid.attach(grid_size_label, 1, 10, 1, 1);
             geogrid.attach(new Label("\t"), 2, 10, 1, 1);
@@ -496,7 +495,7 @@ namespace ShufflerControl2 {
             geogrid.attach(gridsize_box, 3, 10, 1, 1);
             geogrid.attach(new Label(""), 1, 11, 1, 1);
             // window position
-            // This is a field label, should be as short as possible
+            // This is a field label, should be short
             Label winpos_label = makelabel(_("Target window position, x / y"), 0);
             geogrid.attach(winpos_label, 1, 12, 1, 1);
             geogrid.attach(new Label("\t"), 2, 12, 1, 1);
@@ -513,7 +512,7 @@ namespace ShufflerControl2 {
             geogrid.attach(winpos_box, 3, 12, 1, 1);
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             // window span
-            // This is a field label, should be as short as possible
+            // This is a field label, should be short
             Label cellspan_label = makelabel(_("Window cell span, hor / vert"),0);
             geogrid.attach(cellspan_label, 1, 14, 1, 1);
             geogrid.attach(new Label("\t"), 2, 14, 1, 1);
@@ -531,7 +530,7 @@ namespace ShufflerControl2 {
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             geometryframe.add(geogrid);
             master_grid.attach(new Label(""), 1, 31, 1, 1);
-            // Frame title, not particularly critical qua string length
+            // Frame title, string length is not particularly critical
             Gtk.Frame miscframe = new Gtk.Frame(_("Miscellaneous"));
             var misc_label = miscframe.get_label_widget();
             set_widgetstyle(misc_label, "justbold");
@@ -545,7 +544,7 @@ namespace ShufflerControl2 {
                 ypos_spin, xspan_spin, yspan_spin
             };
             // target monitor
-            // Field label, should be as short as possible
+            // Field label, should be short
             Label targetmonitor_label = new Label(_("Target monitor"));
             targetmonitor_label.xalign = 0;
             miscgrid.attach(targetmonitor_label, 1, 1, 1, 1);
@@ -562,7 +561,7 @@ namespace ShufflerControl2 {
             miscgrid.attach(screendropdown, 3, 1, 1, 1);
             master_grid.attach(new Label(""), 1, 109, 1, 1);
             // target workspace
-            // Field label, should be as short as possible
+            // Field label, should be short
             Label targetworkspace_label = new Label(_("Target workspace"));
             targetworkspace_label.xalign = 0;
             miscgrid.attach(targetworkspace_label, 1, 2, 1, 1);
@@ -878,13 +877,9 @@ namespace ShufflerControl2 {
             string[] rules_columnheaders = {
                 // TRANSLATORS: it is important to keep these column headers as short as possible
                 _("WM-class"),
-                // TRANSLATORS: it is important to keep these column headers as short as possible
                 _("Grid"), "X, Y",
-                // TRANSLATORS: it is important to keep these column headers as short as possible
                 _("Span"),
-                // TRANSLATORS: it is important to keep these column headers as short as possible
                 _("Display"),
-                // TRANSLATORS: it is important to keep these column headers as short as possible
                 _("Workspace")
             };
             int col = 0;
@@ -1057,23 +1052,23 @@ namespace ShufflerControl2 {
             // content
             // Settings category label, should be as short as possible
             Label title1 = makelabel(_("Tiling"), 0);
-            // tooltip, not particularly critical qua length
+            // tooltip, string length is not particularly critical
             string title1_hint =  _("Window tiling & shortcuts");
             // Settings category label, should be as short as possible
             Label title2 = makelabel(_("Layouts"), 0);
-            // tooltip, not particularly critical qua length
+            // tooltip, string length is not particularly critical
             string title2_hint = _("Automatic window & application presets");
             // Settings category label, should be as short as possible
             Label title3 = makelabel(_("Window rules"),0);
-            // tooltip, not particularly critical qua length
+            // tooltip, string length is not particularly critical
             string title3_hint = _("Define where application windows should be opened");
             // Settings category label, should be as short as possible
             Label title4 = makelabel(_("Applet"), 0);
-            // tooltip, not particularly critical qua length
+            // tooltip, string length is not particularly critical
             string title4_hint = _("Shuffler Applet settings");
             // Settings category label, should be as short as possible
             Label title5 = makelabel(_("Miscellaneous"), 0);
-            // tooltip, not particularly critical qua length
+            // tooltip, string length is not particularly critical
             string title5_hint = _("General preferences");
 
             listbox.insert(get_rowgrid(title1, tilingicon, title1_hint), 1);
@@ -1112,7 +1107,6 @@ namespace ShufflerControl2 {
             tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
             // basic shortcutlist (in subgrid)
             Grid basicshortcutlist_subgrid = new Gtk.Grid();
-            // translations!
             string[] basics = {
                 _("Top-left"), _("Top-right"), _("Bottom-right"),
                 _("Bottom-left"), _("Left-half"), _("Top-half"),
