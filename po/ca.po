@@ -4,10 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Adolfo Jayme-Barrientos, 2019
 # David Mohammed <fossfreedom@ubuntu.com>, 2019
 # Víctor Pont <victor@pont.cat>, 2019
-# Adolfo Jayme-Barrientos, 2021
-# david mohammed <foss.freedom@gmail.com>, 2021
 # Davidmp <medipas@gmail.com>, 2021
 # 
 #, fuzzy
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 22:57+0100\n"
+"POT-Creation-Date: 2021-08-30 10:30+0200\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2021\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -25,617 +24,609 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "Restaura tots els elements"
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:72
+msgid "Auto"
+msgstr "Automàtic"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "Suprimeix tots els elements"
+#: budgie-visualspace/src/visualspace.vala:109
+msgid "Scroll over panel icon to change workspace"
+msgstr "Desplaceu-vos per la icona del plafó per canviar l'espai de treball"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:350
-msgid "No"
-msgstr "No"
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr ""
+"Suprimeix de l'inici automàtic el connector de color del dimoni de "
+"configuració del Gnome."
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:354
-msgid "Yes"
-msgstr "Sí"
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr "Atenuació"
 
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:110
-#: budgie-trash/trash/src/TrashApplet.vala:104
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Paperera"
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:149
+msgid "Brightness"
+msgstr "Brillantor"
 
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "Ves a les opcions de la miniaplicació"
+#: budgie-brightness-controller/src/widgets/Popover.vala:92
+msgid "Temperature"
+msgstr "Temperatura"
 
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "Paràmetres de la paperera"
+#: budgie-brightness-controller/src/widgets/Popover.vala:147
+msgid "Light"
+msgstr "Lluminositat"
 
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "Classifica"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "Tipus"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A-Z"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Z-A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "Els més antics primer"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "Els més nous primer"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "Torna a la vista principal"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "Restaura l'element"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "Suprimeix l'element"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "Camí: %s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr "Hora de supressió: %s"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "Voleu restaurar aquest element?"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "Voleu suprimir aquest element?"
-
-#: budgie-trash/trash/src/TrashHandler.vala:110
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "No es pot accedir a la paperera per a %s: %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:149
-msgid "Error moving to trash:"
-msgstr "Error en moure-ho a la paperera:"
-
-#: budgie-trash/trash/src/TrashStore.vala:133
-#: budgie-trash/trash/src/TrashStore.vala:144
-#: budgie-trash/trash/src/TrashStore.vala:151
-msgid "Empty Trash"
-msgstr "Buida la paperera"
-
-#: budgie-trash/trash/src/TrashStore.vala:133
-#: budgie-trash/trash/src/TrashStore.vala:144
-#: budgie-trash/trash/src/TrashStore.vala:151
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "No es pot suprimir permanentment %s: %s"
-
-#: budgie-trash/trash/src/TrashStore.vala:192
-msgid "Restore"
-msgstr "Restaura"
-
-#: budgie-trash/trash/src/TrashStore.vala:192
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "No es pot restaurar %s a %s: %s"
-
+#. This is about target monitor and - workspace for new windows
+#. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:284
 #: budgie-window-shuffler/src/layouts_popup.vala:83
 msgid "Not set"
 msgstr "No s'ha establert"
 
+#: budgie-window-shuffler/src/shuffler_control.vala:350
+msgid "No"
+msgstr "No"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:354
+msgid "Yes"
+msgstr "Sí"
+
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
 #. tooltips
-#: budgie-window-shuffler/src/shuffler_control.vala:410
-#: budgie-window-shuffler/src/layouts_popup.vala:597
-msgid "Window class of the window to be launched (*mandatory)"
-msgstr "Classe de finestra de la finestra per obrir (obligatòria)"
-
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:411
-#: budgie-window-shuffler/src/layouts_popup.vala:599
+#: budgie-window-shuffler/src/layouts_popup.vala:601
+msgid "Window class of the window to be launched"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:412
+#: budgie-window-shuffler/src/layouts_popup.vala:598
+#: budgie-window-shuffler/src/layouts_popup.vala:602
+msgid "mandatory"
+msgstr ""
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:415
+#: budgie-window-shuffler/src/layouts_popup.vala:607
 msgid "Grid size - columns"
 msgstr "Mida de la graella, columnes"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:412
-#: budgie-window-shuffler/src/layouts_popup.vala:600
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:417
+#: budgie-window-shuffler/src/layouts_popup.vala:609
 msgid "Grid size - rows"
 msgstr "Mida de la graella, files"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:413
-#: budgie-window-shuffler/src/layouts_popup.vala:601
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:419
+#: budgie-window-shuffler/src/layouts_popup.vala:611
 msgid "Window target position on grid - horizontally"
 msgstr "Posició de destinació de la finestra a la graella: horitzontalment"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:414
-#: budgie-window-shuffler/src/layouts_popup.vala:602
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:421
+#: budgie-window-shuffler/src/layouts_popup.vala:613
 msgid "Window target position on grid - vertically"
 msgstr "Posició de destinació de la finestra a la graella: verticalment"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:415
-#: budgie-window-shuffler/src/layouts_popup.vala:603
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:423
+#: budgie-window-shuffler/src/layouts_popup.vala:615
 msgid "Window size - columns"
 msgstr "Mida de la finestra, columnes"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:416
-#: budgie-window-shuffler/src/layouts_popup.vala:604
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:425
+#: budgie-window-shuffler/src/layouts_popup.vala:617
 msgid "Window size - rows"
 msgstr "Mida de la finestra, files"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:417
-#: budgie-window-shuffler/src/layouts_popup.vala:605
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:427
+#: budgie-window-shuffler/src/layouts_popup.vala:619
 msgid "Target monitor, default is on active monitor"
 msgstr "Monitor de destinació; per defecte, l'actiu"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:418
-#: budgie-window-shuffler/src/layouts_popup.vala:607
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:429
+#: budgie-window-shuffler/src/layouts_popup.vala:623
 msgid "Target workspace, default is on active workspace"
 msgstr "Espai de treball de destinació; per defecte, l'actiu"
 
 #. 1. APPLICATION FRAME
-#: budgie-window-shuffler/src/shuffler_control.vala:427
-#: budgie-window-shuffler/src/layouts_popup.vala:629
+#. This is a Frame title, string length is not particularly critical
+#. 1. APPLICATION FRAME
+#: budgie-window-shuffler/src/shuffler_control.vala:439
+#: budgie-window-shuffler/src/layouts_popup.vala:645
 msgid "Application"
 msgstr "Aplicació"
 
 #. - wmclass
-#: budgie-window-shuffler/src/shuffler_control.vala:435
-#: budgie-window-shuffler/src/layouts_popup.vala:647
-msgid "WM class group*"
-msgstr "Grup de classe de la finestra*"
-
+#. This is a field label, should be as short as possible
+#. - wmclass
 #: budgie-window-shuffler/src/shuffler_control.vala:448
-#: budgie-window-shuffler/src/layouts_popup.vala:652
-msgid "Click a window to fetch"
-msgstr "Cliqueu en una finestra per obtenir-la"
+#: budgie-window-shuffler/src/layouts_popup.vala:663
+msgid "WM class group"
+msgstr ""
+
+#. Placeholder text
+#. this is a placeholder text
+#: budgie-window-shuffler/src/shuffler_control.vala:462
+#: budgie-window-shuffler/src/layouts_popup.vala:669
+msgid "Click a window to fetch WM-class"
+msgstr ""
 
 #. 2. GEOMETRY FRAME
-#: budgie-window-shuffler/src/shuffler_control.vala:456
-#: budgie-window-shuffler/src/layouts_popup.vala:668
+#. This is a Frame title, string length is not particularly critical
+#. 2. GEOMETRY FRAME
+#: budgie-window-shuffler/src/shuffler_control.vala:471
+#: budgie-window-shuffler/src/layouts_popup.vala:685
 msgid "Window position & size"
 msgstr "Mida i posició de la finestra"
 
 #. grid cols / rows
-#: budgie-window-shuffler/src/shuffler_control.vala:465
-#: budgie-window-shuffler/src/layouts_popup.vala:677
+#. This is a field label, should be short
+#. grid cols / rows
+#: budgie-window-shuffler/src/shuffler_control.vala:481
+#: budgie-window-shuffler/src/layouts_popup.vala:694
 msgid "Grid size; columns & rows"
 msgstr "Mida, columnes i files de la graella"
 
 #. window position
-#: budgie-window-shuffler/src/shuffler_control.vala:482
-#: budgie-window-shuffler/src/layouts_popup.vala:695
+#. This is a field label, should be short
+#. window position
+#: budgie-window-shuffler/src/shuffler_control.vala:499
+#: budgie-window-shuffler/src/layouts_popup.vala:712
 msgid "Target window position, x / y"
 msgstr "Posició de destinació de la finestra, x / y"
 
 #. window span
-#: budgie-window-shuffler/src/shuffler_control.vala:498
-#: budgie-window-shuffler/src/layouts_popup.vala:711
+#. This is a field label, should be short
+#. window span
+#: budgie-window-shuffler/src/shuffler_control.vala:516
+#: budgie-window-shuffler/src/layouts_popup.vala:728
 msgid "Window cell span, hor / vert"
 msgstr "Abast de la cel·la de la finestra, hor. / vert."
 
+#. Frame title, string length is not particularly critical
+#. Settings category label, should be as short as possible
 #. miscellaneous section
-#: budgie-window-shuffler/src/shuffler_control.vala:515
-#: budgie-window-shuffler/src/shuffler_control.vala:1028
-#: budgie-window-shuffler/src/layouts_popup.vala:728
+#: budgie-window-shuffler/src/shuffler_control.vala:534
+#: budgie-window-shuffler/src/shuffler_control.vala:1070
+#: budgie-window-shuffler/src/layouts_popup.vala:745
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:241
 msgid "Miscellaneous"
 msgstr "Miscel·lània"
 
 #. target monitor
+#. Field label, should be short
 #. targetmonitor
-#: budgie-window-shuffler/src/shuffler_control.vala:528
-#: budgie-window-shuffler/src/layouts_popup.vala:737
+#: budgie-window-shuffler/src/shuffler_control.vala:548
+#: budgie-window-shuffler/src/layouts_popup.vala:754
 msgid "Target monitor"
 msgstr "Monitor de destinació"
 
 #. target workspace
+#. Field label, should be short
 #. targetworkspace
-#: budgie-window-shuffler/src/shuffler_control.vala:544
-#: budgie-window-shuffler/src/layouts_popup.vala:753
+#: budgie-window-shuffler/src/shuffler_control.vala:565
+#: budgie-window-shuffler/src/layouts_popup.vala:770
 msgid "Target workspace"
 msgstr "Espai de treball de destinació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:573
+#: budgie-window-shuffler/src/shuffler_control.vala:594
 #: budgie-window-shuffler/src/layouts_popup.vala:200
 #: budgie-window-shuffler/src/layouts_popup.vala:260
-#: budgie-window-shuffler/src/layouts_popup.vala:800
+#: budgie-window-shuffler/src/layouts_popup.vala:817
 msgid "Done"
 msgstr "Fet"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:609
+#: budgie-window-shuffler/src/shuffler_control.vala:630
 #: budgie-window-shuffler/src/layouts_popup.vala:224
-#: budgie-window-shuffler/src/layouts_popup.vala:803
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-window-shuffler/src/layouts_popup.vala:820
 #: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-weathershow/src/get_color/get_color.vala:88
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/get_color/get_color.vala:88
 msgid "Cancel"
 msgstr "Cancel·la"
 
+#. / Window title. "Window Shuffler is the application name
+#. / and should not be translated, only the "Control" -part
 #. window stuff
-#: budgie-window-shuffler/src/shuffler_control.vala:706
-#: budgie-window-shuffler/src/shuffler_control.vala:964
+#. / Window title. "Window Shuffler is the application name
+#. / and should not be translated, only the "Control" -part
+#: budgie-window-shuffler/src/shuffler_control.vala:731
+#: budgie-window-shuffler/src/shuffler_control.vala:997
 #: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
 msgid "Window Shuffler Control"
 msgstr "Control del canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:731
+#: budgie-window-shuffler/src/shuffler_control.vala:756
 msgid "Replace window-rule"
 msgstr "Reemplaça la regla de la finestra"
 
 #. when creating new file, but name exists
-#: budgie-window-shuffler/src/shuffler_control.vala:733
+#: budgie-window-shuffler/src/shuffler_control.vala:758
 msgid "Save changes to window-rule"
 msgstr "Desa els canvis a la regla de la finestra"
 
 #. 2. if so, if wm entry, thus filename changes:
-#: budgie-window-shuffler/src/shuffler_control.vala:743
+#: budgie-window-shuffler/src/shuffler_control.vala:768
 msgid "Save changes to renamed window-rule"
 msgstr "Desa els canvis a la regla de la finestra canviada de nom"
 
 #. update ruleslist
 #. headers
-#: budgie-window-shuffler/src/shuffler_control.vala:853
+#. TRANSLATORS: it is important to keep these column headers as short as
+#. possible
+#: budgie-window-shuffler/src/shuffler_control.vala:879
+msgid "WM-class"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:880
 msgid "Grid"
 msgstr "Graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:853
+#: budgie-window-shuffler/src/shuffler_control.vala:881
 msgid "Span"
 msgstr "Abast"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:854
+#: budgie-window-shuffler/src/shuffler_control.vala:882
 msgid "Display"
 msgstr "Visualització"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:854
+#: budgie-window-shuffler/src/shuffler_control.vala:883
 msgid "Workspace"
 msgstr "Espai de treball"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:923
+#: budgie-window-shuffler/src/shuffler_control.vala:952
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:924
+#: budgie-window-shuffler/src/shuffler_control.vala:953
 msgid "windowrule"
 msgstr "regla de la finestra"
 
 #. content
-#: budgie-window-shuffler/src/shuffler_control.vala:1020
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1054
 msgid "Tiling"
 msgstr "Mosaic"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1021
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1056
 msgid "Window tiling & shortcuts"
 msgstr "Dreceres de finestres i mosaic"
 
+#. Settings category label, should be as short as possible
 #. optimize please with similar grids
 #. 1. PICK LAYOUT GRID
-#: budgie-window-shuffler/src/shuffler_control.vala:1022
-#: budgie-window-shuffler/src/shuffler_control.vala:1261
+#: budgie-window-shuffler/src/shuffler_control.vala:1058
+#: budgie-window-shuffler/src/shuffler_control.vala:1313
 #: budgie-window-shuffler/src/layouts_popup.vala:162
 msgid "Layouts"
 msgstr "Disposicions"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1023
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1060
 msgid "Automatic window & application presets"
 msgstr "Valors preestablerts automàtics de finestres i aplicacions"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1024
-#: budgie-window-shuffler/src/shuffler_control.vala:1313
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
+#: budgie-window-shuffler/src/shuffler_control.vala:1369
 msgid "Window rules"
 msgstr "Regles de les finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1025
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1064
 msgid "Define where application windows should be opened"
 msgstr "Definiu on s’han d’obrir les finestres de l’aplicació."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1026
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1066
 msgid "Applet"
 msgstr "Miniaplicació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1027
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1068
 msgid "Shuffler Applet settings"
 msgstr "Configuració de la miniaplicació del canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1029
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1072
 msgid "General preferences"
 msgstr "Preferències generals"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1049
+#. TRANSLATORS:
+#. / Quarter & half = basic tiling.
+#. / Moving, resizing in a custom grid = advanced tiling.
+#. / The "basic" is to make the difference clear.
+#: budgie-window-shuffler/src/shuffler_control.vala:1097
 msgid "Basic quarter & half tiling"
 msgstr "Mosaic bàsic mig i a quarts"
 
-#. basic shortcutlist (in subgrid)
-#. translations!
-#: budgie-window-shuffler/src/shuffler_control.vala:1064
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
 msgid "Top-left"
 msgstr "A dalt a l'esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1064
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
 msgid "Top-right"
 msgstr "A dalt a la dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1064
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
 msgid "Bottom-right"
 msgstr "A baix a la dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1065
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
 msgid "Bottom-left"
 msgstr "A baix a l'esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1065
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
 msgid "Left-half"
 msgstr "Meitat esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1065
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
 msgid "Top-half"
 msgstr "Meitat superior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1066
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
 msgid "Right-half"
 msgstr "Meitat dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1066
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
 msgid "Bottom-half"
 msgstr "Meitat inferior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1066
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
 msgid "Toggle maximize"
 msgstr "Commuta la maximització"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1082
+#. Adavenced tiling settings section header
+#: budgie-window-shuffler/src/shuffler_control.vala:1130
 msgid "Resizing & moving windows in a custom grid"
 msgstr ""
 "Canvi de mida i moviment de les finestres en una quadrícula personalitzada"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1093
+#: budgie-window-shuffler/src/shuffler_control.vala:1141
 msgid "Grid size"
 msgstr "Mida de la graella"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1096
+#: budgie-window-shuffler/src/shuffler_control.vala:1144
 msgid "Columns"
 msgstr "Columnes"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1104
+#: budgie-window-shuffler/src/shuffler_control.vala:1152
 msgid "Rows"
 msgstr "Files"
 
 #. options
-#: budgie-window-shuffler/src/shuffler_control.vala:1113
+#: budgie-window-shuffler/src/shuffler_control.vala:1161
 msgid "Options"
 msgstr "Opcions"
 
 #. sticky
-#: budgie-window-shuffler/src/shuffler_control.vala:1117
+#: budgie-window-shuffler/src/shuffler_control.vala:1165
 msgid "Resize opposite window"
 msgstr "Canvia la mida de la finestra oposada"
 
 #. swap
-#: budgie-window-shuffler/src/shuffler_control.vala:1123
+#: budgie-window-shuffler/src/shuffler_control.vala:1171
 msgid "Swap windows"
 msgstr "Intercanvieu finestres"
 
 #. notification
-#: budgie-window-shuffler/src/shuffler_control.vala:1130
+#. / this is about toggling to show a notification when targeted window size
+#. / is smaller than minimum window size
+#: budgie-window-shuffler/src/shuffler_control.vala:1182
 msgid "Show notification on incorrect window size"
 msgstr "Mostra la notificació sobre la mida incorrecta de la finestra."
 
 #. guigrid
-#: budgie-window-shuffler/src/shuffler_control.vala:1137
+#: budgie-window-shuffler/src/shuffler_control.vala:1189
 msgid "Enable GUI grid"
 msgstr "Activa la graella d'IGU"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1144
+#: budgie-window-shuffler/src/shuffler_control.vala:1196
 msgid "GUI grid shortcuts"
 msgstr "Dreceres de la graella d'IGU"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1149
+#: budgie-window-shuffler/src/shuffler_control.vala:1201
 msgid "Toggle GUI grid"
 msgstr "Commuta la graella d'IGU"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1149
+#: budgie-window-shuffler/src/shuffler_control.vala:1201
 msgid "Add a column"
 msgstr "Afegeix-hi una columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1150
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
 msgid "Add a row"
 msgstr "Afegeix-hi una fila"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1150
-msgid "Remove column"
-msgstr "Suprimeix la columna"
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
+msgid "Remove a column"
+msgstr "Suprimeix-ne una columna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1150
-msgid "Remove row"
-msgstr "Suprimeix la fila"
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
+msgid "Remove a row"
+msgstr "Suprimeix-ne una fila"
 
 #. shortcutlist custom grid
-#: budgie-window-shuffler/src/shuffler_control.vala:1159
+#: budgie-window-shuffler/src/shuffler_control.vala:1211
 msgid "Shortcuts for moving a window to the nearest grid cell"
 msgstr "Dreceres per moure una finestra a la cel·la més propera"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1165
+#: budgie-window-shuffler/src/shuffler_control.vala:1217
 msgid "Move left"
 msgstr "Mou a l'esquerra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1165
+#: budgie-window-shuffler/src/shuffler_control.vala:1217
 msgid "Move right"
 msgstr "Mou a la dreta"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1166
+#: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Move up"
 msgstr "Mou amunt"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1166
+#: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Move down"
 msgstr "Mou avall"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1176
+#: budgie-window-shuffler/src/shuffler_control.vala:1228
 msgid "Shortcuts for resizing a window"
 msgstr "Dreceres per canviar la mida d'una finestra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1185
+#: budgie-window-shuffler/src/shuffler_control.vala:1237
 msgid "Expand horizontally (to the right)"
 msgstr "Expandeix horitzontalment (a la dreta)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1186
+#: budgie-window-shuffler/src/shuffler_control.vala:1238
 msgid "Shrink horizontally (from the right)"
 msgstr "Encongeix horitzontalment (des de la dreta)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1187
+#: budgie-window-shuffler/src/shuffler_control.vala:1239
 msgid "Expand vertically (down)"
 msgstr "Expandeix verticalment (avall)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1188
+#: budgie-window-shuffler/src/shuffler_control.vala:1240
 msgid "Shrink vertically (from the bottom)"
 msgstr "Encongeix verticalment (des de baix)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1189
+#: budgie-window-shuffler/src/shuffler_control.vala:1241
 msgid "Expand horizontally (to the left)"
 msgstr "Expandeix horitzontalment (a l'esquerra)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1190
+#: budgie-window-shuffler/src/shuffler_control.vala:1242
 msgid "Shrink horizontally (from the left)"
 msgstr "Encongeix horitzontalment (des de l'esquerra)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1191
+#: budgie-window-shuffler/src/shuffler_control.vala:1243
 msgid "Expand vertically (up)"
 msgstr "Expandeix verticalment (amunt)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1192
+#: budgie-window-shuffler/src/shuffler_control.vala:1244
 msgid "Shrink vertically (from the top)"
 msgstr "Encongeix verticalment (des de dalt)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1193
-#: budgie-window-shuffler/src/shuffler_control.vala:1222
+#: budgie-window-shuffler/src/shuffler_control.vala:1245
+#: budgie-window-shuffler/src/shuffler_control.vala:1274
 msgid "Toggle resizing opposite window"
 msgstr "Commuta el canvi de mida de la finestra oposada."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1205
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
-msgid "Other"
-msgstr "Altres"
+#: budgie-window-shuffler/src/shuffler_control.vala:1257
+msgid "Other shortcuts"
+msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1212
+#: budgie-window-shuffler/src/shuffler_control.vala:1264
 msgid "Tile all windows to grid"
 msgstr "Fes un mosaic en forma de graella de totes les finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1269
+#. / This is a shortcut description/label. The shortcut toggles
+#. / the layout quicklist/manager.
+#: budgie-window-shuffler/src/shuffler_control.vala:1325
 msgid "Toggle layouts quicklist & manager"
 msgstr "Commuta la llista ràpida i el gestor de disposicions"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1279
+#: budgie-window-shuffler/src/shuffler_control.vala:1335
 msgid "Setup now"
 msgstr "Configureu-ho ara"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1322
+#: budgie-window-shuffler/src/shuffler_control.vala:1378
 msgid "Stored rules"
 msgstr "Regles desades"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1332
+#: budgie-window-shuffler/src/shuffler_control.vala:1388
 msgid "Add new rule"
 msgstr "Afegiu-hi una regla nova"
 
 #. margin header
-#: budgie-window-shuffler/src/shuffler_control.vala:1364
+#. this is about the area which shuffler can use for tiling
+#: budgie-window-shuffler/src/shuffler_control.vala:1421
 msgid "Margins between virtual grid and screen edges"
 msgstr "Marges entre la graella virtual i les vores de la pantalla"
 
 #. top margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1384
+#: budgie-window-shuffler/src/shuffler_control.vala:1441
 msgid "Top margin"
 msgstr "Marge de dalt"
 
 #. left/right margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1388
+#: budgie-window-shuffler/src/shuffler_control.vala:1445
 msgid "Left & right margins"
 msgstr "Marges de l'esquerra i la dreta"
 
 #. bottom margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1393
+#: budgie-window-shuffler/src/shuffler_control.vala:1450
 msgid "Bottom margin"
 msgstr "Marge de baix"
 
 #. padding header
-#: budgie-window-shuffler/src/shuffler_control.vala:1400
+#: budgie-window-shuffler/src/shuffler_control.vala:1457
 msgid "Padding"
 msgstr "Encoixinat"
 
 #. padding
-#: budgie-window-shuffler/src/shuffler_control.vala:1405
+#: budgie-window-shuffler/src/shuffler_control.vala:1462
 msgid "Window padding"
 msgstr "Farciment de la finestra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1414
+#: budgie-window-shuffler/src/shuffler_control.vala:1471
 msgid "Animation"
 msgstr "Animació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1417
+#: budgie-window-shuffler/src/shuffler_control.vala:1474
 msgid "Use general animation settings"
 msgstr "Usa la configuració general de l'animació."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1423
+#: budgie-window-shuffler/src/shuffler_control.vala:1480
 msgid "Use animation"
 msgstr "Usa l'animació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1740
+#: budgie-window-shuffler/src/shuffler_control.vala:1800
 msgid "Applet settings"
 msgstr "Configuració de la miniaplicació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1744
+#: budgie-window-shuffler/src/shuffler_control.vala:1804
 msgid "Applet popover content"
 msgstr "Contingut de la finestra emergent de la miniaplicació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1752
+#: budgie-window-shuffler/src/shuffler_control.vala:1812
 msgid "Show popover on hover (without click)"
 msgstr "Mostra la finestra emergent en passar-hi (sense clicar)."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1760
+#: budgie-window-shuffler/src/shuffler_control.vala:1820
 msgid "Synchronize grid size"
 msgstr "Sincronitza la mida de la quadrícula."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1767
+#: budgie-window-shuffler/src/shuffler_control.vala:1827
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 "Actualitza la mida de la quadrícula per canviar-ne la posició i la mida "
 "segons la disposició més recent."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1770
+#. / this is about the mini-representation of the
+#. / layout in the applet's popover
+#: budgie-window-shuffler/src/shuffler_control.vala:1834
 msgid "Layout preview size (width in px)"
 msgstr "Mida de la previsualització de la disposició (amplada en píxels)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1785
+#: budgie-window-shuffler/src/shuffler_control.vala:1849
 msgid "The applet needs to be on the panel to see the changes"
 msgstr "La miniaplicació ha de ser al plafó per veure'n els canvis."
+
+#: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
+msgid "Minimum window size exceeds target"
+msgstr "La mida mínima de la finestra excedeix l'objectiu."
 
 #. buttons of mastergrid, corresponcing to stack "picklayout"
 #. since this is the "home" page
@@ -671,11 +662,13 @@ msgid "Add task"
 msgstr "Afegeix-hi una tasca"
 
 #. tooltips
-#: budgie-window-shuffler/src/layouts_popup.vala:596
-msgid "Command to launch window or application (*mandatory)"
-msgstr "Ordre per obrir una finestra o aplicació (obligatòria)"
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:597
+msgid "Command to launch window or application"
+msgstr ""
 
-#: budgie-window-shuffler/src/layouts_popup.vala:598
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:605
 msgid ""
 "Window name - optional, to distinguish multiple windows of the same "
 "application"
@@ -683,161 +676,165 @@ msgstr ""
 "Nom de la finestra (opcional, per distingir finestres de la mateixa "
 "aplicació)"
 
-#: budgie-window-shuffler/src/layouts_popup.vala:606
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:621
 msgid "Try to move an existing window before launching a new instance"
 msgstr ""
 "Proveu de moure una finestra existent abans d'obrir-ne una instància nova."
 
-#: budgie-window-shuffler/src/layouts_popup.vala:617
+#: budgie-window-shuffler/src/layouts_popup.vala:633
 msgid "Task name"
 msgstr "Nom de la tasca"
 
 #. - command
-#: budgie-window-shuffler/src/layouts_popup.vala:638
-msgid "Command*"
-msgstr "Ordre*"
+#: budgie-window-shuffler/src/layouts_popup.vala:654
+msgid "Command"
+msgstr ""
 
 #. - wname
-#: budgie-window-shuffler/src/layouts_popup.vala:657
+#: budgie-window-shuffler/src/layouts_popup.vala:674
 msgid "Window name"
 msgstr "Nom de la finestra"
 
-#: budgie-window-shuffler/src/layouts_popup.vala:795
+#: budgie-window-shuffler/src/layouts_popup.vala:812
 msgid "Test"
 msgstr "Test"
 
-#: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
-msgid "Minimum window size exceeds target"
-msgstr "La mida mínima de la finestra excedeix l'objectiu."
-
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:89
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:117
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:430
 msgid "Open Shuffler settings"
 msgstr "Obre la configuració del canviador de finestres"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:377
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
 msgid "Shuffler warning"
 msgstr "Avís del canviador de finestres"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:377
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
 msgid "Please activate Window Shuffler"
 msgstr "Si us plau, activeu el canviador de finestres."
 
 #. swapbox.pack_start(swapbutton, true, false, 0);
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:401
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:409
 msgid "Swap position and size of the two most recently focussed windows"
 msgstr ""
 "Canvieu la posició i la mida de les dues finestres focalitzades més "
 "recentment."
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:417
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
 msgid "Shuffle remaining windows to the layout"
 msgstr "Passeu per les finestres restants a la disposició"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:418
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:438
 msgid "Toggle mode"
 msgstr "Commuta el mode"
 
-#. translated strings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
-msgid "Drag position"
-msgstr "Arrossega la posició"
+#. strings
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+msgid "Stop"
+msgstr "Atura"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
-msgid "Save position"
-msgstr "Desa la posició"
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+msgid "Start"
+msgstr "Inicia"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Enable Super + drag to set time position. Click ´Save position´ to save."
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
 msgstr ""
-"Habiliteu Súper + arrossegament per establir la posició de l'hora. Cliqueu a"
-" Desa la posició per establir-ho."
+"El Canviador de fons de l'espai de treball recorda automàticament quin fons "
+"de pantalla es va establir per a cada espai de treball."
 
-#. window content
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
-msgid "Position & anchor"
-msgstr "Posició i ancoratge"
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
+msgid "Applet runs without a panel icon"
+msgstr "La miniaplicació s’executa sense una icona de plafó."
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
-msgid "Automatic"
-msgstr "Automàtic"
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "Us donem la benvinguda al QuickNote."
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
-msgid "On all monitors"
-msgstr "A tots els monitors"
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "El text es desarà automàticament mentre escriviu."
 
-#. time font settings -> boxed!!
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
-msgid "Time font, size & color"
-msgstr "Lletra, mida i color de l'hora"
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "Amplada de l'àrea del text"
 
-#. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
-msgid "Date font, size & color"
-msgstr "Lletra, mida i color de la data"
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "Alçada de l'àrea del text"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
-msgid "Left align text"
-msgstr "Alineació a l'esquerra del text"
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "Estableix un directori personalitzat"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
-msgid "Use 12hr time format"
-msgstr "Usa el format de 12 hores"
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "Trieu un directori"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
-msgid "Linespacing"
-msgstr "Espai entre línies"
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Use"
+msgstr "Ús"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
-msgid "Super + drag"
-msgstr "Súper + arrossega"
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr "Control de WallStreet"
 
-#. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
-msgid "AM"
-msgstr "AM"
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr "Executa WallStreet"
 
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
-msgid "PM"
-msgstr "PM"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr "Usa un fons de pantalla aleatori."
 
-#: budgie-wpreviews/src/previews_controls.vala:50
-#: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
-msgid "Previews Control"
-msgstr "Control de previsualitzacions"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr "Sincronitza al bloqueig de pantalla"
 
-#: budgie-wpreviews/src/previews_controls.vala:55
-msgid "Run Previews"
-msgstr "Executa les previsualitzacions"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr "Usa els fons per defecte"
 
-#: budgie-wpreviews/src/previews_controls.vala:58
-msgid "Show windows of all workspaces"
-msgstr "Mostra les finestres de tots els espais de treball"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr "Navegueu"
 
-#: budgie-wpreviews/src/previews_controls.vala:61
-msgid "Show window full name in tooltip"
-msgstr "Mostra el nom complet de la finestra al consell."
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr "Canvia l'interval"
 
-#. spinbutton section (menu length)
-#: budgie-recentlyused/src/budgie-recentlyused.vala:32
-msgid "Show last used"
-msgstr "Mostra'n l'últim ús"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr "Hores"
 
-#. show tooltips section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:44
-msgid "Show tooltips"
-msgstr "Mostra els indicadors de funció"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr "Minuts"
 
-#. hide path section
-#: budgie-recentlyused/src/budgie-recentlyused.vala:53
-msgid "Hide path in menu"
-msgstr "Amaga el camí al menú"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr "Segons"
 
-#. tooltip
-#: budgie-recentlyused/src/budgie-recentlyused.vala:191
-msgid "Open"
-msgstr "Obre"
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+msgid "Close"
+msgstr "Tanca"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr "Seleccioneu un diectori"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
@@ -1086,285 +1083,6 @@ msgstr "Mostra la data"
 msgid "Use 24 hour time"
 msgstr "Usa un rellotge de 24 hores."
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
-msgid "Text"
-msgstr "Text"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
-msgid "Applications"
-msgstr "Aplicacions"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
-msgid "Files"
-msgstr "Fitxers"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
-msgid "Actions"
-msgstr "Accions"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
-msgid "Search"
-msgstr "Cerca"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
-msgid "Contacts"
-msgstr "Contactes"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
-msgid "Internet"
-msgstr "Internet"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
-msgid "Settings"
-msgstr "Paràmetres"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
-msgid "Application Actions"
-msgstr "Accions de l'aplicació"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
-msgid "Remove from _Dock"
-msgstr "Suprimeix de l'acobla_dor"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:83
-msgid "Add to _Dock"
-msgstr "Afegeix a l'acobla_dor"
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
-msgid "Try changing search terms."
-msgstr "Proveu de canviar els termes de la cerca."
-
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
-#, c-format
-msgid "No Results for “%s”"
-msgstr "Cap resultat per a “%s”"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
-msgid "View as Grid"
-msgstr "Visualitza com a graella"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
-msgid "View by Category"
-msgstr "Visualitza per categories"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
-msgid "Search Apps"
-msgstr "Cerca aplicacions"
-
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
-msgid "Clear all"
-msgstr "Neteja-ho tot"
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "Cerqueu i obriu aplicacions"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
-msgid "Shutdown"
-msgstr "Atura"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:113
-msgid "Suspend"
-msgstr "Suspèn"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:123
-msgid "Restart"
-msgstr "Reinicia"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:134
-msgid "Lock"
-msgstr "Bloqueja"
-
-#: budgie-applications-menu/applications-menu/src/powerstrip.vala:153
-msgid "Logout"
-msgstr "Surt"
-
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
-msgid "Run this command…"
-msgstr "Executa aquesta ordre…"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
-msgid "Calculator"
-msgstr "Calculadora"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
-msgid "Calculate basic expressions."
-msgstr "Calculeu expressions bàsiques."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
-msgid "bc is not installed"
-msgstr "El bc no està instal·lat."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
-msgid "Click to copy result to clipboard"
-msgstr "Cliqueu per copiar-ne el resultat al porta-retalls"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
-msgid "Search for and run applications on your computer."
-msgstr "Cerqueu i executeu aplicacions a l'ordinador."
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
-#, c-format
-msgid "Open with %s"
-msgstr "Obre amb %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
-#, c-format
-msgid "Opens current selection using %s"
-msgstr "Obre la selecció actual amb %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
-msgid "Open %s in default web browser"
-msgstr "Obre %s al navegador per defecte"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
-#, c-format
-msgid "Open %s in %s"
-msgstr "Obre %s amb %s"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
-msgid "Open this link in default browser"
-msgstr "Obre aquest enllaç amb el navegador per defecte"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
-msgid "Link"
-msgstr "Enllaç"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
-msgid "Open link in default browser"
-msgstr "Obre l'enllaç al navegador per defecte"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-#, c-format
-msgid "Execute '%s'"
-msgstr "Executa «%s»"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
-msgid "Run command"
-msgstr "Executa una ordre"
-
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
-msgid "Find and execute arbitrary commands."
-msgstr "Trobeu i executeu ordres arbitràries."
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
-msgid "Run in Terminal"
-msgstr "Executa en un terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
-msgid "Run application or command in terminal"
-msgstr "Executa l'aplicació o l'ordre en un terminal"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
-msgid "Copy to Clipboard"
-msgstr "Copia al porta-retalls"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
-msgid "Copy selection to clipboard"
-msgstr "Copia la selecció al porta-retalls"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
-msgid "Run"
-msgstr "Executa"
-
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
-msgid "Run an application, action or script"
-msgstr "Executa una aplicació, una acció o un script"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
-msgid "Set menu icon from file"
-msgstr "Establiu la icona del menú des d'un fitxer."
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
-msgid "Image files"
-msgstr "Fitxers d'imatge"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
-msgid "Any file"
-msgstr "Qualsevol fitxer"
-
-#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
-msgid "Set icon"
-msgstr "Establiu-ne la icona."
-
-#: budgie-brightness-controller/src/Applet.vala:81
-msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr ""
-"Suprimeix de l'inici automàtic el connector de color del dimoni de "
-"configuració del Gnome."
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:87
-msgid "Dim"
-msgstr "Atenuació"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:89
-#: budgie-brightness-controller/src/widgets/Popover.vala:149
-msgid "Brightness"
-msgstr "Brillantor"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:92
-msgid "Temperature"
-msgstr "Temperatura"
-
-#: budgie-brightness-controller/src/widgets/Popover.vala:147
-msgid "Light"
-msgstr "Lluminositat"
-
-#: budgie-quicknote/QuickNoteApplet.vala:47
-msgid "Welcome to QuickNote."
-msgstr "Us donem la benvinguda al QuickNote."
-
-#: budgie-quicknote/QuickNoteApplet.vala:48
-msgid "Text will be saved automatically while typing."
-msgstr "El text es desarà automàticament mentre escriviu."
-
-#. Gtk stuff, widgets etc. here
-#: budgie-quicknote/QuickNoteApplet.vala:143
-msgid "Text area width"
-msgstr "Amplada de l'àrea del text"
-
-#: budgie-quicknote/QuickNoteApplet.vala:150
-msgid "Text area height"
-msgstr "Alçada de l'àrea del text"
-
-#: budgie-quicknote/QuickNoteApplet.vala:166
-msgid "Set a custom directory"
-msgstr "Estableix un directori personalitzat"
-
-#: budgie-quicknote/QuickNoteApplet.vala:179
-msgid "Choose directory"
-msgstr "Trieu un directori"
-
-#: budgie-quicknote/QuickNoteApplet.vala:201
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
-msgid "Use"
-msgstr "Ús"
-
-#. window props
-#: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
-msgid "Set text color"
-msgstr "Estableix el color del text"
-
-#. spinbuttons - labels
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Red"
-msgstr "Vermell"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Green"
-msgstr "Verd"
-
-#: budgie-weathershow/src/get_color/get_color.vala:64
-msgid "Blue"
-msgstr "Blau"
-
-#: budgie-weathershow/src/get_color/get_color.vala:84
-msgid "Choose"
-msgstr "Trieu"
-
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
@@ -1427,6 +1145,12 @@ msgstr "Mostra la previsió meteorològica en una finestreta emergent"
 msgid "Transparency"
 msgstr "Transparència"
 
+#. window props
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
+#: budgie-weathershow/src/get_color/get_color.vala:50
+msgid "Set text color"
+msgstr "Estableix el color del text"
+
 #. checkbox custom position
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:909
 msgid "Set custom position (px)"
@@ -1440,62 +1164,104 @@ msgstr "Nom de la ubicació personalitzada"
 msgid "Please enter at least 3 characters"
 msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
-#. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
-#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
-msgid "WallStreet Control"
-msgstr "Control de WallStreet"
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "Vermell"
 
-#. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr "Executa WallStreet"
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "Verd"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr "Usa un fons de pantalla aleatori."
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "Blau"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr "Sincronitza al bloqueig de pantalla"
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "Trieu"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
-msgid "Use default wallpapers"
-msgstr "Usa els fons per defecte"
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
+msgid "Drag position"
+msgstr "Arrossega la posició"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
-msgid "Browse"
-msgstr "Navegueu"
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
+msgid "Save position"
+msgstr "Desa la posició"
 
-#. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
-msgid "Change interval"
-msgstr "Canvia l'interval"
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr ""
+"Habiliteu Súper + arrossegament per establir la posició de l'hora. Cliqueu a"
+" Desa la posició per establir-ho."
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-msgid "Hours"
-msgstr "Hores"
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
+msgid "Position & anchor"
+msgstr "Posició i ancoratge"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
-msgid "Minutes"
-msgstr "Minuts"
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
+msgid "Automatic"
+msgstr "Automàtic"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
-msgid "Seconds"
-msgstr "Segons"
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
+msgid "On all monitors"
+msgstr "A tots els monitors"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
-msgid "Close"
-msgstr "Tanca"
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+msgid "Time font, size & color"
+msgstr "Lletra, mida i color de l'hora"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
-msgid "Please log out/in to initialize"
-msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+msgid "Date font, size & color"
+msgstr "Lletra, mida i color de la data"
 
-#. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
-msgid "Select a directory"
-msgstr "Seleccioneu un diectori"
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+msgid "Left align text"
+msgstr "Alineació a l'esquerra del text"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+msgid "Use 12hr time format"
+msgstr "Usa el format de 12 hores"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+msgid "Linespacing"
+msgstr "Espai entre línies"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+msgid "Super + drag"
+msgstr "Súper + arrossega"
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
+msgid "AM"
+msgstr "AM"
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
+msgid "PM"
+msgstr "PM"
+
+#: budgie-wpreviews/src/previews_controls.vala:50
+#: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
+msgid "Previews Control"
+msgstr "Control de previsualitzacions"
+
+#: budgie-wpreviews/src/previews_controls.vala:55
+msgid "Run Previews"
+msgstr "Executa les previsualitzacions"
+
+#: budgie-wpreviews/src/previews_controls.vala:58
+msgid "Show windows of all workspaces"
+msgstr "Mostra les finestres de tots els espais de treball"
+
+#: budgie-wpreviews/src/previews_controls.vala:61
+msgid "Show window full name in tooltip"
+msgstr "Mostra el nom complet de la finestra al consell."
 
 #. Corner label
 #: budgie-hotcorners/src/HotCornersApplet.vala:148
@@ -1539,182 +1305,49 @@ msgstr "Gestioneu els cantons des de la icona del plafó."
 msgid "Set pressure (0 = no pressure)"
 msgstr "Estableix la pressió (0 = sense pressió)"
 
-#. TRANSLATORS: automatic dynamic workspace control
-#: budgie-visualspace/src/visualspace.vala:72
-msgid "Auto"
-msgstr "Automàtic"
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "Mostra'n l'últim ús"
 
-#: budgie-visualspace/src/visualspace.vala:109
-msgid "Scroll over panel icon to change workspace"
-msgstr "Desplaceu-vos per la icona del plafó per canviar l'espai de treball"
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "Mostra els indicadors de funció"
 
-#. strings
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
-msgid "Stop"
-msgstr "Atura"
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "Amaga el camí al menú"
 
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
-msgid "Start"
-msgstr "Inicia"
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "Obre"
 
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
-msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
-msgstr ""
-"El Canviador de fons de l'espai de treball recorda automàticament quin fons "
-"de pantalla es va establir per a cada espai de treball."
-
-#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
-msgid "Applet runs without a panel icon"
-msgstr "La miniaplicació s’executa sense una icona de plafó."
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:53
-msgid "Connect to Hidden Network…"
-msgstr "Connecta't a una xarxa oculta…"
-
-#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:57
-msgid "Network Settings…"
-msgstr "Paràmetres de la xarxa…"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
-msgid "VPN"
-msgstr "XPV"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:53
-msgid "This Virtual Private Network could not be connected to."
-msgstr "No s'ha pogut connectar amb aquesta xarxa privada virtual."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:22
-msgid "Unknown device"
-msgstr "Dispositiu desconegut"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:37
-#, c-format
-msgid "Unknown type: %s "
-msgstr "Tipus desconegut: %s "
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
-msgid "Virtual network: %s"
-msgstr "Xarxa virtual: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
-msgid "Wired"
-msgstr "Amb fil"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
-msgid "Mobile Broadband: %s"
-msgstr "Banda ampla mòbil: %s"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
-msgid "Mobile Broadband"
-msgstr "Banda ampla mòbil"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:35
-msgid "Modem"
-msgstr "Mòdem"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:49
-msgid "This wireless network could not be connected to."
-msgstr "No s'ha pogut connectar amb aquesta xarxa sense fil."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
-msgid "This network uses 40/64-bit WEP encryption"
-msgstr "Aquesta xarxa usa encriptació WEP de 40 / 64 bits."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:163
-msgid "This network uses 104/128-bit WEP encryption"
-msgstr "Aquesta xarxa usa encriptació WEP de 104 / 128 bits."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:166
-msgid "This network uses WPA encryption"
-msgstr "Aquesta xarxa usa encriptació WPA."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:169
-msgid "This network uses encryption"
-msgstr "Aquesta xarxa usa encriptació."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:171
-msgid "This network is unsecured"
-msgstr "Aquesta xarxa no té seguretat."
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:49
-msgid "No Access Points Available"
-msgstr "No hi ha punts d'accés disponibles"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:63
-msgid "Scanning for Access Points…"
-msgstr "S'explora si hi ha punts d'accés…"
-
-#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:108
-msgid "Wireless"
-msgstr "Sense fil"
-
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
-msgid "Menu Icon"
-msgstr "Icona del menú"
-
-#. Number of rows for the grid of icons
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
-msgid "Grid Rows"
-msgstr "Files de la graella"
-
-#. Number of columns for the grid of icons
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
-msgid "Grid Columns"
-msgstr "Columnes de la graella"
-
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
-msgid "Show Menu Label"
-msgstr "Mostra l'etiqueta del menú."
-
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
-msgid "Menu Label"
-msgstr "Etiqueta del menú"
-
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
-msgid "Show Power-strip"
-msgstr "Mostra la barra d'energia."
-
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
-msgid "Roll-over mouse"
-msgstr "Pas del ratolí"
-
-#. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
-msgid ""
-"Adjust Category\n"
-"Spacing"
-msgstr ""
-"Ajusta la categoria\n"
-"Espaiat"
-
-#: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
-msgid "Place a window in a predefined layout"
-msgstr "Situa una finestra en un disposició predefinida."
-
-#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
-msgid "Show recently used items"
-msgstr "Mostra els elements utilitzats recentment"
-
-#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
-msgid "Time of day in fuzzy way"
-msgstr "Hora del dia aproximada"
-
-#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
-msgid "Stylish Desktop Application Menu"
-msgstr "Menú d'aplicacions estilitzat"
+#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
+msgid "Workspace indicator and window list"
+msgstr "Indicador de l'espai de treball i llista de finestres"
 
 #: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
 msgid "Brightness Controller"
 msgstr "Controlador de la brillantor"
 
+#: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
+msgid "Place a window in a predefined layout"
+msgstr "Situa una finestra en un disposició predefinida."
+
+#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+msgid "Set a different wallpaper per workspace"
+msgstr "Estableix un fons de pantalla diferent per a cada espai de treball."
+
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
 msgstr "Notes ràpides i fàcils"
+
+#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
+msgid "Time of day in fuzzy way"
+msgstr "Hora del dia aproximada"
 
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
@@ -1724,14 +1357,6 @@ msgstr "Mostra el temps i la previsió meteorològica"
 msgid "Set hotcorner actions"
 msgstr "Estableix les accions dels cantons actius"
 
-#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
-msgid "Workspace indicator and window list"
-msgstr "Indicador de l'espai de treball i llista de finestres"
-
-#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
-msgid "Set a different wallpaper per workspace"
-msgstr "Estableix un fons de pantalla diferent per a cada espai de treball."
-
-#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
-msgid "Network Applet"
-msgstr "Miniapliació de xarxa"
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
+msgstr "Mostra els elements utilitzats recentment"
