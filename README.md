@@ -27,6 +27,7 @@ Additional enhancements for the user experience
  - Visualspace
  - Applications Menu
  - Network Manager
+ - Shuffler
 
 ## Standalone
 
