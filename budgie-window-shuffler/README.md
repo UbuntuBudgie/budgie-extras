@@ -1,5 +1,9 @@
 ## Comment on latest development
 
+note: GNOME 40 and later utilises the Shuffler super alt left/right keys. For Ubuntu Budgie we use a gsetting override to revert to wm keybindings prior to GNOME 40
+
+----
+
 Added WIndowRules; functionality to open specific WMCLASS windows to specific monitor & position. To use it, create a .windowrule file, named after the WMCLASS, in ~/.config/budgie-extras/shuffler. Possible fields are:
 
  - XPosition=int
