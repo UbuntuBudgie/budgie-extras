@@ -2,20 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Quentin PAGÈS, 2021
+# david mohammed <foss.freedom@gmail.com>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-09 18:18+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2021\n"
+"Language-Team: Occitan (post 1500) (https://www.transifex.com/ubuntu-budgie/teams/72251/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: oc\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -29,13 +34,13 @@ msgstr ""
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:119
 #: budgie-window-shuffler/src/shuffler_control.vala:350
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:120
 #: budgie-window-shuffler/src/shuffler_control.vala:354
 msgid "Yes"
-msgstr ""
+msgstr "Òc"
 
 #. I hate this and want to do this more programmaticly with libnotify.
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:59
@@ -44,7 +49,7 @@ msgstr ""
 #: budgie-trash/trash/src/Trash.plugin.in.h:1
 #: po/budgie-extras/budgie-trash/src/Trash.plugin.in.h:1
 msgid "Trash"
-msgstr ""
+msgstr "Escobilhièr"
 
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:79
 msgid "Go to applet options"
@@ -124,7 +129,7 @@ msgstr ""
 #: budgie-trash/trash/src/TrashStore.vala:151
 #: po/budgie-extras/budgie-trash/src/widgets/TrashPopover.vala:147
 msgid "Empty Trash"
-msgstr ""
+msgstr "Voidar l'escobilhièr"
 
 #: budgie-trash/trash/src/TrashStore.vala:133
 #: budgie-trash/trash/src/TrashStore.vala:144
@@ -137,7 +142,7 @@ msgstr ""
 #: budgie-trash/trash/src/TrashStore.vala:192
 #: po/budgie-extras/budgie-trash/src/helpers/TrashHelper.vala:390
 msgid "Restore"
-msgstr ""
+msgstr "Restaurar"
 
 #: budgie-trash/trash/src/TrashStore.vala:192
 #, c-format
@@ -237,7 +242,7 @@ msgstr ""
 #: budgie-window-shuffler/src/layouts_popup.vala:645
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:591
 msgid "Application"
-msgstr ""
+msgstr "Aplicacion"
 
 #. - wmclass
 #. This is a field label, should be as short as possible
@@ -261,7 +266,7 @@ msgstr ""
 #: budgie-window-shuffler/src/layouts_popup.vala:685
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:630
 msgid "Window position & size"
-msgstr ""
+msgstr "Posicion e talha de la fenèstra"
 
 #. grid cols / rows
 #. This is a field label, should be short
@@ -299,7 +304,7 @@ msgstr ""
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:690
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:241
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Divèrs"
 
 #. target monitor
 #. Field label, should be short
@@ -325,7 +330,7 @@ msgstr ""
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:240
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:734
 msgid "Done"
-msgstr ""
+msgstr "Acabat"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:630
 #: budgie-window-shuffler/src/layouts_popup.vala:224
@@ -341,17 +346,13 @@ msgstr ""
 #: budgie-weathershow/src/get_color/get_color.vala:88
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 msgid "Cancel"
-msgstr ""
+msgstr "Anullar"
 
-#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
-#.
 #. window stuff
-#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:731
 #: budgie-window-shuffler/src/shuffler_control.vala:997
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:150
@@ -376,7 +377,8 @@ msgstr ""
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as possible
+#. TRANSLATORS: it is important to keep these column headers as short as
+#. possible
 #: budgie-window-shuffler/src/shuffler_control.vala:879
 msgid "WM-class"
 msgstr ""
@@ -384,7 +386,7 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:880
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:175
 msgid "Grid"
-msgstr ""
+msgstr "Grasilha"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:881
 msgid "Span"
@@ -410,7 +412,7 @@ msgstr ""
 #. Settings category label, should be as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:1054
 msgid "Tiling"
-msgstr ""
+msgstr "Teulas"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1056
@@ -426,7 +428,7 @@ msgstr ""
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:94
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:155
 msgid "Layouts"
-msgstr ""
+msgstr "Jaces"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1060
@@ -463,7 +465,6 @@ msgstr ""
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1097
 msgid "Basic quarter & half tiling"
 msgstr ""
@@ -471,22 +472,22 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1111
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:85
 msgid "Top-left"
-msgstr ""
+msgstr "Amont a esquèrra"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1111
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:86
 msgid "Top-right"
-msgstr ""
+msgstr "Amont a drecha"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1111
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:87
 msgid "Bottom-right"
-msgstr ""
+msgstr "Aval a drecha"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1112
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:88
 msgid "Bottom-left"
-msgstr ""
+msgstr "Aval a esquèrra"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1112
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:89
@@ -524,17 +525,17 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1144
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:232
 msgid "Columns"
-msgstr ""
+msgstr "Colomnas"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1152
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:237
 msgid "Rows"
-msgstr ""
+msgstr "Linhas"
 
 #. options
 #: budgie-window-shuffler/src/shuffler_control.vala:1161
 msgid "Options"
-msgstr ""
+msgstr "Opcions"
 
 #. sticky
 #: budgie-window-shuffler/src/shuffler_control.vala:1165
@@ -548,10 +549,8 @@ msgid "Swap windows"
 msgstr ""
 
 #. notification
-#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1182
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:221
 msgid "Show notification on incorrect window size"
@@ -573,22 +572,22 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1201
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:115
 msgid "Add a column"
-msgstr ""
+msgstr "Apondre una colomna"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1202
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:116
 msgid "Add a row"
-msgstr ""
+msgstr "Apondre una linha"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1202
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:117
 msgid "Remove a column"
-msgstr ""
+msgstr "Suprimir una colomna"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1202
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:118
 msgid "Remove a row"
-msgstr ""
+msgstr "Suprimir una linha"
 
 #. shortcutlist custom grid
 #: budgie-window-shuffler/src/shuffler_control.vala:1211
@@ -608,12 +607,12 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:100
 msgid "Move up"
-msgstr ""
+msgstr "Montar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:101
 msgid "Move down"
-msgstr ""
+msgstr "Davalar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1228
 msgid "Shortcuts for resizing a window"
@@ -674,10 +673,8 @@ msgstr ""
 msgid "Tile all windows to grid"
 msgstr ""
 
-#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1325
 msgid "Toggle layouts quicklist & manager"
 msgstr ""
@@ -758,10 +755,8 @@ msgstr ""
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 
-#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1834
 msgid "Layout preview size (width in px)"
 msgstr ""
@@ -775,30 +770,30 @@ msgstr ""
 #: budgie-window-shuffler/src/layouts_popup.vala:191
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:184
 msgid "Add new"
-msgstr ""
+msgstr "Apondre novèl"
 
 #. 2. NEW LAYOUTS GRID
 #: budgie-window-shuffler/src/layouts_popup.vala:208
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:188
 msgid "New layout"
-msgstr ""
+msgstr "Jaç novèl"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:220
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:200
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #. 3. EDIT LAYOUT GRID
 #: budgie-window-shuffler/src/layouts_popup.vala:228
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:208
 msgid "Edit layout"
-msgstr ""
+msgstr "Modificar lo jaç"
 
 #. stackgrid_editlayout = new Grid();
 #: budgie-window-shuffler/src/layouts_popup.vala:235
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:215
 msgid "Layout name"
-msgstr ""
+msgstr "Nom del jaç"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:249
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:229
@@ -838,13 +833,13 @@ msgstr ""
 #. - command
 #: budgie-window-shuffler/src/layouts_popup.vala:654
 msgid "Command"
-msgstr ""
+msgstr "Comanda"
 
 #. - wname
 #: budgie-window-shuffler/src/layouts_popup.vala:674
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:619
 msgid "Window name"
-msgstr ""
+msgstr "Nom de fenèstra"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:812
 #: po/budgie-extras/budgie-window-shuffler/src/layouts_popup.vala:729
@@ -893,7 +888,7 @@ msgstr ""
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:163
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:163
 msgid "Save position"
-msgstr ""
+msgstr "Enregistrar la posicion"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:166
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:166
@@ -905,44 +900,44 @@ msgstr ""
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:172
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:172
 msgid "Position & anchor"
-msgstr ""
+msgstr "Posicion e ancora"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:178
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:178
 msgid "Automatic"
-msgstr ""
+msgstr "Automatic"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:179
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:179
 msgid "On all monitors"
-msgstr ""
+msgstr "Sus totes los monitors"
 
 #. time font settings -> boxed!!
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:217
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:217
 msgid "Time font, size & color"
-msgstr ""
+msgstr "Poliça, talha e color de l’ora"
 
 #. date font settings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:229
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:229
 msgid "Date font, size & color"
-msgstr ""
+msgstr "Poliça, talha e color de la data"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:244
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:244
 msgid "Left align text"
-msgstr ""
+msgstr "Alinhar a esquèrra"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:246
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:246
 msgid "Use 12hr time format"
-msgstr ""
+msgstr "Utilizar lo format 12 oras"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:254
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:254
 msgid "Linespacing"
-msgstr ""
+msgstr "Espaçament linha"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:519
 #: po/budgie-extras/budgie-showtime/src/showtime/BudgieShowTime.vala:519
@@ -953,34 +948,34 @@ msgstr ""
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
 #: po/budgie-extras/budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
 #: po/budgie-extras/budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: budgie-wpreviews/src/previews_controls.vala:50
 #: po/budgie-extras/budgie-wpreviews/src/previews_controls.vala:50
 #: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 #: po/budgie-extras/budgie-wpreviews/data/previewscontrols.desktop.in.h:1
 msgid "Previews Control"
-msgstr ""
+msgstr "Apercebut contraròtle"
 
 #: budgie-wpreviews/src/previews_controls.vala:55
 #: po/budgie-extras/budgie-wpreviews/src/previews_controls.vala:55
 msgid "Run Previews"
-msgstr ""
+msgstr "Lançar apercebut"
 
 #: budgie-wpreviews/src/previews_controls.vala:58
 #: po/budgie-extras/budgie-wpreviews/src/previews_controls.vala:58
 msgid "Show windows of all workspaces"
-msgstr ""
+msgstr "Mostrar las fenèstras de totes los espacis de trabalh"
 
 #: budgie-wpreviews/src/previews_controls.vala:61
 #: po/budgie-extras/budgie-wpreviews/src/previews_controls.vala:61
 msgid "Show window full name in tooltip"
-msgstr ""
+msgstr "Mostrar lo nom complèt de la fenèstra dins l’info-botiòla"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "Could not determine original location of /home/budgie/file.txt"
@@ -994,14 +989,14 @@ msgstr ""
 #: po/budgie-extras/budgie-trash/src/helpers/TrashHelper.vala:135
 #, c-format
 msgid "%s restored."
-msgstr ""
+msgstr "%s restaurat"
 
 #. TRANSLATORS: This is referring to a file path for example
 #. "/home/budgie/file.txt already exists"
 #: po/budgie-extras/budgie-trash/src/helpers/TrashHelper.vala:142
 #, c-format
 msgid "%s already exists."
-msgstr ""
+msgstr "%s existís ja."
 
 #. tooltip
 #: po/budgie-extras/budgie-trash/src/widgets/MenuRow.vala:52
@@ -1009,19 +1004,19 @@ msgstr ""
 #: po/budgie-extras/budgie-recentlyused/src/budgie-recentlyused.vala:191
 #: budgie-recentlyused/src/budgie-recentlyused.vala:191
 msgid "Open"
-msgstr ""
+msgstr "Dobrir"
 
 #: po/budgie-extras/budgie-trash/src/widgets/TrashPopover.vala:87
 msgid "Empty"
-msgstr ""
+msgstr "Voidar"
 
 #: po/budgie-extras/budgie-trash/src/widgets/TrashPopover.vala:117
 msgid "Empty all items from the Trash?"
-msgstr ""
+msgstr "Voidar totalament l'escobilhièr ?"
 
 #: po/budgie-extras/budgie-trash/src/widgets/TrashPopover.vala:126
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Totes los elements de l’escobilhièr seràn suprimits per totjorn."
 
 #. STRINGS & THINGS
 #. settings
@@ -1098,7 +1093,7 @@ msgstr ""
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:114
 msgid "Show the grid"
-msgstr ""
+msgstr "Mostrar la grasilha"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:119
 msgid "To select a range of tiles, use Shift + click"
@@ -1119,11 +1114,11 @@ msgstr ""
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:171
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
 msgid "Settings"
-msgstr ""
+msgstr "Configuracion"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:172
 msgid "Margins"
-msgstr ""
+msgstr "Marges"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:173
 msgid "Tiling & Layouts"
@@ -1131,7 +1126,7 @@ msgstr ""
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:174
 msgid "Move & resize"
-msgstr ""
+msgstr "Movement e redimensions"
 
 #. STACK-PAGES
 #. 1. settingsgrid - checkbuttons
@@ -1153,35 +1148,35 @@ msgstr ""
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:217
 msgid "Enable animation"
-msgstr ""
+msgstr "Activar animacion"
 
 #. settingsgrid - spinbuttonsection
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:227
 msgid "Grid: columns & rows"
-msgstr ""
+msgstr "Grasilha : colomnas e linhas"
 
 #. settingsgrid - bottomsection
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:267
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
 msgid "Close"
-msgstr ""
+msgstr "Tampar"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:350
 msgid "Top"
-msgstr ""
+msgstr "Naut"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:353
 msgid "Left"
-msgstr ""
+msgstr "Esquèrra"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:356
 msgid "Right"
-msgstr ""
+msgstr "Drecha"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:359
 msgid "Bottom"
-msgstr ""
+msgstr "Bas"
 
 #: po/budgie-extras/budgie-window-shuffler/src/shuffler_control.vala:702
 msgid "Sticky Neighbors switched off"
@@ -1223,170 +1218,170 @@ msgstr ""
 #: po/budgie-extras/budgie-recentlyused/src/budgie-recentlyused.vala:32
 #: budgie-recentlyused/src/budgie-recentlyused.vala:32
 msgid "Show last used"
-msgstr ""
+msgstr "Mostrar la darrièra utilizacion"
 
 #. show tooltips section
 #: po/budgie-extras/budgie-recentlyused/src/budgie-recentlyused.vala:44
 #: budgie-recentlyused/src/budgie-recentlyused.vala:44
 msgid "Show tooltips"
-msgstr ""
+msgstr "Mostrar info en subrevolant"
 
 #. hide path section
 #: po/budgie-extras/budgie-recentlyused/src/budgie-recentlyused.vala:53
 #: budgie-recentlyused/src/budgie-recentlyused.vala:53
 msgid "Hide path in menu"
-msgstr ""
+msgstr "Amagar lo camin dins lo menú"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
 msgid "midnight"
-msgstr ""
+msgstr "mièjanuèch"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
 msgid "one"
-msgstr ""
+msgstr "una"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
 msgid "two"
-msgstr ""
+msgstr "doas"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
 msgid "three"
-msgstr ""
+msgstr "tres"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
 msgid "four"
-msgstr ""
+msgstr "quadre"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
 msgid "five"
-msgstr ""
+msgstr "cinc"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
 msgid "six"
-msgstr ""
+msgstr "sièis"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
 msgid "seven"
-msgstr ""
+msgstr "sèt"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
 msgid "eight"
-msgstr ""
+msgstr "uèch"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
 msgid "nine"
-msgstr ""
+msgstr "nòu"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
 msgid "ten"
-msgstr ""
+msgstr "dètz"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
 msgid "eleven"
-msgstr ""
+msgstr "onze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
 msgid "noon"
-msgstr ""
+msgstr "dotze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
 msgid "thirteen"
-msgstr ""
+msgstr "tretze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
 msgid "fourteen"
-msgstr ""
+msgstr "catòrze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
 msgid "fifteen"
-msgstr ""
+msgstr "quinze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
 msgid "sixteen"
-msgstr ""
+msgstr "setze"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
 msgid "seventeen"
-msgstr ""
+msgstr "dètz-e-sèt"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
 msgid "eighteen"
-msgstr ""
+msgstr "dètz-e-uèch"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
 msgid "nineteen"
-msgstr ""
+msgstr "dètz-e-nòu"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
 msgid "twenty"
-msgstr ""
+msgstr "vint"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
 msgid "twenty-one"
-msgstr ""
+msgstr "vin-e-un"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
 msgid "twenty-two"
-msgstr ""
+msgstr "vint-e-dos"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
 msgid "twenty-three"
-msgstr ""
+msgstr "vin-e-tres"
 
 #. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
 #, c-format
 msgid "%s-ish"
-msgstr ""
+msgstr "quasi %s"
 
 #. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
@@ -1410,8 +1405,10 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
 #, c-format
@@ -1419,8 +1416,10 @@ msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
 #, c-format
@@ -1428,8 +1427,10 @@ msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
 #, c-format
@@ -1479,19 +1480,20 @@ msgstr ""
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
 #, c-format
 msgid "almost %s"
-msgstr ""
+msgstr "gaireben %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
 msgid "Date and Time settings"
-msgstr ""
+msgstr "Configuracion de l’ora e de la data"
 
 #. TRANSLATORS: This Button Links to Gnome 'Calendar' application
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
 msgid "Calendar"
-msgstr ""
+msgstr "Calendièr"
 
 #. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
 #. pack page2
@@ -1501,20 +1503,23 @@ msgstr ""
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
 msgid "Preferences"
-msgstr ""
+msgstr "Preferéncias"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
 msgid "Show date"
-msgstr ""
+msgstr "Mostrar la data"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
 msgid "Use 24 hour time"
-msgstr ""
+msgstr "Utilizar lo format 24 oras"
 
 #: po/budgie-extras/budgie-brightness-controller/src/Applet.vala:81
 #: budgie-brightness-controller/src/Applet.vala:81
@@ -1524,62 +1529,62 @@ msgstr ""
 #: po/budgie-extras/budgie-brightness-controller/src/widgets/Popover.vala:87
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
-msgstr ""
+msgstr "Escur"
 
 #: po/budgie-extras/budgie-brightness-controller/src/widgets/Popover.vala:89
 #: po/budgie-extras/budgie-brightness-controller/src/widgets/Popover.vala:149
 #: budgie-brightness-controller/src/widgets/Popover.vala:89
 #: budgie-brightness-controller/src/widgets/Popover.vala:149
 msgid "Brightness"
-msgstr ""
+msgstr "Luminositat"
 
 #: po/budgie-extras/budgie-brightness-controller/src/widgets/Popover.vala:92
 #: budgie-brightness-controller/src/widgets/Popover.vala:92
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatura"
 
 #: po/budgie-extras/budgie-brightness-controller/src/widgets/Popover.vala:147
 #: budgie-brightness-controller/src/widgets/Popover.vala:147
 msgid "Light"
-msgstr ""
+msgstr "Clar"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:47
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
-msgstr ""
+msgstr "La benvenguda a QuickNote"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:48
 #: budgie-quicknote/QuickNoteApplet.vala:48
 msgid "Text will be saved automatically while typing."
-msgstr ""
+msgstr "Lo tèxt s’enregistra automaticament pendent qu’escrivètz"
 
 #. Gtk stuff, widgets etc. here
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:143
 #: budgie-quicknote/QuickNoteApplet.vala:143
 msgid "Text area width"
-msgstr ""
+msgstr "Largor del camp de tèxt"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:150
 #: budgie-quicknote/QuickNoteApplet.vala:150
 msgid "Text area height"
-msgstr ""
+msgstr "Nautor de la camp de tèxt"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:166
 #: budgie-quicknote/QuickNoteApplet.vala:166
 msgid "Set a custom directory"
-msgstr ""
+msgstr "Definir un dossièr personalizat"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:179
 #: budgie-quicknote/QuickNoteApplet.vala:179
 msgid "Choose directory"
-msgstr ""
+msgstr "Causir repertòri"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.vala:201
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 #: budgie-quicknote/QuickNoteApplet.vala:201
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
 msgid "Use"
-msgstr ""
+msgstr "Utilizar"
 
 #. window props
 #: po/budgie-extras/budgie-weathershow/src/get_color/get_color.vala:50
@@ -1587,104 +1592,104 @@ msgstr ""
 #: budgie-weathershow/src/get_color/get_color.vala:50
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:902
 msgid "Set text color"
-msgstr ""
+msgstr "Definir la color del tèxt"
 
 #. spinbuttons - labels
 #: po/budgie-extras/budgie-weathershow/src/get_color/get_color.vala:64
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Red"
-msgstr ""
+msgstr "Roge"
 
 #: po/budgie-extras/budgie-weathershow/src/get_color/get_color.vala:64
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Green"
-msgstr ""
+msgstr "Verd"
 
 #: po/budgie-extras/budgie-weathershow/src/get_color/get_color.vala:64
 #: budgie-weathershow/src/get_color/get_color.vala:64
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 #: po/budgie-extras/budgie-weathershow/src/get_color/get_color.vala:84
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
-msgstr ""
+msgstr "Causir"
 
 #. get weekday by index
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:153
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Monday"
-msgstr ""
+msgstr "Diluns"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:153
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Tuesday"
-msgstr ""
+msgstr "Dimars"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:153
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Wednesday"
-msgstr ""
+msgstr "Dimècres"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:153
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:153
 msgid "Thursday"
-msgstr ""
+msgstr "Dijòus"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:154
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Friday"
-msgstr ""
+msgstr "Divendres"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:154
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Saturday"
-msgstr ""
+msgstr "Dissabte"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:154
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:154
 msgid "Sunday"
-msgstr ""
+msgstr "Dimenge"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:800
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:800
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:806
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:806
 msgid "Desktop"
-msgstr ""
+msgstr "Burèu"
 
 #. set city section
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:818
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:818
 msgid "City"
-msgstr ""
+msgstr "Vila"
 
 #. show on desktop
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:841
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:841
 msgid "Show on desktop"
-msgstr ""
+msgstr "Mostrar sul burèu"
 
 #. dynamic icon
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:848
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:848
 msgid "Show dynamic panel icon"
-msgstr ""
+msgstr "Mostrar las icònas de panèl dinamicas"
 
 #. forecast
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:855
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:855
 msgid "Show forecast in popover"
-msgstr ""
+msgstr "Mostrar lo temps en susvolant"
 
 #. optional settings: show on desktop
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:876
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:876
 msgid "Transparency"
-msgstr ""
+msgstr "Transparéncia"
 
 #. checkbox custom position
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:909
@@ -1695,12 +1700,12 @@ msgstr ""
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:931
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:931
 msgid "Custom location name"
-msgstr ""
+msgstr "Personalizar nom d’emplaçament"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.vala:1088
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
 msgid "Please enter at least 3 characters"
-msgstr ""
+msgstr "Mercés de dintrar almens 3 caractèrs"
 
 #. define the name of the application
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
@@ -1708,83 +1713,83 @@ msgstr ""
 #: po/budgie-extras/budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
 #: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
 msgid "WallStreet Control"
-msgstr ""
+msgstr "Contraròtle WallStreet"
 
 #. instruction to autostart the application
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
 msgid "Run WallStreet"
-msgstr ""
+msgstr "Aviar WallStreet"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
 msgid "Use random wallpaper"
-msgstr ""
+msgstr "Utilizar un rèireplan aleatòri"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
 msgid "Sync to lock-screen"
-msgstr ""
+msgstr "Coma çò de l’ecran de verrolhatge"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
 msgid "Use default wallpapers"
-msgstr ""
+msgstr "Utilizar los rèireplans per defaut"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
 msgid "Browse"
-msgstr ""
+msgstr "Percórrer"
 
 #. time settings section
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
 msgid "Change interval"
-msgstr ""
+msgstr "Interval de cambiament"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
 msgid "Hours"
-msgstr ""
+msgstr "Oras"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
 msgid "Minutes"
-msgstr ""
+msgstr "Minutas"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
 msgid "Seconds"
-msgstr ""
+msgstr "Minutas"
 
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
 msgid "Please log out/in to initialize"
-msgstr ""
+msgstr "Mercés de vos desconnectar/connectar per inicializar"
 
 #. filechooser to set new wallpaper dir
 #: po/budgie-extras/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
 msgid "Select a directory"
-msgstr ""
+msgstr "Causissètz un repertòri"
 
 #. Corner label
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:148
 #: budgie-hotcorners/src/HotCornersApplet.vala:148
 msgid "Corner"
-msgstr ""
+msgstr "Caire"
 
 #. Action label
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:152
 #: budgie-hotcorners/src/HotCornersApplet.vala:152
 msgid "Action"
-msgstr ""
+msgstr "Accion"
 
 #. Custom label
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:156
 #: budgie-hotcorners/src/HotCornersApplet.vala:156
 msgid "Custom"
-msgstr ""
+msgstr "Personalizar"
 
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:267
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:276
@@ -1795,13 +1800,15 @@ msgstr ""
 msgid "Missing process"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:271
 #: budgie-hotcorners/src/HotCornersApplet.vala:271
 msgid "Please enable Window Previews"
 msgstr ""
 
-#. TRANSLATORS: Window Previews is the name of the application and does not need to be translated
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:280
 #: po/budgie-extras/budgie-hotcorners/src/HotCornersApplet.vala:288
 #: budgie-hotcorners/src/HotCornersApplet.vala:280
@@ -1819,30 +1826,28 @@ msgstr ""
 msgid "Set pressure (0 = no pressure)"
 msgstr ""
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: po/budgie-extras/budgie-visualspace/src/visualspace.vala:70
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
-msgstr ""
+msgstr "Automatic"
 
 #. strings
 #: po/budgie-extras/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
 msgid "Stop"
-msgstr ""
+msgstr "Arrestar"
 
 #: po/budgie-extras/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 msgid "Start"
-msgstr ""
+msgstr "Aviar"
 
 #: po/budgie-extras/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
-"per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
 msgstr ""
 
 #: po/budgie-extras/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -1852,112 +1857,112 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
 msgid "Text"
-msgstr ""
+msgstr "Tèxt"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
 msgid "Applications"
-msgstr ""
+msgstr "Aplicacions"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
 msgid "Files"
-msgstr ""
+msgstr "Fichièrs"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
 msgid "Actions"
-msgstr ""
+msgstr "Accions"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
 msgid "Search"
-msgstr ""
+msgstr "Cercar"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
 msgid "Contacts"
-msgstr ""
+msgstr "Contactes"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
 msgid "Application Actions"
-msgstr ""
+msgstr "Accions aplicacion"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
 msgid "Other"
-msgstr ""
+msgstr "Autres"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
 msgid "Remove from _Dock"
-msgstr ""
+msgstr "Levar d'al _Dock"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:83
 msgid "Add to _Dock"
-msgstr ""
+msgstr "Ajustar al _Dock"
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
 msgid "Try changing search terms."
-msgstr ""
+msgstr "Ensajatz de cambiar los tèrmes de recèrca."
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
 #, c-format
 msgid "No Results for “%s”"
-msgstr ""
+msgstr "Cap de resultat per « %s »"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
 msgid "View as Grid"
-msgstr ""
+msgstr "Veire per grasilha"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
 msgid "View by Category"
-msgstr ""
+msgstr "Veire per categoria"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
 msgid "Search Apps"
-msgstr ""
+msgstr "Cercar aplicacions"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
 msgid "Clear all"
-msgstr ""
+msgstr "Tot escafar"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
 msgid "Open and search apps"
-msgstr ""
+msgstr "Dobrir e cercar d’aplicacions"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
-msgstr ""
+msgstr "Atudar"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:113
 msgid "Suspend"
-msgstr ""
+msgstr "Suspension"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:123
 msgid "Restart"
-msgstr ""
+msgstr "Reaviar"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:134
 msgid "Lock"
-msgstr ""
+msgstr "Verrolhar"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:153
 msgid "Logout"
-msgstr ""
+msgstr "Desconnexion"
 
 #: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
 msgid "Run this command…"
-msgstr ""
+msgstr "Executar aquesta comanda…"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
-msgstr ""
+msgstr "Calculadoira"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
 msgid "Calculate basic expressions."
-msgstr ""
+msgstr "Calcular las expressions de basa."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
 msgid "bc is not installed"
-msgstr ""
+msgstr "bc es pas installat"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
@@ -1966,48 +1971,48 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
 msgid "Search for and run applications on your computer."
-msgstr ""
+msgstr "Recercatz e lançatz una aplicacion de l’ordenador."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
 #, c-format
 msgid "Open with %s"
-msgstr ""
+msgstr "Dobrir amb %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
 #, c-format
 msgid "Opens current selection using %s"
-msgstr ""
+msgstr "Dobrir la seleccion actuala en utilizant %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
 #, c-format
 msgid "Open %s in default web browser"
-msgstr ""
+msgstr "Dobrir %s dins lo navegador per defaut"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
 #, c-format
 msgid "Open %s in %s"
-msgstr ""
+msgstr "Dobrir %s dins %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
 msgid "Open this link in default browser"
-msgstr ""
+msgstr "Dobrir aqueste ligam dins lo navegador per defaut"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
 msgid "Link"
-msgstr ""
+msgstr "Ligam"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
 msgid "Open link in default browser"
-msgstr ""
+msgstr "Dobrir lo ligam dins lo navegador per defaut"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
 #, c-format
 msgid "Execute '%s'"
-msgstr ""
+msgstr "Aviar  « %s »"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
 msgid "Run command"
-msgstr ""
+msgstr "Executar la comanda"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
 msgid "Find and execute arbitrary commands."
@@ -2015,43 +2020,43 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
-msgstr ""
+msgstr "Aviar dins un terminal"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
 msgid "Run application or command in terminal"
-msgstr ""
+msgstr "Aviar l'aplicacion o comanda dins un terminal"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Copiar cap al quichapapièrs"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
 msgid "Copy selection to clipboard"
-msgstr ""
+msgstr "Copiar lo tèxte seleccionat dins lo quichapapièr"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
 msgid "Run"
-msgstr ""
+msgstr "Executar"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
 msgid "Run an application, action or script"
-msgstr ""
+msgstr "Lançar una aplicacion, una accion o un script"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
 msgid "Set menu icon from file"
-msgstr ""
+msgstr "Definir l’icòna del menú a partir d’un fichièr"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
 msgid "Image files"
-msgstr ""
+msgstr "Fichièrs imatge"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
 msgid "Any file"
-msgstr ""
+msgstr "Totes los fichièrs"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
 msgid "Set icon"
-msgstr ""
+msgstr "Definir l’icòna"
 
 #: budgie-visualspace/src/visualspace.vala:109
 msgid "Scroll over panel icon to change workspace"
@@ -2059,91 +2064,91 @@ msgstr ""
 
 #: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:53
 msgid "Connect to Hidden Network…"
-msgstr ""
+msgstr "Connexion a una ret amagada…"
 
 #: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:57
 msgid "Network Settings…"
-msgstr ""
+msgstr "Paramètres ret…"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
 msgid "VPN"
-msgstr ""
+msgstr "VPN"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:53
 msgid "This Virtual Private Network could not be connected to."
-msgstr ""
+msgstr "Connexion impossibla a aqueste ret virtual privat."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:22
 msgid "Unknown device"
-msgstr ""
+msgstr "Periferic desconegut"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:37
 #, c-format
 msgid "Unknown type: %s "
-msgstr ""
+msgstr "Tipe desconegut : %s "
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
 #, c-format
 msgid "Virtual network: %s"
-msgstr ""
+msgstr "Ret virtual : %s"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
 msgid "Wired"
-msgstr ""
+msgstr "Ret cablat"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
 #, c-format
 msgid "Mobile Broadband: %s"
-msgstr ""
+msgstr "Connexion mobila larga benda : %s"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
 msgid "Mobile Broadband"
-msgstr ""
+msgstr "Connexion mobila de benda larga"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:35
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:49
 msgid "This wireless network could not be connected to."
-msgstr ""
+msgstr "Connexion impossibla a aqueste ret sens fil."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
 msgid "This network uses 40/64-bit WEP encryption"
-msgstr ""
+msgstr "Aqueste ret utiliza lo chiframent WEP 40/64-bit"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:163
 msgid "This network uses 104/128-bit WEP encryption"
-msgstr ""
+msgstr "Aqueste ret utiliza lo chiframent WEP 104/128-bit"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:166
 msgid "This network uses WPA encryption"
-msgstr ""
+msgstr "Aqueste ret utiliza lo chiframent WPA"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:169
 msgid "This network uses encryption"
-msgstr ""
+msgstr "Aqueste ret utiliza lo chiframent"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:171
 msgid "This network is unsecured"
-msgstr ""
+msgstr "Aqueste ret es pas segur"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:49
 msgid "No Access Points Available"
-msgstr ""
+msgstr "Cap de punt d’accès pas disponible"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:63
 msgid "Scanning for Access Points…"
-msgstr ""
+msgstr "Recèrca dels punts d’accès…"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:108
 msgid "Wireless"
-msgstr ""
+msgstr "Sens fil"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
-msgstr ""
+msgstr "Icòna menú"
 
 #. Number of rows for the grid of icons
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:3
@@ -2157,15 +2162,15 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:6
 msgid "Show Menu Label"
-msgstr ""
+msgstr "Mostrar l’etiqueta del menú"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:7
 msgid "Menu Label"
-msgstr ""
+msgstr "Etiqueta del menú"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
 msgid "Show Power-strip"
-msgstr ""
+msgstr "Mostrar poténcia batariá"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Roll-over mouse"
@@ -2185,7 +2190,7 @@ msgstr ""
 #: po/budgie-extras/budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
-msgstr ""
+msgstr "Mostrar los elements recentament utilizats"
 
 #: po/budgie-extras/budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
 #: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
@@ -2195,17 +2200,17 @@ msgstr ""
 #: po/budgie-extras/budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
 #: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
 msgid "Brightness Controller"
-msgstr ""
+msgstr "Contrarotlaire de luminositat"
 
 #: po/budgie-extras/budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
-msgstr ""
+msgstr "Nòtas rapidas e simplas"
 
 #: po/budgie-extras/budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 #: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
 msgid "Show weather & forecast"
-msgstr ""
+msgstr "Mostrar lo temps e previsions"
 
 #: po/budgie-extras/budgie-hotcorners/src/HotCorners.plugin.in.h:1
 #: budgie-hotcorners/src/HotCorners.plugin.in.h:1
@@ -2215,7 +2220,7 @@ msgstr ""
 #: po/budgie-extras/budgie-visualspace/src/VisualSpace.plugin.in.h:1
 #: budgie-visualspace/src/VisualSpace.plugin.in.h:1
 msgid "Workspace indicator and window list"
-msgstr ""
+msgstr "Indicator espaci de trabalh e lista fenèstra"
 
 #: po/budgie-extras/budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
 #: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
@@ -2224,8 +2229,8 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
 msgid "Stylish Desktop Application Menu"
-msgstr ""
+msgstr "Menú d’aplicacions burèu elegant"
 
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
-msgstr ""
+msgstr "Applet ret"
