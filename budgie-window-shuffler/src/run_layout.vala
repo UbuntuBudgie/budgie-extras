@@ -224,7 +224,7 @@ namespace ShufflerLayouts {
         // just comparing / checking strings (wname/wclass)
         string element_name = le.wname;
         string element_wmclass = le.wmclass;
-        bool name_isok = element_name == wname || element_name == "";
+        bool name_isok = element_name == "" || element_name == wname;
         if (name_isok &&  element_wmclass == wmclass) {
             return true;
         }
