@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# ensure we are fully up-to-date before finding files otherwise
+# we will lose translations for those repos that are linked in (git submodules)
+git submodule init
+git submodule update
+
 function do_gettext()
 {
     xgettext --package-name=budgie-extras --package-version=10.4 $* --default-domain=budgie-extras --join-existing --from-code=UTF-8
