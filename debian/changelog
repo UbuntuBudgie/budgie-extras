@@ -1,8 +1,32 @@
-budgie-extras (1.2.0-0ubuntu2) UNRELEASED; urgency=medium
+budgie-extras (1.3.0-0ubuntu1) UNRELEASED; urgency=medium
 
-  * Add missing show-tray-icon gsettings override
+  * New release
+    - v1.3.0 stable release
+    - See ChangeLog
+  * Packaging Changes
+    - budgie-keyboard-autoswitch-applet add xdotool as a dependency
+      (Closes: #994078)
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 14 Apr 2021 22:22:29 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 11 Sep 2021 11:53:31 +0100
+
+budgie-extras (1.2.91-0ubuntu1) impish; urgency=medium
+
+  * New Release
+    - v1.2.91 Beta 2 release
+    - See ChangeLog
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 03 Sep 2021 21:37:23 +0100
+
+budgie-extras (1.2.90-0ubuntu1) impish; urgency=medium
+
+  * New Release
+    - v1.2.90 Beta 1 release
+    - See ChangeLog
+  * Packaging Changes
+    - rules - don't build with zeitgeist
+    - control - remove zeitgeist from build and applications-menu
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 15 Aug 2021 20:26:56 +0100
 
 budgie-extras (1.2.0-0ubuntu1) hirsute; urgency=medium
 
