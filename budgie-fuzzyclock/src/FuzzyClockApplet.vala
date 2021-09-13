@@ -98,37 +98,37 @@ public class FuzzyClockApplet : Budgie.Applet
         _("noon"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 13:00:00
-        _("thirteen"),
+        _("one"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 14:00:00
-        _("fourteen"),
+        _("two"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 15:00:00
-        _("fifteen"),
+        _("three"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 16:00:00
-        _("sixteen"),
+        _("four"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 17:00:00
-        _("seventeen"),
+        _("five"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 18:00:00
-        _("eighteen"),
+        _("six"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 19:00:00
-        _("nineteen"),
+        _("seven"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 20:00:00
-        _("twenty"),
+        _("eight"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 21:00:00
-        _("twenty-one"),
+        _("nine"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 22:00:00
-        _("twenty-two"),
+        _("ten"),
 
         // TRANSLATORS: This is referring to the spoken time of day at 23:00:00
-        _("twenty-three"),
+        _("eleven"),
     };
 
     // TRANSLATORS: These format strings reference the above hour strings
