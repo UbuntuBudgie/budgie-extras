@@ -1,18 +1,21 @@
-v1.2.91 beta release 2
+v1.3.0 Hustle and Shuffle
  - Lots of updated translations from our brilliant translators
  - Fix for spamming the syslog when previews was enabled but end-user was logged into a wayland desktop session
  - Budgie Window Shuffler applet to apply layouts visually
    Fix for Window Shuffler layouts executable installation path to work on stateless distros
    Window Shuffler Control has been completely revamped and redesigned
-   Shuffler now includes Window Rules - explained here Testing 21.10
+   Shuffler now includes Window Rules
    Shuffler Window rules now allow you to open application windows on specific workspaces
+ - note: GNOME 40 and later utilises the Shuffler super alt left/right keys. For Ubuntu Budgie we use a gsetting override to revert to wm keybindings prior to GNOME 40
  - Applications Menu - Calculator now shows a visual hint how to copy the result to the clipboard. Try it - press Super then enter 2+2
    Applications Menu - transition from Grid to List modes is now a fade rather than a slide animation
    We no longer install the elementary gsettings schema - this ensures we don’t clash with a pantheon install. The elementary schema entry is now found in the budgie applications schema.
    Some themes space the category list oddly. We now have a user configurable override (adjust category spacing) in the applet settings allowing you to control the spacing.
+ - Fuzzy Clock - always default to 12hr spoken clock format
  - Network applet: Fix where after connecting to a VPN spinner cursor was still showing
  - VisualSpace - we now display a hint when you open the popover - scrolling over the panel icon changes the workspace.
  - Brightness Controller has now been reworked to use GNOMEs dbus control … so this should be all distro friendly and will reflect accurately the same Power slider in GNOME Settings.
+v1.2.91 beta release 2
 v1.2.90 beta release 1
 v1.2.0 Magic Windows
  - Window Shuffler - Window Rules: Add ability to set the position and size together with the monitor location to open an application on
