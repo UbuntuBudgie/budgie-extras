@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-09 19:18+0100\n"
+"POT-Creation-Date: 2021-09-19 22:20+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/ubuntu-budgie/teams/72251/de_DE/)\n"
@@ -47,6 +47,14 @@ msgstr "Nein"
 #: budgie-window-shuffler/src/shuffler_control.vala:354
 msgid "Yes"
 msgstr "JA"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
+msgid "Really restore all items?"
+msgstr ""
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
+msgid "Really delete all items?"
+msgstr ""
 
 #. I hate this and want to do this more programmaticly with libnotify.
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:59
@@ -119,6 +127,11 @@ msgstr ""
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:188
 msgid "Delete this item?"
 msgstr ""
+
+#: budgie-trash/trash/src/TrashHandler.vala:63
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
+msgid "Desktop"
+msgstr "Arbeitsplatz"
 
 #: budgie-trash/trash/src/TrashHandler.vala:110
 #, c-format
@@ -916,57 +929,79 @@ msgid "midnight"
 msgstr "mitternacht"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
 msgid "one"
 msgstr "eins"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
 msgid "two"
 msgstr "zwei"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
 msgid "three"
 msgstr "drei"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
 msgid "four"
 msgstr "vier"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
 msgid "five"
 msgstr "fünf"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
 msgid "six"
 msgstr "sechs"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
 msgid "seven"
 msgstr "sieben"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
 msgid "eight"
 msgstr "acht"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
 msgid "nine"
 msgstr "neun"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
 msgid "ten"
 msgstr "zehn"
 
 #. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
 msgid "eleven"
 msgstr "elf"
 
@@ -974,61 +1009,6 @@ msgstr "elf"
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
 msgid "noon"
 msgstr "mittag"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
-msgid "thirteen"
-msgstr "dreizehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
-msgid "fourteen"
-msgstr "vierzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
-msgid "fifteen"
-msgstr "fünfzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
-msgid "sixteen"
-msgstr "sechzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
-msgid "seventeen"
-msgstr "siebzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
-msgid "eighteen"
-msgstr "achtzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
-msgid "nineteen"
-msgstr "neunzehn"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
-msgid "twenty"
-msgstr "zwanzig"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
-msgid "twenty-one"
-msgstr "einundzwanzig"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
-msgid "twenty-two"
-msgstr "zweiundzwanzig"
-
-#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
-#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
-msgid "twenty-three"
-msgstr "dreiundzwanzig"
 
 #. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
@@ -1470,10 +1450,6 @@ msgstr "Sonntag"
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:800
 msgid "General"
 msgstr "Allgemein "
-
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
-msgid "Desktop"
-msgstr "Arbeitsplatz"
 
 #. set city section
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:818
