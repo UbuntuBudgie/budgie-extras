@@ -235,7 +235,9 @@ namespace NewTileActive {
             }
             // and get its yshift
             int yshift = 0;
-            yshift = client.get_winspecs(xid)[0];
+            if (xid != -1) {
+                yshift = client.get_winspecs(xid)[0];
+            }
             // now find winsubject_data on subject window for further processing
             Variant winsubject_data = new Variant (
                 "(sssiiiiss)", "", "", "", -1, -1, -1, -1, "", ""
