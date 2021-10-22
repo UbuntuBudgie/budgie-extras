@@ -505,7 +505,7 @@ namespace ShufflerEssentialInfo {
                 return desktop_settings.get_boolean("enable-animations");
             }
             else {
-                return shuffler_settings.get_boolean("softmove");;
+                return shuffler_settings.get_boolean("softmove");
             }
         }
 
@@ -727,19 +727,18 @@ namespace ShufflerEssentialInfo {
         // keep the rest (monitorgeo) for future use though
         // maintaining function
         // collect data on connected monitors: real numbers! (unscaled)
-        monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
         n_monitors = gdkdisplay.get_n_monitors();
         for (int i=0; i < n_monitors; i++) {
             Gdk.Monitor? newmonitor = gdkdisplay.get_monitor(i);
             if (newmonitor != null) {
                 string? mon_name = newmonitor.get_model();
                 if (mon_name != null) {
-                    Gdk.Rectangle? mon_geo = newmonitor.get_workarea();;
-                    int? sf = newmonitor.get_scale_factor ();
-                    int? x = mon_geo.x * sf;
-                    int? y = mon_geo.y * sf;
-                    int? width = mon_geo.width * sf;
-                    int? height = mon_geo.height * sf;
+                    Gdk.Rectangle mon_geo = newmonitor.get_workarea();
+                    int sf = newmonitor.get_scale_factor ();
+                    int x = mon_geo.x * sf;
+                    int y = mon_geo.y * sf;
+                    int width = mon_geo.width * sf;
+                    int height = mon_geo.height * sf;
                     Variant geodata = new Variant(
                         "(iiii)", x , y, width, height
                     );
