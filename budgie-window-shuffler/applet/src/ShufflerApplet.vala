@@ -39,7 +39,6 @@ namespace ShufflerApplet {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
         public abstract int check_windowvalid (int xid) throws Error;
         public abstract void activate_window (int xid) throws Error;
-        public abstract int getactivewin () throws Error;
         public abstract int[] get_winspecs (int w_id) throws Error;
         public abstract bool useanimation () throws Error;
         public abstract void move_window(
