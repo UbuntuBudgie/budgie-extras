@@ -614,6 +614,17 @@ namespace ShufflerEssentialInfo {
 
         public string getactivemon_name () throws Error {
             // get the monitor with active window or ""
+            /*
+            N.B.
+            Different libraries work with different versions of size & positions,
+            either scaled or unscaled. To force using unified numbers, shuffler
+            -always- works with -real- numbers, unscaled, which seems to be the
+            only thing that makes sense. Gdk.Display.get_monitor_at_point(x, y)
+            works with -scaled- x/y though, so we need to fix it by dividing x/y
+            by the scale-factor.
+            Make sure to convert back into -scaled- numbers when using other Gdk
+            methods though!
+            */
             string activemon_name = "";
             Wnck.Window curr_activew = wnckscr.get_active_window();
             if (curr_activew != null) {
@@ -727,17 +738,6 @@ namespace ShufflerEssentialInfo {
     private void get_monitors () {
         // maintaining function
         // collect data on connected monitors: real numbers! (unscaled)
-        /*
-        N.B.
-        Different libraries work with different versions of size & positions,
-        either scaled or unscaled. To force using unified numbers, shuffler
-        -always- works with -real- numbers, unscaled, which seems to be the
-        only thing that makes sense. Gdk.Display.get_monitor_at_point(x, y)
-        works with -scaled- x/y though, so we need to fix it by dividing x/y
-        by the scale-factor.
-        Make sure to convert back into -scaled- numbers when using other Gdk
-        methods though!
-        */
         n_monitors = gdkdisplay.get_n_monitors();
         for (int i=0; i < n_monitors; i++) {
             Gdk.Monitor? newmonitor = gdkdisplay.get_monitor(i);
