@@ -36,7 +36,6 @@ namespace ShufflerGridDisplayWindow {
             public abstract int check_windowvalid(int wid) throws Error;
             public abstract GLib.HashTable<string, Variant> get_monitorgeometry() throws Error;
             public abstract string getactivemon_name() throws Error;
-
         }
 
         private void get_client() {
@@ -168,6 +167,7 @@ namespace ShufflerGridDisplayWindow {
             // monitor (wa!) x, y, wdth, hght (real px, unscaled)
             int[]? mondata = get_monitordata();
             // not so charming, change please
+            Grid maingrid = new Gtk.Grid();
             if (mondata != null && windata != null) {
                 // Collect the data to create the representing grid.
                 // args: maxdivisions, screensize, winsize, winpos
@@ -186,16 +186,27 @@ namespace ShufflerGridDisplayWindow {
                 int rows = ydata[0];
                 int winygridpos = ydata[1];
                 int yspan = ydata[2];
-                Grid maingrid = new Gtk.Grid();
                 // create representing grid
                 Grid showgrid = new ShufflerGridDisplay.ShowShufflerGrid(
                     cols, rows, winxgridpos, winygridpos, xspan, yspan
                 );
                 set_margins(showgrid, 20, 20, 20, 30);
                 maingrid.attach(showgrid, 0, 0, 1, 1); // 0, 0, 1, 1 for now
-                this.add(maingrid);
-                this.show_all();
             }
+            else {
+                Label nowindowlabel = new Label("No valid window was selected!");
+                nowindowlabel.xalign = (float)0.5;
+                nowindowlabel.set_size_request(300, 50);
+                maingrid.attach(nowindowlabel, 0, 0, 1, 1);
+                GLib.Timeout.add_seconds(3, ()=> {
+                    Gtk.main_quit();
+                    return false;
+                });
+            }
+            this.add(maingrid);
+
+            maingrid.show_all();
+            this.show_all();
         }
     }
 
