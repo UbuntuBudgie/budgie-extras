@@ -622,7 +622,9 @@ namespace ShufflerEssentialInfo {
                 int w;
                 int h;
                 curr_activew.get_geometry(out x, out y, out w, out h);
-                Gdk.Monitor activemon = gdkdisplay.get_monitor_at_point(x, y);
+                Gdk.Monitor activemon = gdkdisplay.get_monitor_at_point(
+                    x/scale, y/scale
+                );
                 activemon_name = activemon.get_model();
             }
             return activemon_name;
@@ -723,10 +725,19 @@ namespace ShufflerEssentialInfo {
     }
 
     private void get_monitors () {
-        // N.B. curently, only applied use of function below is get n_monitors
-        // keep the rest (monitorgeo) for future use though
         // maintaining function
         // collect data on connected monitors: real numbers! (unscaled)
+        /*
+        N.B.
+        Different libraries work with different versions of size & positions,
+        either scaled or unscaled. To force using unified numbers, shuffler
+        -always- works with -real- numbers, unscaled, which seems to be the
+        only thing that makes sense. Gdk.Display.get_monitor_at_point(x, y)
+        works with -scaled- x/y though, so we need to fix it by dividing x/y
+        by the scale-factor.
+        Make sure to convert back into -scaled- numbers when using other Gdk
+        methods though!
+        */
         n_monitors = gdkdisplay.get_n_monitors();
         for (int i=0; i < n_monitors; i++) {
             Gdk.Monitor? newmonitor = gdkdisplay.get_monitor(i);
