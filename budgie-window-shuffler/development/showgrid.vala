@@ -15,7 +15,6 @@ size & position calculations -> produce grid, size on grid/position on grid.
 */
 
 
-
 namespace ShufflerGridDisplayWindow {
 
     public class GridDisplayWindow : Gtk.Window {
@@ -41,7 +40,7 @@ namespace ShufflerGridDisplayWindow {
         }
 
         private void get_client() {
-            print("checking client\n");
+            // set up shuffler daemon client
             try {
                 client = Bus.get_proxy_sync (
                     BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
@@ -60,22 +59,23 @@ namespace ShufflerGridDisplayWindow {
                 GLib.HashTable<string, Variant> windata = client.get_winsdata();
                 GLib.List<unowned string> windata_keys = windata.get_keys();
                 string winkey = client.getactivewin().to_string();
+                print(@"winkey: $winkey\n");
                 // select the active window from windata
                 foreach (string k in windata_keys) {
                     if (k == winkey) {
                         currwindata = windata[k];
-                        //  print(@"foundit! $k\n");
                     }
                 }
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            if (currwindata != null) {
                 int xpos = (int)currwindata.get_child_value(3);
                 int ypos = (int)currwindata.get_child_value(4);
                 int wdth = (int)currwindata.get_child_value(5);
                 int hght = (int)currwindata.get_child_value(6);
-                print(@"from win method: $xpos, $ypos, $wdth, $hght\n");
                 return {xpos, ypos, wdth, hght};
-            }
-            catch (Error e) {
-                stderr.printf ("%s\n", e.message);
             }
             return null;
         }
@@ -90,31 +90,28 @@ namespace ShufflerGridDisplayWindow {
                 foreach (string k in monitordata_keys) {
                     if (k == monkey) {
                         currmondata = monitordata[k];
-                        print(@"found monitor $k\n");
                     }
                 }
-                int monx = (int)currmondata.get_child_value(0);
-                int mony = (int)currmondata.get_child_value(1);
-                int monwidth = (int)currmondata.get_child_value(2);
-                int monheight = (int)currmondata.get_child_value(3);
-                print(@"from mon method: monx: $monx, mony: $mony, monwidth: $monwidth, monheight: $monheight\n");
-                return {monx, mony, monwidth, monheight};
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
+            if (currmondata != null) {
+                int monx = (int)currmondata.get_child_value(0);
+                int mony = (int)currmondata.get_child_value(1);
+                int monwidth = (int)currmondata.get_child_value(2);
+                int monheight = (int)currmondata.get_child_value(3);
+                return {monx, mony, monwidth, monheight};
+                //  return null;
+            }
             return null;
         }
-
-        ///////////////////////////////////////////
-        ///////////////////////////////////////////
-        // get window & monitordata -> null on failure
-        ///////////////////////////////////////////
-        ///////////////////////////////////////////
 
         private int[] get_wingridpos(
             int maxdivisions, int screensize, int winsize, int winpos
         ) {
+            // decide what grid is appropriate, window position on it,
+            // window span on it.
             /*
             In order to create a preview of the targeted window position on grid,
             given the windowsize, screensize and window position (px), find out
@@ -123,9 +120,6 @@ namespace ShufflerGridDisplayWindow {
             position.
             This method has to run separately on both axes x/y.
             */
-            print(@"input: winsize: $winsize, winpos: $winpos, screensize: $screensize\n");
-            double relative_winsize = (double)winsize/(double)screensize;
-            print(@"$relative_winsize\n");
             int diff = 20000; // just throw a high number
             int found_divisions = 0; // n_divisions
             int foundspan = 0;
@@ -156,9 +150,15 @@ namespace ShufflerGridDisplayWindow {
             return {found_divisions, found_wingridpos, foundspan};
         }
 
-
-
-
+        private void set_margins(
+            Gtk.Grid grid, int left, int right, int top, int bottom
+        ) {
+            // lazy margins on a grid
+            grid.set_margin_start(left);
+            grid.set_margin_end(right);
+            grid.set_margin_top(top);
+            grid.set_margin_bottom(bottom);
+        }
 
         public GridDisplayWindow() {
             this.destroy.connect(Gtk.main_quit);
@@ -167,32 +167,31 @@ namespace ShufflerGridDisplayWindow {
             int[]? windata = get_windata();
             // monitor (wa!) x, y, wdth, hght (real px, unscaled)
             int[]? mondata = get_monitordata();
-            
-            // Don't forget monitor position in layout x/y!!!!!
-
             // not so charming, change please
             if (mondata != null && windata != null) {
-                // int maxdivisions, int screensize, int winsize, int winpos
-                // get x-data
+                // Collect the data to create the representing grid.
+                // args: maxdivisions, screensize, winsize, winpos
                 int relative_xposition = windata[0]-mondata[0];
-                print(@"real xposition = $relative_xposition\n");
                 int relative_yposition = windata[1]-mondata[1];
-                print(@"real yposition = $relative_yposition\n");
-                int[] xdata = get_wingridpos(6, mondata[2], windata[2], relative_xposition);
-                int[] ydata = get_wingridpos(4, mondata[3], windata[3], relative_yposition);
+                int[] xdata = get_wingridpos(
+                    6, mondata[2], windata[2], relative_xposition
+                );
+                int[] ydata = get_wingridpos(
+                    4, mondata[3], windata[3], relative_yposition
+                );
+                // just for readability:
                 int cols = xdata[0];
                 int winxgridpos = xdata[1];
                 int xspan = xdata[2];
                 int rows = ydata[0];
                 int winygridpos = ydata[1];
                 int yspan = ydata[2];
-                print(@"cols: $cols, xpos: $winxgridpos, xspan: $xspan\n");
-                print(@"rows: $rows, ypos: $winygridpos, yspan: $yspan\n");
                 Grid maingrid = new Gtk.Grid();
-                //int cols, int rows, int gridx, int gridy, int xspan, int yspan,
+                // create representing grid
                 Grid showgrid = new ShufflerGridDisplay.ShowShufflerGrid(
                     cols, rows, winxgridpos, winygridpos, xspan, yspan
                 );
+                set_margins(showgrid, 20, 20, 20, 30);
                 maingrid.attach(showgrid, 0, 0, 1, 1); // 0, 0, 1, 1 for now
                 this.add(maingrid);
                 this.show_all();
@@ -208,48 +207,14 @@ namespace ShufflerGridDisplayWindow {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 namespace ShufflerGridDisplay {
 
     private class GridDisplayButton : Gtk.Button {
-
         /*
         GridDisplayButton produces a (single) button, representing a grid
         cell. Color is either grey (bg cell) or blue-ish (window cell), d epen-
         ding on the argument "windowcell" (true/false).
         */
-
         public GridDisplayButton (bool? windowcell = false) {
 
             Gtk.CssProvider css_provider;
@@ -301,6 +266,7 @@ namespace ShufflerGridDisplay {
         The last two arguments can be used to show alternative size/pro-
         portions from a rotated screen.
         */
+
         private bool string_inlist (string lookfor, string[] arr) {
             for (int i=0; i < arr.length; i++) {
                 if (lookfor == arr[i]) {
@@ -339,7 +305,6 @@ namespace ShufflerGridDisplay {
             for (int c=0; c<cols; c++) {
                 for (int r=0;r<rows;r++) {
                     string coords = @"$c|$r";
-                    print(@"$coords\n");
                     bool fromwindow = false;
                     if (string_inlist(coords, wincells)) {
                         fromwindow = true;
