@@ -1080,7 +1080,7 @@ namespace ShufflerControl2 {
             allsettings_stack = new Gtk.Stack();
             maingrid.attach(allsettings_stack, 2, 1, 1, 1);
             allsettings_stack.set_transition_type(
-                StackTransitionType.OVER_UP_DOWN
+                StackTransitionType.CROSSFADE
             );
             // TILING PAGE
             tilinggrid = new Gtk.Grid();
