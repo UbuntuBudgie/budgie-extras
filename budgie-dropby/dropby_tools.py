@@ -48,8 +48,7 @@ def get_usb():
             pass
         else:
             devpath = v.get("DEVPATH")
-            if devpath is not None:
-                if all(["usb" in v.get("DEVPATH"), uuid]):
+            if devpath and uuid and any(["usb" in devpath, "mmc" in devpath]):
                     relevant.append(uuid)
     return relevant
 
@@ -108,18 +107,18 @@ def get_volumes(allvols):
         # filter out usb devices
         uuid = v.get_uuid()
         if uuid in usb_devs:
+            path = uuid_todev(uuid)
             devdata = {
                 "volume": v,
                 "name": v.get_name(),
                 "uuid": uuid,
-                "device": uuid_todev(uuid),
+                "device": path,
                 "can_mount": v.can_mount(),
                 "icon": v.get_icon(),
                 "flashdrive": v.can_eject(),
                 "ismounted": v.get_mount(),
             }
             # try to determine usage
-            path = uuid_todev(uuid)
             try:
                 match = mounted_devspaths.index(path)
             except ValueError:
