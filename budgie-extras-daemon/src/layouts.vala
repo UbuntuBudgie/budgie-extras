@@ -193,6 +193,10 @@ namespace Layouts {
                     appmenu_powerstrip(true);
                     break;
                 }
+                case "chrome": {
+                    // no customisations needed
+                    break;
+                }
                 default: {
                     break;
                 }

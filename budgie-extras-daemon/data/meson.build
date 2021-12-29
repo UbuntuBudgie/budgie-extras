@@ -6,7 +6,8 @@ Layouts = [
 'ubuntubudgie.layout',
 'classicubuntubudgie.layout',
 'redmond.layout',
-'eleven.layout'
+'eleven.layout',
+'chrome.layout'
 ]
 
 install_data(
