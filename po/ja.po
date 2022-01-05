@@ -1,0 +1,1777 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the budgie-extras package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# david mohammed <foss.freedom@gmail.com>, 2021
+# Ryo Nakano, 2021
+# moru4_58, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: budgie-extras 10.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-19 22:20+0100\n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: moru4_58, 2022\n"
+"Language-Team: Japanese (https://www.transifex.com/ubuntu-budgie/teams/72251/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
+msgid "Restore all items"
+msgstr "全て戻す"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
+msgid "Delete all items"
+msgstr "全て削除する"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
+#: budgie-window-shuffler/src/shuffler_control.vala:350
+msgid "No"
+msgstr "いいえ"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
+#: budgie-window-shuffler/src/shuffler_control.vala:354
+msgid "Yes"
+msgstr "はい"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
+msgid "Really restore all items?"
+msgstr "本当にすべて復元しますか？"
+
+#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
+msgid "Really delete all items?"
+msgstr "本当にすべて削除しますか？"
+
+#. I hate this and want to do this more programmaticly with libnotify.
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-trash/trash/src/Trash.plugin.in.h:1
+msgid "Trash"
+msgstr "ゴミ箱"
+
+#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
+msgid "Go to applet options"
+msgstr "アプレットの設定に移動する"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
+msgid "Trash Settings"
+msgstr "ゴミ箱の設定"
+
+#. Sorting section
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
+msgid "Sort"
+msgstr "並び替え"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
+msgid "Type"
+msgstr "種類"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
+msgid "A-Z"
+msgstr "A-Z"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
+msgid "Z-A"
+msgstr "Z-A"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
+msgid "Oldest First"
+msgstr "古いものから順に"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
+msgid "Newest First"
+msgstr "新しいものから順に"
+
+#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
+msgid "Return to main view"
+msgstr "メインビューに戻る"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
+msgid "Restore item"
+msgstr "復元する"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
+msgid "Delete item"
+msgstr "削除する"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
+#, c-format
+msgid "Path: %s"
+msgstr "パス: %s"
+
+#. TRANSLATORS: this is the time of when the file was deleted
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
+#, c-format
+msgid "Deleted on: %s"
+msgstr "削除日時: %s"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
+msgid "Restore this item?"
+msgstr "このアイテムを復元しますか？"
+
+#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
+msgid "Delete this item?"
+msgstr "このアイテムを削除しますか？"
+
+#: budgie-trash/trash/src/TrashHandler.vala:63
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:806
+msgid "Desktop"
+msgstr "デスクトップ"
+
+#: budgie-trash/trash/src/TrashHandler.vala:110
+#, c-format
+msgid "Unable to access trash for '%s': %s"
+msgstr "\"%s\"のゴミ箱にアクセスできません: %s"
+
+#: budgie-trash/trash/src/TrashApplet.vala:149
+msgid "Error moving to trash:"
+msgstr "ゴミ箱への移動に失敗しました: "
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+msgid "Empty Trash"
+msgstr "ゴミ箱を空にする"
+
+#: budgie-trash/trash/src/TrashStore.vala:133
+#: budgie-trash/trash/src/TrashStore.vala:144
+#: budgie-trash/trash/src/TrashStore.vala:151
+#, c-format
+msgid "Unable to permanently delete '%s': %s"
+msgstr "\"%s\"を完全に削除できません: %s"
+
+#: budgie-trash/trash/src/TrashStore.vala:192
+msgid "Restore"
+msgstr "元に戻す"
+
+#: budgie-trash/trash/src/TrashStore.vala:192
+#, c-format
+msgid "Unable to restore '%s' to %s: %s"
+msgstr "\"%s\"を%sに完全に復元できません: %s"
+
+#. This is about target monitor and - workspace for new windows
+#. string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:284
+#: budgie-window-shuffler/src/layouts_popup.vala:83
+msgid "Not set"
+msgstr "設定なし"
+
+#. just to skip first 'false' positive on window focus change
+#. if wm class is given, we obviously are updating existing rule
+#. tooltips
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:411
+#: budgie-window-shuffler/src/layouts_popup.vala:601
+msgid "Window class of the window to be launched"
+msgstr "起動するウィンドウのウィンドウクラス"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:412
+#: budgie-window-shuffler/src/layouts_popup.vala:598
+#: budgie-window-shuffler/src/layouts_popup.vala:602
+msgid "mandatory"
+msgstr "必須"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:415
+#: budgie-window-shuffler/src/layouts_popup.vala:607
+msgid "Grid size - columns"
+msgstr "グリッドのサイズ - 列"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:417
+#: budgie-window-shuffler/src/layouts_popup.vala:609
+msgid "Grid size - rows"
+msgstr "グリッドサイズ - 行"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:419
+#: budgie-window-shuffler/src/layouts_popup.vala:611
+msgid "Window target position on grid - horizontally"
+msgstr "グリッド状のウィンドウの対象位置: 横"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:421
+#: budgie-window-shuffler/src/layouts_popup.vala:613
+msgid "Window target position on grid - vertically"
+msgstr "グリッド状のウィンドウの対象位置: 縦"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:423
+#: budgie-window-shuffler/src/layouts_popup.vala:615
+msgid "Window size - columns"
+msgstr "ウィンドウサイズ - 列"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:425
+#: budgie-window-shuffler/src/layouts_popup.vala:617
+msgid "Window size - rows"
+msgstr "ウィンドウサイズ - 行"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:427
+#: budgie-window-shuffler/src/layouts_popup.vala:619
+msgid "Target monitor, default is on active monitor"
+msgstr "対象モニター、デフォルトはアクティブなモニターです。"
+
+#. This is a tooltip, string length is not particularly critical
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:429
+#: budgie-window-shuffler/src/layouts_popup.vala:623
+msgid "Target workspace, default is on active workspace"
+msgstr "対象のワークスペース、デフォルトはアクティブなワークスペースです。"
+
+#. 1. APPLICATION FRAME
+#. This is a Frame title, string length is not particularly critical
+#. 1. APPLICATION FRAME
+#: budgie-window-shuffler/src/shuffler_control.vala:439
+#: budgie-window-shuffler/src/layouts_popup.vala:645
+msgid "Application"
+msgstr "アプリケーション"
+
+#. - wmclass
+#. This is a field label, should be as short as possible
+#. - wmclass
+#: budgie-window-shuffler/src/shuffler_control.vala:448
+#: budgie-window-shuffler/src/layouts_popup.vala:663
+msgid "WM class group"
+msgstr "VMクラスグループ"
+
+#. Placeholder text
+#. this is a placeholder text
+#: budgie-window-shuffler/src/shuffler_control.vala:462
+#: budgie-window-shuffler/src/layouts_popup.vala:669
+msgid "Click a window to fetch WM-class"
+msgstr "ウィンドウをクリックするとWMクラスが取り出せます。"
+
+#. 2. GEOMETRY FRAME
+#. This is a Frame title, string length is not particularly critical
+#. 2. GEOMETRY FRAME
+#: budgie-window-shuffler/src/shuffler_control.vala:471
+#: budgie-window-shuffler/src/layouts_popup.vala:685
+msgid "Window position & size"
+msgstr "ウィンドウの位置とサイズ"
+
+#. grid cols / rows
+#. This is a field label, should be short
+#. grid cols / rows
+#: budgie-window-shuffler/src/shuffler_control.vala:481
+#: budgie-window-shuffler/src/layouts_popup.vala:694
+msgid "Grid size; columns & rows"
+msgstr "グリッドのサイズ: 列と行"
+
+#. window position
+#. This is a field label, should be short
+#. window position
+#: budgie-window-shuffler/src/shuffler_control.vala:499
+#: budgie-window-shuffler/src/layouts_popup.vala:712
+msgid "Target window position, x / y"
+msgstr "対象のウィンドウの位置: x / y"
+
+#. window span
+#. This is a field label, should be short
+#. window span
+#: budgie-window-shuffler/src/shuffler_control.vala:516
+#: budgie-window-shuffler/src/layouts_popup.vala:728
+msgid "Window cell span, hor / vert"
+msgstr "ウィンドウのセルフスパン: 縦と横"
+
+#. Frame title, string length is not particularly critical
+#. Settings category label, should be as short as possible
+#. miscellaneous section
+#: budgie-window-shuffler/src/shuffler_control.vala:534
+#: budgie-window-shuffler/src/shuffler_control.vala:1070
+#: budgie-window-shuffler/src/layouts_popup.vala:745
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
+msgid "Miscellaneous"
+msgstr "その他"
+
+#. target monitor
+#. Field label, should be short
+#. targetmonitor
+#: budgie-window-shuffler/src/shuffler_control.vala:548
+#: budgie-window-shuffler/src/layouts_popup.vala:754
+msgid "Target monitor"
+msgstr "対象のモニター"
+
+#. target workspace
+#. Field label, should be short
+#. targetworkspace
+#: budgie-window-shuffler/src/shuffler_control.vala:565
+#: budgie-window-shuffler/src/layouts_popup.vala:770
+msgid "Target workspace"
+msgstr "対象のワークスペース"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:594
+#: budgie-window-shuffler/src/layouts_popup.vala:200
+#: budgie-window-shuffler/src/layouts_popup.vala:260
+#: budgie-window-shuffler/src/layouts_popup.vala:817
+msgid "Done"
+msgstr "完了"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:630
+#: budgie-window-shuffler/src/layouts_popup.vala:224
+#: budgie-window-shuffler/src/layouts_popup.vala:820
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Cancel"
+msgstr "キャンセル"
+
+#. / Window title. "Window Shuffler is the application name
+#. / and should not be translated, only the "Control" -part
+#. window stuff
+#. / Window title. "Window Shuffler is the application name
+#. / and should not be translated, only the "Control" -part
+#: budgie-window-shuffler/src/shuffler_control.vala:731
+#: budgie-window-shuffler/src/shuffler_control.vala:997
+#: budgie-window-shuffler/data/shuffler-control.desktop.in.h:1
+msgid "Window Shuffler Control"
+msgstr "ウィンドウシャッフラーコントロール"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:756
+msgid "Replace window-rule"
+msgstr "ウィンドウルールを置き換える"
+
+#. when creating new file, but name exists
+#: budgie-window-shuffler/src/shuffler_control.vala:758
+msgid "Save changes to window-rule"
+msgstr "ウィンドウルールの変更を保存する"
+
+#. 2. if so, if wm entry, thus filename changes:
+#: budgie-window-shuffler/src/shuffler_control.vala:768
+msgid "Save changes to renamed window-rule"
+msgstr "ウィンドウルールを名前を変更して保存する"
+
+#. update ruleslist
+#. headers
+#. TRANSLATORS: it is important to keep these column headers as short as
+#. possible
+#: budgie-window-shuffler/src/shuffler_control.vala:879
+msgid "WM-class"
+msgstr "WMクラス"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:880
+msgid "Grid"
+msgstr "グリッド"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:881
+msgid "Span"
+msgstr "スパン"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:882
+msgid "Display"
+msgstr "画面"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:883
+msgid "Workspace"
+msgstr "ワークスペース"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:952
+msgid "Delete"
+msgstr "削除"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:953
+msgid "windowrule"
+msgstr "ウィンドウルール"
+
+#. content
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1054
+msgid "Tiling"
+msgstr "タイリング"
+
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1056
+msgid "Window tiling & shortcuts"
+msgstr "ウィンドウのタイリングとショートカット"
+
+#. Settings category label, should be as short as possible
+#. optimize please with similar grids
+#. 1. PICK LAYOUT GRID
+#: budgie-window-shuffler/src/shuffler_control.vala:1058
+#: budgie-window-shuffler/src/shuffler_control.vala:1313
+#: budgie-window-shuffler/src/layouts_popup.vala:162
+msgid "Layouts"
+msgstr "レイアウト"
+
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1060
+msgid "Automatic window & application presets"
+msgstr "自動ウィンドウとアプリケーションのプリセット"
+
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
+#: budgie-window-shuffler/src/shuffler_control.vala:1369
+msgid "Window rules"
+msgstr "ウィンドウルール"
+
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1064
+msgid "Define where application windows should be opened"
+msgstr "アプリケーションのウィンドウを開く場所を定義する"
+
+#. Settings category label, should be as short as possible
+#: budgie-window-shuffler/src/shuffler_control.vala:1066
+msgid "Applet"
+msgstr "アプレット"
+
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1068
+msgid "Shuffler Applet settings"
+msgstr "シャッフラーアプレットの設定"
+
+#. tooltip, string length is not particularly critical
+#: budgie-window-shuffler/src/shuffler_control.vala:1072
+msgid "General preferences"
+msgstr "全般設定"
+
+#. TRANSLATORS:
+#. / Quarter & half = basic tiling.
+#. / Moving, resizing in a custom grid = advanced tiling.
+#. / The "basic" is to make the difference clear.
+#: budgie-window-shuffler/src/shuffler_control.vala:1097
+msgid "Basic quarter & half tiling"
+msgstr "基本的なクオーターとハーフタイリング"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
+msgid "Top-left"
+msgstr "左上"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
+msgid "Top-right"
+msgstr "右上"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1111
+msgid "Bottom-right"
+msgstr "右下"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
+msgid "Bottom-left"
+msgstr "左下"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
+msgid "Left-half"
+msgstr "左半分"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
+msgid "Top-half"
+msgstr "上半分"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
+msgid "Right-half"
+msgstr "右半分"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
+msgid "Bottom-half"
+msgstr "下半分"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1113
+msgid "Toggle maximize"
+msgstr "最大化の切り替え"
+
+#. Adavenced tiling settings section header
+#: budgie-window-shuffler/src/shuffler_control.vala:1130
+msgid "Resizing & moving windows in a custom grid"
+msgstr "カスタムグリッドでのウィンドウのサイズ変更と移動"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1141
+msgid "Grid size"
+msgstr "グリッドサイズ"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1144
+msgid "Columns"
+msgstr "列"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1152
+msgid "Rows"
+msgstr "行"
+
+#. options
+#: budgie-window-shuffler/src/shuffler_control.vala:1161
+msgid "Options"
+msgstr "設定"
+
+#. sticky
+#: budgie-window-shuffler/src/shuffler_control.vala:1165
+msgid "Resize opposite window"
+msgstr "反対側のウィンドウサイズを変更する"
+
+#. swap
+#: budgie-window-shuffler/src/shuffler_control.vala:1171
+msgid "Swap windows"
+msgstr "ウィンドウを入れ替える"
+
+#. notification
+#. / this is about toggling to show a notification when targeted window size
+#. / is smaller than minimum window size
+#: budgie-window-shuffler/src/shuffler_control.vala:1182
+msgid "Show notification on incorrect window size"
+msgstr "ウィンドウサイズが正しくない場合に通知を表示する"
+
+#. guigrid
+#: budgie-window-shuffler/src/shuffler_control.vala:1189
+msgid "Enable GUI grid"
+msgstr "GUiグリッドを有効化"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1196
+msgid "GUI grid shortcuts"
+msgstr "GUIグリッドのショートカット"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1201
+msgid "Toggle GUI grid"
+msgstr "GUIグリッドを切り替える"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1201
+msgid "Add a column"
+msgstr "列を追加する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
+msgid "Add a row"
+msgstr "行を追加する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
+msgid "Remove a column"
+msgstr "列を削除する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1202
+msgid "Remove a row"
+msgstr "行を削除する"
+
+#. shortcutlist custom grid
+#: budgie-window-shuffler/src/shuffler_control.vala:1211
+msgid "Shortcuts for moving a window to the nearest grid cell"
+msgstr "ウィンドウを最も近いグリッドセルに移動するショートカット"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1217
+msgid "Move left"
+msgstr "左に移動"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1217
+msgid "Move right"
+msgstr "右に移動"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1218
+msgid "Move up"
+msgstr "上に移動"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1218
+msgid "Move down"
+msgstr "下に移動"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1228
+msgid "Shortcuts for resizing a window"
+msgstr "ウィンドウサイズを変更するショートカット"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1237
+msgid "Expand horizontally (to the right)"
+msgstr "横方向(右)に拡大する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1238
+msgid "Shrink horizontally (from the right)"
+msgstr "横方向(右から)縮小"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1239
+msgid "Expand vertically (down)"
+msgstr "縦方向（下方向）に拡大する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1240
+msgid "Shrink vertically (from the bottom)"
+msgstr "縦方向（下から）に縮める"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1241
+msgid "Expand horizontally (to the left)"
+msgstr "水平方向（左方向）に拡大する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1242
+msgid "Shrink horizontally (from the left)"
+msgstr "水平方向（左方向）に拡大する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1243
+msgid "Expand vertically (up)"
+msgstr "垂直方向（上方向）に拡大する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1244
+msgid "Shrink vertically (from the top)"
+msgstr "縦方向（上から）に縮める"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1245
+#: budgie-window-shuffler/src/shuffler_control.vala:1274
+msgid "Toggle resizing opposite window"
+msgstr "反対側のウィンドウのサイズ変更を切り替える"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1257
+msgid "Other shortcuts"
+msgstr "他のショートカット"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1264
+msgid "Tile all windows to grid"
+msgstr "すべてのウィンドウをグリッドに並べる"
+
+#. / This is a shortcut description/label. The shortcut toggles
+#. / the layout quicklist/manager.
+#: budgie-window-shuffler/src/shuffler_control.vala:1325
+msgid "Toggle layouts quicklist & manager"
+msgstr "レイアウトのクイックリストとマネージャーを切り替える"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1335
+msgid "Setup now"
+msgstr "今すぐセットアップ"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1378
+msgid "Stored rules"
+msgstr "保存されたルール"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1388
+msgid "Add new rule"
+msgstr "新しくルールを追加"
+
+#. margin header
+#. this is about the area which shuffler can use for tiling
+#: budgie-window-shuffler/src/shuffler_control.vala:1421
+msgid "Margins between virtual grid and screen edges"
+msgstr "仮想グリッドと画面の端の余白"
+
+#. top margin
+#: budgie-window-shuffler/src/shuffler_control.vala:1441
+msgid "Top margin"
+msgstr "上の余白"
+
+#. left/right margin
+#: budgie-window-shuffler/src/shuffler_control.vala:1445
+msgid "Left & right margins"
+msgstr "左と右の余白"
+
+#. bottom margin
+#: budgie-window-shuffler/src/shuffler_control.vala:1450
+msgid "Bottom margin"
+msgstr "下の余白"
+
+#. padding header
+#: budgie-window-shuffler/src/shuffler_control.vala:1457
+msgid "Padding"
+msgstr ""
+
+#. padding
+#: budgie-window-shuffler/src/shuffler_control.vala:1462
+msgid "Window padding"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1471
+msgid "Animation"
+msgstr "アニメーション"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1474
+msgid "Use general animation settings"
+msgstr "一般的なアニメーション設定を使用する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1480
+msgid "Use animation"
+msgstr "アニメーションを使用"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1800
+msgid "Applet settings"
+msgstr "アプレットの設定"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1804
+msgid "Applet popover content"
+msgstr "アプレットのポップオーバーコンテンツ"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1812
+msgid "Show popover on hover (without click)"
+msgstr "ホバー時にポップオーバーを表示（クリックなし）"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1820
+msgid "Synchronize grid size"
+msgstr "グリッドサイズを同期する"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1827
+msgid "Update grid size for moving & resizing to latest picked layout"
+msgstr "グリッドサイズを更新して、最新の選択したレイアウトに移動し、サイズ変更する"
+
+#. / this is about the mini-representation of the
+#. / layout in the applet's popover
+#: budgie-window-shuffler/src/shuffler_control.vala:1834
+msgid "Layout preview size (width in px)"
+msgstr "レイアウトプレビューサイズ（ピクセル単位）"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1849
+msgid "The applet needs to be on the panel to see the changes"
+msgstr "変更を確認するには、アプレットがパネル上にある必要があります"
+
+#. buttons of mastergrid, corresponcing to stack "picklayout"
+#. since this is the "home" page
+#: budgie-window-shuffler/src/layouts_popup.vala:191
+msgid "Add new"
+msgstr "新しく追加"
+
+#. 2. NEW LAYOUTS GRID
+#: budgie-window-shuffler/src/layouts_popup.vala:208
+msgid "New layout"
+msgstr "新しいレイアウト"
+
+#: budgie-window-shuffler/src/layouts_popup.vala:220
+msgid "Create"
+msgstr "作成"
+
+#. 3. EDIT LAYOUT GRID
+#: budgie-window-shuffler/src/layouts_popup.vala:228
+msgid "Edit layout"
+msgstr "レイアウトを編集"
+
+#. stackgrid_editlayout = new Grid();
+#: budgie-window-shuffler/src/layouts_popup.vala:235
+msgid "Layout name"
+msgstr "レイアウトの名前"
+
+#: budgie-window-shuffler/src/layouts_popup.vala:249
+msgid "Window tasks"
+msgstr "ウィンドウタスク"
+
+#: budgie-window-shuffler/src/layouts_popup.vala:264
+msgid "Add task"
+msgstr "タスクを追加"
+
+#. tooltips
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:597
+msgid "Command to launch window or application"
+msgstr "ウィンドウやアプリケーションを起動するコマンド"
+
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:605
+msgid ""
+"Window name - optional, to distinguish multiple windows of the same "
+"application"
+msgstr "ウィンドウ名 - Optional, 同じアプリケーションの複数のウィンドウを区別するために使用します。"
+
+#. tooltip, so string length is not particularly critical
+#: budgie-window-shuffler/src/layouts_popup.vala:621
+msgid "Try to move an existing window before launching a new instance"
+msgstr "新しいインスタンスを起動する前に、既存のウィンドウの移動を試みる"
+
+#: budgie-window-shuffler/src/layouts_popup.vala:633
+msgid "Task name"
+msgstr "タスク名"
+
+#. - command
+#: budgie-window-shuffler/src/layouts_popup.vala:654
+msgid "Command"
+msgstr "コマンド"
+
+#. - wname
+#: budgie-window-shuffler/src/layouts_popup.vala:674
+msgid "Window name"
+msgstr "ウィンドウ名"
+
+#: budgie-window-shuffler/src/layouts_popup.vala:812
+msgid "Test"
+msgstr "テスト"
+
+#: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
+msgid "Minimum window size exceeds target"
+msgstr ""
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:117
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:430
+msgid "Open Shuffler settings"
+msgstr "シャッフラー設定を開く"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+msgid "Shuffler warning"
+msgstr "シャッフラー警告"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+msgid "Please activate Window Shuffler"
+msgstr "ウィンドウシャッフラーを有効にしてください。"
+
+#. swapbox.pack_start(swapbutton, true, false, 0);
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:409
+msgid "Swap position and size of the two most recently focussed windows"
+msgstr "最近フォーカスされた2つのウィンドウ位置とサイズを入れ替える"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
+msgid "Shuffle remaining windows to the layout"
+msgstr "残りのウィンドウをレイアウトにシャッフル"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:438
+msgid "Toggle mode"
+msgstr "モードの切り替え"
+
+#. translated strings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:162
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:185
+msgid "Drag position"
+msgstr "位置をドラッグ"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:163
+msgid "Save position"
+msgstr "位置を保存"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:166
+msgid ""
+"Enable Super + drag to set time position. Click ´Save position´ to save."
+msgstr "スーパー＋ドラッグを有効にして、時間位置を設定します。保存する場合は、´位置を保存´をクリックします。"
+
+#. window content
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:172
+msgid "Position & anchor"
+msgstr "位置とアンカー"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:178
+msgid "Automatic"
+msgstr "自動"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:179
+msgid "On all monitors"
+msgstr "すべてのモニター"
+
+#. time font settings -> boxed!!
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+msgid "Time font, size & color"
+msgstr "時刻のフォント、フォントサイズ、フォントの色"
+
+#. date font settings
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+msgid "Date font, size & color"
+msgstr "日付のフォント、フォントサイズ、フォントの色"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+msgid "Left align text"
+msgstr "テキストを左寄せにする"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+msgid "Use 12hr time format"
+msgstr "12時間制の時刻表記を使う"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+msgid "Linespacing"
+msgstr "行間"
+
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+msgid "Super + drag"
+msgstr "スーパーキー + ドラッグ"
+
+#. hrs to double digits
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:325
+msgid "AM"
+msgstr "午前"
+
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:328
+msgid "PM"
+msgstr "午後"
+
+#: budgie-wpreviews/src/previews_controls.vala:50
+#: budgie-wpreviews/data/previewscontrols.desktop.in.h:1
+msgid "Previews Control"
+msgstr ""
+
+#: budgie-wpreviews/src/previews_controls.vala:55
+msgid "Run Previews"
+msgstr ""
+
+#: budgie-wpreviews/src/previews_controls.vala:58
+msgid "Show windows of all workspaces"
+msgstr "ウィンドウを全てのワークスペースに表示"
+
+#: budgie-wpreviews/src/previews_controls.vala:61
+msgid "Show window full name in tooltip"
+msgstr "ツールチップにウィンドウの名前を全て表示する"
+
+#. spinbutton section (menu length)
+#: budgie-recentlyused/src/budgie-recentlyused.vala:32
+msgid "Show last used"
+msgstr "最後に使用したものを表示"
+
+#. show tooltips section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:44
+msgid "Show tooltips"
+msgstr "ツールチップを表示"
+
+#. hide path section
+#: budgie-recentlyused/src/budgie-recentlyused.vala:53
+msgid "Hide path in menu"
+msgstr "メニューのパスを非表示"
+
+#. tooltip
+#: budgie-recentlyused/src/budgie-recentlyused.vala:191
+msgid "Open"
+msgstr "開く"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 00:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:62
+msgid "midnight"
+msgstr "夕方"
+
+#. TRANSLATORS: This is referring to the spoken time of day at 01:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 13:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:65
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:101
+msgid "one"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 02:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 14:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:68
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:104
+msgid "two"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 03:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 15:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:71
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:107
+msgid "three"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 04:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 16:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:74
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:110
+msgid "four"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 05:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 17:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:77
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:113
+msgid "five"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 06:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 18:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:80
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:116
+msgid "six"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 07:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 19:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:83
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:119
+msgid "seven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 08:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 20:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:86
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:122
+msgid "eight"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 09:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 21:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:89
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:125
+msgid "nine"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 10:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 22:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:92
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:128
+msgid "ten"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 11:00:00
+#. TRANSLATORS: This is referring to the spoken time of day at 23:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:95
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:131
+msgid "eleven"
+msgstr ""
+
+#. TRANSLATORS: This is referring to the spoken time of day at 12:00:00
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:98
+msgid "noon"
+msgstr "正午"
+
+#. TRANSLATORS: times between (12:58:00 - 1:02:00) are 'one-ish'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:151
+#, c-format
+msgid "%s-ish"
+msgstr ""
+
+#. TRANSLATORS: times between (1:03:00 - 1:07:00) are 'a bit past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:154
+#, c-format
+msgid "a bit past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:08:00 - 1:12:00) are 'ten past one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:157
+#, c-format
+msgid "ten past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:13:00 - 1:17:00) are 'quarter after one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:160
+#, c-format
+msgid "quarter after %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:165
+#, c-format
+msgid "twenty past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:170
+#, c-format
+msgid "almost half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:175
+#, c-format
+msgid "half-past %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:33:00 - 1:37:00) are 'twenty-five 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:180
+#, c-format
+msgid "twenty-five 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:38:00 - 1:42:00) are 'twenty 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:185
+#, c-format
+msgid "twenty 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:43:00 - 1:47:00) are 'quarter 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:190
+#, c-format
+msgid "quarter 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:48:00 - 1:52:00) are 'ten 'til two'
+#. by adding the characters +1 you can add a further hour i.e. 'til three'
+#. by adding the characters -1 you can subtract one hour i.e. 'til one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:195
+#, c-format
+msgid "ten 'til %s"
+msgstr ""
+
+#. TRANSLATORS: times between (1:53:00 - 1:57:00) are 'almost two'
+#. by adding the characters +1 you can add a further hour i.e. 'almost three'
+#. by adding the characters -1 you can subtract one hour i.e. 'almost one'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:200
+#, c-format
+msgid "almost %s"
+msgstr ""
+
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:385
+msgid "Date and Time settings"
+msgstr "日付と時刻の設定"
+
+#. TRANSLATORS: This Button Links to Gnome 'Calendar' application
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:388
+msgid "Calendar"
+msgstr "カレンダー"
+
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#. pack page2
+#. TRANSLATORS: This Button Links to FuzzyClock 'Preferences' Pane
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:397
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:426
+msgid "Preferences"
+msgstr "環境設定"
+
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:408
+msgid "Show date"
+msgstr "日付を表示"
+
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
+#: budgie-fuzzyclock/src/FuzzyClockApplet.vala:415
+msgid "Use 24 hour time"
+msgstr "24時制を使用"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+msgid "Text"
+msgstr "テキスト"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+msgid "Applications"
+msgstr "アプリケーション"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+msgid "Files"
+msgstr "ファイル"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+msgid "Actions"
+msgstr "操作"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+msgid "Search"
+msgstr "検索"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+msgid "Contacts"
+msgstr "連絡先"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+msgid "Internet"
+msgstr "インターネット"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+msgid "Settings"
+msgstr "設定"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+msgid "Application Actions"
+msgstr "アプリケーションの操作"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+msgid "Other"
+msgstr "その他"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
+msgid "Remove from _Dock"
+msgstr "_Dock から削除する"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:83
+msgid "Add to _Dock"
+msgstr "_Dock に追加する"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "検索用語を変更してみてください。"
+
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#, c-format
+msgid "No Results for “%s”"
+msgstr "“%s” という検索結果はありません"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
+msgid "View as Grid"
+msgstr "グリット表示"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
+msgid "View by Category"
+msgstr "カテゴリー表示"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
+msgid "Search Apps"
+msgstr "アプリを検索"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
+msgid "Clear all"
+msgstr "すべて消去"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
+msgid "Open and search apps"
+msgstr "開いてアプリを検索します"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
+msgid "Shutdown"
+msgstr "シャットダウン"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:113
+msgid "Suspend"
+msgstr "サスペンド"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:123
+msgid "Restart"
+msgstr "再起動"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:134
+msgid "Lock"
+msgstr "ロック"
+
+#: budgie-applications-menu/applications-menu/src/powerstrip.vala:153
+msgid "Logout"
+msgstr "ログアウト"
+
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+msgid "Run this command…"
+msgstr "このコマンドを実行…"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "電卓"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "基本的な式を計算します。"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc がインストールされていません"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
+msgid "Click to copy result to clipboard"
+msgstr "クリックすると結果がクリップボードにコピーされます"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+msgid "Search for and run applications on your computer."
+msgstr "コンピューター上のアプリケーションを検索して実行します。"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Open with %s"
+msgstr "%s で開く"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "現在選択しているものを %s で開きます"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "デフォルトの Web ブラウザーで %s を開きます"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "%s を %s で開く"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "このリンクをデフォルトのブラウザーで開きます"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "リンク"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "リンクをデフォルトのブラウザーで開きます"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "'%s' を実行"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "コマンドを実行します"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "任意のコマンドを検索して実行します。"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "ターミナルで実行"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "ターミナルでアプリケーションまたはコマンドを実行します"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "クリップボードへコピー"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "選択範囲をクリップボードへコピーします"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+msgid "Run"
+msgstr "実行"
+
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+msgid "Run an application, action or script"
+msgstr "アプリケーション、アクションやスクリプトを実行します"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
+msgid "Set menu icon from file"
+msgstr "ファイルからメニューアイコンを設定"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
+msgid "Image files"
+msgstr "画像ファイル"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
+msgid "Any file"
+msgstr "任意のファイル"
+
+#: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
+msgid "Set icon"
+msgstr "アイコンを設定"
+
+#: budgie-brightness-controller/src/Applet.vala:81
+msgid "Remove Gnome Settings Daemon's color plugin from autostart"
+msgstr "Gnome Settings Daemonのcolor pluginを自動起動から削除する"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:87
+msgid "Dim"
+msgstr ""
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:89
+#: budgie-brightness-controller/src/widgets/Popover.vala:149
+msgid "Brightness"
+msgstr "輝度"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:92
+msgid "Temperature"
+msgstr "温度"
+
+#: budgie-brightness-controller/src/widgets/Popover.vala:147
+msgid "Light"
+msgstr "ライト"
+
+#: budgie-quicknote/QuickNoteApplet.vala:47
+msgid "Welcome to QuickNote."
+msgstr "QuickNote へようこそ。"
+
+#: budgie-quicknote/QuickNoteApplet.vala:48
+msgid "Text will be saved automatically while typing."
+msgstr "文字列は入力中に自動的に保存されます。"
+
+#. Gtk stuff, widgets etc. here
+#: budgie-quicknote/QuickNoteApplet.vala:143
+msgid "Text area width"
+msgstr "テキスト領域の幅"
+
+#: budgie-quicknote/QuickNoteApplet.vala:150
+msgid "Text area height"
+msgstr "テキスト領域の高さ"
+
+#: budgie-quicknote/QuickNoteApplet.vala:166
+msgid "Set a custom directory"
+msgstr "任意のディレクトリを設定"
+
+#: budgie-quicknote/QuickNoteApplet.vala:179
+msgid "Choose directory"
+msgstr "ディレクトリを選択"
+
+#: budgie-quicknote/QuickNoteApplet.vala:201
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+msgid "Use"
+msgstr "使う"
+
+#. window props
+#: budgie-weathershow/src/get_color/get_color.vala:50
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:902
+msgid "Set text color"
+msgstr "テキストの色を設定"
+
+#. spinbuttons - labels
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Red"
+msgstr "赤"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Green"
+msgstr "緑"
+
+#: budgie-weathershow/src/get_color/get_color.vala:64
+msgid "Blue"
+msgstr "青"
+
+#: budgie-weathershow/src/get_color/get_color.vala:84
+msgid "Choose"
+msgstr "選択"
+
+#. get weekday by index
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Monday"
+msgstr "月曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Tuesday"
+msgstr "火曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Wednesday"
+msgstr "水曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:153
+msgid "Thursday"
+msgstr "木曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Friday"
+msgstr "金曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Saturday"
+msgstr "土曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:154
+msgid "Sunday"
+msgstr "日曜日"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:800
+msgid "General"
+msgstr "一般"
+
+#. set city section
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:818
+msgid "City"
+msgstr "市町村"
+
+#. show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+msgid "Show on desktop"
+msgstr "デスクトップに表示"
+
+#. dynamic icon
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
+msgid "Show dynamic panel icon"
+msgstr "動的なパネルアイコンを表示"
+
+#. forecast
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
+msgid "Show forecast in popover"
+msgstr "ポップオーバーに天気予報を表示"
+
+#. optional settings: show on desktop
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:876
+msgid "Transparency"
+msgstr "透明度"
+
+#. checkbox custom position
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:909
+msgid "Set custom position (px)"
+msgstr "任意の位置を設定 (px)"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:931
+msgid "Custom location name"
+msgstr "カスタムロケーション名"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1088
+msgid "Please enter at least 3 characters"
+msgstr "最低 3 文字を入力してください"
+
+#. define the name of the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/data/wallstreet-control.desktop.in.h:1
+msgid "WallStreet Control"
+msgstr "WallStreetを管理"
+
+#. instruction to autostart the application
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+msgid "Run WallStreet"
+msgstr "WallStreetを実行する"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
+msgid "Use random wallpaper"
+msgstr "ランダムな背景を使用する"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+msgid "Sync to lock-screen"
+msgstr "ロック画面を動悸する"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+msgid "Use default wallpapers"
+msgstr "デフォルトの壁紙を使用する"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+msgid "Browse"
+msgstr "閲覧"
+
+#. time settings section
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+msgid "Change interval"
+msgstr "間隔の変更"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+msgid "Hours"
+msgstr "時間"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+msgid "Minutes"
+msgstr "分"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+msgid "Seconds"
+msgstr "秒"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+msgid "Close"
+msgstr "閉じる"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+msgid "Please log out/in to initialize"
+msgstr "初期化するには、ログアウト/ログインしてください"
+
+#. filechooser to set new wallpaper dir
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+msgid "Select a directory"
+msgstr "ディレクトリを選択"
+
+#. Corner label
+#: budgie-hotcorners/src/HotCornersApplet.vala:148
+msgid "Corner"
+msgstr "コーナー"
+
+#. Action label
+#: budgie-hotcorners/src/HotCornersApplet.vala:152
+msgid "Action"
+msgstr "アクション"
+
+#. Custom label
+#: budgie-hotcorners/src/HotCornersApplet.vala:156
+msgid "Custom"
+msgstr "カスタム"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:267
+#: budgie-hotcorners/src/HotCornersApplet.vala:276
+#: budgie-hotcorners/src/HotCornersApplet.vala:285
+msgid "Missing process"
+msgstr "処理がありません"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:271
+msgid "Please enable Window Previews"
+msgstr "ウィンドウプレビューを有効にしてください。"
+
+#. TRANSLATORS: Window Previews is the name of the application and does not
+#. need to be translated
+#: budgie-hotcorners/src/HotCornersApplet.vala:280
+#: budgie-hotcorners/src/HotCornersApplet.vala:288
+msgid "Please enable Window Shuffler"
+msgstr "ウィンドウシャッフラーを有効にしてください"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:469
+msgid "Manage corners from panel icon"
+msgstr "パネルアイコンの角の変更"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:479
+msgid "Set pressure (0 = no pressure)"
+msgstr "圧力の設定（0＝圧力なし）"
+
+#. TRANSLATORS: automatic dynamic workspace control
+#: budgie-visualspace/src/visualspace.vala:72
+msgid "Auto"
+msgstr "自動"
+
+#: budgie-visualspace/src/visualspace.vala:109
+msgid "Scroll over panel icon to change workspace"
+msgstr "パネルアイコンをスクロールしてワークスペースを変更する"
+
+#. strings
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+msgid "Stop"
+msgstr "停止"
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+msgid "Start"
+msgstr "開始"
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
+msgid ""
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
+msgstr "背景ワークスペース自動切り替えでワークスペースごとに設定された壁紙を自動的に記憶する。"
+
+#: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
+msgid "Applet runs without a panel icon"
+msgstr "パネルのアイコンがない状態でアプレットを実行"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:53
+msgid "Connect to Hidden Network…"
+msgstr "非公開のネットワークに接続…"
+
+#: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:57
+msgid "Network Settings…"
+msgstr "ネットワークの設定…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:59
+msgid "VPN"
+msgstr "VPN"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:53
+msgid "This Virtual Private Network could not be connected to."
+msgstr "この仮想プライベートネットワークに接続できませんでした。"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:22
+msgid "Unknown device"
+msgstr "不明なデバイス"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:37
+#, c-format
+msgid "Unknown type: %s "
+msgstr "不明な種類: %s "
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
+#, c-format
+msgid "Virtual network: %s"
+msgstr "仮想ネットワーク: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+msgid "Wired"
+msgstr "有線接続"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
+#, c-format
+msgid "Mobile Broadband: %s"
+msgstr "モバイルブロードバンド: %s"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+msgid "Mobile Broadband"
+msgstr "モバイルブロードバンド"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:35
+msgid "Modem"
+msgstr "モデム"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:49
+msgid "This wireless network could not be connected to."
+msgstr "この無線ネットワークに接続できませんでした。"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+msgid "This network uses 40/64-bit WEP encryption"
+msgstr "このネットワークは 40/64 ビット WEP 暗号化を使用しています"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:163
+msgid "This network uses 104/128-bit WEP encryption"
+msgstr "このネットワークは 104/128 ビット WEP 暗号化を使用しています"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:166
+msgid "This network uses WPA encryption"
+msgstr "このネットワークは WPA 暗号化を使用しています"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:169
+msgid "This network uses encryption"
+msgstr "このネットワークは暗号化を使用しています"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:171
+msgid "This network is unsecured"
+msgstr "このネットワークは安全ではありません"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:49
+msgid "No Access Points Available"
+msgstr "利用できるアクセスポイントがありません"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:63
+msgid "Scanning for Access Points…"
+msgstr "アクセスポイントを探しています…"
+
+#: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:108
+msgid "Wireless"
+msgstr "無線接続"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:1
+msgid "Menu Icon"
+msgstr "メニューのアイコン"
+
+#. Number of rows for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:3
+msgid "Grid Rows"
+msgstr "グリッド行"
+
+#. Number of columns for the grid of icons
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:5
+msgid "Grid Columns"
+msgstr "グリッド列"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:6
+msgid "Show Menu Label"
+msgstr "メニューのラベルを表示する"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:7
+msgid "Menu Label"
+msgstr "メニューのラベル"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Power-strip"
+msgstr "電源タップを表示する"
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+msgid "Roll-over mouse"
+msgstr "マウスのロールオーバー"
+
+#. Spacing around each category name
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+msgid ""
+"Adjust Category\n"
+"Spacing"
+msgstr ""
+"カテゴリの調整\n"
+"感覚"
+
+#: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
+msgid "Place a window in a predefined layout"
+msgstr "事前に定義されたレイアウトでウィンドウを配置する"
+
+#: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
+msgid "Show recently used items"
+msgstr "最近使用した項目を表示"
+
+#: budgie-fuzzyclock/src/FuzzyClockApplet.plugin.in.h:1
+msgid "Time of day in fuzzy way"
+msgstr "曖昧な時刻"
+
+#: budgie-applications-menu/applications-menu/src/AppMenu.plugin.in.h:1
+msgid "Stylish Desktop Application Menu"
+msgstr "スタイリッシュなデスクトップアプリケーションのメニュー"
+
+#: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
+msgid "Brightness Controller"
+msgstr "輝度コントローラー"
+
+#: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
+msgid "Quick & Easy Notes"
+msgstr "Quick & Easy Notes"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.plugin.in.h:1
+msgid "Show weather & forecast"
+msgstr "天気と天気予報を表示"
+
+#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+msgid "Set hotcorner actions"
+msgstr "ホットコーナーのアクションを設定"
+
+#: budgie-visualspace/src/VisualSpace.plugin.in.h:1
+msgid "Workspace indicator and window list"
+msgstr "ワークスペースのインジケータとウィンドウ一覧"
+
+#: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+msgid "Set a different wallpaper per workspace"
+msgstr "ワークスペース毎に背景を設定する"
+
+#: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
+msgid "Network Applet"
+msgstr "ネットワークアプレット"
