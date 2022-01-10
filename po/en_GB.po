@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# david mohammed <foss.freedom@gmail.com>, 2021
-# David Mohammed <fossfreedom@ubuntu.com>, 2021
+# david mohammed <foss.freedom@gmail.com>, 2022
+# David Mohammed <fossfreedom@ubuntu.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-19 22:20+0100\n"
+"POT-Creation-Date: 2022-01-10 20:25+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: David Mohammed <fossfreedom@ubuntu.com>, 2021\n"
+"Last-Translator: David Mohammed <fossfreedom@ubuntu.com>, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/ubuntu-budgie/teams/72251/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,6 +54,7 @@ msgstr "Really delete all items?"
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:59
 #: budgie-trash/trash/src/TrashHandler.vala:110
 #: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
 #: budgie-trash/trash/src/Trash.plugin.in.h:1
 msgid "Trash"
 msgstr "Rubbish Bin"
@@ -791,29 +792,29 @@ msgstr "Test"
 msgid "Minimum window size exceeds target"
 msgstr "Minimum window size exceeds target"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:117
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:430
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:116
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:429
 msgid "Open Shuffler settings"
 msgstr "Open Shuffler settings"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Shuffler warning"
 msgstr "Shuffler warning"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Please activate Window Shuffler"
 msgstr "Please activate Window Shuffler"
 
 #. swapbox.pack_start(swapbutton, true, false, 0);
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:409
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:408
 msgid "Swap position and size of the two most recently focussed windows"
 msgstr "Swap position and size of the two most recently focussed windows"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:436
 msgid "Shuffle remaining windows to the layout"
 msgstr "Shuffle remaining windows to the layout"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:438
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
 msgid "Toggle mode"
 msgstr "Toggle mode"
 
@@ -1132,51 +1133,62 @@ msgstr "Show date"
 msgid "Use 24 hour time"
 msgstr "Use 24 hour time"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:37
 msgid "Text"
 msgstr "Text"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:39
 msgid "Applications"
 msgstr "Applications"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:41
 msgid "Files"
 msgstr "Files"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:44
 msgid "Actions"
 msgstr "Actions"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:46
 msgid "Search"
 msgstr "Search"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:48
 msgid "Contacts"
 msgstr "Contacts"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:50
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:128
 msgid "Internet"
 msgstr "Internet"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:52
 msgid "Settings"
 msgstr "Settings"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:54
 msgid "Application Actions"
 msgstr "Application Actions"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr "Bookmarks"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:58
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:154
 msgid "Other"
 msgstr "Other"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr "Open with %s Graphics"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:109
 msgid "Remove from _Dock"
 msgstr "Remove from _Dock"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:83
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:111
 msgid "Add to _Dock"
 msgstr "Add to _Dock"
 
@@ -1184,7 +1196,7 @@ msgstr "Add to _Dock"
 msgid "Try changing search terms."
 msgstr "Try changing search terms."
 
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:130
 #, c-format
 msgid "No Results for “%s”"
 msgstr "No Results for “%s”"
@@ -1229,9 +1241,54 @@ msgstr "Lock"
 msgid "Logout"
 msgstr "Logout"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
 msgid "Run this command…"
 msgstr "Run this command…"
+
+#: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:81
+#: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr "Default"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr "Accessories"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr "Universal Access"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr "Programming"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr "Education"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr "Science"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:116
+msgid "Games"
+msgstr "Games"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:122
+msgid "Graphics"
+msgstr "Graphics"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:134
+msgid "Sound & Video"
+msgstr "Sound & Video"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:140
+msgid "Office"
+msgstr "Office"
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:146
+msgid "System Tools"
+msgstr "System Tools"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
@@ -1250,16 +1307,16 @@ msgstr "bc is not installed"
 msgid "Click to copy result to clipboard"
 msgstr "Click to copy result to clipboard"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
 msgid "Search for and run applications on your computer."
 msgstr "Search for and run applications on your computer."
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
 #, c-format
 msgid "Open with %s"
 msgstr "Open with %s"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:324
 #, c-format
 msgid "Opens current selection using %s"
 msgstr "Opens current selection using %s"
@@ -1270,6 +1327,7 @@ msgid "Open %s in default web browser"
 msgstr "Open %s in default web browser"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:84
 #, c-format
 msgid "Open %s in %s"
 msgstr "Open %s in %s"
@@ -1299,6 +1357,27 @@ msgstr "Run command"
 msgid "Find and execute arbitrary commands."
 msgstr "Find and execute arbitrary commands."
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:88
+msgid "Open the selected directory"
+msgstr "Open the selected directory"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:200
+msgid "Folder Bookmarks"
+msgstr "Folder Bookmarks"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:201
+msgid "Bookmarked Folders"
+msgstr "Bookmarked Folders"
+
+#. Check for Special Directories
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:219
+msgid "Home"
+msgstr "Home"
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:223
+msgid "Recent"
+msgstr "Recent"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "Run in Terminal"
@@ -1315,11 +1394,11 @@ msgstr "Copy to Clipboard"
 msgid "Copy selection to clipboard"
 msgstr "Copy selection to clipboard"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:33
 msgid "Run"
 msgstr "Run"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:34
 msgid "Run an application, action or script"
 msgstr "Run an application, action or script"
 
@@ -1542,46 +1621,60 @@ msgid "Select a directory"
 msgstr "Select a directory"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:148
+#: budgie-hotcorners/src/HotCornersApplet.vala:154
 msgid "Corner"
 msgstr "Corner"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:152
+#: budgie-hotcorners/src/HotCornersApplet.vala:158
 msgid "Action"
 msgstr "Action"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:156
+#: budgie-hotcorners/src/HotCornersApplet.vala:162
 msgid "Custom"
 msgstr "Custom"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:267
-#: budgie-hotcorners/src/HotCornersApplet.vala:276
-#: budgie-hotcorners/src/HotCornersApplet.vala:285
+#. todo: check below proc-to-check: false warning
+#: budgie-hotcorners/src/HotCornersApplet.vala:273
+#: budgie-hotcorners/src/HotCornersApplet.vala:283
+#: budgie-hotcorners/src/HotCornersApplet.vala:292
 msgid "Missing process"
 msgstr "Missing process"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:271
+#: budgie-hotcorners/src/HotCornersApplet.vala:277
 msgid "Please enable Window Previews"
 msgstr "Please enable Window Previews"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:280
-#: budgie-hotcorners/src/HotCornersApplet.vala:288
+#: budgie-hotcorners/src/HotCornersApplet.vala:287
+#: budgie-hotcorners/src/HotCornersApplet.vala:295
 msgid "Please enable Window Shuffler"
 msgstr "Please enable Window Shuffler"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:469
+#. toggle settings via panel icon
+#: budgie-hotcorners/src/HotCornersApplet.vala:471
 msgid "Manage corners from panel icon"
 msgstr "Manage corners from panel icon"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:479
-msgid "Set pressure (0 = no pressure)"
-msgstr "Set pressure (0 = no pressure)"
+#: budgie-hotcorners/src/HotCornersApplet.vala:482
+msgid "To prevent unintended activation, use:"
+msgstr "To prevent unintended activation, use:"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:492
+msgid "Pressure"
+msgstr "Pressure"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:493
+msgid "Delay"
+msgstr "Delay"
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:494
+msgid "Nothing"
+msgstr "Nothing"
 
 #. TRANSLATORS: automatic dynamic workspace control
 #: budgie-visualspace/src/visualspace.vala:72

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-19 22:20+0100\n"
+"POT-Creation-Date: 2022-01-10 20:25+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david mohammed <foss.freedom@gmail.com>, 2021\n"
 "Language-Team: Albanian (https://www.transifex.com/ubuntu-budgie/teams/72251/sq/)\n"
@@ -54,6 +54,7 @@ msgstr ""
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:59
 #: budgie-trash/trash/src/TrashHandler.vala:110
 #: budgie-trash/trash/src/TrashApplet.vala:104
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
 #: budgie-trash/trash/src/Trash.plugin.in.h:1
 msgid "Trash"
 msgstr "Kosh"
@@ -798,30 +799,30 @@ msgstr "Test"
 msgid "Minimum window size exceeds target"
 msgstr "Madhësia minimale e dritares tejkalon synimin"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:117
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:430
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:116
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:429
 msgid "Open Shuffler settings"
 msgstr "Hapni cilësimet e Shuffler"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Shuffler warning"
 msgstr "Paralajmërim i Shuffler"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:385
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Please activate Window Shuffler"
 msgstr "Ju lutemi aktivizoni Window Shuffler"
 
 #. swapbox.pack_start(swapbutton, true, false, 0);
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:409
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:408
 msgid "Swap position and size of the two most recently focussed windows"
 msgstr ""
 "Shkëmbe pozicionin dhe madhësinë e dy dritareve më të fundit të fokusuara"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:436
 msgid "Shuffle remaining windows to the layout"
 msgstr "Përzieni dritaret e mbetura në paraqitje"
 
-#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:438
+#: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
 msgid "Toggle mode"
 msgstr "Ndrysho modalitetin"
 
@@ -1141,51 +1142,62 @@ msgstr "Shfaq datën"
 msgid "Use 24 hour time"
 msgstr "Përdor formatin 24 orë"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:36
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:37
 msgid "Text"
 msgstr "Tekst"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:38
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:39
 msgid "Applications"
 msgstr "Programet"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:40
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:41
 msgid "Files"
 msgstr "Skedarët"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:43
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:44
 msgid "Actions"
 msgstr "Veprimet"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:45
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:46
 msgid "Search"
 msgstr "Kërko"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:47
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:48
 msgid "Contacts"
 msgstr "Kontaktet"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:49
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:50
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:128
 msgid "Internet"
 msgstr "Internet"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:51
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:52
 msgid "Settings"
 msgstr "Parametrat"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:53
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:54
 msgid "Application Actions"
 msgstr "Veprimet e programit"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:55
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:58
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:154
 msgid "Other"
 msgstr "Tjetër"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:109
 msgid "Remove from _Dock"
 msgstr "Hiq nga _Dok"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:83
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:111
 msgid "Add to _Dock"
 msgstr "Shto në _Dok"
 
@@ -1193,7 +1205,7 @@ msgstr "Shto në _Dok"
 msgid "Try changing search terms."
 msgstr "Provo të ndryshosh termat e kërkimit."
 
-#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:103
+#: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:130
 #, c-format
 msgid "No Results for “%s”"
 msgstr "Asnjë rezultat për “%s”"
@@ -1238,9 +1250,54 @@ msgstr "Blloko"
 msgid "Logout"
 msgstr "Shkyç"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:78
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
 msgid "Run this command…"
 msgstr "Ekzekuto këtë komandë..."
+
+#: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:81
+#: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:116
+msgid "Games"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:122
+msgid "Graphics"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:134
+msgid "Sound & Video"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:140
+msgid "Office"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:146
+msgid "System Tools"
+msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
@@ -1259,16 +1316,16 @@ msgstr "bc nuk është i instaluar"
 msgid "Click to copy result to clipboard"
 msgstr "Kliko për të kopjuar rezultatin në kujtesën e fragmenteve"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:115
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
 msgid "Search for and run applications on your computer."
 msgstr "Kërko dhe ekzekuto programe në kompjuterin tënd."
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:321
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
 #, c-format
 msgid "Open with %s"
 msgstr "Hap me %s"
 
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:323
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:324
 #, c-format
 msgid "Opens current selection using %s"
 msgstr "Hap përzgjedhjen e tanishme me %s"
@@ -1279,6 +1336,7 @@ msgid "Open %s in default web browser"
 msgstr "Hap %s në shfletuesin ueb të parazgjedhur"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:84
 #, c-format
 msgid "Open %s in %s"
 msgstr "Hap %s në %s"
@@ -1308,6 +1366,27 @@ msgstr "Ekzekuto komandë"
 msgid "Find and execute arbitrary commands."
 msgstr "Gjeni dhe ekzekutoni komanda arbitrare."
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:88
+msgid "Open the selected directory"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:200
+msgid "Folder Bookmarks"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:201
+msgid "Bookmarked Folders"
+msgstr ""
+
+#. Check for Special Directories
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:219
+msgid "Home"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:223
+msgid "Recent"
+msgstr ""
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "Ekzekuto në terminal"
@@ -1324,11 +1403,11 @@ msgstr "Kopjo në kujtesën e fragmenteve"
 msgid "Copy selection to clipboard"
 msgstr "Kopjo zgjedhjen në kujtesë të fragmenteve"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:25
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:33
 msgid "Run"
 msgstr "Ekzekuto"
 
-#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:26
+#: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:34
 msgid "Run an application, action or script"
 msgstr "Ekzekuto një program, veprim ose script"
 
@@ -1552,46 +1631,60 @@ msgid "Select a directory"
 msgstr "Zgjidh një direktori"
 
 #. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:148
+#: budgie-hotcorners/src/HotCornersApplet.vala:154
 msgid "Corner"
 msgstr "Qoshe"
 
 #. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:152
+#: budgie-hotcorners/src/HotCornersApplet.vala:158
 msgid "Action"
 msgstr "Veprimi"
 
 #. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:156
+#: budgie-hotcorners/src/HotCornersApplet.vala:162
 msgid "Custom"
 msgstr "Personalizuar"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:267
-#: budgie-hotcorners/src/HotCornersApplet.vala:276
-#: budgie-hotcorners/src/HotCornersApplet.vala:285
+#. todo: check below proc-to-check: false warning
+#: budgie-hotcorners/src/HotCornersApplet.vala:273
+#: budgie-hotcorners/src/HotCornersApplet.vala:283
+#: budgie-hotcorners/src/HotCornersApplet.vala:292
 msgid "Missing process"
 msgstr "Mungon procesi"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:271
+#: budgie-hotcorners/src/HotCornersApplet.vala:277
 msgid "Please enable Window Previews"
 msgstr "Ju lutemi mundësoni Window Previews"
 
 #. TRANSLATORS: Window Previews is the name of the application and does not
 #. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:280
-#: budgie-hotcorners/src/HotCornersApplet.vala:288
+#: budgie-hotcorners/src/HotCornersApplet.vala:287
+#: budgie-hotcorners/src/HotCornersApplet.vala:295
 msgid "Please enable Window Shuffler"
 msgstr "Ju lutem mundësoni Window Shuffler"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:469
+#. toggle settings via panel icon
+#: budgie-hotcorners/src/HotCornersApplet.vala:471
 msgid "Manage corners from panel icon"
 msgstr "Menaxhoni qoshet nga ikona e panelit"
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:479
-msgid "Set pressure (0 = no pressure)"
-msgstr "Vendosni presionin (0 = pa presion)"
+#: budgie-hotcorners/src/HotCornersApplet.vala:482
+msgid "To prevent unintended activation, use:"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:492
+msgid "Pressure"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:493
+msgid "Delay"
+msgstr ""
+
+#: budgie-hotcorners/src/HotCornersApplet.vala:494
+msgid "Nothing"
+msgstr ""
 
 #. TRANSLATORS: automatic dynamic workspace control
 #: budgie-visualspace/src/visualspace.vala:72
