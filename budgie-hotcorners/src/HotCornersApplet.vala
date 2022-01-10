@@ -28,6 +28,12 @@ namespace HCSupport {
     * OK, need to clean up these ones some day. Silly idea.
     */
 
+    private void remove_fromgrid(Grid grid, Widget? widget) {
+        if (widget != null) {
+            grid.remove(widget);
+        }
+    }
+
     private bool locked () {
         string cmd = Config.PACKAGE_BINDIR + "/pgrep -f gnome-screensaver-dialog";
         string output;
@@ -213,7 +219,7 @@ namespace HotCornersApplet {
                     bool test = HCSupport.command_isdefault(
                         set_command, dropdown_cmdlist
                     );
-                    if (test == true) {
+                    if (test) {
                         this.attach(command_combo, 1, y_pos, 1, 1);
                         int combo_index = HCSupport.get_stringindex(
                             set_command, dropdown_cmdlist
@@ -272,6 +278,7 @@ namespace HotCornersApplet {
                         ));
                         break;
                     }
+                    // todo: check below proc-to-check: false warning
                     case "shuffler/togglegui": {
                         msg_header = (_("Missing process"));
                         proc_tocheck = "budgie-window-shuffler/gridwindow";
@@ -347,7 +354,6 @@ namespace HotCornersApplet {
             }
         }
 
-
         private void act_on_checkbuttontoggle(ToggleButton button) {
             /*
             * if custom checkbox is toggled, both GUI and command list changes
@@ -361,11 +367,11 @@ namespace HotCornersApplet {
             if (active) {
                 Entry new_source = entries[b_index];
                 this.attach(new_source, 1, b_index + 1, 1, 1);
-                this.remove(dropdowns[b_index]);
+                HCSupport.remove_fromgrid(this, dropdowns[b_index]);
                 new_source.set_text("");
             }
             else {
-                this.remove(entries[b_index]);
+                HCSupport.remove_fromgrid(this, entries[b_index]);
                 ComboBox newsource = dropdowns[b_index];
                 newsource.set_active(0);
                 this.attach(newsource, 1, b_index + 1, 1, 1);
@@ -457,39 +463,93 @@ namespace HotCornersApplet {
         Gtk.Grid testgrid;
         Gtk.Label spacelabel1;
 
-        private void edit_pressure(Gtk.Range newpressure) {
-            int newval = (int)newpressure.get_value();
-            hc_settings.set_int("pressure", newval);
-        }
-
         public HotCornersSettings(GLib.Settings? settings)
         {
             this.settings = settings;
+            // toggle settings via panel icon
             Gtk.CheckButton toggle_settingslocation = new Gtk.CheckButton.with_label(
                 (_("Manage corners from panel icon"))
             );
             this.attach(toggle_settingslocation, 0, 1, 1, 1);
             spacelabel1 = new Label("");
-
+            toggle_settingslocation.toggled.connect(toggle_cornersection);
             toggle_settingslocation.set_active(showpanelicon);
             add_cornersection(!showpanelicon);
-
+            // prevent-unintended section
+            // - label
             this.attach(new Gtk.Label("\n"), 0, 9, 1, 1);
-            Gtk.Label pressure_label = new Gtk.Label(
-                (_("Set pressure (0 = no pressure)"))
+            Label prevent_unintendedlabel = new Label(_(
+                "To prevent unintended activation, use:"
+            ) + "\n");
+            prevent_unintendedlabel.set_xalign(0);
+            this.attach(prevent_unintendedlabel, 0, 19, 1, 1);
+            // - dropdown
+            Box preventbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            string[] preventstrings = {"Pressure", "Delay", "None"};
+            var delay_orpressure_combo = new ComboBoxText();
+            delay_orpressure_combo.set_size_request(100, 20);
+            string[] conditions = {
+                _("Pressure"),
+                _("Delay"),
+                _("Nothing")
+            };
+            foreach (string effect in conditions) {
+                delay_orpressure_combo.append_text(effect);
+            }
+            // initiate-gui elements
+            update_preventmethodcombo(delay_orpressure_combo, preventstrings); // make vice versa, nah, not for now?
+            // - delay-slider
+            Gtk.Scale delay_slider = new Gtk.Scale.with_range(
+                Gtk.Orientation.HORIZONTAL, 0, 100, 5
             );
-            this.attach(pressure_label, 0, 10, 1, 1);
-            pressure_label.set_xalign(0);
+            delay_slider.draw_value = false;
+            delay_slider.set_value(hc_settings.get_int("delay"));
+            delay_slider.value_changed.connect(()=> {
+                hc_settings.set_value("delay", (int)delay_slider.get_value());
+            });
+            // - pressure-slider
             Gtk.Scale pressure_slider = new Gtk.Scale.with_range(
                 Gtk.Orientation.HORIZONTAL, 0, 100, 5
             );
-            this.attach(pressure_slider, 0, 11, 1, 1);
-            double visible_pressure = (int)hc_settings.get_int("pressure");
-            pressure_slider.set_value(visible_pressure);
-            pressure_slider.value_changed.connect(edit_pressure);
-
-            toggle_settingslocation.toggled.connect(toggle_cornersection);
+            pressure_slider.draw_value = false;
+            pressure_slider.set_value(hc_settings.get_int("pressure"));
+            pressure_slider.value_changed.connect(()=> {
+                hc_settings.set_value("pressure", (int)pressure_slider.get_value());
+            });
+            // set action
+            delay_orpressure_combo.changed.connect(()=> {
+                string newval = preventstrings[delay_orpressure_combo.get_active()];
+                hc_settings.set_string("preventmethod", newval);
+                grid_slider(this, delay_slider, pressure_slider);
+            });
+            preventbox.pack_start(delay_orpressure_combo, false, false, 0);
+            this.attach(preventbox, 0, 20, 1, 1);
+            this.attach(new Gtk.Label(""), 0, 21, 1, 1);
+            grid_slider(this, delay_slider, pressure_slider);
             this.show_all();
+        }
+
+        private void grid_slider (
+            Gtk.Grid grid, Gtk.Scale delayslider, Gtk.Scale pressureslider
+        ) {
+            HCSupport.remove_fromgrid(grid, delayslider);
+            HCSupport.remove_fromgrid(grid, pressureslider);
+            string method = hc_settings.get_string("preventmethod");
+            switch (method) {
+                case "Delay":
+                grid.attach(delayslider, 0, 22, 1, 1);
+                break;
+                case "Pressure":
+                grid.attach(pressureslider, 0, 22, 1, 1);
+                break;
+            }
+            grid.show_all();
+        }
+
+        private void update_preventmethodcombo (ComboBoxText combo, string[] preventstrings) {
+            string currmethod = hc_settings.get_string("preventmethod");
+            int currmethodindex = HCSupport.get_stringindex (currmethod, preventstrings);
+            combo.set_active(currmethodindex);
         }
 
         private void add_cornersection (bool showsection) {
@@ -503,8 +563,8 @@ namespace HotCornersApplet {
         private void toggle_cornersection (ToggleButton b) {
             bool newval = b.get_active();
             if (newval) {
-                this.remove(testgrid);
-                this.remove(spacelabel1);
+                HCSupport.remove_fromgrid(this, testgrid);
+                HCSupport.remove_fromgrid(this, spacelabel1);
             }
             else {
                 add_cornersection(true);
@@ -558,9 +618,11 @@ namespace HotCornersApplet {
         }
         private int action_area;
         private bool include_pressure;
+        private bool include_delay;
         private int[] x_arr;
         private int[] y_arr;
         private int pressure;
+        private int delay;
         private int time_steps;
         int scale;
         int width;
@@ -595,8 +657,8 @@ namespace HotCornersApplet {
             gdkscreen.monitors_changed.connect(check_res);
             gdkdisplay = Gdk.Display.get_default();
             seat = gdkdisplay.get_default_seat();
-            update_pressure ();
-            hc_settings.changed["pressure"].connect(update_pressure);
+            update_pressure();
+            hc_settings.changed.connect(update_pressure);
             watch_loop();
         }
 
@@ -616,7 +678,6 @@ namespace HotCornersApplet {
         }
 
         private void set_panelicon () {
-            //  print(@"showpanel: $showpanelicon\n");
             showpanelicon = hc_settings.get_boolean("panelicon");
             if (showpanelicon) {
                 indicatorBox = new Gtk.EventBox();
@@ -670,7 +731,7 @@ namespace HotCornersApplet {
             };
             foreach (bool test in tests) {
                 n += 1;
-                if (test == true) {
+                if (test) {
                     return n;
                 }
             }
@@ -711,25 +772,35 @@ namespace HotCornersApplet {
             int[] temparr = {};
             int currlen = arr_in.length;
             if (currlen > lastn) {
-                int remove = currlen - lastn;
-                temparr = arr_in[remove:currlen];
+                int remove_element = currlen - lastn;
+                temparr = arr_in[remove_element:currlen];
                 return temparr;
             }
             return arr_in;
         }
 
         private void update_pressure () {
+            // if preventmethod, pressure or delay settings change, update conditions to work with
             pressure = hc_settings.get_int("pressure");
-            if (pressure > 0) {
-                include_pressure = true;
-            }
-            else {
+            delay = hc_settings.get_int("delay");
+            string preventmethod = hc_settings.get_string("preventmethod");
+            switch (preventmethod) {
+                case "None":
                 include_pressure = false;
+                include_delay = false;
+                break;
+                case "Delay":
+                include_pressure = false;
+                include_delay = true;
+                break;
+                case "Pressure":
+                include_pressure = true;
+                include_delay = false;
+                break;
             }
         }
 
         private int watch_loop(string[] ? args = null) {
-            //  Gdk.init(ref args);
             check_res();
             /* here we set the size of the array (20 = 1 sec.) */
             this.action_area = 5;
@@ -737,37 +808,58 @@ namespace HotCornersApplet {
             this.time_steps = 3;
             x_arr = {0};
             y_arr = {0};
+            // reported = command already fired
             bool reported = false;
             int t = 0;
+            int t_delay = 0;
             GLib.Timeout.add (50, () => {
                 t += 1;
+                // check if we should end the loop (applet removed)
                 if (t == 30) {
                     t = 0;
                     bool check = HCSupport.check_onapplet(
                         "/com/solus-project/budgie-panel/applets/",
                         "HotCorners"
                     );
-                    if (check == false) {
+                    if (!check) {
                         return false;
                     }
                 }
+                // check if we arrived at one of the corners
                 int corner = check_corner();
-                if (corner != -1 && reported == false) {
-                    if (check_onpressure() == true) {
+                if (corner != -1 && !reported) {
+                    // since this is only fired if we are in a corner *and*
+                    // command did not run, we can afford to check multiple conditions
+                    if (t_delay < 101) {
+                        t_delay += 1;
+                    }
+                    if (check_ifactivate(t_delay)) {
                         run_command(corner);
                         reported = true;
                     }
                 }
-                else if (corner == -1) {
+                else if (corner == -1 ){
                     reported = false;
+                    t_delay = 0;
                 }
                 return true;
             });
             return 0;
         }
 
+        private bool check_ifactivate(int t_delay) {
+            if (
+                !(include_pressure || include_delay) ||
+                (include_pressure && check_onpressure()) ||
+                (include_delay && t_delay > (int)(delay/5))
+            ) {
+                return true;
+            }
+            return false;
+        }
+
         private bool check_onpressure () {
-            if (include_pressure == true) {
+            if (include_pressure) {
                 bool approve = decide_onpressure();
                 return approve;
             }
@@ -779,7 +871,7 @@ namespace HotCornersApplet {
         private void run_command (int corner) {
             /* execute the command */
             string cmd = commands[corner];
-            if (cmd != "" && HCSupport.locked() == false) {
+            if (cmd != "" && !HCSupport.locked()) {
                 try {
                     Process.spawn_command_line_async(cmd);
                 }

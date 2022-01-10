@@ -4,9 +4,21 @@
             id="org.ubuntubudgie.plugins.budgie-hotcorners">
         <key type="i" name="pressure">
             <summary>Hotcorners pressure</summary>
-            <description>Hotcorners pressure, 0 = no pressure</description>
+            <description>Hotcorners pressure, 0 = no pressure. Note that either delay or pressure is used, or none, depending on -preventmethod-</description>
             <default>50</default>
 	    <range min="0" max="100"/>
+        </key>
+        
+        <key type="i" name="delay">
+            <summary>Hotcorners delay</summary>
+            <description>Hotcorners pressure, 0 = no delay. Note that either delay or pressure is used, or none, depending on -preventmethod-</description>
+            <default>50</default>
+	    <range min="0" max="100"/>
+        </key>
+        <key type="s" name="preventmethod">
+            <summary>How to prevent unintended activation</summary>
+            <description>Method to prevent unintended activation, when accidentally entering one of the hotcorners. Valid values are: None, Delay and Pressure </description>
+            <default>"None"</default>
         </key>
         <key type="b" name="panelicon">
             <summary>Show panel icon</summary>
