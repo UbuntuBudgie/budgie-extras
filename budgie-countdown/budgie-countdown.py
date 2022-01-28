@@ -20,7 +20,7 @@ import os
 import gi
 gi.require_version('Budgie', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, GdkPixbuf, Gtk, Gio
+from gi.repository import Budgie, GObject, GdkPixbuf, Gtk, Gio, GLib
 from threading import Thread
 import time
 import subprocess
@@ -78,7 +78,7 @@ class CountDownSettings(Gtk.Grid):
     def __init__(self, setting):
 
         super().__init__()
-
+        self.show_seconds = True
         self.setting = setting
         # grid & layout
         countdown_spacegrid = Gtk.Grid()
@@ -115,6 +115,9 @@ class CountDownApplet(Budgie.Applet):
         self.uuid = uuid
         self.red_time = 60
         self.yellow_time = 300
+        self.currpanelsubject_settings = None
+        GLib.timeout_add_seconds(1, self.watchout)
+        self.countdown_onpanel = True
         # spacesettings
         self.space_settings = Gio.Settings(
             schema="org.ubuntubudgie.plugins.budgie-countdown"
@@ -265,6 +268,27 @@ class CountDownApplet(Budgie.Applet):
         self.update.start()
         self.seticon.set_from_pixbuf(self.iconset[1])
 
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        self.countdown_onpanel = self.uuid in applets
+
     def get_currclaimedspace(self, *args):
         self.claimed_panelspace = self.space_settings.get_int("spacersize")
         if self.spacerpos == "top":
@@ -323,12 +347,14 @@ class CountDownApplet(Budgie.Applet):
         ]:
             self.grid_helpers.append(img)
         if self.spacerpos == "left":
+            self.containergrid.set_margin_left(3)
             self.containergrid.attach(spacerimg, 0, 1, 1, 1)
             self.containergrid.attach(built_in_spacer1, 1, 0, 1, 1)
             self.containergrid.attach(built_in_spacer2, 1, 2, 1, 1)
             self.containergrid.set_column_spacing(self.panelspacing)
             self.containergrid.set_row_spacing(self.claimed_panelspace)
         else:
+            self.containergrid.set_margin_top(3)
             self.containergrid.attach(spacerimg, 1, 0, 1, 1)
             self.containergrid.attach(built_in_spacer1, 0, 1, 1, 1)
             self.containergrid.attach(built_in_spacer2, 2, 1, 1, 1)
@@ -527,6 +553,7 @@ class CountDownApplet(Budgie.Applet):
 
     def handle_apply(self, button):
         set_t = self.get_settime()
+        self.show_seconds = True
         if self.countdown != 0:
             # cancelling countdown
             self.cancel = True
@@ -536,7 +563,7 @@ class CountDownApplet(Budgie.Applet):
         elif set_t != 0:
             # starting countdown, if set time > 0
             self.set_state(False)
-            self.countdown = set_t
+            self.countdown = set_t + 1
             self.init_t = time.time()
             # time shift to the real time
             self.diff = 0
@@ -558,8 +585,7 @@ class CountDownApplet(Budgie.Applet):
         cycle = 9
         self.currstate1 = None
         self.diff = 0
-
-        while True:
+        while self.countdown_onpanel:
             time.sleep(1 - self.diff)
             # see where we are in the time stages
             self.currstate2 = self.lookup_stage(self.countdown)
@@ -570,7 +596,8 @@ class CountDownApplet(Budgie.Applet):
             if self.countdown != 0:
                 self.countdown = self.countdown - 1
                 timelabel = self.calc_timedisplay(self.countdown)
-                self.set_label(timelabel)
+                if timelabel is not None:
+                    self.set_label(timelabel)
                 cycle = cycle + 1
                 if cycle == 10:
                     # once per 10 seconds, synchronize with real clock
