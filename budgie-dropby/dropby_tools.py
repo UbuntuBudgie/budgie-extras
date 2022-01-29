@@ -49,7 +49,7 @@ def get_usb():
         else:
             devpath = v.get("DEVPATH")
             if devpath and uuid and any(["usb" in devpath, "mmc" in devpath]):
-                    relevant.append(uuid)
+                relevant.append(uuid)
     return relevant
 
 
