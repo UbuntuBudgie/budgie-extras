@@ -2,7 +2,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
-from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, Budgie, Gio
+from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, Budgie, Gio, GLib
 import os
 import time
 from threading import Thread
@@ -15,7 +15,7 @@ import cwtools as cw
 """
 ClockWorks
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -189,6 +189,10 @@ class BudgieClockWorksApplet(Budgie.Applet):
         )
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(clw_css_data.encode())
+        # setup watching applet presence
+        self.currpanelsubject_settings = None
+        GLib.timeout_add_seconds(1, self.watchout)
+        self.clockworks_onpanel = True
         # maingrid
         self.maingrid = Gtk.Grid()
         self.maingrid.set_row_spacing(2)
@@ -238,6 +242,27 @@ class BudgieClockWorksApplet(Budgie.Applet):
         # daemonize the thread to make the indicator stopable
         self.update.setDaemon(True)
         self.update.start()
+
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        self.clockworks_onpanel = self.uuid in applets
 
     def do_get_settings_ui(self):
         """Return the applet settings with given uuid"""
@@ -447,7 +472,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
 
     def update_gmt(self):
         # The loop, sleep is set automaically (appr 1 minute after first cycle)
-        while True:
+        while self.clockworks_onpanel:
             timedata = self.waitfornext()
             curr_time = timedata[0]
             self.refresh_clocks(curr_time)
