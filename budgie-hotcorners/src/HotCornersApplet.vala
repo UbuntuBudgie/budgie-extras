@@ -588,6 +588,10 @@ namespace HotCornersApplet {
 
     public class Applet : Budgie.Applet {
 
+        private Gtk.EventBox indicatorBox;
+        private HotCornersPopover popover = null;
+        private unowned Budgie.PopoverManager? manager = null;
+        public string uuid { public set; public get; }
         GLib.Settings? panel_settings;
         GLib.Settings? currpanelsubject_settings;
         bool hotc_onpanel = true;
@@ -627,10 +631,6 @@ namespace HotCornersApplet {
             }
         }
 
-        private Gtk.EventBox indicatorBox;
-        private HotCornersPopover popover = null;
-        private unowned Budgie.PopoverManager? manager = null;
-        public string uuid { public set; public get; }
         /* specifically to the settings section */
         public override bool supports_settings()
         {
