@@ -7,7 +7,7 @@ using Wnck;
 /*
 * BudgieShowTimeII
 * Author: Jacob Vlijm
-* Copyright © 2017-2021 Ubuntu Budgie Developers
+* Copyright © 2017-2022 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -527,7 +527,7 @@ namespace BudgieShowTimeApplet {
         public Budgie.Applet get_panel_widget(string uuid) {
             var info = this.get_plugin_info();
             moduledir = info.get_module_dir();
-            return new Applet();
+            return new Applet(uuid);
         }
     }
 
@@ -545,12 +545,12 @@ namespace BudgieShowTimeApplet {
             return new BudgieShowTimeSettings(this.get_applet_settings(uuid));
         }
 
-        public Applet() {
+        public Applet(string uuid) {
             showtime_settings =  new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-showtime"
             );
             gdkdisplay = Gdk.Display.get_default();
-            winpath = moduledir.concat("/showtime_desktop");
+            winpath = moduledir.concat(@"/showtime_desktop $uuid");
             create_windows(gdkdisplay);
             initialiseLocaleLanguageSupport();
         }
