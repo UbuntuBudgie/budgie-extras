@@ -627,11 +627,6 @@ namespace HotCornersApplet {
             }
         }
 
-
-
-
-
-
         private Gtk.EventBox indicatorBox;
         private HotCornersPopover popover = null;
         private unowned Budgie.PopoverManager? manager = null;
