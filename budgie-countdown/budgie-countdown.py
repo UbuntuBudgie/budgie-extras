@@ -3,7 +3,7 @@
 """
 Count Down
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website: https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -115,6 +115,7 @@ class CountDownApplet(Budgie.Applet):
         self.uuid = uuid
         self.red_time = 60
         self.yellow_time = 300
+        # setup watching applet presence
         self.currpanelsubject_settings = None
         GLib.timeout_add_seconds(1, self.watchout)
         self.countdown_onpanel = True
