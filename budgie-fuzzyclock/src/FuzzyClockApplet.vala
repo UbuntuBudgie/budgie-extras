@@ -1,7 +1,7 @@
 /*
  * This file is part of budgie-extras
  *
- * Copyright © 2019-2021 Ubuntu Budgie Developers
+ * Copyright © 2019-2022 Ubuntu Budgie Developers
  * Author: Adam Dyess
  * Website=https://ubuntubudgie.org
  * This program is free software: you can redistribute it and/or modify it
@@ -19,7 +19,7 @@ public class FuzzyClockPlugin : Budgie.Plugin, Peas.ExtensionBase
 {
     public Budgie.Applet get_panel_widget(string uuid)
     {
-        return new FuzzyClockApplet();
+        return new FuzzyClockApplet(uuid);
     }
 }
 
@@ -55,6 +55,46 @@ public class FuzzyClockRule
 
 public class FuzzyClockApplet : Budgie.Applet
 {
+    public string uuid { public set; public get; }
+    GLib.Settings? panel_settings;
+    GLib.Settings? currpanelsubject_settings;
+    bool fuzzy_onpanel = true;
+
+    string general_path = "com.solus-project.budgie-panel";
+
+    private bool find_applet (string uuid, string[] applets) {
+        for (int i = 0; i < applets.length; i++) {
+            if (applets[i] == uuid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void watchapplet (string uuid) {
+        // make applet's loop end if applet is removed
+        string[] applets;
+        panel_settings = new GLib.Settings(general_path);
+        string[] allpanels_list = panel_settings.get_strv("panels");
+        foreach (string p in allpanels_list) {
+            string panelpath = "/com/solus-project/budgie-panel/panels/".concat("{", p, "}/");
+            currpanelsubject_settings = new GLib.Settings.with_path(
+                general_path + ".panel", panelpath
+            );
+
+            applets = currpanelsubject_settings.get_strv("applets");
+            if (find_applet(uuid, applets)) {
+                currpanelsubject_settings.changed["applets"].connect(() => {
+                    applets = currpanelsubject_settings.get_strv("applets");
+                    if (!find_applet(uuid, applets)) {
+                        fuzzy_onpanel = false;
+                    }
+                });
+                break;
+            }
+        }
+    }
+
     string date_format = "";
 
     protected string[] hours = {
@@ -340,8 +380,15 @@ public class FuzzyClockApplet : Budgie.Applet
     /**
      * Main initialization of the Applet
      */
-    public FuzzyClockApplet()
+    public FuzzyClockApplet(string uuid)
     {
+
+        GLib.Timeout.add_seconds(1, ()=> {
+            watchapplet(uuid);
+            return false;
+        });
+
+
         initialiseLocaleLanguageSupport();
         widget = new Gtk.EventBox();
         layout = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 2);
@@ -622,13 +669,16 @@ public class FuzzyClockApplet : Budgie.Applet
         var old = clock.get_label();
         var ctime = ftime.printf(hours[hour]);
         if (old == ctime) {
+            if (!fuzzy_onpanel) {
+                return false;
+            }
             return true;
+
         }
 
         clock.set_markup(ctime);
         this.queue_draw();
-
-        return true;
+        return fuzzy_onpanel;
     }
 }
 
