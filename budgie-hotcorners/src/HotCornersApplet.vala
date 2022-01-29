@@ -7,7 +7,7 @@ using Notify;
 /*
 * HotCornersII
 * Author: Jacob Vlijm
-* Copyright © 2017-2021 Ubuntu Budgie Developers
+* Copyright © 2017-2022 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -596,8 +596,6 @@ namespace HotCornersApplet {
         GLib.Settings? currpanelsubject_settings;
         bool hotc_onpanel = true;
 
-        string general_path = "com.solus-project.budgie-panel";
-
         private bool find_applet (string uuid, string[] applets) {
             for (int i = 0; i < applets.length; i++) {
                 if (applets[i] == uuid) {
@@ -609,6 +607,7 @@ namespace HotCornersApplet {
 
         void watchapplet (string uuid) {
             // make applet's loop end if applet is removed
+            string general_path = "com.solus-project.budgie-panel";
             string[] applets;
             panel_settings = new GLib.Settings(general_path);
             string[] allpanels_list = panel_settings.get_strv("panels");
