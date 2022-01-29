@@ -50,21 +50,6 @@ namespace HCSupport {
         return true;
     }
 
-    private bool check_onapplet(string path, string applet_name) {
-        /* check if the applet still runs */
-        string cmd = Config.PACKAGE_BINDIR + "/dconf dump " + path;
-        string output;
-        try {
-            GLib.Process.spawn_command_line_sync(cmd, out output);
-        }
-        /* on an occasional exception, don't break the loop */
-        catch (SpawnError e) {
-            return true;
-        }
-        bool check = output.contains(applet_name);
-        return check;
-    }
-
     private GLib.Settings get_settings(string path) {
         var settings = new GLib.Settings(path);
         return settings;
@@ -577,7 +562,7 @@ namespace HotCornersApplet {
     public class Plugin : Budgie.Plugin, Peas.ExtensionBase {
 
         public Budgie.Applet get_panel_widget(string uuid) {
-            return new Applet();
+            return new Applet(uuid);
         }
     }
 
@@ -602,6 +587,50 @@ namespace HotCornersApplet {
 
 
     public class Applet : Budgie.Applet {
+
+        GLib.Settings? panel_settings;
+        GLib.Settings? currpanelsubject_settings;
+        bool hotc_onpanel = true;
+
+        string general_path = "com.solus-project.budgie-panel";
+
+        private bool find_applet (string uuid, string[] applets) {
+            for (int i = 0; i < applets.length; i++) {
+                if (applets[i] == uuid) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void watchapplet (string uuid) {
+            // make applet's loop end if applet is removed
+            string[] applets;
+            panel_settings = new GLib.Settings(general_path);
+            string[] allpanels_list = panel_settings.get_strv("panels");
+            foreach (string p in allpanels_list) {
+                string panelpath = "/com/solus-project/budgie-panel/panels/".concat("{", p, "}/");
+                currpanelsubject_settings = new GLib.Settings.with_path(
+                    general_path + ".panel", panelpath
+                );
+
+                applets = currpanelsubject_settings.get_strv("applets");
+                if (find_applet(uuid, applets)) {
+                    currpanelsubject_settings.changed["applets"].connect(() => {
+                        applets = currpanelsubject_settings.get_strv("applets");
+                        if (!find_applet(uuid, applets)) {
+                            hotc_onpanel = false;
+                        }
+                    });
+                    break;
+                }
+            }
+        }
+
+
+
+
+
 
         private Gtk.EventBox indicatorBox;
         private HotCornersPopover popover = null;
@@ -632,7 +661,12 @@ namespace HotCornersApplet {
         Gdk.Display gdkdisplay;
         Gdk.Seat seat;
 
-        public Applet() {
+        public Applet(string uuid) {
+            // watch if applet is removed from the panel
+            GLib.Timeout.add_seconds(1, ()=> {
+                watchapplet(uuid);
+                return false;
+            });
             // initialize notifications
             Notify.init("Hotcorners");
             hc_settings = HCSupport.get_settings(
@@ -810,21 +844,8 @@ namespace HotCornersApplet {
             y_arr = {0};
             // reported = command already fired
             bool reported = false;
-            int t = 0;
             int t_delay = 0;
             GLib.Timeout.add (50, () => {
-                t += 1;
-                // check if we should end the loop (applet removed)
-                if (t == 30) {
-                    t = 0;
-                    bool check = HCSupport.check_onapplet(
-                        "/com/solus-project/budgie-panel/applets/",
-                        "HotCorners"
-                    );
-                    if (!check) {
-                        return false;
-                    }
-                }
                 // check if we arrived at one of the corners
                 int corner = check_corner();
                 if (corner != -1 && !reported) {
@@ -842,7 +863,7 @@ namespace HotCornersApplet {
                     reported = false;
                     t_delay = 0;
                 }
-                return true;
+                return hotc_onpanel;
             });
             return 0;
         }
