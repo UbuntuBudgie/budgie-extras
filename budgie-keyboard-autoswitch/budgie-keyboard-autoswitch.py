@@ -20,7 +20,7 @@ import os
 import gi
 gi.require_version('Budgie', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, Gtk, Gio
+from gi.repository import Budgie, GObject, Gtk, Gio, GLib
 from threading import Thread
 import time
 import subprocess
@@ -70,6 +70,11 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
+        self.uuid = uuid
+        # setup watching applet presence
+        self.currpanelsubject_settings = None
+        GLib.timeout_add_seconds(1, self.watchout)
+        self.kbautoswitch_onpanel = True
         # general stuff
         self.key = "org.gnome.desktop.input-sources"
         self.settings = Gio.Settings.new(self.key)
@@ -153,6 +158,27 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         # daemonize the thread to make the indicator stopable
         self.update.setDaemon(True)
         self.update.start()
+
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        self.kbautoswitch_onpanel = self.uuid in applets
 
     def on_press(self, box, arg):
         self.manager.show_popover(self.box)
@@ -315,7 +341,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
     def lock_state(self, oldlang):
         while True:
             time.sleep(1)
-            if not self.lockscreen_check():
+            if not self.lockscreen_check() or not self.kbautoswitch_onpanel:
                 break
         self.set_newlang(oldlang)
 
@@ -325,7 +351,7 @@ class KeyboardAutoSwitchApplet(Budgie.Applet):
         # fetch set initial data
         wmclass1 = self.get_activeclass()
         activelang1 = self.get_currlangname()
-        while True:
+        while self.kbautoswitch_onpanel:
             time.sleep(1)
             # if language is changed during lockstate, revert afterwards
             if self.lockscreen_check():
