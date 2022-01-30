@@ -12,7 +12,7 @@ import ast
 """
 Budgie Workspace Timer
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website: https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -119,7 +119,6 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
 
     def update_log(self):
         self.newlogged = time.time()
-        print("updating stopwatch")
         if self.newlogged - self.last_logged > 35:
             currws = self.scr.get_active_workspace()
             self.starttime = time.time()
