@@ -7,7 +7,7 @@ using Wnck;
 /*
 * BudgieShowTimeII
 * Author: Jacob Vlijm
-* Copyright © 2017-2021 Ubuntu Budgie Developers
+* Copyright © 2017-2022 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -101,6 +101,10 @@ namespace  ShowTime {
     }
 
     public class TimeWindow : Gtk.Window {
+
+        GLib.Settings? panel_settings;
+        GLib.Settings? currpanelsubject_settings;
+        bool showtime_onpanel = true;
         int next_time;
         bool twelvehrs;
         string dateformat;
@@ -109,7 +113,47 @@ namespace  ShowTime {
         GLib.Settings text_scaling;
         bool close_onnew;
 
-        public TimeWindow () {
+
+        private bool find_applet (string uuid, string[] applets) {
+            for (int i = 0; i < applets.length; i++) {
+                if (applets[i] == uuid) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void watchapplet (string uuid) {
+            // make loop end if applet is removed
+            string general_path = "com.solus-project.budgie-panel";
+            string[] applets;
+            panel_settings = new GLib.Settings(general_path);
+            string[] allpanels_list = panel_settings.get_strv("panels");
+            foreach (string p in allpanels_list) {
+                string panelpath = "/com/solus-project/budgie-panel/panels/".concat("{", p, "}/");
+                currpanelsubject_settings = new GLib.Settings.with_path(
+                    general_path + ".panel", panelpath
+                );
+
+                applets = currpanelsubject_settings.get_strv("applets");
+                if (find_applet(uuid, applets)) {
+                    currpanelsubject_settings.changed["applets"].connect(() => {
+                        applets = currpanelsubject_settings.get_strv("applets");
+                        if (!find_applet(uuid, applets)) {
+                            showtime_onpanel = false;
+                            this.destroy();
+                        }
+                    });
+                    break;
+                }
+            }
+        }
+
+        public TimeWindow (string uuid) {
+            GLib.Timeout.add_seconds(1, ()=> {
+                watchapplet(uuid);
+                return false;
+            });
             close_onnew = false;
             // define stuff
             bypass = false;
@@ -397,7 +441,6 @@ namespace  ShowTime {
             datelabel.xalign = al;
             // showdate
             linespacing = showtime_settings.get_int("linespacing");
-
             twelvehrs = showtime_settings.get_boolean("twelvehrs");
             appearance.get_appearance(screen);
             update_interface();
@@ -407,21 +450,6 @@ namespace  ShowTime {
             var now = new DateTime.now_local();
             string datestring = now.format(dateformat);
             appearance.get_hexcolor(get_localtime(now), datestring);
-        }
-
-        private bool check_onapplet () {
-            // check if the applet still runs
-            string cmd = Config.PACKAGE_BINDIR + "/dconf dump /com/solus-project/budgie-panel/applets/";
-            string output;
-            try {
-                GLib.Process.spawn_command_line_sync(cmd, out output);
-            }
-            // on an occasional exception, don't break the loop
-            catch (SpawnError e) {
-                return true;
-            }
-            bool check = output.contains("ShowTime");
-            return check;
         }
 
         private int convert_remainder_topositive (double subj, double rem) {
@@ -455,12 +483,7 @@ namespace  ShowTime {
             // this is the main time-loop
             int[] calibrated_loopdata = calibrate_time();
             int loopcycle = 0;
-            while (true) {
-                if (!check_onapplet()) {
-                    // exiting if applet is removed
-                    Gtk.main_quit();
-                    break;
-                }
+            while (showtime_onpanel) {
                 if (loopcycle == 0){
                     next_time = calibrated_loopdata[0];
                 }
@@ -481,6 +504,7 @@ namespace  ShowTime {
     }
 
     public static void main (string[] args) {
+        string uuid = args[1];
         Gtk.init(ref args);
         win_name = "Showtime";
         if (args.length == 4) {
@@ -488,7 +512,7 @@ namespace  ShowTime {
             win_name = "Showtime_".concat(args[1]);
             custom_posargs = {int.parse(args[2]), int.parse(args[3])};
         }
-        new TimeWindow();
+        new TimeWindow(uuid);
         Gtk.main();
     }
 }

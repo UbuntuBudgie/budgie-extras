@@ -4,7 +4,7 @@ import gi
 gi.require_version('Budgie', '1.0')
 gi.require_version('Wnck', '3.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, Gtk, Wnck, GLib
+from gi.repository import Budgie, GObject, Gtk, Wnck, Gio, GLib
 import time
 import ast
 
@@ -12,7 +12,7 @@ import ast
 """
 Budgie Workspace Timer
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website: https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -51,7 +51,11 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
 
     def __init__(self, uuid):
         Budgie.Applet.__init__(self)
-
+        # for exit-from-panel procedure
+        self.uuid = uuid
+        self.currpanelsubject_settings = None
+        self.wstopwatch_onpanel = True
+        GLib.timeout_add_seconds(1, self.watchout)
         # setup css
         timer_css = """
         .label {
@@ -92,6 +96,27 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
 
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        self.wstopwatch_onpanel = self.uuid in applets
+
     def update_log(self):
         self.newlogged = time.time()
         if self.newlogged - self.last_logged > 35:
@@ -100,7 +125,7 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
             self.act_on_change(self.scr, currws)
         open(self.logfile, "wt").write(str(self.workspace_data))
         self.last_logged = self.newlogged
-        return True
+        return self.wstopwatch_onpanel
 
     def load_data(self):
         try:
