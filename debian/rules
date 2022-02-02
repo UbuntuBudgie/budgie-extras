@@ -10,9 +10,9 @@ override_dh_auto_configure:
 
 override_dh_auto_test:
 	dh_auto_test
-#ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-#	./tools/run-pep8
-#endif
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	./tools/run-pep8
+endif
 
 override_dh_python3:
 	dh_python3 /usr/lib/budgie-desktop/plugins
