@@ -1,3 +1,18 @@
+budgie-extras (1.3.1-1) UNRELEASED; urgency=medium
+
+  * New stable release
+    - See News
+  * Packaging Changes
+    - d/control add build-depends appstream
+    - d/control Bump Standards-Version; no changes required
+    - d/control Add Rules-Requires-Root
+    - d/copyright Bump year and add FSFAP statement of metainfo files
+    - d/rules - add override for dh_auto_test for pep8 checks
+    - d/tests/control - remove superficial declaration since scope of
+      tests has now grown
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 02 Feb 2022 19:54:02 +0000
+
 budgie-extras (1.3.0-1) unstable; urgency=medium
 
   * New stable release
