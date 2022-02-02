@@ -13,31 +13,31 @@ Build-Depends:
  intltool,
  libappstream-dev,
  libbudgie-plugin0,
- libhandy-0.0-dev,
  libgdk-pixbuf2.0-dev,
  libgee-0.8-dev,
  libglib2.0-dev (>= 2.56),
- libhandy-0.0-dev,
  libgnome-desktop-3-dev,
  libgnome-menu-3-dev,
  libgranite-dev,
  libgtk-3-dev,
+ libhandy-1-dev,
  libjson-glib-dev,
  libkeybinder-3.0-dev,
  libnm-dev,
  libnma-dev,
+ libnotify-dev,
  libpeas-dev,
  libplank-dev,
  libsoup2.4-dev,
  libwnck-3-dev,
- libzeitgeist-2.0-dev,
  meson,
  pkg-config,
  pycodestyle,
  python3,
  valac,
- libnotify-dev
+ appstream
 Standards-Version: 4.5.0
+Rules-Requires-Root: no
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
 Homepage: https://ubuntubudgie.org
@@ -47,9 +47,9 @@ Architecture: all
 Depends:
  gir1.2-budgie-1.0,
  gir1.2-glib-2.0,
+ gir1.2-gmenu-3.0,
  gir1.2-gtk-3.0,
  gir1.2-peas-1.0,
- gir1.2-gmenu-3.0,
  python3,
  python3-gi,
  ${misc:Depends},
@@ -66,7 +66,6 @@ Description: Applet to provide an alternative means to launch applications
 Package: budgie-applications-menu-applet
 Architecture: any
 Depends: budgie-extras-common, gnome-menus, ${misc:Depends}, ${shlibs:Depends}
-Suggests: zeitgeist-core
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -79,10 +78,6 @@ Description: Stylish Applications Menu for Budgie-Desktop
  can be opened in your default browser. Applications that have additional
  desktop options show via a right-click menu. Applications with associated
  actions show those actions are additional searchable entries.
- .
- With the optional zeitgeist package search entries learn your menu actions
- and results are automatically biased to allow you to find and execute
- applications quickly.
  .
  Variety of options are available including grid sizing and displaying a
  powerstrip.
@@ -157,9 +152,9 @@ Depends:
  python3-gi,
  python3-psutil,
  python3-pyudev,
- zenity,
- wmctrl,
  util-linux (>= 2.31.1),
+ wmctrl,
+ zenity,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to popup when a USB device is connected
@@ -189,7 +184,7 @@ Description: Shared component of budgie-extras applets
 Package: budgie-extras-daemon
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Suggests: plank, budgie-applications-menu-applet
+Suggests: budgie-applications-menu-applet, plank
 Description: Extras daemon for budgie-extras capabilities
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -215,6 +210,7 @@ Depends:
  dconf-cli,
  gnome-screensaver,
  libnotify-bin,
+ xdotool,
  ${misc:Depends},
  ${shlibs:Depends},
 Description: Applet providing hotcorners capabilities for the Budgie Desktop
@@ -236,6 +232,7 @@ Depends:
  python3-gi,
  python3-psutil,
  xdg-utils,
+ zenity,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to allow quick file-browsing
@@ -257,6 +254,8 @@ Depends:
  python3,
  python3-gi,
  python3-psutil,
+ wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet adding the ability to set a different keyboard layout per application
@@ -282,7 +281,12 @@ Description: Network Manager Applet for the budgie-desktop
 
 Package: budgie-previews
 Architecture: any
-Depends: budgie-extras-daemon, xprintidle, ${misc:Depends}, ${shlibs:Depends}
+Depends:
+ budgie-extras-daemon,
+ xinput,
+ xprintidle,
+ ${misc:Depends},
+ ${shlibs:Depends},
 Replaces: budgie-preview-applet (<< 0.4.6~)
 Breaks: budgie-previews-applet (<< 0.4.6~)
 Description: Provides window previews capabilities for the Budgie Desktop
@@ -312,6 +316,8 @@ Depends:
  python3-gi,
  python3-pyperclip,
  python3-xlib,
+ wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: GUI to find and choose locale characters
@@ -463,6 +469,7 @@ Depends:
  python3-gi,
  python3-psutil,
  wmctrl,
+ x11-utils,
  xdotool,
  ${misc:Depends},
  ${python3:Depends},
@@ -482,6 +489,7 @@ Architecture: any
 Depends:
  budgie-extras-common,
  budgie-extras-daemon,
+ x11-utils,
  ${misc:Depends},
  ${shlibs:Depends},
 Description: Keyboard and GUI friendly window-tiling capability
@@ -510,6 +518,7 @@ Depends:
  python3-gi,
  python3-psutil,
  wmctrl,
+ x11-utils,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet providing quick access to workspaces for the Budgie Desktop
@@ -542,8 +551,7 @@ Description: Workspace usage tracker for the budgie desktop
 
 Package: budgie-workspace-wallpaper-applet
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
- budgie-extras-common
+Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Applet providing per workspace wallpaper
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
