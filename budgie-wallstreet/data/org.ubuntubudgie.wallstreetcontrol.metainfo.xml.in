@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Ubuntu Budgie Developers <admin@ubuntubudgie.org> -->
+<component type="desktop-application">
+  <id>org.ubuntubudgie.wallstreetcontrol.desktop</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Budgie Wallstreet</name>
+  <summary>Rotate wallpapers on regular intervals</summary>
+  <update_contact>admin@ubuntubudgie.org</update_contact>
+
+  <description>
+    <p>
+      Budgie WallStreet is a mini-app to switch wallpapers on regular intervals. Options include:
+    </p>
+    <ul>
+      <li>Set a custom folder with wallpapers to rotate</li>
+      <li>Set time interval in hours/minutes/seconds</li>
+      <li>Use random order</li>
+      <li>Synchronize lock-screen wallpaper</li>
+    </ul>
+    <p>
+      By default, the default set of wallpapers is rotated.
+    </p>
+    <p>
+    This application has been created primarily for the budgie-desktop but will also work on gnome-shell.
+    </p>
+  </description>
+
+  <categories>
+    <category>Utility</category>
+  </categories>
+
+  <launchable type="desktop-id">wallstreet-control.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>The options window</caption>
+      <image>https://github.com/UbuntuBudgie/budgie-extras/raw/master/budgie-wallstreet/wallstreetcontrol.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/UbuntuBudgie/budgie-extras</url>
+  <url type="bugtracker">https://github.com/UbuntuBudgie/budgie-extras/issues</url>
+  <url type="translate">https://www.transifex.com/ubuntu-budgie/ubuntu-budgie-extras</url>
+  <url type="donation">https://ubuntubudgie.org/donate</url>
+  <project_group>Ubuntu Budgie</project_group>
+
+  <provides>
+    <binary>wallstreet</binary>
+  </provides>
+
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>

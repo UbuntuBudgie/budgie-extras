@@ -45,6 +45,8 @@ PLUGINS_DATA_DIR = join_paths(datadir, 'budgie-desktop',
 	'plugins')
 APPLICATIONS_DIR = join_paths(datadir, 'applications')
 
+NEWS = meson.source_root() + '/NEWS'
+
 # Global configuration data - matches vapi/config.vapi strings
 conf = configuration_data()
 conf.set('PACKAGE_NAME', 'budgie-extras')
