@@ -592,8 +592,8 @@ namespace HotCornersApplet {
         private HotCornersPopover popover = null;
         private unowned Budgie.PopoverManager? manager = null;
         public string uuid { public set; public get; }
-        GLib.Settings? panel_settings;
-        GLib.Settings? currpanelsubject_settings;
+        //  GLib.Settings? panel_settings;
+        //  GLib.Settings? currpanelsubject_settings;
         bool hotc_onpanel = true;
 
         private bool find_applet (string uuid, string[] applets) {
@@ -609,11 +609,11 @@ namespace HotCornersApplet {
             // make applet's loop end if applet is removed
             string general_path = "com.solus-project.budgie-panel";
             string[] applets;
-            panel_settings = new GLib.Settings(general_path);
+            GLib.Settings? panel_settings = new GLib.Settings(general_path);
             string[] allpanels_list = panel_settings.get_strv("panels");
             foreach (string p in allpanels_list) {
                 string panelpath = "/com/solus-project/budgie-panel/panels/".concat("{", p, "}/");
-                currpanelsubject_settings = new GLib.Settings.with_path(
+                GLib.Settings? currpanelsubject_settings = new GLib.Settings.with_path(
                     general_path + ".panel", panelpath
                 );
 
