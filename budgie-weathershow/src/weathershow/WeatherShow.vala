@@ -92,25 +92,16 @@ namespace WeatherShowFunctions {
         return true;
     }
 
-    private void close_window(string path) {
-        bool win_exists = check_onwindow(path);
-        if (win_exists) {
-            try {
-                Process.spawn_command_line_async(
-                    Config.PACKAGE_BINDIR + "/pkill -f ".concat(path));
-            }
-            catch (SpawnError e) {
-                /* nothing to be done */
-            }
-        }
-    }
-
-    private void open_window(string path) {
+    private void open_window(string path, string? uuid) {
         // call the set-color window
+        string argstring = "";
+        if (uuid != null) {
+            argstring = @" $uuid";
+        }
         bool win_exists = check_onwindow(path);
         if (!win_exists) {
             try {
-                Process.spawn_command_line_async(path);
+                Process.spawn_command_line_async(path + argstring);
             }
             catch (SpawnError e) {
                 /* nothing to be done */
@@ -772,8 +763,11 @@ namespace WeatherShowApplet {
         private bool edit_citymenu;
         private Gtk.CheckButton customcity_checkbox;
         private Gtk.Entry customcity_entry;
+        string uuid;
 
-        public WeatherShowSettings(GLib.Settings? settings) {
+        public WeatherShowSettings(GLib.Settings? settings, string uuid) {
+            this.uuid = uuid;
+
             // css
             css_template = """
             .weathercbutton {
@@ -786,7 +780,6 @@ namespace WeatherShowApplet {
             .activebutton {
             }
             """;
-
             // settings stack/pages
             stack = new Stack();
             stack.set_transition_type(
@@ -896,7 +889,7 @@ namespace WeatherShowApplet {
             weathercbutton.set_size_request(10, 10);
             // call set-color window
             weathercbutton.clicked.connect( () => {
-                WeatherShowFunctions.open_window(color_window);
+                WeatherShowFunctions.open_window(color_window, null);
             });
             colorbox.pack_start(weathercbutton, false, false, 0);
             colorlabel = new Gtk.Label("\t" + (_("Set text color")));
@@ -1193,7 +1186,7 @@ namespace WeatherShowApplet {
             if (val_index == 0) {
                 button_desktop.set_sensitive(newsetting);
                 if (newsetting == true) {
-                    WeatherShowFunctions.open_window(desktop_window);
+                    WeatherShowFunctions.open_window(desktop_window, uuid);
                 }
             }
             else if (val_index == 3) {
@@ -1231,7 +1224,7 @@ namespace WeatherShowApplet {
         public Budgie.Applet get_panel_widget(string uuid) {
             var info = this.get_plugin_info();
             moduledir = info.get_module_dir();
-            return new Applet();
+            return new Applet(uuid);
         }
     }
 
@@ -1304,7 +1297,9 @@ namespace WeatherShowApplet {
         private WeatherShowPopover popover = null;
         private unowned Budgie.PopoverManager? manager = null;
         public string uuid { public set; public get; }
+        //  GLib.Settings? panel_settings;
         Thread<bool> update_thread;
+        bool weather_onpanel = true;
 
 
         public override bool supports_settings() {
@@ -1312,11 +1307,50 @@ namespace WeatherShowApplet {
         }
 
         public override Gtk.Widget? get_settings_ui() {
-            return new WeatherShowSettings(this.get_applet_settings(uuid));
+            return new WeatherShowSettings(this.get_applet_settings(uuid), uuid);
         }
 
-        public Applet() {
+        private bool find_applet (string uuid, string[] applets) {
+            for (int i = 0; i < applets.length; i++) {
+                if (applets[i] == uuid) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        void watchapplet (string uuid) {
+            // make applet's loop end if applet is removed
+            string general_path = "com.solus-project.budgie-panel";
+            string[] applets;
+            GLib.Settings? panel_settings = new GLib.Settings(general_path);
+            string[] allpanels_list = panel_settings.get_strv("panels");
+            foreach (string p in allpanels_list) {
+                string panelpath = "/com/solus-project/budgie-panel/panels/".concat("{", p, "}/");
+                GLib.Settings? currpanelsubject_settings = new GLib.Settings.with_path(
+                    general_path + ".panel", panelpath
+                );
+                applets = currpanelsubject_settings.get_strv("applets");
+                if (find_applet(uuid, applets)) {
+                    currpanelsubject_settings.changed["applets"].connect(() => {
+                        applets = currpanelsubject_settings.get_strv("applets");
+                        if (!find_applet(uuid, applets)) {
+                            weather_onpanel = false;
+                        }
+                    });
+                    break;
+                }
+            }
+        }
+
+        public Applet(string uuid) {
+
+            this.uuid = uuid;
+
+            GLib.Timeout.add_seconds(1, ()=> {
+                watchapplet(uuid);
+                return false;
+            });
             desktop_window = moduledir.concat("/desktop_weather");
             color_window = moduledir.concat("/get_color");
 
@@ -1369,7 +1403,7 @@ namespace WeatherShowApplet {
             });
 
             if (show_ondesktop == true) {
-                WeatherShowFunctions.open_window(desktop_window);
+                WeatherShowFunctions.open_window(desktop_window, uuid);
             }
 
             initialiseLocaleLanguageSupport();
@@ -1424,7 +1458,7 @@ namespace WeatherShowApplet {
 
         private bool run_periodiccheck () {
             var currtime1 = new DateTime.now_utc();
-            while (true) {
+            while (weather_onpanel) {
                 var currtime2 = new DateTime.now_utc();
                 var diff = currtime2.difference(currtime1);
                 // refresh if last update was more than 10 minutes ago
@@ -1432,31 +1466,9 @@ namespace WeatherShowApplet {
                     update_weathershow();
                     currtime1 = currtime2;
                 }
-                if (!check_onapplet(
-                    "/com/solus-project/budgie-panel/applets/",
-                    "WeatherShow"
-                )) {
-                    WeatherShowFunctions.close_window(desktop_window);
-                    return true;
-                    //  update_thread.exit(true);
-                }
                 Thread.usleep(15 * 1000000);
             }
-        }
-
-        private bool check_onapplet(string path, string applet_name) {
-            // check if the applet still runs
-            string cmd = Config.PACKAGE_BINDIR + "/dconf dump " + path;
-            string output;
-            try {
-                GLib.Process.spawn_command_line_sync(cmd, out output);
-            }
-            // on an occasional exception, don't break the loop
-            catch (SpawnError e) {
-                return true;
-            }
-            bool check = output.contains(applet_name);
-            return check;
+            return true;
         }
 
         private void get_icondata () {
