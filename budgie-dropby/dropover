@@ -336,7 +336,7 @@ class WatchVolumes:
         Gio.Mount.unmount(vol, Gio.MountUnmountFlags.NONE, None)
 
     def eject_volume(self, button, vol):
-        Gio.Mount.eject(vol, Gio.MountUnmountFlags.NONE, None)
+        Gio.Mount.eject_with_operation(vol, Gio.MountUnmountFlags.NONE, None)
 
     def copy_flashdrive(self, button, source, name):
         subprocess.Popen([self.copyscript, source, name])
