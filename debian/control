@@ -457,33 +457,6 @@ Description: Applet to display the weather and forecast
  The weathershow applet displays daily and three hourly weather
  forecasts on both the desktop and a Popover.
 
-Package: budgie-window-mover-applet
-Architecture: all
-Depends:
- dconf-cli,
- gir1.2-budgie-1.0,
- gir1.2-glib-2.0,
- gir1.2-gtk-3.0,
- gir1.2-peas-1.0,
- python3,
- python3-gi,
- python3-psutil,
- wmctrl,
- x11-utils,
- xdotool,
- ${misc:Depends},
- ${python3:Depends},
-Description: Applet allows moving windows between workspaces for the Budgie Desktop
- This is part of a suite of python3 and Vala based applets for the Budgie
- Desktop that provide additional user orientated capabilities.
- The applets can be used individually or as a set.
- .
- The Window Mover applet allows the user to quickly move windows to any
- of the other workspaces. Just drag a window to the bottom of the screen
- and a bar will popup, representing the workspaces. Click on
- any of the numbers (or press the corresponding number on the keyboard)
- and the window will move to that workspace.
-
 Package: budgie-window-shuffler
 Architecture: any
 Depends:
@@ -506,29 +479,6 @@ Description: Keyboard and GUI friendly window-tiling capability
  Windows can be easily quarter, half-tiled & maximized. Windows can
  be moved within a user defined grid and intelligently switches
  window positions where necessary.
-
-Package: budgie-workspace-overview-applet
-Architecture: all
-Depends:
- gir1.2-budgie-1.0,
- gir1.2-glib-2.0,
- gir1.2-gtk-3.0,
- gir1.2-peas-1.0,
- python3,
- python3-gi,
- python3-psutil,
- wmctrl,
- x11-utils,
- ${misc:Depends},
- ${python3:Depends},
-Description: Applet providing quick access to workspaces for the Budgie Desktop
- This is part of a suite of python3 and Vala based applets for the Budgie
- Desktop that provide additional user orientated capabilities.
- The applets can be used individually or as a set.
- .
- The workspace overview applet allows a user to quickly navigate
- workspaces using the applet's menu.  Optionally, navigation to any
- window in any workspace is possible.
 
 Package: budgie-workspace-stopwatch-applet
 Architecture: all
