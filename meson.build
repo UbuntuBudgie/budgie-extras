@@ -131,16 +131,6 @@ if build_all == true or build_quicknote == true
 	subdir('budgie-quicknote')
 endif
 
-build_wmover = get_option('build-wmover')
-if build_all == true or build_wmover == true
-	subdir('budgie-wmover')
-endif
-
-build_wsoverview = get_option('build-wsoverview')
-if build_all == true or build_wsoverview == true
-	subdir('budgie-wsoverview')
-endif
-
 build_showtime = get_option('build-showtime')
 if build_all == true or build_showtime == true
 	subdir('budgie-showtime')
