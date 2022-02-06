@@ -197,7 +197,7 @@ class BudgieDropByApplet(Budgie.Applet):
                 ["/usr/bin/pgrep", "-f", self.winpath]
             )
         except subprocess.CalledProcessError:
-            subprocess.Popen(self.winpath)
+            subprocess.Popen([self.winpath, self.uuid])
 
     def check_winexists(self):
         wins = self.scr.get_windows()

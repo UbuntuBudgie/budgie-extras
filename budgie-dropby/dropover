@@ -2,11 +2,12 @@
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
-from gi.repository import Gtk, Gio, Gdk
+from gi.repository import Gtk, Gio, Gdk, GLib
 import dropby_tools as db
 import subprocess
 import os
 import psutil
+import sys
 
 
 dropby_css = """
@@ -20,8 +21,9 @@ dropby_css = """
 
 class WatchVolumes:
 
-    def __init__(self):
+    def __init__(self, uuid):
         # setup watching connections
+        self.uuid = uuid
         self.watchdrives = Gio.VolumeMonitor.get()
         triggers = [
             "volume_added", "volume_removed", "mount_added", "mount_removed",
@@ -51,7 +53,33 @@ class WatchVolumes:
         infofile = Gio.File.new_for_path("/tmp")
         monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
         monitor.connect("changed", self.actonfile)
+        # setup watching applet presence
+        self.currpanelsubject_settings = None
+        GLib.timeout_add_seconds(1, self.watchout)
+        
         Gtk.main()
+
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        if not self.uuid in applets:
+            Gtk.main_quit()
 
     def update_corner(self, *args):
         self.winpos = self.settings.get_int("popup-corner")
@@ -293,9 +321,7 @@ class WatchVolumes:
         # act if uuid == None (removed) or in usb list (valid)
         if any([uuid is None, uuid in all_usb, trigger == "volume_removed"]):
             # if popup exists, update info
-            if not self.checkonapplet():
-                Gtk.main_quit()
-            elif self.newwin:
+            if self.newwin:
                 self.getridofwindow()
                 self.newwin = self.create_win(subject, newvol)
                 self.update_existing(newvol)
@@ -320,18 +346,6 @@ class WatchVolumes:
         )
         self.act_onmount = True
 
-    def checkonapplet(self):
-        cmd = [
-            "/usr/bin/dconf",
-            "dump",
-            "/com/solus-project/budgie-panel/applets/"
-        ]
-        try:
-            return "DropBy" in subprocess.check_output(
-                cmd).decode("utf-8")
-        except subprocess.CalledProcessError:
-            return True
-
     def unmount_volume(self, button, vol):
         Gio.Mount.unmount(vol, Gio.MountUnmountFlags.NONE, None)
 
@@ -343,4 +357,4 @@ class WatchVolumes:
 
 
 Gtk.init(None)
-WatchVolumes()
+WatchVolumes(sys.argv[1])
