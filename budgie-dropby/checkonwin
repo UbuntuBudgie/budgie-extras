@@ -3,8 +3,8 @@ import time
 import os
 import subprocess
 
-
-timer = "/tmp/keepdropbywin"
+dropby_user = os.environ["USER"]
+timer = "/tmp/" + dropby_user + "_keepdropbywin"
 
 
 try:
@@ -20,6 +20,6 @@ while True:
         t = t + 1
     else:
         t = 0
-    if t >= 7:
+    if t >= 6:
         subprocess.Popen(["/usr/bin/wmctrl", "-c", "dropby_popup"])
         break

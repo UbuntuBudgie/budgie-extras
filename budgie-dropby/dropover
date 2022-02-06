@@ -109,7 +109,7 @@ class WatchVolumes:
         window.connect("enter-notify-event", self.busy)
         window.connect("leave-notify-event", self.outofajob)
         window.set_title("dropby_popup")
-        window.set_skip_taskbar_hint(True)
+        window.set_type_hint(Gdk.WindowTypeHint.POPUP_MENU)
         window.set_keep_above(True)
         window.set_decorated(False)
         self.maingrid = Gtk.Grid()
