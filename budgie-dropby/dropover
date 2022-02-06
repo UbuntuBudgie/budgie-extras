@@ -56,7 +56,6 @@ class WatchVolumes:
         # setup watching applet presence
         self.currpanelsubject_settings = None
         GLib.timeout_add_seconds(1, self.watchout)
-        
         Gtk.main()
 
     def watchout(self):
@@ -78,7 +77,7 @@ class WatchVolumes:
 
     def check_ifonpanel(self, *args):
         applets = self.currpanelsubject_settings.get_strv("applets")
-        if not self.uuid in applets:
+        if self.uuid not in applets:
             Gtk.main_quit()
 
     def update_corner(self, *args):
