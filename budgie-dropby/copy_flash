@@ -4,7 +4,6 @@ import shutil
 import subprocess
 import os
 import time
-import notify2
 
 
 """
@@ -39,8 +38,7 @@ def notify_result(n):
 
 
 def sendmessage(title, message, icon=""):
-    notify2.init("CopyFlash")
-    notify2.Notification(title, message, icon).show()
+    subprocess.Popen(["notify-send", "-i", icon, title, message])
 
 
 def check_permissions(target):
