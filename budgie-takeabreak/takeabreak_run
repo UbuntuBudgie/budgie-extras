@@ -6,7 +6,6 @@ import subprocess
 import time
 import os
 import psutil
-import notify2
 
 
 """
@@ -39,10 +38,6 @@ notify_time = 15
 from_unidle = tab_settings.get_boolean("smartresume")
 message = "Break in " + str(notify_time) + " seconds"
 tabcountdown_path = os.path.dirname(os.path.abspath(__file__))
-
-
-def getkey():
-    return getkeys.by_subval(dcpath, 'name', "'Take a Break'")
 
 
 def get_idle():
@@ -85,8 +80,7 @@ def write_nextbreak():
 
 
 def sendmessage(title, message, icon=""):
-    notify2.init("TakeaBreak")
-    notify2.Notification(title, message, icon).show()
+    subprocess.Popen(["notify-send", "-i", icon, title, message])
 
 
 def take_a_break():

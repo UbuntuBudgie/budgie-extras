@@ -5,7 +5,6 @@ PLUGIN = 'budgie-takeabreak'
 install_data(
     'BudgieTakeaBreak.plugin',
     'message_window',
-    'getkeys.py',
     'takeabreak_run',
     'budgie_takeabreak.py',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
