@@ -3,14 +3,14 @@ import time
 import subprocess
 import os
 gi.require_version('Budgie', '1.0')
-from gi.repository import Budgie, GObject, Gtk, Gio
+from gi.repository import Budgie, GObject, Gtk, Gio, GLib
 import os
 
 
 """
 Budgie TakeaBreak
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -146,7 +146,11 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         self.tab_message = ""
         Budgie.Applet.__init__(self)
         self.uuid = uuid
-
+        appletpath = os.path.dirname(os.path.abspath(__file__))
+        self.runnerpath = os.path.join(appletpath, "takeabreak_run")
+        # setup exit-from-panel triggers
+        self.currpanelsubject_settings = None
+        GLib.timeout_add_seconds(1, self.watchout)
         # applet appearance
         self.icon = Gtk.Image()
         self.img_normal = "takeabreak-symbolic"
@@ -169,9 +173,9 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         self.maingrid.attach(self.next_label, 1, 1, 1, 1)
         self.maingrid.attach(self.time_label, 1, 2, 1, 1)
         tab_settings.connect("changed", self.test)
-
         self.on_offbutton = Gtk.Switch()
         self.onoff_set = tab_settings.get_boolean("paused")
+        # run runner if False
         self.switched_on = self.onoff_set is False
         if self.switched_on:
             self.on_offbutton.set_active(True)
@@ -186,7 +190,29 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
-        self.reset_app(self.onoff_set is False)
+        GLib.timeout_add_seconds(2, self.reset_app, self.onoff_set is False)
+
+    def watchout(self):
+        path = "com.solus-project.budgie-panel"
+        panelpath_prestring = "/com/solus-project/budgie-panel/panels/"
+        panel_settings = Gio.Settings.new(path)
+        allpanels_list = panel_settings.get_strv("panels")
+        for p in allpanels_list:
+            panelpath = panelpath_prestring + "{" + p + "}/"
+            self.currpanelsubject_settings = Gio.Settings.new_with_path(
+                path + ".panel", panelpath
+            )
+            applets = self.currpanelsubject_settings.get_strv("applets")
+            if self.uuid in applets:
+                self.currpanelsubject_settings.connect(
+                    "changed", self.check_ifonpanel
+                )
+        return False
+
+    def check_ifonpanel(self, *args):
+        applets = self.currpanelsubject_settings.get_strv("applets")
+        if self.uuid not in applets:
+            self.kill_runner()
 
     def test(self, *args):
         self.reset_app(tab_settings.get_boolean("paused") is False)
@@ -228,18 +254,20 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
 
     def reset_app(self, state):
         self.set_labels(state)
-        appletpath = os.path.dirname(os.path.abspath(__file__))
-        app = os.path.join(appletpath, "takeabreak_run")
+        self.kill_runner()
+        if state:
+            subprocess.Popen(self.runnerpath)
+        return False
+
+    def kill_runner(self):
         try:
             # I know, old school, but it works well
             pid = subprocess.check_output([
-                "/usr/bin/pgrep", "-f", "-u", user, app,
+                "/usr/bin/pgrep", "-f", "-u", user, self.runnerpath,
             ]).decode("utf-8").strip()
             subprocess.Popen(["/usr/bin/kill", pid])
         except subprocess.CalledProcessError:
             pass
-        if state:
-            return subprocess.Popen(app)
 
     def on_press(self, box, arg):
         curr_paused = tab_settings.get_boolean("paused")

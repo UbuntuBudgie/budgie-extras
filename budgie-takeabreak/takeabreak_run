@@ -5,7 +5,6 @@ from gi.repository import Gio, Gdk
 import subprocess
 import time
 import os
-import getkeys
 import psutil
 import notify2
 
@@ -13,7 +12,7 @@ import notify2
 """
 Budgie TakeaBreak
 Author: Jacob Vlijm
-Copyright © 2017-2021 Ubuntu Budgie Developers
+Copyright © 2017-2022 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -153,19 +152,9 @@ def lockscreen_check():
 
 
 while True:
-    # in case the applet is removed, just quit on next un- sleep
-    if not getkey():
-        break
     write_nextbreak()
     time.sleep(awaketime - notify_time)
-    if not getkey():
-        break
     if notify_msg:
         sendmessage("Take a break", message, "takeabreak-symbolic")
-    if not getkey():
-        break
     time.sleep(notify_time)
-    if not getkey():
-        break
-    else:
-        take_a_break()
+    take_a_break()
