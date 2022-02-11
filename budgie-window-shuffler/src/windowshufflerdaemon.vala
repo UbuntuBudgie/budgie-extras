@@ -800,7 +800,8 @@ namespace ShufflerEssentialInfo {
     private void run_windowrules (Wnck.Window newwin, int? xid) {
         // first check if run_layout is active, possibly need to overrule below
         bool layout_isbusy = layout_busy.query_exists ();
-        if (use_windowrules && !layout_isbusy) {
+        bool win_isvalid = newwin.get_window_type() == Wnck.WindowType.NORMAL;
+        if (use_windowrules && !layout_isbusy && win_isvalid) {
             string groupname = newwin.get_class_group_name();
             string cmnd = Config.SHUFFLER_DIR + @"/run_rule $groupname $xid";
             run_command(cmnd);
