@@ -118,7 +118,6 @@ Description: Applet to display clock across multiple time zones
 Package: budgie-countdown-applet
 Architecture: all
 Depends:
- dconf-cli,
  gir1.2-budgie-1.0,
  gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
@@ -155,6 +154,7 @@ Depends:
  util-linux (>= 2.31.1),
  wmctrl,
  zenity,
+ libnotify-bin,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to popup when a USB device is connected
@@ -207,7 +207,6 @@ Package: budgie-hotcorners-applet
 Architecture: any
 Depends:
  budgie-extras-common,
- dconf-cli,
  gnome-screensaver,
  libnotify-bin,
  xdotool,
@@ -373,7 +372,7 @@ Description: Applet to lock or unlock the screen rotation
 
 Package: budgie-showtime-applet
 Architecture: any
-Depends: budgie-extras-common, dconf-cli, ${misc:Depends}, ${shlibs:Depends}
+Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -394,6 +393,7 @@ Depends:
  python3-gi,
  x11-xserver-utils,
  xprintidle,
+ libnotify-bin,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to prompt when to take-a-break for a set period of time
@@ -407,7 +407,7 @@ Description: Applet to prompt when to take-a-break for a set period of time
 
 Package: budgie-trash-applet
 Architecture: any
-Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
+Depends: budgie-extras-common, libnotify-bin, ${misc:Depends}, ${shlibs:Depends}
 Description: Applet allows access to trash capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -445,7 +445,6 @@ Package: budgie-weathershow-applet
 Architecture: any
 Depends:
  budgie-extras-common,
- dconf-cli,
  procps,
  ${misc:Depends},
  ${shlibs:Depends},
