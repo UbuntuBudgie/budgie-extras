@@ -51,16 +51,16 @@ mytarget4a = custom_target('preview_currentforward_grave',
 
 
 mytarget5 = custom_target('preview_creator',
-  output : 'previews-creator-autostart.desktop',
-  input : 'previews-creator-autostart.desktop.in',
+  output : 'org.ubuntubudgie.previews-creator-autostart.desktop',
+  input : 'org.ubuntubudgie.previews-creator-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : xdg_appdir
 )
 
 mytarget6 = custom_target('previews_daemon',
-  output : 'previews-daemon-autostart.desktop',
-  input : 'previews-daemon-autostart.desktop.in',
+  output : 'org.ubuntubudgie.previews-daemon-autostart.desktop',
+  input : 'org.ubuntubudgie.previews-daemon-autostart.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
   install : true,
   install_dir : xdg_appdir
@@ -69,11 +69,30 @@ mytarget6 = custom_target('previews_daemon',
 APP_LOC=join_paths(datadir, 'applications')
 
 mytarget7 = custom_target('previewscontrols',
-  output : 'previewscontrols.desktop',
-  input : 'previewscontrols.desktop.in',
+  output : 'org.ubuntubudgie.previewscontrols.desktop',
+  input : 'org.ubuntubudgie.previewscontrols.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
   install_dir : APP_LOC
+)
+
+metainfo = 'org.ubuntubudgie.previewscontrols.metainfo.xml'
+ascli_exe = find_program('appstreamcli')
+metainfo_with_relinfo = custom_target('gen-metainfo-rel',
+    input : [NEWS, metainfo + '.in'],
+    output : [metainfo],
+    install : true,
+    install_dir: join_paths(datadir, 'metainfo'),
+    command : [ascli_exe, 'news-to-metainfo', '--limit=6', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
+)
+
+# Validate MetaInfo file
+test('validate metainfo file',
+      ascli_exe,
+      args: ['validate',
+              '--no-net',
+              '--pedantic',
+              metainfo_with_relinfo]
 )
 
 PIXMAP=join_paths(datadir, 'pixmaps')
