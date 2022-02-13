@@ -43,6 +43,11 @@ budgie mini-apps - see the individual components for details
 
  By default all applets are compiled and installed:
 
+     git clone https://github.com/ubuntubudgie/budgie-extras
+     cd budgie-extras
+     git submodule init
+     git submodule update
+
      mkdir build && cd build
      meson --buildtype plain --prefix=/usr --libdir=/usr/lib
      ninja -v
@@ -52,6 +57,7 @@ If individual applets (or groups of applets) are to be compiled and installed us
 the options described in meson_options.txt i.e. use `-Dbuild-all=false -Dbuild-appletoption=true`
 
 e.g. to build just the hotcorners and weathershow applets
+(remember to git clone and git submodule etc as above)
 
      mkdir build && cd build
      meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
