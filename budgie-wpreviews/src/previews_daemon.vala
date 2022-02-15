@@ -707,7 +707,6 @@ namespace NewPreviews {
         // prevent cold start (not sure why, but it works)
         previews_window = new PreviewsWindow();
         previews_window.destroy();
-        Gtk.main();
     }
 
     public static void main (string[] args) {
