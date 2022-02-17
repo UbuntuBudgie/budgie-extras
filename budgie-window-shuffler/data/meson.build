@@ -1,11 +1,11 @@
 substprog = find_program('subst.py')
 
 install_data('shuffler-control.svg',
-    install_dir: PIXMAPS_DIR
+    install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'),
 )
 
 install_data('shuffler-togglesticky-symbolic.svg',
-    install_dir: PIXMAPS_DIR
+    install_dir: PIXMAPS_DIR,
 )
 
 shufflertargetauto = custom_target('shufflerautostart',

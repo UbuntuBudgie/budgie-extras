@@ -97,5 +97,5 @@ test('validate metainfo file',
 
 PIXMAP=join_paths(datadir, 'pixmaps')
 install_data('budgiewprviews.svg',
-    install_dir: PIXMAP
+    install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'),
 )
