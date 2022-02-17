@@ -1,7 +1,7 @@
 substprog = find_program('subst.py')
 
 install_data('wallstreet-control.svg',
-    install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'),
+    install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps')
 )
 
 autostart_file = 'org.ubuntubudgie.wallstreet-autostart.desktop'
