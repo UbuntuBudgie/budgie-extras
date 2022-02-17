@@ -1,6 +1,6 @@
 substprog = find_program('subst.py')
 
-install_data('wallstreet-control.svg',
+install_data('org.ubuntubudgie.wallstreet-control.svg',
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps')
 )
 

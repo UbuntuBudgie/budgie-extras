@@ -95,7 +95,6 @@ test('validate metainfo file',
               metainfo_with_relinfo]
 )
 
-PIXMAP=join_paths(datadir, 'pixmaps')
-install_data('budgiewprviews.svg',
+install_data('org.ubuntubudgie.budgiewpreviews.svg',
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps')
 )
