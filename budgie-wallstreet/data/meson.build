@@ -4,7 +4,7 @@ install_data('org.ubuntubudgie.wallstreet-control.svg',
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps')
 )
 
-autostart_file = 'org.ubuntubudgie.wallstreet-autostart.desktop'
+autostart_file = 'wallstreet-autostart.desktop'
 mytargeta = custom_target('wallstreetautostart',
   output : autostart_file,
   input : autostart_file + '.in',
