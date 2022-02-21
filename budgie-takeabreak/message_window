@@ -106,6 +106,7 @@ class Splash(Gtk.Window):
                 try:
                     time.sleep(2)
                     self.destroy()
+                    Gtk.main_quit()
                 except Exception:
                     pass
                 break
