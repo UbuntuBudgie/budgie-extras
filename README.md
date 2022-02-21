@@ -6,9 +6,7 @@ Additional enhancements for the user experience
 
  - Hotcorners
  - Quicknote
- - Workspace Switcher Overview
  - Wallpaper Switcher
- - Workspace Mover
  - ShowTime
  - CountDown
  - Automatic Keyboard Layout Switcher
