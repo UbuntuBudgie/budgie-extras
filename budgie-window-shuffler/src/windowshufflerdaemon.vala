@@ -574,18 +574,19 @@ namespace ShufflerEssentialInfo {
             int yshift = 0; int minwidth = 0; int minheight = 0;
             int ext_hor = 0; int ext_vert = 0;
             string winsubj = @"$w_id";
-            //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
-            string cmd = "/usr/bin" + "/xprop -id ".concat(
-                winsubj, " _NET_FRAME_EXTENTS ",
-                "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
-            );
-
             string? output = null;
-            try {
-                GLib.Process.spawn_command_line_sync(cmd, out output);
-            }
-            catch (SpawnError e) {
-                // nothing to do
+            if (winsubj != "-1") {
+                //  string cmd = Config.PACKAGE_BINDIR + "/xprop -id ".concat(
+                string cmd = "/usr/bin" + "/xprop -id ".concat(
+                    winsubj, " _NET_FRAME_EXTENTS ",
+                    "WM_NORMAL_HINTS", " _GTK_FRAME_EXTENTS"
+                );
+                try {
+                    GLib.Process.spawn_command_line_sync(cmd, out output);
+                }
+                catch (SpawnError e) {
+                    // nothing to do
+                }
             }
             if (output != null) {
                 string[] lookfordata = output.split("\n");
