@@ -64,6 +64,8 @@ namespace SupportingFunctions {
 namespace QuickNoteApplet {
 
     private ScrolledWindow win;
+    private bool scroll_setbyindicatorbox = true;
+    double vert_scrollposition;
     private GLib.Settings qn_settings;
     private TextView view;
     private string[] steps;
@@ -304,6 +306,16 @@ namespace QuickNoteApplet {
             Grid maingrid = new Gtk.Grid();
             this.add(maingrid);
             win = new Gtk.ScrolledWindow (null, null);
+            win.vadjustment.value_changed.connect(()=> {
+                /*
+                / calling the popover invokes a vadjustment-signal, which
+                / is always 0, so initial signal should be ignored
+                */
+                if (!scroll_setbyindicatorbox) {
+                    vert_scrollposition = win.vadjustment.get_value();
+                }
+                scroll_setbyindicatorbox = false;
+            });
             maingrid.attach(win, 0, 0, 1, 1);
             view = new TextView ();
             view.button_press_event.connect(disable_popup);
@@ -365,6 +377,7 @@ namespace QuickNoteApplet {
         }
 
         public QuickNoteApplet() {
+            vert_scrollposition = 0;
             qn_settings = SupportingFunctions.get_settings(
                 "org.ubuntubudgie.plugins.quicknote"
             );
@@ -383,7 +396,18 @@ namespace QuickNoteApplet {
                 if (popover.get_visible()) {
                     popover.hide();
                 } else {
+                    /*
+                    / calling the popover invokes a vadjustment-signal, which
+                    / is always 0, So we need to get passed that initial one
+                    */
+                    scroll_setbyindicatorbox = true;
                     set_content();
+                    GLib.Timeout.add(150, ()=> {
+                        // we need a tiny tmeout,
+                        // to make sure the popover is alive
+                        win.vadjustment.set_value(vert_scrollposition);
+                        return false;
+                    });
                     this.manager.show_popover(indicatorBox);
                 }
                 return Gdk.EVENT_STOP;
