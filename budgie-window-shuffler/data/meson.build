@@ -33,11 +33,30 @@ shufflerlayoutstargetauto = custom_target('layoutsautostart',
 )
 
 shufflertargetw = custom_target('shufflercontrols',
-  output : 'shuffler-control.desktop',
-  input : 'shuffler-control.desktop.in',
+  output : 'org.ubuntubudgie.shufflercontrol.desktop',
+  input : 'org.ubuntubudgie.shufflercontrol.desktop.in',
   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
   install : true,
   install_dir : join_paths(datadir, 'applications')
+)
+
+metainfo = 'org.ubuntubudgie.shufflercontrol.metainfo.xml'
+ascli_exe = find_program('appstreamcli')
+metainfo_with_relinfo = custom_target('gen-metainfo-rel',
+    input : [NEWS, metainfo + '.in'],
+    output : [metainfo],
+    install : true,
+    install_dir: join_paths(datadir, 'metainfo'),
+    command : [ascli_exe, 'news-to-metainfo', '--limit=6', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
+)
+
+# Validate MetaInfo file
+test('validate metainfo file',
+      ascli_exe,
+      args: ['validate',
+              '--no-net',
+              '--pedantic',
+              metainfo_with_relinfo]
 )
 
 BDE_LOC=join_paths(datadir, 'budgie-extras-daemon')
