@@ -58,7 +58,6 @@ class WatchVolumes:
         )
         self.settings.connect("changed", self.update_corner)
         self.update_corner()
-        print("self.winpos:", self.winpos)
 
         app_path = os.path.dirname(os.path.abspath(__file__))
         self.copyscript = os.path.join(app_path, "copy_flash")
