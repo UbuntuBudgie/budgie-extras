@@ -7,10 +7,11 @@
 # Lynx Medeiros <lynxmedeiros@gmail.com>, 2019
 # Guilherme Berbet <amendobobo.gc@gmail.com>, 2019
 # Celio Alves <dreamcelio@gmail.com>, 2021
-# Philippe Rogers, 2021
 # Italo Penaforte <italo.penaforte@gmail.com>, 2021
+# Philippe Rogers, 2021
 # Luis Forman <lf@lfsqr.co>, 2021
 # david mohammed <foss.freedom@gmail.com>, 2021
+# Henrique Vicentin, 2022
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-26 21:17+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2021\n"
+"Last-Translator: Henrique Vicentin, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/ubuntu-budgie/teams/72251/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,11 +30,11 @@ msgstr ""
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
-msgstr ""
+msgstr "Restaurar todos os itens"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
 msgid "Delete all items"
-msgstr ""
+msgstr "Deletar todos os itens"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:119
@@ -49,11 +50,11 @@ msgstr "Sim"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
 msgid "Really restore all items?"
-msgstr ""
+msgstr "Realmente restaurar todos os itens?"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
 msgid "Really delete all items?"
-msgstr ""
+msgstr "Realmente deletar todos os itens?"
 
 #. I hate this and want to do this more programmaticly with libnotify.
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:59
@@ -66,67 +67,67 @@ msgstr "Lixeira"
 
 #: budgie-trash/trash/src/Widgets/MainPopover.vala:79
 msgid "Go to applet options"
-msgstr ""
+msgstr "Abrir opções dos applets"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:61
 msgid "Trash Settings"
-msgstr ""
+msgstr "Configurações da Lixeira"
 
 #. Sorting section
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:76
 msgid "Sort"
-msgstr ""
+msgstr "Ordenar"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:80
 msgid "Type"
-msgstr ""
+msgstr "tipo"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:81
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:82
 msgid "Z-A"
-msgstr ""
+msgstr "Z-A"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:83
 msgid "Oldest First"
-msgstr ""
+msgstr "Mais antigos primeiro"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:84
 msgid "Newest First"
-msgstr ""
+msgstr "Mais recentes primeiro"
 
 #: budgie-trash/trash/src/Widgets/SettingsView.vala:105
 msgid "Return to main view"
-msgstr ""
+msgstr "Voltar para a visão principal"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:80
 msgid "Restore item"
-msgstr ""
+msgstr "Restaurar item"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:82
 msgid "Delete item"
-msgstr ""
+msgstr "Deletar item"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:95
 #, c-format
 msgid "Path: %s"
-msgstr ""
+msgstr "Caminho: %s"
 
 #. TRANSLATORS: this is the time of when the file was deleted
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:103
 #, c-format
 msgid "Deleted on: %s"
-msgstr ""
+msgstr "Deletado em: %s"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:186
 msgid "Restore this item?"
-msgstr ""
+msgstr "Restaurar este item?"
 
 #: budgie-trash/trash/src/Widgets/TrashItem.vala:188
 msgid "Delete this item?"
-msgstr ""
+msgstr "Deletar este item?"
 
 #: budgie-trash/trash/src/TrashHandler.vala:63
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:799
@@ -136,11 +137,11 @@ msgstr "Desktop"
 #: budgie-trash/trash/src/TrashHandler.vala:110
 #, c-format
 msgid "Unable to access trash for '%s': %s"
-msgstr ""
+msgstr "Incapaz de aceder ao lixo para '%s': %s"
 
 #: budgie-trash/trash/src/TrashApplet.vala:149
 msgid "Error moving to trash:"
-msgstr ""
+msgstr "Erro ao mover para a lixeira:"
 
 #: budgie-trash/trash/src/TrashStore.vala:133
 #: budgie-trash/trash/src/TrashStore.vala:144
@@ -153,16 +154,16 @@ msgstr "Esvaziar Lixeira"
 #: budgie-trash/trash/src/TrashStore.vala:151
 #, c-format
 msgid "Unable to permanently delete '%s': %s"
-msgstr ""
+msgstr "Não foi possível deletar permanentemente '%s': %s"
 
 #: budgie-trash/trash/src/TrashStore.vala:192
 msgid "Restore"
-msgstr "Recuperar"
+msgstr "Restaurar"
 
 #: budgie-trash/trash/src/TrashStore.vala:192
 #, c-format
 msgid "Unable to restore '%s' to %s: %s"
-msgstr ""
+msgstr "Não foi possível restaurar '%s' para %s: %s"
 
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
@@ -249,7 +250,7 @@ msgstr "Área de trabalho pretendida, padrão é a área ativa"
 #: budgie-window-shuffler/src/shuffler_control.vala:439
 #: budgie-window-shuffler/src/layouts_popup.vala:645
 msgid "Application"
-msgstr ""
+msgstr "Aplicativo"
 
 #. - wmclass
 #. This is a field label, should be as short as possible
@@ -257,14 +258,14 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:448
 #: budgie-window-shuffler/src/layouts_popup.vala:663
 msgid "WM class group"
-msgstr ""
+msgstr "Grupo de classes WM"
 
 #. Placeholder text
 #. this is a placeholder text
 #: budgie-window-shuffler/src/shuffler_control.vala:462
 #: budgie-window-shuffler/src/layouts_popup.vala:669
 msgid "Click a window to fetch WM-class"
-msgstr ""
+msgstr "Clique numa janela para buscar a WM-class"
 
 #. 2. GEOMETRY FRAME
 #. This is a Frame title, string length is not particularly critical
