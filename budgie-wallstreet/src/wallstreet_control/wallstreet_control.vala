@@ -298,7 +298,8 @@ namespace WallStreetControls {
                 Gtk.ResponseType.ACCEPT
                 );
                 if (chooser.run () == Gtk.ResponseType.ACCEPT) {
-                    string newpath = chooser.get_uri ().replace("file://", "");
+                    string newpath = chooser.get_file().get_path();
+                    print(@"new path: $newpath\n");
                     wallstreet_settings.set_string("wallpaperfolder", newpath);
                     dir_entry.set_text(newpath);
                 }
