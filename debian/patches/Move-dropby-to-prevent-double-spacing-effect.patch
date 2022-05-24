@@ -1,0 +1,25 @@
+From 687c5efe597ad34453a46ccca2282b7c774deccf Mon Sep 17 00:00:00 2001
+From: David Mohammed <fossfreedom@ubuntu.com>
+Date: Sun, 20 Mar 2022 22:42:40 +0000
+Subject: [PATCH] Move dropby to prevent double spacing effect
+
+---
+ budgie-extras-daemon/data/ubuntubudgie.layout | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/budgie-extras-daemon/data/ubuntubudgie.layout b/budgie-extras-daemon/data/ubuntubudgie.layout
+index b3c9f40..e8c46f0 100644
+--- a/budgie-extras-daemon/data/ubuntubudgie.layout
++++ b/budgie-extras-daemon/data/ubuntubudgie.layout
+@@ -2,7 +2,7 @@
+ Panels=Top Panel
+ 
+ [Top Panel]
+-Children=AppMenu;ShowTime;Spacer 1;Spacer 2;Clock;Spacer 3;Spacer 4;AppIndicator;Spacer 5;VisualSpace;Spacer 6;DropBy;Spacer 7;QuickNote;Spacer 8;Places;Spacer 9;Notifications;Spacer 10;Network;Spacer 11;Status;Spacer 12;Separator;Spacer 13;User Indicator;Spacer 14;Raven Trigger;
++Children=AppMenu;ShowTime;Spacer 1;Spacer 2;Clock;Spacer 3;DropBy;Spacer 4;AppIndicator;Spacer 5;VisualSpace;Spacer 6;QuickNote;Spacer 8;Places;Spacer 9;Notifications;Spacer 10;Network;Spacer 11;Status;Spacer 12;Separator;Spacer 13;User Indicator;Spacer 14;Raven Trigger;
+ Position=Top
+ Size=37
+ 
+-- 
+2.34.1
+

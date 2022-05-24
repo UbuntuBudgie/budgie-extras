@@ -66,6 +66,7 @@ Description: Applet to provide an alternative means to launch applications
 Package: budgie-applications-menu-applet
 Architecture: any
 Depends: budgie-extras-common, gnome-menus, ${misc:Depends}, ${shlibs:Depends}
+Recommends: switcheroo-control
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor

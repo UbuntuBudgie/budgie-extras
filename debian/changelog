@@ -1,3 +1,21 @@
+budgie-extras (1.4.0-2) unstable; urgency=medium
+
+  * Bug-fixes
+    trash applet usability fixes
+    - support multiple file drag and drop to panel icon
+    - show trash full icon when there are items in trash
+    - open trash folder instead of popup when > 100 items
+    - fix paths with certain characters not restoring correctly
+      trash_path_drag_drop.patch
+    DropBy by default is hidden so layouts with spacers appear to be
+      oddly displayed
+      Move-dropby-to-prevent-double-spacing-effect.patch
+  * Packaging Changes
+    - d/control add switcheroo-control recommendation to support
+      dual GPUs for the applications-menu applet
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 24 May 2022 16:01:43 +0100
+
 budgie-extras (1.4.0-1) unstable; urgency=medium
 
   * Stable release
