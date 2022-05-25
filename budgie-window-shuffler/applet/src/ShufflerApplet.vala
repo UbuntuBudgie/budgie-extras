@@ -86,9 +86,10 @@ namespace ShufflerApplet {
     private void open_shufflersettings() {
         if (procruns(Config.SHUFFLER_DIR + "/shuffler_control")) {
             string user = Environment.get_user_name();
+            var tmp = Environment.get_tmp_dir() + "/";
             try {
                 File showpage_trigger = File.new_for_path(
-                    @"/tmp/shufflerapplettrigger_$user"
+                    tmp + @"shufflerapplettrigger_$user"
                 );
                 showpage_trigger.create(FileCreateFlags.NONE);
             }

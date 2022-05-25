@@ -984,7 +984,8 @@ namespace ShufflerEssentialInfo {
         create_box (surface, context, {30, 30, 8, 8}, {1, 1, 1, 1});
         create_box (surface, context, {40, 20, 8, 8}, {1, 1, 1, 1});
         // Save the image:
-        surface.write_to_png ("/tmp/shuffler-warning.png");
+        var tmp = Environment.get_tmp_dir();
+        surface.write_to_png (tmp + "/shuffler-warning.png");
     }
 
     private void create_box (
@@ -1004,13 +1005,14 @@ namespace ShufflerEssentialInfo {
         gridguiruns = false;
         FileMonitor monitor;
         string user = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         // layout_busy triggerfile for run_layout
         layout_busy = File.new_for_path (
-            "/tmp/".concat(user, @"_running_layout")
+            tmp.concat(user, @"_running_layout")
         );
         // and one for grid
         File gridtrigger = File.new_for_path(
-            "/tmp/".concat(user, "_gridtrigger")
+            tmp.concat(user, "_gridtrigger")
         );
         try {
             monitor = gridtrigger.monitor(FileMonitorFlags.NONE, null);

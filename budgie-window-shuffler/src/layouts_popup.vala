@@ -487,7 +487,8 @@ namespace LayoutsPopup {
                     targetfile = File.new_for_path(path);
                 }
                 else {
-                    string runfile =  "/tmp/".concat(username, "_istestingtask");
+                    var tmp = Environment.get_tmp_dir() + "/";
+                    string runfile =  tmp.concat(username, "_istestingtask");
                     targetfile = File.new_for_path(runfile);
                 }
                 if (targetfile.query_exists ()) {
@@ -1372,8 +1373,9 @@ namespace LayoutsPopup {
             ".config/budgie-extras/shuffler/layouts", true
         );
         username = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         string triggerpath = create_dirs_file(
-            "/tmp/".concat(username, "_shufflertriggers")
+            tmp.concat(username, "_shufflertriggers")
         );
         // watch triggerfile
         // containing dir

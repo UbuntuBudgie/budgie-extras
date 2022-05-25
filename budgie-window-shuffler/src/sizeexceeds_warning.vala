@@ -64,7 +64,8 @@ namespace ShufflerExceedsWarning {
             sc.add_class ("header");
             label.xalign = (float)0.5;
             this.add (maingrid);
-            Gtk.Image img = new Gtk.Image.from_file ("/tmp/shuffler-warning.png");
+            var tmp = Environment.get_tmp_dir();
+            Gtk.Image img = new Gtk.Image.from_file (tmp + "/shuffler-warning.png");
             maingrid.attach (label, 0, 0, 1, 1);
             maingrid.attach (img, 0, 0, 1, 1);
             this.destroy.connect (Gtk.main_quit);

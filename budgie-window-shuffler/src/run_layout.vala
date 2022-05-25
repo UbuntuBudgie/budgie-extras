@@ -199,7 +199,8 @@ namespace ShufflerLayouts {
     private void create_busyfile (File busyfile) {
         // create triggerfile to temporarily disable possibly set windowrules
         string user = Environment.get_user_name();
-        File busy = File.new_for_path ("/tmp/".concat(user, "_running_layout"));
+        var tmp = Environment.get_tmp_dir() + "/";
+        File busy = File.new_for_path (tmp.concat(user, "_running_layout"));
         try {
             if (!busy.query_exists()) {
                 busy.create(FileCreateFlags.REPLACE_DESTINATION);
@@ -374,8 +375,9 @@ namespace ShufflerLayouts {
         xids_moved_windows = {};
         // define & create triggerfile (putting rules on hold)
         string user = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         File busyfile = File.new_for_path (
-            "/tmp/".concat(user, "_running_layout")
+            tmp.concat(user, "_running_layout")
         );
         create_busyfile(busyfile);
         // get windowlist (xid) of windows that existed on launch
@@ -402,7 +404,7 @@ namespace ShufflerLayouts {
             }
             else {
                 string username = Environment.get_user_name();
-                validpaths = {"/tmp/".concat(username, "_istestingtask")};
+                validpaths = {tmp.concat(username, "_istestingtask")};
             }
         }
         else {

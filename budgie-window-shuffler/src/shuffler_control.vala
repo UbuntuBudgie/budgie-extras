@@ -1690,8 +1690,9 @@ namespace ShufflerControl2 {
         new ShufflerControlWindow(page);
         // watch trigger to switch to applet settings
         string user = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir();
         File showpage_trigger = File.new_for_path(
-            @"/tmp/shufflerapplettrigger_$user"
+            tmp + @"/shufflerapplettrigger_$user"
         );
         delete_file(showpage_trigger);
         FileMonitor monitor_showpage_trigger;

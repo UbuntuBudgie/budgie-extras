@@ -629,8 +629,9 @@ namespace GridWindowSection {
         // monitoring files / dirs
         FileMonitor monitor;
         string user = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         gridtrigger = File.new_for_path(
-            "/tmp/".concat(user, "_gridtrigger")
+            tmp.concat(user, "_gridtrigger")
         );
         try {
             monitor = gridtrigger.monitor(FileMonitorFlags.NONE, null);

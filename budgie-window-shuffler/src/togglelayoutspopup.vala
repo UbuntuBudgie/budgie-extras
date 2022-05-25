@@ -51,8 +51,9 @@ namespace ToggleShufflerGUI {
     public static void main (string[] args) {
         // make sure triggerdir exists
         string username = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         string triggerpath = create_dirs_file(
-            "/tmp/".concat(username, "_shufflertriggers")
+            tmp.concat(username, "_shufflertriggers")
         );
         // then define trigger
         File popuptrigger = File.new_for_path(triggerpath.concat("/layoutspopup"));

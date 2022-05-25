@@ -29,8 +29,9 @@ namespace ToggleShufflerGUI {
 
     public static void main (string[] args) {
         string user = Environment.get_user_name();
+        var tmp = Environment.get_tmp_dir() + "/";
         File gridtrigger = File.new_for_path(
-            "/tmp/".concat(user, "_gridtrigger")
+            tmp.concat(user, "_gridtrigger")
         );
         bool gridtriggerexists = gridtrigger.query_exists();
         if (!gridtriggerexists) {
