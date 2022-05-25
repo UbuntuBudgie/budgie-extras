@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import gi.repository
 gi.require_version("Gdk", "3.0")
-from gi.repository import Gio, Gdk
+from gi.repository import Gio, Gdk, GLib
 import subprocess
 import time
 import os
@@ -76,7 +76,8 @@ def subprocess_tasks(task, command_list, fallbackval=None):
 
 def write_nextbreak():
     next_break = time.time() + awaketime
-    open("/tmp/nextbreak_" + user, "wt").write(str(next_break))
+    tmp = GLib.get_tmp_dir()
+    open(tmp + "/nextbreak_" + user, "wt").write(str(next_break))
 
 
 def sendmessage(title, message, icon=""):

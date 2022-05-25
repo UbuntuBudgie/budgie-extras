@@ -24,7 +24,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 user = os.environ["USER"]
-nextbreakfile = "/tmp/nextbreak_" + user
+tmp = GLib.get_tmp_dir()
+nextbreakfile = tmp + "/nextbreak_" + user
 tab_settings = Gio.Settings.new("org.ubuntubudgie.plugins.takeabreak")
 
 
