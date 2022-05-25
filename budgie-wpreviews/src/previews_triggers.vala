@@ -40,23 +40,24 @@ namespace previews_triggers {
         // user
         string user = Environment.get_user_name();
         // files
+        var tmp = Environment.get_tmp_dir() + "/";
         File allappstrigger = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_all")
+            tmp.concat(user, "_prvtrigger_all")
         );
         File nexttrigger = File.new_for_path(
-            "/tmp/".concat(user, "_nexttrigger")
+            tmp.concat(user, "_nexttrigger")
         );
         File previoustrigger = File.new_for_path(
-            "/tmp/".concat(user, "_previoustrigger")
+            tmp.concat(user, "_previoustrigger")
         );
         File triggercurrent = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_current")
+            tmp.concat(user, "_prvtrigger_current")
         );
         File allappstriggerhotc = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_all_hotcorner")
+            tmp.concat(user, "_prvtrigger_all_hotcorner")
         );
         File currapptriggerhotc = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_curr_hotcorner")
+            tmp.concat(user, "_prvtrigger_curr_hotcorner")
         );
 
         File trg = nexttrigger;

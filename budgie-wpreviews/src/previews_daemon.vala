@@ -661,24 +661,25 @@ namespace NewPreviews {
             allworkspaces = previews_settings.get_boolean("allworkspaces");
             showtooltips = previews_settings.get_boolean("showtooltips");
         });
-        triggerdir = File.new_for_path("/tmp");
+        var tmp = Environment.get_tmp_dir() + "/";
+        triggerdir = File.new_for_path(tmp);
         allappstrigger = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_all")
+            tmp.concat(user, "_prvtrigger_all")
         );
         allappstriggerhotc = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_all_hotcorner")
+            tmp.concat(user, "_prvtrigger_all_hotcorner")
         );
         currapptriggerhotc = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_curr_hotcorner")
+            tmp.concat(user, "_prvtrigger_curr_hotcorner")
         );
         nexttrigger = File.new_for_path(
-            "/tmp/".concat(user, "_nexttrigger")
+            tmp.concat(user, "_nexttrigger")
         );
         previoustrigger = File.new_for_path(
-            "/tmp/".concat(user, "_previoustrigger")
+            tmp.concat(user, "_previoustrigger")
         );
         triggercurrent = File.new_for_path(
-            "/tmp/".concat(user, "_prvtrigger_current")
+            tmp.concat(user, "_prvtrigger_current")
         );
         // start with a clean plate please
         cleanup();
@@ -711,7 +712,8 @@ namespace NewPreviews {
 
     public static void main (string[] args) {
         user = Environment.get_user_name();
-        previewspath = "/tmp/".concat(user, "_window-previews");
+        var tmp = Environment.get_tmp_dir() + "/";
+        previewspath = tmp.concat(user, "_window-previews");
         try {
             File file = File.new_for_commandline_arg (previewspath);
             file.make_directory ();

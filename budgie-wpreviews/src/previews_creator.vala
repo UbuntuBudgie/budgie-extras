@@ -47,7 +47,8 @@ namespace create_previews {
         gdk_scr = Gdk.Screen.get_default();
         if (gdk_scr == null) return; // usually if there is no display
         string user = Environment.get_user_name();
-        previewspath = "/tmp/".concat(user, "_window-previews");
+        var tmp = Environment.get_tmp_dir() + "/";
+        previewspath = tmp.concat(user, "_window-previews");
         update_winlist();
         wnck_scr.window_opened.connect(update_winlist);
         wnck_scr.window_opened.connect(refresh_new);
