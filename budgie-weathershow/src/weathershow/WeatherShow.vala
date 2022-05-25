@@ -349,7 +349,8 @@ namespace WeatherShowApplet {
             // write to file only for desktop show
             if (show_ondesktop == true) {
                 string username = Environment.get_user_name();
-                string src = "/tmp/".concat(username, "_weatherdata");
+                var tmp = Environment.get_tmp_dir() + "/";
+                string src = tmp.concat(username, "_weatherdata");
                 WeatherShowFunctions.write_tofile(src, result_current);
             }
         }

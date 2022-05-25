@@ -135,7 +135,8 @@ public class DesktopWeather : Gtk.Window {
         this.draw.connect(on_draw);
         // monitored datafile
         string username = Environment.get_user_name();
-        string src = "/tmp/".concat(username, "_weatherdata");
+        var tmp = Environment.get_tmp_dir() + "/";
+        string src = tmp.concat(username, "_weatherdata");
         datasrc = File.new_for_path(src);
         // report
         maingrid = new Gtk.Grid();
