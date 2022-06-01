@@ -179,7 +179,13 @@ public class BDEFile
         if (overlay_path != null)
         {
             Settings settings = new Settings(overlay_path);
-            settings.reset(overlay_key);
+            /*
+              only need to reset if the overlay contains an empty string
+            */
+            var keyval = settings.get_strv(overlay_key); 
+            if (keyval.length == 1 && keyval[0] == "") {
+                settings.reset(overlay_key);
+            }
         }
     }
 
@@ -202,8 +208,7 @@ public class BDEFile
 
             if (overlay_path != null && !bind_key)
             {
-                settings = new Settings(overlay_path);
-                settings.reset(overlay_key);
+                reset_overlay();
             }
 
             if (overlay_path != null && bind_key)
