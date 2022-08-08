@@ -2,9 +2,11 @@
 Panels=Top Panel
 
 [Top Panel]
-Children=AppMenu;ShowTime;Spacer 1;Spacer 2;Clock;Spacer 3;DropBy;Spacer 4;AppIndicator;Spacer 5;VisualSpace;Spacer 6;QuickNote;Spacer 8;Places;Spacer 9;Notifications;Spacer 10;Network;Spacer 11;Status;Spacer 12;Separator;Spacer 13;User Indicator;Spacer 14;Raven Trigger;
+Children=AppMenu;ShowTime;Clock;DropBy;AppIndicator;VisualSpace;QuickNote;Places;Notifications;Network;Status;Separator;User Indicator;Raven Trigger;
 Position=Top
 Size=37
+Transparency=dynamic
+Spacing=10
 
 [AppMenu]
 ID=AppMenu
@@ -12,103 +14,48 @@ ID=AppMenu
 [ShowTime]
 ID=ShowTime
 
-[Spacer 1]
-ID=Spacer
-
-[Spacer 2]
-ID=Spacer
-Alignment=center
-
 [Clock]
 ID=Clock
 Alignment=center
 
-[Spacer 3]
-ID=Spacer
-Alignment=center
-
-[Spacer 4]
-ID=Spacer
-Alignment=end
-
 [AppIndicator]
 ID=AppIndicator Applet
-Alignment=end
-
-[Spacer 5]
-ID=Spacer
 Alignment=end
 
 [VisualSpace]
 ID=Visual Space
 Alignment=end
 
-[Spacer 6]
-ID=Spacer
-Alignment=end
-
 [DropBy]
 ID=DropBy
-Alignment=end
-
-[Spacer 7]
-ID=Spacer
 Alignment=end
 
 [QuickNote]
 ID=QuickNote
 Alignment=end
 
-[Spacer 8]
-ID=Spacer
-Alignment=end
-
 [Places]
 ID=Places
-Alignment=end
-
-[Spacer 9]
-ID=Spacer
 Alignment=end
 
 [Notifications]
 ID=Notifications
 Alignment=end
 
-[Spacer 10]
-ID=Spacer
-Alignment=end
-
 [Network]
 ID=Network
-Alignment=end
-
-[Spacer 11]
-ID=Spacer
 Alignment=end
 
 [Status]
 ID=Status Indicator
 Alignment=end
 
-[Spacer 12]
-ID=Spacer
-Alignment=end
-
 [Separator]
 ID=Separator
 Alignment=end
 
-[Spacer 13]
-ID=Spacer
-Alignment=end
-
 [User Indicator]
 ID=User Indicator
-Alignment=end
-
-[Spacer 14]
-ID=Spacer
 Alignment=end
 
 [Raven Trigger]

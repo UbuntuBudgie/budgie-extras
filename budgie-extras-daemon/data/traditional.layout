@@ -2,50 +2,17 @@
 Panels=Bottom Panel
 
 [Bottom Panel]
-Children=Budgie Menu;Spacer 1;IconTaskList;AppIndicator;DropBy;Places;Notifications;Status;Spacer 3;User Indicator;Clock;Raven Trigger;
+Children=Budgie Menu;Icon Tasklist;Tray;Notifications;Status;Clock;Raven Trigger;
 Position=Bottom
-Size=39
 
 [Budgie Menu]
 ID=Budgie Menu
 
-[Spacer 1]
-ID=Spacer
-
-[IconTaskList]
+[Icon Tasklist]
 ID=Icon Task List
-Alignment=start
-
-[Clock]
-ID=Clock
-Alignment=end
-
-[AppIndicator]
-ID=AppIndicator Applet
-Alignment=end
 
 [Tray]
 ID=System Tray
-Alignment=end
-
-[DropBy]
-ID=DropBy
-Alignment=end
-
-[QuickNote]
-ID=QuickNote
-Alignment=end
-
-[Spacer 2]
-ID=Spacer
-Alignment=end
-
-[Night]
-ID=Night Light
-Alignment=end
-
-[Places]
-ID=Places
 Alignment=end
 
 [Notifications]
@@ -56,16 +23,8 @@ Alignment=end
 ID=Status Indicator
 Alignment=end
 
-[User Indicator]
-ID=User Indicator
-Alignment=end
-
-[Separator]
-ID=Separator
-Alignment=end
-
-[Spacer 3]
-ID=Spacer
+[Clock]
+ID=Clock
 Alignment=end
 
 [Raven Trigger]
