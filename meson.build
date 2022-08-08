@@ -235,3 +235,8 @@ build_window_shuffler = get_option('build-window-shuffler')
 if build_all == true or build_window_shuffler == true
 	subdir('budgie-window-shuffler')
 endif
+
+with_default_schema = get_option('with-default-schema')
+if build_all == true and with_default_schema == true
+	subdir('default-schema')
+endif

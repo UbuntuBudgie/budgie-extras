@@ -1,4 +1,5 @@
 option('build-all', type: 'boolean', value: true, description: 'Build all applets')
+option('with-default-schema', type: 'boolean', value: true, description: 'Install with default schema - only needed if installing the whole package')
 option('build-wpreviews', type: 'boolean', value: false, description: 'Build windows previews applet')
 option('build-wswitcher', type: 'boolean', value: false, description: 'Build workspace switcher applet')
 option('build-hotcorners', type: 'boolean', value: false, description: 'Build hotcorners applet')
