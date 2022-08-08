@@ -6,7 +6,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 	dh $@ --with python3
 
 override_dh_auto_configure:
-	dh_auto_configure -- --prefix=/usr --libdir=/usr/lib --datadir=/usr/share -Dwith-zeitgeist=false
+	dh_auto_configure -- --prefix=/usr --libdir=/usr/lib --datadir=/usr/share -Dwith-zeitgeist=false -Dwith-default-schema=false
 
 override_dh_auto_test:
 	dh_auto_test
