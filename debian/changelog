@@ -1,10 +1,14 @@
-budgie-extras (1.5.0-1) UNRELEASED; urgency=medium
+budgie-extras (1.4.90-1) unstable; urgency=medium
 
-  * New release
-  * Packaging
-    d/rules add -Dwith-default-schema build option
+  * Beta release
+    - See NEWS
+  * Packaging Changes
+    - drop existing patches since incorporated in the new release
+    - d/rules update meson build to include rule not to build with
+      the default schema i.e. this is only applicable to non-debian
+      distros that build and install the whole of extras
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 08 Aug 2022 14:58:52 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 15 Aug 2022 11:19:03 +0100
 
 budgie-extras (1.4.0-2) unstable; urgency=medium
 
