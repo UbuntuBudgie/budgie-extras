@@ -17,7 +17,6 @@ Build-Depends:
  libgee-0.8-dev,
  libglib2.0-dev (>= 2.56),
  libgnome-desktop-3-dev,
- libgnome-menu-3-dev,
  libgranite-dev,
  libgtk-3-dev,
  libhandy-1-dev,
@@ -65,7 +64,7 @@ Description: Applet to provide an alternative means to launch applications
 
 Package: budgie-applications-menu-applet
 Architecture: any
-Depends: budgie-extras-common, gnome-menus, ${misc:Depends}, ${shlibs:Depends}
+Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
