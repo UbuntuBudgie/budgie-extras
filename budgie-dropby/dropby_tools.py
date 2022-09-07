@@ -130,4 +130,4 @@ def get_volumes(allvols):
             devdata["free"] = free
             devdata["volume_path"] = fpath
             relevant.append(devdata)
-    return(relevant)
+    return (relevant)
