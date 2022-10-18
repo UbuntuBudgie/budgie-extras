@@ -64,8 +64,7 @@ namespace GetClosest {
         int scrsize, int cellsize, int ncells, int wsize, int start=1
     ) {
         /*
-        for given gridsize (ncells), calculate cellspan with smallest
-        relative difference (%).
+        for given gridsize (ncells), calculate cellspan with smallest difference.
         */
         int diff = 100000;
         int foundspan = -1;
@@ -78,14 +77,12 @@ namespace GetClosest {
                 foundspan = n;
             }
         }
-        /* now we keep smallest diff, return {relative_diff, foundspan} */
         return {diff, foundspan};
     }
 
     int[] getbestgrid (int size, int pos, int screensize, int maxcells) {
         /*
-        per gridsize, find relative diff size + relative diff pos. optimal
-        (so minimal) diff is best gridsize.
+        per gridsize, find optimal (so minimal) diff is best gridsize.
         */
         int gridsize = -1;
         int span = -1;
