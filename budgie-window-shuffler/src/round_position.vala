@@ -42,7 +42,7 @@ namespace GetClosest {
         int scrsize, int cellsize, int ncells, int wsize, int wpos
     ) {
         /*
-        for given gridsize (ncells), calculate cellspan with smallest
+        for given gridsize (ncells), calculate cellposition with smallest
         difference.
         */
         int diff = 100000;
@@ -56,6 +56,7 @@ namespace GetClosest {
                 /* update best cellspan */
                 foundpos = n;
             }
+            else {break;};
         }
         return {diff, foundpos};
     }
