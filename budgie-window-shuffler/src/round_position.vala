@@ -26,15 +26,84 @@ namespace GetClosest {
     (obviously)
     */
 
+    ShufflerInfoClient client;
+    int activewin;
+    HashTable<string, Variant> windata;
+    HashTable<string, Variant> mondata;
+
+    [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
+
+    interface ShufflerInfoClient : Object {
+        public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
+        //  public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
+        public abstract string getactivemon_name () throws Error;
+        public abstract GLib.HashTable<string, Variant> get_monitorgeometry () throws Error;
+        //  public abstract int[] get_grid () throws Error;
+        public abstract int getactivewin () throws Error;
+        //  public abstract void activate_window (int curr_active) throws Error;
+        //  public abstract bool get_stickyneighbors () throws Error;
+    }
+
+
+
     public static int main (string[] args) {
-        /*
-        Just throwing some random screensize. once applied, we'll get this
-        from shuffler daemon.
-        */
-        int size = int.parse(args[1]);
-        int pos = int.parse(args[2]);
-        int scrsize = 1920;
-        getbestgrid(size, pos, scrsize, 6);
+        try {
+            client = Bus.get_proxy_sync (
+                BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
+                ("/org/ubuntubudgie/shufflerinfodaemon")
+            );
+
+//// all below in a separate method on success
+            // get data on current monitor
+            int monwidth = -1;
+            int monheight = -1;
+            string monname = client.getactivemon_name();
+            mondata = client.get_monitorgeometry();
+            foreach (string monkey in mondata.get_keys()) {
+                if (monname == monkey) {
+                    Variant currmon = mondata[monname];
+                    monwidth = (int)currmon.get_child_value(2);
+                    monheight = (int)currmon.get_child_value(3); // waitwait!! we need to work with working area!
+                    print("monwidth = %d\n", monwidth);
+                    print(@"Yay! $monkey\n");
+                }
+            }
+            activewin = client.getactivewin();
+            print("%d\n", activewin);
+            int xpos = -1;
+            int ypos = -1;
+            int xsize = -1;
+            int ysize = -1;
+            // get data on (normal) windows, look up active
+            windata = client.get_winsdata();
+            foreach (string winkey in windata.get_keys()) {
+                /*
+                / get data on all windows here? more efficient, but nah,
+                / let's keep it simple, get data on adjacent windows separated,
+                / dbus is fast. long live dbus.
+                */
+                if (winkey == @"$activewin") {
+                    Variant winvar = windata[winkey];
+                    xpos = (int)winvar.get_child_value(3);
+                    ypos = (int)winvar.get_child_value(4);
+                    xsize = (int)winvar.get_child_value(5);
+                    ysize = (int)winvar.get_child_value(6);
+                    // now we have these, calc best size/pos on grid
+                    // move to target
+                    print("move this one to target %s %d %d %d %d\n",  winkey, xpos, ypos, xsize, ysize);
+                    break;
+                }
+            }
+            int[] targetposx = getbestgrid(xsize, xpos, monwidth, 6);
+            int[] targetposy = getbestgrid(ysize, ypos, monheight, 2);
+
+            print("xtarget: %d cols, pos: %d, span: %d\n", targetposx[0], targetposx[1], targetposx[2]);
+            print("ytarget: %d rows, pos: %d, span: %d\n", targetposy[0], targetposy[1], targetposy[2]);
+        }
+
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
         return 0;
     }
 
@@ -56,7 +125,7 @@ namespace GetClosest {
                 /* update best cellspan */
                 foundpos = n;
             }
-            else {break;};
+            else {break;}
         }
         return {diff, foundpos};
     }
