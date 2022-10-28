@@ -63,8 +63,9 @@ namespace GetClosest {
                 if (monname == monkey) {
                     Variant currmon = mondata[monname];
                     monwidth = (int)currmon.get_child_value(2);
-                    monheight = (int)currmon.get_child_value(3); // waitwait!! we need to work with working area!
+                    monheight = (int)currmon.get_child_value(3);
                     print("monwidth = %d\n", monwidth);
+                    print("monheight = %d\n", monheight);
                     print(@"Yay! $monkey\n");
                 }
             }
@@ -96,15 +97,36 @@ namespace GetClosest {
             }
             int[] targetposx = getbestgrid(xsize, xpos, monwidth, 6);
             int[] targetposy = getbestgrid(ysize, ypos, monheight, 2);
+            int cellx = targetposx[1];
+            int celly = targetposy[1];
+            int cols = targetposx[0];
+            int rows = targetposy[0];
+            int spanx = targetposx[2];
+            int spany = targetposy[2];
+
 
             print("xtarget: %d cols, pos: %d, span: %d\n", targetposx[0], targetposx[1], targetposx[2]);
             print("ytarget: %d rows, pos: %d, span: %d\n", targetposy[0], targetposy[1], targetposy[2]);
+
+            string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+            " ", @"$cellx ", @"$celly ", @"$cols ", @"$rows ", @"$spanx ", @"$spany");
+            print(@"$cmd\n");
+            run_command(cmd);
+
         }
 
         catch (Error e) {
             stderr.printf ("%s\n", e.message);
         }
         return 0;
+    }
+
+    void run_command (string command) {
+        try {
+            Process.spawn_command_line_async(command);
+        }
+        catch (SpawnError e) {
+        }
     }
 
     int[] get_min_distance (
