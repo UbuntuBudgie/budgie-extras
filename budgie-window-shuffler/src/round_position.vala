@@ -1,4 +1,3 @@
-
 namespace GetClosest {
 
     /*
@@ -26,75 +25,158 @@ namespace GetClosest {
     (obviously)
     */
 
-    ShufflerInfoClient client;
-    int activewin;
-    HashTable<string, Variant> windata;
-    HashTable<string, Variant> mondata;
+    /*
+    Possible args:
+    - "onlyactive" - only position the active window, return its position &
+    span on grid.
+    */
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
     interface ShufflerInfoClient : Object {
         public abstract GLib.HashTable<string, Variant> get_winsdata () throws Error;
-        //  public abstract HashTable<string, Variant> get_tiles (string mon, int cols, int rows) throws Error;
         public abstract string getactivemon_name () throws Error;
         public abstract GLib.HashTable<string, Variant> get_monitorgeometry () throws Error;
-        //  public abstract int[] get_grid () throws Error;
         public abstract int getactivewin () throws Error;
-        //  public abstract void activate_window (int curr_active) throws Error;
-        //  public abstract bool get_stickyneighbors () throws Error;
     }
 
+    class GetDesktopInfo {
 
+        ShufflerInfoClient client;
 
-    public static int main (string[] args) {
-        try {
-            client = Bus.get_proxy_sync (
-                BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
-                ("/org/ubuntubudgie/shufflerinfodaemon")
-            );
+        public ShufflerInfoClient? get_client () {
+            try {
+                client = Bus.get_proxy_sync (
+                    BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
+                    ("/org/ubuntubudgie/shufflerinfodaemon")
+                );
+                return client;
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return null;
+            }
+        }
 
-//// all below in a separate method on success
-            // get data on current monitor
+        public int get_activewindow (ShufflerInfoClient? client) {
+            try {
+                return client.getactivewin();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return -1;
+            }
+        }
+
+        private HashTable<string, Variant>? get_monitordata (ShufflerInfoClient? client) {
+            try {
+                return client.get_monitorgeometry();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return null;
+            }
+        }
+
+        private string? get_activemonitorname (ShufflerInfoClient? client) {
+            try {
+                return client.getactivemon_name();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return "none";
+            }
+        }
+
+        public HashTable<string, Variant>? get_validwindows (
+            ShufflerInfoClient? client, bool onlyactive = false
+        ) {
+            var relevantwins = new HashTable<string, Variant> (str_hash, str_equal);
+            int activewin = -1;
+            if (onlyactive) {
+                activewin = get_activewindow(client);
+            }
+            try {
+                HashTable<string, Variant> allvalidwins = client.get_winsdata();
+                allvalidwins.foreach ((key, val) => {
+                    if (
+                        (key == @"$activewin" || onlyactive == false) &&
+                        (string)val.get_child_value(7) == "false" &&
+                        (string)val.get_child_value(1) == "true"
+                    ) {
+                        print (@"$key, add to hashtable\n");
+                        relevantwins.insert(key, val);
+                    }
+                });
+                return relevantwins;
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return null;
+            }
+        }
+
+        public int[] get_activemonitorgeometry (ShufflerInfoClient? client) {
+            HashTable<string, Variant> mondata = get_monitordata(client);
+            string monname = get_activemonitorname(client);
             int monwidth = -1;
             int monheight = -1;
-            string monname = client.getactivemon_name();
-            mondata = client.get_monitorgeometry();
+
             foreach (string monkey in mondata.get_keys()) {
                 if (monname == monkey) {
                     Variant currmon = mondata[monname];
                     monwidth = (int)currmon.get_child_value(2);
                     monheight = (int)currmon.get_child_value(3);
-                    print("monwidth = %d\n", monwidth);
-                    print("monheight = %d\n", monheight);
-                    print(@"Yay! $monkey\n");
                 }
             }
-            activewin = client.getactivewin();
-            print("%d\n", activewin);
-            int xpos = -1;
-            int ypos = -1;
-            int xsize = -1;
-            int ysize = -1;
-            // get data on (normal) windows, look up active
-            windata = client.get_winsdata();
-            foreach (string winkey in windata.get_keys()) {
-                /*
-                / get data on all windows here? more efficient, but nah,
-                / let's keep it simple, get data on adjacent windows separated,
-                / dbus is fast. long live dbus.
-                */
-                if (winkey == @"$activewin") {
-                    Variant winvar = windata[winkey];
-                    xpos = (int)winvar.get_child_value(3);
-                    ypos = (int)winvar.get_child_value(4);
-                    xsize = (int)winvar.get_child_value(5);
-                    ysize = (int)winvar.get_child_value(6);
-                    // now we have these, calc best size/pos on grid
-                    // move to target
-                    print("move this one to target %s %d %d %d %d\n",  winkey, xpos, ypos, xsize, ysize);
-                    break;
-                }
+            return {monwidth,monheight};
+        }
+    }
+
+    private bool check_args (string arg, string[] args) {
+        foreach (string s in args) {
+            if (arg == s) {
+                return true;
             }
+        }
+        return false;
+    }
+
+    public static int main (string[] args) {
+        //  bool onlymove = check_args("onlymove", args);
+        bool onlyactive = check_args("onlyactive", args); // if onlyactive, only active window will be looked up
+        GetDesktopInfo getinfo = new GetDesktopInfo();
+        ShufflerInfoClient dbusclient = getinfo.get_client();
+        int[] mongeo = getinfo.get_activemonitorgeometry(dbusclient);
+        int monwidth = mongeo[0];
+        int monheight = mongeo[1];
+        HashTable<string, Variant>? validwindows = getinfo.get_validwindows(dbusclient, onlyactive);
+        string? positiondata = move_window(
+            dbusclient, validwindows, monwidth, monheight, onlyactive
+        );
+        if (positiondata != null) {
+            print(@"positiondata: $positiondata\n");
+        }
+
+        // make this call the module that sets the layout or rule file(s) if onlyactive is set
+        return 0;
+    }
+
+    private string move_window(
+        // make this return the position & size on grid
+        ShufflerInfoClient dbusclient, HashTable<string,
+        Variant> windata, int monwidth, int monheight, bool onlyactive
+    ) {
+        int xpos = -1;
+        int ypos = -1;
+        int xsize = -1;
+        int ysize = -1;
+        string? griddata = null; ////////////
+        windata.foreach ((key, val) => {
+            xpos = (int)val.get_child_value(3);
+            ypos = (int)val.get_child_value(4);
+            xsize = (int)val.get_child_value(5);
+            ysize = (int)val.get_child_value(6);
             int[] targetposx = getbestgrid(xsize, xpos, monwidth, 6);
             int[] targetposy = getbestgrid(ysize, ypos, monheight, 2);
             int cellx = targetposx[1];
@@ -103,22 +185,15 @@ namespace GetClosest {
             int rows = targetposy[0];
             int spanx = targetposx[2];
             int spany = targetposy[2];
-
-
-            print("xtarget: %d cols, pos: %d, span: %d\n", targetposx[0], targetposx[1], targetposx[2]);
-            print("ytarget: %d rows, pos: %d, span: %d\n", targetposy[0], targetposy[1], targetposy[2]);
-
+            griddata = @"$cellx $celly $cols $rows $spanx $spany";
             string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
-            " ", @"$cellx ", @"$celly ", @"$cols ", @"$rows ", @"$spanx ", @"$spany");
-            print(@"$cmd\n");
+                " ", @"$griddata", " ",
+                @"id=$key "
+            );//, "nosoftmove");
             run_command(cmd);
-
-        }
-
-        catch (Error e) {
-            stderr.printf ("%s\n", e.message);
-        }
-        return 0;
+            Thread.usleep(150000);
+        });
+        return griddata; // possibly, in future, we need to make this an array or hashtable if applied to a complete layout at once.
     }
 
     void run_command (string command) {
@@ -194,8 +269,8 @@ namespace GetClosest {
                 span = min_celldiff[1];
             }
         }
-        print("found combined divergence: %d px\n\n", sum_divergence);
-        print("gridsize: %d, target_position: %d, span: %d\n", gridsize, position, span);
         return {gridsize, position, span};
     }
 }
+
+// 321
