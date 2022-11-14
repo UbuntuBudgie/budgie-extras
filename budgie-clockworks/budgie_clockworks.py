@@ -314,6 +314,8 @@ class BudgieClockWorksApplet(Budgie.Applet):
     def convert_offset_tolabel(self, offset):
         if offset != 0:
             prestring = "-" if offset < 0 else "+"
+            # calc with abs!
+            offset = abs(offset)
             set_time_hrs = self.double_digits(str(int(abs(offset) / 3600)))
             set_time_mins = self.double_digits(str(int((offset % 3600) / 60)))
             return prestring + set_time_hrs + ":" + set_time_mins
@@ -324,7 +326,8 @@ class BudgieClockWorksApplet(Budgie.Applet):
         newval = label.split(":")
         hrs_offset = int(newval[0]) * 3600
         mins_offset = int(newval[1]) * 60
-        mins_offset = mins_offset if hrs_offset > 0 else -mins_offset
+        if label.startswith("-"):
+            mins_offset = -mins_offset
         return (hrs_offset + mins_offset)
 
     def save_tofile(self):
