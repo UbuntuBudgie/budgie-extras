@@ -316,7 +316,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
             prestring = "-" if offset < 0 else "+"
             # calc with abs!
             offset = abs(offset)
-            set_time_hrs = self.double_digits(str(int(abs(offset) / 3600)))
+            set_time_hrs = self.double_digits(str(int(offset / 3600)))
             set_time_mins = self.double_digits(str(int((offset % 3600) / 60)))
             return prestring + set_time_hrs + ":" + set_time_mins
         else:
