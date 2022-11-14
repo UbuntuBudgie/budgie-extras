@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 import gi
-
 gi.require_version("Gtk", "3.0")
 gi.require_version('Budgie', '1.0')
 from gi.repository import Gdk, Gtk, GObject, GdkPixbuf, Budgie, Gio, GLib
@@ -44,7 +44,6 @@ for dr in [hrs_path, mins_path]:
 
 hours = []
 minutes = []
-tz_data = cw.tz_data
 settings = cw.settings
 
 # create images
@@ -187,6 +186,7 @@ class BudgieClockWorksApplet(Budgie.Applet):
         icon = Gtk.Image.new_from_icon_name(
             "budgie-clockworks-symbolic", Gtk.IconSize.MENU
         )
+        self.tz_data = self.get_timerange()
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(clw_css_data.encode())
         # setup watching applet presence
@@ -242,6 +242,14 @@ class BudgieClockWorksApplet(Budgie.Applet):
         # daemonize the thread to make the indicator stopable
         self.update.setDaemon(True)
         self.update.start()
+
+    def get_timerange(self):
+        timelabels = []
+        offset = -86400
+        while offset < 86401:
+            timelabels.append(self.convert_offset_tolabel(offset))
+            offset = offset + 900
+        return timelabels
 
     def watchout(self):
         path = "com.solus-project.budgie-panel"
@@ -493,14 +501,14 @@ class BudgieClockWorksApplet(Budgie.Applet):
         # sets the time shift on combo change
         curr_offset = self.clocklist[clock]["offset"]
         nxt = -1 if down else +1
-        newindex = tz_data.index(
+        newindex = self.tz_data.index(
             self.convert_offset_tolabel(curr_offset)
         ) + nxt
         newindex = 0 if newindex < 0 else newindex
         try:
-            newlabel = tz_data[newindex]
+            newlabel = self.tz_data[newindex]
         except IndexError:
-            newlabel = tz_data[-1]
+            newlabel = self.tz_data[-1]
         label.set_text(newlabel)
         self.clocklist[clock]["offset"] = self.convert_label_tooffset(newlabel)
         curr_time = time.time()
