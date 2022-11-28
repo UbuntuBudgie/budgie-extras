@@ -20,15 +20,15 @@ namespace GetClosest {
     and the necessary resize to fit into n-cellspan. the algorithm used is
     simply to sum up these two, and evaluate what gives us the smallest,
     considering all cellspans and gridsizes up to a max gridsize.
-
-    screensize/windowsize, position will be retrieved from shuffler daemon
-    (obviously)
     */
 
     /*
-    Possible args:
-    - "onlyactive" - only position the active window, return its position &
-    span on grid.
+    so what modes/args do we have?
+    - round active window, no further actions           -> no args
+    - only fetch optimized position                     -> no_move
+    - add active as rule & round to nearest gridmatch   -> add_rule
+    - add to layout & round to nearest gridmatch        -> add_layout
+    - round all visible windows                         -> round_all
     */
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
@@ -89,22 +89,19 @@ namespace GetClosest {
         }
 
         public HashTable<string, Variant>? get_validwindows (
-            ShufflerInfoClient? client, bool onlyactive = false
+            ShufflerInfoClient? client, int runmode
         ) {
             var relevantwins = new HashTable<string, Variant> (str_hash, str_equal);
             int activewin = -1;
-            if (onlyactive) {
-                activewin = get_activewindow(client);
-            }
+            activewin = get_activewindow(client);
             try {
                 HashTable<string, Variant> allvalidwins = client.get_winsdata();
                 allvalidwins.foreach ((key, val) => {
                     if (
-                        (key == @"$activewin" || onlyactive == false) &&
+                        (key == @"$activewin" || runmode == 1) &&
                         (string)val.get_child_value(7) == "false" &&
                         (string)val.get_child_value(1) == "true"
                     ) {
-                        print (@"$key, add to hashtable\n");
                         relevantwins.insert(key, val);
                     }
                 });
@@ -119,9 +116,12 @@ namespace GetClosest {
         public int[] get_activemonitorgeometry (ShufflerInfoClient? client) {
             HashTable<string, Variant> mondata = get_monitordata(client);
             string monname = get_activemonitorname(client);
+            if (mondata == null) {
+                message("Can't get monitordata, is Shuffler running?");
+                Process.exit(0);
+            }
             int monwidth = -1;
             int monheight = -1;
-
             foreach (string monkey in mondata.get_keys()) {
                 if (monname == monkey) {
                     Variant currmon = mondata[monname];
@@ -133,67 +133,86 @@ namespace GetClosest {
         }
     }
 
-    private bool check_args (string arg, string[] args) {
-        foreach (string s in args) {
-            if (arg == s) {
-                return true;
-            }
-        }
-        return false;
+    private int get_stringindex (string? somestring, string[]? arr) {
+        for (int i=0; i < arr.length; i++) {
+            if(somestring == arr[i]) return i;
+        } return -1;
     }
 
     public static int main (string[] args) {
-        //  bool onlymove = check_args("onlymove", args);
-        bool onlyactive = check_args("onlyactive", args); // if onlyactive, only active window will be looked up
+        string? runarg = args[1];
+        string[]? options = {null, "round_all", "add_rule", "add_layout", "no_move"};
+        int runmode = get_stringindex(runarg, options);
+        print(@"mode: $runmode\n");
         GetDesktopInfo getinfo = new GetDesktopInfo();
         ShufflerInfoClient dbusclient = getinfo.get_client();
-        int[] mongeo = getinfo.get_activemonitorgeometry(dbusclient);
+        int[]? mongeo = getinfo.get_activemonitorgeometry(dbusclient);
         int monwidth = mongeo[0];
         int monheight = mongeo[1];
-        HashTable<string, Variant>? validwindows = getinfo.get_validwindows(dbusclient, onlyactive);
-        string? positiondata = move_window(
-            dbusclient, validwindows, monwidth, monheight, onlyactive
+        // decide the action type (parse arg) here, not in move_window!
+        HashTable<string, Variant>? validwindows = getinfo.get_validwindows(dbusclient, runmode);
+        string[] processdata = move_window(
+            dbusclient, validwindows, monwidth, monheight, runmode
         );
-        if (positiondata != null) {
-            print(@"positiondata: $positiondata\n");
-        }
 
-        // make this call the module that sets the layout or rule file(s) if onlyactive is set
+        string positiondata = processdata[0];
+
+        switch (runmode) {
+            case 2:
+            // here we will connect to making a new rule + dialog window, values will be preset
+            print(@"create new rule + dialog. data: $positiondata\n");
+            break;
+            case 3:
+            // here we will connect to making layout or add to existing + dialog window, values will be preset
+            print(@"add to layout or create new + dialog. data: $positiondata\n");
+            break;
+            case 4:
+            // just deliver the optimized position, no further actions
+            print(@"only data. data: $positiondata\n");
+            break;
+        }
         return 0;
     }
 
-    private string move_window(
+    private string[] move_window(
         // make this return the position & size on grid
-        ShufflerInfoClient dbusclient, HashTable<string,
-        Variant> windata, int monwidth, int monheight, bool onlyactive
+        ShufflerInfoClient dbusclient, HashTable<string, Variant> windata,
+        int monwidth, int monheight, int runmode
     ) {
         int xpos = -1;
         int ypos = -1;
         int xsize = -1;
         int ysize = -1;
+        string wmc = "";
         string? griddata = null; ////////////
         windata.foreach ((key, val) => {
             xpos = (int)val.get_child_value(3);
             ypos = (int)val.get_child_value(4);
             xsize = (int)val.get_child_value(5);
             ysize = (int)val.get_child_value(6);
-            int[] targetposx = getbestgrid(xsize, xpos, monwidth, 6);
-            int[] targetposy = getbestgrid(ysize, ypos, monheight, 2);
+            int[] targetposx = getbestgrid(xsize, xpos, monwidth, 5);
+            int[] targetposy = getbestgrid(ysize, ypos, monheight, 3);
             int cellx = targetposx[1];
             int celly = targetposy[1];
             int cols = targetposx[0];
             int rows = targetposy[0];
             int spanx = targetposx[2];
             int spany = targetposy[2];
+            wmc = (string)val.get_child_value(8);
+            print(@"moving $key ($wmc) to position: $cellx, $celly, grid: $cols $rows span: $spanx, $spany \n");
+            //
             griddata = @"$cellx $celly $cols $rows $spanx $spany";
             string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
-                " ", @"$griddata", " ",
-                @"id=$key "
-            );//, "nosoftmove");
+                " ", @"$griddata", " ", @"id=$key "
+            );
             run_command(cmd);
             Thread.usleep(150000);
         });
-        return griddata; // possibly, in future, we need to make this an array or hashtable if applied to a complete layout at once.
+        if (runmode > 1) {
+            print(@"positiondata for action: $griddata\n");
+            return {griddata, wmc};
+        }
+        return {};
     }
 
     void run_command (string command) {
@@ -249,7 +268,7 @@ namespace GetClosest {
 
     int[] getbestgrid (int size, int pos, int screensize, int maxcells) {
         /*
-        per gridsize, find optimal (so minimal) diff is best gridsize.
+        per gridsize, find optimal (so minimal) diff.
         */
         int gridsize = -1;
         int span = -1;
