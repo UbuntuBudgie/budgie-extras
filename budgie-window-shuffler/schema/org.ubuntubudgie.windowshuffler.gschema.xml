@@ -97,6 +97,18 @@
             <default>0</default>
 	    <range min="0" max="200"/>
         </key>
+        <key type="i" name="roundposmaxcols">
+            <summary>Round position - max n-cols</summary>
+            <description>How many columns round_position should consider when optimizing window position</description>
+            <default>5</default>
+	    <range min="1" max="7"/>
+        </key>
+        <key type="i" name="roundposmaxrows">
+            <summary>Round position - max n-rows</summary>
+            <description>How many rows round_position should consider when optimizing window position</description>
+            <default>3</default>
+	    <range min="1" max="7"/>
+        </key>
         <key type="i" name="margintop">
             <summary>Top margin of the grid</summary>
             <description>The margin that Shuffler should keep to the top of the monitor</description>
