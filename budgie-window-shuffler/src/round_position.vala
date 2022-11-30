@@ -126,20 +126,20 @@ namespace GetClosest {
                 Process.exit(0);
             }
             string monname = get_activemonitorname(client);
-            int monwidth = -1;
-            int monheight = -1;
+            int wa_width = -1;
+            int wa_height = -1;
             int monx = -1;
             int mony = -1;
             foreach (string monkey in mondata.get_keys()) {
                 if (monname == monkey) {
                     Variant currmon = mondata[monname];
-                    monwidth = (int)currmon.get_child_value(2);
-                    monheight = (int)currmon.get_child_value(3);
+                    wa_width = (int)currmon.get_child_value(2);
+                    wa_height = (int)currmon.get_child_value(3);
                     monx = (int)currmon.get_child_value(0);
                     mony = (int)currmon.get_child_value(1);
                 }
             }
-            return {monwidth, monheight, monx, mony};
+            return {wa_width, wa_height, monx, mony};
         }
     }
 
@@ -150,6 +150,12 @@ namespace GetClosest {
         } return -1;
     }
 
+    private GLib.Settings get_settings (string path) {
+        // make settings
+        var settings = new GLib.Settings(path);
+        return settings;
+    }
+
     public static int main (string[] args) {
         /* parse args, decide what mode to run */
         string? runarg = args[1];
@@ -158,24 +164,36 @@ namespace GetClosest {
         };
         int runmode = get_stringindex(runarg, options);
         print(@"mode: $runmode\n");
+
         /* setup client stuff */
         GetDesktopInfo getinfo = new GetDesktopInfo();
         ShufflerInfoClient? dbusclient = getinfo.get_client();
+
         /* get monitorgeometry */
         int[]? mongeo = getinfo.get_activemonitorgeometry(dbusclient);
-        int monwidth = mongeo[0];
-        int monheight = mongeo[1];
+        int wa_width = mongeo[0];
+        int wa_height = mongeo[1];
         ///////////////////////////////////////////////////////////////////////////////////
         int monx = mongeo[2];
         int mony = mongeo[3];
         print(@"working area origin: $monx, $mony\n");
-        print(@"monitorsize: $monwidth, $monheight\n");
+        print(@"monitorsize: $wa_width, $wa_height\n");
+        /* get max-grid settings */
+        GLib.Settings shufflersettings = get_settings(
+            "org.ubuntubudgie.windowshuffler"
+        );
+        int maxcols = shufflersettings.get_int("roundposmaxcols");
+        int maxrows = shufflersettings.get_int("roundposmaxrows");
+        print(@"maxgrid: $maxcols, $maxrows\n");
+
         ///////////////////////////////////////////////////////////////////////////////////
+
         /* get window data, depending on runmode: active or all visible */
         HashTable<string, Variant>? validwindows = getinfo.get_validwindows(dbusclient, runmode);
         /* get target position on grid + wmclass and move if needed*/
         string[] processdata = move_window(
-            dbusclient, validwindows, monx, mony, monwidth, monheight, runmode
+            dbusclient, validwindows, monx, mony, wa_width, wa_height,
+            runmode, maxcols, maxrows
         );
         string positiondata = processdata[0];
         /* additional actions? */
@@ -199,7 +217,8 @@ namespace GetClosest {
     private string[] move_window(
         /* move window, return the position & size on grid if requested */
         ShufflerInfoClient dbusclient, HashTable<string, Variant> windata,
-        int monx, int mony, int monwidth, int monheight, int runmode
+        int monx, int mony, int wa_width, int wa_height, int runmode,
+        int maxcols, int maxrows
     ) {
         int xpos = -1;
         int ypos = -1;
@@ -212,8 +231,8 @@ namespace GetClosest {
             ypos = (int)val.get_child_value(4) - mony;
             xsize = (int)val.get_child_value(5);
             ysize = (int)val.get_child_value(6);
-            int[] targetposx = getbestgrid(xsize, xpos, monwidth, 5);
-            int[] targetposy = getbestgrid(ysize, ypos, monheight, 3);
+            int[] targetposx = getbestgrid(xsize, xpos, wa_width, maxcols);
+            int[] targetposy = getbestgrid(ysize, ypos, wa_height, maxrows);
             int cellx = targetposx[1];
             int celly = targetposy[1];
             int cols = targetposx[0];
