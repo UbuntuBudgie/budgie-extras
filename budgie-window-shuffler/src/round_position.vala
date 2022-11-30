@@ -59,6 +59,7 @@ namespace GetClosest {
         }
 
         public int get_activewindow (ShufflerInfoClient? client) {
+            /* get active window from daemon */
             try {
                 return client.getactivewin();
             }
@@ -69,6 +70,7 @@ namespace GetClosest {
         }
 
         private HashTable<string, Variant>? get_monitordata (ShufflerInfoClient? client) {
+            /* get monitordata from daemon (all monitors) */
             try {
                 return client.get_monitorgeometry();
             }
@@ -79,6 +81,7 @@ namespace GetClosest {
         }
 
         private string? get_activemonitorname (ShufflerInfoClient? client) {
+            /* get_active monitorname from daemon */
             try {
                 return client.getactivemon_name();
             }
@@ -91,6 +94,7 @@ namespace GetClosest {
         public HashTable<string, Variant>? get_validwindows (
             ShufflerInfoClient? client, int runmode
         ) {
+            /* get_windowdata of normal and visible windows on current workspace from daemon */
             var relevantwins = new HashTable<string, Variant> (str_hash, str_equal);
             int activewin = -1;
             activewin = get_activewindow(client);
@@ -114,49 +118,67 @@ namespace GetClosest {
         }
 
         public int[] get_activemonitorgeometry (ShufflerInfoClient? client) {
+            /* get_active monitor geometry from daemon */
             HashTable<string, Variant> mondata = get_monitordata(client);
-            string monname = get_activemonitorname(client);
+            /* let's bail out if daemon apparently doesn't run */
             if (mondata == null) {
                 message("Can't get monitordata, is Shuffler running?");
                 Process.exit(0);
             }
+            string monname = get_activemonitorname(client);
             int monwidth = -1;
             int monheight = -1;
+            int monx = -1;
+            int mony = -1;
             foreach (string monkey in mondata.get_keys()) {
                 if (monname == monkey) {
                     Variant currmon = mondata[monname];
                     monwidth = (int)currmon.get_child_value(2);
                     monheight = (int)currmon.get_child_value(3);
+                    monx = (int)currmon.get_child_value(0);
+                    mony = (int)currmon.get_child_value(1);
                 }
             }
-            return {monwidth,monheight};
+            return {monwidth, monheight, monx, mony};
         }
     }
 
     private int get_stringindex (string? somestring, string[]? arr) {
+        /* get index of string in array */
         for (int i=0; i < arr.length; i++) {
             if(somestring == arr[i]) return i;
         } return -1;
     }
 
     public static int main (string[] args) {
+        /* parse args, decide what mode to run */
         string? runarg = args[1];
-        string[]? options = {null, "round_all", "add_rule", "add_layout", "no_move"};
+        string[]? options = {
+            null, "round_all", "add_rule", "add_layout", "no_move"
+        };
         int runmode = get_stringindex(runarg, options);
         print(@"mode: $runmode\n");
+        /* setup client stuff */
         GetDesktopInfo getinfo = new GetDesktopInfo();
-        ShufflerInfoClient dbusclient = getinfo.get_client();
+        ShufflerInfoClient? dbusclient = getinfo.get_client();
+        /* get monitorgeometry */
         int[]? mongeo = getinfo.get_activemonitorgeometry(dbusclient);
         int monwidth = mongeo[0];
         int monheight = mongeo[1];
-        // decide the action type (parse arg) here, not in move_window!
+        ///////////////////////////////////////////////////////////////////////////////////
+        int monx = mongeo[2];
+        int mony = mongeo[3];
+        print(@"working area origin: $monx, $mony\n");
+        print(@"monitorsize: $monwidth, $monheight\n");
+        ///////////////////////////////////////////////////////////////////////////////////
+        /* get window data, depending on runmode: active or all visible */
         HashTable<string, Variant>? validwindows = getinfo.get_validwindows(dbusclient, runmode);
+        /* get target position on grid + wmclass and move if needed*/
         string[] processdata = move_window(
-            dbusclient, validwindows, monwidth, monheight, runmode
+            dbusclient, validwindows, monx, mony, monwidth, monheight, runmode
         );
-
         string positiondata = processdata[0];
-
+        /* additional actions? */
         switch (runmode) {
             case 2:
             // here we will connect to making a new rule + dialog window, values will be preset
@@ -175,9 +197,9 @@ namespace GetClosest {
     }
 
     private string[] move_window(
-        // make this return the position & size on grid
+        /* move window, return the position & size on grid if requested */
         ShufflerInfoClient dbusclient, HashTable<string, Variant> windata,
-        int monwidth, int monheight, int runmode
+        int monx, int mony, int monwidth, int monheight, int runmode
     ) {
         int xpos = -1;
         int ypos = -1;
@@ -186,8 +208,8 @@ namespace GetClosest {
         string wmc = "";
         string? griddata = null; ////////////
         windata.foreach ((key, val) => {
-            xpos = (int)val.get_child_value(3);
-            ypos = (int)val.get_child_value(4);
+            xpos = (int)val.get_child_value(3) - monx;
+            ypos = (int)val.get_child_value(4) - mony;
             xsize = (int)val.get_child_value(5);
             ysize = (int)val.get_child_value(6);
             int[] targetposx = getbestgrid(xsize, xpos, monwidth, 5);
@@ -199,14 +221,15 @@ namespace GetClosest {
             int spanx = targetposx[2];
             int spany = targetposy[2];
             wmc = (string)val.get_child_value(8);
-            print(@"moving $key ($wmc) to position: $cellx, $celly, grid: $cols $rows span: $spanx, $spany \n");
-            //
             griddata = @"$cellx $celly $cols $rows $spanx $spany";
-            string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
-                " ", @"$griddata", " ", @"id=$key "
-            );
-            run_command(cmd);
-            Thread.usleep(150000);
+            if (runmode != 4) {
+                print(@"moving $key ($wmc) to position: $cellx, $celly, grid: $cols $rows span: $spanx, $spany \n");
+                string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+                    " ", @"$griddata", " ", @"id=$key "
+                );
+                run_command(cmd);
+                Thread.usleep(150000);
+            }
         });
         if (runmode > 1) {
             print(@"positiondata for action: $griddata\n");
