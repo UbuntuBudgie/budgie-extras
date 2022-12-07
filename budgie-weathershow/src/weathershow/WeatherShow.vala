@@ -1404,7 +1404,11 @@ namespace WeatherShowApplet {
             });
 
             if (show_ondesktop == true) {
-                WeatherShowFunctions.open_window(desktop_window, uuid);
+                // start desktop weather from Idle to allow panel to initialize
+                Idle.add(() => {
+                    WeatherShowFunctions.open_window(desktop_window, uuid);
+                    return false;
+                });
             }
 
             initialiseLocaleLanguageSupport();
