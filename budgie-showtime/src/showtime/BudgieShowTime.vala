@@ -551,7 +551,11 @@ namespace BudgieShowTimeApplet {
             );
             gdkdisplay = Gdk.Display.get_default();
             winpath = moduledir.concat(@"/showtime_desktop $uuid");
-            create_windows(gdkdisplay);
+            // Start from Idle so the panel can form before spawning
+            Idle.add(() => {
+                create_windows(gdkdisplay);
+                return false;
+            });
             initialiseLocaleLanguageSupport();
         }
 
