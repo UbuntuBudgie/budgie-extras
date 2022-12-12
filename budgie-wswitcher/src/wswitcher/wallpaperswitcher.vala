@@ -71,12 +71,15 @@ namespace WallpaperSwitcherApplet {
 
         public Budgie.Applet get_panel_widget(string uuid) {
             string cmd = Config.WSWITCHER_DIR + @"/wallpaperswitcher_runner $uuid";
-            try {
-                Process.spawn_command_line_async(cmd);
-            }
-            catch (Error e) {
+            Idle.add(() => {
+                try {
+                    Process.spawn_command_line_async(cmd);
+                }
+                catch (Error e) {
 
-            }
+                }
+                return false;
+            });
             return new Applet();
         }
     }
