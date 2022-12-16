@@ -219,6 +219,10 @@ namespace ShufflerEssentialInfo {
             return remaining_warningtime;
         }
 
+        public int get_scalefactor () throws Error {
+            return scale;
+        }
+
         public int get_greyshade () throws Error {
             return greyshade;
         }
