@@ -555,7 +555,7 @@ namespace AdvancedDragsnap {
 
         public Peekaboo(int x = 0, int y = 0, int scale, int w, int h) {
             this.set_skip_taskbar_hint(true);
-            this.set_type_hint(Gdk.WindowTypeHint.DIALOG);
+            this.set_type_hint(Gdk.WindowTypeHint.NOTIFICATION);
             this.set_keep_above(true);
             this.move(x/scale, y/scale);
             this.resize(w/scale, h/scale);
