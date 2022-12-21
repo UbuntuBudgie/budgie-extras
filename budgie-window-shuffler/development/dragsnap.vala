@@ -403,7 +403,7 @@ namespace AdvancedDragsnap {
                         */
                         curr_area = temp_curr_area;
                         if (curr_area != PreviewSection.NONE) {
-                            print(@"show new preview: $curr_area\n");
+                            //  print(@"show new preview: $curr_area\n");
                             //  int[] previeworig = get_preview_origin(
                             //      mongeo[0], mongeo[1], mongeo[2], mongeo[3], curr_area
                             //  );
@@ -571,7 +571,7 @@ namespace AdvancedDragsnap {
 
         private bool on_draw (Widget da, Context ctx) {
             double[] tc = get_theme_fillcolor();
-            ctx.set_source_rgba(tc[0], tc[1], tc[2], 0.5);
+            ctx.set_source_rgba(tc[0], tc[1], tc[2], 0.4);
             ctx.set_operator(Cairo.Operator.SOURCE);
             ctx.paint();
             ctx.set_operator(Cairo.Operator.OVER);
