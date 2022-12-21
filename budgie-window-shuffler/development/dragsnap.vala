@@ -1,8 +1,9 @@
 using Gtk;
 using Wnck;
 using Cairo;
+using Notify;
 
-// valac --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm '/home/jacob/Desktop/dragsnap_final/dragsnap.vala'
+// valac --pkg libnotify --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm '/home/jacob/Desktop/dragsnap_final/dragsnap.vala'
 
 /*
 * ShufflerIII
@@ -439,7 +440,40 @@ namespace AdvancedDragsnap {
         return str;
     }
 
+    private void sendwarning(
+        string title, string body, string icon = "shufflerapplet-symbolic"
+    ) {
+        Notify.init("ShufflerApplet");
+        var notification = new Notify.Notification(title, body, icon);
+        notification.set_urgency(Notify.Urgency.NORMAL);
+        try {
+            new Thread<int>.try("clipboard-notify-thread", () => {
+                try{
+                    notification.show();
+                    return 0;
+                } catch (Error e) {
+                    error ("Unable to send notification: %s", e.message);
+                }
+            });
+        } catch (Error e) {
+            error ("Error: %s", e.message);
+        }
+    }
+
     public static void main (string[] args) {
+        /*
+        if we run dragsnap, disable solu' version
+        */
+        string solus_snappath = "com.solus-project.budgie-wm";
+        GLib.Settings solus_snapsettings = new GLib.Settings(solus_snappath);
+        solus_snapsettings.set_boolean("edge-tiling", false);
+        solus_snapsettings.changed["edge-tiling"].connect(()=> {
+            solus_snapsettings.set_boolean("edge-tiling", false);
+            sendwarning(
+                "Shuffler notification",
+                "Shuffler edge-tiling is running."
+            );
+        });
         /*
         we need to check if window is actually dragged
         width and height will be the same during gemetry change than
@@ -521,7 +555,7 @@ namespace AdvancedDragsnap {
 
         public Peekaboo(int x = 0, int y = 0, int scale, int w, int h) {
             this.set_skip_taskbar_hint(true);
-            //  this.set_type_hint(Gdk.WindowTypeHint.SPLASHSCREEN);
+            this.set_type_hint(Gdk.WindowTypeHint.DIALOG);
             this.set_keep_above(true);
             this.move(x/scale, y/scale);
             this.resize(w/scale, h/scale);
@@ -537,7 +571,7 @@ namespace AdvancedDragsnap {
 
         private bool on_draw (Widget da, Context ctx) {
             double[] tc = get_theme_fillcolor();
-            ctx.set_source_rgba(tc[0], tc[1], tc[2], 0.6);
+            ctx.set_source_rgba(tc[0], tc[1], tc[2], 0.5);
             ctx.set_operator(Cairo.Operator.SOURCE);
             ctx.paint();
             ctx.set_operator(Cairo.Operator.OVER);
@@ -556,7 +590,6 @@ namespace AdvancedDragsnap {
             return {red, green, blue};
 		}
     }
-
 }
 
 // 676
