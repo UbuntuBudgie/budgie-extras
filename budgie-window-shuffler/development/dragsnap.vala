@@ -3,7 +3,7 @@ using Wnck;
 using Cairo;
 using Notify;
 
-// valac --pkg libnotify --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm '/home/jacob/Desktop/dragsnap_final/dragsnap.vala'
+// valac --pkg libnotify --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm
 
 /*
 * ShufflerIII
@@ -49,17 +49,39 @@ namespace AdvancedDragsnap {
                 );
             }
             catch (Error e) {
+                stderr.printf ("%s\n", e.message);
             }
             foreach (string l in output.split("\n")) {
                 l = l.down();
                 if (
-                    (l.contains("mouse") | l.contains("touchpad")) &&
+                    (
+                        l.contains("mouse") | l.contains("touchpad") | 
+                        l.contains("trackpoint") | l.contains("pointer")
+                    ) &&
                     l.contains("id=")
                 ) {
                     string id = l.split("=")[1].split("\t")[0];
                     device_ids += id;
                 }
             }
+        }
+
+        public bool get_ctrl_down() {
+            foreach (string id in device_ids) {
+                string output2 = "";
+                try {
+                    GLib.Process.spawn_command_line_sync(
+                        "xinput --query-state " + id, out output2
+                    );
+                    if (output2.contains("button[1]=down")) {
+                        return true;
+                    }
+                }
+                catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
+                }
+            }
+            return false;
         }
 
         public bool get_mousedown() {
@@ -74,6 +96,7 @@ namespace AdvancedDragsnap {
                     }
                 }
                 catch (Error e) {
+                    stderr.printf ("%s\n", e.message);
                 }
             }
             return false;
@@ -100,7 +123,6 @@ namespace AdvancedDragsnap {
         Gdk.Display? gdkdsp;
         ShufflerInfoClient? client;
         HashTable<string, Variant>? tiledata;
-
 
         public DragSnapTools(Gdk.Display gdkdisplay) {
             overlay = null;
@@ -307,7 +329,6 @@ namespace AdvancedDragsnap {
                 }
             }
             return {-1, -1, -1, -1};
-
         }
 
         public int getscale(Gdk.Monitor monitorsubj) {
@@ -348,9 +369,9 @@ namespace AdvancedDragsnap {
                 Process.spawn_command_line_async(command);
             }
             catch (SpawnError e) {
+                stderr.printf ("%s\n", e.message);
             }
         }
-
 
         public void watch_draggedwindow(
             MouseState state, Gdk.Device pointer, int scale, Wnck.Window curr_active
@@ -583,5 +604,3 @@ namespace AdvancedDragsnap {
 		}
     }
 }
-
-// 676
