@@ -53,32 +53,24 @@ namespace AdvancedDragsnap {
             }
             foreach (string l in output.split("\n")) {
                 l = l.down();
-                if (
-                    (
-                        l.contains("mouse") | l.contains("touchpad") | 
-                        l.contains("trackpoint") | l.contains("pointer")
-                    ) &&
-                    l.contains("id=")
-                ) {
+                if(mouse_in_line(l)) {
                     string id = l.split("=")[1].split("\t")[0];
                     device_ids += id;
                 }
             }
         }
 
-        public bool get_ctrl_down() {
-            foreach (string id in device_ids) {
-                string output2 = "";
-                try {
-                    GLib.Process.spawn_command_line_sync(
-                        "xinput --query-state " + id, out output2
-                    );
-                    if (output2.contains("button[1]=down")) {
-                        return true;
-                    }
-                }
-                catch (Error e) {
-                    stderr.printf ("%s\n", e.message);
+        private bool mouse_in_line (string line) {
+            string[] valid_devnames = {
+                "mouse", "touchpad", "trackpoint", "pointer"
+            };
+            foreach (string dev in valid_devnames) {
+                if (
+                    line.contains(dev) &&
+                    line.contains("id=") &&
+                    line.contains("↳")
+                ) {
+                    return true;
                 }
             }
             return false;
@@ -118,6 +110,8 @@ namespace AdvancedDragsnap {
             BOTTOMLEFT,
             FULLSCREEN
         }
+
+
 
         Gtk.Window? overlay;
         Gdk.Display? gdkdsp;
