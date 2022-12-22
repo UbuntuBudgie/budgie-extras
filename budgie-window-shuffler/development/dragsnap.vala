@@ -41,7 +41,6 @@ namespace AdvancedDragsnap {
         string[] device_ids = {};
 
         public void check_devices() {
-            // Gdk.Seat, Gdk.Device
             device_ids = {};
             string output = "";
             try {
@@ -150,7 +149,6 @@ namespace AdvancedDragsnap {
         public int areastate(int x, int y, int scrw, int scrh, int scrx=0, int scry=0) {
             /*
             from screen position and screenwidth / height, calculate
-            still need to get screen position x/y!!!
             */
             int marge = scrw/120;
             int cornermarge = scrw/10;
@@ -403,10 +401,6 @@ namespace AdvancedDragsnap {
                         */
                         curr_area = temp_curr_area;
                         if (curr_area != PreviewSection.NONE) {
-                            //  print(@"show new preview: $curr_area\n");
-                            //  int[] previeworig = get_preview_origin(
-                            //      mongeo[0], mongeo[1], mongeo[2], mongeo[3], curr_area
-                            //  );
                             int[] previeworig = get_preview(curr_area);
                             overlay = new Peekaboo(
                                 previeworig[0], previeworig[1], scale,
@@ -421,7 +415,7 @@ namespace AdvancedDragsnap {
                 window_iswatched = false;
                 if (curr_area != PreviewSection.NONE) {;
                     string tilingstring = get_tilingdefinition(curr_area, new_xid);
-                    // replace pathstring
+                    // replace pathstring!!
                     string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
                         tilingstring, @" id=$new_xid monitor=$monname"
                     );
@@ -480,7 +474,6 @@ namespace AdvancedDragsnap {
         */
         string check_geo2 = "";
         string check_geo1 = "";
-        //  bool drag = true;
         Gtk.init(ref args);
         /*
         mouse stuff
@@ -540,7 +533,6 @@ namespace AdvancedDragsnap {
                     check_geo1 = intarr_tostring(
                         dragsnaptools.get_geo(new_active)
                     );
-                    //  print("setup watching\n");
                     dragsnaptools.watch_draggedwindow(
                         mousestate, pointer, scale, new_active
                     );
