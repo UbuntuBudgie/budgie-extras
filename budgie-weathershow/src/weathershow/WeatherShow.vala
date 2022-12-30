@@ -167,13 +167,13 @@ namespace WeatherShowFunctions {
     private string[] get_matches(string lookfor, string dir) {
         // find matching cities
         File datasrc = File.new_for_path(dir.concat("/cities"));
-        string fixed = lookfor.down();
+        string fixed = lookfor.down().to_ascii();
         try {
             var dis = new DataInputStream (datasrc.read ());
             string line;
             string[] matches = {};
             while ((line = dis.read_line (null)) != null) {
-                if (line.down().contains(fixed)) {
+                if (line.down().to_ascii().contains(fixed)) {
                     matches += line;
                 }
             }
