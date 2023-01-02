@@ -97,18 +97,7 @@
             <default>0</default>
 	    <range min="0" max="200"/>
         </key>
-        <key type="i" name="roundposmaxcols">
-            <summary>Round position - max n-cols</summary>
-            <description>How many columns round_position should consider when optimizing window position</description>
-            <default>6</default>
-	    <range min="1" max="7"/>
-        </key>
-        <key type="i" name="roundposmaxrows">
-            <summary>Round position - max n-rows</summary>
-            <description>How many rows round_position should consider when optimizing window position</description>
-            <default>4</default>
-	    <range min="1" max="7"/>
-        </key>
+
         <key type="i" name="margintop">
             <summary>Top margin of the grid</summary>
             <description>The margin that Shuffler should keep to the top of the monitor</description>
@@ -126,6 +115,11 @@
             <description>The padding that Shuffler should keep between grid cells</description>
             <default>0</default>
 	    <range min="0" max="40"/>
+	</key>
+	<key type="b" name="dragsnaptiling">
+            <summary>Replace built in edge tiling by shuffler-dragsnap</summary>
+            <description>Wether to replace built-in edge tiling (left/right half, fullscreen) by more extensive shuffler edge tiling (quarter/half all sides and fullscreen)</description>
+            <default>true</default>
         </key>
     </schema>
 </schemalist>
