@@ -10,7 +10,7 @@ import subprocess
 """
 ClockWorks
 Author: Jacob Vlijm
-Copyright © 2017-2022 Ubuntu Budgie Developers
+Copyright © 2017 Ubuntu Budgie Developers
 Website=https://ubuntubudgie.org
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
