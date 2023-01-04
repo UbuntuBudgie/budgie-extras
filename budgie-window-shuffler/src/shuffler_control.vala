@@ -513,7 +513,7 @@ namespace ShufflerControl2 {
             geogrid.attach(new Label(""), 1, 13, 1, 1);
             // window span
             // This is a field label, should be short
-            Label cellspan_label = makelabel(_("Window cell span, hor / vert"),0);
+            Label cellspan_label = makelabel(_("Window cell span, hor / vert"), 0);
             geogrid.attach(cellspan_label, 1, 14, 1, 1);
             geogrid.attach(new Label("\t"), 2, 14, 1, 1);
             OwnSpinButton yspan_spin = new OwnSpinButton("vert", "", 1, 10);
@@ -1304,6 +1304,22 @@ namespace ShufflerControl2 {
             scrolled_tiling.add(tilinggrid);
             scrolled_tiling.set_propagate_natural_width(true);
             allsettings_stack.add_named(scrolled_tiling, "tiling");
+            /* dsragsnap subgrid */
+            Grid edgetiling_subgrid = new Gtk.Grid();
+            tilinggrid.attach(edgetiling_subgrid, 0, 60, 10, 1);
+            Label usedragsnapheaderheader = makelabel(
+                // Use shuffler edge-tiling instead of built-in
+                _("Use Shuffler Dragsnap advanced edge-tiling")  + "*",
+                0, "justbold"
+            );
+            edgetiling_subgrid.attach(usedragsnapheaderheader, 0, 0, 1, 1);
+            edgetiling_subgrid.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_dragsnapswitch = new Gtk.Switch();
+            edgetiling_subgrid.attach(enable_dragsnapswitch, 2, 0, 1, 1);
+            string dragsnap_expl = "*" + _("This will disable built-in edge-tiling");
+            Label dragsnap_expl_label = makelabel(dragsnap_expl, 0, "justitalic");
+            edgetiling_subgrid.attach(new Label(""), 1, 1, 1, 1);
+            edgetiling_subgrid.attach(dragsnap_expl_label, 0, 2, 10, 1);
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
             layoutsgrid.set_row_spacing(20);
@@ -1517,11 +1533,12 @@ namespace ShufflerControl2 {
             // connect stuff
             switches = {
                 enable_basictilingswitch, enable_advancedtilingswitch,
-                enable_layouts, enable_rules, enable_animationswich // conflicting!
+                enable_layouts, enable_rules, enable_animationswich,
+                enable_dragsnapswitch
             };
             read_switchsettings = {
                 "basictiling", "customgridtiling", "runlayouts",
-                "windowrules", "softmove"
+                "windowrules", "softmove", "dragsnaptiling"
             };
             shufflersettings.changed["windowrules"].connect(()=> {
                 set_widget_sensitive(ruleswidgets, "windowrules");
