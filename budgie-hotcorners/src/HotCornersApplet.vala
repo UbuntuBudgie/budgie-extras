@@ -105,6 +105,41 @@ namespace HotCornersApplet {
     Gdk.Screen gdkscreen;
     private string[] commands;
     bool showpanelicon;
+    bool skip_action = false;
+
+    /*
+    in some cases, we need to temporarily disable hotcorners, e.g. to prevent
+    unintended actions with dragsnap edge/corner tiling. to do so, we'll add
+    a dbus method.
+    */
+
+    [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
+
+    private class HotCornersServer : GLib.Object {
+
+        public void set_skip_action (bool skip) throws Error {
+            skip_action = skip;
+        }
+    }
+
+    // setup dbus
+    void on_bus_acquired (DBusConnection conn) {
+        // register the bus
+        try {
+            conn.register_object ("/org/ubuntubudgie/HotCornerSwitch",
+                new HotCornersServer ());
+        }
+        catch (IOError e) {
+            stderr.printf ("Could not register service\n");
+        }
+    }
+
+    private void setup_dbus () {
+        Bus.own_name (
+            BusType.SESSION, "org.UbuntuBudgie.HotCornerSwitch",
+            BusNameOwnerFlags.NONE, on_bus_acquired,
+            () => {}, () => stderr.printf ("Could not acquire name\n"));
+    }
 
     private void read_setcommands () {
         /* get the initially set commands */
@@ -656,6 +691,7 @@ namespace HotCornersApplet {
         Gdk.Seat seat;
 
         public Applet(string uuid) {
+            setup_dbus();
             // watch if applet is removed from the panel
             GLib.Timeout.add_seconds(1, ()=> {
                 watchapplet(uuid);
@@ -886,7 +922,7 @@ namespace HotCornersApplet {
         private void run_command (int corner) {
             /* execute the command */
             string cmd = commands[corner];
-            if (cmd != "" && !HCSupport.locked()) {
+            if (cmd != "" && !HCSupport.locked() && !skip_action) {
                 try {
                     Process.spawn_command_line_async(cmd);
                 }
