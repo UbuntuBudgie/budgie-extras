@@ -23,12 +23,6 @@ using Notify;
 
 namespace AdvancedDragsnap {
 
-    [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
-
-    interface ShufflerInfoClient : Object {
-        public abstract HashTable<string, Variant> get_monitorgeometry () throws Error;
-        public abstract HashTable<string, Variant> get_tiles (string mon_name, int cols, int rows) throws Error;
-    }
     // will also be used in snapdragtools
     bool window_iswatched = false;
     bool drag = false;
@@ -96,6 +90,20 @@ namespace AdvancedDragsnap {
     }
 
 
+    [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
+
+    interface ShufflerInfoClient : Object {
+        public abstract HashTable<string, Variant> get_monitorgeometry () throws Error;
+        public abstract HashTable<string, Variant> get_tiles (string mon_name, int cols, int rows) throws Error;
+    }
+
+    [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
+
+    interface HotCornerClient : Object {
+        public abstract void set_skip_action (bool onoff) throws Error;
+    }
+
+
     class DragSnapTools {
 
         enum PreviewSection {
@@ -111,20 +119,20 @@ namespace AdvancedDragsnap {
             FULLSCREEN
         }
 
-
-
         Gtk.Window? overlay;
         Gdk.Display? gdkdsp;
-        ShufflerInfoClient? client;
+        ShufflerInfoClient? client; /* shufflerdaemon */
+        HotCornerClient? client2; /* hotcorners */
         HashTable<string, Variant>? tiledata;
 
         public DragSnapTools(Gdk.Display gdkdisplay) {
             overlay = null;
             gdkdsp = gdkdisplay;
             client = get_client();
+            client2 = null;
         }
 
-        public int[] get_tiles(string monname,  int cols, int rows) {
+        private int[] get_tiles(string monname,  int cols, int rows) {
             /* on monitor change, update tiledata & return basic monitor data*/
             int fullwidth = -1;
             int fullheight = -1;
@@ -148,7 +156,7 @@ namespace AdvancedDragsnap {
             return {origx, origy, fullwidth, fullheight};
         }
 
-        public ShufflerInfoClient? get_client () {
+        private ShufflerInfoClient? get_client () {
             try {
                 client = Bus.get_proxy_sync (
                     BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
@@ -162,7 +170,33 @@ namespace AdvancedDragsnap {
             }
         }
 
-        public int areastate(int x, int y, int scrw, int scrh, int scrx=0, int scry=0) {
+        private HotCornerClient? get_client2 () {
+            try {
+                client2 = Bus.get_proxy_sync (
+                    BusType.SESSION, "org.UbuntuBudgie.HotCornerSwitch",
+                    ("/org/ubuntubudgie/hotcornerswitch")
+                );
+                return client2;
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return null;
+            }
+        }
+
+        private void disable_hotcorners (bool onoff) {
+            if (client2 == null) {
+                client2 = get_client2();
+            }
+            try {
+                client2.set_skip_action(onoff);
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+        }
+
+        private int areastate(int x, int y, int scrw, int scrh, int scrx=0, int scry=0) {
             /*
             from screen position and screenwidth / height, calculate
             */
@@ -340,7 +374,7 @@ namespace AdvancedDragsnap {
             return geodata;
         }
 
-        void kill_preview() {
+        private void kill_preview() {
             if (overlay != null) {
                 overlay.destroy();
                 overlay = null;
@@ -358,7 +392,7 @@ namespace AdvancedDragsnap {
             return activemon.get_model();
         }
 
-        void run_command (string command) {
+        private void run_command (string command) {
             try {
                 Process.spawn_command_line_async(command);
             }
@@ -378,13 +412,19 @@ namespace AdvancedDragsnap {
             int x = -1;
             int y = -1;
             int t = 0;
+            bool firstcycle = true;
             GLib.Timeout.add(100, ()=> {
                 /*
                 as long as button 1 is pressed and we are dragging,
                 check for position and all
                 */
                 if (state.get_mousedown() && drag) {
-                    new_xid = (int)curr_active.get_xid(); // for tile_active()
+                    if (firstcycle) {
+                        print("deactivate hotcorners\n");
+                        disable_hotcorners(true);
+                        new_xid = (int)curr_active.get_xid(); // for tile_active()
+                        firstcycle = false;
+                    }
                     pointer.get_position(null, out x, out y);
                     x = x*scale; y = y*scale;
                     /* check monitor at point. still the same? */
@@ -436,6 +476,8 @@ namespace AdvancedDragsnap {
                     );
                     run_command(cmd);
                 }
+                print("enable hotcorners\n");
+                disable_hotcorners(false);
                 return false;
             });
         }

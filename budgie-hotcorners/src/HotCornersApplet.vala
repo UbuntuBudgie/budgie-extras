@@ -126,7 +126,7 @@ namespace HotCornersApplet {
     void on_bus_acquired (DBusConnection conn) {
         // register the bus
         try {
-            conn.register_object ("/org/ubuntubudgie/HotCornerSwitch",
+            conn.register_object ("/org/ubuntubudgie/hotcornerswitch",
                 new HotCornersServer ());
         }
         catch (IOError e) {
