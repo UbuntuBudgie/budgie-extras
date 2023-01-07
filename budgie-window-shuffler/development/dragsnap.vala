@@ -420,7 +420,6 @@ namespace AdvancedDragsnap {
                 */
                 if (state.get_mousedown() && drag) {
                     if (firstcycle) {
-                        print("deactivate hotcorners\n");
                         disable_hotcorners(true);
                         new_xid = (int)curr_active.get_xid(); // for tile_active()
                         firstcycle = false;
@@ -448,7 +447,6 @@ namespace AdvancedDragsnap {
                     else {t = 0;}
                     /* so, update preview if PreviewSection changes */
                     if (temp_curr_area != curr_area) {
-                        //  print(@"area changed: $curr_area -> $temp_curr_area\n");
                         /* if state changed, kill preview (if it exists) */
                         kill_preview();
                         /*
@@ -476,7 +474,6 @@ namespace AdvancedDragsnap {
                     );
                     run_command(cmd);
                 }
-                print("enable hotcorners\n");
                 disable_hotcorners(false);
                 return false;
             });
