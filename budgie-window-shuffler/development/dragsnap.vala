@@ -185,9 +185,7 @@ namespace AdvancedDragsnap {
         }
 
         private void disable_hotcorners (bool onoff) {
-            if (client2 == null) {
-                client2 = get_client2();
-            }
+            client2 = get_client2();
             try {
                 client2.set_skip_action(onoff);
             }
