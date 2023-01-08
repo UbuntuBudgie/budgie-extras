@@ -506,12 +506,14 @@ namespace AdvancedDragsnap {
         }
     }
 
-    private void prevent_doubleoverlay (GLib.Settings snappath) {
+    private void prevent_doubleoverlay (GLib.Settings snappath, bool warn = false) {
         snappath.set_boolean("edge-tiling", false);
-        sendwarning(
-            "Shuffler notification",
-            "Shuffler edge-tiling is running."
-        );
+        if (warn) {
+            sendwarning(
+                "Shuffler notification",
+                "Shuffler edge-tiling is running."
+            );
+        }
     }
 
     public static int main (string[] args) {
@@ -525,10 +527,10 @@ namespace AdvancedDragsnap {
         prevent_doubleoverlay(solus_snapsettings);
         prevent_doubleoverlay(mutter_snapsettings);
         solus_snapsettings.changed["edge-tiling"].connect(()=> {
-            prevent_doubleoverlay(solus_snapsettings);
+            prevent_doubleoverlay(solus_snapsettings, true);
         });
         mutter_snapsettings.changed["edge-tiling"].connect(()=> {
-            prevent_doubleoverlay(mutter_snapsettings);
+            prevent_doubleoverlay(mutter_snapsettings, true);
         });
         /*
         we need to check if window is actually dragged
