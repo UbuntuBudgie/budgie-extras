@@ -506,19 +506,29 @@ namespace AdvancedDragsnap {
         }
     }
 
-    public static void main (string[] args) {
+    private void prevent_doubleoverlay (GLib.Settings snappath) {
+        snappath.set_boolean("edge-tiling", false);
+        sendwarning(
+            "Shuffler notification",
+            "Shuffler edge-tiling is running."
+        );
+    }
+
+    public static int main (string[] args) {
         /*
-        if we run dragsnap, disable solu' version
+        if we run dragsnap, disable solus' and mutter's edge-tiling
         */
         string solus_snappath = "com.solus-project.budgie-wm";
+        string mutter_snappath = "org.gnome.mutter";
         GLib.Settings solus_snapsettings = new GLib.Settings(solus_snappath);
-        solus_snapsettings.set_boolean("edge-tiling", false);
+        GLib.Settings mutter_snapsettings = new GLib.Settings(mutter_snappath);
+        prevent_doubleoverlay(solus_snapsettings);
+        prevent_doubleoverlay(mutter_snapsettings);
         solus_snapsettings.changed["edge-tiling"].connect(()=> {
-            solus_snapsettings.set_boolean("edge-tiling", false);
-            sendwarning(
-                "Shuffler notification",
-                "Shuffler edge-tiling is running."
-            );
+            prevent_doubleoverlay(solus_snapsettings);
+        });
+        mutter_snapsettings.changed["edge-tiling"].connect(()=> {
+            prevent_doubleoverlay(mutter_snapsettings);
         });
         /*
         we need to check if window is actually dragged
@@ -592,6 +602,7 @@ namespace AdvancedDragsnap {
             });
         });
         Gtk.main();
+        return 0;
     }
 
 
