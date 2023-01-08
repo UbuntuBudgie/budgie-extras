@@ -516,22 +516,26 @@ namespace AdvancedDragsnap {
         }
     }
 
+    private void disable_competition () {
+        string[] competition = {
+            "com.solus-project.budgie-wm", "org.gnome.mutter"
+        };
+        foreach (string s in competition) {
+            GLib.Settings cpt =  new GLib.Settings(s);
+            prevent_doubleoverlay(cpt);
+            cpt.changed["edge-tiling"].connect(()=> {
+                prevent_doubleoverlay(cpt, true);
+            });
+        }
+
+    }
+
     public static int main (string[] args) {
         /*
-        if we run dragsnap, disable solus' and mutter's edge-tiling
+        if we run dragsnap, disable solus' and mutter's edge-tiling,
+        make sure they will stay disabled.
         */
-        string solus_snappath = "com.solus-project.budgie-wm";
-        string mutter_snappath = "org.gnome.mutter";
-        GLib.Settings solus_snapsettings = new GLib.Settings(solus_snappath);
-        GLib.Settings mutter_snapsettings = new GLib.Settings(mutter_snappath);
-        prevent_doubleoverlay(solus_snapsettings);
-        prevent_doubleoverlay(mutter_snapsettings);
-        solus_snapsettings.changed["edge-tiling"].connect(()=> {
-            prevent_doubleoverlay(solus_snapsettings, true);
-        });
-        mutter_snapsettings.changed["edge-tiling"].connect(()=> {
-            prevent_doubleoverlay(mutter_snapsettings, true);
-        });
+        disable_competition();
         /*
         we need to check if window is actually dragged
         width and height will be the same during gemetry change than
