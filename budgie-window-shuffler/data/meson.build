@@ -32,8 +32,6 @@ shufflerlayoutstargetauto = custom_target('layoutsautostart',
   install_dir : xdg_appdir
 )
 
-###########################################
-
 shufflerlayoutstargetauto = custom_target('dragsnapautostart',
   output : 'dragsnap-autostart.desktop',
   input : 'dragsnap-autostart.desktop.in',
@@ -41,7 +39,7 @@ shufflerlayoutstargetauto = custom_target('dragsnapautostart',
   install : true,
   install_dir : xdg_appdir
 )
-#############################################
+
 shufflertargetw = custom_target('shufflercontrols',
   output : 'org.ubuntubudgie.shufflercontrol.desktop',
   input : 'org.ubuntubudgie.shufflercontrol.desktop.in',
