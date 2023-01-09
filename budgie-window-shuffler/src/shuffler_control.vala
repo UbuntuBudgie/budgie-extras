@@ -1309,7 +1309,7 @@ namespace ShufflerControl2 {
             tilinggrid.attach(edgetiling_subgrid, 0, 60, 10, 1);
             Label usedragsnapheaderheader = makelabel(
                 // Use shuffler edge-tiling instead of built-in
-                _("Use Shuffler Dragsnap advanced edge-tiling")  + "*",
+                _("Use Shuffler drag-snap advanced edge-tiling")  + "*",
                 0, "justbold"
             );
             edgetiling_subgrid.attach(usedragsnapheaderheader, 0, 0, 1, 1);

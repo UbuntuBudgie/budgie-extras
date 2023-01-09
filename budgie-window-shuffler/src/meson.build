@@ -92,9 +92,11 @@ executable(
     include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
+
 GridWindowSources = [
     'gridwindow.vala'
 ]
+
 GridWindowDependencies = [
     dependency('gtk+-3.0'),
     dependency('gio-2.0'),
@@ -287,8 +289,6 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
-#######################################################################
-
 ShufflerControlSources = [
     'shuffler_control.vala'
 ]
@@ -316,6 +316,28 @@ executable(
     install_dir: LIB_INSTALL_DIR,
 )
 
+DragSnapSources = [
+    'dragsnap.vala'
+]
 
+DragSnapDependencies = [
+    dependency('gtk+-3.0'),
+    dependency('gdk-3.0'),
+    dependency('cairo'),
+    dependency('libwnck-3.0'),
+    dependency('libnotify'),
+]
 
-#######################################################################
+DragSnapCArgs = [
+    '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
+]
+
+executable(
+    'dragsnap', DragSnapSources,
+    dependencies: DragSnapDependencies,
+    install: true,
+    vala_args: ShufflerValaArgs,
+    c_args: DragSnapCArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
