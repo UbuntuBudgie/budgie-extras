@@ -520,7 +520,7 @@ namespace AdvancedDragsnap {
             "com.solus-project.budgie-wm", "org.gnome.mutter"
         };
         foreach (string s in competition) {
-            GLib.Settings cpt =  new GLib.Settings(s);
+            GLib.Settings cpt = new GLib.Settings(s);
             prevent_doubleoverlay(cpt);
             cpt.changed["edge-tiling"].connect(()=> {
                 prevent_doubleoverlay(cpt, true);
@@ -548,12 +548,13 @@ namespace AdvancedDragsnap {
         disable_competition();
         /*
         we need to check if window is actually dragged
-        width and height will be the same during gemetry change than
+        width and height will be the same during geometry change than
         */
-        initialiseLocaleLanguageSupport();
         string check_geo2 = "";
         string check_geo1 = "";
         Gtk.init(ref args);
+        /* translation */
+        initialiseLocaleLanguageSupport();
         /*
         mouse stuff
         */
