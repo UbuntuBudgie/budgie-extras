@@ -39,8 +39,7 @@ namespace AdvancedDragsnap {
             string output = "";
             try {
                 GLib.Process.spawn_command_line_sync(
-                    "/usr/bin/xinput --list", out output
-                    //  Config.PACKAGE_BINDIR + "/xinput --list", out output;
+                    Config.PACKAGE_BINDIR + "/xinput --list", out output
                 );
             }
             catch (Error e) {
@@ -76,8 +75,7 @@ namespace AdvancedDragsnap {
                 string output2 = "";
                 try {
                     GLib.Process.spawn_command_line_sync(
-                        "xinput --query-state " + id, out output2
-                        //  Config.PACKAGE_BINDIR + "/xinput --query-state " + id, out output2;
+                        Config.PACKAGE_BINDIR + "/xinput --query-state " + id, out output2
                     );
                     if (output2.contains("button[1]=down")) {
                         return true;
@@ -468,8 +466,7 @@ namespace AdvancedDragsnap {
                 window_iswatched = false;
                 if (curr_area != PreviewSection.NONE) {;
                     string tilingstring = get_tilingdefinition(curr_area, new_xid);
-                    // replace pathstring!!
-                    string cmd = "/usr/lib/budgie-window-shuffler" + "/tile_active ".concat(
+                    string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
                         tilingstring, @" id=$new_xid monitor=$monname"
                     );
                     run_command(cmd);
