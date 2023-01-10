@@ -509,8 +509,8 @@ namespace AdvancedDragsnap {
         snappath.set_boolean("edge-tiling", false);
         if (warn) {
             sendwarning(
-                "Shuffler notification",
-                "Shuffler edge-tiling is running."
+                _("Shuffler notification"),
+                _("Shuffler drag-snap is running.")
             );
         }
     }
@@ -529,6 +529,17 @@ namespace AdvancedDragsnap {
 
     }
 
+    public void initialiseLocaleLanguageSupport() {
+        GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+        GLib.Intl.bindtextdomain(
+            Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+        );
+        GLib.Intl.bind_textdomain_codeset(
+            Config.GETTEXT_PACKAGE, "UTF-8"
+        );
+        GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
+    }
+
     public static int main (string[] args) {
         /*
         if we run dragsnap, disable solus' and mutter's edge-tiling,
@@ -539,6 +550,7 @@ namespace AdvancedDragsnap {
         we need to check if window is actually dragged
         width and height will be the same during gemetry change than
         */
+        initialiseLocaleLanguageSupport();
         string check_geo2 = "";
         string check_geo1 = "";
         Gtk.init(ref args);
