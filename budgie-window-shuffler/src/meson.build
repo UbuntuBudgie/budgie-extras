@@ -325,7 +325,6 @@ DragSnapDependencies = [
     dependency('gdk-3.0'),
     dependency('cairo'),
     dependency('libwnck-3.0'),
-    dependency('libnotify'),
 ]
 
 DragSnapCArgs = [
