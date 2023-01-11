@@ -638,8 +638,8 @@ namespace AdvancedDragsnap {
                 "To choose built-in edge-tiling instead, " +
                 "press Built-in.")
             );
-            this.add_button("_Drag-snap", Gtk.ResponseType.CLOSE);
-            this.add_button("_Built-in", Gtk.ResponseType.YES);
+            this.add_button("Drag-snap", Gtk.ResponseType.CLOSE);
+            this.add_button(_("Built-in"), Gtk.ResponseType.YES);
             this.response.connect ((response_id) => {
                 switch (response_id) {
                     case Gtk.ResponseType.CLOSE:
