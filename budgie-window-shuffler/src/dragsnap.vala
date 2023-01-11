@@ -1,9 +1,6 @@
 using Gtk;
 using Wnck;
 using Cairo;
-using Notify;
-
-// valac --pkg libnotify --pkg gtk+-3.0 --pkg libwnck-3.0 -X "-D WNCK_I_KNOW_THIS_IS_UNSTABLE" -X -lm
 
 /*
 * ShufflerIII
@@ -23,9 +20,11 @@ using Notify;
 
 namespace AdvancedDragsnap {
 
-    // will also be used in snapdragtools
+    // will also be used in dragsnaptools
     bool window_iswatched = false;
     bool drag = false;
+    bool warningdialog = false;
+
 
     class MouseState {
         /*
@@ -54,15 +53,13 @@ namespace AdvancedDragsnap {
             }
         }
 
-        private bool mouse_in_line (string line) {
+        private bool mouse_in_line (string l) {
             string[] valid_devnames = {
                 "mouse", "touchpad", "trackpoint", "pointer"
             };
             foreach (string dev in valid_devnames) {
                 if (
-                    line.contains(dev) &&
-                    line.contains("id=") &&
-                    line.contains("↳")
+                    l.contains(dev) && l.contains("id=") && l.contains("↳")
                 ) {
                     return true;
                 }
@@ -86,6 +83,53 @@ namespace AdvancedDragsnap {
                 }
             }
             return false;
+        }
+    }
+
+
+    class ManageSettings {
+
+        public GLib.Settings[] competing_settings = {};
+        int n_settings = 0;
+        public bool act_on_change = true;
+
+        public ManageSettings () {
+            string[] competing_strings = {
+                "org.ubuntubudgie.windowshuffler",
+                "com.solus-project.budgie-wm",
+                "org.gnome.mutter"
+            };
+            foreach (string s in competing_strings) {
+                competing_settings += new GLib.Settings(s);
+            }
+            n_settings = competing_settings.length;
+            setup_connection();
+        }
+
+        public void setup_connection () {
+            foreach (GLib.Settings st in competing_settings[1:n_settings]) {
+                st.changed["edge-tiling"].connect((setting, key)=> {
+                    bool is_on = setting.get_boolean("edge-tiling");
+                    if (act_on_change && !warningdialog && is_on) {
+                        warningdialog = true;
+                        new DialogWindow(this);
+                    }
+                });
+            }
+        }
+
+        public void unset_competition () {
+            /* disable all but dragsnap */
+            foreach (GLib.Settings st in competing_settings[1:n_settings]) {
+                st.set_boolean("edge-tiling", false);
+            }
+        }
+
+        public void unset_dragsnap () {
+            /* enable built-in, disable dragsnap */
+            act_on_change = false;
+            competing_settings[1].set_boolean("edge-tiling", true);
+            competing_settings[0].set_boolean("dragsnaptiling", false);
         }
     }
 
@@ -485,50 +529,6 @@ namespace AdvancedDragsnap {
         return str;
     }
 
-    private void sendwarning(
-        string title, string body, string icon = "shufflerapplet-symbolic"
-    ) {
-        Notify.init("ShufflerApplet");
-        var notification = new Notify.Notification(title, body, icon);
-        notification.set_urgency(Notify.Urgency.NORMAL);
-        try {
-            new Thread<int>.try("clipboard-notify-thread", () => {
-                try{
-                    notification.show();
-                    return 0;
-                } catch (Error e) {
-                    error ("Unable to send notification: %s", e.message);
-                }
-            });
-        } catch (Error e) {
-            error ("Error: %s", e.message);
-        }
-    }
-
-    private void prevent_doubleoverlay (GLib.Settings snappath, bool warn = false) {
-        snappath.set_boolean("edge-tiling", false);
-        if (warn) {
-            sendwarning(
-                _("Shuffler notification"),
-                _("Shuffler drag-snap is running.")
-            );
-        }
-    }
-
-    private void disable_competition () {
-        string[] competition = {
-            "com.solus-project.budgie-wm", "org.gnome.mutter"
-        };
-        foreach (string s in competition) {
-            GLib.Settings cpt = new GLib.Settings(s);
-            prevent_doubleoverlay(cpt);
-            cpt.changed["edge-tiling"].connect(()=> {
-                prevent_doubleoverlay(cpt, true);
-            });
-        }
-
-    }
-
     public void initialiseLocaleLanguageSupport() {
         GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
         GLib.Intl.bindtextdomain(
@@ -541,11 +541,7 @@ namespace AdvancedDragsnap {
     }
 
     public static int main (string[] args) {
-        /*
-        if we run dragsnap, disable solus' and mutter's edge-tiling,
-        make sure they will stay disabled.
-        */
-        disable_competition();
+
         /*
         we need to check if window is actually dragged
         width and height will be the same during geometry change than
@@ -553,6 +549,12 @@ namespace AdvancedDragsnap {
         string check_geo2 = "";
         string check_geo1 = "";
         Gtk.init(ref args);
+        ManageSettings mng = new ManageSettings();
+        /*
+        if we run dragsnap, disable solus' and mutter's edge-tiling,
+        make sure they will stay disabled.
+        */
+        mng.unset_competition();
         /* translation */
         initialiseLocaleLanguageSupport();
         /*
@@ -621,6 +623,40 @@ namespace AdvancedDragsnap {
         });
         Gtk.main();
         return 0;
+    }
+
+    class DialogWindow : Gtk.MessageDialog {
+
+        public DialogWindow (ManageSettings manager) {
+            this.set_modal(true);
+            this.set_keep_above(true);
+
+            this.message_type = Gtk.MessageType.OTHER;
+            this.set_markup("<span><b>Drag-snap</b></span>");
+            this.format_secondary_text(
+                _("Drag-snap has replaced built-in edge-tiling. " +
+                "To choose built-in edge-tiling instead, " +
+                "press Built-in.")
+            );
+            this.add_button("_Drag-snap", Gtk.ResponseType.CLOSE);
+            this.add_button("_Built-in", Gtk.ResponseType.YES);
+            this.response.connect ((response_id) => {
+                switch (response_id) {
+                    case Gtk.ResponseType.CLOSE:
+                        // keep drag-snap
+                        manager.unset_competition();
+                        break;
+                    case Gtk.ResponseType.YES:
+                        // disable dragsnap, switch on built in
+                        manager.unset_dragsnap();
+                        break;
+                }
+                warningdialog = false;
+                this.destroy();
+
+            });
+            this.show();
+        }
     }
 
 
