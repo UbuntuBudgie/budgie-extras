@@ -71,12 +71,9 @@ namespace ShufflerControl2 {
         appletgallery_stack.set_transition_type(
             StackTransitionType.NONE
         );
-
         int previewsize = 120;
         int area_ysize = (int)(previewsize*0.67);
         int currindex = 0;
-
-
         foreach (string s in gallery_options) {
             Grid showcurrgrid = new Grid();
             string[] layout_def = s.split("|");
@@ -1592,11 +1589,10 @@ namespace ShufflerControl2 {
             GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
 
-
-
         private void manage_daemon() {
             string[] relevant_keys = {
-                "basictiling", "customgridtiling", "runlayouts", "windowrules"
+                "basictiling", "customgridtiling", "runlayouts",
+                "windowrules", "dragsnaptiling"
             };
             bool sens = false;
 
