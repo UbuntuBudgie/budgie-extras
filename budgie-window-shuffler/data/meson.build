@@ -93,6 +93,12 @@ install_data('shuffler-tilingicon-symbolic.svg',
 install_data('shuffler-applet-settings-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
+install_data('dragsnapimgbuiltin-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
+install_data('dragsnapimg-symbolic.svg',
+    install_dir: PIXMAPS_DIR
+)
 
 BDE_FILE='windowshuffler-call_shufflergui.bde'
 shufflerbde01 = custom_target(BDE_FILE,

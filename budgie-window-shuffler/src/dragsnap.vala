@@ -20,17 +20,13 @@ using Cairo;
 
 namespace AdvancedDragsnap {
 
-    // will also be used in dragsnaptools
     bool window_iswatched = false;
     bool drag = false;
     bool warningdialog = false;
 
 
     class MouseState {
-        /*
-        based on xinput spawn. should be able to do it differently, but...
-        later
-        */
+        /* using xinput spawn. should be possible differently, but... later */
         string[] device_ids = {};
 
         public void check_devices() {
@@ -388,6 +384,7 @@ namespace AdvancedDragsnap {
                     spany = 2;
                     break;
             }
+
             foreach (string foundkey in tiledata.get_keys()) {
                 if (foundkey == k) {
                     Variant target_tile = tiledata[k];
@@ -541,7 +538,6 @@ namespace AdvancedDragsnap {
     }
 
     public static int main (string[] args) {
-
         /*
         we need to check if window is actually dragged
         width and height will be the same during geometry change than
@@ -557,9 +553,7 @@ namespace AdvancedDragsnap {
         mng.unset_competition();
         /* translation */
         initialiseLocaleLanguageSupport();
-        /*
-        mouse stuff
-        */
+        /* mouse stuff */
         MouseState mousestate = new MouseState();
         mousestate.check_devices();
         Gdk.Display gdkdsp = Gdk.Display.get_default();
@@ -568,9 +562,7 @@ namespace AdvancedDragsnap {
         gdkseat.device_added.connect(mousestate.check_devices);
         gdkseat.device_removed.connect(mousestate.check_devices);
         Gdk.Device pointer = gdkseat.get_pointer();
-        /*
-        setup watch scale
-        */
+        /* setup watch scale */
         int scale;
         Gdk.Monitor? monitorsubj = gdkdsp.get_primary_monitor();
         Gdk.Screen gdkscr = Gdk.Screen.get_default();
@@ -625,37 +617,105 @@ namespace AdvancedDragsnap {
         return 0;
     }
 
-    class DialogWindow : Gtk.MessageDialog {
+
+    class DialogWindow : Gtk.Window {
 
         public DialogWindow (ManageSettings manager) {
-            this.set_modal(true);
+
+            /* css stuff */
+            string text_css = ".justbold {font-weight: bold;}";
+            Gdk.Screen gdk_scr = this.get_screen();
+            Gtk.CssProvider css_provider = new Gtk.CssProvider();
+            try {
+                css_provider.load_from_data(text_css);
+                Gtk.StyleContext.add_provider_for_screen(
+                    gdk_scr, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+                );
+            }
+            catch (Error e) {
+            }
+
+            /* general window stuff */
+            this.set_default_size(600, 100);
+            this.set_skip_taskbar_hint(true);
+            this.set_decorated(false);
             this.set_keep_above(true);
+            Gtk.Grid maingrid = new Gtk.Grid();
+            this.add(maingrid);
 
-            this.message_type = Gtk.MessageType.OTHER;
-            this.set_markup("<span><b>Drag-snap</b></span>");
-            this.format_secondary_text(
-                _("Drag-snap has replaced built-in edge-tiling. " +
-                "To choose built-in edge-tiling instead, " +
-                "press Built-in.")
+            /* header */
+            string header = "Drag-snap";
+            Label h = new Label(header);
+            set_margins(h, 30, 30, 30, 0);
+            maingrid.attach(h, 0, 0, 1, 1);
+            h.get_style_context().add_class("justbold");
+
+            /* text message */
+            string textblock = _("Drag-snap has replaced built-in edge-tiling. " +
+            "To choose built-in edge-tiling instead, " +
+            "press Built-in.");
+            Label l = new Label(textblock);
+            set_margins(l, 30, 30, 15, 45);
+            l.set_line_wrap(true);
+            l.set_size_request(540, 10);
+            maingrid.attach(l, 0, 5, 1, 1);
+
+            /* images */
+            Gtk.Image img1 = new Gtk.Image.from_icon_name(
+                "dragsnapimg-symbolic", Gtk.IconSize.DIALOG
             );
-            this.add_button("Drag-snap", Gtk.ResponseType.CLOSE);
-            this.add_button(_("Built-in"), Gtk.ResponseType.YES);
-            this.response.connect ((response_id) => {
-                switch (response_id) {
-                    case Gtk.ResponseType.CLOSE:
-                        // keep drag-snap
-                        manager.unset_competition();
-                        break;
-                    case Gtk.ResponseType.YES:
-                        // disable dragsnap, switch on built in
-                        manager.unset_dragsnap();
-                        break;
-                }
-                warningdialog = false;
-                this.destroy();
+            set_margins(img1, 120, 120, 0, 10);
+            img1.set_pixel_size(120);
+            Gtk.Image img2 = new Gtk.Image.from_icon_name(
+                "dragsnapimgbuiltin-symbolic", Gtk.IconSize.DIALOG
+            );
+            img2.set_pixel_size(120);
+            Box imgbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            imgbox.pack_start(img1, false, false, 0);
+            imgbox.pack_start(img2, false, false, 0);
+            set_margins(img2, 0, 0, 0, 10);
+            maingrid.attach(imgbox, 0, 10, 1, 1);
 
+            /* buttons */
+            Gtk.ButtonBox bbox = new Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL);
+            Button keep_dragsnap = new Gtk.Button.with_label("Drag-snap");
+            keep_dragsnap.clicked.connect(()=> {
+                manager.unset_competition();
+                getout();
             });
-            this.show();
+            Button builtin = new Gtk.Button.with_label(_("Built-in"));
+            builtin.clicked.connect(()=> {
+                manager.unset_dragsnap();
+                getout();
+            });
+            set_margins(keep_dragsnap, 2, 2, 10, 2);
+            set_margins(builtin, 2, 2, 10, 2);
+
+            keep_dragsnap.set_relief(Gtk.ReliefStyle.NONE);
+            builtin.set_relief(Gtk.ReliefStyle.NONE);
+            keep_dragsnap.set_size_request(296, 10);
+            builtin.set_size_request(296, 10);
+            bbox.pack_start(keep_dragsnap);
+            bbox.pack_start(builtin);
+            maingrid.attach(bbox, 0, 15, 1, 1);
+
+            keep_dragsnap.grab_focus();
+
+            this.show_all();
+        }
+
+        private void getout () {
+            warningdialog = false;
+            this.destroy();
+        }
+
+        private void set_margins (
+            Widget w, int l, int r, int t, int b
+        ) {
+            w.set_margin_start(l);
+            w.set_margin_end(r);
+            w.set_margin_top(t);
+            w.set_margin_bottom(b);
         }
     }
 
