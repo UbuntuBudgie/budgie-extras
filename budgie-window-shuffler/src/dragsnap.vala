@@ -640,6 +640,7 @@ namespace AdvancedDragsnap {
             this.set_skip_taskbar_hint(true);
             this.set_decorated(false);
             this.set_keep_above(true);
+            this.set_type_hint(Gdk.WindowTypeHint.DIALOG);
             Gtk.Grid maingrid = new Gtk.Grid();
             this.add(maingrid);
 
@@ -760,3 +761,5 @@ namespace AdvancedDragsnap {
 		}
     }
 }
+
+// 762
