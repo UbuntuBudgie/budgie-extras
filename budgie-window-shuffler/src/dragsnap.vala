@@ -25,64 +25,6 @@ namespace AdvancedDragsnap {
     bool warningdialog = false;
 
 
-    class MouseState {
-        /* using xinput spawn. should be possible differently, but... later */
-        string[] device_ids = {};
-
-        public void check_devices() {
-            device_ids = {};
-            string output = "";
-            try {
-                GLib.Process.spawn_command_line_sync(
-                    Config.PACKAGE_BINDIR + "/xinput --list", out output
-                );
-            }
-            catch (Error e) {
-                stderr.printf ("%s\n", e.message);
-            }
-            foreach (string l in output.split("\n")) {
-                l = l.down();
-                if(mouse_in_line(l)) {
-                    string id = l.split("=")[1].split("\t")[0];
-                    device_ids += id;
-                }
-            }
-        }
-
-        private bool mouse_in_line (string l) {
-            string[] valid_devnames = {
-                "mouse", "touchpad", "trackpoint", "pointer"
-            };
-            foreach (string dev in valid_devnames) {
-                if (
-                    l.contains(dev) && l.contains("id=") && l.contains("↳")
-                ) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool get_mousedown() {
-            foreach (string id in device_ids) {
-                string output2 = "";
-                try {
-                    GLib.Process.spawn_command_line_sync(
-                        Config.PACKAGE_BINDIR + "/xinput --query-state " + id, out output2
-                    );
-                    if (output2.contains("button[1]=down")) {
-                        return true;
-                    }
-                }
-                catch (Error e) {
-                    stderr.printf ("%s\n", e.message);
-                }
-            }
-            return false;
-        }
-    }
-
-
     class ManageSettings {
 
         public GLib.Settings[] competing_settings = {};
@@ -135,6 +77,7 @@ namespace AdvancedDragsnap {
     interface ShufflerInfoClient : Object {
         public abstract HashTable<string, Variant> get_monitorgeometry () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon_name, int cols, int rows) throws Error;
+        public abstract bool get_mouse_isdown (int button) throws Error;
     }
 
     [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
@@ -171,6 +114,8 @@ namespace AdvancedDragsnap {
             client = get_client();
             client2 = null;
         }
+
+
 
         private int[] get_tiles(string monname,  int cols, int rows) {
             /* on monitor change, update tiledata & return basic monitor data*/
@@ -398,6 +343,16 @@ namespace AdvancedDragsnap {
             return {-1, -1, -1, -1};
         }
 
+        private bool get_mousestate (int button) {
+            try {
+                return client.get_mouse_isdown(button);
+            }
+            catch (Error e) {
+                message ("Couldn't get mouse state. is Shuffler daemon running?");
+                return false;
+            }
+        }
+
         public int getscale(Gdk.Monitor monitorsubj) {
             if (monitorsubj != null) {
                 return monitorsubj.get_scale_factor();
@@ -441,7 +396,7 @@ namespace AdvancedDragsnap {
         }
 
         public void watch_draggedwindow(
-            MouseState state, Gdk.Device pointer, int scale, Wnck.Window curr_active
+            Gdk.Device pointer, int scale, Wnck.Window curr_active
         ) {
             window_iswatched = true;
             int curr_area = PreviewSection.NONE;
@@ -457,7 +412,7 @@ namespace AdvancedDragsnap {
                 as long as button 1 is pressed and we are dragging,
                 check for position and all
                 */
-                if (state.get_mousedown() && drag) {
+                if (get_mousestate(1) && drag) {
                     if (firstcycle) {
                         disable_hotcorners(true);
                         new_xid = (int)curr_active.get_xid(); // for tile_active()
@@ -554,13 +509,9 @@ namespace AdvancedDragsnap {
         /* translation */
         initialiseLocaleLanguageSupport();
         /* mouse stuff */
-        MouseState mousestate = new MouseState();
-        mousestate.check_devices();
         Gdk.Display gdkdsp = Gdk.Display.get_default();
         DragSnapTools dragsnaptools = new DragSnapTools(gdkdsp);
         Gdk.Seat gdkseat = gdkdsp.get_default_seat();
-        gdkseat.device_added.connect(mousestate.check_devices);
-        gdkseat.device_removed.connect(mousestate.check_devices);
         Gdk.Device pointer = gdkseat.get_pointer();
         /* setup watch scale */
         int scale;
@@ -608,7 +559,7 @@ namespace AdvancedDragsnap {
                         dragsnaptools.get_geo(new_active)
                     );
                     dragsnaptools.watch_draggedwindow(
-                        mousestate, pointer, scale, new_active
+                        pointer, scale, new_active
                     );
                 }
             });
@@ -761,5 +712,3 @@ namespace AdvancedDragsnap {
 		}
     }
 }
-
-// 762
