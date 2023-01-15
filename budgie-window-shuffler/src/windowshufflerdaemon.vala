@@ -3,6 +3,7 @@ using Cairo;
 using Gtk;
 using Gdk;
 using Math;
+using Atspi;
 
 /*
 * ShufflerIII
@@ -141,6 +142,8 @@ namespace GetWindowRules {
 
 namespace ShufflerEssentialInfo {
 
+    // mouse state
+    bool[] buttonstate;
     // monitordata-dict
     HashTable<string, Variant> monitorgeo;
     // windowrules directory
@@ -182,7 +185,7 @@ namespace ShufflerEssentialInfo {
 
     [DBus (name = "org.UbuntuBudgie.ShufflerInfoDaemon")]
 
-    public class ShufflerInfoServer : Object {
+    public class ShufflerInfoServer : GLib.Object {
 
         public int getactivewin () throws Error {
             // get active window id
@@ -209,6 +212,14 @@ namespace ShufflerEssentialInfo {
                 }
             }
             return -1;
+        }
+
+        public bool get_mouse_isdown (int button) throws Error {
+            if (button <= buttonstate.length ) {
+                return buttonstate[button - 1];
+            }
+            message ("wrong input");
+            return false;
         }
 
         public bool check_ifguiruns () throws Error {
@@ -1001,7 +1012,25 @@ namespace ShufflerEssentialInfo {
             context.fill ();
     }
 
+    private bool on_event (Atspi.Event event) {
+        string last_type = event.type;
+        int len = last_type.length;
+        int index = last_type.get_char(len-2).xdigit_value();
+        bool state = last_type.get_char(len-1) != 'r';
+        buttonstate[index - 1] = state;
+        return true;
+    }
+
     public static int main (string[] args) {
+        // mouse
+        buttonstate = {false, false, false};
+        var listener_cb = (Atspi.EventListenerCB) on_event;
+        var listener = new Atspi.EventListener ((owned) listener_cb);
+        try {
+            listener.register("mouse:button");
+        } catch (Error e) {
+            message ("Unable to register event: %s", e.message);
+        }
         // create warning image
         create_warningbg();
         Gtk.init(ref args);

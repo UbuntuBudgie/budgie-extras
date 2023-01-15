@@ -253,6 +253,7 @@ ShufflerDaemonDependencies = [
     dependency('gio-2.0'),
     dependency('gdk-x11-3.0'),
     dependency('libwnck-3.0'),
+    dependency('atspi-2'),
     meson.get_compiler('c').find_library('m', required: false),
 ]
 
