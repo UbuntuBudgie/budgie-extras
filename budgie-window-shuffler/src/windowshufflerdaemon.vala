@@ -144,6 +144,8 @@ namespace ShufflerEssentialInfo {
 
     // mouse state
     bool[] buttonstate;
+    // keyboard state
+    bool modkeysstate[8];
     // monitordata-dict
     HashTable<string, Variant> monitorgeo;
     // windowrules directory
@@ -217,6 +219,14 @@ namespace ShufflerEssentialInfo {
         public bool get_mouse_isdown (int button) throws Error {
             if (button <= buttonstate.length ) {
                 return buttonstate[button - 1];
+            }
+            message ("wrong input");
+            return false;
+        }
+
+        public bool modkey_isdown (int key) throws Error {
+            if (key <= modkeysstate.length ) {
+                return modkeysstate[key - 1];
             }
             message ("wrong input");
             return false;
@@ -1021,7 +1031,51 @@ namespace ShufflerEssentialInfo {
         return true;
     }
 
+    void test_keys(Gdk.Keymap keymap) {
+        /*
+        several ways to convert modifier state output to state per key, this
+        numeric approach, using the fact that first in array is odd,
+        seems a simple one to get all eight in an array.
+        */
+        bool keydown[8];
+        for (int i=0; i<8; i++) {
+            keydown[i] = false;
+        }
+        uint index = 0;
+        uint state = keymap.get_modifier_state();
+        while (state != 0) {
+            uint rem = state%2;
+            /* index <= 7, because not sure if there are more, eg 256, 512 etc */
+            if (rem != 0 && index <= 7) {
+                keydown[index] = true;
+                state -= 1;
+            }
+            else {
+                keydown[index] = false;
+            }
+            state = state / 2;
+            index += 1;
+        }
+        modkeysstate = keydown;
+    }
+
+
+
     public static int main (string[] args) {
+        Gtk.init(ref args);
+        // modifier keys
+        gdkdisplay = Gdk.Display.get_default();
+        Gdk.Keymap keymap = Gdk.Keymap.get_for_display(gdkdisplay);
+        keymap.keys_changed.connect(()=> {
+            /* refresh keymap on change of mapping*/
+            keymap = Gdk.Keymap.get_for_display(gdkdisplay);
+        });
+        keymap.state_changed.connect(()=> {
+            /* update list of modifier key state */
+            test_keys(keymap);
+        });
+        /* let's get initial state */
+        test_keys(keymap);
         // mouse
         buttonstate = {false, false, false};
         var listener_cb = (Atspi.EventListenerCB) on_event;
@@ -1033,7 +1087,6 @@ namespace ShufflerEssentialInfo {
         }
         // create warning image
         create_warningbg();
-        Gtk.init(ref args);
         // FileMonitor stuff, see if gui runs (disable jump & tileactive)
         gridguiruns = false;
         FileMonitor monitor;
@@ -1072,7 +1125,6 @@ namespace ShufflerEssentialInfo {
         wnckscr.force_update();
         monitorgeo = new HashTable<string, Variant> (str_hash, str_equal);
         window_essentials = new HashTable<string, Variant> (str_hash, str_equal);
-        gdkdisplay = Gdk.Display.get_default();
         Gdk.Screen gdkscreen = Gdk.Screen.get_default();
         get_monitors();
         getscale();
