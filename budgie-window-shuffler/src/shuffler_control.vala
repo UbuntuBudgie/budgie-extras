@@ -1304,8 +1304,9 @@ namespace ShufflerControl2 {
             /* dsragsnap subgrid */
             Grid edgetiling_subgrid = new Gtk.Grid();
             tilinggrid.attach(edgetiling_subgrid, 0, 60, 10, 1);
+            // Use shuffler edge-tiling instead of built-in
+            // TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
             Label usedragsnapheaderheader = makelabel(
-                // Use shuffler edge-tiling instead of built-in
                 _("Use Shuffler drag-snap advanced edge-tiling")  + "*",
                 0, "justbold"
             );

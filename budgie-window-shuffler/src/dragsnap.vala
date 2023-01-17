@@ -827,6 +827,7 @@ namespace AdvancedDragsnap {
             h.get_style_context().add_class("justbold");
 
             /* text message */
+            // TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
             string textblock = _("Drag-snap has replaced built-in edge-tiling. " +
             "To choose built-in edge-tiling instead, " +
             "press Built-in.");
