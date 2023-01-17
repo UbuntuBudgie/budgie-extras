@@ -254,7 +254,7 @@ namespace AdvancedDragsnap {
                     targetsection = {0, 0, 2, 1};
                     if (activekey == ActiveKey.CONTROL) {
                         // left 2/5
-                        targetsection = {0, 0, 5, 1, 2, 2};
+                        targetsection = {0, 0, 5, 1, 2, 1};
                     }
                     else if (activekey == ActiveKey.ALT) {
                         // left 3/5
