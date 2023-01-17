@@ -78,6 +78,7 @@ namespace AdvancedDragsnap {
         public abstract HashTable<string, Variant> get_monitorgeometry () throws Error;
         public abstract HashTable<string, Variant> get_tiles (string mon_name, int cols, int rows) throws Error;
         public abstract bool get_mouse_isdown (int button) throws Error;
+        public abstract bool get_modkey_isdown (int key)  throws Error;
     }
 
     [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
@@ -102,6 +103,12 @@ namespace AdvancedDragsnap {
             FULLSCREEN
         }
 
+        enum ActiveKey {
+            NONE,
+            CONTROL,
+            ALT
+        }
+
         Gtk.Window? overlay;
         Gdk.Display? gdkdsp;
         ShufflerInfoClient? client; /* shufflerdaemon */
@@ -114,8 +121,6 @@ namespace AdvancedDragsnap {
             client = get_client();
             client2 = null;
         }
-
-
 
         private int[] get_tiles(string monname,  int cols, int rows) {
             /* on monitor change, update tiledata & return basic monitor data*/
@@ -175,7 +180,7 @@ namespace AdvancedDragsnap {
                 client2.set_skip_action(onoff);
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                /* service does not exist. message is useless */
             }
         }
 
@@ -234,16 +239,39 @@ namespace AdvancedDragsnap {
             return PreviewSection.NONE;
         }
 
-        private string get_tilingdefinition(int section, int w_id) {
+        private string get_tilingdefinition(
+            int section, int w_id, int activekey
+        ) {
             int[] targetsection = {-1};
+            /*
+            due to extending posibilities after initial plan, these
+            definitions need to be transformed into their abstractions/
+            Later.
+            */
             switch(section) {
                 case 1:
                     // left half
                     targetsection = {0, 0, 2, 1};
+                    if (activekey == ActiveKey.CONTROL) {
+                        // left 2/5
+                        targetsection = {0, 0, 5, 1, 2, 2};
+                    }
+                    else if (activekey == ActiveKey.ALT) {
+                        // left 3/5
+                        targetsection = {0, 0, 5, 1, 3, 1};
+                    }
                     break;
                 case 2:
                     // topleft quarter
                     targetsection = {0, 0, 2, 2};
+                    if (activekey == ActiveKey.CONTROL) {
+                        // topleft 2/5
+                        targetsection = {0, 0, 5, 2, 2, 1};
+                    }
+                    else if (activekey == ActiveKey.ALT) {
+                        // topleft 3/5
+                        targetsection = {0, 0, 5, 2, 3, 1};
+                    }
                     break;
                 case 3:
                     // top half
@@ -252,14 +280,38 @@ namespace AdvancedDragsnap {
                 case 4:
                     // topright quarter
                     targetsection = {1, 0, 2, 2};
+                    if (activekey == ActiveKey.CONTROL) {
+                        // topright 2/5
+                        targetsection = {3, 0, 5, 2, 2, 1};
+                    }
+                    else if (activekey == ActiveKey.ALT) {
+                        // topright 3/5
+                        targetsection = {2, 0, 5, 2, 3, 1};
+                    }
                     break;
                 case 5:
                     // right half
                     targetsection = {1, 0, 2, 1};
+                    if (activekey == ActiveKey.CONTROL) {
+                        // right 2/5
+                        targetsection = {3, 0, 5, 1, 2, 1};
+                    }
+                    else if (activekey == ActiveKey.ALT) {
+                        // right 3/5
+                        targetsection = {2, 0, 5, 1, 3, 1};
+                    }
                     break;
                 case 6:
                     // bottomright quarter
                     targetsection = {1, 1, 2, 2};
+                    if (activekey == ActiveKey.CONTROL) {
+                        //bottomright 2/5
+                        targetsection = {3, 1, 5, 2, 2, 1};
+                    }
+                    else if (activekey == ActiveKey.ALT) {
+                        //bottomright 3/5
+                        targetsection = {2, 1, 5, 2, 3, 1};
+                    }
                     break;
                 case 7:
                     // bottom half
@@ -268,6 +320,16 @@ namespace AdvancedDragsnap {
                 case 8:
                     // bottomleft quarter
                     targetsection = {0, 1, 2, 2};
+                    if (activekey == ActiveKey.CONTROL) {
+                        // bottomleft 2/5
+                        targetsection = {0, 1, 5, 2, 2, 1};
+                    }
+
+                    else if (activekey == ActiveKey.ALT) {
+                        // bottomleft 3/5
+                        targetsection = {0, 1, 5, 2, 3, 1};
+                    }
+
                     break;
                 case 9:
                     // fullscreen
@@ -279,6 +341,128 @@ namespace AdvancedDragsnap {
                 targetstring += @"$n";
             }
             return string.joinv(" ", targetstring);
+        }
+
+        private int[] get_preview_asymbig(int section) {
+            /*
+            For reasons of understandability, let's not squeeze it all in
+            one and the same method for 2 x 2 and 3/5 */
+            // runs on area change
+            string k = "";
+            int spanx = 3;
+            int spany = 1;
+            switch(section) {
+                case 1:
+                    // left 3/5
+                    k = "0*0";
+                    spany = 2; // differs from falback etc, etc.
+                    break;
+                case 2:
+                    // topleft 3/5
+                    k = "0*0";
+                    break;
+                case 3:
+                    // top half
+                    k = "0*0";
+                    spanx = 5;
+                    break;
+                case 4:
+                    // topright
+                    k = "2*0";
+                    break;
+                case 5:
+                    // right half
+                    k = "3*0";
+                    spany = 2;
+                    break;
+                case 6:
+                    // bottom right
+                    k = "2*1";
+                    break;
+                case 7:
+                    // bottom half
+                    k = "0*1";
+                    spanx = 5;
+                    break;
+                case 8:
+                    // bottom left
+                    k = "0*1";
+                    break;
+                case 9: // full screen
+                    k = "0*0";
+                    spanx = 5;
+                    spany = 2;
+                    break;
+            }
+            return geometry_keyvalues(k, spanx, spany);
+        }
+
+        private int[] geometry_keyvalues (string k, int spanx, int spany){
+            foreach (string foundkey in tiledata.get_keys()) {
+                if (foundkey == k) {
+                    Variant target_tile = tiledata[k];
+                    int tile_x = (int)target_tile.get_child_value(0);
+                    int tile_y = (int)target_tile.get_child_value(1);
+                    int tile_w = (int)target_tile.get_child_value(2);
+                    int tile_h = (int)target_tile.get_child_value(3);
+                    return {tile_x, tile_y, tile_w*spanx, tile_h*spany};
+                }
+            }
+            return {-1, -1, -1, -1};
+        }
+
+        private int[] get_preview_asymsmall(int section) {
+                /*
+                For reasons of understandability, let's not squeeze it all in
+                one and the same method for 2 x 2 and 3/5 */
+                // runs on area change
+                string k = "";
+                int spanx = 2;
+                int spany = 1;
+                switch(section) {
+                    case 1:
+                        // left 2/5
+                        k = "0*0";
+                        spany = 2; // differs from falback etc, etc.
+                        break;
+                    case 2:
+                        // topleft 2/5
+                        k = "0*0";
+                        break;
+                    case 3:
+                        // top half
+                        k = "0*0";
+                        spanx = 5;
+                        break;
+                    case 4:
+                        // topright
+                        k = "3*0";
+                        break;
+                    case 5:
+                        // right half
+                        k = "3*0";
+                        spany = 2;
+                        break;
+                    case 6:
+                        // bottom right
+                        k = "3*1";
+                        break;
+                    case 7:
+                        // bottom half
+                        k = "0*1";
+                        spanx = 5;
+                        break;
+                    case 8:
+                        // bottom left
+                        k = "0*1";
+                        break;
+                    case 9: // full screen
+                        k = "0*0";
+                        spanx = 5;
+                        spany = 2;
+                        break;
+            }
+            return geometry_keyvalues(k, spanx, spany);
         }
 
         private int[] get_preview(int section) {
@@ -329,18 +513,7 @@ namespace AdvancedDragsnap {
                     spany = 2;
                     break;
             }
-
-            foreach (string foundkey in tiledata.get_keys()) {
-                if (foundkey == k) {
-                    Variant target_tile = tiledata[k];
-                    int tile_x = (int)target_tile.get_child_value(0);
-                    int tile_y = (int)target_tile.get_child_value(1);
-                    int tile_w = (int)target_tile.get_child_value(2);
-                    int tile_h = (int)target_tile.get_child_value(3);
-                    return {tile_x, tile_y, tile_w*spanx, tile_h*spany};
-                }
-            }
-            return {-1, -1, -1, -1};
+            return geometry_keyvalues(k, spanx, spany);
         }
 
         private bool get_mousestate (int button) {
@@ -349,6 +522,16 @@ namespace AdvancedDragsnap {
             }
             catch (Error e) {
                 message ("Couldn't get mouse state. is Shuffler daemon running?");
+                return false;
+            }
+        }
+
+        private bool get_keystate (int key) {
+            try {
+                return client.get_modkey_isdown(key);
+            }
+            catch (Error e) {
+                message ("Couldn't get key state. is Shuffler daemon running?");
                 return false;
             }
         }
@@ -395,18 +578,36 @@ namespace AdvancedDragsnap {
             }
         }
 
+        private int get_active_modkey() {
+            int n = 1;
+            bool[] states = {
+                get_keystate(2), get_keystate(3)
+            };
+            foreach (bool b in states) {
+                if (b) {
+                    return n;
+                }
+                n += 1;
+            }
+            return 0;
+        }
+
         public void watch_draggedwindow(
             Gdk.Device pointer, int scale, Wnck.Window curr_active
         ) {
             window_iswatched = true;
             int curr_area = PreviewSection.NONE;
             string? monname = null;
+            int activekey = ActiveKey.NONE;
             int new_xid = 0;
             int[] mongeo = {0, 0, 0, 0};
             int x = -1;
             int y = -1;
             int t = 0;
             bool firstcycle = true;
+            int cols = 2;
+            int rows = 2;
+
             GLib.Timeout.add(100, ()=> {
                 /*
                 as long as button 1 is pressed and we are dragging,
@@ -420,11 +621,23 @@ namespace AdvancedDragsnap {
                     }
                     pointer.get_position(null, out x, out y);
                     x = x*scale; y = y*scale;
+
                     /* check monitor at point. still the same? */
                     string newmon = get_activemonitorname(x, y, scale);
                     if (newmon != monname ) {
                         monname = newmon;
-                        mongeo = get_tiles(monname, 2, 2);
+                        mongeo = get_tiles(monname, cols, rows);
+                    }
+                    int new_activekey = get_active_modkey();
+                    if (new_activekey != activekey) {
+                        activekey = new_activekey;
+                        if (activekey == ActiveKey.NONE) {
+                            cols = 2; rows = 2;
+                        }
+                        else {cols = 5; rows = 2;}
+                        mongeo = get_tiles(monname, cols, rows);
+                        kill_preview();
+                        update_preview(curr_area, activekey, scale);
                     }
                     /*
                     if PreviewSection.TOP, wait 0.6 second to switch to
@@ -447,21 +660,15 @@ namespace AdvancedDragsnap {
                         see if the PreviewSection changed. update accordingly
                         */
                         curr_area = temp_curr_area;
-                        if (curr_area != PreviewSection.NONE) {
-                            int[] previeworig = get_preview(curr_area);
-                            overlay = new Peekaboo(
-                                previeworig[0], previeworig[1], scale,
-                                previeworig[2], previeworig[3]
-                            );
-                        }
+                        update_preview(curr_area, activekey, scale);
                     }
                     return true;
                 }
                 /* if button 1 is released */
                 kill_preview();
                 window_iswatched = false;
-                if (curr_area != PreviewSection.NONE) {;
-                    string tilingstring = get_tilingdefinition(curr_area, new_xid);
+                if (curr_area != PreviewSection.NONE) {
+                    string tilingstring = get_tilingdefinition(curr_area, new_xid, activekey);
                     string cmd = Config.SHUFFLER_DIR + "/tile_active ".concat(
                         tilingstring, @" id=$new_xid monitor=$monname"
                     );
@@ -470,6 +677,22 @@ namespace AdvancedDragsnap {
                 disable_hotcorners(false);
                 return false;
             });
+        }
+
+        void update_preview (int curr_area, int activekey, int scale) {
+            if (curr_area != PreviewSection.NONE) {
+                int[] previeworig = get_preview(curr_area);// optimize
+                if (activekey == ActiveKey.ALT) {
+                    previeworig = get_preview_asymbig (curr_area);
+                }
+                else if (activekey == ActiveKey.CONTROL) {
+                    previeworig = get_preview_asymsmall (curr_area);
+                }
+                overlay = new Peekaboo(
+                    previeworig[0], previeworig[1], scale,
+                    previeworig[2], previeworig[3]
+                );
+            }
         }
     }
 
@@ -480,6 +703,7 @@ namespace AdvancedDragsnap {
         }
         return str;
     }
+
 
     public void initialiseLocaleLanguageSupport() {
         GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
@@ -650,9 +874,7 @@ namespace AdvancedDragsnap {
             bbox.pack_start(keep_dragsnap);
             bbox.pack_start(builtin);
             maingrid.attach(bbox, 0, 15, 1, 1);
-
             keep_dragsnap.grab_focus();
-
             this.show_all();
         }
 

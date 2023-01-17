@@ -224,9 +224,13 @@ namespace ShufflerEssentialInfo {
             return false;
         }
 
-        public bool modkey_isdown (int key) throws Error {
-            if (key <= modkeysstate.length ) {
-                return modkeysstate[key - 1];
+        public bool get_modkey_isdown (int key) throws Error {
+            /*
+            "SHIFT", "SHIFTLOCK", "CONTROL", "ALT", "NUMLOCK",
+            "META", "META", "META"
+            */
+            if (key < modkeysstate.length ) {
+                return modkeysstate[key];
             }
             message ("wrong input");
             return false;
