@@ -629,6 +629,7 @@ namespace AdvancedDragsnap {
                         mongeo = get_tiles(monname, cols, rows);
                     }
                     int new_activekey = get_active_modkey();
+
                     if (new_activekey != activekey) {
                         activekey = new_activekey;
                         if (activekey == ActiveKey.NONE) {
@@ -636,9 +637,17 @@ namespace AdvancedDragsnap {
                         }
                         else {cols = 5; rows = 2;}
                         mongeo = get_tiles(monname, cols, rows);
-                        kill_preview();
-                        update_preview(curr_area, activekey, scale);
+                        /* updating makes no sense if preview is the same */
+                        if (
+                            curr_area != PreviewSection.FULLSCREEN &&
+                            curr_area != PreviewSection.TOP &&
+                            curr_area != PreviewSection.BOTTOM
+                        ) {
+                            kill_preview();
+                            update_preview(curr_area, activekey, scale);
+                        }
                     }
+
                     /*
                     if PreviewSection.TOP, wait 0.6 second to switch to
                     fullscreen preview. reset counter if we move away from top
