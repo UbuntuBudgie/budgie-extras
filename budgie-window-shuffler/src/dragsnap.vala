@@ -892,7 +892,7 @@ namespace AdvancedDragsnap {
             bbox.pack_start(builtin);
             maingrid.attach(bbox, 0, 15, 1, 1);
             this.show_all();
-            builtin.grab_focus();
+            keep_dragsnap.grab_focus();
         }
 
         private void getout () {
