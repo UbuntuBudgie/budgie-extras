@@ -30,8 +30,10 @@ namespace AdvancedDragsnap {
         public GLib.Settings[] competing_settings = {};
         int n_settings = 0;
         public bool act_on_change = true;
+        DragSnapTools tools;
 
-        public ManageSettings () {
+        public ManageSettings (DragSnapTools tls) {
+            tools = tls;
             string[] competing_strings = {
                 "org.ubuntubudgie.windowshuffler",
                 "com.solus-project.budgie-wm",
@@ -51,6 +53,10 @@ namespace AdvancedDragsnap {
                     if (act_on_change && !warningdialog && is_on) {
                         warningdialog = true;
                         new DialogWindow(this);
+                        GLib.Timeout.add(200, ()=> {
+                            tools.activate_win_byname("dragsnap_dialogwin");
+                            return false;
+                        });
                     }
                 });
             }
@@ -79,6 +85,7 @@ namespace AdvancedDragsnap {
         public abstract HashTable<string, Variant> get_tiles (string mon_name, int cols, int rows) throws Error;
         public abstract bool get_mouse_isdown (int button) throws Error;
         public abstract bool get_modkey_isdown (int key)  throws Error;
+        public abstract void activate_window_byname (string wname)  throws Error;
     }
 
     [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
@@ -171,6 +178,15 @@ namespace AdvancedDragsnap {
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
                 return null;
+            }
+        }
+
+        public void activate_win_byname (string wname) {
+            try {
+                client.activate_window_byname(wname);
+            }
+            catch (Error e) {
+                /* service does not exist. message is useless */
             }
         }
 
@@ -733,7 +749,9 @@ namespace AdvancedDragsnap {
         string check_geo2 = "";
         string check_geo1 = "";
         Gtk.init(ref args);
-        ManageSettings mng = new ManageSettings();
+        Gdk.Display gdkdsp = Gdk.Display.get_default();
+        DragSnapTools dragsnaptools = new DragSnapTools(gdkdsp);
+        ManageSettings mng = new ManageSettings(dragsnaptools);
         /*
         if we run dragsnap, disable solus' and mutter's edge-tiling,
         make sure they will stay disabled.
@@ -742,8 +760,6 @@ namespace AdvancedDragsnap {
         /* translation */
         initialiseLocaleLanguageSupport();
         /* mouse stuff */
-        Gdk.Display gdkdsp = Gdk.Display.get_default();
-        DragSnapTools dragsnaptools = new DragSnapTools(gdkdsp);
         Gdk.Seat gdkseat = gdkdsp.get_default_seat();
         Gdk.Device pointer = gdkseat.get_pointer();
         /* setup watch scale */
@@ -807,6 +823,7 @@ namespace AdvancedDragsnap {
         ulong[] undo_connect = {};
         Button[] todisconnect = {};
 
+
         public DialogWindow (ManageSettings manager) {
 
             /* css stuff */
@@ -828,6 +845,7 @@ namespace AdvancedDragsnap {
             this.set_decorated(false);
             this.set_keep_above(true);
             this.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
+            this.set_title("dragsnap_dialogwin");
             Gtk.Grid maingrid = new Gtk.Grid();
             this.add(maingrid);
 
@@ -891,8 +909,8 @@ namespace AdvancedDragsnap {
             bbox.pack_start(keep_dragsnap);
             bbox.pack_start(builtin);
             maingrid.attach(bbox, 0, 15, 1, 1);
-            this.show_all();
             keep_dragsnap.grab_focus();
+            this.show_all();
         }
 
         private void getout () {
