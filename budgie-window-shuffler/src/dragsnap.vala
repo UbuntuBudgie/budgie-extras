@@ -804,6 +804,9 @@ namespace AdvancedDragsnap {
 
     class DialogWindow : Gtk.Window {
 
+        ulong[] undo_connect = {};
+        Button[] todisconnect = {};
+
         public DialogWindow (ManageSettings manager) {
 
             /* css stuff */
@@ -824,7 +827,7 @@ namespace AdvancedDragsnap {
             this.set_skip_taskbar_hint(true);
             this.set_decorated(false);
             this.set_keep_above(true);
-            this.set_type_hint(Gdk.WindowTypeHint.DIALOG);
+            this.set_position(Gtk.WindowPosition.CENTER_ALWAYS);
             Gtk.Grid maingrid = new Gtk.Grid();
             this.add(maingrid);
 
@@ -865,15 +868,19 @@ namespace AdvancedDragsnap {
             /* buttons */
             Gtk.ButtonBox bbox = new Gtk.ButtonBox(Gtk.Orientation.HORIZONTAL);
             Button keep_dragsnap = new Gtk.Button.with_label("Drag-snap");
-            keep_dragsnap.clicked.connect(()=> {
+            ulong keep_ul = keep_dragsnap.clicked.connect(()=> {
                 manager.unset_competition();
                 getout();
             });
             Button builtin = new Gtk.Button.with_label(_("Built-in"));
-            builtin.clicked.connect(()=> {
+            ulong builtin_ul = builtin.clicked.connect(()=> {
                 manager.unset_dragsnap();
                 getout();
             });
+
+            undo_connect = {keep_ul, builtin_ul};
+            todisconnect = {keep_dragsnap, builtin};
+
             set_margins(keep_dragsnap, 2, 2, 10, 2);
             set_margins(builtin, 2, 2, 10, 2);
 
@@ -884,11 +891,14 @@ namespace AdvancedDragsnap {
             bbox.pack_start(keep_dragsnap);
             bbox.pack_start(builtin);
             maingrid.attach(bbox, 0, 15, 1, 1);
-            keep_dragsnap.grab_focus();
             this.show_all();
+            builtin.grab_focus();
         }
 
         private void getout () {
+            for (int i=0; i<2; i++) {
+                todisconnect[i].disconnect(undo_connect[i]);
+            }
             warningdialog = false;
             this.destroy();
         }
