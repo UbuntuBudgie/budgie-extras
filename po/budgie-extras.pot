@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-17 22:45+0000\n"
+"POT-Creation-Date: 2023-01-21 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,7 +406,7 @@ msgstr ""
 #. optimize please with similar grids
 #. 1. PICK LAYOUT GRID
 #: budgie-window-shuffler/src/shuffler_control.vala:1055
-#: budgie-window-shuffler/src/shuffler_control.vala:1327
+#: budgie-window-shuffler/src/shuffler_control.vala:1341
 #: budgie-window-shuffler/src/layouts_popup.vala:162
 msgid "Layouts"
 msgstr ""
@@ -418,7 +418,7 @@ msgstr ""
 
 #. Settings category label, should be as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:1059
-#: budgie-window-shuffler/src/shuffler_control.vala:1383
+#: budgie-window-shuffler/src/shuffler_control.vala:1397
 msgid "Window rules"
 msgstr ""
 
@@ -633,7 +633,15 @@ msgstr ""
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1317
+#: budgie-window-shuffler/src/shuffler_control.vala:1324
+msgid "Control + drag tiles a window into 2/5 of the screen width"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1327
+msgid "Alt + drag tiles a window into 3/5 of the screen width"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1331
 msgid "This will disable built-in edge-tiling"
 msgstr ""
 
@@ -641,82 +649,82 @@ msgstr ""
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
 #.
-#: budgie-window-shuffler/src/shuffler_control.vala:1339
+#: budgie-window-shuffler/src/shuffler_control.vala:1353
 msgid "Toggle layouts quicklist & manager"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1349
+#: budgie-window-shuffler/src/shuffler_control.vala:1363
 msgid "Setup now"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1392
+#: budgie-window-shuffler/src/shuffler_control.vala:1406
 msgid "Stored rules"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1402
+#: budgie-window-shuffler/src/shuffler_control.vala:1416
 msgid "Add new rule"
 msgstr ""
 
 #. margin header
 #. this is about the area which shuffler can use for tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:1435
+#: budgie-window-shuffler/src/shuffler_control.vala:1449
 msgid "Margins between virtual grid and screen edges"
 msgstr ""
 
 #. top margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1455
+#: budgie-window-shuffler/src/shuffler_control.vala:1469
 msgid "Top margin"
 msgstr ""
 
 #. left/right margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1459
+#: budgie-window-shuffler/src/shuffler_control.vala:1473
 msgid "Left & right margins"
 msgstr ""
 
 #. bottom margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1464
+#: budgie-window-shuffler/src/shuffler_control.vala:1478
 msgid "Bottom margin"
 msgstr ""
 
 #. padding header
-#: budgie-window-shuffler/src/shuffler_control.vala:1471
+#: budgie-window-shuffler/src/shuffler_control.vala:1485
 msgid "Padding"
 msgstr ""
 
 #. padding
-#: budgie-window-shuffler/src/shuffler_control.vala:1476
+#: budgie-window-shuffler/src/shuffler_control.vala:1490
 msgid "Window padding"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1485
+#: budgie-window-shuffler/src/shuffler_control.vala:1499
 msgid "Animation"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1488
+#: budgie-window-shuffler/src/shuffler_control.vala:1502
 msgid "Use general animation settings"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1494
+#: budgie-window-shuffler/src/shuffler_control.vala:1508
 msgid "Use animation"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1815
+#: budgie-window-shuffler/src/shuffler_control.vala:1829
 msgid "Applet settings"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1819
+#: budgie-window-shuffler/src/shuffler_control.vala:1833
 msgid "Applet popover content"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1827
+#: budgie-window-shuffler/src/shuffler_control.vala:1841
 msgid "Show popover on hover (without click)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1835
+#: budgie-window-shuffler/src/shuffler_control.vala:1849
 msgid "Synchronize grid size"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1842
+#: budgie-window-shuffler/src/shuffler_control.vala:1856
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 
@@ -724,11 +732,11 @@ msgstr ""
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
 #.
-#: budgie-window-shuffler/src/shuffler_control.vala:1849
+#: budgie-window-shuffler/src/shuffler_control.vala:1863
 msgid "Layout preview size (width in px)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1864
+#: budgie-window-shuffler/src/shuffler_control.vala:1878
 msgid "The applet needs to be on the panel to see the changes"
 msgstr ""
 
@@ -803,13 +811,13 @@ msgstr ""
 
 #. text message
 #. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
-#: budgie-window-shuffler/src/dragsnap.vala:831
+#: budgie-window-shuffler/src/dragsnap.vala:861
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
 "instead, press Built-in."
 msgstr ""
 
-#: budgie-window-shuffler/src/dragsnap.vala:863
+#: budgie-window-shuffler/src/dragsnap.vala:893
 msgid "Built-in"
 msgstr ""
 
