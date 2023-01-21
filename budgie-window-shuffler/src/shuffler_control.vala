@@ -44,13 +44,13 @@ namespace ShufflerControl2 {
     }
 
     private void set_margins(
-        Gtk.Grid grid, int left, int right, int top, int bottom
+        Gtk.Widget widget, int left, int right, int top, int bottom
     ) {
         // lazy margins on a grid
-        grid.set_margin_start(left);
-        grid.set_margin_end(right);
-        grid.set_margin_top(top);
-        grid.set_margin_bottom(bottom);
+        widget.set_margin_start(left);
+        widget.set_margin_end(right);
+        widget.set_margin_top(top);
+        widget.set_margin_bottom(bottom);
     }
 
     public void makegallery() {
@@ -1314,10 +1314,24 @@ namespace ShufflerControl2 {
             edgetiling_subgrid.attach(new Label("\t"), 1, 0, 1, 1);
             Gtk.Switch enable_dragsnapswitch = new Gtk.Switch();
             edgetiling_subgrid.attach(enable_dragsnapswitch, 2, 0, 1, 1);
+            Gtk.Image dragsnap_img = new Gtk.Image.from_icon_name(
+                "dragsnapimg-symbolic", Gtk.IconSize.DIALOG
+            );
+            set_margins(dragsnap_img, 0, 0, 30, 0);
+            dragsnap_img.set_pixel_size(120);
+            edgetiling_subgrid.attach(dragsnap_img, 0, 1, 10, 1);
+            Label ctrldrag = makelabel(
+                _("Ctrl + drag tiles a window into 2/5 of the screen width"), 0
+            );
+            Label altdrag = makelabel(
+                _("Alt + drag tiles a window into 3/5 of the screen width"), 0
+            );
+            edgetiling_subgrid.attach(ctrldrag, 0, 2, 10, 1);
+            edgetiling_subgrid.attach(altdrag, 0, 3, 10, 1);
             string dragsnap_expl = "*" + _("This will disable built-in edge-tiling");
             Label dragsnap_expl_label = makelabel(dragsnap_expl, 0, "justitalic");
-            edgetiling_subgrid.attach(new Label(""), 1, 1, 1, 1);
-            edgetiling_subgrid.attach(dragsnap_expl_label, 0, 2, 10, 1);
+            edgetiling_subgrid.attach(new Label(""), 1, 10, 1, 1);
+            edgetiling_subgrid.attach(dragsnap_expl_label, 0, 11, 10, 1);
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
             layoutsgrid.set_row_spacing(20);
