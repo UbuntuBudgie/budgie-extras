@@ -149,7 +149,7 @@ namespace AdvancedDragsnap {
         }
 
         private bool hotcorners_ison () {
-            string[] names = freed_client.ListNames();
+            string[] names = get_dbus_namelist();
             string hotc = "org.UbuntuBudgie.HotCornerSwitch";
             for (int i=0; i<names.length; i++) {
                 if (hotc == names[i]) {
@@ -213,6 +213,16 @@ namespace AdvancedDragsnap {
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
+            }
+        }
+
+        private string[] get_dbus_namelist () {
+            try {
+                return freed_client.ListNames();
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+                return {};
             }
         }
 
