@@ -1321,7 +1321,7 @@ namespace ShufflerControl2 {
             dragsnap_img.set_pixel_size(120);
             edgetiling_subgrid.attach(dragsnap_img, 0, 1, 10, 1);
             Label ctrldrag = makelabel(
-                _("Ctrl + drag tiles a window into 2/5 of the screen width"), 0
+                _("Control + drag tiles a window into 2/5 of the screen width"), 0
             );
             Label altdrag = makelabel(
                 _("Alt + drag tiles a window into 3/5 of the screen width"), 0
