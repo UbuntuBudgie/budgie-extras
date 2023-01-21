@@ -1083,6 +1083,46 @@ namespace ShufflerControl2 {
             tilinggrid = new Gtk.Grid();
             tilinggrid.set_row_spacing(10);
             set_margins(tilinggrid, 30, 30, 30, 30);
+            /* dsragsnap subgrid */
+            Grid edgetiling_subgrid = new Gtk.Grid();
+            tilinggrid.attach(edgetiling_subgrid, 0, 0, 10, 1);
+            // Use shuffler edge-tiling instead of built-in
+            // TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
+            Label usedragsnapheaderheader = makelabel(
+                _("Use Shuffler drag-snap advanced edge-tiling")  + "*",
+                0, "justbold"
+            );
+            edgetiling_subgrid.attach(usedragsnapheaderheader, 0, 0, 1, 1);
+            edgetiling_subgrid.attach(new Label("\t"), 1, 0, 1, 1);
+            Gtk.Switch enable_dragsnapswitch = new Gtk.Switch();
+            edgetiling_subgrid.attach(enable_dragsnapswitch, 2, 0, 1, 1);
+            Gtk.Image dragsnap_img = new Gtk.Image.from_icon_name(
+                "dragsnapimg-symbolic", Gtk.IconSize.DIALOG
+            );
+            set_margins(dragsnap_img, 0, 0, 30, 0);
+            dragsnap_img.set_pixel_size(120);
+            edgetiling_subgrid.attach(dragsnap_img, 0, 1, 10, 1);
+            Label ctrldrag = makelabel(
+                _("Control + drag tiles a window into 2/5 of the screen width"), 0
+            );
+            Label altdrag = makelabel(
+                _("Alt + drag tiles a window into 3/5 of the screen width"), 0
+            );
+            edgetiling_subgrid.attach(ctrldrag, 0, 2, 10, 1);
+            edgetiling_subgrid.attach(altdrag, 0, 3, 10, 1);
+            string dragsnap_expl = "*" + _("This will disable built-in edge-tiling");
+            Label dragsnap_expl_label = makelabel(dragsnap_expl, 0, "justitalic");
+            set_margins(dragsnap_expl_label, 0, 0, 10, 0);
+            //  edgetiling_subgrid.attach(new Label(""), 1, 10, 1, 1);
+            edgetiling_subgrid.attach(dragsnap_expl_label, 0, 11, 10, 1);
+            edgetiling_subgrid.attach(new Label(""), 1, 12, 1, 1);
+            Widget[] dragsnapwidgets = {
+                dragsnap_img, ctrldrag, altdrag, dragsnap_expl_label
+            };
+            set_widget_sensitive(dragsnapwidgets, "dragsnaptiling");
+            shufflersettings.changed["dragsnaptiling"].connect(()=> {
+                set_widget_sensitive(dragsnapwidgets, "dragsnaptiling");
+            });
             // header + switch (in subgrid)
             Grid switchgrid_basicshortcuts = new Gtk.Grid();
             Label basicshortcutsheader = makelabel(
@@ -1101,7 +1141,7 @@ namespace ShufflerControl2 {
             switchgrid_basicshortcuts.attach(
                 enable_basictilingswitch, 2, 0, 1, 1
             );
-            tilinggrid.attach(switchgrid_basicshortcuts, 0, 0, 10, 1);
+            tilinggrid.attach(switchgrid_basicshortcuts, 0, 34, 10, 1);
             // basic shortcutlist (in subgrid)
             Grid basicshortcutlist_subgrid = new Gtk.Grid();
             string[] basics = {
@@ -1117,9 +1157,9 @@ namespace ShufflerControl2 {
             add_series_toggrid(
                 basicshortcutlist_subgrid, basics, basicshortcuts
             );
-            tilinggrid.attach(basicshortcutlist_subgrid, 0, 1, 10, 1);
+            tilinggrid.attach(basicshortcutlist_subgrid, 0, 35, 10, 1);
             basicshortcutlist_subgrid.show_all();
-            tilinggrid.attach(new Label(""), 1, 2, 1, 1);
+            tilinggrid.attach(new Label(""), 1, 36, 1, 1);
             // custom size header + switch (in subgrid)
             Grid switchgrid_advancedshortcuts = new Gtk.Grid();
             Label advancedcutsheader = makelabel(
@@ -1134,9 +1174,9 @@ namespace ShufflerControl2 {
             switchgrid_advancedshortcuts.attach(
                 enable_advancedtilingswitch, 2, 0, 1, 1
             );
-            tilinggrid.attach(switchgrid_advancedshortcuts, 0, 15, 10, 1);
+            tilinggrid.attach(switchgrid_advancedshortcuts, 0, 37, 10, 1);
             Label customgridsettings_label = makelabel(_("Grid size") + ":", 0, "justitalic");
-            tilinggrid.attach(customgridsettings_label, 0, 16, 10, 1);
+            tilinggrid.attach(customgridsettings_label, 0, 38, 10, 1);
             Grid gridsizegrid = new Gtk.Grid();
             Label gridsize_cols_label = makelabel(_("Columns"), 0);
             gridsizegrid.attach(gridsize_cols_label, 0, 0, 1, 1);
@@ -1153,10 +1193,10 @@ namespace ShufflerControl2 {
                 "vert", "rows", 0, 10
             );
             gridsizegrid.attach(grid_vertsize, 6, 0, 1, 1);
-            tilinggrid.attach(gridsizegrid, 0, 17, 10, 1);
+            tilinggrid.attach(gridsizegrid, 0, 39, 10, 1);
             // options
             Label options_label = makelabel(_("Options") + ":", 0, "justitalic");
-            tilinggrid.attach(options_label, 0, 18, 10, 1);
+            tilinggrid.attach(options_label, 0, 40, 10, 1);
             Grid optionsgrid = new Grid();
             // sticky
             Label stickylabel = makelabel(_("Resize opposite window"), 0);
@@ -1188,11 +1228,11 @@ namespace ShufflerControl2 {
             optionsgrid.attach(new Label("\t"), 1, 3, 1, 1);
             toggle_guigrid = new CheckButton();
             optionsgrid.attach(toggle_guigrid, 2, 3, 1, 1);
-            tilinggrid.attach(optionsgrid, 0, 19, 10, 1);
+            tilinggrid.attach(optionsgrid, 0, 41, 10, 1);
             Label guishortcutsheader = makelabel(
                 _("GUI grid shortcuts") + ":", 0, "justitalic"
             );
-            tilinggrid.attach(guishortcutsheader, 0, 20, 10, 1);
+            tilinggrid.attach(guishortcutsheader, 0, 42, 10, 1);
             Grid guishortcuts_subgrid = new Grid();
             string[] guis = {
                 _("Toggle GUI grid"), _("Add a column"),
@@ -1202,13 +1242,13 @@ namespace ShufflerControl2 {
                 "Ctrl + Alt + S", "→", "↓", "←", "↑"
             };
             add_series_toggrid(guishortcuts_subgrid, guis, guishortcuts);
-            tilinggrid.attach(guishortcuts_subgrid, 0, 21, 10, 1);
+            tilinggrid.attach(guishortcuts_subgrid, 0, 43, 10, 1);
             // shortcutlist custom grid
             Label jump_header_label = makelabel(
                 _("Shortcuts for moving a window to the nearest grid cell") + ":",
                 0, "justitalic"
             );
-            tilinggrid.attach(jump_header_label, 0, 26, 10, 1);
+            tilinggrid.attach(jump_header_label, 0, 44, 10, 1);
             Grid advancedshortcutlist_subgrid = new Gtk.Grid();
             string[] movers = {
                 _("Move left"), _("Move right"),
@@ -1221,7 +1261,7 @@ namespace ShufflerControl2 {
             add_series_toggrid(
                 advancedshortcutlist_subgrid, movers, movershortcuts
             );
-            tilinggrid.attach(advancedshortcutlist_subgrid, 0, 27, 10, 1);
+            tilinggrid.attach(advancedshortcutlist_subgrid, 0, 45, 10, 1);
             string resize_header = (_("Shortcuts for resizing a window")) + ":";
             Label resize_header_label = makelabel(resize_header, 0, "justitalic");
             Grid workarounspace_1 = new Grid();
@@ -1295,43 +1335,12 @@ namespace ShufflerControl2 {
                 manage_daemon();
             });
             advancedshortcutlist_subgrid.show_all();
-            tilinggrid.attach(new Label(""), 1, 49, 1, 1);
+            tilinggrid.attach(new Label(""), 1, 46, 1, 1);
             ScrolledWindow scrolled_tiling = new ScrolledWindow(null, null);
             scrolled_tiling.set_min_content_width(620);
             scrolled_tiling.add(tilinggrid);
             scrolled_tiling.set_propagate_natural_width(true);
             allsettings_stack.add_named(scrolled_tiling, "tiling");
-            /* dsragsnap subgrid */
-            Grid edgetiling_subgrid = new Gtk.Grid();
-            tilinggrid.attach(edgetiling_subgrid, 0, 60, 10, 1);
-            // Use shuffler edge-tiling instead of built-in
-            // TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
-            Label usedragsnapheaderheader = makelabel(
-                _("Use Shuffler drag-snap advanced edge-tiling")  + "*",
-                0, "justbold"
-            );
-            edgetiling_subgrid.attach(usedragsnapheaderheader, 0, 0, 1, 1);
-            edgetiling_subgrid.attach(new Label("\t"), 1, 0, 1, 1);
-            Gtk.Switch enable_dragsnapswitch = new Gtk.Switch();
-            edgetiling_subgrid.attach(enable_dragsnapswitch, 2, 0, 1, 1);
-            Gtk.Image dragsnap_img = new Gtk.Image.from_icon_name(
-                "dragsnapimg-symbolic", Gtk.IconSize.DIALOG
-            );
-            set_margins(dragsnap_img, 0, 0, 30, 0);
-            dragsnap_img.set_pixel_size(120);
-            edgetiling_subgrid.attach(dragsnap_img, 0, 1, 10, 1);
-            Label ctrldrag = makelabel(
-                _("Control + drag tiles a window into 2/5 of the screen width"), 0
-            );
-            Label altdrag = makelabel(
-                _("Alt + drag tiles a window into 3/5 of the screen width"), 0
-            );
-            edgetiling_subgrid.attach(ctrldrag, 0, 2, 10, 1);
-            edgetiling_subgrid.attach(altdrag, 0, 3, 10, 1);
-            string dragsnap_expl = "*" + _("This will disable built-in edge-tiling");
-            Label dragsnap_expl_label = makelabel(dragsnap_expl, 0, "justitalic");
-            edgetiling_subgrid.attach(new Label(""), 1, 10, 1, 1);
-            edgetiling_subgrid.attach(dragsnap_expl_label, 0, 11, 10, 1);
             // LAYOUTS PAGE
             layoutsgrid = new Gtk.Grid();
             layoutsgrid.set_row_spacing(20);
