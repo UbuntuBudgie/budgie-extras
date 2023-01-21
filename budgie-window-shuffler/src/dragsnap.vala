@@ -94,6 +94,11 @@ namespace AdvancedDragsnap {
         public abstract void set_skip_action (bool onoff) throws Error;
     }
 
+    [DBus (name = "org.freedesktop.DBus")]
+    interface FreeDesktopClient : Object {
+        public abstract string[] ListNames () throws Error;
+    }
+
 
     class DragSnapTools {
 
@@ -118,15 +123,40 @@ namespace AdvancedDragsnap {
 
         Gtk.Window? overlay;
         Gdk.Display? gdkdsp;
-        ShufflerInfoClient? client; /* shufflerdaemon */
-        HotCornerClient? client2; /* hotcorners */
+        ShufflerInfoClient? shuffler_client; /* shufflerdaemon */
+        HotCornerClient? hotc_client; /* hotcorners */
+        FreeDesktopClient? freed_client;
         HashTable<string, Variant>? tiledata;
 
         public DragSnapTools(Gdk.Display gdkdisplay) {
             overlay = null;
             gdkdsp = gdkdisplay;
-            client = get_client();
-            client2 = null;
+            get_shuffler_client();
+            setup_freed_client();
+            setup_hotc_client();
+        }
+
+        private void setup_freed_client () {
+            try {
+                freed_client = Bus.get_proxy_sync (
+                    BusType.SESSION, "org.freedesktop.DBus",
+                    ("/org/freedesktop/DBus")
+                );
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+        }
+
+        private bool hotcorners_ison () {
+            string[] names = freed_client.ListNames();
+            string hotc = "org.UbuntuBudgie.HotCornerSwitch";
+            for (int i=0; i<names.length; i++) {
+                if (hotc == names[i]) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private int[] get_tiles(string monname,  int cols, int rows) {
@@ -136,7 +166,7 @@ namespace AdvancedDragsnap {
             int origx = -1;
             int origy = -1;
             try {
-                tiledata = client.get_tiles(monname, cols, rows);
+                tiledata = shuffler_client.get_tiles(monname, cols, rows);
                 foreach (string foundkey in tiledata.get_keys()) {
                     if (foundkey == "0*0") {
                         Variant target_tile = tiledata[foundkey];
@@ -153,50 +183,48 @@ namespace AdvancedDragsnap {
             return {origx, origy, fullwidth, fullheight};
         }
 
-        private ShufflerInfoClient? get_client () {
+        private void get_shuffler_client () {
             try {
-                client = Bus.get_proxy_sync (
+                shuffler_client = Bus.get_proxy_sync (
                     BusType.SESSION, "org.UbuntuBudgie.ShufflerInfoDaemon",
                     ("/org/ubuntubudgie/shufflerinfodaemon")
                 );
-                return client;
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
-                return null;
             }
         }
 
-        private HotCornerClient? get_client2 () {
+        private void setup_hotc_client () {
             try {
-                client2 = Bus.get_proxy_sync (
+                hotc_client = Bus.get_proxy_sync (
                     BusType.SESSION, "org.UbuntuBudgie.HotCornerSwitch",
                     ("/org/ubuntubudgie/hotcornerswitch")
                 );
-                return client2;
             }
             catch (Error e) {
                 stderr.printf ("%s\n", e.message);
-                return null;
             }
         }
 
         public void activate_win_byname (string wname) {
             try {
-                client.activate_window_byname(wname);
+                shuffler_client.activate_window_byname(wname);
             }
             catch (Error e) {
-                /* service does not exist. message is useless */
+                stderr.printf ("%s\n", e.message);
             }
         }
 
         private void disable_hotcorners (bool onoff) {
-            client2 = get_client2();
+            if (!hotcorners_ison()) {
+                return;
+            }
             try {
-                client2.set_skip_action(onoff);
+                hotc_client.set_skip_action(onoff);
             }
             catch (Error e) {
-                /* service does not exist. message is useless */
+                stderr.printf ("%s\n", e.message);
             }
         }
 
@@ -534,7 +562,7 @@ namespace AdvancedDragsnap {
 
         private bool get_mousestate (int button) {
             try {
-                return client.get_mouse_isdown(button);
+                return shuffler_client.get_mouse_isdown(button);
             }
             catch (Error e) {
                 message ("Couldn't get mouse state. is Shuffler daemon running?");
@@ -544,7 +572,7 @@ namespace AdvancedDragsnap {
 
         private bool get_keystate (int key) {
             try {
-                return client.get_modkey_isdown(key);
+                return shuffler_client.get_modkey_isdown(key);
             }
             catch (Error e) {
                 message ("Couldn't get key state. is Shuffler daemon running?");
@@ -728,7 +756,6 @@ namespace AdvancedDragsnap {
         }
         return str;
     }
-
 
     public void initialiseLocaleLanguageSupport() {
         GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
