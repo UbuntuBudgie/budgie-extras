@@ -8,16 +8,16 @@
 # Víctor Pont <victor@pont.cat>, 2019
 # Adolfo Jayme-Barrientos, 2021
 # david mohammed <foss.freedom@gmail.com>, 2022
-# Davidmp <medipas@gmail.com>, 2022
+# Davidmp <medipas@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-17 22:45+0000\n"
+"POT-Creation-Date: 2023-01-21 10:05+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>, 2022\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2023\n"
 "Language-Team: Catalan (https://www.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -411,7 +411,7 @@ msgstr "Dreceres de finestres i mosaic"
 #. optimize please with similar grids
 #. 1. PICK LAYOUT GRID
 #: budgie-window-shuffler/src/shuffler_control.vala:1055
-#: budgie-window-shuffler/src/shuffler_control.vala:1327
+#: budgie-window-shuffler/src/shuffler_control.vala:1341
 #: budgie-window-shuffler/src/layouts_popup.vala:162
 msgid "Layouts"
 msgstr "Disposicions"
@@ -423,7 +423,7 @@ msgstr "Valors preestablerts automàtics de finestres i aplicacions"
 
 #. Settings category label, should be as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:1059
-#: budgie-window-shuffler/src/shuffler_control.vala:1383
+#: budgie-window-shuffler/src/shuffler_control.vala:1397
 msgid "Window rules"
 msgstr "Regles de les finestres"
 
@@ -636,89 +636,100 @@ msgstr "Fes un mosaic en forma de graella de totes les finestres"
 #: budgie-window-shuffler/src/shuffler_control.vala:1310
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
+"Useu el mosaic de vora avançat d'arrossegar del Canviador de finestres"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1317
-msgid "This will disable built-in edge-tiling"
+#: budgie-window-shuffler/src/shuffler_control.vala:1324
+msgid "Control + drag tiles a window into 2/5 of the screen width"
 msgstr ""
+"Control + arrossega rajoles d'una finestra a 2/5 de l'amplada de la pantalla"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1327
+msgid "Alt + drag tiles a window into 3/5 of the screen width"
+msgstr ""
+"Alt + arrossega rajoles d'una finestra a 3/5 de l'amplada de la pantalla"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1331
+msgid "This will disable built-in edge-tiling"
+msgstr "Això desactivarà el mosaic de vores integrat"
 
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
-#: budgie-window-shuffler/src/shuffler_control.vala:1339
+#: budgie-window-shuffler/src/shuffler_control.vala:1353
 msgid "Toggle layouts quicklist & manager"
 msgstr "Commuta la llista ràpida i el gestor de disposicions"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1349
+#: budgie-window-shuffler/src/shuffler_control.vala:1363
 msgid "Setup now"
 msgstr "Configureu-ho ara"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1392
+#: budgie-window-shuffler/src/shuffler_control.vala:1406
 msgid "Stored rules"
 msgstr "Regles desades"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1402
+#: budgie-window-shuffler/src/shuffler_control.vala:1416
 msgid "Add new rule"
 msgstr "Afegiu-hi una regla nova"
 
 #. margin header
 #. this is about the area which shuffler can use for tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:1435
+#: budgie-window-shuffler/src/shuffler_control.vala:1449
 msgid "Margins between virtual grid and screen edges"
 msgstr "Marges entre la graella virtual i les vores de la pantalla"
 
 #. top margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1455
+#: budgie-window-shuffler/src/shuffler_control.vala:1469
 msgid "Top margin"
 msgstr "Marge de dalt"
 
 #. left/right margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1459
+#: budgie-window-shuffler/src/shuffler_control.vala:1473
 msgid "Left & right margins"
 msgstr "Marges de l'esquerra i la dreta"
 
 #. bottom margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1464
+#: budgie-window-shuffler/src/shuffler_control.vala:1478
 msgid "Bottom margin"
 msgstr "Marge de baix"
 
 #. padding header
-#: budgie-window-shuffler/src/shuffler_control.vala:1471
+#: budgie-window-shuffler/src/shuffler_control.vala:1485
 msgid "Padding"
 msgstr "Encoixinat"
 
 #. padding
-#: budgie-window-shuffler/src/shuffler_control.vala:1476
+#: budgie-window-shuffler/src/shuffler_control.vala:1490
 msgid "Window padding"
 msgstr "Farciment de la finestra"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1485
+#: budgie-window-shuffler/src/shuffler_control.vala:1499
 msgid "Animation"
 msgstr "Animació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1488
+#: budgie-window-shuffler/src/shuffler_control.vala:1502
 msgid "Use general animation settings"
 msgstr "Usa la configuració general de l'animació."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1494
+#: budgie-window-shuffler/src/shuffler_control.vala:1508
 msgid "Use animation"
 msgstr "Usa l'animació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1815
+#: budgie-window-shuffler/src/shuffler_control.vala:1829
 msgid "Applet settings"
 msgstr "Configuració de la miniaplicació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1819
+#: budgie-window-shuffler/src/shuffler_control.vala:1833
 msgid "Applet popover content"
 msgstr "Contingut de la finestra emergent de la miniaplicació"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1827
+#: budgie-window-shuffler/src/shuffler_control.vala:1841
 msgid "Show popover on hover (without click)"
 msgstr "Mostra la finestra emergent en passar-hi (sense clicar)."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1835
+#: budgie-window-shuffler/src/shuffler_control.vala:1849
 msgid "Synchronize grid size"
 msgstr "Sincronitza la mida de la quadrícula."
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1842
+#: budgie-window-shuffler/src/shuffler_control.vala:1856
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 "Actualitza la mida de la quadrícula per canviar-ne la posició i la mida "
@@ -726,11 +737,11 @@ msgstr ""
 
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
-#: budgie-window-shuffler/src/shuffler_control.vala:1849
+#: budgie-window-shuffler/src/shuffler_control.vala:1863
 msgid "Layout preview size (width in px)"
 msgstr "Mida de la previsualització de la disposició (amplada en píxels)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1864
+#: budgie-window-shuffler/src/shuffler_control.vala:1878
 msgid "The applet needs to be on the panel to see the changes"
 msgstr "La miniaplicació ha de ser al plafó per veure'n els canvis."
 
@@ -809,15 +820,17 @@ msgstr "Test"
 #. text message
 #. TRANSLATORS: "drag-snap" does not need to be translated since it is the
 #. name of the window tiling mechanism for our window shuffler
-#: budgie-window-shuffler/src/dragsnap.vala:831
+#: budgie-window-shuffler/src/dragsnap.vala:861
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
 "instead, press Built-in."
 msgstr ""
+"Arrossegar-snap ha substituït el mosaic de vora incorporat. Per triar el "
+"mosaic de vora integrat, premeu Integrat."
 
-#: budgie-window-shuffler/src/dragsnap.vala:863
+#: budgie-window-shuffler/src/dragsnap.vala:893
 msgid "Built-in"
-msgstr ""
+msgstr "Integrat"
 
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
 msgid "Minimum window size exceeds target"
