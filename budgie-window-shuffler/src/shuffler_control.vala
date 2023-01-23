@@ -1012,7 +1012,6 @@ namespace ShufflerControl2 {
                 stderr.printf ("%s\n", e.message);
             }
             // settings
-            shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
             var tilingicon = new Gtk.Image.from_icon_name(
                 "shuffler-tilingicon-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             var layoutsicon = new Gtk.Image.from_icon_name(
@@ -1720,9 +1719,20 @@ namespace ShufflerControl2 {
         shufflerappletsettings = new GLib.Settings(
             "org.ubuntubudgie.plugins.budgie-shufflerapplet"
         );
+        shufflersettings = new GLib.Settings("org.ubuntubudgie.windowshuffler");
         int page = 0;
         if (args.length > 1) {
-            page = int.parse(args[1]);
+            string test = args[1];
+            if (test == "togglestickyneighbors") {
+                shufflersettings.set_boolean(
+                    "stickyneighbors",
+                    !shufflersettings.get_boolean("stickyneighbors")
+                );
+                Process.exit(0);
+            }
+            else {
+                page = int.parse(test);
+            }
         }
         new ShufflerControlWindow(page);
         // watch trigger to switch to applet settings
