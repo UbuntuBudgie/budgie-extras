@@ -332,7 +332,7 @@ namespace ShufflerEssentialInfo {
         public void show_awarning () throws Error {
             if (show_warning) {
                 if (remaining_warningtime == 0) {
-                    remaining_warningtime = 1000;
+                    remaining_warningtime = 1800;
                     string cmd = Config.SHUFFLER_DIR + "/sizeexceeds_warning";
                     try {
                         Process.spawn_command_line_async (cmd);
