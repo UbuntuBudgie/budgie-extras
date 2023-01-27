@@ -25,6 +25,11 @@ program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace create_previews {
 
+    [DBus (name = "org.gnome.Mutter.IdleMonitor")]
+    interface MutterClient : Object {
+        public abstract uint64 GetIdletime () throws Error;
+    }
+
     uint n_wins;
     uint current_queueindex;
     bool validwins_exist;
@@ -36,8 +41,13 @@ namespace create_previews {
     GLib.List<Gdk.Window> gdk_winlist;
     bool idle_state;
 
+    MutterClient? mutterclient;
+
 
     public static void main (string[] args) {
+
+        /* get dbus client */
+        get_screensaver_client();
 
         current_queueindex = 0;
         idle_state = false;
@@ -88,6 +98,18 @@ namespace create_previews {
             return true;
         });
         Gtk.main();
+    }
+
+    private void get_screensaver_client () {
+        try {
+            mutterclient = Bus.get_proxy_sync (
+                BusType.SESSION, "org.gnome.Mutter.IdleMonitor",
+                ("/org/gnome/Mutter/IdleMonitor/Core")
+            );
+        }
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
+        }
     }
 
     private void update_nextqueueindex () {
@@ -309,23 +331,14 @@ namespace create_previews {
     }
 
     private bool get_idle () {
-        // see if idle exceeds 90 seconds
-        string cmd = Config.PACKAGE_BINDIR + "/xprintidle";
-        string output;
-        int curridle = 0;
         try {
-            GLib.Process.spawn_command_line_sync(cmd, out output);
-            curridle = int.parse(output) / 1000;
-            if (curridle > 90) {
+            if (mutterclient.GetIdletime()/1000 > 90) {
                 return true;
             }
-            else {
-                return false;
-            }
         }
-        //on an occasional exception, return false
-        catch (SpawnError e) {
-            return false;
+        catch (Error e) {
+            stderr.printf ("%s\n", e.message);
         }
+        return false;
     }
 }
