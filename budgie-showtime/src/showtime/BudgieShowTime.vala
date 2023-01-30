@@ -104,7 +104,7 @@ namespace BudgieShowTimeApplet {
     private void open_window(
         string? wname = null, string? xpos = null, string? ypos = null
         ) {
-        // call the desktop showtime window
+        // call the desktop showtime window;
         string cmd = winpath;
         if (wname != null) {
             cmd = winpath.concat(" ", wname, " ", xpos, " ", ypos);

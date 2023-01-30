@@ -504,13 +504,14 @@ namespace  ShowTime {
     }
 
     public static void main (string[] args) {
+        /* 0 = application, 1=uuid, 2=monitor, 3=x, 4=y */
         string uuid = args[1];
         Gtk.init(ref args);
         win_name = "Showtime";
-        if (args.length == 4) {
+        if (args.length == 5) {
             subwindow = true;
             win_name = "Showtime_".concat(args[1]);
-            custom_posargs = {int.parse(args[2]), int.parse(args[3])};
+            custom_posargs = {int.parse(args[3]), int.parse(args[4])};
         }
         new TimeWindow(uuid);
         Gtk.main();
