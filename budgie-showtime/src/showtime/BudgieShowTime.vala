@@ -208,6 +208,11 @@ namespace BudgieShowTimeApplet {
             this.attach(anchorgrid, 0, 2, 2, 1);
             // group stuff
             anchorbuttons = {nw, ne, se, sw};
+            foreach (RadioButton b in anchorbuttons) {
+                b.set_tooltip_text(
+                    _("Anchor, time will expand/shrink in/from opposite direction.")
+                );
+            }
             anchors = {"nw", "ne", "se", "sw"};
             curr_anchor = showtime_settings.get_string("anchor");
             anchorbuttons[
