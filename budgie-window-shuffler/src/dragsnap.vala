@@ -86,6 +86,7 @@ namespace AdvancedDragsnap {
         public abstract bool get_mouse_isdown (int button) throws Error;
         public abstract bool get_modkey_isdown (int key)  throws Error;
         public abstract void activate_window_byname (string wname)  throws Error;
+        public abstract HashTable<string, Variant> get_winsdata () throws Error;
     }
 
     [DBus (name = "org.UbuntuBudgie.HotCornerSwitch")]
@@ -598,11 +599,30 @@ namespace AdvancedDragsnap {
             return 1;
         }
 
-        public int[] get_geo(Wnck.Window new_window) {
-            int x; int y; int w; int h;
-            new_window.get_geometry(out x, out y, out w, out h);
-            int[] geodata = {w, h};
-            return geodata;
+        private Variant? get_windowmatch (int xid) { // still public after finish?
+            try {
+                HashTable<string, Variant> windata = shuffler_client.get_winsdata();
+                foreach (string k in windata.get_keys()) {
+                    if (k == @"$xid") {
+                        return windata[k];
+                    }
+                }
+            }
+            catch (Error e) {
+                stderr.printf ("%s\n", e.message);
+            }
+            return null;
+        }
+
+        public int[] get_geo_byxid(int xid) {
+            Variant? vari = get_windowmatch(xid);
+            if (vari != null) {
+                return {
+                    (int)vari.get_child_value(5),
+                    (int)vari.get_child_value(6)
+                };
+            }
+            return {0, 0};
         }
 
         private void kill_preview() {
@@ -647,13 +667,13 @@ namespace AdvancedDragsnap {
         }
 
         public void watch_draggedwindow(
-            Gdk.Device pointer, int scale, Wnck.Window curr_active
+            Gdk.Device pointer, int scale, int new_xid
         ) {
             window_iswatched = true;
             int curr_area = PreviewSection.NONE;
             string? monname = null;
             int activekey = ActiveKey.NONE;
-            int new_xid = 0;
+            //  int new_xid = 0;
             int[] mongeo = {0, 0, 0, 0};
             int x = -1;
             int y = -1;
@@ -670,12 +690,10 @@ namespace AdvancedDragsnap {
                 if (get_mousestate(1) && drag) {
                     if (firstcycle) {
                         disable_hotcorners(true);
-                        new_xid = (int)curr_active.get_xid(); // for tile_active()
                         firstcycle = false;
                     }
                     pointer.get_position(null, out x, out y);
                     x = x*scale; y = y*scale;
-
                     /* check monitor at point. still the same? */
                     string newmon = get_activemonitorname(x, y, scale);
                     if (newmon != monname ) {
@@ -683,7 +701,6 @@ namespace AdvancedDragsnap {
                         mongeo = get_tiles(monname, cols, rows);
                     }
                     int new_activekey = get_active_modkey();
-
                     if (new_activekey != activekey) {
                         activekey = new_activekey;
                         if (activekey == ActiveKey.NONE) {
@@ -824,6 +841,7 @@ namespace AdvancedDragsnap {
             if (new_active == null) {
                 return;
             }
+            int new_xid = (int)new_active.get_xid();
             curr_connection = new_active.geometry_changed.connect(()=> {
                 /*
                 if window is currently watched, (so if on second+
@@ -833,19 +851,19 @@ namespace AdvancedDragsnap {
                 */
                 if (window_iswatched) {
                     check_geo2 = intarr_tostring(
-                        dragsnaptools.get_geo(new_active)
+                        dragsnaptools.get_geo_byxid(new_xid)
                     );
                     drag = check_geo2 == check_geo1;
                 }
                 else if (
                     !window_iswatched &&
-                    new_active.get_window_type() == Wnck.WindowType.NORMAL
+                    new_active.get_window_type() == Wnck.WindowType.NORMAL  // suspect no. 2
                 ) {
                     check_geo1 = intarr_tostring(
-                        dragsnaptools.get_geo(new_active)
+                        dragsnaptools.get_geo_byxid(new_xid)
                     );
                     dragsnaptools.watch_draggedwindow(
-                        pointer, scale, new_active
+                        pointer, scale, new_xid
                     );
                 }
             });
@@ -859,7 +877,6 @@ namespace AdvancedDragsnap {
 
         ulong[] undo_connect = {};
         Button[] todisconnect = {};
-
 
         public DialogWindow (ManageSettings manager) {
 
