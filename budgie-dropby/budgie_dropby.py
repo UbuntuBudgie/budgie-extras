@@ -133,7 +133,7 @@ class BudgieDropByApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.setup_watching()
-        self.start_dropover()
+        GLib.idle_add(self.start_dropover)
         self.refresh_from_idle()
 
     def set_icon_state(self):
