@@ -759,7 +759,8 @@ namespace HotCornerSettings {
 
         private void get_commands() {
             string[] jsondata = readfile(
-                "/usr/share/budgie-hotcorners/defaults"
+                Config.PACKAGE_SHAREDIR + "/budgie-hotcorners/defaults"
+                //  "/usr/share/budgie-hotcorners/defaults"
             ).strip().split("\n");
             var parser = new Json.Parser ();
             foreach (string l in jsondata) {

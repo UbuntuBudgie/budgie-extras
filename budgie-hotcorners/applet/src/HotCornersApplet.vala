@@ -72,7 +72,9 @@ namespace HotCornersApplet {
             Button settingsbutton = new Gtk.Button();
             settingsbutton.clicked.connect(()=> {
                 run_command(
-                    "/usr/libexec/budgie-hotcorners/budgie-hotcorners-settingswindow" // replace
+                    Config.PACKAGE_LIBEXECDIR +
+                    "/budgie-hotcorners/budgie-hotcorners-settingswindow"
+                    //  "/usr/libexec/budgie-hotcorners/budgie-hotcorners-settingswindow" // replace
                 );
                 if (popover != null) {
                     popover.hide();
