@@ -27,5 +27,6 @@ mytarget = custom_target('hotcorners_schema',
 
 subdir('applet')
 subdir('src')
+subdir('icons')
 
 meson.add_install_script('meson_post_install.py')

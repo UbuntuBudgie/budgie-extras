@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Budgie Hotcorners
+Comment=Kick starts the budgie-hotcorners process
+Exec=/usr/libexec/budgie-hotcorners/budgie-hotcorners
+NoDisplay=true
+AutostartCondition=GSettings org.ubuntubudgie.budgie-extras.HotCorners active
+X-MATE-AutoRestart=true
+X-GNOME-AutoRestart=true
