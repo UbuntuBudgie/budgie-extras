@@ -7,3 +7,12 @@ hotcornersgetauto = custom_target('hotcornersautostart',
   install : true,
   install_dir : xdg_appdir
 )
+
+
+hotcornerstargetw = custom_target('hotcorners',
+  output : 'org.ubuntubudgie.budgie-extras.HotCorners.desktop',
+  input : 'org.ubuntubudgie.budgie-extras.HotCorners.desktop.in',
+  command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
+  install : true,
+  install_dir : join_paths(datadir, 'applications')
+)
