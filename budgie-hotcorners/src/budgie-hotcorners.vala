@@ -276,7 +276,6 @@ namespace NewHotcorners {
             }
             catch (Error e) {
                 debug("Failed to get mouse state from org.UbuntuBudgie.ShufflerInfoDaemon");
-                stderr.printf ("%s\n", e.message);
             }
             return false;
         }
@@ -301,7 +300,7 @@ namespace NewHotcorners {
                 );
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("%s\n", e.message);
             }
         }
 
@@ -311,6 +310,10 @@ namespace NewHotcorners {
                 Process.spawn_command_line_async(cmd);
             }
             catch (GLib.SpawnError err) {
+                /*
+                this is where user defined commands are run errors are more than likely the result
+                of an invalid command and not the result of a bug in hotcorners.
+                */
                 message("Failed to run the command. Is it a valid command?");
             }
         }
