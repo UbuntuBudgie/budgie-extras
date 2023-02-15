@@ -4,7 +4,7 @@ using Json;
 /*
 * HotCornersIII
 * Author: Jacob Vlijm
-* Copyright © 2017 Ubuntu Budgie Developers
+* Copyright © 2023 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -47,7 +47,7 @@ namespace HotCornerSettings {
                 new HotCornersServer ());
         }
         catch (IOError e) {
-            stderr.printf ("Could not register service\n");
+            debug("Could not register service\n");
         }
     }
 
@@ -140,14 +140,12 @@ namespace HotCornerSettings {
                 setup_dbus_server();
             }
             else {
-                message("Hotcorners Settings already runs");
                 activate_byname(title);
                 Process.exit(0);
             }
 
             /* gsettings */
             newhcornersettings = new GLib.Settings(
-                //  "org.ubuntubudgie.plugins.budgie-newhotcorners"
                 "org.ubuntubudgie.budgie-extras.HotCorners"
             );
 
@@ -300,6 +298,7 @@ namespace HotCornerSettings {
                 shufflerinfoclient.ActivateWindowByname(name);
             }
             catch (Error e) {
+                debug("Could not call dbus method on org.UbuntuBudgie.ShufflerInfoDaemon");
                 stderr.printf ("%s\n", e.message);
             }
         }
@@ -312,7 +311,7 @@ namespace HotCornerSettings {
                 );
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("Could not get client for org.UbuntuBudgie.ShufflerInfoDaemon");
             }
         }
 
@@ -344,7 +343,7 @@ namespace HotCornerSettings {
                 );
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("Could not setup client for org.freedesktop.DBus");
             }
         }
 
@@ -353,7 +352,7 @@ namespace HotCornerSettings {
                 return freed_client.ListNames();
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug ("Could not list dbus services");
                 return {};
             }
         }
@@ -539,7 +538,7 @@ namespace HotCornerSettings {
                 dropdowns += combo;
                 /* entry */
                 Gtk.Entry cmd_entry = new Gtk.Entry();
-                cmd_entry.set_placeholder_text("Enter a command here");
+                cmd_entry.set_placeholder_text(_("Enter a command here"));
                 cmd_entry.set_size_request(260, 10);
                 cmd_entry.changed.connect((newtext)=> {
                     if (!try_block_settingsflow(SettingsFlow.WIDGETSTOSETTINGS)) {
@@ -714,8 +713,8 @@ namespace HotCornerSettings {
                 checkbool.changed[val].connect(()=> {
                     /* we need to add stuff here in furure to reset the gui */
                     reload_message.set_text(
-                        "Available dropdown items changed\n" +
-                        "please restart settingswindow"
+                        _("Available dropdown items changed") + "\n" +
+                        _("please restart settingswindow")
                     );
                 });
                 applist_settings += checkbool;
@@ -730,7 +729,7 @@ namespace HotCornerSettings {
                 parser.load_from_data (command);
             }
             catch (Error e) {
-                message("Could not load data for dropdown");
+                debug("Could not load data for dropdown");
                 return;
             }
             var root_object = parser.get_root ().get_object ();
@@ -760,7 +759,6 @@ namespace HotCornerSettings {
         private void get_commands() {
             string[] jsondata = readfile(
                 Config.PACKAGE_SHAREDIR + "/budgie-hotcorners/defaults"
-                //  "/usr/share/budgie-hotcorners/defaults"
             ).strip().split("\n");
             var parser = new Json.Parser ();
             foreach (string l in jsondata) {

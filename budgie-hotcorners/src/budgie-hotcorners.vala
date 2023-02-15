@@ -4,7 +4,7 @@ using Math;
 /*
 * HotCorners III
 * Author: Jacob Vlijm
-* Copyright © 2017 Ubuntu Budgie Developers
+* Copyright © 2023 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -64,7 +64,7 @@ namespace NewHotcorners {
                 new HotCornersServer ());
         }
         catch (IOError e) {
-            stderr.printf ("Could not register service\n");
+            debug ("Could not register service\n");
         }
     }
 
@@ -230,14 +230,13 @@ namespace NewHotcorners {
                 screensaver_runs = screensaverclient.GetActive();
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("Failed to get information about screensaver running");
                 screensaver_runs = false;
             }
         }
 
         private bool service_ison (string id) {
             string[] names = get_dbus_namelist();
-            //  string hotc = "org.UbuntuBudgie.HotCornerSwitch";
             for (int i=0; i<names.length; i++) {
                 if (id == names[i]) {
                     return true;
@@ -251,7 +250,7 @@ namespace NewHotcorners {
                 return freed_client.ListNames();
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("Failed to get list of dbus services");
                 return {};
             }
         }
@@ -264,7 +263,7 @@ namespace NewHotcorners {
                 );
             }
             catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                debug("Failed to setup client for org.gnome.ScreenSaver");
             }
         }
 
@@ -276,6 +275,7 @@ namespace NewHotcorners {
                 return shufflerinfoclient.GetMouseIsdown(1);
             }
             catch (Error e) {
+                debug("Failed to get mouse state from org.UbuntuBudgie.ShufflerInfoDaemon");
                 stderr.printf ("%s\n", e.message);
             }
             return false;
@@ -311,16 +311,12 @@ namespace NewHotcorners {
                 Process.spawn_command_line_async(cmd);
             }
             catch (GLib.SpawnError err) {
-                /*
-                * in case an error occurs, the command most likely is
-                * incorrect not much use for any action
-                */
+                message("Failed to run the command. Is it a valid command?");
             }
         }
 
         private void delayed_action (int start_area, int[] xses, int[] yses) {
             if (get_mousedown()) {
-                //  print("mouse is down!\n");
                 return;
             }
             int realdelay = 125 + (delay * 20);

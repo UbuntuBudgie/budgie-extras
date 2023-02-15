@@ -4,7 +4,7 @@ using Json;
 /*
 * HotCornersIII
 * Author: Jacob Vlijm
-* Copyright © 2017 Ubuntu Budgie Developers
+* Copyright © 2023 Ubuntu Budgie Developers
 * Website=https://ubuntubudgie.org
 * This program is free software: you can redistribute it and/or modify it
 * under the terms of the GNU General Public License as published by the Free
@@ -20,9 +20,7 @@ using Json;
 
 namespace HotCornersApplet {
 
-    private void set_margins (
-        Widget w, int l, int r, int t, int b
-    ) {
+    private void set_margins (Widget w, int l, int r, int t, int b) {
         w.set_margin_start(l);
         w.set_margin_end(r);
         w.set_margin_top(t);
@@ -53,7 +51,7 @@ namespace HotCornersApplet {
                 );
             }
             catch (Error e) {
-                print("Could not load css\n");
+                debug("Could not load css");
             }
             Label masterswitchlabel = makelabel(_("Activate hotcorners"), {0, 40, 0, 0});
             this.attach(masterswitchlabel, 0, 0, 1, 1);
@@ -74,13 +72,11 @@ namespace HotCornersApplet {
                 run_command(
                     Config.PACKAGE_LIBEXECDIR +
                     "/budgie-hotcorners/budgie-hotcorners-settingswindow"
-                    //  "/usr/libexec/budgie-hotcorners/budgie-hotcorners-settingswindow" // replace
                 );
                 if (popover != null) {
                     popover.hide();
                 }
             });
-
             settingsbutton.set_can_focus(false);
             Image settingsbuttonimage = new Gtk.Image.from_icon_name(
                 "budgie-hotcorners-symbolic", Gtk.IconSize.BUTTON
@@ -99,16 +95,11 @@ namespace HotCornersApplet {
                 Process.spawn_command_line_async(cmd);
             }
             catch (GLib.SpawnError err) {
-                /*
-                * in case an error occurs, the command most likely is
-                * incorrect not much use for any action
-                */
+                message("Failed to execute command");
             }
         }
 
-        private Label makelabel (
-            string tekst, int[] mrg, string? style = null
-        ) {
+        private Label makelabel (string tekst, int[] mrg, string? style = null) {
             Label newlabel = new Label(tekst);
             if (style != null) {
                 newlabel.get_style_context().add_class(style);
@@ -125,7 +116,7 @@ namespace HotCornersApplet {
         public HotCornersSettings () {
             Grid settingssection = new SettingsGrid();
             Label hint = new Label(
-                _("Hotcorners settings is also available via the main menu")
+                _("Hotcorners settings is also available via the desktop menu")
             );
             hint.get_style_context().add_class("justitalic");
             set_margins(hint, 0, 0, 50, 0);
@@ -134,7 +125,6 @@ namespace HotCornersApplet {
 
             set_margins(settingssection, 0, 0, 30, 0);
             this.attach (settingssection, 0, 0, 1, 1);
-            //  this.settings = hotsettings;
             this.show_all();
         }
     }
