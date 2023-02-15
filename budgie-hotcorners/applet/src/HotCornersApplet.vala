@@ -95,7 +95,7 @@ namespace HotCornersApplet {
                 Process.spawn_command_line_async(cmd);
             }
             catch (GLib.SpawnError err) {
-                message("Failed to execute command");
+                debug("Failed to execute command to open settings");
             }
         }
 
