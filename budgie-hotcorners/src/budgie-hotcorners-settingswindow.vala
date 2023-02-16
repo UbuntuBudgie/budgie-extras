@@ -742,12 +742,12 @@ namespace HotCornerSettings {
                 if (check_schema(schema)) {
                     if (get_active(schema, gdata[1])) {
                         /* add name & command */
-                        add_tolist(name, cmd);
+                        add_tolist(_(name), cmd);
                     }
                 }
             }
             else {
-                add_tolist(name, cmd);
+                add_tolist(_(name), cmd);
             }
         }
 
