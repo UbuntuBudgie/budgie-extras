@@ -6,9 +6,8 @@ HotcornersValaArgs = [
 
 # Global path variable
 prefix = get_option('prefix')
-# libexecdir = join_paths(prefix, 'libexec/budgie-hotcorners')
 libexec_hotcorners = join_paths(libexecdir, 'budgie-hotcorners')
-# datadir = join_paths(prefix, get_option('datadir'))
+
 
 HotcornersSources = [
     'budgie-hotcorners.vala'
@@ -29,7 +28,6 @@ executable(
     install: true,
     vala_args: HotcornersValaArgs,
     c_args: HotcornersCArgs,
-    # include_directories: config_inc_dir,
     install_dir: libexec_hotcorners,
 )
 
