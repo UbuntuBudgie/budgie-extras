@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-17 22:45+0000\n"
+"POT-Creation-Date: 2023-02-17 21:46+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Henrique Vicentin, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/ubuntu-budgie/teams/72251/pt_BR/)\n"
@@ -303,9 +303,9 @@ msgstr ""
 #. Settings category label, should be as short as possible
 #. miscellaneous section
 #: budgie-window-shuffler/src/shuffler_control.vala:531
-#: budgie-window-shuffler/src/shuffler_control.vala:1067
+#: budgie-window-shuffler/src/shuffler_control.vala:1066
 #: budgie-window-shuffler/src/layouts_popup.vala:746
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:241
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
 msgid "Miscellaneous"
 msgstr "Diversos"
 
@@ -401,337 +401,345 @@ msgstr ""
 
 #. content
 #. Settings category label, should be as short as possible
-#: budgie-window-shuffler/src/shuffler_control.vala:1051
+#: budgie-window-shuffler/src/shuffler_control.vala:1050
 msgid "Tiling"
 msgstr "Mosaico"
 
 #. tooltip, string length is not particularly critical
-#: budgie-window-shuffler/src/shuffler_control.vala:1053
+#: budgie-window-shuffler/src/shuffler_control.vala:1052
 msgid "Window tiling & shortcuts"
 msgstr ""
 
 #. Settings category label, should be as short as possible
 #. optimize please with similar grids
 #. 1. PICK LAYOUT GRID
-#: budgie-window-shuffler/src/shuffler_control.vala:1055
-#: budgie-window-shuffler/src/shuffler_control.vala:1327
+#: budgie-window-shuffler/src/shuffler_control.vala:1054
+#: budgie-window-shuffler/src/shuffler_control.vala:1349
 #: budgie-window-shuffler/src/layouts_popup.vala:162
 msgid "Layouts"
 msgstr "Layouts"
 
 #. tooltip, string length is not particularly critical
-#: budgie-window-shuffler/src/shuffler_control.vala:1057
+#: budgie-window-shuffler/src/shuffler_control.vala:1056
 msgid "Automatic window & application presets"
 msgstr ""
 
 #. Settings category label, should be as short as possible
-#: budgie-window-shuffler/src/shuffler_control.vala:1059
-#: budgie-window-shuffler/src/shuffler_control.vala:1383
+#: budgie-window-shuffler/src/shuffler_control.vala:1058
+#: budgie-window-shuffler/src/shuffler_control.vala:1405
 msgid "Window rules"
 msgstr ""
 
 #. tooltip, string length is not particularly critical
-#: budgie-window-shuffler/src/shuffler_control.vala:1061
+#: budgie-window-shuffler/src/shuffler_control.vala:1060
 msgid "Define where application windows should be opened"
 msgstr ""
 
 #. Settings category label, should be as short as possible
-#: budgie-window-shuffler/src/shuffler_control.vala:1063
+#: budgie-window-shuffler/src/shuffler_control.vala:1062
 msgid "Applet"
 msgstr ""
 
 #. tooltip, string length is not particularly critical
-#: budgie-window-shuffler/src/shuffler_control.vala:1065
+#: budgie-window-shuffler/src/shuffler_control.vala:1064
 msgid "Shuffler Applet settings"
 msgstr ""
 
 #. tooltip, string length is not particularly critical
-#: budgie-window-shuffler/src/shuffler_control.vala:1069
+#: budgie-window-shuffler/src/shuffler_control.vala:1068
 msgid "General preferences"
 msgstr "Preferências gerais"
+
+#. Use shuffler edge-tiling instead of built-in
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
+#. name of the window tiling mechanism for our window shuffler
+#: budgie-window-shuffler/src/shuffler_control.vala:1091
+msgid "Use Shuffler drag-snap advanced edge-tiling"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1105
+msgid "Control + drag tiles a window into 2/5 of the screen width"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1108
+msgid "Alt + drag tiles a window into 3/5 of the screen width"
+msgstr ""
+
+#: budgie-window-shuffler/src/shuffler_control.vala:1112
+msgid "This will disable built-in edge-tiling"
+msgstr ""
 
 #. TRANSLATORS:
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
-#: budgie-window-shuffler/src/shuffler_control.vala:1094
+#: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1108
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Top-left"
 msgstr "Superior Esquerdo"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1108
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Top-right"
 msgstr "Superior Direito"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1108
+#: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Bottom-right"
 msgstr "Inferior direito"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1109
+#: budgie-window-shuffler/src/shuffler_control.vala:1148
 msgid "Bottom-left"
 msgstr "Inferior esquerdo"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1109
+#: budgie-window-shuffler/src/shuffler_control.vala:1148
 msgid "Left-half"
 msgstr "Metade esquerda"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1109
+#: budgie-window-shuffler/src/shuffler_control.vala:1148
 msgid "Top-half"
 msgstr "Metade superior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1110
+#: budgie-window-shuffler/src/shuffler_control.vala:1149
 msgid "Right-half"
 msgstr "Metade direita"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1110
+#: budgie-window-shuffler/src/shuffler_control.vala:1149
 msgid "Bottom-half"
 msgstr "Metade inferior"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1110
+#: budgie-window-shuffler/src/shuffler_control.vala:1149
 msgid "Toggle maximize"
 msgstr ""
 
 #. Adavenced tiling settings section header
-#: budgie-window-shuffler/src/shuffler_control.vala:1127
+#: budgie-window-shuffler/src/shuffler_control.vala:1166
 msgid "Resizing & moving windows in a custom grid"
 msgstr ""
 "Redimensionamento e movimentação das janelas em uma grade personalizada"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1138
+#: budgie-window-shuffler/src/shuffler_control.vala:1177
 msgid "Grid size"
 msgstr "Tamanho da grade"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1141
+#: budgie-window-shuffler/src/shuffler_control.vala:1180
 msgid "Columns"
 msgstr "Colunas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1149
+#: budgie-window-shuffler/src/shuffler_control.vala:1188
 msgid "Rows"
 msgstr "Linhas"
 
 #. options
-#: budgie-window-shuffler/src/shuffler_control.vala:1158
+#: budgie-window-shuffler/src/shuffler_control.vala:1197
 msgid "Options"
 msgstr "Opções"
 
 #. sticky
-#: budgie-window-shuffler/src/shuffler_control.vala:1162
+#: budgie-window-shuffler/src/shuffler_control.vala:1201
 msgid "Resize opposite window"
 msgstr "Redimensionar a janela oposta"
 
 #. swap
-#: budgie-window-shuffler/src/shuffler_control.vala:1168
+#: budgie-window-shuffler/src/shuffler_control.vala:1207
 msgid "Swap windows"
 msgstr "Trocar as janelas"
 
 #. notification
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
-#: budgie-window-shuffler/src/shuffler_control.vala:1179
+#: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr "Mostrar notificação caso tamanho da janela seja incorreto"
 
 #. guigrid
-#: budgie-window-shuffler/src/shuffler_control.vala:1186
+#: budgie-window-shuffler/src/shuffler_control.vala:1225
 msgid "Enable GUI grid"
 msgstr "Ativar grade da GUI"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1193
+#: budgie-window-shuffler/src/shuffler_control.vala:1232
 msgid "GUI grid shortcuts"
 msgstr "Atalhos da grade GUI"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1198
+#: budgie-window-shuffler/src/shuffler_control.vala:1237
 msgid "Toggle GUI grid"
 msgstr "Alternar para grade GUI"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1198
+#: budgie-window-shuffler/src/shuffler_control.vala:1237
 msgid "Add a column"
 msgstr "Adicionar uma coluna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1199
+#: budgie-window-shuffler/src/shuffler_control.vala:1238
 msgid "Add a row"
 msgstr "Adicionar uma linha"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1199
+#: budgie-window-shuffler/src/shuffler_control.vala:1238
 msgid "Remove a column"
 msgstr "Remover uma coluna"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1199
+#: budgie-window-shuffler/src/shuffler_control.vala:1238
 msgid "Remove a row"
 msgstr "Remover uma linha"
 
 #. shortcutlist custom grid
-#: budgie-window-shuffler/src/shuffler_control.vala:1208
+#: budgie-window-shuffler/src/shuffler_control.vala:1247
 msgid "Shortcuts for moving a window to the nearest grid cell"
 msgstr "Atalhos para mover uma janela para a célula da grade mais próxima"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1214
+#: budgie-window-shuffler/src/shuffler_control.vala:1253
 msgid "Move left"
 msgstr "Mover à esquerda"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1214
+#: budgie-window-shuffler/src/shuffler_control.vala:1253
 msgid "Move right"
 msgstr "Mover à direita"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1215
+#: budgie-window-shuffler/src/shuffler_control.vala:1254
 msgid "Move up"
 msgstr "Mover para cima"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1215
+#: budgie-window-shuffler/src/shuffler_control.vala:1254
 msgid "Move down"
 msgstr "Mover para baixo"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1225
+#: budgie-window-shuffler/src/shuffler_control.vala:1264
 msgid "Shortcuts for resizing a window"
 msgstr "Atalhos para redimensionar uma janela"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1234
+#: budgie-window-shuffler/src/shuffler_control.vala:1273
 msgid "Expand horizontally (to the right)"
 msgstr "Expandir horizontalmente (à direita)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1235
+#: budgie-window-shuffler/src/shuffler_control.vala:1274
 msgid "Shrink horizontally (from the right)"
 msgstr "Reduzir horizontalmente (da direita)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1236
+#: budgie-window-shuffler/src/shuffler_control.vala:1275
 msgid "Expand vertically (down)"
 msgstr "Expandir verticalmente (abaixo)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1237
+#: budgie-window-shuffler/src/shuffler_control.vala:1276
 msgid "Shrink vertically (from the bottom)"
 msgstr "Reduzir verticalmente (de baixo)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1238
+#: budgie-window-shuffler/src/shuffler_control.vala:1277
 msgid "Expand horizontally (to the left)"
 msgstr "Expandir horizontalmente (à esquerda)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1239
+#: budgie-window-shuffler/src/shuffler_control.vala:1278
 msgid "Shrink horizontally (from the left)"
 msgstr "Reduzir horizontalmente (da esquerda)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1240
+#: budgie-window-shuffler/src/shuffler_control.vala:1279
 msgid "Expand vertically (up)"
 msgstr "Expandir verticalmente (acima)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1241
+#: budgie-window-shuffler/src/shuffler_control.vala:1280
 msgid "Shrink vertically (from the top)"
 msgstr "Reduzir verticalmente (de cima)"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1242
-#: budgie-window-shuffler/src/shuffler_control.vala:1271
+#: budgie-window-shuffler/src/shuffler_control.vala:1281
+#: budgie-window-shuffler/src/shuffler_control.vala:1310
 msgid "Toggle resizing opposite window"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1254
+#: budgie-window-shuffler/src/shuffler_control.vala:1293
 msgid "Other shortcuts"
 msgstr "Outros atalhos"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1261
+#: budgie-window-shuffler/src/shuffler_control.vala:1300
 msgid "Tile all windows to grid"
 msgstr "Colocar todas as janelas na grade"
 
-#. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
-#: budgie-window-shuffler/src/shuffler_control.vala:1310
-msgid "Use Shuffler drag-snap advanced edge-tiling"
-msgstr ""
-
-#: budgie-window-shuffler/src/shuffler_control.vala:1317
-msgid "This will disable built-in edge-tiling"
-msgstr ""
-
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
-#: budgie-window-shuffler/src/shuffler_control.vala:1339
+#: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1349
+#: budgie-window-shuffler/src/shuffler_control.vala:1371
 msgid "Setup now"
 msgstr "Configurar agora"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1392
+#: budgie-window-shuffler/src/shuffler_control.vala:1414
 msgid "Stored rules"
 msgstr "Regras armazenadas"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1402
+#: budgie-window-shuffler/src/shuffler_control.vala:1424
 msgid "Add new rule"
 msgstr "Adicionar nova regra"
 
 #. margin header
 #. this is about the area which shuffler can use for tiling
-#: budgie-window-shuffler/src/shuffler_control.vala:1435
+#: budgie-window-shuffler/src/shuffler_control.vala:1457
 msgid "Margins between virtual grid and screen edges"
 msgstr "Margens entre a grade virtual e as bordas da tela"
 
 #. top margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1455
+#: budgie-window-shuffler/src/shuffler_control.vala:1477
 msgid "Top margin"
 msgstr "Margem superior"
 
 #. left/right margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1459
+#: budgie-window-shuffler/src/shuffler_control.vala:1481
 msgid "Left & right margins"
 msgstr "Margens esquerda & direita"
 
 #. bottom margin
-#: budgie-window-shuffler/src/shuffler_control.vala:1464
+#: budgie-window-shuffler/src/shuffler_control.vala:1486
 msgid "Bottom margin"
 msgstr "Margem inferior"
 
 #. padding header
-#: budgie-window-shuffler/src/shuffler_control.vala:1471
+#: budgie-window-shuffler/src/shuffler_control.vala:1493
 msgid "Padding"
 msgstr ""
 
 #. padding
-#: budgie-window-shuffler/src/shuffler_control.vala:1476
+#: budgie-window-shuffler/src/shuffler_control.vala:1498
 msgid "Window padding"
 msgstr "Preenchimento de janela"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1485
+#: budgie-window-shuffler/src/shuffler_control.vala:1507
 msgid "Animation"
 msgstr "Animação"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1488
+#: budgie-window-shuffler/src/shuffler_control.vala:1510
 msgid "Use general animation settings"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1494
+#: budgie-window-shuffler/src/shuffler_control.vala:1516
 msgid "Use animation"
 msgstr "Usar animação"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1815
+#: budgie-window-shuffler/src/shuffler_control.vala:1848
 msgid "Applet settings"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1819
+#: budgie-window-shuffler/src/shuffler_control.vala:1852
 msgid "Applet popover content"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1827
+#: budgie-window-shuffler/src/shuffler_control.vala:1860
 msgid "Show popover on hover (without click)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1835
+#: budgie-window-shuffler/src/shuffler_control.vala:1868
 msgid "Synchronize grid size"
 msgstr "Sincronizar tamanho da grade"
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1842
+#: budgie-window-shuffler/src/shuffler_control.vala:1875
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
-#: budgie-window-shuffler/src/shuffler_control.vala:1849
+#: budgie-window-shuffler/src/shuffler_control.vala:1882
 msgid "Layout preview size (width in px)"
 msgstr ""
 
-#: budgie-window-shuffler/src/shuffler_control.vala:1864
+#: budgie-window-shuffler/src/shuffler_control.vala:1897
 msgid "The applet needs to be on the panel to see the changes"
 msgstr ""
 
@@ -809,13 +817,13 @@ msgstr "Testar"
 #. text message
 #. TRANSLATORS: "drag-snap" does not need to be translated since it is the
 #. name of the window tiling mechanism for our window shuffler
-#: budgie-window-shuffler/src/dragsnap.vala:831
+#: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
 "instead, press Built-in."
 msgstr ""
 
-#: budgie-window-shuffler/src/dragsnap.vala:863
+#: budgie-window-shuffler/src/dragsnap.vala:947
 msgid "Built-in"
 msgstr ""
 
@@ -879,29 +887,33 @@ msgstr "Automático"
 msgid "On all monitors"
 msgstr "Em todos os monitores"
 
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:213
+msgid "Anchor, time will expand/shrink in/from opposite direction."
+msgstr ""
+
 #. time font settings -> boxed!!
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:217
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:222
 msgid "Time font, size & color"
 msgstr "Fonte, tamanho e cor da Hora"
 
 #. date font settings
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:229
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:234
 msgid "Date font, size & color"
 msgstr "Fonte, tamanho e cor da Data"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:244
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:249
 msgid "Left align text"
 msgstr "Alinhar texto à esquerda"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:246
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:251
 msgid "Use 12hr time format"
 msgstr "Usar o formato 12h"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:254
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:259
 msgid "Linespacing"
 msgstr "Espaçamento entre linhas"
 
-#: budgie-showtime/src/showtime/BudgieShowTime.vala:519
+#: budgie-showtime/src/showtime/BudgieShowTime.vala:524
 msgid "Super + drag"
 msgstr "Super  + drag"
 
@@ -1195,6 +1207,7 @@ msgid "Internet"
 msgstr "Internet"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:52
+#: budgie-hotcorners/applet/src/HotCornersApplet.vala:66
 msgid "Settings"
 msgstr "Configurações"
 
@@ -1656,60 +1669,111 @@ msgstr "Efetue logout / logon para inicializar"
 msgid "Select a directory"
 msgstr "Selecionar um diretório"
 
-#. Corner label
-#: budgie-hotcorners/src/HotCornersApplet.vala:174
-msgid "Corner"
-msgstr "Canto"
-
-#. Action label
-#: budgie-hotcorners/src/HotCornersApplet.vala:178
-msgid "Action"
-msgstr "Ação"
-
-#. Custom label
-#: budgie-hotcorners/src/HotCornersApplet.vala:182
-msgid "Custom"
-msgstr "Personalizar"
-
-#. todo: check below proc-to-check: false warning
-#: budgie-hotcorners/src/HotCornersApplet.vala:293
-#: budgie-hotcorners/src/HotCornersApplet.vala:303
-#: budgie-hotcorners/src/HotCornersApplet.vala:312
-msgid "Missing process"
-msgstr "Processo ausente"
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:297
-msgid "Please enable Window Previews"
-msgstr "Ativar pré-visualização de janela"
-
-#. TRANSLATORS: Window Previews is the name of the application and does not
-#. need to be translated
-#: budgie-hotcorners/src/HotCornersApplet.vala:307
-#: budgie-hotcorners/src/HotCornersApplet.vala:315
-msgid "Please enable Window Shuffler"
-msgstr "Ativar Window Shuffler"
-
-#. toggle settings via panel icon
-#: budgie-hotcorners/src/HotCornersApplet.vala:491
-msgid "Manage corners from panel icon"
-msgstr "Gerencia cantos a partir do ícone do painel"
-
-#: budgie-hotcorners/src/HotCornersApplet.vala:502
-msgid "To prevent unintended activation, use:"
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:134
+msgid "Hotcorners settings"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:512
-msgid "Pressure"
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:195
+#: budgie-hotcorners/applet/src/HotCornersApplet.vala:56
+msgid "Activate hotcorners"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:513
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:205
+msgid "Corner settings"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:208
+msgid "Click a spot to edit"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:216
+msgid "General configuration"
+msgstr ""
+
+#. Delay section
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:219
 msgid "Delay"
 msgstr ""
 
-#: budgie-hotcorners/src/HotCornersApplet.vala:514
-msgid "Nothing"
+#. Pressure section
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:226
+msgid "Pressure"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:539
+msgid "Enter a command here"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:553
+msgid "Toggle hotcorner on-off"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:563
+msgid "Set a custom command"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:714
+msgid "Available dropdown items changed"
+msgstr ""
+
+#: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:715
+msgid "please restart settingswindow"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:1
+msgid "Show Desktop"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:2
+msgid "Exposé all windows"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:3
+msgid "Exposé current application"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:4
+msgid "Budgie Desktop Settings"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:5
+msgid "Lock screen"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:6
+msgid "Toggle Shuffler GUI"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:7
+msgid "All windows in grid"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:8
+msgid "Window to topleft"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:9
+msgid "Window to topright"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:10
+msgid "Window to bottomright"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:11
+msgid "Window to bottomleft"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:12
+msgid "Toggle Raven - AppletView"
+msgstr ""
+
+#: budgie-hotcorners/misc/entrynames.vala:13
+msgid "Toggle Raven - Notifications"
+msgstr ""
+
+#: budgie-hotcorners/applet/src/HotCornersApplet.vala:119
+msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
 
 #. TRANSLATORS: automatic dynamic workspace control
@@ -1891,7 +1955,23 @@ msgstr "Notas rápidas e fáceis"
 msgid "Show weather & forecast"
 msgstr "Mostrar previsão do tempo"
 
-#: budgie-hotcorners/src/HotCorners.plugin.in.h:1
+#: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners.desktop.in.in.h:1
+msgid "Budgie Hotcorners Settings"
+msgstr ""
+
+#: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners.desktop.in.in.h:2
+msgid "Settings control application for hotcorners"
+msgstr ""
+
+#: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop.in.in.h:1
+msgid "Budgie Hotcorners"
+msgstr ""
+
+#: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop.in.in.h:2
+msgid "Kick starts the budgie-hotcorners process"
+msgstr ""
+
+#: budgie-hotcorners/applet/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
 msgstr "Definir ações de hotcorner"
 
