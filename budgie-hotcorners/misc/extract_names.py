@@ -10,10 +10,16 @@ lines = open("./defaults.in.in", "r").readlines()
 target = "./entrynames.vala"
 
 with open(target, "wt") as valafile:
+    n = 1;
     for l in lines:
-        dictline = ast.literal_eval(l)
-        name = dictline["name"]
-        valafile.write('_("%s")\n' % name)
+        try:
+            dictline = ast.literal_eval(l)
+        except (SyntaxError, ValueError):
+            print("malformed line: %d" % n)
+        else:
+            name = dictline["name"]
+            valafile.write('_("%s")\n' % name)
+        n = n + 1
 
         
         
