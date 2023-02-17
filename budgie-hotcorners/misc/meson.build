@@ -4,21 +4,13 @@ hotcorners_config_data.set('libexecdir', libexecdir)
 hotcorners_config_data.set('bdesktopdir', join_paths(datadir, 'budgie-desktop'))
 hotcorners_config_data.set('libdir', libdir)
 
-
 hotcorners_defaults = configure_file(
-    input: 'defaults.in.in',
-    output: 'defaults.in',
+    input: 'defaults.in',
+    output: 'defaults',
     configuration: hotcorners_config_data,
 )
 
-custom_target('defaults.in',
-    input : hotcorners_defaults,
-    output : 'defaults',
-    command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
-    install : true,
-    install_dir : join_paths(datadir, 'budgie-hotcorners')
-)
-
+install_data(hotcorners_defaults, install_dir: join_paths(datadir, 'budgie-hotcorners'))
 
 hotcorners_autostart_desktop = configure_file(
     input: 'org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop.in.in',
