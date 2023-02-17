@@ -213,7 +213,7 @@ namespace HotCornerSettings {
             /* general config */
             maingrid.attach (
                 makelabel(
-                    _("General configuration"), {0, 0, 50, 20}, "justbold"), 0, 30, 10, 1
+                    _("General configuration"), {0, 0, 40, 20}, "justbold"), 0, 30, 10, 1
             );
             /* Delay section */
             maingrid.attach (makelabel(_("Delay"), {0, 0, 0, 10}, "justitalic"), 0, 35, 10, 1);
@@ -227,11 +227,9 @@ namespace HotCornerSettings {
             pressure_slider = new Gtk.Scale.with_range(
                 Gtk.Orientation.HORIZONTAL, 0, 100, 5
             );
-            set_margins(pressure_slider, 30, 30, 0, 20); // bottom of window
+            set_margins(pressure_slider, 30, 30, 0, 10); // bottom of window
             maingrid.attach(pressure_slider, 0, 50, 10, 1);
             /* message label */
-
-
             reload_message = makelabel(
                 "\n", {0, 0, 0, 0}, "messagetext"
             );
@@ -259,7 +257,7 @@ namespace HotCornerSettings {
             int w; int h;
             this.get_size(out w, out h);
             /* left/right, top, bottom, inner-hor, inner-vert */
-            make_bulletsection((int)(w - 185)/2, 15, 50, 10, 2);
+            make_bulletsection((int)(w - 185)/2, 15, 40, 10, 2);
 
             set_interface_sensitive(newhcornersettings.get_boolean("active"));
             masterswitch.state_set.connect((newstate)=> {
