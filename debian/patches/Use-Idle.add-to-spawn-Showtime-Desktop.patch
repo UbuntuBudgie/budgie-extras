@@ -1,0 +1,30 @@
+Origin: commit:db085b8cdf7010a799362faaf82169e62e34f059
+Author: Sam Lane <samlane00@gmail.com>
+Last-Update: 2022-12-07
+Description: [PATCH] Use Idle.add to spawn Showtime Desktop - prevent the desktop
+ Showtime from spawning before the panel is initialized
+
+---
+ budgie-showtime/src/showtime/BudgieShowTime.vala | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/budgie-showtime/src/showtime/BudgieShowTime.vala b/budgie-showtime/src/showtime/BudgieShowTime.vala
+index 2a1d40b..9640014 100644
+--- a/budgie-showtime/src/showtime/BudgieShowTime.vala
++++ b/budgie-showtime/src/showtime/BudgieShowTime.vala
+@@ -551,7 +551,11 @@ namespace BudgieShowTimeApplet {
+             );
+             gdkdisplay = Gdk.Display.get_default();
+             winpath = moduledir.concat(@"/showtime_desktop $uuid");
+-            create_windows(gdkdisplay);
++            // Start from Idle so the panel can form before spawning
++            Idle.add(() => {
++                create_windows(gdkdisplay);
++                return false;
++            });
+             initialiseLocaleLanguageSupport();
+         }
+ 
+-- 
+2.37.2
+

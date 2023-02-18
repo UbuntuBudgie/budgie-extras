@@ -1,0 +1,38 @@
+Origin: commit:7972ddb69845d70c19ee8bfbcb47b30400fcd176
+Author: Sam Lane <samlane00@gmail.com>
+Last-Update: 2022-12-12
+Description: [PATCH] Use Idle.add to spawn external app - prevent wallpaper
+ switcher from spawning before panel is initialized
+
+---
+ .../src/wswitcher/wallpaperswitcher.vala            | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala b/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala
+index b0070cb..7ccf453 100644
+--- a/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala
++++ b/budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala
+@@ -71,12 +71,15 @@ namespace WallpaperSwitcherApplet {
+ 
+         public Budgie.Applet get_panel_widget(string uuid) {
+             string cmd = Config.WSWITCHER_DIR + @"/wallpaperswitcher_runner $uuid";
+-            try {
+-                Process.spawn_command_line_async(cmd);
+-            }
+-            catch (Error e) {
++            Idle.add(() => {
++                try {
++                    Process.spawn_command_line_async(cmd);
++                }
++                catch (Error e) {
+ 
+-            }
++                }
++                return false;
++            });
+             return new Applet();
+         }
+     }
+-- 
+2.37.2
+

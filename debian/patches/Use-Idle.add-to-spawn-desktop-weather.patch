@@ -1,0 +1,30 @@
+Origin: commit:6929170bf8e7b9d45d3fa57589634c82f4a4df3a
+Author: Sam Lane <samlane00@gmail.com>
+Last-Update: 2022-12-07
+Description: [PATCH] Use Idle.add to spawn desktop weather - prevent desktop
+ weather from spawning before panel is initialized
+
+---
+ budgie-weathershow/src/weathershow/WeatherShow.vala | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/budgie-weathershow/src/weathershow/WeatherShow.vala b/budgie-weathershow/src/weathershow/WeatherShow.vala
+index f56d87c..dd1cb15 100644
+--- a/budgie-weathershow/src/weathershow/WeatherShow.vala
++++ b/budgie-weathershow/src/weathershow/WeatherShow.vala
+@@ -1404,7 +1404,11 @@ namespace WeatherShowApplet {
+             });
+ 
+             if (show_ondesktop == true) {
+-                WeatherShowFunctions.open_window(desktop_window, uuid);
++                // start desktop weather from Idle to allow panel to initialize
++                Idle.add(() => {
++                    WeatherShowFunctions.open_window(desktop_window, uuid);
++                    return false;
++                });
+             }
+ 
+             initialiseLocaleLanguageSupport();
+-- 
+2.37.2
+

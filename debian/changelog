@@ -1,11 +1,17 @@
-budgie-extras (1.5.90-1) experimental; urgency=medium
+budgie-extras (1.5.0-2) unstable; urgency=medium
 
-  * Beta release
-    - See NEWS
-  * Packaging Changes
-    - d/control StandardVersion bump; no changes required
+  * Bug-fix
+    - External app launching sometimes initialises before budgie-panel starts
+      causing the budgie applet to terminate.
+      Fix-occasional-bail-out-of-dropby-dropover.patch
+      Use-Idle.add-to-spawn-Showtime-Desktop.patch
+      Use-Idle.add-to-spawn-desktop-weather.patch
+      Use-Idle.add-to-spawn-external-app.patch
+  * Packaging Changes:
+    d/control add runtime dependency gir1.2-wnck-3.0 for dropby to resolve
+    minimal install failure-to-run
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 17 Feb 2023 21:24:33 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 18 Feb 2023 09:58:00 +0000
 
 budgie-extras (1.5.0-1) unstable; urgency=medium
 

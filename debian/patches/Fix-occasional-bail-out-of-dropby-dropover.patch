@@ -1,0 +1,26 @@
+Origin: commmit:e3d1c322c3d721dc29256e42e78047e0a70a9e1f
+Author: Jacob-Vlijm <vlijm@planet.nl>
+Last-Update: 2023-02-13
+Description: [PATCH] Fix occasional bail out of dropby dropover due to timing
+ issue.
+
+---
+ budgie-dropby/budgie_dropby.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/budgie-dropby/budgie_dropby.py b/budgie-dropby/budgie_dropby.py
+index c5cf249..b634ae4 100644
+--- a/budgie-dropby/budgie_dropby.py
++++ b/budgie-dropby/budgie_dropby.py
+@@ -133,7 +133,7 @@ class BudgieDropByApplet(Budgie.Applet):
+         self.box.show_all()
+         self.show_all()
+         self.setup_watching()
+-        self.start_dropover()
++        GLib.idle_add(self.start_dropover)
+         self.refresh_from_idle()
+ 
+     def set_icon_state(self):
+-- 
+2.37.2
+
