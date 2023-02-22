@@ -1,3 +1,7 @@
+BudgiePreviewSeparateShotSources = [
+'separate_shot.vala'
+]
+
 BudgiePreviewCreatorSources = [
 'previews_creator.vala'
 ]
@@ -28,12 +32,21 @@ BudgiePreviewValaArgs = [
 '--vapidir=' + VAPI_DIR
 ]
 
-
 BudgiePreviewCArgs = [
 '-DWNCK_I_KNOW_THIS_IS_UNSTABLE',
 ]
 
 LIB_INSTALL_DIR = join_paths(prefix, libdir, application_id)
+
+executable(
+    'separate_shot', BudgiePreviewSeparateShotSources,
+    dependencies: BudgiePreviewDependencies,
+    install: true,
+    vala_args: BudgiePreviewValaArgs,
+    c_args: BudgiePreviewCArgs,
+    include_directories: config_inc_dir,
+    install_dir: LIB_INSTALL_DIR,
+)
 
 executable(
     'previews_creator', BudgiePreviewCreatorSources,
