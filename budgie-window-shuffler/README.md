@@ -17,6 +17,6 @@ Shuffler basically exists of a cluster of executabels and (sub)processes, each w
 - Swap two windows' position and size 
 
 
-## note:
+## Note:
 GNOME 40 and later utilises the Shuffler super alt left/right keys. For Ubuntu Budgie we use a gsetting override to revert to wm keybindings prior to GNOME 40
 

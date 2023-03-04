@@ -36,6 +36,7 @@ budgie mini-apps - see the individual components for details
  - Budgie Quickchar (needs the extras daemon as a runtime dependency)
  - Budgie Window Previews (needs the extras daemon as a runtime dependency)
  - Budgie Shuffler (needs the extras daemon as a runtime dependency)
+ - Budgie Hotcorners (needs shuffler daemon as a runtime dependency for full functionality)
  
  ## Installation
 
