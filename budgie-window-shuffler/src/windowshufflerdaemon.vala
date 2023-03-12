@@ -1067,6 +1067,13 @@ namespace ShufflerEssentialInfo {
 
     public static int main (string[] args) {
         Gtk.init(ref args);
+
+        /* exit gracefully if we are not running on X11 or have no display */
+        var wnck_scr = Wnck.Screen.get_default();
+        if (wnck_scr == null) return 0; // usually if not run on X11
+        var gdk_scr = Gdk.Screen.get_default();
+        if (gdk_scr == null) return 0; // usually if there is no display
+
         // modifier keys
         gdkdisplay = Gdk.Display.get_default();
         Gdk.Keymap keymap = Gdk.Keymap.get_for_display(gdkdisplay);
