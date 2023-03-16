@@ -1,10 +1,22 @@
-budgie-extras (1.5.90-2) UNRELEASED; urgency=medium
+budgie-extras (1.6.0-1) experimental; urgency=medium
 
+  * Stable release
+    - See NEWS
+  * Packaging Changes:
+    d/control add runtime dependency gnome-menus for app-launcher to
+    resolve minimal install failure-to-run
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 16 Mar 2023 20:59:33 +0000
+
+budgie-extras (1.5.91-1) experimental; urgency=medium
+
+  * Beta 2 release
+    - See NEWS
   * Packaging Changes:
     d/control add runtime dependency gir1.2-wnck-3.0 for dropby to resolve
     minimal install failure-to-run
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 18 Feb 2023 10:12:49 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 01 Mar 2023 21:53:42 +0000
 
 budgie-extras (1.5.90-1) experimental; urgency=medium
 
