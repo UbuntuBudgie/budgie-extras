@@ -26,7 +26,9 @@ Features:
      e.g. so ç matches searches with c
  * Bug-fixes:
    - ShowTime, Weather do not disappear on first logon
-   - DropBy - popup always appears on click 
+   - DropBy - popup always appears on click
+   - Previews - reworked due to Gtk/Glib changes upstream that broken randomly window
+     screenshot snaps.
 
 Version 1.5.91
 ~~~~~~~~~~~~~
@@ -60,7 +62,7 @@ Features:
  * Trash Applet has been updated as follows:
    support multiple file drag and drop to panel icon
    show trash full icon when there are items in trash
-   open trash folder instead of popup when > 100 items 
+   open trash folder instead of popup when > 100 items
    fix paths with certain characters not restoring correctly
 
 Version 1.4.90
