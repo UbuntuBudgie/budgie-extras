@@ -8,6 +8,8 @@ import subprocess
 import os
 import psutil
 import sys
+import cairo
+import ast
 
 
 """
@@ -24,6 +26,134 @@ A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
 should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
+
+
+class RoundedWindow(Gtk.Window):
+
+    def __init__(self, widget, screenposition):
+        Gtk.Window.__init__(self)
+        windowstyle = self.get_style()
+        self.rgb = windowstyle[0]
+        self.radius = windowstyle[1]
+        self.winpos = screenposition
+        self.screen = Gdk.Screen.get_default()
+        self.mainlayout = Gtk.Layout()
+        self.mainbox = Gtk.Box()
+        self.mainbox.add(widget)
+        self.drawing_area = Gtk.DrawingArea()
+        self.winwidth = 10
+        self.winheight = 10
+        self.make_background_transparent()
+        self.set_decorated(False)
+        self.define_background()
+        self.show_all()
+
+    def get_style(self):
+        gset = Gtk.Settings.get_default()
+        themename = gset.get_property("gtk-theme-name")
+        cprov = Gtk.CssProvider.get_named(themename)
+        test = cprov.to_string()
+        red, green, blue = 0.0, 0.0, 0.0
+        radius = 32
+        colorsearch = False
+        radiusearch = False
+        done = 0
+        for line in test.splitlines():
+            if colorsearch:
+                if "background-color" in line:
+                    cval = ast.literal_eval(
+                        line.split(")", 1)[0].split("(")[1]
+                    )
+                    red, green, blue = cval[0] / 255, cval[1] / 255,
+                    cval[2] / 255
+                    colorsearch = False
+                    done = done + 1
+            elif radiusearch:
+                if "radius:" in line:
+                    radius = int(line.split(" ")[-1].strip("px;")) * 2
+                    radiusearch = False
+                    done = done + 1
+            else:
+                if ".menu {" in line:
+                    colorsearch = True
+                elif ".app-notification {" in line:
+                    radiusearch = True
+                if done == 2:
+                    break
+        return ((red, green, blue), radius)
+
+    def define_background(self):
+        self.drawing_area.connect("draw", self.on_draw)
+        self.mainlayout.put(self.drawing_area, 0, 0)
+        self.mainlayout.put(self.mainbox, 0, 0)
+        self.mainlayout.show_all()
+        self.add(self.mainlayout)
+
+    def on_draw(self, da, ctx):
+        alloc = self.mainbox.get_allocation()
+        self.winwidth = alloc.width
+        self.winheight = alloc.height
+        self.set_position(self.winwidth, self.winheight)
+        self.resize(self.winwidth, self.winheight)
+        self.drawing_area.set_size_request(self.winwidth, self.winheight)
+        # fetch window color
+        style = self.get_style_context()
+        ctx.set_source_rgba(self.rgb[0], self.rgb[1], self.rgb[2])
+        # let's draw
+        ctx.set_line_width(self.radius)
+        ctx.set_line_join(cairo.LineJoin.ROUND)
+        self.draw_lines(ctx)
+        self.draw_background(ctx)
+        return True
+
+    def draw_lines(self, ctx):
+        ctx.save()
+        self.rectangle(ctx)
+        ctx.stroke()
+
+    def draw_background(self, ctx):
+        ctx.save()
+        self.rectangle(ctx)
+        ctx.fill()
+
+    def rectangle(self, ctx):
+        ctx.move_to(self.radius / 2, self.radius / 2)
+        ctx.rel_line_to(self.winwidth - self.radius, 0)
+        ctx.rel_line_to(0, self.winheight - (self.radius))
+        ctx.rel_line_to(- (self.winwidth - self.radius), 0)
+        ctx.close_path()
+
+    def make_background_transparent(self):
+        self.set_app_paintable(True)
+        visual = self.screen.get_rgba_visual()
+        self.set_visual(visual)
+
+    def set_position(self, winw, winh):
+        dsp = Gdk.Display.get_default().get_primary_monitor().get_geometry()
+        # top-left
+        if self.winpos == 1:
+            self.move(
+                dsp.x + 80,
+                dsp.y + 80
+            )
+        # top-right
+        elif self.winpos == 2:
+            self.move(
+                dsp.x + dsp.width - (winw + 80),
+                dsp.y + 80
+            )
+        # bottom-left
+        elif self.winpos == 3:
+            self.move(
+                dsp.x + 80,
+                dsp.y + dsp.height - (80 + winh)
+            )
+        # bottom-right
+        if self.winpos == 4:
+            self.move(
+                dsp.x + dsp.width - (winw + 80),
+                dsp.y + dsp.height - (80 + winh)
+            )
 
 
 dropby_css = """
@@ -147,15 +277,13 @@ class WatchVolumes:
             pass
 
     def create_win(self, subject=None, newvol=None):
-        window = Gtk.Window()
+        self.maingrid = Gtk.Grid()
+        window = RoundedWindow(self.maingrid, self.winpos)
         window.connect("enter-notify-event", self.busy)
         window.connect("leave-notify-event", self.outofajob)
         window.set_title("dropby_popup")
         window.set_type_hint(Gdk.WindowTypeHint.POPUP_MENU)
         window.set_keep_above(True)
-        window.set_decorated(False)
-        self.maingrid = Gtk.Grid()
-        window.add(self.maingrid)
         window.connect("destroy", self.getridofwindow)
         self.process_kill(self.start_timer)
         subprocess.Popen(self.start_timer)
@@ -255,17 +383,19 @@ class WatchVolumes:
             )
         self.set_spacers()
 
+    def set_margins(self, widget, left, right, top, bottom):
+        widget.set_margin_start(left)
+        widget.set_margin_end(right)
+        widget.set_margin_top(top)
+        widget.set_margin_bottom(bottom)
+
     def set_spacers(self):
         """
         lazy choice to set borders
         """
-        spacers = [[0, 0], [0, 100], [100, 100]]
-        n = 0
-        for sp in spacers:
-            self.maingrid.attach(
-                self.create_label(text="\t"), sp[0], sp[1], 1, 1
-            )
+        self.set_margins(self.maingrid, 20, 0, 0, 20)
         exitbutton = Gtk.Button()
+        self.set_margins(exitbutton, 0, 10, 10, 0)
         exitbutton.set_image(
             Gtk.Image.new_from_icon_name(
                 "budgie-dropby-exit-symbolic", Gtk.IconSize.BUTTON,
@@ -275,41 +405,6 @@ class WatchVolumes:
         self.maingrid.attach(exitbutton, 100, 0, 1, 1)
         exitbutton.connect("clicked", self.getridofwindow)
         self.maingrid.show_all()
-
-    def set_position(self, newwin):
-        dsp = Gdk.Display.get_default().get_primary_monitor().get_geometry()
-        try:
-            win_size = newwin.get_size()
-        except AttributeError:
-            pass
-        else:
-            winw = win_size.width
-            winh = win_size.height
-            # top-left
-            if self.winpos == 1:
-                newwin.move(
-                    dsp.x + 80,
-                    dsp.y + 80
-                )
-            # top-right
-            elif self.winpos == 2:
-                newwin.move(
-                    dsp.x + dsp.width - (winw + 80),
-                    dsp.y + 80
-                )
-            # bottom-left
-            elif self.winpos == 3:
-                newwin.move(
-                    dsp.x + 80,
-                    dsp.y + dsp.height - (80 + winh)
-                )
-            # bottom-right
-            if self.winpos == 4:
-                newwin.move(
-                    dsp.x + dsp.width - (winw + 80),
-                    dsp.y + dsp.height - (80 + winh)
-                )
-            self.newwin.show_all()
 
     def update_existing(self, newvol):
         # once/if popup exists, populate
@@ -339,15 +434,10 @@ class WatchVolumes:
                 self.getridofwindow()
                 self.newwin = self.create_win(subject, newvol)
                 self.update_existing(newvol)
-                # possibly, if no items to show,
-                # newwin was destroyed after all ^
-                if self.newwin:
-                    self.set_position(self.newwin)
             # only create new popup on mount or connect
             elif trigger in ["volume_added", "mount_added", None]:
                 self.newwin = self.create_win(subject, newvol)
                 self.update_existing(newvol)
-                self.set_position(self.newwin)
 
     def open_folder(self, *args):
         path = list(args)[-1]
