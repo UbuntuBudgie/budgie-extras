@@ -1,2 +1,0 @@
-subdir('runner')
-subdir('wswitcher')

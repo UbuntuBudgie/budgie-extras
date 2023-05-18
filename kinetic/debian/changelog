@@ -1,0 +1,483 @@
+budgie-extras (1.5.0-1ubuntu1) UNRELEASED; urgency=medium
+
+  * Bug-fixes
+    Prevent certain applets from exiting early after login
+    - ensure Showtime applet stays running after login
+      Use-Idle.add-to-spawn-Showtime-Desktop.patch (LP: 1999887)
+    - ensure Weathershow desktop weather does not close early
+      Use-Idle.add-to-spawn-desktop-weather.patch (LP: 1999887)
+    - ensure background process for Dropby stays running after login
+      Fix-occasional-bail-out-of-dropby-dropover-due-to-ti.patch (LP: 1999887)
+    - ensure Workspace Wallpaper Switcher stays running after login
+      Use-Idle.add-to-spawn-external-app.patch (LP: 1999887)
+
+ -- Samuel Lane <samlane00@gmail.com>  Tue, 16 May 2023 16:15:17 -0400
+
+budgie-extras (1.5.0-1) unstable; urgency=medium
+
+  * Stable release
+    - See NEWS
+    - Fix dropby FTBFS (Closes: #1019321)
+  * Packaging Changes
+    - d/control B/D change to libgdk-pixbuf-2.0-dev
+      (Closes: #1019309)
+    - d/control Standards-Version: 4.6.1.0; no changes required
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 07 Sep 2022 21:17:19 +0100
+
+budgie-extras (1.4.90-2) unstable; urgency=medium
+
+  * Packaging Changes
+    - remove gnome-menus from B/D and dependency (application-menu)
+      since they are obsolete
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 01 Sep 2022 10:43:18 +0100
+
+budgie-extras (1.4.90-1) unstable; urgency=medium
+
+  * Beta release
+    - See NEWS
+  * Packaging Changes
+    - drop existing patches since incorporated in the new release
+    - d/rules update meson build to include rule not to build with
+      the default schema i.e. this is only applicable to non-debian
+      distros that build and install the whole of extras
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 15 Aug 2022 11:19:03 +0100
+
+budgie-extras (1.4.0-2) unstable; urgency=medium
+
+  * Bug-fixes
+    trash applet usability fixes
+    - support multiple file drag and drop to panel icon
+    - show trash full icon when there are items in trash
+    - open trash folder instead of popup when > 100 items
+    - fix paths with certain characters not restoring correctly
+      trash_path_drag_drop.patch
+    DropBy by default is hidden so layouts with spacers appear to be
+      oddly displayed
+      Move-dropby-to-prevent-double-spacing-effect.patch
+  * Packaging Changes
+    - d/control add switcheroo-control recommendation to support
+      dual GPUs for the applications-menu applet
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 24 May 2022 16:01:43 +0100
+
+budgie-extras (1.4.0-1) unstable; urgency=medium
+
+  * Stable release
+    - See NEWS
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 11 Mar 2022 16:16:23 +0000
+
+budgie-extras (1.3.91-1) unstable; urgency=medium
+
+  * Beta release
+    -See NEWS
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 04 Mar 2022 17:31:36 +0000
+
+budgie-extras (1.3.90-1) unstable; urgency=medium
+
+  * Beta release
+    - See NEWS
+  * Packaging Changes
+    - d/control add build-depends appstream
+    - d/control Bump Standards-Version; no changes required
+    - d/control Add Rules-Requires-Root
+    - d/control remove dconf-cli from dependencies of various
+      packages.  Add libnotify-bin for packages that use
+      notify-send
+    - d/copyright Bump year and add FSFAP statement of metainfo files
+    - d/rules - add override for dh_auto_test for pep8 checks
+    - d/tests/control - remove superficial declaration since scope of
+      tests has now grown
+    - remove budgie-workspace-overview-applet and
+      budgie-window-mover-applet packages since source has been
+      deleted
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 19 Feb 2022 18:46:22 +0000
+
+budgie-extras (1.3.0-1) unstable; urgency=medium
+
+  * New stable release
+    - v1.3.0
+    - See ChangeLog
+  * Packaging Changes
+    - rules - don't build with zeitgeist
+    - control - remove zeitgeist from build and applications-menu
+    - copyright: bumped 2020 to 2021
+    - control: bump StandardsVersion - no changes required
+    - control: budgie-app-launcher-applet add runtime dependency
+      gir1.2-gmenu-3.0
+    - control: add build-dependency libnotify-dev
+    - control: budgie-keyboard-autoswitch-applet add xdotool as a dependency
+      (Closes: #994078)
+    - metadata: Remove Homepage which resolved lintian warning
+    - rules: Remove tests override to resolve lintian superficial warning
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 19 Sep 2021 11:23:29 +0100
+
+budgie-extras (1.1.0-1) unstable; urgency=medium
+
+  * New Release
+    - v1.1.0 Stable release
+    - See ChangeLog
+  * Packaging Changes
+    - control: build-dependency change from libhandy-0.0-dev to
+      libhandy-1-dev
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 17 Sep 2020 21:45:41 +0100
+
+budgie-extras (1.0.91-1) unstable; urgency=medium
+
+  * New release
+    - git tag v1.0.91 beta 2 release
+    - See ChangeLog
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 07 Sep 2020 20:05:31 +0100
+
+budgie-extras (1.0.90-1) unstable; urgency=medium
+
+  * New release
+    - git tag v1.0.90 beta1 release
+    - see ChangeLog
+  * Packaging Changes:
+    - Remove all patches since merged in this new release
+    - control: bump debhelper version
+    - control: budgie-workspace-wallpaper-applet change arch to any
+    - control: update missing runtime dependencies
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 17 Aug 2020 14:40:05 +0100
+
+budgie-extras (1.0.2-2) unstable; urgency=medium
+
+  * Add patch to resolve test suite failure (Closes: #962935)
+    - 0001-apply_pycodestyle.patch
+  * debian/tests add superficial as a restriction since the test
+    only covers source-code checks (Closes: #963023)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 17 Jun 2020 16:02:48 +0100
+
+budgie-extras (1.0.2-1) unstable; urgency=medium
+
+  * Service release (LP: #1881261)
+    - See ChangeLog
+  * Packaging Changes
+    - update runtime dependencies for some applets and shuffler miniapp
+      where runtime callouts to those executables are made
+    - Drop trashsymlinks since incorporated into the current release
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 29 May 2020 10:19:18 +0100
+
+budgie-extras (1.0.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - Do not follow symlinks pointing to other partitions when emptying the
+      trash-can otherwise the location pointed to will also be deleted
+      (LP: #1872197)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 11 Apr 2020 16:26:57 +0100
+
+budgie-extras (1.0.1-1) unstable; urgency=medium
+
+  * Service release
+    - See ChangeLog
+    - Resolves segmentation faults and numerous errors.ubuntu.com
+      reports due to using v3.36.0 version of libwnck3 (LP: #1870898)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 09 Apr 2020 13:47:18 +0100
+
+budgie-extras (1.0.0-1) unstable; urgency=medium
+
+  * New release
+    Stable release following beta and release candidates
+    See ChangeLog
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 27 Mar 2020 22:05:56 +0000
+
+budgie-extras (0.95.0-1) unstable; urgency=medium
+
+  * New release
+    git tag v0.95.0 release candidate 2
+    Translation updates
+    Fix errors.ubuntu.com reports for takeabreak
+    Fix category view sorting in applications menu (LP: #1868400)
+    Fix launching pkexec based apps in the applications menu
+    Tidy codebase for countdown applet
+  * Packaging changes
+    control: Add missing dependencies for applets (xdotool, zenity, wmctrl)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 22 Mar 2020 14:37:56 +0000
+
+budgie-extras (0.94.0-1) unstable; urgency=medium
+
+  * New release
+    git tag v0.94.0 release candidate 1
+    Translation updates
+    Add path to subprocess executables to ensure applets are running
+    with system defined calls
+    Shuffler fixes to ensure positioning on last row is correct
+    Applications menu remove double click for logout
+    Lots of fixes throughout applets for issues raised by
+    errors.ubuntu.com reports
+    Previews; don't translate an empty string
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 08 Mar 2020 22:01:37 +0000
+
+budgie-extras (0.93.0-2) unstable; urgency=medium
+
+  * Add wmctrl, xdotool as dependencies for various applets
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 29 Feb 2020 16:10:14 +0000
+
+budgie-extras (0.93.0-1) unstable; urgency=medium
+
+  * New release
+    git tag v0.93.0 beta release 4
+    Translation updates
+    Shuffler animations
+    Shuffler tiling fixes
+    Scaling fix for hotcorners
+    Ensure path to /usr/bin exes are used for spawned processes
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 16 Feb 2020 17:08:39 +0000
+
+budgie-extras (0.92.0-2) unstable; urgency=medium
+
+  * Upload experimental to unstable (Closes: #949981)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 04 Feb 2020 17:42:43 +0000
+
+budgie-extras (0.92.0-1) experimental; urgency=medium
+
+  * New release
+    git tag v0.92.0 beta release 3
+    Shuffler updates including shortcut key revisions
+    Visualspace and previews handling windows moving to other workspaces
+    Revise layouts available
+  * Packaging Changes
+    control: bump Standards-Version; no changes required
+    control: budgie-extras-daemon change dependency to suggests
+    tests: replace pep8 for pycodestyle
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 30 Jan 2020 19:42:21 +0000
+
+budgie-extras (0.91.0-1) experimental; urgency=medium
+
+  * New release
+    git tag v0.91.0 beta release 2
+  * New window shuffler application
+  * Translation updates
+  * Packaging Changes
+    run wrap-and-sort -bst to tidy up package-lists
+    control: Revise recommendations for budgie-extras-daemon
+    control: budgie-window-shuffler package
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 14 Jan 2020 19:24:37 +0000
+
+budgie-extras (0.90.0-1) experimental; urgency=medium
+
+  * New release
+    git tag v0.90.0 beta release 1
+  * New applets
+    budgie-workspace-stopwatch-applet
+    budgie-applications-menu-applet
+    budgie-wallstreet
+    budgie-network-manager-applet
+  * budgie-visualspace-applet previous python based applet converted
+    to vala
+  * budgie-previews new mini-application with the previous applet
+    budgie-previews-applet now replaced.
+  * budgie-extras-daemon supports multiple desktop layouts
+  * Bug-fixes
+    desktop files includes keywords to resolve lintian information reports
+    Support vertical panels for weather applet
+    Rework dropby applet to prevent panel freezing issues
+  * Translation updates
+  * Packaging Changes
+    debian/copyright refresh to include year updates and new source files
+    control: add build-depends on debhelper-compat (= 12)
+    compat: remove deprecated file
+    control: new binaries for the listed applets above
+    control: build-dependencies updated for the vala compilation
+    control: budgie-visualspace-applet architecture changed to any
+    control: budgie-previews-applet made transition package
+    control: Add missing dependencies for hotcorners applet
+    control: Add missing dependency for recentlyused applet
+    control: Add missing dependency for weathershow applet
+    control: change previews from a python3 based app to a vala based
+      application.  Description updated for the package
+    Previews install files updated
+    remove unneeded docs and include-binaries files
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 09 Jan 2020 23:16:34 +0000
+
+budgie-extras (0.9.1-1) unstable; urgency=medium
+
+  * New release
+    - See ChangeLog
+  * Packaging Changes
+    - Control swap build-depends pep8 for pycodestyle
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 14 Aug 2019 18:53:52 +0100
+
+budgie-extras (0.9.0-1) unstable; urgency=medium
+
+  * New release
+    - See ChangeLog
+  * Packaging Changes
+    - Control: add libwnck-3-dev, libkeybinder-3.0-dev,
+      gnome-settings-daemon-dev as build dependencies
+    - Control: swap python dependencies for ShowTime to vala based
+      dependencies, architecture changed to any
+    - Control: Add packaging for takeabreak applet,
+      Workspace Stopwatch applet, Fuzzy Clock applet, Brightness
+      Controller applet, Budgie Extras Daemon, Budgie Quickchar
+    - Drop all patches since they have been incorporated
+      in the new release
+    - Control/Compat update for debhelper 12
+    - Bump StandardsVersion: no changes required
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 25 Jul 2019 19:54:43 +0100
+
+budgie-extras (0.7.1-3) unstable; urgency=medium
+
+  * Bug-fix release (LP: #1815310)
+    - Add missing dconf-cli package dependency
+      budgie-hotcorners-applet
+      budgie-Weathershow-applet
+      budgie-showtime-applet
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 09 Feb 2019 23:48:07 +0000
+
+budgie-extras (0.7.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - Latest Translations
+      patch translations.patch
+    - Fix crashes when OWN releases new weather icons
+      patch weather.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 02 Feb 2019 11:46:27 +0000
+
+budgie-extras (0.7.1-1) unstable; urgency=medium
+
+  * Bug-fix release
+    - Latest Translations
+    - Bug-fix to detect language for Weathershow correctly
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 23 Jan 2019 21:32:44 +0000
+
+budgie-extras (0.7.0-1) unstable; urgency=medium
+
+  * New release
+    - See ChangeLog
+  * Packaging Changes
+    - remove unneeded clockworks doc
+    - drop existing patchset since now included in the new release
+    - Control: budgie-weather-applet build
+      and runtime dependencies updated due to python to Vala rewrite
+    - Control: Add budgie-extras-common build together with dependency
+      updates for several applets where they share the extras common
+      component
+    - Control: several build install changes where budgie-extras-common
+      now replaces individual component installations
+    - Copyright: updates due to extra licensing for the release
+      including year change
+    - Control: Bump StandardsVersion - no changes required
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 29 Dec 2018 19:53:05 +0000
+
+budgie-extras (0.6.1-4) unstable; urgency=medium
+
+  * Revert clockworks deprecation since package svgwrite v1.2.1 has
+    now been uploaded and the RC issue is now resolved
+  * Packaging Changes
+    - Control: Update description, dependencies and install file
+      for clockworks
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 07 Dec 2018 20:04:15 +0000
+
+budgie-extras (0.6.1-3) unstable; urgency=medium
+
+  * Bug-fix release
+    - Support for clockworks applet has been dropped since it depends
+      upon package svgwrite which FTBFS (v1.1.8).  The RC issue causes
+      budgie-extras to be marked for autoremoval
+  * Packaging Changes
+    - Control: Update description for clockworks
+    - Update clockworks install to just include its README
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 26 Nov 2018 19:41:04 +0000
+
+budgie-extras (0.6.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - patch 0002-Fixed-dropby-not-popping-up.patch
+      Ensure Dropby pops up when a USB device is detected
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 07 Oct 2018 22:54:24 +0100
+
+budgie-extras (0.6.1-1) unstable; urgency=medium
+
+  * New upstream release
+    - see ChangeLog for details
+  * Issues Resolved:
+    - fix showtime crash on early exit (LP: #1760741)
+    - fix hotcorners pressure calculation causing crash of the
+      applet (LP: #1781981)
+    - fix occasional display issues with previews (LP: #1779766)
+      wpreviews.patch
+  * Patch 0001-Fix-GPL-license-to-be-project-consistent.patch
+    Apply upstream fix to make QuickNote source copyright
+    consistent with the project
+  * Packaging Changes:
+    - Bump Standards-Version - no changes required
+    - debian/control change build-dependencies to build both vala and
+      python3 applets
+    - debian/control
+      update descriptions for vala applets
+      revise binary dependencies for hotcorners and quicknote
+      change architecture for hotcorners and quicknote to any
+      update BuildDepends to accommodate Vala compilation
+      Add new binary packages for trash, recentlyused, applauncher and weather
+    - debian/rules Add hardening instructions for Vala based applets
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 18 Sep 2018 13:06:49 +0100
+
+budgie-extras (0.5.0-1) unstable; urgency=medium
+
+  * New release
+    - Add Kangaroo plugin
+  * Packaging changes
+    - debian/control drop obsolete alternate library for budgie-desktop
+    - debian/control add missing runtime dependency gir1.2-peas-1.0
+    - debian/control bump StandardsVersion no changes required
+    - debian/control add binary package budgie-kangaroo-applet
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 08 May 2018 20:29:07 +0100
+
+budgie-extras (0.4.2-1) unstable; urgency=medium
+
+  * New upstream release
+  * Packaging Changes:
+    - debian/control and debian/compat: update to v11
+    - debian/control: Bump Standards-Version - no changes required
+    - debian/control: new binary packages budgie-rotation-lock-applet,
+      budgie-clockworks-applet,
+      budgie-dropby-applet
+    - debian/copyright: 2018 year updates
+    - debian/rules remove ninja make rules since debhelper can deal
+      with meson builds
+    - debian/rules check DEB_BUILD_OPTIONS for autotest
+    - remove not needed debian/files
+    - signing key; move and rename to debian/upstream
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 25 Feb 2018 19:50:17 +0000
+
+budgie-extras (0.3.0-1) unstable; urgency=medium
+
+  * Initial Release (Closes: #883720)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 06 Dec 2017 20:20:57 +0000

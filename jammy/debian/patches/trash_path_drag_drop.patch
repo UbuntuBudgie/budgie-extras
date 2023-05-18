@@ -1,0 +1,302 @@
+Applied-Upstream: commit: fc2f93789ebcef3c4a9d18a22331e8d94334b468
+Author: samlane-ma <samlane00@gmail.com>
+Last-Update: 2022-03-23
+Description: [PATCH] Bug fixes and minor enhancements
+
+- support multiple file drag and drop to panel icon (fixes #128)
+- show trash full icon when there are items in trash (fixes #395)
+- open trash folder instead of popup when > 100 items (fixes #405)
+- fix paths with certain characters not restoring correctly (fixes #421)
+---
+ budgie-trash/trash/src/TrashApplet.vala        | 53 ++++++++++++++++++++++++++-----------
+ budgie-trash/trash/src/TrashHandler.vala       | 23 +++++++++++-----
+ budgie-trash/trash/src/TrashStore.vala         | 22 ++++++++-------
+ budgie-trash/trash/src/Widgets/IconButton.vala |  4 +++
+ 4 files changed, 70 insertions(+), 32 deletions(-)
+
+diff --git a/budgie-trash/trash/src/TrashApplet.vala b/budgie-trash/trash/src/TrashApplet.vala
+index 5e3a003..3ee557d 100644
+--- a/budgie-trash/trash/src/TrashApplet.vala
++++ b/budgie-trash/trash/src/TrashApplet.vala
+@@ -23,7 +23,7 @@ using TrashApplet.Widgets;
+ namespace TrashApplet {
+ 
+ public class Plugin : Object, Budgie.Plugin {
+-    
++
+     public Budgie.Applet get_panel_widget(string uuid) {
+         return new Applet(uuid);
+     }
+@@ -35,6 +35,8 @@ public class Applet : Budgie.Applet {
+         { "text/uri-list", 0, 0 }
+     };
+ 
++    const int MAX_TRASH_ITEMS = 100;
++
+     private EventBox? event_box = null;
+     private IconButton? icon_button = null;
+     private MainPopover? popover = null;
+@@ -103,7 +105,11 @@ public class Applet : Budgie.Applet {
+         // I hate this and want to do this more programmaticly with libnotify.
+         var title = _("Trash");
+         var cmd = "notify-send -a " + title + " -i user-trash-symbolic '%s' '%s'".printf(summary, body);
+-        Process.spawn_command_line_async(cmd);
++        try {
++            Process.spawn_command_line_async(cmd);
++        } catch (SpawnError e) {
++            warning("Unable to send notification: %s", e.message);
++        }
+ 
+         /*
+         var notification = new Notify.Notification(summary, body, "user-trash-symbolic");
+@@ -123,7 +129,16 @@ public class Applet : Budgie.Applet {
+             if (popover.is_visible()) { // Hide popover if currently being shown
+                 popover.hide();
+             } else {
+-                manager.show_popover(icon_button);
++                if (trash_handler.trash_items_count() < MAX_TRASH_ITEMS) {
++                    manager.show_popover(icon_button);
++                } else {
++                    string? xdgopen = Environment.find_program_in_path("xdg-open");
++                    try {
++                        Process.spawn_command_line_async(string.join(" ", xdgopen, "trash://"));
++                    } catch (SpawnError e) {
++                        warning("Unable to spawn trash: %s", e.message);
++                    }
++                }
+             }
+         });
+ 
+@@ -135,23 +150,29 @@ public class Applet : Budgie.Applet {
+             return;
+         }
+ 
+-        var data = (string) selection_data.get_data();
+-        if (data.has_prefix("file://")) {
+-            var path = data.replace("file://", "");
+-            path = path.replace("%20", " "); // Try to make a useable path
+-            path = path.strip();
+-            var file = File.new_for_path(path);
+-
+-            try {
+-                file.trash();
+-            } catch (Error e) {
+-                warning("Unable to trash dragged file '%s': %s".printf(path, e.message));
+-                show_notification(_("Error moving to trash:"), e.message);
++        var data = selection_data.get_uris();
++        foreach (string dropped_item in data) {
++            if (dropped_item.has_prefix("file://")) {
++                var path = dropped_item.replace("file://", "");
++                path = Uri.unescape_string(path); // Try to make a useable path
++                path = path.strip();
++                var file = File.new_for_path(path);
++
++                try {
++                    file.trash();
++                } catch (Error e) {
++                    warning("Unable to trash dragged file '%s': %s".printf(path, e.message));
++                    show_notification(_("Error moving to trash:"), e.message);
++                }
+             }
+         }
+-
+         drag_finish(context, true, true, time);
+     }
++
++    public void update_trash_icon() {
++        // Use full icon if any folders contain items
++        icon_button.set_icon_full(trash_handler.trash_items_count() > 0);
++    }
+ }
+ 
+ } // End namespace
+diff --git a/budgie-trash/trash/src/TrashHandler.vala b/budgie-trash/trash/src/TrashHandler.vala
+index 989fa39..9bed0fe 100644
+--- a/budgie-trash/trash/src/TrashHandler.vala
++++ b/budgie-trash/trash/src/TrashHandler.vala
+@@ -40,14 +40,14 @@ namespace TrashApplet {
+ 
+         /**
+          * Called when a device with a trash bin has been mounted.
+-         * 
++         *
+          * @param trash_store The TrashStore for the added mount
+          */
+         public signal void trash_store_added(TrashStore trash_store);
+ 
+         /**
+          * Called when a device has been unmounted.
+-         * 
++         *
+          * @param trash_store The TrashStore that was just unmounted
+          */
+         public signal void trash_store_removed(TrashStore trash_store);
+@@ -77,12 +77,12 @@ namespace TrashApplet {
+ 
+         /**
+          * Process a connect mount to see if it has a trash bin.
+-         * 
++         *
+          * Trash bins on external drives reside in a folder following
+          * the format ".Trash-$UID", where $UID is the current user's
+          * UID. If this directory is found, we'll create a TrashStore
+          * for it, and emit the `trash_store_added` signal.
+-         * 
++         *
+          * @param mount The Mount that was added
+          */
+         private void process_mount_added(Mount mount) {
+@@ -102,6 +102,7 @@ namespace TrashApplet {
+                         var trash_store = new TrashStore(applet, trash_dir, info_dir, mount.get_name(), mount.get_default_location().get_path(), mount.get_symbolic_icon());
+                         this.trash_stores.insert(mount.get_name(), trash_store);
+                         trash_store_added(trash_store);
++                        applet.update_trash_icon();
+                         return;
+                     }
+                 }
+@@ -117,6 +118,7 @@ namespace TrashApplet {
+                 var trash_store = trash_stores.get(mount.get_name());
+                 trash_store_removed(trash_store);
+                 trash_stores.remove(mount.get_name());
++                applet.update_trash_icon();
+             }
+         }
+ 
+@@ -132,11 +134,11 @@ namespace TrashApplet {
+ 
+         /**
+          * Get the current user's UID by calling out to a command line utility.
+-         * 
++         *
+          * This is hacky and I hate it. I would much rather use accountsservice's UserManager,
+          * but that has its own set of problems; mainly waiting for it to load users
+          * so it can actually be used.
+-         * 
++         *
+          * @returns The UID of the current user, or -1
+          */
+         private int get_user_id() {
+@@ -165,5 +167,14 @@ namespace TrashApplet {
+                 process_mount_added(mount);
+             }
+         }
++
++        public int trash_items_count () {
++            // Returns the number of items in all mounts' trash folders
++            int count = 0;
++            trash_stores.get_values().foreach((entry) => {
++                count += entry.trash_count;
++                });
++            return (count);
++        }
+     } // End class
+ } // End namespace
+diff --git a/budgie-trash/trash/src/TrashStore.vala b/budgie-trash/trash/src/TrashStore.vala
+index 453bd4a..aa32da4 100644
+--- a/budgie-trash/trash/src/TrashStore.vala
++++ b/budgie-trash/trash/src/TrashStore.vala
+@@ -18,11 +18,11 @@
+ 
+ using GLib;
+ 
+-namespace TrashApplet { 
+-    
++namespace TrashApplet {
++
+     /**
+      * TrashStore represents a trash bin on the user's system.
+-     * 
++     *
+      * Removable drives may have their own trash locations that should be tracked,
+      * along with the user's main trash bin.
+      */
+@@ -37,7 +37,7 @@ namespace TrashApplet {
+ 
+         private FileMonitor trash_monitor;
+ 
+-        private int trash_count = 0;
++        public int trash_count { get; private set; default = 0; }
+ 
+         /* Signals */
+         public signal void trash_added(string file_name, string file_path, Icon file_icon, DateTime deletion_time, bool is_directory);
+@@ -63,7 +63,7 @@ namespace TrashApplet {
+ 
+         /**
+          * Gets all of the current items in this store's trash bin.
+-         * 
++         *
+          * A `trash_added` signal is emitted for each found trash item so
+          * the UI can add each one accordingly.
+          */
+@@ -91,11 +91,12 @@ namespace TrashApplet {
+                     var deletion_time = get_deletion_date(info.get_name());
+ 
+                     trash_count++;
+-                    trash_added(info.get_name(), path.replace("%20", " "), info.get_icon(), deletion_time, is_directory);
++                    trash_added(info.get_name(), Uri.unescape_string(path), info.get_icon(), deletion_time, is_directory);
+                 }
+             } catch (Error e) {
+                 warning("Unable to create trash item: %s", e.message);
+             }
++            applet.update_trash_icon();
+         }
+ 
+         public string get_drive_name() {
+@@ -108,11 +109,11 @@ namespace TrashApplet {
+ 
+         /**
+          * Delete a file permanently from the trash.
+-         * 
++         *
+          * If the file is a directory, it will be recursively deleted.
+          * This function spawns a new thread to do the deleting to
+          * avoid locking the system up when removing large files.
+-         * 
++         *
+          * @param file_name The name of the file to delete
+          */
+         public void delete_file(string file_name) {
+@@ -175,7 +176,7 @@ namespace TrashApplet {
+         public void restore_file(string file_name, string restore_path) {
+             var file = File.new_for_path(trash_dir.get_path() + "/" + file_name);
+             var info_file = File.new_for_path(info_dir.get_path() + "/" + file_name + ".trashinfo");
+-            var rpath = restore_path.replace("%20", " "); // Handling spaces in 2019.
++            var rpath = Uri.unescape_string(restore_path); // Handling special characters.
+ 
+             File destination;
+             if (drive_path != null) {
+@@ -198,7 +199,7 @@ namespace TrashApplet {
+                 case FileMonitorEvent.MOVED_IN: // A file was just added to the trash
+                     var file_name = file.get_basename();
+                     var file_path = get_path_from_trashinfo(file_name);
+-                    var attributes = FileAttribute.STANDARD_ICON + "," + 
++                    var attributes = FileAttribute.STANDARD_ICON + "," +
+                                      FileAttribute.STANDARD_TYPE;
+ 
+                     Icon file_icon = null;
+@@ -233,6 +234,7 @@ namespace TrashApplet {
+                 default: // We don't care about anything else
+                     break;
+             }
++            applet.update_trash_icon();
+         }
+ 
+         private string? get_path_from_trashinfo(string file_name) {
+diff --git a/budgie-trash/trash/src/Widgets/IconButton.vala b/budgie-trash/trash/src/Widgets/IconButton.vala
+index b48622b..4a40f84 100644
+--- a/budgie-trash/trash/src/Widgets/IconButton.vala
++++ b/budgie-trash/trash/src/Widgets/IconButton.vala
+@@ -27,6 +27,10 @@ namespace TrashApplet.Widgets {
+ 
+         private TrashHandler trash_handler;
+ 
++        public void set_icon_full(bool full) {
++            set_image(full ? icon_full : icon_empty);
++        }
++
+         public IconButton(TrashHandler trash_handler) {
+             this.icon_empty = new Image.from_icon_name("user-trash-symbolic", IconSize.MENU);
+             this.icon_full = new Image.from_icon_name("user-trash-full-symbolic", IconSize.MENU);
+-- 
+2.34.1
+
