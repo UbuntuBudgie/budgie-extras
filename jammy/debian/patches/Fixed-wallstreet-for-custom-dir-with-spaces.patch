@@ -1,0 +1,27 @@
+Applied-Upstream: commit: 0bb31a713c2b6dd46010cef0379ca8500c3929c4
+Author: Jacob-Vlijm <vlijm@planet.nl>
+Last-Update: 2022-05-01
+Description: [PATCH] Fixed wallstreet for custom dir with spaces.
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/budgie-extras/+bug/1971073
+
+---
+ .../src/wallstreet_control/wallstreet_control.vala             | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala b/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
+index cfd8bab..5dd1b4f 100644
+--- a/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
++++ b/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
+@@ -298,7 +298,8 @@ namespace WallStreetControls {
+                 Gtk.ResponseType.ACCEPT
+                 );
+                 if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+-                    string newpath = chooser.get_uri ().replace("file://", "");
++                    string newpath = chooser.get_file().get_path();
++                    print(@"new path: $newpath\n");
+                     wallstreet_settings.set_string("wallpaperfolder", newpath);
+                     dir_entry.set_text(newpath);
+                 }
+-- 
+2.34.1
+

@@ -1,4 +1,4 @@
-budgie-extras (1.4.0-1ubuntu3) UNRELEASED; urgency=medium
+budgie-extras (1.4.0-1ubuntu4) UNRELEASED; urgency=medium
 
   * Bug-fixes
     Prevent certain applets from exiting early after login
@@ -10,8 +10,12 @@ budgie-extras (1.4.0-1ubuntu3) UNRELEASED; urgency=medium
       Fix-occasional-bail-out-of-dropby-dropover-due-to-ti.patch (LP: 1999887)
     - ensure Workspace Wallpaper Switcher stays running after login
       Use-Idle.add-to-spawn-external-app.patch (LP: 1999887)
+    - fix Wallstreet when using custom directories with spaces
+      Fixed-wallstreet-for-custom-dir-with-spaces.patch (LP: 1971073)
+    - remove print statement from Wallstreet 
+      Removed-print-statement-for-testing.patch
 
- -- Samuel Lane <samlane00@gmail.com>  Tue, 16 May 2023 10:24:16 -0400
+ -- Samuel Lane <samlane00@gmail.com>  Fri, 19 May 2023 09:37:31 -0400
 
 budgie-extras (1.4.0-1ubuntu2) jammy; urgency=medium
 

@@ -1,0 +1,25 @@
+Applied-Upstream: commit: 6f5f6d01657db939a61f2ec8a36805631ccac29e
+Author: Jacob-Vlijm <vlijm@planet.nl>
+Last-Update: 2022-05-01
+Description: [PATCH] Oops, removed print statement for testing.
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/budgie-extras/+bug/1971073
+
+---
+ budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala b/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
+index 5dd1b4f..7b5c3ab 100644
+--- a/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
++++ b/budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala
+@@ -299,7 +299,6 @@ namespace WallStreetControls {
+                 );
+                 if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+                     string newpath = chooser.get_file().get_path();
+-                    print(@"new path: $newpath\n");
+                     wallstreet_settings.set_string("wallpaperfolder", newpath);
+                     dir_entry.set_text(newpath);
+                 }
+-- 
+2.34.1
+
