@@ -1,21 +1,21 @@
-budgie-extras (1.4.0-1ubuntu4) UNRELEASED; urgency=medium
+budgie-extras (1.4.0-1ubuntu3) jammy; urgency=medium
 
+  [ Samuel Lane ]
   * Bug-fixes
     Prevent certain applets from exiting early after login
     - ensure Showtime applet stays running after login
-      Use-Idle.add-to-spawn-Showtime-Desktop.patch (LP: 1999887)
+      Use-Idle.add-to-spawn-Showtime-Desktop.patch (LP: #1999887)
     - ensure Weathershow desktop weather does not close early
-      Use-Idle.add-to-spawn-desktop-weather.patch (LP: 1999887)
+      Use-Idle.add-to-spawn-desktop-weather.patch (LP: #1999887)
     - ensure background process for Dropby stays running after login
       Fix-occasional-bail-out-of-dropby-dropover-due-to-ti.patch (LP: 1999887)
     - ensure Workspace Wallpaper Switcher stays running after login
-      Use-Idle.add-to-spawn-external-app.patch (LP: 1999887)
+      Use-Idle.add-to-spawn-external-app.patch (LP: #1999887)
     - fix Wallstreet when using custom directories with spaces
-      Fixed-wallstreet-for-custom-dir-with-spaces.patch (LP: 1971073)
-    - remove print statement from Wallstreet 
+      Fixed-wallstreet-for-custom-dir-with-spaces.patch (LP: #1971073)
       Removed-print-statement-for-testing.patch
 
- -- Samuel Lane <samlane00@gmail.com>  Fri, 19 May 2023 09:37:31 -0400
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 21 May 2023 10:58:25 +0100
 
 budgie-extras (1.4.0-1ubuntu2) jammy; urgency=medium
 
