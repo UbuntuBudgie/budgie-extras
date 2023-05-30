@@ -1,5 +1,7 @@
 # budgie-extras
 
+[![](https://opencollective.com/ubuntubudgie/tiers/backer.svg?avatarHeight=96)](https://opencollective.com/ubuntubudgie)
+
 Additional enhancements for the user experience
 
 ## Plugins:
