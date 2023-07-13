@@ -22,7 +22,7 @@ if granite_dep.version().version_compare('>=5.2')
     add_project_arguments('--define=GRANITE5', language: 'vala')
 endif
 gobject_dep = dependency('gobject-2.0')
-libsoup_dep = dependency('libsoup-2.4')
+#libsoup_dep = dependency('libsoup-2.4')
 appstream_dep = dependency('appstream')
 gio_unix_dep = dependency('gio-unix-2.0')
 json_glib_dep = dependency('json-glib-1.0')
