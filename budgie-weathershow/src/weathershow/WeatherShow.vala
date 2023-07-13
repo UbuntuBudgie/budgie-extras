@@ -434,19 +434,24 @@ namespace WeatherShowApplet {
             /* cup of libsoup */
             var session = new Soup.Session ();
             var message = new Soup.Message ("GET", url);
-            session.send_message (message);
-            string output = (string) message.response_body.flatten().data;
-            update_log(wtype, output);
-            // check valid input
-            string forecast_ok = "cod\":\"200";
-            string weather_ok = "cod\":200";
+            try {
+                var retbytes = session.send_and_read (message);
+                string output = (string)retbytes.get_data();
+                update_log(wtype, output);
+                // check valid input
+                string forecast_ok = "cod\":\"200";
+                string weather_ok = "cod\":200";
 
-            if (
-                output.contains(forecast_ok) || output.contains(weather_ok)
-            ) {
-                return output;
+                if (
+                    output.contains(forecast_ok) || output.contains(weather_ok)
+                ) {
+                    return output;
+                }
+                else {
+                    return "no data";
+                }
             }
-            else {
+            catch (Error e) {
                 return "no data";
             }
         }
