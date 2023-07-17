@@ -28,8 +28,8 @@ namespace WallStreet {
     string currwall;
     bool lockscreen_sync;
     FileMonitor walldir_monitor;
-    string[] getlist;
-    int currindex;
+    GenericArray<string> getlist;
+    uint currindex;
     string wallpaperfolder;
     int curr_seconds;
     int switchinterval;
@@ -157,45 +157,41 @@ namespace WallStreet {
         currindex += 1;
     }
 
-    private int get_stringindex (string s, string[] arr) {
-        for (int i=0; i < arr.length; i++) {
-            if(s == arr[i]) return i;
-        } return -1;
-    }
-
-    private int get_initialwallpaperindex (string[] gotlist) {
+    private uint get_initialwallpaperindex (GenericArray<string> gotlist) {
         // on start, see if we can pick up wallpaper index from where we were
         currwall = wallpapersettings.get_string("picture-uri").replace(
             "file:///", ""
         );
-        int index = get_stringindex(currwall, gotlist);
-        if (index == -1) {
+        uint index = 0;
+        bool found = gotlist.find_with_equal_func(currwall, str_equal, out index);
+        if (!found) {
             index = 0;
         }
         return index;
     }
 
-    private string[] walls(string directory) {
+    private GenericArray<string>? walls(string directory) {
         // get wallpapers from dir
-        string[] images = {};
+        var images=new GenericArray<string>();
         try {
             var dr = Dir.open(directory);
             string ? filename = null;
             while ((filename = dr.read_name()) != null) {
               string addpic = Path.build_filename(directory, filename);
-              images += addpic;
+              images.add(addpic);
             }
         } catch (FileError err) {
             // on error (dir not found), reset wallpaperfolder
             stderr.printf(err.message);
             settings.reset("wallpaperfolder");
-            return {""};
+            return null;
         }
         n_images = images.length;
         if (n_images == 0) {
-            string onlywall = settings.get_string("fallbackwallpaper");
-            n_images = 1;
-            return {onlywall};
+            images.add(settings.get_string("fallbackwallpaper"));
+        }
+        else {
+            images.sort(strcmp);
         }
         return images;
     }
