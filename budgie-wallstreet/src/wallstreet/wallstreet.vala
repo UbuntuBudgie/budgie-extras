@@ -170,7 +170,7 @@ namespace WallStreet {
         return index;
     }
 
-    private GenericArray<string>? walls(string directory) {
+    private GenericArray<string> walls(string directory) {
         // get wallpapers from dir
         var images=new GenericArray<string>();
         try {
@@ -184,7 +184,7 @@ namespace WallStreet {
             // on error (dir not found), reset wallpaperfolder
             stderr.printf(err.message);
             settings.reset("wallpaperfolder");
-            return null;
+            images = new GenericArray<string>();
         }
         n_images = images.length;
         if (n_images == 0) {
