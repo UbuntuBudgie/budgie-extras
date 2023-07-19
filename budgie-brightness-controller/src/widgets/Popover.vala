@@ -127,11 +127,13 @@ public class Popover : Budgie.Popover
             dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
         });
 
-        Timeout.add_seconds(5, ()=>
-        {
-            dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
-            return(false);
-        });
+        // We don't want to load these color settings if Gnome's nightlight mode is on
+        if (!dimHelper.NightlightOn()) {
+            Idle.add(()=> {
+                dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
+                return(false);
+            });
+        }
 
         grid.attach(menuButton, 1, 0, 2, 1);
 
@@ -178,7 +180,7 @@ public class Popover : Budgie.Popover
 
         });
 
-        Timeout.add_seconds(5, ()=> {
+        Idle.add(()=> {
             //lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
             lightHelper.SetBrightness((int)((double)CurrentLight.Brightness / (double)CurrentLight.MaxBrightness * 100.0));
             return(false);
@@ -252,7 +254,13 @@ public class Popover : Budgie.Popover
 
         UpdateLight.begin();
 
-        dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
+        /* SetBrightness will override Gnome's nightlight mode color settings. We don't
+         * want to do this just by opening the popover, so we skip it if nightlight is on.
+         * Sliders will still work as expected, however.
+         */
+        if (!dimHelper.NightlightOn()) {
+            dimHelper.SetBrightness(CurrentDim.Name, CurrentDim.Brightness, CurrentDim.Blue);
+        }
         PopulateDim(CurrentDim);
     }
     //[END On]
