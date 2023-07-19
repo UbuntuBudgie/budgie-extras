@@ -46,6 +46,7 @@ public class DimHelper
             color_settings = Bus.get_proxy_sync (BusType.SESSION, "org.gnome.SettingsDaemon.Color",
                 "/org/gnome/SettingsDaemon/Color");
         } catch (IOError e) {
+            color_settings = null;
             warning (e.message);
         }
         subprocessHelper = new SubprocessHelper();
@@ -177,6 +178,9 @@ public class DimHelper
 
     public bool NightlightOn() {
         // Returns true if Nightlight mode is currently on
+        if (color_settings == null) {
+            return false;
+        }
         return color_settings.nightlight_active;
     }
 
