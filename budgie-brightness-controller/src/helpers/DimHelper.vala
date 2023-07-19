@@ -16,6 +16,12 @@ using BrightnessController.Models;
 
 namespace BrightnessController.Helpers
 {
+    // Allow us to see if Gnome nightlight mode is on
+    [DBus (name = "org.gnome.SettingsDaemon.Color")]
+    interface ColorSettings : Object {
+        [DBus (name = "NightLightActive")]
+        public abstract bool nightlight_active { owned get; }
+    }
 /**
  * DimHelper is a helper to work with
  * xrandr
@@ -30,11 +36,18 @@ public class DimHelper
 
     private SubprocessHelper subprocessHelper;
     private ConfigHelper configHelper;
+    private ColorSettings? color_settings;
 
     // private int noOfConnectedDev = 0;
 
     public DimHelper()
     {
+        try {
+            color_settings = Bus.get_proxy_sync (BusType.SESSION, "org.gnome.SettingsDaemon.Color",
+                "/org/gnome/SettingsDaemon/Color");
+        } catch (IOError e) {
+            warning (e.message);
+        }
         subprocessHelper = new SubprocessHelper();
         configHelper  = new ConfigHelper("budgie-advanced-brightness-controller", "dim");
         Load();
@@ -161,5 +174,11 @@ public class DimHelper
         });
         configHelper.Write(data);
     }
+
+    public bool NightlightOn() {
+        // Returns true if Nightlight mode is currently on
+        return color_settings.nightlight_active;
+    }
+
 }
 }
