@@ -434,8 +434,14 @@ namespace WeatherShowApplet {
             /* cup of libsoup */
             var session = new Soup.Session ();
             var message = new Soup.Message ("GET", url);
+            /* Ignore redirects (i.e. to a public network's login page) */
+            message.add_flags(Soup.MessageFlags.NO_REDIRECT);
             try {
                 var retbytes = session.send_and_read (message);
+                if (retbytes.length == 0) {
+                    // avoid a null string - this will happen on a redirect attempt
+                    return "no data";
+                }
                 string output = (string)retbytes.get_data();
                 update_log(wtype, output);
                 // check valid input
