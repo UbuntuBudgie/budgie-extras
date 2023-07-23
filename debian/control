@@ -288,8 +288,6 @@ Depends:
  xprintidle,
  ${misc:Depends},
  ${shlibs:Depends},
-Replaces: budgie-preview-applet (<< 0.4.6~)
-Breaks: budgie-previews-applet (<< 0.4.6~)
 Description: Provides window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
@@ -298,13 +296,6 @@ Description: Provides window previews capabilities for the Budgie Desktop
  budgie-previews can be used on most desktop environments.
  .
  Previews shows an overview of windows in an expose like way.
-
-Package: budgie-previews-applet
-Architecture: all
-Section: oldlibs
-Depends: budgie-previews, ${misc:Depends}
-Description: transitional package
- This is a transitional package. It can safely be removed.
 
 Package: budgie-quickchar
 Architecture: all
@@ -408,16 +399,10 @@ Description: Applet to prompt when to take-a-break for a set period of time
  from working.
 
 Package: budgie-trash-applet
-Architecture: any
-Depends: budgie-extras-common, libnotify-bin, ${misc:Depends}, ${shlibs:Depends}
-Description: Applet allows access to trash capabilities for the Budgie Desktop
- This is part of a suite of python3 and Vala based applets for the Budgie
- Desktop that provide additional user orientated capabilities.
- The applets can be used individually or as a set.
- .
- The trash applet allows the user access the desktop trash capabilities
- from the panel including the ability to delete and restore files stored
- in the trash folder.
+Architecture: all
+Section: oldlibs
+Description: transitional package
+ This is a transitional package. It can safely be removed.
 
 Package: budgie-visualspace-applet
 Architecture: any
