@@ -29,6 +29,8 @@ Additional enhancements for the user experience
  - Network Manager
  - Shuffler
 
+Trash is replaced by the inbuilt version available in v10.8 budgie-desktop and as such is no longer part of the recommended build components.
+
 ## Standalone
 
 budgie mini-apps - see the individual components for details
@@ -42,7 +44,7 @@ budgie mini-apps - see the individual components for details
  
  ## Installation
 
- By default all applets are compiled and installed:
+ By default all recommended applets are compiled and installed:
 
      git clone https://github.com/ubuntubudgie/budgie-extras
      cd budgie-extras
@@ -55,13 +57,13 @@ budgie mini-apps - see the individual components for details
      sudo ninja install
 
 If individual applets (or groups of applets) are to be compiled and installed use
-the options described in meson_options.txt i.e. use `-Dbuild-all=false -Dbuild-appletoption=true`
+the options described in meson_options.txt i.e. use `-Dbuild-recommended=false -Dbuild-appletoption=true`
 
 e.g. to build just the hotcorners and weathershow applets
 (remember to git clone and git submodule etc as above)
 
      mkdir build && cd build
-     meson --buildtype plain -Dbuild-all=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
+     meson --buildtype plain -Dbuild-recommendee=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
      ninja -v
      sudo ninja install
 
