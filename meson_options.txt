@@ -1,4 +1,4 @@
-option('build-all', type: 'boolean', value: true, description: 'Build all applets')
+option('build-recommended', type: 'boolean', value: true, description: 'Build all recommended applets')
 option('with-default-schema', type: 'boolean', value: true, description: 'Install with default schema - only needed if installing the whole package')
 option('build-wpreviews', type: 'boolean', value: false, description: 'Build windows previews applet')
 option('build-wswitcher', type: 'boolean', value: false, description: 'Build workspace switcher applet')
@@ -12,7 +12,6 @@ option('build-clockworks', type: 'boolean', value: false, description: 'Build cl
 option('build-dropby', type: 'boolean', value: false, description: 'Build dropby applet')
 option('build-kangaroo', type: 'boolean', value: false, description: 'Build kangaroo applet')
 option('build-weathershow', type: 'boolean', value: false, description: 'Build show weather applet')
-option('build-trash', type: 'boolean', value: false, description: 'Build trash applet')
 option('build-app-launcher', type: 'boolean', value: false, description: 'Build app-launcher applet')
 option('build-recentlyused', type: 'boolean', value: false, description: 'Build recently-used applet')
 option('build-takeabreak', type: 'boolean', value: false, description: 'Build take-a-break applet')
@@ -29,3 +28,4 @@ option('build-window-shuffler', type: 'boolean', value: false, description: 'Bui
 option('with-zeitgeist', type : 'boolean', value : 'false', description : 'Add Zeitgeist support')
 option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
 option('xdg-appdir', type: 'string', description: 'XDG autostart path')
+option('build-trash', type: 'boolean', value: false, description: 'Build trash applet - this is not recommended from BD v10.8 since it has an inbuilt trash applet')
