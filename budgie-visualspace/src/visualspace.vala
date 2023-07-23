@@ -133,22 +133,6 @@ namespace VisualSpaceApplet {
             });
         }
 
-        //  private void set_widgets_sensitive (bool opposite_active) {
-        //      // related to optional auto-workspaces
-        //      nspaces_show.set_sensitive(opposite_active);
-        //      nspaces_down.set_sensitive(opposite_active);
-        //      nspaces_up.set_sensitive(opposite_active);
-        //  }
-
-        //  private void toggle_auto (ToggleButton button) {
-        //      // related to optional auto-workspaces
-        //      bool newval = button.get_active();
-        //      visualspace_settings.set_boolean("autospaces", newval);
-        //      set_widgets_sensitive(!newval);
-        //  }
-
-
-
         private void add_onespace (string edit) {
             // prevent exceeding 8, due to hardcoded max- nspaces in budgie-wm
             // wm crashes if > 8
@@ -324,6 +308,25 @@ namespace VisualSpaceApplet {
         }
     }
 
+    public class VisualSpaceSettings : Gtk.Grid {
+        /* Budgie Settings -section */
+        private CheckButton reversebutton;
+
+        public VisualSpaceSettings() {
+            /* Gtk stuff, widgets etc. here */
+            var widthlabel = new Label(_("Reverse Scroll Direction"));
+            widthlabel.set_xalign(0);
+
+            reversebutton = new Gtk.CheckButton();
+            this.attach(reversebutton, 0, 1, 1, 1);
+            this.attach(widthlabel, 1, 1, 1, 1);
+
+            this.show_all();
+
+            visualspace_settings.bind("reverse-scroll", reversebutton, "active",
+                SettingsBindFlags.GET|SettingsBindFlags.SET);
+        }
+    }
 
     public class Applet : Budgie.Applet {
 
@@ -429,6 +432,16 @@ namespace VisualSpaceApplet {
             );
             int newspace = -1;
             Gdk.ScrollDirection upordown = scrollevent.direction;
+
+            bool reverse_scroll = visualspace_settings.get_boolean("reverse-scroll");
+
+            if (reverse_scroll && upordown == Gdk.ScrollDirection.UP) {
+                upordown = Gdk.ScrollDirection.DOWN;
+            }
+            else if (reverse_scroll && upordown == Gdk.ScrollDirection.DOWN) {
+                upordown = Gdk.ScrollDirection.UP;
+            }
+
             if (upordown == Gdk.ScrollDirection.UP) {
                 if (curractive < nspaces - 1) {
                     newspace = curractive + 1;
@@ -462,6 +475,15 @@ namespace VisualSpaceApplet {
                 Config.GETTEXT_PACKAGE, "UTF-8"
             );
             GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
+        }
+
+        /* specifically to the settings section */
+        public override bool supports_settings() {
+            return true;
+        }
+
+        public override Gtk.Widget? get_settings_ui() {
+            return new VisualSpaceSettings();
         }
     }
 
