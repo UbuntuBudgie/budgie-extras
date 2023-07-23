@@ -313,7 +313,6 @@ namespace VisualSpaceApplet {
         private CheckButton reversebutton;
 
         public VisualSpaceSettings() {
-            /* Gtk stuff, widgets etc. here */
             var widthlabel = new Label(_("Reverse Scroll Direction"));
             widthlabel.set_xalign(0);
 
