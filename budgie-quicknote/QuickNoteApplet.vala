@@ -243,7 +243,7 @@ namespace QuickNoteApplet {
     public class QuickNotePopover : Budgie.Popover {
         private Gtk.EventBox indicatorBox;
         private Gtk.Image indicatorIcon;
-        Button[] doredobuttons;
+        Button[] quicknotebuttons;
         int last_index;
 
         private void manage_text(TextBuffer buffer) {
@@ -266,7 +266,7 @@ namespace QuickNoteApplet {
             update_steps = false;
             /* find out if we need to go back or forth */
             int b_index = SupportingFunctions.get_buttonindex(
-                button, doredobuttons
+                button, quicknotebuttons
             );
             /* length of steps */
             int lensteps = steps.length;
@@ -294,6 +294,14 @@ namespace QuickNoteApplet {
                 }
             }
             update_steps = true;
+        }
+
+        private void do_copy (Button button) {
+            view.copy_clipboard();
+        }
+
+        private void do_paste (Button button) {
+            view.paste_clipboard();
         }
 
         public QuickNotePopover(Gtk.EventBox indicatorBox) {
@@ -327,6 +335,7 @@ namespace QuickNoteApplet {
             TextBuffer content = view.get_buffer();
             content.changed.connect(manage_text);
             win.add (view);
+
             ButtonBox bbox = new ButtonBox(Gtk.Orientation.HORIZONTAL);
             bbox.set_layout(Gtk.ButtonBoxStyle.CENTER);
             Button undo = new Button.from_icon_name(
@@ -339,12 +348,31 @@ namespace QuickNoteApplet {
                 "edit-redo-symbolic", Gtk.IconSize.BUTTON
             );
             redo.tooltip_text = "Redo";
-            this.doredobuttons += undo;
-            this.doredobuttons += redo;
+            this.quicknotebuttons += undo;
+            this.quicknotebuttons += redo;
             undo.clicked.connect(do_redo);
             redo.clicked.connect(do_redo);
             redo.set_relief(Gtk.ReliefStyle.NONE);
             bbox.pack_start(redo, false, false, 0);
+
+            Button copy = new Button.from_icon_name(
+                "edit-copy-symbolic", Gtk.IconSize.BUTTON
+            );
+            copy.tooltip_text = "Copy";
+            this.quicknotebuttons += copy;
+            copy.clicked.connect(do_copy);
+            copy.set_relief(Gtk.ReliefStyle.NONE);
+            bbox.pack_start(copy, false, false, 0);
+
+            Button paste = new Button.from_icon_name(
+                "edit-paste-symbolic", Gtk.IconSize.BUTTON
+            );
+            paste.tooltip_text = "Paste";
+            this.quicknotebuttons += paste;
+            paste.clicked.connect(do_paste);
+            paste.set_relief(Gtk.ReliefStyle.NONE);
+            bbox.pack_start(paste, false, false, 0);
+
             maingrid.attach(bbox, 0, 1, 1, 1);
             // make sure no weird stuff happens on hoover sideways
             set_content();
