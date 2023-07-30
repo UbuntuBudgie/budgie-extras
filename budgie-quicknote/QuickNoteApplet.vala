@@ -332,11 +332,13 @@ namespace QuickNoteApplet {
             Button undo = new Button.from_icon_name(
                 "edit-undo-symbolic", Gtk.IconSize.BUTTON
             );
+            undo.tooltip_text = "Undo";
             undo.set_relief(Gtk.ReliefStyle.NONE);
             bbox.pack_start(undo, false, false, 0);
             Button redo = new Button.from_icon_name(
                 "edit-redo-symbolic", Gtk.IconSize.BUTTON
             );
+            redo.tooltip_text = "Redo";
             this.doredobuttons += undo;
             this.doredobuttons += redo;
             undo.clicked.connect(do_redo);
