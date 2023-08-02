@@ -434,6 +434,7 @@ namespace WeatherShowApplet {
             /* cup of libsoup */
             var session = new Soup.Session ();
             var message = new Soup.Message ("GET", url);
+#if HAVE_SOUP_3
             /* Ignore redirects (i.e. to a public network's login page) */
             message.add_flags(Soup.MessageFlags.NO_REDIRECT);
             try {
@@ -460,6 +461,23 @@ namespace WeatherShowApplet {
             catch (Error e) {
                 return "no data";
             }
+#else
+            session.send_message (message);
+            string output = (string) message.response_body.flatten().data;
+            update_log(wtype, output);
+            // check valid input
+            string forecast_ok = "cod\":\"200";
+            string weather_ok = "cod\":200";
+
+            if (
+                output.contains(forecast_ok) || output.contains(weather_ok)
+            ) {
+                return output;
+            }
+            else {
+                return "no data";
+            }
+#endif
         }
 
         private Json.Parser load_data (string data) {

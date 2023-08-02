@@ -12,11 +12,22 @@ WeatherShowSources = [
 'WeatherShow.vala'
 ]
 
+budgie_soup_vala_args = []
+dep_soup = dependency('libsoup-2.4', required: false)
+if dep_soup.found()
+    budgie_soup_vala_args += ['-D', 'HAVE_SOUP_2_4']
+else
+    dep_soup = dependency('libsoup-3.0')
+        if dep_soup.found()
+            budgie_soup_vala_args += ['-D', 'HAVE_SOUP_3']
+        endif
+endif
+
 WeatherShowDependencies = [
 dependency('gtk+-3.0'),
 dependency('budgie-1.0'),
 dependency('gee-0.8'),
-dependency('libsoup-3.0'),
+dep_soup,
 dependency('libpeas-gtk-1.0'),
 dependency('json-glib-1.0'),
 dependency('libpeas-gtk-1.0'),
@@ -27,6 +38,7 @@ WeatherShowValaArgs = [
 '--pkg=config',
 '--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
+budgie_soup_vala_args
 ]
 
 WeatherShowCArgs = [
