@@ -1,12 +1,14 @@
-budgie-extras (1.7.0-1) UNRELEASED; urgency=medium
+budgie-extras (1.7.0-1) experimental; urgency=medium
 
+  * Stable release
+    - See NEWS
   * Packaging Changes
     d/control drop transitional package budgie-previews-applet as it has
     been released with bullseye and bookworm already (Closes: #1038250)
     d/control make budgie-trash-applet a transitional package since it has
     been superseded by the trash applet in budgie-desktop v10.8
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 23 Jul 2023 21:29:37 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 09 Aug 2023 19:34:16 +0100
 
 budgie-extras (1.6.0-1) experimental; urgency=medium
 
