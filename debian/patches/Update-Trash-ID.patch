@@ -1,0 +1,25 @@
+Origin: https://github.com/UbuntuBudgie/budgie-extras/commit/538db256b6f3625478f7136a998e0b233f2b559a
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Last-Update: 2023-10-12
+Description: [PATCH] Update Trash ID so that 'theone' layout works as expected
+
+---
+ budgie-extras-daemon/data/theone.layout | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/budgie-extras-daemon/data/theone.layout b/budgie-extras-daemon/data/theone.layout
+index ea1dc89..1d2f670 100644
+--- a/budgie-extras-daemon/data/theone.layout
++++ b/budgie-extras-daemon/data/theone.layout
+@@ -74,7 +74,7 @@ ID=Recently Used
+ ID=Icon Task List
+ 
+ [Trash]
+-ID=Trash
++ID=Trash Bin
+ Alignment=end
+ 
+ [Spacer 3]
+-- 
+2.34.1
+
