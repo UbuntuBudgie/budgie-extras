@@ -192,9 +192,10 @@ class BudgieDropByApplet(Budgie.Applet):
             open("/tmp/" + user + "_call_dropby", "wt").write("")
 
     def start_dropover(self):
+        user = os.environ["USER"]
         try:
             pid = subprocess.check_output(
-                ["/usr/bin/pgrep", "-f", self.winpath]
+                ["/usr/bin/pgrep", "-u", user, "-f", self.winpath]
             )
         except subprocess.CalledProcessError:
             subprocess.Popen([self.winpath, self.uuid])

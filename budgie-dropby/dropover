@@ -111,8 +111,9 @@ class WatchVolumes:
 
     def process_check(self, process):
         try:
+            user = os.environ["USER"]
             pid = subprocess.check_output([
-                "/usr/bin/pgrep", "-f", process
+                "/usr/bin/pgrep", "-u", user, "-f", process
             ]).decode("utf-8")
             return True
         except subprocess.CalledProcessError:

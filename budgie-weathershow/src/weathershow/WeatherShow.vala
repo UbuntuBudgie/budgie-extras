@@ -77,7 +77,8 @@ namespace WeatherShowFunctions {
     }
 
     private bool check_onwindow(string path) {
-        string cmd_check = Config.PACKAGE_BINDIR + @"/pgrep -f '$path'";
+        string username = Environment.get_user_name();
+        string cmd_check = Config.PACKAGE_BINDIR + @"/pgrep -u $username -f $path";
         string output;
         try {
             GLib.Process.spawn_command_line_sync(cmd_check, out output);
@@ -98,7 +99,7 @@ namespace WeatherShowFunctions {
         if (uuid != null) {
             argstring = @" $uuid";
         }
-        bool win_exists = check_onwindow(path + argstring);
+        bool win_exists = check_onwindow(path);
         if (!win_exists) {
             try {
                 Process.spawn_command_line_async(path + argstring);
