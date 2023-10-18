@@ -348,9 +348,8 @@ namespace WeatherShowApplet {
             string result_current = weather_obj.get_current();
             // write to file only for desktop show
             if (show_ondesktop == true) {
-                string username = Environment.get_user_name();
-                var tmp = Environment.get_tmp_dir() + "/";
-                string src = tmp.concat(username, "_weatherdata");
+                string tmpdir = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+                string src = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmpdir, ".weatherdata");
                 WeatherShowFunctions.write_tofile(src, result_current);
             }
         }
