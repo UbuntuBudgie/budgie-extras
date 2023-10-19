@@ -29,7 +29,7 @@ class LocaleHelper():
 
     # makes dir
     def makeDirIfNotExist(self, path):
-        if (path is not ""):
+        if (path != ""):
             try:
                 os.makedirs(path)
             except OSError as e:

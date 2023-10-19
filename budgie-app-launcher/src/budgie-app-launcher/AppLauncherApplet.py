@@ -381,7 +381,7 @@ class AppLauncherApplet(Budgie.Applet):
         self.filteredActiveApps = self.filterHelper.filteredAppsByName(
             self.activeApps, self.showOnPanel, text)
 
-        if text is "":
+        if text == "":
             self.loadAppButtons()
         else:
             self.loadFilteredActiveAppButtons()
@@ -420,7 +420,7 @@ class AppLauncherApplet(Budgie.Applet):
             currentMenuButtonIndex = self.menuButtons.index(
                 self.currentMenuButton)
             activeAppsLenght = len(self.activeApps)
-            if currentMenuButtonIndex is 0:
+            if currentMenuButtonIndex == 0:
                 self.upButton.set_sensitive(False)
                 self.downButton.set_sensitive(True)
             elif currentMenuButtonIndex is activeAppsLenght - 1:
@@ -434,7 +434,7 @@ class AppLauncherApplet(Budgie.Applet):
             self.downButton.set_sensitive(False)
 
     def updateSensitiveSelectButtons(self):
-        if len(self.activeApps) is 0:
+        if len(self.activeApps) == 0:
             self.selectButton.set_sensitive(True)
             self.deselectButton.set_sensitive(False)
         elif len(self.activeApps) > 0:

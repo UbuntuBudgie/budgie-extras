@@ -23,6 +23,6 @@ class FilterHelper():
                     searchText.lower() in app.getName().lower():
                 filteredApps.append(app)
             counter += 1
-        if searchText is "":
+        if searchText == "":
             filteredApps = apps
         return filteredApps
