@@ -62,10 +62,10 @@ class WatchVolumes:
         app_path = os.path.dirname(os.path.abspath(__file__))
         self.copyscript = os.path.join(app_path, "copy_flash")
         self.start_timer = os.path.join(app_path, "checkonwin")
-        user = os.environ["USER"]
-        self.timer = "/tmp/" + user + "_keepdropbywin"
+        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+        self.timer = os.path.join(self.tmp_path, ".keepdropbywin")
         # setup watching trigger (uncomment below lines if)
-        infofile = Gio.File.new_for_path("/tmp")
+        infofile = Gio.File.new_for_path(self.tmp_path)
         monitor = infofile.monitor(Gio.FileMonitorFlags.NONE, None)
         monitor.connect("changed", self.actonfile)
         # setup watching applet presence
@@ -100,8 +100,7 @@ class WatchVolumes:
 
     def actonfile(self, arg1, arg2, arg3, event):
         # ok, let's replace once dbus is a fact
-        user = os.environ["USER"]
-        trigger = "/tmp/" + user + "_call_dropby"
+        trigger = os.path.join(self.tmp_path, ".call_dropby")
         if all([
             event == Gio.FileMonitorEvent.CREATED,
             os.path.exists(trigger)
