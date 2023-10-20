@@ -85,11 +85,10 @@ namespace ShufflerApplet {
 
     private void open_shufflersettings() {
         if (procruns(Config.SHUFFLER_DIR + "/shuffler_control")) {
-            string user = Environment.get_user_name();
-            var tmp = Environment.get_tmp_dir() + "/";
+            string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
             try {
                 File showpage_trigger = File.new_for_path(
-                    tmp + @"shufflerapplettrigger_$user"
+                    GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".shufflerapplettrigger")
                 );
                 showpage_trigger.create(FileCreateFlags.NONE);
             }

@@ -28,10 +28,9 @@ namespace ToggleShufflerGUI {
     }
 
     public static void main (string[] args) {
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         File gridtrigger = File.new_for_path(
-            tmp.concat(user, "_gridtrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".gridtrigger")
         );
         bool gridtriggerexists = gridtrigger.query_exists();
         if (!gridtriggerexists) {

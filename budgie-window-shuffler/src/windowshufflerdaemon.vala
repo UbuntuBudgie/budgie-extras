@@ -1013,8 +1013,8 @@ namespace ShufflerEssentialInfo {
         create_box (surface, context, {30, 30, 8, 8}, {1, 1, 1, 1});
         create_box (surface, context, {40, 20, 8, 8}, {1, 1, 1, 1});
         // Save the image:
-        var tmp = Environment.get_tmp_dir();
-        surface.write_to_png (tmp + "/shuffler-warning.png");
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        surface.write_to_png (GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".shuffler-warning.png"));
     }
 
     private void create_box (
@@ -1101,15 +1101,14 @@ namespace ShufflerEssentialInfo {
         // FileMonitor stuff, see if gui runs (disable jump & tileactive)
         gridguiruns = false;
         FileMonitor monitor;
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         // layout_busy triggerfile for run_layout
         layout_busy = File.new_for_path (
-            tmp.concat(user, @"_running_layout")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".running_layout")
         );
         // and one for grid
         File gridtrigger = File.new_for_path(
-            tmp.concat(user, "_gridtrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".gridtrigger")
         );
         try {
             monitor = gridtrigger.monitor(FileMonitorFlags.NONE, null);

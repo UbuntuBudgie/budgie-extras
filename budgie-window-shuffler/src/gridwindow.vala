@@ -628,10 +628,9 @@ namespace GridWindowSection {
         timestamp_window = new Gdk.X11.Window.foreign_for_display(display, xwindow);
         // monitoring files / dirs
         FileMonitor monitor;
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         gridtrigger = File.new_for_path(
-            tmp.concat(user, "_gridtrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".gridtrigger")
         );
         try {
             monitor = gridtrigger.monitor(FileMonitorFlags.NONE, null);
