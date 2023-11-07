@@ -36,7 +36,8 @@ settingsdir = os.path.join(home, ".config/budgie-extras/clockworks")
 hrs_path = os.path.join(settingsdir, "hrs")
 mins_path = os.path.join(settingsdir, "mins")
 misc_dir = os.path.join(settingsdir, "misc")
-tmpdir = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else settingsdir
+tmpdir = os.getenv("XDG_RUNTIME_DIR") \
+    if "XDG_RUNTIME_DIR" in os.environ else settingsdir
 tmp = os.path.join(tmpdir, ".clockworks")
 clock_datafile = os.path.join(settingsdir, "clockdata")
 key = "org.ubuntubudgie.plugins.budgie-clockworks"
