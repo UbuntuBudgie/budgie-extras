@@ -108,7 +108,8 @@ class BudgieDropByApplet(Budgie.Applet):
         self.uuid = uuid
         self.connect("destroy", Gtk.main_quit)
         app_path = os.path.dirname(os.path.abspath(__file__))
-        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") \
+            if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
         self.copytrigger = os.path.join(self.tmp_path, ".dropby_icon_copy")
         self.copying = False
         self.winpath = os.path.join(app_path, "dropover")

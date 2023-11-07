@@ -62,7 +62,8 @@ class WatchVolumes:
         app_path = os.path.dirname(os.path.abspath(__file__))
         self.copyscript = os.path.join(app_path, "copy_flash")
         self.start_timer = os.path.join(app_path, "checkonwin")
-        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") \
+            if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
         self.timer = os.path.join(self.tmp_path, ".keepdropbywin")
         # setup watching trigger (uncomment below lines if)
         infofile = Gio.File.new_for_path(self.tmp_path)

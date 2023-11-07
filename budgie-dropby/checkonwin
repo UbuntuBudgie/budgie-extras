@@ -19,7 +19,8 @@ should have received a copy of the GNU General Public License along with this
 program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-tmp_path = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+tmp_path = os.getenv("XDG_RUNTIME_DIR") \
+    if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
 timer = os.path.join(tmp_path, ".keepdropbywin")
 
 
