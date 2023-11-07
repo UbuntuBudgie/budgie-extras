@@ -23,7 +23,8 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-tmp = os.getenv("XDG_RUNTIME_DIR") if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+tmp = os.getenv("XDG_RUNTIME_DIR") \
+    if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
 nextbreakfile = os.path.join(tmp, ".nextbreak")
 tab_settings = Gio.Settings.new("org.ubuntubudgie.plugins.takeabreak")
 
