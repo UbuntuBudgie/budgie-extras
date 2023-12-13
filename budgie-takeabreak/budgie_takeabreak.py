@@ -23,9 +23,9 @@ program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-user = os.environ["USER"]
-tmp = GLib.get_tmp_dir()
-nextbreakfile = tmp + "/nextbreak_" + user
+tmp = os.getenv("XDG_RUNTIME_DIR") \
+    if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+nextbreakfile = os.path.join(tmp, ".nextbreak")
 tab_settings = Gio.Settings.new("org.ubuntubudgie.plugins.takeabreak")
 
 
@@ -261,6 +261,7 @@ class BudgieTakeaBreakApplet(Budgie.Applet):
         return False
 
     def kill_runner(self):
+        user = os.environ["USER"]
         try:
             # I know, old school, but it works well
             pid = subprocess.check_output([

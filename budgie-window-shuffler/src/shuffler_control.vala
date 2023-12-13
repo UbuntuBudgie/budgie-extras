@@ -1736,10 +1736,9 @@ namespace ShufflerControl2 {
         }
         new ShufflerControlWindow(page);
         // watch trigger to switch to applet settings
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir();
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         File showpage_trigger = File.new_for_path(
-            tmp + @"/shufflerapplettrigger_$user"
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".shufflerapplettrigger")
         );
         delete_file(showpage_trigger);
         FileMonitor monitor_showpage_trigger;

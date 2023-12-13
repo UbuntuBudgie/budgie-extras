@@ -134,9 +134,8 @@ public class DesktopWeather : Gtk.Window {
         this.set_visual(visual);
         this.draw.connect(on_draw);
         // monitored datafile
-        string username = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
-        string src = tmp.concat(username, "_weatherdata");
+        string tmpdir = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        string src = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmpdir, ".weatherdata");
         datasrc = File.new_for_path(src);
         // report
         maingrid = new Gtk.Grid();

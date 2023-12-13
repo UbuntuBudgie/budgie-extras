@@ -198,9 +198,8 @@ namespace ShufflerLayouts {
 
     private void create_busyfile (File busyfile) {
         // create triggerfile to temporarily disable possibly set windowrules
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
-        File busy = File.new_for_path (tmp.concat(user, "_running_layout"));
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        File busy = File.new_for_path (GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".running_layout"));
         try {
             if (!busy.query_exists()) {
                 busy.create(FileCreateFlags.REPLACE_DESTINATION);
@@ -374,11 +373,8 @@ namespace ShufflerLayouts {
         indices_done = {};
         xids_moved_windows = {};
         // define & create triggerfile (putting rules on hold)
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
-        File busyfile = File.new_for_path (
-            tmp.concat(user, "_running_layout")
-        );
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        File busyfile = File.new_for_path (GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".running_layout"));
         create_busyfile(busyfile);
         // get windowlist (xid) of windows that existed on launch
         Gtk.init(ref args);
@@ -403,8 +399,7 @@ namespace ShufflerLayouts {
                 validpaths = {searchpath.concat("/", args[2])};
             }
             else {
-                string username = Environment.get_user_name();
-                validpaths = {tmp.concat(username, "_istestingtask")};
+                validpaths = {GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".istestingtask")};
             }
         }
         else {

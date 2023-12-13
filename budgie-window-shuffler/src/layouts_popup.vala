@@ -36,7 +36,6 @@ namespace LayoutsPopup {
     Wnck.Screen wnck_scr;
     Gtk.Dialog? get_task;
     Gtk.Dialog? ask_confirmdialog;
-    string username;
     string homedir;
     string triggerfpath;
 
@@ -487,8 +486,8 @@ namespace LayoutsPopup {
                     targetfile = File.new_for_path(path);
                 }
                 else {
-                    var tmp = Environment.get_tmp_dir() + "/";
-                    string runfile =  tmp.concat(username, "_istestingtask");
+                    string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+                    string runfile = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".istestingtask");
                     targetfile = File.new_for_path(runfile);
                 }
                 if (targetfile.query_exists ()) {
@@ -1372,16 +1371,15 @@ namespace LayoutsPopup {
         searchpath = create_dirs_file(
             ".config/budgie-extras/shuffler/layouts", true
         );
-        username = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         string triggerpath = create_dirs_file(
-            tmp.concat(username, "_shufflertriggers")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".shufflertriggers")
         );
         // watch triggerfile
         // containing dir
         File triggerdir = File.new_for_path(triggerpath);
         // triggerfilepath
-        triggerfpath = triggerpath.concat("/layoutspopup");
+        triggerfpath = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, triggerpath, "layoutspopup");
         popuptrigger = File.new_for_path(triggerfpath);
         FileMonitor? triggerpath_monitor = null;
         try {

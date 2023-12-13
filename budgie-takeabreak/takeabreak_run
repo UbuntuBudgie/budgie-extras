@@ -76,8 +76,10 @@ def subprocess_tasks(task, command_list, fallbackval=None):
 
 def write_nextbreak():
     next_break = time.time() + awaketime
-    tmp = GLib.get_tmp_dir()
-    open(tmp + "/nextbreak_" + user, "wt").write(str(next_break))
+    tmp = os.getenv("XDG_RUNTIME_DIR") \
+        if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+    nextbreakfile = os.path.join(tmp, ".nextbreak")
+    open(nextbreakfile, "wt").write(str(next_break))
 
 
 def sendmessage(title, message, icon=""):

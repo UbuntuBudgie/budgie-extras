@@ -57,13 +57,12 @@ namespace ToggleShufflerGUI {
         print(@"$fromcontrol\n");
 
         // make sure triggerdir exists
-        string username = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         string triggerpath = create_dirs_file(
-            tmp.concat(username, "_shufflertriggers")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".shufflertriggers")
         );
         // then define trigger
-        File popuptrigger = File.new_for_path(triggerpath.concat("/layoutspopup"));
+        File popuptrigger = File.new_for_path(GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, triggerpath, "layoutspopup"));
         bool popuptriggerexists = popuptrigger.query_exists();
         if (!popuptriggerexists) {
              create_trigger(popuptrigger, fromcontrol);

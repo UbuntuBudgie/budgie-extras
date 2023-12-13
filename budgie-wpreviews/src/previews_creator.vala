@@ -56,9 +56,8 @@ namespace create_previews {
         if (wnck_scr == null) return; // usually if not run on X11
         gdk_scr = Gdk.Screen.get_default();
         if (gdk_scr == null) return; // usually if there is no display
-        string user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
-        previewspath = tmp.concat(user, "_window-previews");
+        string tmpdir = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        previewspath = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmpdir, ".windows-previews");
         update_winlist();
         wnck_scr.window_opened.connect(update_winlist);
         wnck_scr.window_opened.connect(refresh_new);

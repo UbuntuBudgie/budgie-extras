@@ -108,8 +108,9 @@ class BudgieDropByApplet(Budgie.Applet):
         self.uuid = uuid
         self.connect("destroy", Gtk.main_quit)
         app_path = os.path.dirname(os.path.abspath(__file__))
-        user = os.environ["USER"]
-        self.copytrigger = "/tmp/" + user + "_dropby_icon_copy"
+        self.tmp_path = os.getenv("XDG_RUNTIME_DIR") \
+            if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+        self.copytrigger = os.path.join(self.tmp_path, ".dropby_icon_copy")
         self.copying = False
         self.winpath = os.path.join(app_path, "dropover")
         self.box = Gtk.EventBox()
@@ -188,8 +189,7 @@ class BudgieDropByApplet(Budgie.Applet):
 
     def create_windowtrigger(self, *args):
         if not self.check_winexists():
-            user = os.environ["USER"]
-            open("/tmp/" + user + "_call_dropby", "wt").write("")
+            open(os.path.join(self.tmp_path, ".call_dropby"), "wt").write("")
 
     def start_dropover(self):
         user = os.environ["USER"]

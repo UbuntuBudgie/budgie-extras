@@ -31,7 +31,6 @@ namespace NewPreviews {
     bool showtooltips;
     bool allapps;
     Gtk.Button[] currbuttons;
-    string user;
     File triggerdir;
     File nexttrigger;
     File allappstrigger;
@@ -661,25 +660,25 @@ namespace NewPreviews {
             allworkspaces = previews_settings.get_boolean("allworkspaces");
             showtooltips = previews_settings.get_boolean("showtooltips");
         });
-        var tmp = Environment.get_tmp_dir() + "/";
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         triggerdir = File.new_for_path(tmp);
         allappstrigger = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_all")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_all")
         );
         allappstriggerhotc = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_all_hotcorner")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_all_hotcorner")
         );
         currapptriggerhotc = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_curr_hotcorner")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_curr_hotcorner")
         );
         nexttrigger = File.new_for_path(
-            tmp.concat(user, "_nexttrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".nexttrigger")
         );
         previoustrigger = File.new_for_path(
-            tmp.concat(user, "_previoustrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".previoustrigger")
         );
         triggercurrent = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_current")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_current")
         );
         // start with a clean plate please
         cleanup();
@@ -711,9 +710,8 @@ namespace NewPreviews {
     }
 
     public static void main (string[] args) {
-        user = Environment.get_user_name();
-        var tmp = Environment.get_tmp_dir() + "/";
-        previewspath = tmp.concat(user, "_window-previews");
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+        previewspath = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".windows-previews");
         try {
             File file = File.new_for_commandline_arg (previewspath);
             file.make_directory ();

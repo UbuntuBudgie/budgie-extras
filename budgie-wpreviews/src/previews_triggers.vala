@@ -37,27 +37,26 @@ namespace previews_triggers {
 
     public static void main (string[] args) {
 
-        // user
-        string user = Environment.get_user_name();
+        // user dir
+        string tmp = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
         // files
-        var tmp = Environment.get_tmp_dir() + "/";
         File allappstrigger = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_all")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_all")
         );
         File nexttrigger = File.new_for_path(
-            tmp.concat(user, "_nexttrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".nexttrigger")
         );
         File previoustrigger = File.new_for_path(
-            tmp.concat(user, "_previoustrigger")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".previoustrigger")
         );
         File triggercurrent = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_current")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_current")
         );
         File allappstriggerhotc = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_all_hotcorner")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_all_hotcorner")
         );
         File currapptriggerhotc = File.new_for_path(
-            tmp.concat(user, "_prvtrigger_curr_hotcorner")
+            GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmp, ".prvtrigger_curr_hotcorner")
         );
 
         File trg = nexttrigger;

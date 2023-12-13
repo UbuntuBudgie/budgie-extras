@@ -34,9 +34,8 @@ namespace fixpreviews {
 
         private void make_prvpath () {
             // make previews path
-            string user = Environment.get_user_name();
-            var tmp = Environment.get_tmp_dir() + "/";
-            previewspath = tmp.concat(user, "_window-previews");
+            string tmpdir = Environment.get_variable("XDG_RUNTIME_DIR") ?? Environment.get_variable("HOME");
+            previewspath = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, tmpdir, ".windows-previews");
 
             try {
                 File file = File.new_for_commandline_arg (previewspath);

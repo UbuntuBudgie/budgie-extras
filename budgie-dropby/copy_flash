@@ -87,8 +87,9 @@ def copy(source, targetdir):
 
 
 # get targeted path
-user = os.environ["USER"]
-cptrigger = "/tmp/" + user + "_dropby_icon_copy"
+tmp_path = os.getenv("XDG_RUNTIME_DIR") \
+    if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
+cptrigger = os.path.join(tmp_path, ".dropby_icon_copy")
 try:
     target = subprocess.check_output([
         "/usr/bin/zenity", "--file-selection", "--directory",
