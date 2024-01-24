@@ -67,9 +67,9 @@ e.g. to build just the hotcorners and weathershow applets
      ninja -v
      sudo ninja install
 
-## Distro's
+## Distros
 
-We love Budgie-Extras to work across as many distro's as possible.  Budgie Extras should be packaged as individual applets - NOT as one "budgie-extras" package, so that end users can install one or more applets.  Please let us know if your distro has packaged budgie-extras and how to install each applet.
+We love Budgie-Extras to work across as many distros as possible.  Budgie Extras should be packaged as individual applets - NOT as one "budgie-extras" package, so that end users can install one or more applets.  Please let us know if your distro has packaged budgie-extras and how to install each applet.
 
  - Arch - https://www.archlinux.org/packages/community/x86_64/budgie-extras/ NOTE - this installs everything rather than allowing per applet installation
  - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
