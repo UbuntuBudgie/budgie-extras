@@ -1,3 +1,52 @@
+Version 1.8.0
+~~~~~~~~~~~~~
+Released: 2024-02-08
+
+Notes: Blue
+
+Features:
+* Add bluetooth tethering support to the network applet
+
+Version 1.7.1
+~~~~~~~~~~~~~
+Released: 2023-12-13
+
+Notes: Tinker Tailor...
+
+Features:
+* SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for clockworks applet
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+      - CVE-2023-49342
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for dropby applet
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations
+      - CVE-2023-49343
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for shuffler app
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49344
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for takeabreak
+    applet
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+      - CVE-2023-49345
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for weathershow
+    applet
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49346
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for window
+    previews applet
+    - change /tmp path usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49347
+
 Version 1.7.0
 ~~~~~~~~~~~~~
 Released: 2023-08-09
