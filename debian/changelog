@@ -1,3 +1,58 @@
+budgie-extras (1.7.1-1) unstable; urgency=medium
+
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for clockworks applet
+    (LP: #2044373)
+    - d/patches/clockwork-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+      d/patches/clockwork-tmpxdg-pep8.patch: resolve pep8
+      package test failure, thanks to original author
+    - CVE-2023-49342
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for dropby applet
+    (LP: #2044373)
+    - d/patches/dropby-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations
+      d/patches/dropby-tmpxdg-pep8.patch: resolve pep8
+      package test failure, thanks to original author
+    - CVE-2023-49343
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for shuffler app
+    (LP: #2044373)
+    - d/patches/shuffler-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49344
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for takeabreak
+    applet (LP: #2044373)
+    - d/patches/takeabreak-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+      d/patches/takeabreak-tmpxdg-pep8.patch: resolve pep8
+      package test failure, thanks to original author
+      d/patches/takeabreak-tmpxdg-pep8_part2.patch: resolve pep8
+      package test failure, thanks to original author
+    - CVE-2023-49345
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for weathershow
+    applet (LP: #2044373)
+    - d/patches/weathershow-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49346
+  * SECURITY UPDATE: Predictable /tmp path could lead to
+    denial-of-service/manipulation of data for window
+    previews applet (LP: #2044373)
+    - d/patches/wpreviews-tmpxdg.patch: change /tmp path
+      usage to use XDG_RUNTIME_DIR/HOME user-space locations,
+      thanks to original author
+    - CVE-2023-49347
+  * Drop existing patch since the new release incorporates this
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 03 Dec 2023 19:11:30 +0000
+
 budgie-extras (1.7.0-3) unstable; urgency=medium
 
   * Bug-fix
