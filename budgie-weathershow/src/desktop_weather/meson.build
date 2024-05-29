@@ -47,6 +47,7 @@ executable(
     install: true,
     vala_args: DesktopWeatherValaArgs,
     c_args: DesktopWeatherCArgs,
+    include_directories: config_inc_dir,
     install_dir: LIB_INSTALL_DIR,
 )
 

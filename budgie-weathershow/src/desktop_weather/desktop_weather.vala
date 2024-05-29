@@ -307,10 +307,7 @@ public class DesktopWeather : Gtk.Window {
 
     private void get_icondata () {
         // fetch the icon list
-        string icondir = "/".concat(
-            "usr/lib/budgie-desktop/plugins",
-            "/budgie-weathershow/weather_icons"
-        );
+        string icondir = GLib.Path.build_filename(Config.WEATHERSHOW_DIR, "weather_icons");
         iconnames = {};
         iconpixbufs_1 = {};
         iconpixbufs_2 = {};
