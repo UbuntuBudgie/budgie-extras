@@ -30,7 +30,7 @@ install_data('schema/org.ubuntubudgie.plugins.weathershow.gschema.xml',
 
 install_data(
     'cities',
-    install_dir: join_paths(LIB_INSTALL_DIR)
+    install_dir: WEATHERSHOW_DATADIR
 )
 
 
