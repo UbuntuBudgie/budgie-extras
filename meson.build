@@ -71,6 +71,9 @@ conf.set_quoted('PREVIEWS_DIR', join_paths(libdir, PREVIEWS))
 WSWITCHER = 'budgie-wswitcher'
 conf.set_quoted('WSWITCHER_DIR', join_paths(PLUGINS_INSTALL_DIR, WSWITCHER))
 
+WEATHERSHOW_DATADIR = join_paths(datadir, 'budgie-desktop', 'budgie-weathershow')
+conf.set_quoted('WEATHERSHOW_DATADIR', WEATHERSHOW_DATADIR)
+
 with_stateless = get_option('with-stateless')
 if with_stateless == true
     warning('Only use stateless option with a supported OS like Solus')

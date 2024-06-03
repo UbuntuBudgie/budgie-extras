@@ -165,9 +165,11 @@ namespace WeatherShowFunctions {
         } return -1;
     }
 
-    private string[] get_matches(string lookfor, string dir) {
+    private string[] get_matches(string lookfor) {
         // find matching cities
-        File datasrc = File.new_for_path(dir.concat("/cities"));
+        string citiesfile = GLib.Path.build_filename(Config.WEATHERSHOW_DATADIR, "cities");
+        File datasrc = File.new_for_path(citiesfile);
+
         string fixed = lookfor.down().to_ascii();
         try {
             var dis = new DataInputStream (datasrc.read ());
@@ -990,9 +992,7 @@ namespace WeatherShowApplet {
         private string set_initialcity() {
             // on opening settings, set the gui to the current value
             string initial_citycode = citycode;
-            string[] initline = WeatherShowFunctions.get_matches(
-                initial_citycode, moduledir
-            );
+            string[] initline = WeatherShowFunctions.get_matches(initial_citycode);
             // fix for change of cityfile (!)
             if (initline.length == 0) {
                 citycode = "2643743";
@@ -1084,9 +1084,7 @@ namespace WeatherShowApplet {
                 edit_citymenu == true &&
                 entry != null
                 ) {
-                string[] matches = WeatherShowFunctions.get_matches(
-                    currentry, moduledir
-                );
+                string[] matches = WeatherShowFunctions.get_matches(currentry);
                 int n_matches = matches.length;
                 if (n_matches > 0) {
                     foreach (string s in matches) {
@@ -1507,7 +1505,7 @@ namespace WeatherShowApplet {
 
         private void get_icondata () {
             // fetch the icon list
-            string icondir = moduledir.concat("/weather_icons");
+            string icondir = GLib.Path.build_filename(Config.WEATHERSHOW_DATADIR, "weather_icons");
             iconnames = {}; iconpixbufs = {}; iconpixbufs_large = {};
             try {
                 var dr = Dir.open(icondir);

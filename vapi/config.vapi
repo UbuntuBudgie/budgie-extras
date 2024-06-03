@@ -9,4 +9,5 @@ namespace Config {
     public const string SHUFFLER_DIR;
     public const string PREVIEWS_DIR;
     public const string WSWITCHER_DIR;
+    public const string WEATHERSHOW_DATADIR;
 }
