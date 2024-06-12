@@ -12,6 +12,7 @@
 # Luis Forman <lf@lfsqr.co>, 2021
 # david mohammed <foss.freedom@gmail.com>, 2021
 # Henrique Vicentin, 2022
+# Julio Cezar, 2024
 # 
 #, fuzzy
 msgid ""
@@ -20,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Henrique Vicentin, 2022\n"
+"Last-Translator: Julio Cezar, 2024\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/ubuntu-budgie/teams/72251/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -180,7 +181,7 @@ msgstr "Não configurado"
 #: budgie-window-shuffler/src/shuffler_control.vala:408
 #: budgie-window-shuffler/src/layouts_popup.vala:601
 msgid "Window class of the window to be launched"
-msgstr ""
+msgstr "Classe de janela da janela a ser lançada"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:409
 #: budgie-window-shuffler/src/layouts_popup.vala:598
@@ -297,7 +298,7 @@ msgstr "Posição da janela selecionada, x / y"
 #: budgie-window-shuffler/src/shuffler_control.vala:513
 #: budgie-window-shuffler/src/layouts_popup.vala:728
 msgid "Window cell span, hor / vert"
-msgstr ""
+msgstr "Extensão de célula da janela,hor / vert"
 
 #. Frame title, string length is not particularly critical
 #. Settings category label, should be as short as possible
@@ -315,7 +316,7 @@ msgstr "Diversos"
 #: budgie-window-shuffler/src/shuffler_control.vala:545
 #: budgie-window-shuffler/src/layouts_popup.vala:754
 msgid "Target monitor"
-msgstr ""
+msgstr "Monitor de destino"
 
 #. target workspace
 #. Field label, should be short
@@ -323,7 +324,7 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:562
 #: budgie-window-shuffler/src/layouts_popup.vala:770
 msgid "Target workspace"
-msgstr ""
+msgstr "Área de trabalho de destino"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:591
 #: budgie-window-shuffler/src/layouts_popup.vala:199
@@ -355,17 +356,17 @@ msgstr "Controle do Window Shuffler"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:753
 msgid "Replace window-rule"
-msgstr ""
+msgstr "Substituir regra de janela"
 
 #. when creating new file, but name exists
 #: budgie-window-shuffler/src/shuffler_control.vala:755
 msgid "Save changes to window-rule"
-msgstr ""
+msgstr "Salvar alterações à regra de janela"
 
 #. 2. if so, if wm entry, thus filename changes:
 #: budgie-window-shuffler/src/shuffler_control.vala:765
 msgid "Save changes to renamed window-rule"
-msgstr ""
+msgstr "Salvar alterações à regra de janela renomeada"
 
 #. update ruleslist
 #. headers
@@ -373,7 +374,7 @@ msgstr ""
 #. possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
-msgstr ""
+msgstr "classe-WM"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:877
 msgid "Grid"
@@ -385,7 +386,7 @@ msgstr "Estender"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:879
 msgid "Display"
-msgstr ""
+msgstr "Exibir"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:880
 msgid "Workspace"
@@ -397,7 +398,7 @@ msgstr "Deletar"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:950
 msgid "windowrule"
-msgstr ""
+msgstr "Regra de janela"
 
 #. content
 #. Settings category label, should be as short as possible
@@ -408,7 +409,7 @@ msgstr "Mosaico"
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1052
 msgid "Window tiling & shortcuts"
-msgstr ""
+msgstr "Modo mosaico e atalhos de janela"
 
 #. Settings category label, should be as short as possible
 #. optimize please with similar grids
@@ -422,28 +423,28 @@ msgstr "Layouts"
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1056
 msgid "Automatic window & application presets"
-msgstr ""
+msgstr "Janela automática e predefinições de aplicativos"
 
 #. Settings category label, should be as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:1058
 #: budgie-window-shuffler/src/shuffler_control.vala:1405
 msgid "Window rules"
-msgstr ""
+msgstr "Regras de janela"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1060
 msgid "Define where application windows should be opened"
-msgstr ""
+msgstr "Defina onde janelas de aplicações devem ser abertas"
 
 #. Settings category label, should be as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:1062
 msgid "Applet"
-msgstr ""
+msgstr "Mini-aplicativo"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1064
 msgid "Shuffler Applet settings"
-msgstr ""
+msgstr "Definições de Mini-aplicativo Shuffler"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1068
@@ -455,19 +456,23 @@ msgstr "Preferências gerais"
 #. name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
-msgstr ""
+msgstr "Usar edge-tiling avançado do Shuffler drag-snap"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1105
 msgid "Control + drag tiles a window into 2/5 of the screen width"
 msgstr ""
+"Ctrl + arrastar redimensiona em mosaico uma janela para 2/5 da largura do "
+"ecrã"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1108
 msgid "Alt + drag tiles a window into 3/5 of the screen width"
 msgstr ""
+"Alt + arrastar redimensiona em mosaico uma janela para 3/5 da largura do "
+"ecrã"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1112
 msgid "This will disable built-in edge-tiling"
-msgstr ""
+msgstr "Isto irá desabilitar o edge-tiling embutido"
 
 #. TRANSLATORS:
 #. / Quarter & half = basic tiling.
@@ -475,7 +480,7 @@ msgstr ""
 #. / The "basic" is to make the difference clear.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
-msgstr ""
+msgstr "Quarto básico e meio mosaico"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1147
 msgid "Top-left"
@@ -511,7 +516,7 @@ msgstr "Metade inferior"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1149
 msgid "Toggle maximize"
-msgstr ""
+msgstr "Maximizar"
 
 #. Adavenced tiling settings section header
 #: budgie-window-shuffler/src/shuffler_control.vala:1166
@@ -642,7 +647,7 @@ msgstr "Reduzir verticalmente (de cima)"
 #: budgie-window-shuffler/src/shuffler_control.vala:1281
 #: budgie-window-shuffler/src/shuffler_control.vala:1310
 msgid "Toggle resizing opposite window"
-msgstr ""
+msgstr "Alternar redimensionamento de janela oposta"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1293
 msgid "Other shortcuts"
@@ -656,7 +661,7 @@ msgstr "Colocar todas as janelas na grade"
 #. / the layout quicklist/manager.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
-msgstr ""
+msgstr "Alternar esquemas da lista rápida e gerenciador"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1371
 msgid "Setup now"
@@ -694,7 +699,7 @@ msgstr "Margem inferior"
 #. padding header
 #: budgie-window-shuffler/src/shuffler_control.vala:1493
 msgid "Padding"
-msgstr ""
+msgstr "Preenchimento"
 
 #. padding
 #: budgie-window-shuffler/src/shuffler_control.vala:1498
@@ -707,7 +712,7 @@ msgstr "Animação"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1510
 msgid "Use general animation settings"
-msgstr ""
+msgstr "Usar definições gerais de animação"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1516
 msgid "Use animation"
@@ -715,15 +720,15 @@ msgstr "Usar animação"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1847
 msgid "Applet settings"
-msgstr ""
+msgstr "Definições de Mini-aplicativos"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1851
 msgid "Applet popover content"
-msgstr ""
+msgstr "Conteúdo de popover do mini-aplicativo"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1859
 msgid "Show popover on hover (without click)"
-msgstr ""
+msgstr "Mostrar popover ao passar o mouse (sem clique)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1867
 msgid "Synchronize grid size"
@@ -732,16 +737,18 @@ msgstr "Sincronizar tamanho da grade"
 #: budgie-window-shuffler/src/shuffler_control.vala:1874
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
+"Atualizar tamanho da grade para movimentação e redimensionamento para o "
+"último esquema escolhido"
 
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
-msgstr ""
+msgstr "Tamanho da prévia do esquema (largura em px)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1896
 msgid "The applet needs to be on the panel to see the changes"
-msgstr ""
+msgstr "O mini-aplicativo precisa estar no painel para ver as alterações"
 
 #. buttons of mastergrid, corresponcing to stack "picklayout"
 #. since this is the "home" page
@@ -794,7 +801,7 @@ msgstr ""
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:621
 msgid "Try to move an existing window before launching a new instance"
-msgstr ""
+msgstr "Tente mover uma janela existente antes de iniciar uma nova instância"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:633
 msgid "Task name"
@@ -822,40 +829,42 @@ msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
 "instead, press Built-in."
 msgstr ""
+"Drag-snap substituiu o edge-tiling embutido. Para escolher o sistema edge-"
+"tiling embutido,pressione Embutido."
 
 #: budgie-window-shuffler/src/dragsnap.vala:947
 msgid "Built-in"
-msgstr ""
+msgstr "Embutido"
 
 #: budgie-window-shuffler/src/sizeexceeds_warning.vala:61
 msgid "Minimum window size exceeds target"
-msgstr ""
+msgstr "O tamanho mínimo da janela excede o destino"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:116
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:429
 msgid "Open Shuffler settings"
-msgstr ""
+msgstr "Abrir definições do Shuffler"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Shuffler warning"
-msgstr ""
+msgstr "Aviso do Shuffler"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:384
 msgid "Please activate Window Shuffler"
-msgstr ""
+msgstr "Por favor ative o Window Shuffler"
 
 #. swapbox.pack_start(swapbutton, true, false, 0);
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:408
 msgid "Swap position and size of the two most recently focussed windows"
-msgstr ""
+msgstr "Trocar posição e tamanho das duas janelas mais recentemente focadas"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:436
 msgid "Shuffle remaining windows to the layout"
-msgstr ""
+msgstr "Embaralhar as janelas restantes para o esquema"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
 msgid "Toggle mode"
-msgstr ""
+msgstr "Alternar modo"
 
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:162
@@ -889,7 +898,7 @@ msgstr "Em todos os monitores"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:213
 msgid "Anchor, time will expand/shrink in/from opposite direction."
-msgstr ""
+msgstr "Âncora,o tempo irá expandir/encolher em/de direção oposta."
 
 #. time font settings -> boxed!!
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:222
@@ -1217,7 +1226,7 @@ msgstr "Ações de aplicativos"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:56
 msgid "Bookmarks"
-msgstr ""
+msgstr "Favoritos"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:58
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:154
@@ -1229,7 +1238,7 @@ msgstr "Outro"
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
-msgstr ""
+msgstr "Abrir com Gráficos %s "
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:110
 msgid "Remove from _Dock"
@@ -1295,47 +1304,47 @@ msgstr "Executar este comando…"
 #: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:81
 #: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:109
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:77
 msgid "Accessories"
-msgstr ""
+msgstr "Acessórios"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:87
 msgid "Universal Access"
-msgstr ""
+msgstr "Acesso Universal"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:96
 msgid "Programming"
-msgstr ""
+msgstr "Programação"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:102
 msgid "Education"
-msgstr ""
+msgstr "Educação"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:109
 msgid "Science"
-msgstr ""
+msgstr "Ciência"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:116
 msgid "Games"
-msgstr ""
+msgstr "Jogos"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:122
 msgid "Graphics"
-msgstr ""
+msgstr "Gráficos"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:134
 msgid "Sound & Video"
-msgstr ""
+msgstr "Som e Vídeo"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:140
 msgid "Office"
-msgstr ""
+msgstr "Escritório"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:146
 msgid "System Tools"
-msgstr ""
+msgstr "Ferramentas do Sistema"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
@@ -1352,7 +1361,7 @@ msgstr "bc não está instalado"
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
 msgid "Click to copy result to clipboard"
-msgstr ""
+msgstr "Clique para copiar o resultado para a área de transferência"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
 msgid "Search for and run applications on your computer."
@@ -1406,24 +1415,24 @@ msgstr "Procurar e executar comandos arbitrários."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:88
 msgid "Open the selected directory"
-msgstr ""
+msgstr "Abrir o diretório selecionado"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:200
 msgid "Folder Bookmarks"
-msgstr ""
+msgstr "Pasta de Favoritos"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:201
 msgid "Bookmarked Folders"
-msgstr ""
+msgstr "Pastas adicionadas ao Favoritos"
 
 #. Check for Special Directories
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:219
 msgid "Home"
-msgstr ""
+msgstr "Pasta Pessoal"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:223
 msgid "Recent"
-msgstr ""
+msgstr "Recentes"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
@@ -1671,110 +1680,112 @@ msgstr "Selecionar um diretório"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:134
 msgid "Hotcorners settings"
-msgstr ""
+msgstr "Definições dos cantos ativos"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:195
 #: budgie-hotcorners/applet/src/HotCornersApplet.vala:56
 msgid "Activate hotcorners"
-msgstr ""
+msgstr "Ativar cantos ativos"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:205
 msgid "Corner settings"
-msgstr ""
+msgstr "Definições dos cantos"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:208
 msgid "Click a spot to edit"
-msgstr ""
+msgstr "Clique em um local para editar"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:216
 msgid "General configuration"
-msgstr ""
+msgstr "Configuração geral"
 
 #. Delay section
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:219
 msgid "Delay"
-msgstr ""
+msgstr "Atraso"
 
 #. Pressure section
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:226
 msgid "Pressure"
-msgstr ""
+msgstr "Pressão"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:539
 msgid "Enter a command here"
-msgstr ""
+msgstr "Introduza um comando aqui"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:553
 msgid "Toggle hotcorner on-off"
-msgstr ""
+msgstr "Alternar entre ativar ou desativar canto ativo"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:563
 msgid "Set a custom command"
-msgstr ""
+msgstr "Definir um comando personalizado"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:714
 msgid "Available dropdown items changed"
-msgstr ""
+msgstr "Os itens suspensos disponíveis foram alterados"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:715
 msgid "please restart settingswindow"
-msgstr ""
+msgstr "Por favor reinicie as definições de janela"
 
 #: budgie-hotcorners/misc/entrynames.vala:1
 msgid "Show Desktop"
-msgstr ""
+msgstr "Exibir área de trabalho"
 
 #: budgie-hotcorners/misc/entrynames.vala:2
 msgid "Exposé all windows"
-msgstr ""
+msgstr "Expor todas as janelas"
 
 #: budgie-hotcorners/misc/entrynames.vala:3
 msgid "Exposé current application"
-msgstr ""
+msgstr "Expor a aplicação atual"
 
 #: budgie-hotcorners/misc/entrynames.vala:4
 msgid "Budgie Desktop Settings"
-msgstr ""
+msgstr "Definições do Budgie Desktop"
 
 #: budgie-hotcorners/misc/entrynames.vala:5
 msgid "Lock screen"
-msgstr ""
+msgstr "Bloqueio de tela"
 
 #: budgie-hotcorners/misc/entrynames.vala:6
 msgid "Toggle Shuffler GUI"
-msgstr ""
+msgstr "Alternar GUI do Shuffler"
 
 #: budgie-hotcorners/misc/entrynames.vala:7
 msgid "All windows in grid"
-msgstr ""
+msgstr "Todas as janelas em grade"
 
 #: budgie-hotcorners/misc/entrynames.vala:8
 msgid "Window to topleft"
-msgstr ""
+msgstr "Janela no canto superior esquerdo"
 
 #: budgie-hotcorners/misc/entrynames.vala:9
 msgid "Window to topright"
-msgstr ""
+msgstr "Janela no canto superior direito"
 
 #: budgie-hotcorners/misc/entrynames.vala:10
 msgid "Window to bottomright"
-msgstr ""
+msgstr "Janela no canto inferior direito"
 
 #: budgie-hotcorners/misc/entrynames.vala:11
 msgid "Window to bottomleft"
-msgstr ""
+msgstr "Janela no canto inferior esquerdo"
 
 #: budgie-hotcorners/misc/entrynames.vala:12
 msgid "Toggle Raven - AppletView"
-msgstr ""
+msgstr "Alternar Raven - Vista de Mini-aplicativo"
 
 #: budgie-hotcorners/misc/entrynames.vala:13
 msgid "Toggle Raven - Notifications"
-msgstr ""
+msgstr "Alternar Raven - Notificações"
 
 #: budgie-hotcorners/applet/src/HotCornersApplet.vala:119
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
+"As definições dos cantos ativos também estão disponíveis pelo menu da área "
+"de trabalho"
 
 #. TRANSLATORS: automatic dynamic workspace control
 #: budgie-visualspace/src/visualspace.vala:72
@@ -1789,7 +1800,7 @@ msgstr ""
 
 #: budgie-visualspace/src/visualspace.vala:316
 msgid "Reverse Scroll Direction"
-msgstr ""
+msgstr "Inverter a direção de rolagem"
 
 #. strings
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
@@ -1805,10 +1816,12 @@ msgid ""
 "Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
 " per workspace"
 msgstr ""
+"O alternador de papel de parede da área de trabalho lembra-se "
+"automaticamente qual o papel de parede que foi definido por área de trabalho"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
-msgstr ""
+msgstr "Mini-aplicativo é executado sem um ícone no painel"
 
 #: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:44
 msgid "Connect to Hidden Network…"
@@ -1898,7 +1911,7 @@ msgstr "Rede sem fio"
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractBluetoothInterface.vala:25
 #, c-format
 msgid "%s Network"
-msgstr ""
+msgstr "%sRede"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
@@ -1936,10 +1949,12 @@ msgid ""
 "Adjust Category\n"
 "Spacing"
 msgstr ""
+"Ajustar Categoria\n"
+"Espaçamento"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
 msgid "Place a window in a predefined layout"
-msgstr ""
+msgstr "Colocar uma janela num esquema predefinido"
 
 #: budgie-recentlyused/src/BudgieRecentlyUsed.plugin.in.h:1
 msgid "Show recently used items"
@@ -1967,19 +1982,19 @@ msgstr "Mostrar previsão do tempo"
 
 #: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners.desktop.in.in.h:1
 msgid "Budgie Hotcorners Settings"
-msgstr ""
+msgstr "Definições de cantos ativos Budgie"
 
 #: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners.desktop.in.in.h:2
 msgid "Settings control application for hotcorners"
-msgstr ""
+msgstr "Aplicativo de controle de definições dos cantos ativos"
 
 #: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop.in.in.h:1
 msgid "Budgie Hotcorners"
-msgstr ""
+msgstr "Cantos ativos Budgie"
 
 #: budgie-hotcorners/misc/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop.in.in.h:2
 msgid "Kick starts the budgie-hotcorners process"
-msgstr ""
+msgstr "Inicia o processo de cantos ativos Budgie"
 
 #: budgie-hotcorners/applet/src/HotCorners.plugin.in.h:1
 msgid "Set hotcorner actions"
