@@ -3,7 +3,6 @@ Section: misc
 Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
 Build-Depends:
- libatspi2.0-dev,
  budgie-core-dev,
  cmake,
  debhelper (>= 13),
@@ -14,7 +13,7 @@ Build-Depends:
  intltool,
  libappstream-dev,
  libbudgie-plugin0,
- libgdk-pixbuf2.0-dev,
+ libgdk-pixbuf-2.0-dev,
  libgee-0.8-dev,
  libglib2.0-dev (>= 2.56),
  libgnome-desktop-3-dev,
@@ -28,15 +27,15 @@ Build-Depends:
  libnotify-dev,
  libpeas-dev,
  libplank-dev,
- libwnck-3-dev,
  libsoup-3.0-dev,
+ libwnck-3-dev,
  meson,
- pkg-config,
+ pkgconf,
  pycodestyle,
  python3,
  valac,
  appstream
-Standards-Version: 4.5.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-extras/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-extras -b debian
@@ -52,6 +51,7 @@ Depends:
  gir1.2-peas-1.0,
  python3,
  python3-gi,
+ gnome-menus,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to provide an alternative means to launch applications
@@ -66,6 +66,7 @@ Description: Applet to provide an alternative means to launch applications
 Package: budgie-applications-menu-applet
 Architecture: any
 Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
+Recommends: switcheroo-control
 Description: Stylish Applications Menu for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -118,7 +119,6 @@ Description: Applet to display clock across multiple time zones
 Package: budgie-countdown-applet
 Architecture: all
 Depends:
- dconf-cli,
  gir1.2-budgie-1.0,
  gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
@@ -148,6 +148,7 @@ Depends:
  gir1.2-glib-2.0,
  gir1.2-gtk-3.0,
  gir1.2-peas-1.0,
+ gir1.2-wnck-3.0,
  python3,
  python3-gi,
  python3-psutil,
@@ -155,6 +156,7 @@ Depends:
  util-linux (>= 2.31.1),
  wmctrl,
  zenity,
+ libnotify-bin,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to popup when a USB device is connected
@@ -207,7 +209,6 @@ Package: budgie-hotcorners-applet
 Architecture: any
 Depends:
  budgie-extras-common,
- dconf-cli,
  gnome-screensaver,
  libnotify-bin,
  xdotool,
@@ -287,8 +288,6 @@ Depends:
  xprintidle,
  ${misc:Depends},
  ${shlibs:Depends},
-Replaces: budgie-preview-applet (<< 0.4.6~)
-Breaks: budgie-previews-applet (<< 0.4.6~)
 Description: Provides window previews capabilities for the Budgie Desktop
  This is part of a suite of python3 and Vala based applets & mini-apps
  created for the Budgie Desktop that provide additional user orientated
@@ -297,13 +296,6 @@ Description: Provides window previews capabilities for the Budgie Desktop
  budgie-previews can be used on most desktop environments.
  .
  Previews shows an overview of windows in an expose like way.
-
-Package: budgie-previews-applet
-Architecture: all
-Section: oldlibs
-Depends: budgie-previews, ${misc:Depends}
-Description: transitional package
- This is a transitional package. It can safely be removed.
 
 Package: budgie-quickchar
 Architecture: all
@@ -373,7 +365,7 @@ Description: Applet to lock or unlock the screen rotation
 
 Package: budgie-showtime-applet
 Architecture: any
-Depends: budgie-extras-common, dconf-cli, ${misc:Depends}, ${shlibs:Depends}
+Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
 Description: Applet displaying date and time on the Budgie Desktop
  This is part of a suite of python3 and Vala based applets for the Budgie
  Desktop that provide additional user orientated capabilities.
@@ -394,6 +386,7 @@ Depends:
  python3-gi,
  x11-xserver-utils,
  xprintidle,
+ libnotify-bin,
  ${misc:Depends},
  ${python3:Depends},
 Description: Applet to prompt when to take-a-break for a set period of time
@@ -406,16 +399,11 @@ Description: Applet to prompt when to take-a-break for a set period of time
  from working.
 
 Package: budgie-trash-applet
-Architecture: any
-Depends: budgie-extras-common, ${misc:Depends}, ${shlibs:Depends}
-Description: Applet allows access to trash capabilities for the Budgie Desktop
- This is part of a suite of python3 and Vala based applets for the Budgie
- Desktop that provide additional user orientated capabilities.
- The applets can be used individually or as a set.
- .
- The trash applet allows the user access the desktop trash capabilities
- from the panel including the ability to delete and restore files stored
- in the trash folder.
+Architecture: all
+Section: oldlibs
+Depends: ${misc:Depends}
+Description: transitional package
+ This is a transitional package. It can safely be removed.
 
 Package: budgie-visualspace-applet
 Architecture: any
@@ -445,7 +433,6 @@ Package: budgie-weathershow-applet
 Architecture: any
 Depends:
  budgie-extras-common,
- dconf-cli,
  procps,
  ${misc:Depends},
  ${shlibs:Depends},
