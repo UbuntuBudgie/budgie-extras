@@ -164,15 +164,14 @@ namespace Layouts {
 
             switch (layout_name) {
                 case "ubuntubudgie": {
-                    start_plank(true);
+                    // no customisations needed
                     break;
                 }
                 case "classicubuntubudgie": {
-                    start_plank(true);
+                    // no customisations needed
                     break;
                 }
                 case "cupertino": {
-                    start_plank(true);
                     appmenu_powerstrip(true);
                     appmenu_categoryview(true);
                     leftside_buttons();

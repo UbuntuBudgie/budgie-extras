@@ -1,5 +1,5 @@
 [Panels]
-Panels=Top Panel
+Panels=Top Panel;Bottom Panel
 
 [Top Panel]
 Children=Budgie Menu;Spacer 1;ShowTime;Clock;AppIndicator;Tray;DropBy;QuickNote;Spacer 2;Night;Places;Notifications;Status;Separator;Spacer 3;User Indicator;Raven Trigger;
@@ -70,3 +70,17 @@ Alignment=end
 [Raven Trigger]
 ID=Raven Trigger
 Alignment=end
+
+[Bottom Panel]
+Children=Icon Task List;
+Position=Bottom
+Size=50
+Transparency=always
+Autohide=intelligent
+Shadow=false
+Spacing=2
+Dock=true
+
+[Icon Task List]
+ID=Icon Task List
+Alignment=start
