@@ -15,10 +15,12 @@ import gi.repository
 gi.require_version('Gtk', '3.0')
 gi.require_version('GMenu', '3.0')
 gi.require_version('Budgie', '1.0')
+gi.require_version('Libxfce4windowing', '0.0')
 from gi.repository import Budgie
 from gi.repository import GMenu
 from gi.repository import Gtk
 from gi.repository import Gdk
+from gi.repository import Libxfce4windowing
 from AppButton import AppButton
 from PanelButton import PanelButton
 from ArrowButton import ArrowButton
@@ -102,9 +104,15 @@ class AppLauncherApplet(Budgie.Applet):
 
     def buildPopover(self):
         self.popover = Budgie.Popover.new(self.indicatorBox)
-        self.popover.set_default_size(self.popoverWidth, self.popoverHeight)
-        self.popover.get_child().show_all()
-        self.show_all()
+        if Libxfce4windowing.windowing_get() == \
+                Libxfce4windowing.Windowing.WAYLAND:
+            self.popover.set_size_request(self.popoverWidth,
+                                          self.popoverHeight)
+        else:
+            self.popover.set_default_size(self.popoverWidth,
+                                          self.popoverHeight)
+            self.popover.get_child().show_all()
+            self.show_all()
 
     def buildStack(self):
         self.stack = Gtk.Stack()
