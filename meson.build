@@ -233,7 +233,7 @@ if for_wayland == false and (build_recommended == true or build_visualspace == t
 endif
 
 build_wallstreet = get_option('build-wallstreet')
-if for_wayland == false and (build_recommended == true or build_wallstreet == true)
+if build_recommended == true or build_wallstreet == true
 	subdir('budgie-wallstreet')
 endif
 
