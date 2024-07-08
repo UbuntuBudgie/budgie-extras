@@ -33,7 +33,6 @@ if libhandy_dep.found()
 else
     libhandy_dep = dependency('libhandy-0.0')
 endif
-budgie_dep = dependency('budgie-1.0')
 peas_dep = dependency('libpeas-gtk-1.0')
 plank_dep = dependency('plank', required: false)
 if plank_dep.version().version_compare('>=0.10.9')
