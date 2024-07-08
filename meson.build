@@ -62,6 +62,9 @@ endif
 conf.set_quoted('PACKAGE_BINDIR', bindir)
 conf.set_quoted('PACKAGE_SHAREDIR', datadir)
 
+for_wayland = get_option('for-wayland')
+
+
 SHUFFLER = 'budgie-window-shuffler'
 conf.set_quoted('SHUFFLER_DIR', join_paths(libdir, SHUFFLER))
 
@@ -115,7 +118,7 @@ if build_recommended == true or build_applications_menu == true
 endif
 
 build_wswitcher = get_option('build-wswitcher')
-if build_recommended == true or build_wswitcher == true
+if for_wayland == false and (build_recommended == true or build_wswitcher == true)
 	subdir('budgie-wswitcher')
 endif
 
@@ -125,12 +128,12 @@ if build_recommended == true or build_hotcorners == true
 endif
 
 build_wpreviews = get_option('build-wpreviews')
-if build_recommended == true or build_wpreviews == true
+if for_wayland == false and (build_recommended == true or build_wpreviews == true)
   subdir('budgie-wpreviews')
 endif
 
 build_quicknote = get_option('build-quicknote')
-if build_recommended == true or build_quicknote == true
+if for_wayland == false and (build_recommended == true or build_quicknote == true)
 	subdir('budgie-quicknote')
 endif
 
@@ -160,7 +163,7 @@ if build_recommended == true or build_rotation_lock == true
 endif
 
 build_dropby = get_option('build-dropby')
-if build_recommended == true or build_dropby == true
+if for_wayland == false and (build_recommended == true or build_dropby == true)
 	subdir('budgie-dropby')
 endif
 
@@ -200,12 +203,12 @@ if build_recommended == true or build_extrasdaemon == true
 endif
 
 build_workspacestopwatch = get_option('build-workspacestopwatch')
-if build_recommended == true or build_workspacestopwatch == true
+if for_wayland == false and (build_recommended == true or build_workspacestopwatch == true)
 	subdir('budgie-workspace-stopwatch')
 endif
 
 build_quickchar = get_option('build-quickchar')
-if build_recommended == true or build_quickchar == true
+if for_wayland == false and (build_recommended == true or build_quickchar == true)
 	subdir('budgie-quickchar')
 endif
 
@@ -220,7 +223,7 @@ if build_recommended == true or build_brightness_controller == true
 endif
 
 build_visualspace = get_option('build-visualspace')
-if build_recommended == true or build_visualspace == true
+if for_wayland == false and (build_recommended == true or build_visualspace == true)
 	subdir('budgie-visualspace')
 endif
 
@@ -235,7 +238,7 @@ if build_recommended == true or build_network_manager == true
 endif
 
 build_window_shuffler = get_option('build-window-shuffler')
-if build_recommended == true or build_window_shuffler == true
+if for_wayland == false and (build_recommended == true or build_window_shuffler == true)
 	subdir('budgie-window-shuffler')
 endif
 
