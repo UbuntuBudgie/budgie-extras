@@ -15,7 +15,7 @@ applet_quicknote_sources = [
 
 applet_quicknote_deps = [
 dependency('gtk+-3.0'),
-dependency('budgie-1.0'),
+budgie_dep,
 dependency('gio-2.0'),
 dependency('gdk-3.0'),
 dependency('libpeas-gtk-1.0'),

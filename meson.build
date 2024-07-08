@@ -64,6 +64,11 @@ conf.set_quoted('PACKAGE_SHAREDIR', datadir)
 
 for_wayland = get_option('for-wayland')
 
+if for_wayland == false
+	budgie_dep = dependency('budgie-1.0')
+else
+	budgie_dep = dependency('budgie-2.0')
+endif
 
 SHUFFLER = 'budgie-window-shuffler'
 conf.set_quoted('SHUFFLER_DIR', join_paths(libdir, SHUFFLER))
@@ -123,7 +128,7 @@ if for_wayland == false and (build_recommended == true or build_wswitcher == tru
 endif
 
 build_hotcorners = get_option('build-hotcorners')
-if build_recommended == true or build_hotcorners == true
+if for_wayland == false and (build_recommended == true or build_hotcorners == true)
 	subdir('budgie-hotcorners')
 endif
 
@@ -133,32 +138,32 @@ if for_wayland == false and (build_recommended == true or build_wpreviews == tru
 endif
 
 build_quicknote = get_option('build-quicknote')
-if for_wayland == false and (build_recommended == true or build_quicknote == true)
+if build_recommended == true or build_quicknote == true
 	subdir('budgie-quicknote')
 endif
 
 build_showtime = get_option('build-showtime')
-if build_recommended == true or build_showtime == true
+if for_wayland == false and (build_recommended == true or build_showtime == true)
 	subdir('budgie-showtime')
 endif
 
 build_countdown = get_option('build-countdown')
-if build_recommended == true or build_countdown == true
+if for_wayland == false and (build_recommended == true or build_countdown == true)
 	subdir('budgie-countdown')
 endif
 
 build_clockworks = get_option('build-clockworks')
-if build_recommended == true or build_clockworks == true
+if for_wayland == false and (build_recommended == true or build_clockworks == true)
 	subdir('budgie-clockworks')
 endif
 
 build_keyboard_autoswitch = get_option('build-keyboard-autoswitch')
-if build_recommended == true or build_keyboard_autoswitch == true
+if for_wayland == false and (build_recommended == true or build_keyboard_autoswitch == true)
 	subdir('budgie-keyboard-autoswitch')
 endif
 
 build_rotation_lock = get_option('build-rotation-lock')
-if build_recommended == true or build_rotation_lock == true
+if for_wayland == false and (build_recommended == true or build_rotation_lock == true)
 	subdir('budgie-rotation-lock')
 endif
 
@@ -168,12 +173,12 @@ if for_wayland == false and (build_recommended == true or build_dropby == true)
 endif
 
 build_kangaroo = get_option('build-kangaroo')
-if build_recommended == true or build_kangaroo == true
+if for_wayland == false and (build_recommended == true or build_kangaroo == true)
 	subdir('budgie-kangaroo')
 endif
 
 build_weathershow = get_option('build-weathershow')
-if build_recommended == true or build_weathershow == true
+if for_wayland == false and (build_recommended == true or build_weathershow == true)
 	subdir('budgie-weathershow')
 endif
 
@@ -188,17 +193,17 @@ if build_recommended == true or build_app_launcher == true
 endif
 
 build_recentlyused = get_option('build-recentlyused')
-if build_recommended == true or build_recentlyused == true
+if for_wayland == false and (build_recommended == true or build_recentlyused == true)
 	subdir('budgie-recentlyused')
 endif
 
 build_takeabreak = get_option('build-takeabreak')
-if build_recommended == true or build_takeabreak == true
+if for_wayland == false and (build_recommended == true or build_takeabreak == true)
 	subdir('budgie-takeabreak')
 endif
 
 build_extrasdaemon = get_option('build-extrasdaemon')
-if build_recommended == true or build_extrasdaemon == true
+if for_wayland == false and (build_recommended == true or build_extrasdaemon == true)
 	subdir('budgie-extras-daemon')
 endif
 
@@ -213,12 +218,12 @@ if for_wayland == false and (build_recommended == true or build_quickchar == tru
 endif
 
 build_fuzzyclock = get_option('build-fuzzyclock')
-if build_recommended == true or build_fuzzyclock == true
+if for_wayland == false and (build_recommended == true or build_fuzzyclock == true)
 	subdir('budgie-fuzzyclock')
 endif
 
 build_brightness_controller = get_option('build-brightness-controller')
-if build_recommended == true or build_brightness_controller == true
+if for_wayland == false and (build_recommended == true or build_brightness_controller == true)
 	subdir('budgie-brightness-controller')
 endif
 
@@ -228,12 +233,12 @@ if for_wayland == false and (build_recommended == true or build_visualspace == t
 endif
 
 build_wallstreet = get_option('build-wallstreet')
-if build_recommended == true or build_wallstreet == true
+if for_wayland == false and (build_recommended == true or build_wallstreet == true)
 	subdir('budgie-wallstreet')
 endif
 
 build_network_manager = get_option('build-network-manager')
-if build_recommended == true or build_network_manager == true
+if for_wayland == false and (build_recommended == true or build_network_manager == true)
 	subdir('budgie-network-manager')
 endif
 

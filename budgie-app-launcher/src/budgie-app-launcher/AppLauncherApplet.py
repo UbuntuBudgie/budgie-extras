@@ -14,13 +14,17 @@ import gi.repository
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('GMenu', '3.0')
-gi.require_version('Budgie', '1.0')
 gi.require_version('Libxfce4windowing', '0.0')
+if Libxfce4windowing.windowing_get() == \
+                Libxfce4windowing.Windowing.WAYLAND:
+    gi.require_version('Budgie', '2.0')
+else:
+    gi.require_version('Budgie', '1.0')
+from gi.repository import Libxfce4windowing
 from gi.repository import Budgie
 from gi.repository import GMenu
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import Libxfce4windowing
 from AppButton import AppButton
 from PanelButton import PanelButton
 from ArrowButton import ArrowButton
