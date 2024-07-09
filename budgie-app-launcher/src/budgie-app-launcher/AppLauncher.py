@@ -12,7 +12,12 @@
 
 import gi.repository
 
-gi.require_version('Budgie', '1.0')
+gi.require_version('Libxfce4windowing', '0.0')
+from gi.repository import Libxfce4windowing
+if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+    gi.require_version('Budgie', '2.0')
+else:
+    gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie
 from gi.repository import GObject
 from AppLauncherApplet import AppLauncherApplet
