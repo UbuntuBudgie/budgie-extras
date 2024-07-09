@@ -218,7 +218,7 @@ if for_wayland == false and (build_recommended == true or build_quickchar == tru
 endif
 
 build_fuzzyclock = get_option('build-fuzzyclock')
-if for_wayland == false and (build_recommended == true or build_fuzzyclock == true)
+if build_recommended == true or build_fuzzyclock == true
 	subdir('budgie-fuzzyclock')
 endif
 
