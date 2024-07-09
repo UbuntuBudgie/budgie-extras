@@ -238,7 +238,7 @@ if build_recommended == true or build_wallstreet == true
 endif
 
 build_network_manager = get_option('build-network-manager')
-if for_wayland == false and (build_recommended == true or build_network_manager == true)
+if build_recommended == true or build_network_manager == true
 	subdir('budgie-network-manager')
 endif
 
