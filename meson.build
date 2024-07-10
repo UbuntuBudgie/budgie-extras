@@ -173,7 +173,7 @@ if for_wayland == false and (build_recommended == true or build_dropby == true)
 endif
 
 build_kangaroo = get_option('build-kangaroo')
-if for_wayland == false and (build_recommended == true or build_kangaroo == true)
+if build_recommended == true or build_kangaroo == true
 	subdir('budgie-kangaroo')
 endif
 
