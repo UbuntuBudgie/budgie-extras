@@ -153,7 +153,7 @@ if for_wayland == false and (build_recommended == true or build_countdown == tru
 endif
 
 build_clockworks = get_option('build-clockworks')
-if for_wayland == false and (build_recommended == true or build_clockworks == true)
+if build_recommended == true or build_clockworks == true
 	subdir('budgie-clockworks')
 endif
 
