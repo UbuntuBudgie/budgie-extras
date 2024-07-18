@@ -155,6 +155,7 @@ class KangarooApplet(Budgie.Applet):
         self.menu.connect("button-press-event", self.open_onthree)
         box = Gtk.EventBox()
         self.add(box)
+        self.menu.attach_to_widget(box)
         icon = Gtk.Image.new_from_icon_name(
             "budgie-foldertrack-symbolic", Gtk.IconSize.MENU
         )
