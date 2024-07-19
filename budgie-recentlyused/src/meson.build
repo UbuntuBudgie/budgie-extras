@@ -11,7 +11,7 @@ BudgieRecentlyUsedSources = [
 
 BudgieRecentlyUsedDependencies = [
 dependency('gtk+-3.0'),
-dependency('budgie-1.0'),
+budgie_dep,
 dependency('libpeas-gtk-1.0'),
 dependency('gee-0.8'),
 meson.get_compiler('c').find_library('m', required: false)

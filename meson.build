@@ -193,7 +193,7 @@ if build_recommended == true or build_app_launcher == true
 endif
 
 build_recentlyused = get_option('build-recentlyused')
-if for_wayland == false and (build_recommended == true or build_recentlyused == true)
+if build_recommended == true or build_recentlyused == true
 	subdir('budgie-recentlyused')
 endif
 
