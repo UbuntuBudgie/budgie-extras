@@ -510,7 +510,7 @@ namespace  ShowTime {
         win_name = "Showtime";
         if (args.length == 5) {
             subwindow = true;
-            win_name = "Showtime_".concat(args[1]);
+            win_name = "Showtime_".concat(args[2]);
             custom_posargs = {int.parse(args[3]), int.parse(args[4])};
         }
         new TimeWindow(uuid);
