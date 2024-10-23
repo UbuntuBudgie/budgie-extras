@@ -244,6 +244,9 @@ public class DesktopWeather : Gtk.Window {
                     weatherlines[0]
                 ).concat(weatherlines[1]);
                 int ic_index = get_stringindex(newicon, iconnames);
+                if (ic_index < 0 || ic_index > currimages.length - 1) {
+                    ic_index = get_stringindex("erro", iconnames);
+                };
                 weather_image.set_from_pixbuf(currimages[ic_index]);
                 int n_lines = weatherlines.length;
                 string weathersection = string.joinv("\n", weatherlines[3:n_lines]);
