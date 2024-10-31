@@ -223,7 +223,8 @@ if build_recommended == true or build_fuzzyclock == true
 endif
 
 build_brightness_controller = get_option('build-brightness-controller')
-if for_wayland == false and (build_recommended == true or build_brightness_controller == true)
+#if for_wayland == false and (build_recommended == true or build_brightness_controller == true)
+if build_recommended == true or build_brightness_controller == true
 	subdir('budgie-brightness-controller')
 endif
 

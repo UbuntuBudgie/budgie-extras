@@ -40,7 +40,7 @@ if DEPENDENCY_GNOME_SETTINGS_DAEMON.version().version_compare('<3.32.0')
     BudgieWmStatusValaArgs += ['-D', 'HAVE_GNOME_SETTINGS_DAEMON_OLDER_THAN_3_32_0']
 endif
 
-if DEPENDENCY_XRANDR.version().version_compare('>=1.5.0')
+if for_wayland == false and DEPENDENCY_XRANDR.version().version_compare('>=1.5.0')
     BudgieWmStatusValaArgs += ['-D', 'HAVE_XRANDR_1_5_0']
 endif
 
