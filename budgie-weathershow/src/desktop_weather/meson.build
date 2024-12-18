@@ -14,10 +14,23 @@ dependency('gtk+-3.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
+budgie_display_vala_args = []
+if for_wayland == true
+    dep_wayland = [
+        dependency('gtk-layer-shell-0'),
+        dependency('libxfce4windowing-0', version: '>= 4.19.7'),
+    ]
+    budgie_display_vala_args += ['-D', 'FOR_WAYLAND']
+    DesktopWeatherDependencies += dep_wayland
+else
+    budgie_display_vala_args += ['-D', 'FOR_X11']
+endif
+
 DesktopWeatherValaArgs = [
 '--pkg=config',
 '--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
+budgie_display_vala_args,
 ]
 
 #DesktopWeatherCArgs = [
