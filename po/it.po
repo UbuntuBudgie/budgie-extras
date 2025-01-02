@@ -193,28 +193,28 @@ msgstr "obbligatorio"
 #: budgie-window-shuffler/src/shuffler_control.vala:412
 #: budgie-window-shuffler/src/layouts_popup.vala:607
 msgid "Grid size - columns"
-msgstr "Dimensione griglia - colonne"
+msgstr "Dimensioni layout - colonne"
 
 #. This is a tooltip, string length is not particularly critical
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:414
 #: budgie-window-shuffler/src/layouts_popup.vala:609
 msgid "Grid size - rows"
-msgstr "Dimensione griglia - righe"
+msgstr "Dimensioni layout - righe"
 
 #. This is a tooltip, string length is not particularly critical
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:416
 #: budgie-window-shuffler/src/layouts_popup.vala:611
 msgid "Window target position on grid - horizontally"
-msgstr "Destinazione della finestra sulla griglia - orizzontale"
+msgstr "Posizione di destinazione nel layout - orizzontale"
 
 #. This is a tooltip, string length is not particularly critical
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:418
 #: budgie-window-shuffler/src/layouts_popup.vala:613
 msgid "Window target position on grid - vertically"
-msgstr "Destinazione della finestra sulla griglia - verticale"
+msgstr "Posizione di destinazione nel layout - verticale"
 
 #. This is a tooltip, string length is not particularly critical
 #. tooltip, so string length is not particularly critical
@@ -281,7 +281,7 @@ msgstr "Posizione e dimensioni della finestra"
 #: budgie-window-shuffler/src/shuffler_control.vala:478
 #: budgie-window-shuffler/src/layouts_popup.vala:694
 msgid "Grid size; columns & rows"
-msgstr "Dimensioni della griglia: colonne / righe"
+msgstr "Dimensioni del layout: colonne / righe"
 
 #. window position
 #. This is a field label, should be short
@@ -377,7 +377,7 @@ msgstr "Applicazione"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:877
 msgid "Grid"
-msgstr "Griglia"
+msgstr "Layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:878
 msgid "Span"
@@ -516,11 +516,11 @@ msgstr "Alterna massimizza"
 #. Adavenced tiling settings section header
 #: budgie-window-shuffler/src/shuffler_control.vala:1166
 msgid "Resizing & moving windows in a custom grid"
-msgstr "Inserimento finestre in una griglia personalizzata"
+msgstr "Inserimento finestre in un layout personalizzato"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1177
 msgid "Grid size"
-msgstr "Dimensione della griglia"
+msgstr "Dimensione del layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1180
 msgid "Columns"
@@ -555,15 +555,15 @@ msgstr "Notifica dimensione inadeguata della finestra"
 #. guigrid
 #: budgie-window-shuffler/src/shuffler_control.vala:1225
 msgid "Enable GUI grid"
-msgstr "Abilita griglia"
+msgstr "Abilita vista layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1232
 msgid "GUI grid shortcuts"
-msgstr "Scorciatoie griglia"
+msgstr "Scorciatoie vista layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1237
 msgid "Toggle GUI grid"
-msgstr "Alterna griglia"
+msgstr "Alterna vista layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1237
 msgid "Add a column"
@@ -673,7 +673,7 @@ msgstr "Aggiungi nuova regola"
 #. this is about the area which shuffler can use for tiling
 #: budgie-window-shuffler/src/shuffler_control.vala:1457
 msgid "Margins between virtual grid and screen edges"
-msgstr "Margini tra griglia virtuale e bordi dello schermo"
+msgstr "Distanziamento del layout dai bordi schermo"
 
 #. top margin
 #: budgie-window-shuffler/src/shuffler_control.vala:1477
@@ -683,7 +683,7 @@ msgstr "Margine superiore"
 #. left/right margin
 #: budgie-window-shuffler/src/shuffler_control.vala:1481
 msgid "Left & right margins"
-msgstr "Margini sinistro e destro"
+msgstr "Margine sinistro e destro"
 
 #. bottom margin
 #: budgie-window-shuffler/src/shuffler_control.vala:1486
@@ -693,12 +693,12 @@ msgstr "Margine inferiore"
 #. padding header
 #: budgie-window-shuffler/src/shuffler_control.vala:1493
 msgid "Padding"
-msgstr "Bordatura"
+msgstr "Distanziamento interno"
 
 #. padding
 #: budgie-window-shuffler/src/shuffler_control.vala:1498
 msgid "Window padding"
-msgstr "Bordatura finestra"
+msgstr "Margine finestra"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1507
 msgid "Animation"
@@ -726,13 +726,11 @@ msgstr "Mostra pop-up al passaggio (senza cliccare)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1867
 msgid "Synchronize grid size"
-msgstr "Sincronizza dimensioni griglia"
+msgstr "Sincronizza dimensioni layout"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1874
 msgid "Update grid size for moving & resizing to latest picked layout"
-msgstr ""
-"Aggiorna le dimensioni della griglia per lo spostamento e il "
-"ridimensionamento all'ultimo layout selezionato "
+msgstr "Aggiorna dimensioni layout per adattarlo all'ultimo selezionato"
 
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
@@ -753,7 +751,7 @@ msgstr "Aggiungi nuovo"
 #. 2. NEW LAYOUTS GRID
 #: budgie-window-shuffler/src/layouts_popup.vala:207
 msgid "New layout"
-msgstr "Nuova disposizione"
+msgstr "Nuovo layout"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:219
 msgid "Create"
@@ -762,12 +760,12 @@ msgstr "Crea"
 #. 3. EDIT LAYOUT GRID
 #: budgie-window-shuffler/src/layouts_popup.vala:227
 msgid "Edit layout"
-msgstr "Modifica disposizione"
+msgstr "Modifica layout"
 
 #. stackgrid_editlayout = new Grid();
 #: budgie-window-shuffler/src/layouts_popup.vala:234
 msgid "Layout name"
-msgstr "Nome della disposizione"
+msgstr "Nome del layout"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:248
 msgid "Window tasks"
@@ -854,7 +852,7 @@ msgstr "Alterna posizione e dimensioni delle ultime due finestre selezionate."
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:436
 msgid "Shuffle remaining windows to the layout"
-msgstr "Riordina le finestre rimanenti nella griglia"
+msgstr "Riordina le finestre rimanenti nel layout"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.vala:437
 msgid "Toggle mode"
@@ -1253,7 +1251,7 @@ msgstr "Nessun risultato per \"%s\""
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
 msgid "View as Grid"
-msgstr "Visualizza come griglia"
+msgstr "Visualizza come layout"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
 msgid "View by Category"
@@ -1747,7 +1745,7 @@ msgstr "Attiva/disattiva la vista di Shuffler"
 
 #: budgie-hotcorners/misc/entrynames.vala:7
 msgid "All windows in grid"
-msgstr "Tutte le finestre in griglia"
+msgstr "Tutte le finestre nel layout"
 
 #: budgie-hotcorners/misc/entrynames.vala:8
 msgid "Window to topleft"
@@ -1908,12 +1906,12 @@ msgstr "Icona menu"
 #. Number of rows for the grid of icons
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:3
 msgid "Grid Rows"
-msgstr "Righe griglia"
+msgstr "Righe layout"
 
 #. Number of columns for the grid of icons
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:5
 msgid "Grid Columns"
-msgstr "Colonne griglia"
+msgstr "Colonne layout"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:6
 msgid "Show Menu Label"
