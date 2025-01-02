@@ -180,7 +180,7 @@ msgstr "Non impostato"
 #: budgie-window-shuffler/src/shuffler_control.vala:408
 #: budgie-window-shuffler/src/layouts_popup.vala:601
 msgid "Window class of the window to be launched"
-msgstr "Classe di appartenenza della finestra da avviare"
+msgstr "Titolo della finestra da avviare"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:409
 #: budgie-window-shuffler/src/layouts_popup.vala:598
@@ -258,14 +258,14 @@ msgstr "Applicazione"
 #: budgie-window-shuffler/src/shuffler_control.vala:445
 #: budgie-window-shuffler/src/layouts_popup.vala:663
 msgid "WM class group"
-msgstr "Gruppo WM-class"
+msgstr "Gruppo WM"
 
 #. Placeholder text
 #. this is a placeholder text
 #: budgie-window-shuffler/src/shuffler_control.vala:459
 #: budgie-window-shuffler/src/layouts_popup.vala:669
 msgid "Click a window to fetch WM-class"
-msgstr "Fare clic su una finestra per identificare WM-class"
+msgstr "Clicca una finestra per identificare..."
 
 #. 2. GEOMETRY FRAME
 #. This is a Frame title, string length is not particularly critical
@@ -281,7 +281,7 @@ msgstr "Posizione e dimensioni della finestra"
 #: budgie-window-shuffler/src/shuffler_control.vala:478
 #: budgie-window-shuffler/src/layouts_popup.vala:694
 msgid "Grid size; columns & rows"
-msgstr "Dimensioni della griglia; colonne e righe"
+msgstr "Dimensioni della griglia: colonne / righe"
 
 #. window position
 #. This is a field label, should be short
@@ -289,7 +289,7 @@ msgstr "Dimensioni della griglia; colonne e righe"
 #: budgie-window-shuffler/src/shuffler_control.vala:496
 #: budgie-window-shuffler/src/layouts_popup.vala:712
 msgid "Target window position, x / y"
-msgstr "Posizione della finestra di destinazione, x / y"
+msgstr "Posizione della finestra: x / y"
 
 #. window span
 #. This is a field label, should be short
@@ -297,7 +297,7 @@ msgstr "Posizione della finestra di destinazione, x / y"
 #: budgie-window-shuffler/src/shuffler_control.vala:513
 #: budgie-window-shuffler/src/layouts_popup.vala:728
 msgid "Window cell span, hor / vert"
-msgstr "Finestra cella span, orizz / vert "
+msgstr "Cella di destinazione: orizz / vert "
 
 #. Frame title, string length is not particularly critical
 #. Settings category label, should be as short as possible
@@ -307,7 +307,7 @@ msgstr "Finestra cella span, orizz / vert "
 #: budgie-window-shuffler/src/layouts_popup.vala:745
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:246
 msgid "Miscellaneous"
-msgstr "Miscellanea"
+msgstr "Varie"
 
 #. target monitor
 #. Field label, should be short
@@ -355,17 +355,17 @@ msgstr "Controllo Finestra Shuffler"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:753
 msgid "Replace window-rule"
-msgstr "Sostituisci la regola per la finestra"
+msgstr "Sostituisci regola finestra"
 
 #. when creating new file, but name exists
 #: budgie-window-shuffler/src/shuffler_control.vala:755
 msgid "Save changes to window-rule"
-msgstr "Salva la regola per la finestra"
+msgstr "Salva regola finestra"
 
 #. 2. if so, if wm entry, thus filename changes:
 #: budgie-window-shuffler/src/shuffler_control.vala:765
 msgid "Save changes to renamed window-rule"
-msgstr "Salva i cambiamenti per la regola rinominata"
+msgstr "Salva cambiamenti alla regola rinominata"
 
 #. update ruleslist
 #. headers
@@ -373,7 +373,7 @@ msgstr "Salva i cambiamenti per la regola rinominata"
 #. possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
-msgstr "WM-class"
+msgstr "Gruppo WM"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:877
 msgid "Grid"
@@ -381,7 +381,7 @@ msgstr "Griglia"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:878
 msgid "Span"
-msgstr "Span"
+msgstr "Cella"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:879
 msgid "Display"
@@ -428,7 +428,7 @@ msgstr "Preimpostazioni automatiche di finestre e applicazioni"
 #: budgie-window-shuffler/src/shuffler_control.vala:1058
 #: budgie-window-shuffler/src/shuffler_control.vala:1405
 msgid "Window rules"
-msgstr "Regole finestra"
+msgstr "Regole finestre"
 
 #. tooltip, string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:1060
@@ -714,19 +714,19 @@ msgstr "Usa animazione"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1847
 msgid "Applet settings"
-msgstr "Impostazioni applet"
+msgstr "Impostazioni Applet"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1851
 msgid "Applet popover content"
-msgstr "Contenuto popover dell'applet"
+msgstr "Impostazioni Pop-up"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1859
 msgid "Show popover on hover (without click)"
-msgstr "Mostra popover al passaggio del mouse (senza clic)"
+msgstr "Mostra pop-up al passaggio (senza cliccare)"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1867
 msgid "Synchronize grid size"
-msgstr "Sincronizza la dimensione della griglia"
+msgstr "Sincronizza dimensioni griglia"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1874
 msgid "Update grid size for moving & resizing to latest picked layout"
@@ -738,7 +738,7 @@ msgstr ""
 #. / layout in the applet's popover
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
-msgstr "Dimensioni anteprima layout (larghezza in px) "
+msgstr "Dimensioni pop-up (larghezza in px) "
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1896
 msgid "The applet needs to be on the panel to see the changes"
@@ -1470,11 +1470,11 @@ msgstr "Imposta icona"
 
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
-msgstr "Rimuovi il plugin luminosità dall'avvio automatico"
+msgstr "Disabilita avvio automatico di Gnome color plugin"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
-msgstr "Scuro"
+msgstr "Oscura"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:89
 #: budgie-brightness-controller/src/widgets/Popover.vala:151
@@ -1487,7 +1487,7 @@ msgstr "Temperatura"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:149
 msgid "Light"
-msgstr "Luce"
+msgstr "Illumina"
 
 #: budgie-quicknote/QuickNoteApplet.vala:47
 msgid "Welcome to QuickNote."
@@ -1958,7 +1958,7 @@ msgstr "Menu applicazioni Stylish Desktop"
 
 #: budgie-brightness-controller/src/brightnesscontroller.plugin.in.h:1
 msgid "Brightness Controller"
-msgstr "Controllo luminosità"
+msgstr "Controllo Luminosità"
 
 #: budgie-quicknote/QuickNoteApplet.plugin.in.h:1
 msgid "Quick & Easy Notes"
