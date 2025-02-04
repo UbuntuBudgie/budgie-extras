@@ -1,26 +1,40 @@
+# #-#-#-#-#  oc.po (budgie-extras 10.4)  #-#-#-#-#
+# #-#-#-#-#  oc.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
-# david mohammed <foss.freedom@gmail.com>, 2021
-# Quentin PAGÈS, 2023
-# 
+# david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2021
+# Quentin PAGÈS, 2024
+#
+# #-#-#-#-#  oc.po (network-indicator)  #-#-#-#-#
+# Occitan translations for network-indicator package.
+# Copyright (C) 2018 THE network-indicator'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the network-indicator package.
+# Automatically generated, 2018.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: network-indicator\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Quentin PAGÈS, 2023\n"
-"Language-Team: Occitan (post 1500) (https://app.transifex.com/ubuntu-budgie/teams/72251/oc/)\n"
+"PO-Revision-Date: 2018-05-02 11:10-0700\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: oc\n"
+"#-#-#-#-#  oc.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"#-#-#-#-#  oc.po (budgie-extras 10.4)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  oc.po  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+"#-#-#-#-#  oc.po (network-indicator)  #-#-#-#-#\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -336,11 +350,15 @@ msgstr "Acabat"
 msgid "Cancel"
 msgstr "Anullar"
 
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #. window stuff
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -363,8 +381,7 @@ msgstr ""
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as
-#. possible
+#. TRANSLATORS: it is important to keep these column headers as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr ""
@@ -445,8 +462,7 @@ msgid "General preferences"
 msgstr "Preferéncias generalas"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
@@ -467,6 +483,7 @@ msgstr ""
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr ""
@@ -540,8 +557,10 @@ msgid "Swap windows"
 msgstr ""
 
 #. notification
+#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr ""
@@ -645,8 +664,10 @@ msgstr "Autres acorchis"
 msgid "Tile all windows to grid"
 msgstr ""
 
+#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr ""
@@ -726,8 +747,10 @@ msgstr "Sincronizar la talha de la grasilha"
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 
+#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr ""
@@ -806,8 +829,7 @@ msgid "Test"
 msgstr "Pròva"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
@@ -1064,30 +1086,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1133,8 +1149,7 @@ msgstr ""
 msgid "almost %s"
 msgstr "gaireben %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "Configuracion de l’ora e de la data"
@@ -1152,16 +1167,13 @@ msgstr "Calendièr"
 msgid "Preferences"
 msgstr "Preferéncias"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "Mostrar la data"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "Utilizar lo format 24 oras"
@@ -1213,8 +1225,7 @@ msgstr "Marcapaginas"
 msgid "Other"
 msgstr "Autres"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
@@ -1340,8 +1351,12 @@ msgstr "bc es pas installat"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
+#, fuzzy
 msgid "Click to copy result to clipboard"
 msgstr ""
+"#-#-#-#-#  oc.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"#-#-#-#-#  oc.po  #-#-#-#-#\n"
+"Copiar lo tèxte seleccionat dins lo quichapapièr"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
 msgid "Search for and run applications on your computer."
@@ -1680,7 +1695,7 @@ msgstr ""
 #. Delay section
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:219
 msgid "Delay"
-msgstr ""
+msgstr "Relambi"
 
 #. Pressure section
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:226
@@ -1689,7 +1704,7 @@ msgstr "Pression"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:539
 msgid "Enter a command here"
-msgstr ""
+msgstr "Picatz una comanda aquí"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:553
 msgid "Toggle hotcorner on-off"
@@ -1697,7 +1712,7 @@ msgstr ""
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:563
 msgid "Set a custom command"
-msgstr ""
+msgstr "Definir una comanda personalizada"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:714
 msgid "Available dropdown items changed"
@@ -1721,7 +1736,7 @@ msgstr ""
 
 #: budgie-hotcorners/misc/entrynames.vala:4
 msgid "Budgie Desktop Settings"
-msgstr ""
+msgstr "Paramètres del burèu Budgie"
 
 #: budgie-hotcorners/misc/entrynames.vala:5
 msgid "Lock screen"
@@ -1763,7 +1778,9 @@ msgstr ""
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr "Automatic"
@@ -1787,8 +1804,8 @@ msgstr "Aviar"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -1883,7 +1900,7 @@ msgstr "Sens fil"
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractBluetoothInterface.vala:25
 #, c-format
 msgid "%s Network"
-msgstr ""
+msgstr "%s rets"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:1
 msgid "Menu Icon"
@@ -1981,3 +1998,776 @@ msgstr "Definir un rèireplan diferent per espaci de trabalh"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Applet ret"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Fracàs d'autentificacion"
+
+#~ msgid "Group:"
+#~ msgstr "Grop :"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configurar l’applet"
+
+#~ msgid "Add applet"
+#~ msgstr "Ajustar una applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Causissètz una applet novèla d’apondre a aqueste panèl"
+
+#~ msgid "No settings available"
+#~ msgstr "Cap de paramètre pas disponible"
+
+#~ msgid "Center"
+#~ msgstr "Centrar"
+
+#~ msgid "End"
+#~ msgstr "Fin"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirmatz la supression del panèl"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Volètz vertadièrament suprimir aqueste panèl ?\n"
+#~ "Aquesta accions es irreversibla."
+
+#~ msgid "Remove panel"
+#~ msgstr "Levar panèl"
+
+#~ msgid "Keep panel"
+#~ msgstr "Gardar panèl"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirmar la supression de l’applet"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Volètz vertadièrament suprimir aquesta applet ?\n"
+#~ "Aquesta accions es irreversibla."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Me demandar pas mai"
+
+#~ msgid "Remove applet"
+#~ msgstr "Suprimir l’applet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Conservar l’applet"
+
+#~ msgid "Appearance"
+#~ msgstr "Aparéncia"
+
+#~ msgid "Panels"
+#~ msgstr "Panèls"
+
+#~ msgid "Session"
+#~ msgstr "Session"
+
+#~ msgid "Create new panel"
+#~ msgstr "Crear un panèl novèl"
+
+#~ msgid "Windows"
+#~ msgstr "Fenèstras"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Juntar las fenèstras de dialòg a las fenèstras"
+
+#~ msgid "Button layout"
+#~ msgstr "Disposicion dels botons"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr ""
+#~ "Modificar la disposicion dels botons de la barra de títol de las "
+#~ "aplicacions."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centrar las fenèstras novèlas"
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Desactivar lo mòde nuèch quand la fenèstra en es plen ecran"
+
+#, fuzzy
+#~ msgid "Pause notifications when windows are fullscreen"
+#~ msgstr "Desactivar lo mòde nuèch quand la fenèstra en es plen ecran"
+
+#~ msgid "Right (standard)"
+#~ msgstr "Drecha (estandard)"
+
+#~ msgid "Left"
+#~ msgstr "Esquèrra"
+
+#~ msgid "Style"
+#~ msgstr "Estil"
+
+#~ msgid "Widgets"
+#~ msgstr "Element visual"
+
+#~ msgid "Icons"
+#~ msgstr "Icònas"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Definís lo tèma global de las icònas"
+
+#, fuzzy
+#~ msgid "Cursors"
+#~ msgstr "Cursors"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Definís l’aparéncia del cursor"
+
+#~ msgid "Notification Position"
+#~ msgstr "Posicion de las notificacions"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Definir l’emplaçament de las notificacions sorgissentas"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tèma escur"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tèma integrat"
+
+#~ msgid "Animations"
+#~ msgstr "Animacions"
+
+#~ msgid "Top Left"
+#~ msgstr "Amont a esquèrra"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Aval a esquèrra"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Enbàs a drecha"
+
+#~ msgid "Top Right"
+#~ msgstr "Ennaut a drecha"
+
+#~ msgid "Set Raven position"
+#~ msgstr "Definir la posicion de Raven"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Permetre d’aumentar lo volum al delà de 100%"
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Mostrar los numèros de setmana al calendièr"
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Mostrar lo compausant calendièr"
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Mòstra lo widget de sortida àudio"
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Mòstra lo widget del microfòn"
+
+#~ msgid "Choose an applet"
+#~ msgstr "Causissètz una applet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Icònas del burèu"
+
+#~ msgid "Show all active mounts on the desktop."
+#~ msgstr "Mostrar totes los volumes montats al burèu."
+
+#~ msgid "Home directory"
+#~ msgstr "Dossièr personal"
+
+#~ msgid "Icon Size"
+#~ msgstr "Talha de las icònas"
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Nombre de burèu virtuals"
+
+#~ msgid "Single"
+#~ msgstr "Unic"
+
+#~ msgid "Double"
+#~ msgstr "Doble"
+
+#~ msgid "Click Policy"
+#~ msgstr "Foncionament del clic"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Small"
+#~ msgstr "Pichona"
+
+#~ msgid "Large"
+#~ msgstr "Granda"
+
+#~ msgid "Massive"
+#~ msgstr "Grandassa"
+
+#~ msgid "Applets"
+#~ msgstr "Applets"
+
+#~ msgid "Remove Panel"
+#~ msgstr "Levar panèl"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Tirar aqueste panèl"
+
+#~ msgid "Top Panel"
+#~ msgstr "Panèl superior"
+
+#~ msgid "Right Panel"
+#~ msgstr "Panèl drech"
+
+#~ msgid "Left Panel"
+#~ msgstr "Panèl esquèr"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Panèl inferior"
+
+#~ msgid "Top"
+#~ msgstr "Naut"
+
+#~ msgid "Right"
+#~ msgstr "Drecha"
+
+#~ msgid "Bottom"
+#~ msgstr "Bas"
+
+#~ msgid "Always"
+#~ msgstr "Totjorn"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamic"
+
+#~ msgid "None"
+#~ msgstr "Cap"
+
+#~ msgid "Intelligent"
+#~ msgstr "Intelligent"
+
+#~ msgid "Never"
+#~ msgstr "Pas jamai"
+
+#~ msgid "Position"
+#~ msgstr "Posicion"
+
+#~ msgid "Size"
+#~ msgstr "Talha"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Amagar automaticament"
+
+#~ msgid "Shadow"
+#~ msgstr "Ombra"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Estilizar las regions"
+
+#~ msgid "Untitled"
+#~ msgstr "Sens títol"
+
+#~ msgid "No description"
+#~ msgstr "Cap de descripcion"
+
+#~ msgid "running"
+#~ msgstr "en cors d'execucion"
+
+#~ msgid "Add"
+#~ msgstr "Ajustar"
+
+#~ msgid "Title"
+#~ msgstr "Títol"
+
+#~ msgid "Required"
+#~ msgstr "Requesit"
+
+#~ msgid "Description"
+#~ msgstr "Descripcion"
+
+#~ msgid "Optional"
+#~ msgstr "Opcional"
+
+#~ msgid "Autostart"
+#~ msgstr "Aviada automatica"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Aplicacions a l’aviada"
+
+#, fuzzy
+#~ msgid "Add Application"
+#~ msgstr "Aplicacions"
+
+#~ msgid "Add Command"
+#~ msgstr "Ajustar una comanda"
+
+#~ msgid "Fonts"
+#~ msgstr "Poliças"
+
+#~ msgid "Window Titles"
+#~ msgstr "Títols de las fenèstras"
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Interface"
+#~ msgstr "Interfàcia"
+
+#~ msgid "Monospace"
+#~ msgstr "Monoespaci"
+
+#~ msgid "Text scaling"
+#~ msgstr "Escala del tèxt"
+
+#~ msgid "Full"
+#~ msgstr "Complèt"
+
+#~ msgid "Medium"
+#~ msgstr "Mejan"
+
+#~ msgid "Slight"
+#~ msgstr "Leugièr"
+
+#~ msgid "Hinting"
+#~ msgstr "Ajustament"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Lissatge"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Cap d’aplicacions utiliza l’àudio."
+
+#~ msgid "Play some music"
+#~ msgstr "Escotar un tròç de musica"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Pas res a veire aquí"
+
+#, c-format
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notificacions pas legidas"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notificacion pas legida"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Cap de notificacion pas legida"
+
+#~ msgid "No new notifications"
+#~ msgstr "Cap de notificacion novèla"
+
+#~ msgid "Apps"
+#~ msgstr "Aplicacions"
+
+#~ msgid "Devices"
+#~ msgstr "Periferics"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificacions"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Mòde cafeïna"
+
+#~ msgid "System Settings"
+#~ msgstr "Paramètres sistèma"
+
+#~ msgid "Log out"
+#~ msgstr "Desconnexion"
+
+#~ msgid "Restart device"
+#~ msgstr "Reaviar"
+
+#~ msgid "Power Off"
+#~ msgstr "Atudar"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Dòsi de cafeïna ajustada"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Dòsi de cafeïna tirada"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "S’atudarà d’aquí una minuta"
+
+#, c-format
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "S’atudarà d’aquí %d minutas"
+
+#~ msgid "User"
+#~ msgstr "Utilizaire"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Varr. maj. es activat"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Varr. maj. es pas activat"
+
+#~ msgid "Num lock is active"
+#~ msgstr "La tòca Verr. Num es activada"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "La tòca Verr. Num es desactivada"
+
+#~ msgid "Removable devices"
+#~ msgstr "Periferics amovibles"
+
+#~ msgid "Local volumes"
+#~ msgstr "Disques locals"
+
+#~ msgid "Network folders"
+#~ msgstr "Dossièrs ret"
+
+#~ msgid "Eject"
+#~ msgstr "Ejectar"
+
+#~ msgid "Unmount"
+#~ msgstr "Desmontar"
+
+#, c-format
+#~ msgid "Open \"%s\""
+#~ msgstr "Dobrir « %s »"
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Podètz ara tirar lo periferic d’un biais segur"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Periferic desconegut"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Error en expulsant lo periferic"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Error en desmontant lo volum"
+
+#, c-format
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Montar e dobrir « %s »"
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Dintratz lo senhal per deschifrar e desverrolhar aqueste volume"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Lo senhal es incorrèct"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Lo volume es utilizat per d’autres processús"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operacion anullada"
+
+#~ msgid "Type your password"
+#~ msgstr "Picatz lo senhal"
+
+#~ msgid "Places"
+#~ msgstr "Luòcs"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Pas res de mostrar per ara"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Montar d’unes disques"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Activar mai de seccions"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Paramètres del Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Enviar fichièrs"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Mòde avion del Bluetooth"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth desactivat"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth activat"
+
+#, c-format
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Connectat a %d aparelh"
+#~ msgstr[1] "Connectat a %d aparelhs"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Batariá completament cargada."
+
+#~ msgid "Unknown"
+#~ msgstr "Desconeguda"
+
+#~ msgid "Battery charging"
+#~ msgstr "Batariá en carga"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Batariá de sòbra"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Afichar lo percentatge de batariá"
+
+#~ msgid "Power settings"
+#~ msgstr "Paramètres d’energia"
+
+#~ msgid "Rename"
+#~ msgstr "Renomenar"
+
+#~ msgid "Remove"
+#~ msgstr "Levar"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Temporizador"
+
+#~ msgid "Only one instance of the System Tray can be active at a time."
+#~ msgstr "Sonque pòt i aver una instància de la barra sistèma activa."
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Bascular al burèu"
+
+#~ msgid "All"
+#~ msgstr "Tot"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "O planhèm, cap de resultat pas trobat"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Paramètres de data & ora"
+
+#~ msgid "Show seconds"
+#~ msgstr "Mostrar las segondas"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Lançar una instància novèla"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Tampar totas las fenèstras"
+
+#~ msgid "Always On Top"
+#~ msgstr "Totjorn en dessús"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximizar"
+
+#~ msgid "Minimize"
+#~ msgstr "Reduire"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Levar dels favorits"
+
+#~ msgid "Favorite"
+#~ msgstr "Favorit"
+
+#, c-format
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Passar a l’espaci de trabalh %i"
+
+#~ msgid "Close Window"
+#~ msgstr "Tampar la fenèstra"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Autentificacion requesida"
+
+#~ msgid "Password:"
+#~ msgstr "Senhal :"
+
+#~ msgid "Authentication is required"
+#~ msgstr "L’autentificacion es requerida"
+
+#~ msgid "Authenticate"
+#~ msgstr "S’autentificar"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Volètz vertadièrament tampar la session ?"
+
+#~ msgid "Show label"
+#~ msgstr "Mostrar lo nom de l’applet"
+
+#~ msgid "Show places"
+#~ msgstr "Mostrar los emplaçaments"
+
+#~ msgid "Show network folders"
+#~ msgstr "Mostrar los emplaçaments ret"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Mostrar los periferics amovibles"
+
+#~ msgid "Always expand places"
+#~ msgstr "Totjorn espandir los emplaçaments"
+
+#~ msgid "Icon Spacing"
+#~ msgstr "Espaçament de las icònas"
+
+#~ msgid "Spacer size"
+#~ msgstr "Espaçament"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "Visibilitat del boton « Ajustar »"
+
+#~ msgid "Don't show"
+#~ msgstr "Mostrar pas"
+
+#~ msgid "Always show"
+#~ msgstr "Totjorn mostrar"
+
+#~ msgid "Enable notification"
+#~ msgstr "Activar las notificacions"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximizar la luminositat"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Nivèl de luminositat"
+
+#~ msgid "Night Light"
+#~ msgstr "Mòde nuèch"
+
+#~ msgid "Schedule"
+#~ msgstr "Planificacion"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Levar al colcar del solelh"
+
+#~ msgid "Manual"
+#~ msgstr "Manualament"
+
+#~ msgid "Display Settings"
+#~ msgstr "Paramètres d'afichatge"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Mòde compact"
+
+#~ msgid "Show Headers"
+#~ msgstr "Mostrar las categorias"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Sonque afichar los favorits"
+
+#~ msgid "Lock icons"
+#~ msgstr "Verrolhar las icònas"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Restrénher l’espaci de trabalh"
+
+#~ msgid "Window grouping"
+#~ msgstr "Agropar las fenèstras"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Burèu Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Aquesta session vos connècta al burèu Budgie"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Panèl Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Aviar d'autras aplicacions e diferents utilitaris per gerir las "
+#~ "fenèstras, indicar l'ora, etc."
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Modificar l’aparéncia e lo compòrtament del burèu"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indicador de l’utilizaire"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indicador de verrolhatge de las tòcas"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indicator de l’estatut"
+
+#~ msgid "Spacer"
+#~ msgstr "Espaci"
+
+#~ msgid "Separator"
+#~ msgstr "Separador"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Seleccionaire d'espacis de trabalh"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indicador de l’agençament del clavièr"
+
+#~ msgid "Caffeine"
+#~ msgstr "Cafeïna"
+
+#~ msgid "System Tray"
+#~ msgstr "Zòna de notificacions sistèma"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Boton d’accès al burèu"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menú de Budgie"
+
+#~ msgid "Clock"
+#~ msgstr "Relòtge"
+
+#~ msgid "Task List"
+#~ msgstr "Lista dels prètzfaches"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Icòna de la lista de prètzfaches"
+
+#~ msgid "Uninstall"
+#~ msgstr "Desinstallar"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "Veire dins AppCenter"
+
+#~ msgid "AppCenter"
+#~ msgstr "AppCenter"
+
+#~ msgid "Search for applications"
+#~ msgstr "Recercar d'aplicacions"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "AppCenter es pas installat"
+
+#, c-format
+#~ msgid "Open %s settings"
+#~ msgstr "Dobrir los paramètres %s"
+
+#~ msgid "Lock this device"
+#~ msgstr "Verrolhar aqueste aparelh"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "verrolhar"
+
+#~ msgid "Log Out"
+#~ msgstr "Tampar la session"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Tampar totas las aplicacions e sortir"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "desconnexion"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "metre en velha"
+
+#~ msgid "Hibernate"
+#~ msgstr "Ivernacion"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "ivernar"
+
+#~ msgid "Shut Down"
+#~ msgstr "Atudar"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Atudar vòstre ordenador"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Reaviar l'ordenador"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "reaviar;reboot"
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit es introbable"

@@ -1,8 +1,10 @@
+# #-#-#-#-#  pt_BR.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  pt_BR.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Lynx Medeiros <lynxmedeiros@gmail.com>, 2019
 # Guilherme Berbet <amendobobo.gc@gmail.com>, 2019
@@ -10,24 +12,42 @@
 # Italo Penaforte <italo.penaforte@gmail.com>, 2021
 # Philippe Rogers, 2021
 # Luis Forman <lf@lfsqr.co>, 2021
-# david mohammed <foss.freedom@gmail.com>, 2021
+# david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2021
 # Henrique Vicentin, 2022
 # Julio Cezar, 2024
-# 
+#
+# #-#-#-#-#  pt_BR.po (slingshot)  #-#-#-#-#
+# Brazilian Portuguese translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Julio Cezar, 2024\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/ubuntu-budgie/teams/72251/pt_BR/)\n"
+"PO-Revision-Date: 2018-09-22 00:11+0000\n"
+"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
+"wingpanel/wingpanel-indicator-network/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"#-#-#-#-#  pt_BR.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  pt_BR.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
+"1000000 == 0 ? 1 : 2;\n"
+"#-#-#-#-#  pt_BR.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:24+0000\n"
+"#-#-#-#-#  pt_BR.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -343,11 +363,15 @@ msgstr "Pronto"
 msgid "Cancel"
 msgstr "Cancelar"
 
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #. window stuff
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -370,8 +394,7 @@ msgstr "Salvar alterações à regra de janela renomeada"
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as
-#. possible
+#. TRANSLATORS: it is important to keep these column headers as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr "classe-WM"
@@ -452,8 +475,7 @@ msgid "General preferences"
 msgstr "Preferências gerais"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr "Usar edge-tiling avançado do Shuffler drag-snap"
@@ -467,8 +489,7 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1108
 msgid "Alt + drag tiles a window into 3/5 of the screen width"
 msgstr ""
-"Alt + arrastar redimensiona em mosaico uma janela para 3/5 da largura da "
-"tela"
+"Alt + arrastar redimensiona em mosaico uma janela para 3/5 da largura da tela"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1112
 msgid "This will disable built-in edge-tiling"
@@ -478,6 +499,7 @@ msgstr "Isto irá desabilitar o edge-tiling embutido"
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr "Quarto básico e meio mosaico"
@@ -552,8 +574,10 @@ msgid "Swap windows"
 msgstr "Trocar as janelas"
 
 #. notification
+#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr "Mostrar notificação caso tamanho da janela seja incorreto"
@@ -657,8 +681,10 @@ msgstr "Outros atalhos"
 msgid "Tile all windows to grid"
 msgstr "Colocar todas as janelas na grade"
 
+#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr "Alternar layouts da lista rápida e gerenciador"
@@ -740,8 +766,10 @@ msgstr ""
 "Atualizar tamanho da grade para movimentação e redimensionamento para o "
 "último layout escolhido"
 
+#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr "Tamanho da prévia do layout (largura em px)"
@@ -795,8 +823,7 @@ msgid ""
 "Window name - optional, to distinguish multiple windows of the same "
 "application"
 msgstr ""
-"Nome da janela - opcional, para distinguir várias janelas do mesmo "
-"aplicativo"
+"Nome da janela - opcional, para distinguir várias janelas do mesmo aplicativo"
 
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:621
@@ -822,8 +849,7 @@ msgid "Test"
 msgstr "Testar"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
@@ -1084,30 +1110,24 @@ msgid "quarter after %s"
 msgstr "%s e quinze"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr "%s e vinte"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr "quase %s e meia"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1153,8 +1173,7 @@ msgstr "dez para as %s"
 msgid "almost %s"
 msgstr "quase %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "Configurações de Data e Hora"
@@ -1172,16 +1191,13 @@ msgstr "Calendário"
 msgid "Preferences"
 msgstr "Preferências"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "Exibir data"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "Usar formato de 24 horas"
@@ -1233,8 +1249,7 @@ msgstr "Favoritos"
 msgid "Other"
 msgstr "Outro"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
@@ -1477,8 +1492,7 @@ msgstr "Definir ícone"
 #: budgie-brightness-controller/src/Applet.vala:81
 msgid "Remove Gnome Settings Daemon's color plugin from autostart"
 msgstr ""
-"Remova o plugin de cores do Gnome Settings Daemon da inicialização "
-"automática"
+"Remova o plugin de cores do Gnome Settings Daemon da inicialização automática"
 
 #: budgie-brightness-controller/src/widgets/Popover.vala:87
 msgid "Dim"
@@ -1787,7 +1801,9 @@ msgstr ""
 "As configurações dos cantos ativos também estão disponíveis pelo menu da "
 "área de trabalho"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr "Auto"
@@ -1795,8 +1811,8 @@ msgstr "Auto"
 #: budgie-visualspace/src/visualspace.vala:109
 msgid "Scroll over panel icon to change workspace"
 msgstr ""
-"Use o scroll do mouse (roda de rolagem) sobre o ícone do painel para alterar"
-" a área de trabalho."
+"Use o scroll do mouse (roda de rolagem) sobre o ícone do painel para alterar "
+"a área de trabalho."
 
 #: budgie-visualspace/src/visualspace.vala:316
 msgid "Reverse Scroll Direction"
@@ -1813,8 +1829,8 @@ msgstr "Início"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
 "O alternador de papel de parede da área de trabalho lembra-se "
 "automaticamente qual o papel de parede que foi definido por área de trabalho"
@@ -2011,3 +2027,1088 @@ msgstr "Definir um papel de parede diferente para cada área de trabalho"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Applet de Rede"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Falha na autenticação"
+
+#~ msgid "Group:"
+#~ msgstr "Grupo:"
+
+#~ msgid "Configure applet"
+#~ msgstr "Configurar Applet"
+
+#~ msgid "Add applet"
+#~ msgstr "Adicionar Applet"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Escolha um novo Applet para adicionar a este painel"
+
+#~ msgid "No settings available"
+#~ msgstr "Nenhuma configuração disponível"
+
+#~ msgid "Center"
+#~ msgstr "Centro"
+
+#~ msgid "End"
+#~ msgstr "Fim"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Confirmar a remoção do painel"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Você realmente deseja remover esse painel? Essa ação não poderá ser "
+#~ "desfeita."
+
+#~ msgid "Remove panel"
+#~ msgstr "Remover painel"
+
+#~ msgid "Keep panel"
+#~ msgstr "Manter painel"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Confirmar remoção de Applet"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Você realmente deseja remover este Applet? Essa acão não poderá ser "
+#~ "desfeita."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Não perguntar novamente"
+
+#~ msgid "Remove applet"
+#~ msgstr "Remover Applet"
+
+#~ msgid "Keep applet"
+#~ msgstr "Manter Applet"
+
+#~ msgid "Appearance"
+#~ msgstr "Aparência"
+
+#~ msgid "Panels"
+#~ msgstr "Painéis"
+
+#~ msgid "Session"
+#~ msgstr "Sessão"
+
+#~ msgid "Create new panel"
+#~ msgstr "Criar novo painel"
+
+#~ msgid "Windows"
+#~ msgstr "Janelas"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Anexar diálogos modais às janelas"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Diálogos modais serão anexados à janela principal e movidos juntos quando "
+#~ "arrastados."
+
+#~ msgid "Button layout"
+#~ msgstr "Layout dos botões"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Alterar o layout dos botões da barra de título dos aplicativos."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centralizar novas janelas na tela"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centraliza novas janelas à tela atual."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Desativar o modo luz noturna quando estiver em tela cheia"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Desativa o modo luz noturna quando uma janela estiver em tela cheia e "
+#~ "reativa ao sair."
+
+#, fuzzy
+#~ msgid "Pause notifications when windows are fullscreen"
+#~ msgstr "Desativar o modo luz noturna quando estiver em tela cheia"
+
+#, fuzzy
+#~ msgid ""
+#~ "Prevents notifications from appearing when a window is fullscreen. "
+#~ "Unpauses when leaving fullscreen."
+#~ msgstr ""
+#~ "Desativa o modo luz noturna quando uma janela estiver em tela cheia e "
+#~ "reativa ao sair."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Agrupamento lado a lado automático"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "As janelas serão automaticamente agrupadas lado a lado quando arrastadas "
+#~ "para o topo da tela ou para os cantos."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Ativar a mudança de foco com o movimento do mouse"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Permite que o mouse ative o foco ao entrar uma janela e desative o mesmo "
+#~ "ao sair."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Desativar redirecionamento de janelas"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Esta opção é para usuários avançados. Use ela se você estiver com "
+#~ "problemas gráficos ou de desempenho com GPUs dedicadas."
+
+#, fuzzy
+#~ msgid "Show all windows in tab switcher"
+#~ msgstr "Mostrar todas as janelas ao clicar"
+
+#~ msgid "Right (standard)"
+#~ msgstr "Direito (padrão)"
+
+#~ msgid "Left"
+#~ msgstr "Esquerdo"
+
+#~ msgid "Style"
+#~ msgstr "Estilo"
+
+#~ msgid "Widgets"
+#~ msgstr "Widgets"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Definir a aparência das decorações e dos controles de janelas"
+
+#~ msgid "Icons"
+#~ msgstr "Ícones"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Definir o tema de ícones usado globalmente"
+
+#~ msgid "Cursors"
+#~ msgstr "Cursores"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Definir o tema do cursor do mouse usado globalmente"
+
+#~ msgid "Notification Position"
+#~ msgstr "Posição das notificações"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Defina o local das notificações pop-ups"
+
+#~ msgid "Dark theme"
+#~ msgstr "Modo noturno"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Tema padrão"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Quando habilitado, o estilo dos componentes da área de trabalho serão "
+#~ "substituídos pelo padrão"
+
+#~ msgid "Animations"
+#~ msgstr "Animações"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Controla se as janelas e controles usam animações"
+
+#~ msgid "Top Left"
+#~ msgstr "Superior esquerdo"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Inferior esquerdo"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Inferior direito"
+
+#~ msgid "Top Right"
+#~ msgstr "Superior direito"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Permitir aumentar o volume acima de 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Permitir aumentar o volume tanto pelas configurações de som quanto pelo "
+#~ "widget de saída de som na barra lateral em até 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Mostrar o número de semanas no calendário"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Essa configuração permite ver o número das semanas no widget do "
+#~ "calendário."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Mostrar o widget de calendário"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr "Mostra ou oculta o widget de calendário nos Applets do Raven."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Mostrar o widget de saída de som"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr "Mostra ou oculta o widget de saída de som nos Applets do Raven."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Mostrar o widget de entrada do microfone"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Mostra ou oculta o widget de entrada do microfone nos Applets do Raven."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Mostrar o widget de controles de mídia"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Mostra ou oculta o widget de controles de reprodução de mídia (MPRIS) nos "
+#~ "Applets do Raven."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Mostrar a barra de energia"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Mostra ou oculta a barra de energia na parte inferior do Raven."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Escolha um Applet"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Ícones da área de trabalho"
+
+#, fuzzy
+#~ msgid "Control whether to allow icons on the desktop."
+#~ msgstr ""
+#~ "Controle para permitir inicializadores e ícones na área de trabalho."
+
+#, fuzzy
+#~ msgid "Show all active mounts on the desktop."
+#~ msgstr ""
+#~ "Controle para permitir inicializadores e ícones na área de trabalho."
+
+#~ msgid "Home directory"
+#~ msgstr "Diretório pessoal"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Adiciona um atalho ao seu diretório pessoal na área de trabalho."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Adiciona um atalho da lixeira na área de trabalho."
+
+#, fuzzy
+#~ msgid "Icon Size"
+#~ msgstr "Tamanho"
+
+#, fuzzy
+#~ msgid "Set the desired size of icons on the desktop."
+#~ msgstr ""
+#~ "Controle para permitir inicializadores e ícones na área de trabalho."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Número de áreas de trabalho virtuais"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Número de áreas de trabalho virtuais / espaços de trabalho a serem "
+#~ "criados na inicialização."
+
+#~ msgid "Applets"
+#~ msgstr "Applets"
+
+#, fuzzy
+#~ msgid "Remove Panel"
+#~ msgstr "Remover painel"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Remover este painel da tela"
+
+#~ msgid "Top Dock"
+#~ msgstr "Dock superior"
+
+#~ msgid "Right Dock"
+#~ msgstr "Dock direito"
+
+#~ msgid "Left Dock"
+#~ msgstr "Dock esquerdo"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Dock inferior"
+
+#~ msgid "Top Panel"
+#~ msgstr "Painel superior"
+
+#~ msgid "Right Panel"
+#~ msgstr "Painel direito"
+
+#~ msgid "Left Panel"
+#~ msgstr "Painel esquerdo"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Painel inferior"
+
+#~ msgid "Top"
+#~ msgstr "Topo"
+
+#~ msgid "Right"
+#~ msgstr "Direito"
+
+#~ msgid "Bottom"
+#~ msgstr "Inferior"
+
+#~ msgid "Always"
+#~ msgstr "Sempre"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinâmico"
+
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgid "Intelligent"
+#~ msgstr "Inteligente"
+
+#~ msgid "Never"
+#~ msgstr "Nunca"
+
+#~ msgid "Position"
+#~ msgstr "Posição"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Definir a borda da tela em que este painel permanecerá"
+
+#~ msgid "Size"
+#~ msgstr "Tamanho"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Definir o tamanho (largura ou altura, dependendo da orientação) desse "
+#~ "painel"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Ocultar automaticamente"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Quando definido, este painel se ocultará para maximizar a utilização da "
+#~ "tela"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Controla quando este painel deve ter um fundo sólido"
+
+#~ msgid "Shadow"
+#~ msgstr "Sombra"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr "Adiciona uma sombra decorativa, ideal para painéis opacos"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Estilizar regiões"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Adiciona uma dica ao painel para que cada uma das três áreas principais "
+#~ "do painel possa ter um tema diferente."
+
+#~ msgid "Dock mode"
+#~ msgstr "Modo dock"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Quando estiver no modo dock, o painel usará a quantidade mínima de espaço "
+#~ "possível, liberando a valorização da tela"
+
+#~ msgid "Untitled"
+#~ msgstr "Sem título"
+
+#~ msgid "No description"
+#~ msgstr "Sem descrição"
+
+#~ msgid "running"
+#~ msgstr "executando"
+
+#~ msgid "Add"
+#~ msgstr "Adicionar"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Já existe uma entrada com esse título"
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "Required"
+#~ msgstr "Necessário"
+
+#~ msgid "Description"
+#~ msgstr "Descrição"
+
+#~ msgid "Optional"
+#~ msgstr "Opcional"
+
+#~ msgid "Autostart"
+#~ msgstr "Iniciar automaticamente"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Programas de inicialização"
+
+#, fuzzy
+#~ msgid "Add Application"
+#~ msgstr "Aplicativos"
+
+#, fuzzy
+#~ msgid "Add Command"
+#~ msgstr "Comando"
+
+#~ msgid "Fonts"
+#~ msgstr "Fontes"
+
+#~ msgid "Window Titles"
+#~ msgstr "Títulos de janela"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Definir a fonte usada na barra de títulos dos aplicativos."
+
+#~ msgid "Documents"
+#~ msgstr "Documentos"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Defina a fonte de exibição usada pelos documentos."
+
+#~ msgid "Interface"
+#~ msgstr "Interface"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Defina a fonte primária usada pelos controles de aplicativos."
+
+#~ msgid "Monospace"
+#~ msgstr "Mono-espaçada"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Defina a fonte de largura fixa usada por aplicativos onde predomina-se o "
+#~ "texto."
+
+#~ msgid "Text scaling"
+#~ msgstr "Dimensionamento de texto"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Define o fator de escala do texto."
+
+#~ msgid "Full"
+#~ msgstr "Completo"
+
+#~ msgid "Medium"
+#~ msgstr "Médio"
+
+#~ msgid "Slight"
+#~ msgstr "Direito"
+
+#~ msgid "Hinting"
+#~ msgstr "Dicas"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Defina o tipo de dica a ser usada."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpixel (para telas LCD)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Padrão (escala de cinza)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Antisserrilhado"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Defina o tipo de antisserrilhamento a ser usado"
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Nenhuma aplicação está reproduzindo áudio no momento."
+
+#~ msgid "Play some music"
+#~ msgstr "Tocar música"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Nada para ver aqui"
+
+#, c-format
+#~ msgid "%u unread notifications"
+#~ msgstr "%u notificações não lidas"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 notificação não lida"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Nenhuma notificação"
+
+#~ msgid "No new notifications"
+#~ msgstr "Sem novas notificações"
+
+#~ msgid "Apps"
+#~ msgstr "Aplicativos"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositivos"
+
+#~ msgid "Notifications"
+#~ msgstr "Notificações"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Modo Cafeína"
+
+#, fuzzy
+#~ msgid "System Settings"
+#~ msgstr "Configurações"
+
+#~ msgid "Log out"
+#~ msgstr "Sair"
+
+#~ msgid "Restart device"
+#~ msgstr "Reiniciar dispositivo"
+
+#~ msgid "Power Off"
+#~ msgstr "Desligar"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Modo Cafeína ativado"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Modo Cafeína desativado"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Será desligado em um minuto"
+
+#, c-format
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Será desligado em %d minutos"
+
+#~ msgid "User"
+#~ msgstr "Usuário"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Caps lock está ativo"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Caps lock está inativo"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Num lock está ativo"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Num lock está inativo"
+
+#~ msgid "Removable devices"
+#~ msgstr "Dispositivos removíveis"
+
+#~ msgid "Local volumes"
+#~ msgstr "Volumes locais"
+
+#~ msgid "Network folders"
+#~ msgstr "Pastas da rede"
+
+#~ msgid "Eject"
+#~ msgstr "Ejetar"
+
+#~ msgid "Unmount"
+#~ msgstr "Desmontar"
+
+#, c-format
+#~ msgid "Open \"%s\""
+#~ msgstr "Abrir \"%s\""
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Agora você pode remover com segurança"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Dispositivo desconhecido"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Erro ao ejetar o dispositivo"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Erro ao desmontar o volume"
+
+#, c-format
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Montar e abrir \"%s\""
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Informe a senha para desbloquear este volume"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "A senha informada está incorreta"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Ocorreu um erro desconhecido ao tentar montar este volume"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "O volume está sendo usado por outros processos"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operação abortada"
+
+#~ msgid "Type your password"
+#~ msgstr "Digite sua senha"
+
+#~ msgid "Places"
+#~ msgstr "Locais"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Nada para mostrar agora"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Montar algumas unidades"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Ativar mais seções"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Configurações do Bluetooth"
+
+#~ msgid "Send Files"
+#~ msgstr "Enviar arquivos"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth em modo avião"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth desabilitado"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth ativado"
+
+#, c-format
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Conectado à %d dispositivo"
+#~ msgstr[1] "Conectado à %d dispositivos"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Bateria totalmente carregada."
+
+#~ msgid "Battery charging"
+#~ msgstr "Carregando bateria"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Bateria restante"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Exibir porcentagem da bateria"
+
+#~ msgid "Power settings"
+#~ msgstr "Configurações de energia"
+
+#~ msgid "Rename"
+#~ msgstr "Renomear"
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Cronômetrar (em minutos)"
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Alternar a área de trabalho"
+
+#~ msgid "All"
+#~ msgstr "Todos"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Desculpe, nenhum item encontrado"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Configurações de data e hora"
+
+#~ msgid "Show seconds"
+#~ msgstr "Exibir segundos"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Iniciar nova instância"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Fechar todas as janelas"
+
+#~ msgid "Always On Top"
+#~ msgstr "Sempre em primeiro plano"
+
+#~ msgid "Maximize"
+#~ msgstr "Maximizar"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimizar"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Remover dos favoritos"
+
+#~ msgid "Favorite"
+#~ msgstr "Adicionar aos favoritos"
+
+#, c-format
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Mover para a área de trabalho %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Desmaximizar"
+
+#~ msgid "Close Window"
+#~ msgstr "Fechar janela"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Mostrar controles da janela"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Autentificação requerida"
+
+#~ msgid "Password:"
+#~ msgstr "Senha:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "A autenticação é necessária"
+
+#~ msgid "Authenticate"
+#~ msgstr "Autenticar"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Tem certeza que deseja encerrar sua sessão?"
+
+#~ msgid "Show label"
+#~ msgstr "Exibir rótulo"
+
+#~ msgid "Show places"
+#~ msgstr "Exibir locais"
+
+#~ msgid "Show network folders"
+#~ msgstr "Exibir pastas da rede"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Exibir dispositivos removíveis"
+
+#~ msgid "Always expand places"
+#~ msgstr "Sempre expandir os locais"
+
+#~ msgid "Spacer size"
+#~ msgstr "Tamanho do espaçador"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "Visualizar o botão \"Adicionar\""
+
+#~ msgid "Don't show"
+#~ msgstr "Não mostrar"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Mostrar ao apontar o mouse"
+
+#~ msgid "Always show"
+#~ msgstr "Sempre mostrar"
+
+#~ msgid "Enable notification"
+#~ msgstr "Ativar notificação"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maximizar o brilho"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Nível de brilho"
+
+#~ msgid "Night Light"
+#~ msgstr "Luz noturna"
+
+#~ msgid "Schedule"
+#~ msgstr "Cronograma"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Pôr do sol ao nascer do sol"
+
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgid "Display Settings"
+#~ msgstr "Configurações de exibição"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Modo compacto"
+
+#~ msgid "Show Headers"
+#~ msgstr "Mostrar cabeçalhos"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Mostrar todas as janelas ao clicar"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Mostrar apenas favoritos"
+
+#~ msgid "Lock icons"
+#~ msgstr "Bloquear ícones"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Restringir a área de Trabalho"
+
+#~ msgid "Window grouping"
+#~ msgstr "Agrupamento de janelas"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Área de trabalho Budgie"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Esta sessão loga você na área de trabalho Budgie"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Painel do Budgie"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Executa outros aplicativos e fornece vários utilitários para gerenciar "
+#~ "janelas, exibir data e hora, etc."
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Alterar a aparência e o comportamento da área de trabalho"
+
+#~ msgid "User Indicator"
+#~ msgstr "Indicador de usuário"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Indicador de teclas bloqueadas"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Indicador de status"
+
+#~ msgid "Spacer"
+#~ msgstr "Espaçador"
+
+#~ msgid "Separator"
+#~ msgstr "Separador"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Alternador de área de trabalho"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Indicador de layout do teclado"
+
+#~ msgid "Caffeine"
+#~ msgstr "Cafeína"
+
+#~ msgid "System Tray"
+#~ msgstr "Bandeja do sistema"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Painel de controle do Raven"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Mostrar/Esconder a área de trabalho"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Menu Budgie"
+
+#~ msgid "Clock"
+#~ msgstr "Relógio"
+
+#~ msgid "Task List"
+#~ msgstr "Lista de tarefas"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Lista de tarefas em ícones"
+
+#~ msgid "Network"
+#~ msgstr "Rede"
+
+#~ msgid "Network indicator"
+#~ msgstr "Indicador de rede"
+
+#~ msgid "Uninstall"
+#~ msgstr "Desinstalar"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "Visualizar na Central de Aplicativos"
+
+#, c-format
+#~ msgid "Search for %s in %s"
+#~ msgstr "Pesquisar por %s em %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Pesquisar na loja de aplicativos"
+
+#~ msgid "AppCenter"
+#~ msgstr "Central de Aplicativos"
+
+#~ msgid "Search for applications"
+#~ msgstr "Procurar por aplicativos"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "AppCenter não esta instalado"
+
+#, c-format
+#~ msgid "Open %s settings"
+#~ msgstr "Abrir configurações %s"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Encontre plugs do switchboard e abra-os."
+
+#~ msgid "Lock this device"
+#~ msgstr "Bloquear este dispositivo"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "bloquear"
+
+#~ msgid "Log Out"
+#~ msgstr "Sair"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Fechar todas as aplicações e sair"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "finalizar sessão"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Coloque o computador em modo de suspensão"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "suspender"
+
+#~ msgid "Hibernate"
+#~ msgstr "Hibernar"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Coloque o computador em modo de hibernação"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "hibernar"
+
+#~ msgid "Shut Down"
+#~ msgstr "Desligar"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Desligue seu computador"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "encerrar;desligar"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Reinicie seu computador"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "reiniciar;reinicializar"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Bloquear a sessão ou sair desta. Suspender, hibernar, reiniciar ou "
+#~ "desligar seu computador."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit não foi encontrado"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "O indicador de menu de aplicativos"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Desinstalar \"%s\"?"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr "Desinstalar este aplicativo também pode eliminar os seus dados."
+
+#~ msgid "Open using default application"
+#~ msgstr "Abrir usando o aplicativo padrão"
+
+#~ msgid "Open folder"
+#~ msgstr "Abrir pasta"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Abrir pasta contendo este arquivo"
+
+#~ msgid "All Applications"
+#~ msgstr "Todos os aplicativos"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Criar um novo filtro"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Não há redes sem fio ao alcance."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Rede Sem Fio Está Desativada"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Habilite a rede sem fio para descobrir pontos de acesso próximos."
+
+#~ msgid "No VPN Available"
+#~ msgstr "Nenhuma VPN Disponível"
+
+#~ msgid "Hotspot"
+#~ msgstr "Ponto de acesso"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Ponto de acesso %s"
+
+#~ msgid "Disconnected"
+#~ msgstr "Desconectado"
+
+#~ msgid "Connected"
+#~ msgstr "Conectado"
+
+#~ msgid "Failed"
+#~ msgstr "Falha"
+
+#~ msgid "Connecting"
+#~ msgstr "Conectando"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Cabo desconectado"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Modo Avião ativado"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconhecido"

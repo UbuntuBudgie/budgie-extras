@@ -1,26 +1,45 @@
+# #-#-#-#-#  fi.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Oi Suomi On! <oisuomion@protonmail.com>, 2020
 # Tinde (Joke), 2024
-# 
+#
+# #-#-#-#-#  fi.po (slingshot)  #-#-#-#-#
+# Finnish translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Tinde (Joke), 2024\n"
-"Language-Team: Finnish (https://app.transifex.com/ubuntu-budgie/teams/72251/fi/)\n"
+"PO-Revision-Date: 2018-05-08 09:23+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"Language-Team: Finnish <https://weblate.elementary.io/projects/wingpanel/"
+"wingpanel-indicator-network/fi/>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fi\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -336,11 +355,15 @@ msgstr "Valmis"
 msgid "Cancel"
 msgstr "Peruura"
 
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #. window stuff
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -363,8 +386,7 @@ msgstr "Tallenna muutokset uudelleen nimettyyn ikkunan sääntöön"
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as
-#. possible
+#. TRANSLATORS: it is important to keep these column headers as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr "WM-luokka"
@@ -445,8 +467,7 @@ msgid "General preferences"
 msgstr "Yleiset asetukset"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr "Käytä Shufflerin veto-napsautusta edistyneen reunan laatoitukseen"
@@ -467,6 +488,7 @@ msgstr "Tämä poistaa sisäänrakennetun reunojen laatoituksen käytöstä"
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr "Perusneljäsosa ja puolilaatoitus"
@@ -540,8 +562,10 @@ msgid "Swap windows"
 msgstr "Ikkunat"
 
 #. notification
+#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr "Näytä ilmoitus virheellisestä ikkunan koosta"
@@ -645,8 +669,10 @@ msgstr "Muut pikakuvakkeet"
 msgid "Tile all windows to grid"
 msgstr "Laatoita kaikki ikkunat ruudukoksi"
 
+#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr "Vaihda asettelujen pikaluettelo ja hallinta"
@@ -728,8 +754,10 @@ msgstr ""
 "Päivitä ruudukon koko siirtämistä ja koon muuttamista varten viimeisimpään "
 "valittuun asetteluun"
 
+#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr "Asettelun esikatselukoko (leveys PX: ssä)"
@@ -810,15 +838,14 @@ msgid "Test"
 msgstr "Testi"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
 "instead, press Built-in."
 msgstr ""
-"Drag-Snap on korvannut sisäänrakennetun reunan hätkähdyksen. Voit valita sen"
-" sijaan sisäänrakennetun reunan hätkähdyksen painamalla sisäänrakennettua."
+"Drag-Snap on korvannut sisäänrakennetun reunan hätkähdyksen. Voit valita sen "
+"sijaan sisäänrakennetun reunan hätkähdyksen painamalla sisäänrakennettua."
 
 #: budgie-window-shuffler/src/dragsnap.vala:947
 msgid "Built-in"
@@ -1072,30 +1099,24 @@ msgid "quarter after %s"
 msgstr "vartti yli %s"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr "kaksikymmentä yli %s"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr "melkein puolta yli %s"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1141,8 +1162,7 @@ msgstr "kymmenen 'til %s"
 msgid "almost %s"
 msgstr "melkein 'til %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "Päivä ja ajan asetukset"
@@ -1160,16 +1180,13 @@ msgstr "Kalenteri"
 msgid "Preferences"
 msgstr "Asetukset"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "Näytä päivä"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "Käytä 24 tunnin aikamuotoa"
@@ -1180,7 +1197,7 @@ msgstr "Teksti"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:39
 msgid "Applications"
-msgstr "Ohjelmat"
+msgstr "Sovellukset"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:41
 msgid "Files"
@@ -1209,8 +1226,13 @@ msgid "Settings"
 msgstr "Asetukset"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:54
+#, fuzzy
 msgid "Application Actions"
-msgstr "Ohjelman toiminnot"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Ohjelman toiminnot\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Sovellustoiminnot"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:56
 msgid "Bookmarks"
@@ -1221,49 +1243,96 @@ msgstr "Kirjanmerkit"
 msgid "Other"
 msgstr "Muut"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
-#, c-format
+#, fuzzy, c-format
 msgid "Open with %s Graphics"
-msgstr "Avaa %s grafiikka"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa %s grafiikka\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa käyttäen \"%s\"-grafiikkaa"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:110
+#, fuzzy
 msgid "Remove from _Dock"
-msgstr "Poista dociksta"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Poista dociksta\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Poista t_elakasta"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:112
+#, fuzzy
 msgid "Add to _Dock"
-msgstr "Lisää dockiin"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Lisää dockiin\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Lisää _telakkaan"
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+#, fuzzy
 msgid "Try changing search terms."
-msgstr "Yritä vaihtaa etsinnän termiä."
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Yritä vaihtaa etsinnän termiä.\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Yritä käyttää eri hakuehtoja."
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:130
-#, c-format
+#, fuzzy, c-format
 msgid "No Results for “%s”"
-msgstr "Ei löytynyt “%s”"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Ei löytynyt “%s”\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Ei tuloksia haulle “%s”"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
+#, fuzzy
 msgid "View as Grid"
-msgstr "Nääytä ruudukko"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Nääytä ruudukko\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Näytä ruudukkona"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
+#, fuzzy
 msgid "View by Category"
-msgstr "Näytä kategoria"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Näytä kategoria\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Näytä luokittain"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
+#, fuzzy
 msgid "Search Apps"
-msgstr "Etsi ohjelmia"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Etsi ohjelmia\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Etsi sovelluksia"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
+#, fuzzy
 msgid "Clear all"
-msgstr "Poista kaikki"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Poista kaikki\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tyhjennä kaikki"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
+#, fuzzy
 msgid "Open and search apps"
-msgstr "Avaa ja etsi ohjelmia"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa ja etsi ohjelmia\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa ja etsi sovelluksia"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
@@ -1271,11 +1340,11 @@ msgstr "Sammuta"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:113
 msgid "Suspend"
-msgstr "Keskeyttää"
+msgstr "Keskeytystila"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:123
 msgid "Restart"
-msgstr "Uudelleen käynnistä"
+msgstr "Käynnistä uudelleen"
 
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:134
 msgid "Lock"
@@ -1299,8 +1368,13 @@ msgid "Accessories"
 msgstr "Apuohjelmat"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:87
+#, fuzzy
 msgid "Universal Access"
-msgstr "Yleinen pääsy"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Yleinen pääsy\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Esteettömyys"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:96
 msgid "Programming"
@@ -1311,70 +1385,126 @@ msgid "Education"
 msgstr "Koulutus"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:109
+#, fuzzy
 msgid "Science"
-msgstr "Tiede"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Tiede\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tieteet"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:116
 msgid "Games"
 msgstr "Pelit"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:122
+#, fuzzy
 msgid "Graphics"
-msgstr "Grafikka"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Grafikka\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Grafiikka"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:134
+#, fuzzy
 msgid "Sound & Video"
-msgstr "Ääni & video"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Ääni & video\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Ääni ja video"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:140
 msgid "Office"
 msgstr "Toimisto"
 
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:146
+#, fuzzy
 msgid "System Tools"
-msgstr "Järjestelmän työkalut"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Järjestelmän työkalut\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Järjestelmätyökalut"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:50
 msgid "Calculator"
 msgstr "Laskin"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
+#, fuzzy
 msgid "Calculate basic expressions."
-msgstr "Laske peruslausekkeet."
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Laske peruslausekkeet.\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Suorita laskutoimituksia."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
+#, fuzzy
 msgid "bc is not installed"
-msgstr "bc ei ole asennettu"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"bc ei ole asennettu\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Pakettia bc ei ole asennettu"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
+#, fuzzy
 msgid "Click to copy result to clipboard"
-msgstr "Napsauta kopioidaksesi tulos leikepöydälle"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Napsauta kopioidaksesi tulos leikepöydälle\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Napsauta kopioidaksesi tuloksen leikepöydälle"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
+#, fuzzy
 msgid "Search for and run applications on your computer."
-msgstr "Etsi ja suorita sovelluksia tietokoneellasi."
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Etsi ja suorita sovelluksia tietokoneellasi.\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Etsi ja suorita koneelle asennettuja sovelluksia."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
-#, c-format
+#, fuzzy, c-format
 msgid "Open with %s"
-msgstr "Avaa jkn kanssa %s"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa jkn kanssa %s\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa sovelluksella %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:324
-#, c-format
+#, fuzzy, c-format
 msgid "Opens current selection using %s"
-msgstr "Avaa nykyinen valinta %s"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa nykyinen valinta %s\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa nykyisen valinnan sovelluksessa %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
-#, c-format
+#, fuzzy, c-format
 msgid "Open %s in default web browser"
-msgstr "Avaa %s oletusselaimessa"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa %s oletusselaimessa\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa %s oletusverkkoselaimessa"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:44
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:84
-#, c-format
+#, fuzzy, c-format
 msgid "Open %s in %s"
-msgstr "Avaa %s %s"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Avaa %s %s\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Avaa %s käyttäen %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
 msgid "Open this link in default browser"
@@ -1398,8 +1528,13 @@ msgid "Run command"
 msgstr "Suorita komento"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
+#, fuzzy
 msgid "Find and execute arbitrary commands."
-msgstr "Etsi ja suorita mielivaltaiset komennot."
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Etsi ja suorita mielivaltaiset komennot.\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Etsi ja suorita komentoja."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:88
 msgid "Open the selected directory"
@@ -1427,8 +1562,13 @@ msgid "Run in Terminal"
 msgstr "Suorita päätteessä"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
+#, fuzzy
 msgid "Run application or command in terminal"
-msgstr "Suorita ohjelma tai komento päätteessä"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Suorita ohjelma tai komento päätteessä\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Suorita sovellus tai käsky päätteessä"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
 msgid "Copy to Clipboard"
@@ -1443,8 +1583,13 @@ msgid "Run"
 msgstr "Suorita"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:34
+#, fuzzy
 msgid "Run an application, action or script"
-msgstr "Suorita ohjelma, toiminto tai scripti"
+msgstr ""
+"#-#-#-#-#  fi.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Suorita ohjelma, toiminto tai scripti\n"
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Suorita sovellus, toiminto tai komentosarja"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
 msgid "Set menu icon from file"
@@ -1771,7 +1916,9 @@ msgstr "Toggle Raven - Ilmoitukset"
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr "HotCorners -asetukset ovat saatavana myös työpöydän valikon kautta"
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr "Auto"
@@ -1795,8 +1942,8 @@ msgstr "Start"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
 "Taustapaperityötilan kytkin muistaa automaattisesti, mikä taustakuva oli "
 "asetettu työtilaa kohti"
@@ -1810,8 +1957,13 @@ msgid "Connect to Hidden Network…"
 msgstr "Yhdistä piilotettuun verkkoon…"
 
 #: budgie-network-manager/budgie-network-applet/src/Widgets/PopoverWidget.vala:48
+#, fuzzy
 msgid "Network Settings…"
-msgstr "Verkon asetukset…"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Verkon asetukset…\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Verkkoasetukset…"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:36
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractVpnInterface.vala:60
@@ -1819,71 +1971,138 @@ msgid "VPN"
 msgstr "VPN"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
+#, fuzzy
 msgid "This Virtual Private Network could not be connected to."
-msgstr "Tähän virtuaaliseen yksityiseen verkkoon ei voitu kytkeä."
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tähän virtuaaliseen yksityiseen verkkoon ei voitu kytkeä.\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Yhteys tähän VPN-verkkoon ei onnistu."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:22
+#, fuzzy
 msgid "Unknown device"
-msgstr "Tuntematon laita"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tuntematon laita\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tuntematon laite"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:37
-#, c-format
+#, fuzzy, c-format
 msgid "Unknown type: %s "
-msgstr "Tuntematon tyyppi %s "
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tuntematon tyyppi %s \n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tuntematon tyyppi: %s "
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:25
-#, c-format
+#, fuzzy, c-format
 msgid "Virtual network: %s"
-msgstr "Virtuaalinen verkko: %s"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Virtuaalinen verkko: %s\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Virtuaaliverkko: %s"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractEtherInterface.vala:28
+#, fuzzy
 msgid "Wired"
-msgstr "Langallinen"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Langallinen\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Kiinteä"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:25
-#, c-format
+#, fuzzy, c-format
 msgid "Mobile Broadband: %s"
-msgstr "Mobiili laajakaista: %s"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Mobiili laajakaista: %s\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Mobiililaajakaista: %s"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:27
+#, fuzzy
 msgid "Mobile Broadband"
-msgstr "Mobiili laajakaista"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Mobiili laajakaista\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Mobiililaajakaista"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractModemInterface.vala:35
 msgid "Modem"
 msgstr "Modeemi"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:49
+#, fuzzy
 msgid "This wireless network could not be connected to."
-msgstr "Tätä langatonta verkkoa ei voitu kytkeä."
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tätä langatonta verkkoa ei voitu kytkeä.\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Yhteys tähän wifi-verkkoon ei onnistu."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
+#, fuzzy
 msgid "This network uses 40/64-bit WEP encryption"
-msgstr "Tämä verkko käyttää 40/64-bittistä WEP-salausta"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tämä verkko käyttää 40/64-bittistä WEP-salausta\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tämä verkko käyttää 40-/64-bittistä WEP-salausta"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:163
+#, fuzzy
 msgid "This network uses 104/128-bit WEP encryption"
-msgstr "Tämä verkko käyttää 104/128-bittistä WEP-salausta"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tämä verkko käyttää 104/128-bittistä WEP-salausta\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tämä verkko käyttää 104-/128-bittistä WEP-salausta"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:166
+#, fuzzy
 msgid "This network uses WPA encryption"
-msgstr "Tämä verkko käyttää WPA salausta"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tämä verkko käyttää WPA salausta\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tämä verkko käyttää WPA-salausta"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:169
 msgid "This network uses encryption"
 msgstr "Tämä verkko käyttää salausta"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:171
+#, fuzzy
 msgid "This network is unsecured"
-msgstr "Tämä verkko on turvaton"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Tämä verkko on turvaton\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tämä verkko on salaamaton"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:49
+#, fuzzy
 msgid "No Access Points Available"
-msgstr "Ei käytettävissä olevia yhteyspisteitä"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Ei käytettävissä olevia yhteyspisteitä\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Tukiasemia ei ole käytettävissä"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:63
+#, fuzzy
 msgid "Scanning for Access Points…"
-msgstr "Skannataan yhteyspisteitä…"
+msgstr ""
+"#-#-#-#-#  fi.po (slingshot)  #-#-#-#-#\n"
+"Skannataan yhteyspisteitä…\n"
+"#-#-#-#-#  fi.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Etsitään tukiasemia…"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:108
 msgid "Wireless"
@@ -1993,3 +2212,1124 @@ msgstr "Aseta erilainen taustakuva työtilaa kohti"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Verkko"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Tunnistautuminen epäonnistui"
+
+#~ msgid "Group:"
+#~ msgstr "Ryhmä:"
+
+#~ msgid "Configure applet"
+#~ msgstr "Muokkaa pienoissovellusta"
+
+#~ msgid "Add applet"
+#~ msgstr "Lisää pienoissovellus"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Valitse tähän paneeliin lisättävä uusi pienoissovellus"
+
+#~ msgid "No settings available"
+#~ msgstr "Ei asetuksia käytettävissä"
+
+#~ msgid "Center"
+#~ msgstr "Keskiosa"
+
+#~ msgid "End"
+#~ msgstr "Loppu"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Vahvista paneelin poistaminen"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Haluatko varmasti poistaa tämän paneelin? Tätä toimintoa ei voi perua."
+
+#~ msgid "Remove panel"
+#~ msgstr "Poista paneeli"
+
+#~ msgid "Keep panel"
+#~ msgstr "Säilytä paneeli"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Vahvista pienoissovelluksen poistaminen"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Haluatko varmasti poistaa tämän pienoissovelluksen? Tätä toimintoa ei voi "
+#~ "perua."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Älä kysy uudelleen"
+
+#~ msgid "Remove applet"
+#~ msgstr "Poista pienoissovellus"
+
+#~ msgid "Keep applet"
+#~ msgstr "Säilytä pienoissovellus"
+
+#~ msgid "Appearance"
+#~ msgstr "Ulkoasu"
+
+#~ msgid "Panels"
+#~ msgstr "Paneelit"
+
+#~ msgid "Session"
+#~ msgstr "Istunto"
+
+#~ msgid "Create new panel"
+#~ msgstr "Luo uusi paneeli"
+
+#~ msgid "Windows"
+#~ msgstr "Ikkunat"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Määritä valintaikkunat seuraamaan ikkunoita"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Valintaikkunat kiinnittyvät pääikkunaan ja raahautuvat niiden mukana."
+
+#~ msgid "Button layout"
+#~ msgstr "Painikkeiden asettelu"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Muuta painikkeiden asettelua ohjelmien otsikkopalkissa."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Keskitä uudet ikkunat näytölle"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Keskitä tuoreeltaan käynnistetyt ikkunat nykyisen näytön keskelle."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Kytke yövalo pois kokoruututilassa"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Kytkee yövalotilan pois ikkunoiden ollessa kokoruututilassa. Kytkeytyy "
+#~ "takaisin kokoruututilasta poistuttaessa."
+
+#~ msgid "Pause notifications when windows are fullscreen"
+#~ msgstr "Piilota ilmoitukset kokoruututilassa"
+
+#~ msgid ""
+#~ "Prevents notifications from appearing when a window is fullscreen. "
+#~ "Unpauses when leaving fullscreen."
+#~ msgstr "Kytkee ilmoitukset pois päältä kokoruututilan ajaksi."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Automaattinen asettelu"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Ikkunat asetellaan raahattaessa automaattisesti näytön yläreunaan tai "
+#~ "kulmiin."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Kohdista ikkunaan hiiren ollessa yllä"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr "Kohdistaa ikkunaan kun osoitin on ikkunan sisällä."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Poista ikkunoiden uudelleenohjaus käytöstä"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Tämä asetus on edistyneille käyttäjille. Käytä tätä, jos sinulla on "
+#~ "graafisia tai suorituskykyyn liittyviä ongelmia erillisillä "
+#~ "näytönohjaimilla."
+
+#~ msgid "Show all windows in tab switcher"
+#~ msgstr "Näytä kaikki ikkunat välilehden vaihtajassa"
+
+#~ msgid ""
+#~ "All tabs will be displayed in tab switcher regardless of the workspace in "
+#~ "use."
+#~ msgstr ""
+#~ "Kaikki välilehdet näytetään välilehden vaihtajassa käytettävästä "
+#~ "työtilasta riippumatta."
+
+#~ msgid "Right (standard)"
+#~ msgstr "Oikea (standardi)"
+
+#~ msgid "Left"
+#~ msgstr "Vasen"
+
+#~ msgid "Style"
+#~ msgstr "Tyyli"
+
+#~ msgid "Widgets"
+#~ msgstr "Pienoissovellukset"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Muokkaa ikkunoiden reunuksia ja säätimiä"
+
+#~ msgid "Icons"
+#~ msgstr "Kuvakkeet"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Aseta yleisesti käytettävä kuvaketeema"
+
+#~ msgid "Cursors"
+#~ msgstr "Osoittimet"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Aseta käytettävä osoitinteema"
+
+#~ msgid "Notification Position"
+#~ msgstr "Ilmoitusten sijainti"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Määritä ilmoitusponnahdusikkunoiden sijainti"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tumma teema"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Sisäänrakennettu teema"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr ""
+#~ "Kun päällä, sisäänrakennettu teema jyrää työpöydän osien teemoituksen"
+
+#~ msgid "Animations"
+#~ msgstr "Animaatiot"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Hallinnoi käyttävätkö ikkunat ja painikkeet animaatioita"
+
+#~ msgid "Top Left"
+#~ msgstr "Vasen yläkulma"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Vasen alakulma"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Oikea alakulma"
+
+#~ msgid "Top Right"
+#~ msgstr "Oikea yläkulma"
+
+#~ msgid "Set Raven position"
+#~ msgstr "Aseta Ravenin sijainti"
+
+#~ msgid ""
+#~ "Set which side of the screen Raven will open on. If set to Automatic, "
+#~ "Raven will open where its parent panel is."
+#~ msgstr ""
+#~ "Valitse millä puolella näyttöä Raven aukeaa. Jos automaattinen on "
+#~ "asetettu, Raven aukeaa sille puolelle jolla isäntäpaneeli on."
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Salli äänenvoimakkuuden nostaminen yli 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr "Mahdollistaa äänenvoimakkuuden nostamisen 150% asti."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Näytä viikkonumerot kalenterissa"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr "Sallii viikkonumeroiden näyttämisen Kalenteri-pienoissovelluksessa."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Näytä Kalenteri-pienoissovellus"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr "Näyttää tai piilottaa kalenterin Ravenin pienoissovellusosiossa."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Näytä ääniulostulon pienoissovellus"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr "Näyttää tai piilottaa ääniulostulon pienoissovelluksen Ravenissa."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Näytä mikrofonin pienoissovellus"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr "Näyttää tai piilottaa mikrofonin pienoissovelluksen Ravenissa."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Näytä mediantoiston hallinnan pienoissovellus"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Näyttää tai piilottaa mediantoistonhallinnan (MPRIS) pienoissovelluksen "
+#~ "Ravenissa."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Näytä virtapalkki"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Näyttää tai piilottaa virtapalkin Ravenin alaosassa."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Valitse pienoissovellus"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Työpöytäkuvakkeet"
+
+#~ msgid "Control whether to allow icons on the desktop."
+#~ msgstr "Määritä sallitaanko käynnistimet ja kuvakkeet työpöydällä."
+
+#~ msgid "Active Mounts"
+#~ msgstr "Aktiiviset liitokset"
+
+#~ msgid "Show all active mounts on the desktop."
+#~ msgstr "Näytä kaikki aktiiviset liitokset työpöydällä."
+
+#~ msgid "Home directory"
+#~ msgstr "Kotikansio"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Lisää kotikansioon osoittava pikakuvake työpöydälle."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Lisää roskakoriin osoittava pikakuvake työpöydälle."
+
+#~ msgid "Icon Size"
+#~ msgstr "Kuvakkeiden koko"
+
+#~ msgid "Set the desired size of icons on the desktop."
+#~ msgstr "Määritä kuvakkeiden koko työpöydällä."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Virtuaalisten työpöytien lukumäärä"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Virtuaalisten työpöytien / työtilojen lukumäärä jotka luodaan "
+#~ "automaattisesti käynnistyksessä."
+
+#~ msgid "Single"
+#~ msgstr "Yksittäisnapsautus"
+
+#~ msgid "Double"
+#~ msgstr "Kaksoisnapsautus"
+
+#~ msgid "Click Policy"
+#~ msgstr "Napsautustoiminta"
+
+#~ msgid ""
+#~ "Click Policy determines if we should open items on a single or double "
+#~ "click."
+#~ msgstr ""
+#~ "Napsautustoiminta määrittää avataanko tiedostot ja kansiot yksittäis- vai "
+#~ "kaksoisnapsautuksella."
+
+#~ msgid "Normal"
+#~ msgstr "Tavallinen"
+
+#~ msgid "Small"
+#~ msgstr "Pieni"
+
+#~ msgid "Large"
+#~ msgstr "Suuri"
+
+#~ msgid "Massive"
+#~ msgstr "Jättimäinen"
+
+#~ msgid "Applets"
+#~ msgstr "Appletit"
+
+#~ msgid "Remove Panel"
+#~ msgstr "Poista paneeli"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Poista tämä paneeli ruudulta"
+
+#~ msgid "Top Dock"
+#~ msgstr "Ylätelakka"
+
+#~ msgid "Right Dock"
+#~ msgstr "Oikeanpuoleinen telakka"
+
+#~ msgid "Left Dock"
+#~ msgstr "Vasemmanpuoleinen telakka"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Alatelakka"
+
+#~ msgid "Top Panel"
+#~ msgstr "Yläpaneeli"
+
+#~ msgid "Right Panel"
+#~ msgstr "Oikeanpuoleinen paneeli"
+
+#~ msgid "Left Panel"
+#~ msgstr "Vasemmanpuoleinen paneeli"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Alapaneeli"
+
+#~ msgid "Top"
+#~ msgstr "Ylä"
+
+#~ msgid "Right"
+#~ msgstr "Oikea"
+
+#~ msgid "Bottom"
+#~ msgstr "Ala"
+
+#~ msgid "Always"
+#~ msgstr "Aina"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dynaaminen"
+
+#~ msgid "None"
+#~ msgstr "Ei mitään"
+
+#~ msgid "Intelligent"
+#~ msgstr "Älykäs"
+
+#~ msgid "Never"
+#~ msgstr "Ei koskaan"
+
+#~ msgid "Position"
+#~ msgstr "Sijainti"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Aseta ruudun reuna, johon tämä paneeli kiinnittyy"
+
+#~ msgid "Size"
+#~ msgstr "Koko"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr "Aseta tämän paneelin koko (leveys tai korkeus riippuen suunnasta)"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Piilota automaattisesti"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Kun päällä, paneeli piiloutuu näkymästä näytöllä olevan tilan lisäämiseksi"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Säädä milloin paneelilla pitäisi olla kiinteä taustaväri"
+
+#~ msgid "Shadow"
+#~ msgstr "Varjo"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr ""
+#~ "Lisää koristeellisen varjostuksen, ihanteellinen läpikuultamattomille "
+#~ "paneeleille"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Muotoile alueet"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Lisää paneeliin vihjeen jotta kunkin paneelin kolmesta pääalueesta voi "
+#~ "teemoittaa erikseen."
+
+#~ msgid "Dock mode"
+#~ msgstr "Telakkatila"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Telakkatilassa paneeli käyttää niin vähän tilaa näytöltä kuin mahdollista"
+
+#~ msgid "Untitled"
+#~ msgstr "Nimetön"
+
+#~ msgid "No description"
+#~ msgstr "Ei kuvausta"
+
+#~ msgid "running"
+#~ msgstr "käynnissä"
+
+#~ msgid "Add"
+#~ msgstr "Lisää"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Samalla nimellä on jo olemassa kohde"
+
+#~ msgid "Title"
+#~ msgstr "Nimi"
+
+#~ msgid "Required"
+#~ msgstr "Vaaditaan"
+
+#~ msgid "Description"
+#~ msgstr "Kuvaus"
+
+#~ msgid "Optional"
+#~ msgstr "Valinnainen"
+
+#~ msgid "Autostart"
+#~ msgstr "Automaattinen käynnistys"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Sovellusten automaattinen käynnistys"
+
+#~ msgid "Add Application"
+#~ msgstr "Lisää sovellus"
+
+#~ msgid "Add Command"
+#~ msgstr "Lisää komento"
+
+#~ msgid "Fonts"
+#~ msgstr "Fontit"
+
+#~ msgid "Window Titles"
+#~ msgstr "Ikkunoiden otsikot"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Aseta kirjasin jota käytetään sovellusten otsikkopalkeissa."
+
+#~ msgid "Documents"
+#~ msgstr "Asiakirjat"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Aseta asiakirjoissa näytettävä kirjasin."
+
+#~ msgid "Interface"
+#~ msgstr "Käyttöliittymä"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Aseta ensisijainen kirjasin sovellusten hallitsimille."
+
+#~ msgid "Monospace"
+#~ msgstr "Tasalevyinen"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr "Aseta tasalevyinen kirjasin tekstipainotteisille ohjelmille."
+
+#~ msgid "Text scaling"
+#~ msgstr "Tekstin skaalaus"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Aseta tekstin skaalauksen kerroin."
+
+#~ msgid "Full"
+#~ msgstr "Vahva"
+
+#~ msgid "Medium"
+#~ msgstr "Keskivahva"
+
+#~ msgid "Slight"
+#~ msgstr "Vähäinen"
+
+#~ msgid "Hinting"
+#~ msgstr "Vihjeistys"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Aseta käytettävä vihjeistys."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Alipikselöinti (LCD-näytöille)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Standardi (harmaasävy)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Reunanpehmennys"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Aseta käytettävä reunanpehmennyksen muoto."
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Mikään sovellus ei toista ääntä tällä hetkellä."
+
+#~ msgid "Play some music"
+#~ msgstr "Soita jotain musiikkia"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Täällä ei ole mitään nähtävää"
+
+#, c-format
+#~ msgid "%u unread notifications"
+#~ msgstr "%u lukematonta ilmoitusta"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 lukematon ilmoitus"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Ei lukemattomia ilmoituksia"
+
+#~ msgid "No new notifications"
+#~ msgstr "Ei uusia ilmoituksia"
+
+#~ msgid "Apps"
+#~ msgstr "Sovellukset"
+
+#~ msgid "Devices"
+#~ msgstr "Laitteet"
+
+#~ msgid "Notifications"
+#~ msgstr "Ilmoitukset"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Kofeiini"
+
+#~ msgid "System Settings"
+#~ msgstr "Järjestelmäasetukset"
+
+#~ msgid "Log out"
+#~ msgstr "Kirjaudu ulos"
+
+#~ msgid "Restart device"
+#~ msgstr "Käynnistä laite uudelleen"
+
+#~ msgid "Power Off"
+#~ msgstr "Sammuta"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Kofeiinitila käytössä"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Kofeiinitila pois käytöstä"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Kytkeytyy pois minuutin kuluttua"
+
+#, c-format
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Kytkeytyy pois %d minuutin kuluttua"
+
+#~ msgid "User"
+#~ msgstr "Käyttäjä"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Caps lock käytössä"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Caps lock ei ole käytössä"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Num lock käytössä"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Num lock ei ole käytössä"
+
+#~ msgid "Removable devices"
+#~ msgstr "Siirrettävät laitteet"
+
+#~ msgid "Local volumes"
+#~ msgstr "Paikalliset asemat"
+
+#~ msgid "Network folders"
+#~ msgstr "Verkkokansiot"
+
+#~ msgid "Eject"
+#~ msgstr "Poista"
+
+#~ msgid "Unmount"
+#~ msgstr "Poista käytöstä"
+
+#, c-format
+#~ msgid "Open \"%s\""
+#~ msgstr "Avaa \"%s\""
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Laite voidaan nyt poistaa tietokoneesta turvallisesti"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Tuntematon laite"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Virhe irroitettaessa laitetta"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Virhe taltion liitosta irroitettaessa"
+
+#, c-format
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Liitä ja avaa \"%s\""
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Kirjoita salauksen tunnuslause avataksesi taltion"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Kirjoittamasi salasana on väärin"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Tämän taltion liittämistä yrittäessä tapahtui tuntematon virhe"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Taltio on toisen prosessin käytössä"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Toimenpide keskeytetty"
+
+#~ msgid "Type your password"
+#~ msgstr "Kirjoita salasanasi"
+
+#~ msgid "Places"
+#~ msgstr "Sijainnit"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Ei näytettävää tällä hetkellä"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Liitä levyasemia"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Ota käyttöön lisää kohtia"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth-asetukset"
+
+#~ msgid "Send Files"
+#~ msgstr "Lähetä tiedostoja"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetoothin lentokonetila"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth on poissa käytöstä"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth on käytössä"
+
+#, c-format
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Yhdistetty %d laitteeseen"
+#~ msgstr[1] "Yhdistetty %d laitteeseen"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Akku ladattu täyteen."
+
+#~ msgid "Battery charging"
+#~ msgstr "Akku latautuu"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Akkua jäljellä"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Näytä akun prosentti"
+
+#~ msgid "Power settings"
+#~ msgstr "Virranhallinta-asetukset"
+
+#~ msgid "Rename"
+#~ msgstr "Nimeä uudelleen"
+
+#~ msgid "Remove"
+#~ msgstr "Poista"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Ajastin (minuuttia)"
+
+#~ msgid "Only one instance of the System Tray can be active at a time."
+#~ msgstr "Vain yksi ilmaisinalue voi olla aktiivinen kerrallaan."
+
+#~ msgid "The System Tray failed to initialize."
+#~ msgstr "Ilmaisinalueen alustaminen epäonnistui."
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Vaihda työpöytää"
+
+#~ msgid "All"
+#~ msgstr "Kaikki"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Valitettavasti tuloksia ei löytynyt"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Päivä- ja aika-asetukset"
+
+#~ msgid "Show seconds"
+#~ msgstr "Näytä sekunnit"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Käynnistä uusi instanssi"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Sulje kaikki ikkunat"
+
+#~ msgid "Always On Top"
+#~ msgstr "Aina päällimmäisenä"
+
+#~ msgid "Maximize"
+#~ msgstr "Suurenna"
+
+#~ msgid "Minimize"
+#~ msgstr "Pienennä"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Poista suosikeista"
+
+#~ msgid "Favorite"
+#~ msgstr "Suosikki"
+
+#, c-format
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Siirrä työtilaan %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Palauta"
+
+#~ msgid "Close Window"
+#~ msgstr "Sulje ikkuna"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Näytä ikkunan säätimet"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Tunnistautuminen vaaditaan"
+
+#~ msgid "Password:"
+#~ msgstr "Salasana:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Tunnistautuminen vaaditaan"
+
+#~ msgid "Authenticate"
+#~ msgstr "Tunnistaudu"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Haluatko varmasti päättää istunnon?"
+
+#~ msgid "Show label"
+#~ msgstr "Näytä nimike"
+
+#~ msgid "Show places"
+#~ msgstr "Näytä sijainnit"
+
+#~ msgid "Show network folders"
+#~ msgstr "Näytä verkkokansiot"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Näytä siirrettävät asemat"
+
+#~ msgid "Always expand places"
+#~ msgstr "Laajenna aina sijainnit"
+
+#~ msgid "Icon Spacing"
+#~ msgstr "Kuvakkeiden väli"
+
+#~ msgid "Spacer size"
+#~ msgstr "Välin koko"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "\"Lisää\" painikkeen näkyvyys"
+
+#~ msgid "Don't show"
+#~ msgstr "Älä näytä"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Näytä hiiren ollessa yllä"
+
+#~ msgid "Always show"
+#~ msgstr "Näytä aina"
+
+#~ msgid "Enable notification"
+#~ msgstr "Kytke ilmoitukset päälle"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Maksimikirkkaus"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Kirkkaus"
+
+#~ msgid "Night Light"
+#~ msgstr "Yövalo"
+
+#~ msgid "Schedule"
+#~ msgstr "Ajoitus"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Auringonlaskusta auringonnousuun"
+
+#~ msgid "Manual"
+#~ msgstr "Manuaalinen"
+
+#~ msgid "Display Settings"
+#~ msgstr "Näytön asetukset"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Kompakti tila"
+
+#~ msgid "Show Headers"
+#~ msgstr "Näytä otsikot"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Näytä kaikki ikkunat napsautuksella"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Näytä ainoastaan suosikit"
+
+#~ msgid "Lock icons"
+#~ msgstr "Lukitse kuvakkeet"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Rajoita työtilaan"
+
+#~ msgid "Window grouping"
+#~ msgstr "Ikkunoiden ryhmitys"
+
+#~ msgid "Middle click to launch new window"
+#~ msgstr "Napsauta hiiren keskipainikkeella avataksesi uuden ikkunan"
+
+#~ msgid "Require a double-click to launch new window"
+#~ msgstr "Vaadi tuplaklikkaus avataksesi uuden ikkunan"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie-työpöytä"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Tämä istunto kirjaa sinut Budgie-työpöydälle"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Budgie-paneeli"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Käynnistä muita sovelluksia ja tuo erinäisiä apuvälineitä ikkunoiden "
+#~ "hallintaan, kellonajan näyttämiseen, jne."
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Muuta työpöydän ulkoasua ja käytöstä"
+
+#~ msgid "User Indicator"
+#~ msgstr "Käyttäjäilmaisin"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Lukitusnäppäinilmaisin"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Tilailmaisin"
+
+#~ msgid "Spacer"
+#~ msgstr "Väli"
+
+#~ msgid "Separator"
+#~ msgstr "Erotin"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Työtilan vaihtaja"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Näppäimistöasettelun ilmaisin"
+
+#~ msgid "Caffeine"
+#~ msgstr "Kofeiini"
+
+#~ msgid "System Tray"
+#~ msgstr "Tehtäväpalkki"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Raven-sivupalkin hallinta"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Näytä työpöytä -painike"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie-valikko"
+
+#~ msgid "Clock"
+#~ msgstr "Kello"
+
+#~ msgid "Task List"
+#~ msgstr "Tehtävälista"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Tehtävälista kuvakkeilla"
+
+#~ msgid "Network"
+#~ msgstr "Verkko"
+
+#~ msgid "Network indicator"
+#~ msgstr "Verkkoilmaisin"
+
+#~ msgid "Uninstall"
+#~ msgstr "Poista asennus"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "Näytä sovelluskeskuksessa"
+
+#, c-format
+#~ msgid "Search for %s in %s"
+#~ msgstr "Etsi %s kohteesta %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Etsi sovelluskaupasta"
+
+#~ msgid "AppCenter"
+#~ msgstr "Sovelluskeskus"
+
+#~ msgid "Search for applications"
+#~ msgstr "Etsi sovelluksia"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "Sovelluskeskusta ei ole asennettu"
+
+#, c-format
+#~ msgid "Open %s settings"
+#~ msgstr "Avaa %s-asetukset"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Löydä Switchboard-liitännäisiä ja avaa ne."
+
+#~ msgid "Lock this device"
+#~ msgstr "Lukitse tämä laite"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "lukitse"
+
+#~ msgid "Log Out"
+#~ msgstr "Kirjaudu ulos"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Sulje kaikki avoinna olevat sovellukset ja lopeta"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "kirjaudu ulos"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Aseta tietokone valmiustilaan"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "valmiustila"
+
+#~ msgid "Hibernate"
+#~ msgstr "Lepotila"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Aseta tietokone lepotilaan"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "lepotila"
+
+#~ msgid "Shut Down"
+#~ msgstr "Sammuta"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Sammuta tietokone"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "sammuta"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Käynnistä tietokone uudelleen"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "käynnistä uudelleen"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Lukitse istunto tai kirjaudu ulos istunnosta. Aseta tietokone "
+#~ "valmiustilaan, käynnistä se uudelleen tai sammuta."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit-taustapalvelua ei löytynyt"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Sovellusvalikkoilmaisin"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Poistetaanko “%s”?"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr ""
+#~ "Tämän sovelluksen poistaminen saattaa poistaa myös sovellukseen liittyvät "
+#~ "tiedot."
+
+#~ msgid "Open using default application"
+#~ msgstr "Avaa käyttäen oletussovellusta"
+
+#~ msgid "Open folder"
+#~ msgstr "Avaa kansio"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Avaa tämän tiedoston sisältävä kansio"
+
+#~ msgid "All Applications"
+#~ msgstr "Kaikki sovellukset"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Luo uusi suodatin"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Langattomia tukiasemia ei ole kantoalueella."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Wifi on pois käytöstä"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr "Ota wifi käyttöön, jotta voit etsiä langattomia tukiasemia."
+
+#~ msgid "No VPN Available"
+#~ msgstr "VPN:ää ei ole saatavilla"
+
+#~ msgid "Hotspot"
+#~ msgstr "Yhteyspiste"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Yhteyspiste %s"
+
+#~ msgid "Disconnected"
+#~ msgstr "Yhteys katkaistu"
+
+#~ msgid "Connected"
+#~ msgstr "Yhdistetty"
+
+#~ msgid "Failed"
+#~ msgstr "Epäonnistui"
+
+#~ msgid "Connecting"
+#~ msgstr "Yhdistetään"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Johto on irti"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Lentokonetila käytössä"
+
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"

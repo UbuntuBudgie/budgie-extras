@@ -1,25 +1,48 @@
+# #-#-#-#-#  lt.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Moo, 2023
-# 
+#
+# #-#-#-#-#  lt.po (slingshot)  #-#-#-#-#
+# Lithuanian translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: Moo, 2023\n"
-"Language-Team: Lithuanian (https://app.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
+"PO-Revision-Date: 2018-05-05 08:30+0000\n"
+"Last-Translator: Moo <hazap@hotmail.com>\n"
+"Language-Team: Lithuanian <https://weblate.elementary.io/projects/wingpanel/"
+"wingpanel-indicator-network/lt/>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lt\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 3.7.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+"#-#-#-#-#  lt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 2.18\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -335,11 +358,15 @@ msgstr "Atlikta"
 msgid "Cancel"
 msgstr "Atsisakyti"
 
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #. window stuff
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -362,8 +389,7 @@ msgstr ""
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as
-#. possible
+#. TRANSLATORS: it is important to keep these column headers as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr ""
@@ -444,8 +470,7 @@ msgid "General preferences"
 msgstr "Bendros nuostatos"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
@@ -466,6 +491,7 @@ msgstr ""
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr ""
@@ -539,8 +565,10 @@ msgid "Swap windows"
 msgstr ""
 
 #. notification
+#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr ""
@@ -644,8 +672,10 @@ msgstr ""
 msgid "Tile all windows to grid"
 msgstr ""
 
+#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr ""
@@ -725,8 +755,10 @@ msgstr "Sinchronizuoti tinklelio dydį"
 msgid "Update grid size for moving & resizing to latest picked layout"
 msgstr ""
 
+#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr ""
@@ -805,8 +837,7 @@ msgid "Test"
 msgstr "Išbandyti"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
@@ -1065,30 +1096,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1134,8 +1159,7 @@ msgstr ""
 msgid "almost %s"
 msgstr "beveik %s"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "Datos ir laiko nustatymai"
@@ -1153,16 +1177,13 @@ msgstr "Kalendorius"
 msgid "Preferences"
 msgstr "Nuostatos"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "Rodyti datą"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "Naudoti 24 val. laiką"
@@ -1184,12 +1205,22 @@ msgid "Actions"
 msgstr "Veiksmai"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:46
+#, fuzzy
 msgid "Search"
-msgstr "Paieška"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Paieška\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Ieškoti"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:48
+#, fuzzy
 msgid "Contacts"
-msgstr "Adresatai"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Adresatai\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Kontaktai"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:50
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:128
@@ -1202,8 +1233,13 @@ msgid "Settings"
 msgstr "Nustatymai"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:54
+#, fuzzy
 msgid "Application Actions"
-msgstr "Programos veiksmai"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Programos veiksmai\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Programų veiksmai"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:56
 msgid "Bookmarks"
@@ -1214,45 +1250,73 @@ msgstr "Žymelės"
 msgid "Other"
 msgstr "Kita"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
 msgstr "Atverti naudojant %s grafiką"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:110
+#, fuzzy
 msgid "Remove from _Dock"
-msgstr "Šalinti iš _doko"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Šalinti iš _doko\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Šalinti iš sky_delio"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:112
+#, fuzzy
 msgid "Add to _Dock"
-msgstr "Pridėti į _doką"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Pridėti į _doką\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Pridėti į sky_delį"
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
+#, fuzzy
 msgid "Try changing search terms."
-msgstr "Pabandykite pakeisti paieškos raktažodžius."
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Pabandykite pakeisti paieškos raktažodžius.\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Pabandykite pakeisti paieškos žodžius."
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:130
-#, c-format
+#, fuzzy, c-format
 msgid "No Results for “%s”"
-msgstr "Nėra jokių rezultatų, susijusių su „%s“"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Nėra jokių rezultatų, susijusių su „%s“\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"“%s” negrąžino jokių rezultatų"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:64
 msgid "View as Grid"
 msgstr "Rodyti kaip tinklelį"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:68
+#, fuzzy
 msgid "View by Category"
-msgstr "Rodyti pagal kategoriją"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Rodyti pagal kategoriją\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Rodyti pagal kategorijas"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:81
 msgid "Search Apps"
 msgstr "Ieškoti programų"
 
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:85
+#, fuzzy
 msgid "Clear all"
-msgstr "Viską išvalyti"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Viską išvalyti\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Išvalyti viską"
 
 #: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
 msgid "Open and search apps"
@@ -1279,8 +1343,13 @@ msgid "Logout"
 msgstr "Atsijungti"
 
 #: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#, fuzzy
 msgid "Run this command…"
-msgstr "Paleisti šią komandą…"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Paleisti šią komandą…\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Vykdyti šią komandą…"
 
 #: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:81
 #: budgie-applications-menu/applications-menu/src/Backend/SwitcherooControl.vala:109
@@ -1333,7 +1402,7 @@ msgstr "Skaičiuotuvas"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:51
 msgid "Calculate basic expressions."
-msgstr ""
+msgstr "Apskaičiuoti pagrindinius reiškinius."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:55
 msgid "bc is not installed"
@@ -1345,18 +1414,27 @@ msgid "Click to copy result to clipboard"
 msgstr "Spustelėkite norėdami kopijuoti rezultatą į iškarpinę"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
+#, fuzzy
 msgid "Search for and run applications on your computer."
-msgstr "Ieškoti ir paleisti programas kompiuteryje."
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Ieškoti ir paleisti programas kompiuteryje.\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Ieškoti ir vykdyti programas jūsų kompiuteryje."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:322
-#, c-format
+#, fuzzy, c-format
 msgid "Open with %s"
-msgstr "Atverti naudojant %s"
+msgstr ""
+"#-#-#-#-#  lt.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Atverti naudojant %s\n"
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Atverti, naudojant %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:324
 #, c-format
 msgid "Opens current selection using %s"
-msgstr ""
+msgstr "Atveria esamą pasirinkimą, naudojant %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:39
 #, c-format
@@ -1367,7 +1445,7 @@ msgstr "Atverti %s numatytojoje saityno naršyklėje"
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:84
 #, c-format
 msgid "Open %s in %s"
-msgstr ""
+msgstr "Atverti %s, naudojant %s"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:50
 msgid "Open this link in default browser"
@@ -1375,7 +1453,7 @@ msgstr "Atverti šią nuorodą numatytojoje naršyklėje"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
 msgid "Link"
-msgstr ""
+msgstr "Nuoroda"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
 msgid "Open link in default browser"
@@ -1384,15 +1462,15 @@ msgstr "Atverti nuorodą numatytojoje naršyklėje"
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
 #, c-format
 msgid "Execute '%s'"
-msgstr ""
+msgstr "Vykdyti \"%s\""
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:39
 msgid "Run command"
-msgstr ""
+msgstr "Vykdyti komandą"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/command-plugin.vala:60
 msgid "Find and execute arbitrary commands."
-msgstr ""
+msgstr "Rasti ir vykdyti pasirinktines komandas."
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:88
 msgid "Open the selected directory"
@@ -1417,11 +1495,11 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
-msgstr ""
+msgstr "Vykdyti terminale"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:26
 msgid "Run application or command in terminal"
-msgstr ""
+msgstr "Vykdyti programą ar komandą terminale"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/ClipboardCopyAction.vala:25
 msgid "Copy to Clipboard"
@@ -1433,11 +1511,11 @@ msgstr "Kopijuoti žymėjimą į iškarpinę"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:33
 msgid "Run"
-msgstr ""
+msgstr "Vykdyti"
 
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/RunnerAction.vala:34
 msgid "Run an application, action or script"
-msgstr ""
+msgstr "Vykdyti programą, veiksmą ar scenarijų"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:30
 msgid "Set menu icon from file"
@@ -1445,11 +1523,11 @@ msgstr "Nustatyti meniu piktogramą iš failo"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:40
 msgid "Image files"
-msgstr ""
+msgstr "Paveikslų failai"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:46
 msgid "Any file"
-msgstr ""
+msgstr "Bet koks failas"
 
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:59
 msgid "Set icon"
@@ -1764,7 +1842,9 @@ msgstr ""
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr ""
@@ -1784,12 +1864,12 @@ msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
 msgid "Start"
-msgstr ""
+msgstr "Pradžia"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
@@ -1811,7 +1891,7 @@ msgstr "VPN"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/VpnMenuItem.vala:55
 msgid "This Virtual Private Network could not be connected to."
-msgstr ""
+msgstr "Nepavyko prisijungti prie šio Virtualiojo Privačiojo Tinklo."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WidgetNMInterface.vala:22
 msgid "Unknown device"
@@ -1845,8 +1925,13 @@ msgid "Modem"
 msgstr "Modemas"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:49
+#, fuzzy
 msgid "This wireless network could not be connected to."
-msgstr "Nepavyko prisijungti prie šio belaidžio ryšio."
+msgstr ""
+"#-#-#-#-#  lt.po (slingshot)  #-#-#-#-#\n"
+"Nepavyko prisijungti prie šio belaidžio ryšio.\n"
+"#-#-#-#-#  lt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Prie šio belaidžio tinklo prisijungti nepavyko."
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/WifiMenuItem.vala:160
 msgid "This network uses 40/64-bit WEP encryption"
@@ -1870,11 +1955,11 @@ msgstr "Šis tinklas yra nesaugus"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:49
 msgid "No Access Points Available"
-msgstr ""
+msgstr "Nėra prieinamų prieigos taškų"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:63
 msgid "Scanning for Access Points…"
-msgstr ""
+msgstr "Ieškoma prieigos taškų…"
 
 #: budgie-network-manager/budgie-network-applet/src/common/Widgets/AbstractWifiInterface.vala:108
 msgid "Wireless"
@@ -1914,7 +1999,7 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Roll-over mouse"
-msgstr ""
+msgstr "Užvedus pelę"
 
 #. Spacing around each category name
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:11
@@ -1982,3 +2067,1106 @@ msgstr ""
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Tinklo programėlė"
+
+#~ msgid "Authentication failed"
+#~ msgstr "Tapatybės nustatymas nepavyko"
+
+#~ msgid "Group:"
+#~ msgstr "Grupė:"
+
+#~ msgid "Configure applet"
+#~ msgstr "Konfigūruoti programėlę"
+
+#~ msgid "Add applet"
+#~ msgstr "Pridėti programėlę"
+
+#~ msgid "Choose a new applet to add to this panel"
+#~ msgstr "Pasirinkti naują programėlę, kurią pridėti į šį skydelį"
+
+#~ msgid "No settings available"
+#~ msgstr "Nėra prieinamų nustatymų"
+
+#~ msgid "Center"
+#~ msgstr "Centras"
+
+#~ msgid "End"
+#~ msgstr "Pabaiga"
+
+#~ msgid "Confirm panel removal"
+#~ msgstr "Patvirtinti skydelio šalinimą"
+
+#~ msgid ""
+#~ "Do you really want to remove this panel? This action cannot be undone."
+#~ msgstr ""
+#~ "Ar tikrai norite pašalinti šį skydelį? Šio veiksmo negalima bus atšaukti."
+
+#~ msgid "Remove panel"
+#~ msgstr "Šalinti skydelį"
+
+#~ msgid "Keep panel"
+#~ msgstr "Palikti skydelį"
+
+#~ msgid "Confirm applet removal"
+#~ msgstr "Patvirtinti programėlės šalinimą"
+
+#~ msgid ""
+#~ "Do you really want to remove this applet? This action cannot be undone."
+#~ msgstr ""
+#~ "Ar tikrai norite pašalinti šią programėlę? Šio veiksmo negalima bus "
+#~ "atšaukti."
+
+#~ msgid "Don't ask me again"
+#~ msgstr "Daugiau nebeklausti"
+
+#~ msgid "Remove applet"
+#~ msgstr "Šalinti programėlę"
+
+#~ msgid "Keep applet"
+#~ msgstr "Palikti programėlę"
+
+#~ msgid "Appearance"
+#~ msgstr "Išvaizda"
+
+#~ msgid "Panels"
+#~ msgstr "Skydeliai"
+
+#~ msgid "Session"
+#~ msgstr "Seansas"
+
+#~ msgid "Create new panel"
+#~ msgstr "Sukurti naują skydelį"
+
+#~ msgid "Windows"
+#~ msgstr "Langai"
+
+#~ msgid "Attach modal dialogs to windows"
+#~ msgstr "Pritvirtinti modalinius dialogus prie langų"
+
+#~ msgid ""
+#~ "Modal dialogs will become attached to the parent window and move together "
+#~ "when dragged."
+#~ msgstr ""
+#~ "Modaliniai dialogai bus pritvirtinti prie pirminių langų ir juos velkant, "
+#~ "bus perkeliami kartu su jais."
+
+#~ msgid "Button layout"
+#~ msgstr "Mygtukų išdėstymas"
+
+#~ msgid "Change the layout of buttons in application titlebars."
+#~ msgstr "Keisti programų antraštės juostoje mygtukų išdėstymą."
+
+#~ msgid "Center new windows on screen"
+#~ msgstr "Centruoti naujus langus ekrane"
+
+#~ msgid "Center newly launched windows on the current screen."
+#~ msgstr "Centruoti naujai paleistus langus esamame ekrane."
+
+#~ msgid "Disable Night Light mode when windows are fullscreen"
+#~ msgstr "Išjungti naktinį apšvietimą, kai langai yra visame ekrane"
+
+#~ msgid ""
+#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
+#~ "leaving fullscreen."
+#~ msgstr ""
+#~ "Išjungia naktinio apšvietimo veikseną, kai langas yra visame ekrane. "
+#~ "Išėjus iš viso ekrano veiksenos, vėl įjungia naktinį apšvietimą."
+
+#, fuzzy
+#~ msgid "Pause notifications when windows are fullscreen"
+#~ msgstr "Išjungti naktinį apšvietimą, kai langai yra visame ekrane"
+
+#, fuzzy
+#~ msgid ""
+#~ "Prevents notifications from appearing when a window is fullscreen. "
+#~ "Unpauses when leaving fullscreen."
+#~ msgstr ""
+#~ "Išjungia naktinio apšvietimo veikseną, kai langas yra visame ekrane. "
+#~ "Išėjus iš viso ekrano veiksenos, vėl įjungia naktinį apšvietimą."
+
+#~ msgid "Automatic tiling"
+#~ msgstr "Automatinis išklojimas"
+
+#~ msgid ""
+#~ "Windows will automatically tile when dragged into the top of the screen "
+#~ "or the far corners."
+#~ msgstr ""
+#~ "Langai bus automatiškai išklojami, velkant juos į ekrano viršų ar "
+#~ "tolimuosius kampus."
+
+#~ msgid "Enable window focus change on mouse enter and leave"
+#~ msgstr "Įjungti lango fokusavimo pasikeitimus užvedus ir patraukus pelę"
+
+#~ msgid ""
+#~ "Enables window focus to apply when the mouse enters the window and "
+#~ "unfocus when the mouse leaves the window."
+#~ msgstr ""
+#~ "Pritaiko lango fokusavimą, kai pelė užvedama ant lango ir panaikina "
+#~ "fokusavimą, kai pelė patraukiama nuo lango."
+
+#~ msgid "Disable unredirection of windows"
+#~ msgstr "Išjungti netiesioginę langų išvestį"
+
+#~ msgid ""
+#~ "This option is for advanced users. Use this if you are having graphical "
+#~ "or performance issues with dedicated GPUs."
+#~ msgstr ""
+#~ "Šis parametras yra pažengusiems naudotojams. Naudokite jį, jeigu turite "
+#~ "grafikos ar našumo problemų su paskirtais grafikos procesoriais."
+
+#, fuzzy
+#~ msgid "Show all windows in tab switcher"
+#~ msgstr "Spustelėjus, rodyti visus langus"
+
+#~ msgid "Right (standard)"
+#~ msgstr "Dešinėje (standartinis)"
+
+#~ msgid "Left"
+#~ msgstr "Kairėje"
+
+#~ msgid "Style"
+#~ msgstr "Stilius"
+
+#~ msgid "Widgets"
+#~ msgstr "Valdikliai"
+
+#~ msgid "Set the appearance of window decorations and controls"
+#~ msgstr "Nustatyti langų dekoracijų ir valdiklių išvaizdą"
+
+#~ msgid "Icons"
+#~ msgstr "Piktogramos"
+
+#~ msgid "Set the globally used icon theme"
+#~ msgstr "Nustatyti visuotinai naudojamą piktogramų temą"
+
+#~ msgid "Cursors"
+#~ msgstr "Žymekliai"
+
+#~ msgid "Set the globally used mouse cursor theme"
+#~ msgstr "Nustatyti visuotinai naudojamą pelės žymeklio temą"
+
+#~ msgid "Notification Position"
+#~ msgstr "Pranešimų vieta"
+
+#~ msgid "Set the location for notification popups"
+#~ msgstr "Nustatyti iškylančiųjų pranešimų vietą"
+
+#~ msgid "Dark theme"
+#~ msgstr "Tamsi tema"
+
+#~ msgid "Built-in theme"
+#~ msgstr "Įtaisyta tema"
+
+#~ msgid ""
+#~ "When enabled, the built-in theme will override the desktop component "
+#~ "styling"
+#~ msgstr "Kai įjungta, įtaisytoji tema nustelbs darbalaukio komponentų stilių"
+
+#~ msgid "Animations"
+#~ msgstr "Animacijos"
+
+#~ msgid "Control whether windows and controls use animations"
+#~ msgstr "Valdyti ar langai ir valdikliai naudos animacijas"
+
+#~ msgid "Top Left"
+#~ msgstr "Viršutinėje kairėje"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Apatinėje kairėje"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Apatinėje dešinėje"
+
+#~ msgid "Top Right"
+#~ msgstr "Viršutinėje dešinėje"
+
+#~ msgid "Allow raising volume above 100%"
+#~ msgstr "Leisti garsinti virš 100%"
+
+#~ msgid ""
+#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
+#~ "Widget in Raven up to 150%."
+#~ msgstr ""
+#~ "Leidžia garsinti per sistemos nustatymus, o taip pat Raven esančiame "
+#~ "garso išvesties valdiklyje iki 150%."
+
+#~ msgid "Enable display of week numbers in Calendar"
+#~ msgstr "Įjungti savaičių numerių rodymą kalendoriuje"
+
+#~ msgid ""
+#~ "This setting enables the display of week numbers in the Calendar widget."
+#~ msgstr ""
+#~ "Šis nustatymas įjungia savaičių numerių rodymą kalendoriaus valdiklyje."
+
+#~ msgid "Show Calendar Widget"
+#~ msgstr "Rodyti kalendoriaus valdiklį"
+
+#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
+#~ msgstr "Rodo arba slepia kalendoriaus valdiklį Raven programėlių sekcijoje."
+
+#~ msgid "Show Sound Output Widget"
+#~ msgstr "Rodyti garso išvesties valdiklį"
+
+#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Rodo arba slepia garso išvesties valdiklį Raven programėlių sekcijoje."
+
+#~ msgid "Show Microphone Input Widget"
+#~ msgstr "Rodyti mikrofono įvesties valdiklį"
+
+#~ msgid ""
+#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
+#~ msgstr ""
+#~ "Rodo arba slepia mikrofono įvesties valdiklį Raven programėlių sekcijoje."
+
+#~ msgid "Show Media Playback Controls Widget"
+#~ msgstr "Rodyti medijos atkūrimo valdymo valdiklį"
+
+#~ msgid ""
+#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
+#~ "Applets section."
+#~ msgstr ""
+#~ "Rodo arba slepia medijos atkūrimo valdiklius (MPRIS) Raven programėlių "
+#~ "sekcijoje."
+
+#~ msgid "Show Power Strip"
+#~ msgstr "Rodyti energijos juostą"
+
+#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
+#~ msgstr "Rodo arba slepia energijos juostą Raven apačioje."
+
+#~ msgid "Choose an applet"
+#~ msgstr "Pasirinkti programėlę"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Darbalaukio piktogramos"
+
+#, fuzzy
+#~ msgid "Control whether to allow icons on the desktop."
+#~ msgstr "Valdyti ar darbalaukyje bus leidžiami leistukai ir piktogramos."
+
+#, fuzzy
+#~ msgid "Show all active mounts on the desktop."
+#~ msgstr "Valdyti ar darbalaukyje bus leidžiami leistukai ir piktogramos."
+
+#~ msgid "Home directory"
+#~ msgstr "Namų katalogas"
+
+#~ msgid "Add a shortcut to your home directory on the desktop."
+#~ msgstr "Pridėti darbalaukyje šaukinį į jūsų namų katalogą."
+
+#~ msgid "Add a shortcut to the Trash directory on the desktop."
+#~ msgstr "Pridėti darbalaukyje šaukinį į šiukšlinės katalogą."
+
+#, fuzzy
+#~ msgid "Icon Size"
+#~ msgstr "Piktogramų dydis"
+
+#, fuzzy
+#~ msgid "Set the desired size of icons on the desktop."
+#~ msgstr "Nustatyti pageidaujamą darbalaukio piktogramų dydį."
+
+#~ msgid "Number of virtual desktops"
+#~ msgstr "Virtualių darbalaukių skaičius"
+
+#~ msgid ""
+#~ "Number of virtual desktops / workspaces to create automatically on "
+#~ "startup."
+#~ msgstr ""
+#~ "Paleidimo metu automatiškai sukuriamų darbalaukių / darbo sričių skaičius."
+
+#~ msgid "Single"
+#~ msgstr "Vienkartis"
+
+#~ msgid "Double"
+#~ msgstr "Dvikartis"
+
+#~ msgid "Click Policy"
+#~ msgstr "Spustelėjimo politika"
+
+#~ msgid ""
+#~ "Click Policy determines if we should open items on a single or double "
+#~ "click."
+#~ msgstr ""
+#~ "Spustelėjimo politika nustato ar elementai turėtų būti atveriami "
+#~ "vienkarčiu ar dvikarčiu spustelėjimu."
+
+#~ msgid "Applets"
+#~ msgstr "Programėlės"
+
+#~ msgid "Remove Panel"
+#~ msgstr "Šalinti skydelį"
+
+#~ msgid "Remove this panel from the screen"
+#~ msgstr "Šalinti šį skydelį iš ekrano"
+
+#~ msgid "Top Dock"
+#~ msgstr "Viršutinis dokas"
+
+#~ msgid "Right Dock"
+#~ msgstr "Dešinysis dokas"
+
+#~ msgid "Left Dock"
+#~ msgstr "Kairysis dokas"
+
+#~ msgid "Bottom Dock"
+#~ msgstr "Apatinis dokas"
+
+#~ msgid "Top Panel"
+#~ msgstr "Viršutinis skydelis"
+
+#~ msgid "Right Panel"
+#~ msgstr "Dešinysis skydelis"
+
+#~ msgid "Left Panel"
+#~ msgstr "Kairysis skydelis"
+
+#~ msgid "Bottom Panel"
+#~ msgstr "Apatinis skydelis"
+
+#~ msgid "Top"
+#~ msgstr "Viršuje"
+
+#~ msgid "Right"
+#~ msgstr "Dešinėje"
+
+#~ msgid "Bottom"
+#~ msgstr "Apačioje"
+
+#~ msgid "Always"
+#~ msgstr "Visada"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamiškai"
+
+#~ msgid "None"
+#~ msgstr "Nėra"
+
+#~ msgid "Intelligent"
+#~ msgstr "Išmaniai"
+
+#~ msgid "Never"
+#~ msgstr "Niekada"
+
+#~ msgid "Position"
+#~ msgstr "Vieta"
+
+#~ msgid "Set the edge of the screen that this panel will stay on"
+#~ msgstr "Nustatyti ekrano kraštą, kuriame išliks skydelis"
+
+#~ msgid "Size"
+#~ msgstr "Dydis"
+
+#~ msgid ""
+#~ "Set the size (width or height, depending on orientation) of this panel"
+#~ msgstr ""
+#~ "Nustatyti šio skydelio dydį (plotį ar aukštį, priklausomai nuo "
+#~ "orientacijos)"
+
+#~ msgid "Automatically hide"
+#~ msgstr "Automatiškai slėpti"
+
+#~ msgid "When set, this panel will hide from view to maximize screen estate"
+#~ msgstr ""
+#~ "Nustačius, šis skydelis bus slepiamas iš rodinio, kad atlaisvintų ekrano "
+#~ "plotą"
+
+#~ msgid "Control when this panel should have a solid background"
+#~ msgstr "Valdyti kada šis skydelis turės vietisą foną"
+
+#~ msgid "Shadow"
+#~ msgstr "Šešėlis"
+
+#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
+#~ msgstr ""
+#~ "Prideda dekoratyvų šešėlį, puikiai tinkantį nepermatomiems skydeliams"
+
+#~ msgid "Stylize regions"
+#~ msgstr "Stilizuoti sritis"
+
+#~ msgid ""
+#~ "Adds a hint to the panel so that each of the panel's three main areas may "
+#~ "be themed differently."
+#~ msgstr ""
+#~ "Pridėti į skydelį užuominą, kad tokiu būdu kiekviena iš trijų skydelio "
+#~ "sričių galėtų būti skirtingai stilizuojama."
+
+#~ msgid "Dock mode"
+#~ msgstr "Doko veiksena"
+
+#~ msgid ""
+#~ "When in dock mode, the panel will use the minimal amount of space "
+#~ "possible, freeing up valuable screen estate"
+#~ msgstr ""
+#~ "Doko veiksenoje skydelis naudos kaip įmanoma mažiau vietos, "
+#~ "atlaisvindamas vertingą ekrano plotą"
+
+#~ msgid "Untitled"
+#~ msgstr "Be pavadinimo"
+
+#~ msgid "No description"
+#~ msgstr "Nėra aprašo"
+
+#~ msgid "running"
+#~ msgstr "vykdoma"
+
+#~ msgid "Add"
+#~ msgstr "Pridėti"
+
+#~ msgid "An entry with that title already exists"
+#~ msgstr "Įrašas tokiu pavadinimu jau yra"
+
+#~ msgid "Title"
+#~ msgstr "Pavadinimas"
+
+#~ msgid "Required"
+#~ msgstr "Būtina"
+
+#~ msgid "Description"
+#~ msgstr "Aprašas"
+
+#~ msgid "Optional"
+#~ msgstr "Nebūtina"
+
+#~ msgid "Autostart"
+#~ msgstr "Automatinis paleidimas"
+
+#~ msgid "Autostart apps"
+#~ msgstr "Automatinis programų paleidimas"
+
+#~ msgid "Add Application"
+#~ msgstr "Pridėti programą"
+
+#, fuzzy
+#~ msgid "Add Command"
+#~ msgstr "Pridėti komandą"
+
+#~ msgid "Fonts"
+#~ msgstr "Šriftai"
+
+#~ msgid "Window Titles"
+#~ msgstr "Langų antraštės"
+
+#~ msgid "Set the font used in the titlebars of applications."
+#~ msgstr "Nustatyti šriftą, kuris bus naudojamas programų antraštės juostose."
+
+#~ msgid "Documents"
+#~ msgstr "Dokumentai"
+
+#~ msgid "Set the display font used by for documents."
+#~ msgstr "Nustatyti šriftą, kuris bus naudojamas atvaizduoti dokumentus."
+
+#~ msgid "Interface"
+#~ msgstr "Sąsaja"
+
+#~ msgid "Set the primary font used by application controls."
+#~ msgstr "Nustatyti šriftą, kurį naudos programų valdikliai."
+
+#~ msgid "Monospace"
+#~ msgstr "Lygiaplotis"
+
+#~ msgid "Set the fixed-width font used by text dominant applications."
+#~ msgstr ""
+#~ "Nustatyti lygiaplotį šriftą, kurį naudos programos, kuriose vyrauja "
+#~ "tekstas."
+
+#~ msgid "Text scaling"
+#~ msgstr "Teksto mastelis"
+
+#~ msgid "Set the text scaling factor."
+#~ msgstr "Nustatyti teksto mastelio keitimo faktorių."
+
+#~ msgid "Full"
+#~ msgstr "Pilnas"
+
+#~ msgid "Medium"
+#~ msgstr "Vidutinis"
+
+#~ msgid "Slight"
+#~ msgstr "Nežymus"
+
+#~ msgid "Hinting"
+#~ msgstr "Taškinė korekcija"
+
+#~ msgid "Set the type of hinting to use."
+#~ msgstr "Nustatykite norimą naudoti taškinę korekciją."
+
+#~ msgid "Subpixel (for LCD screens)"
+#~ msgstr "Subpikselių (LCD ekranams)"
+
+#~ msgid "Standard (grayscale)"
+#~ msgstr "Standartinė (pilkio pustoniai)"
+
+#~ msgid "Antialiasing"
+#~ msgstr "Glodinimas"
+
+#~ msgid "Set the type of antialiasing to use."
+#~ msgstr "Nustatykite norimą naudoti glodinimą."
+
+#~ msgid "No apps are currently playing audio."
+#~ msgstr "Šiuo metu jokios programos neatkuria garso."
+
+#~ msgid "Play some music"
+#~ msgstr "Atkurti muziką"
+
+#~ msgid "Nothing to see here"
+#~ msgstr "Čia nėra ką matyti"
+
+#, c-format
+#~ msgid "%u unread notifications"
+#~ msgstr "Neskaitytų pranešimų: %u"
+
+#~ msgid "1 unread notification"
+#~ msgstr "1 neskaitytas pranešimas"
+
+#~ msgid "No unread notifications"
+#~ msgstr "Nėra neskaitytų pranešimų"
+
+#~ msgid "No new notifications"
+#~ msgstr "Naujų pranešimų nėra"
+
+#~ msgid "Apps"
+#~ msgstr "Programos"
+
+#~ msgid "Devices"
+#~ msgstr "Įrenginiai"
+
+#~ msgid "Notifications"
+#~ msgstr "Pranešimai"
+
+#~ msgid "Caffeine Mode"
+#~ msgstr "Kofeino veiksena"
+
+#, fuzzy
+#~ msgid "System Settings"
+#~ msgstr "Sistemos nustatymai"
+
+#~ msgid "Log out"
+#~ msgstr "Atsijungti"
+
+#~ msgid "Restart device"
+#~ msgstr "Paleisti įrenginį iš naujo"
+
+#~ msgid "Power Off"
+#~ msgstr "Išjungti"
+
+#~ msgid "Turned on Caffeine Boost"
+#~ msgstr "Kofeino paskatinimas įjungtas"
+
+#~ msgid "Turned off Caffeine Boost"
+#~ msgstr "Kofeino paskatinimas išjungtas"
+
+#~ msgid "Will turn off in a minute"
+#~ msgstr "Išsijungs po minutės"
+
+#, c-format
+#~ msgid "Will turn off in %d minutes"
+#~ msgstr "Išsijungs po %d min."
+
+#~ msgid "User"
+#~ msgstr "Naudotojas"
+
+#~ msgid "Caps lock is active"
+#~ msgstr "Didžiosios raidės įjungtos"
+
+#~ msgid "Caps lock is not active"
+#~ msgstr "Didžiosios raidės išjungtos"
+
+#~ msgid "Num lock is active"
+#~ msgstr "Skaitmenys įjungti"
+
+#~ msgid "Num lock is not active"
+#~ msgstr "Skaitmenys išjungti"
+
+#~ msgid "Removable devices"
+#~ msgstr "Keičiamieji įrenginiai"
+
+#~ msgid "Local volumes"
+#~ msgstr "Vietiniai tomai"
+
+#~ msgid "Network folders"
+#~ msgstr "Tinklo aplankai"
+
+#~ msgid "Eject"
+#~ msgstr "Išstumti"
+
+#~ msgid "Unmount"
+#~ msgstr "Atjungti"
+
+#, c-format
+#~ msgid "Open \"%s\""
+#~ msgstr "Atverti \"%s\""
+
+#~ msgid "You can now safely remove"
+#~ msgstr "Dabar galite saugiai pašalinti"
+
+#~ msgid "Unknown Device"
+#~ msgstr "Nežinomas įrenginys"
+
+#~ msgid "Error while ejecting device"
+#~ msgstr "Klaida išstumiant tomą"
+
+#~ msgid "Error while unmounting volume"
+#~ msgstr "Klaida atjungiant tomą"
+
+#, c-format
+#~ msgid "Mount and open \"%s\""
+#~ msgstr "Prijungti ir atverti \"%s\""
+
+#~ msgid "Enter the encryption passphrase to unlock this volume"
+#~ msgstr "Norėdami atrakinti šį tomą, įveskite šifravimo slaptafrazę"
+
+#~ msgid "The password you entered is incorrect"
+#~ msgstr "Jūsų įvestas slaptažodis yra neteisingas"
+
+#~ msgid "An unknown error occurred while attempting to mount this volume"
+#~ msgstr "Bandant prijungti šį tomą, įvyko nežinoma klaida"
+
+#~ msgid "Volume is in use by other processes"
+#~ msgstr "Tomas yra naudojamas kitų procesų"
+
+#~ msgid "Operation aborted"
+#~ msgstr "Operacija nutraukta"
+
+#~ msgid "Type your password"
+#~ msgstr "Įrašykite slaptažodį"
+
+#~ msgid "Places"
+#~ msgstr "Vietos"
+
+#~ msgid "Nothing to display right now"
+#~ msgstr "Šiuo metu nėra ką rodyti"
+
+#~ msgid "Mount some drives"
+#~ msgstr "Prijungti kai kuriuos diskus"
+
+#~ msgid "Enable more sections"
+#~ msgstr "Įjungti daugiau sekcijų"
+
+#~ msgid "Bluetooth Settings"
+#~ msgstr "Bluetooth nustatymai"
+
+#~ msgid "Send Files"
+#~ msgstr "Siųsti failus"
+
+#~ msgid "Bluetooth Airplane Mode"
+#~ msgstr "Bluetooth lėktuvo veiksena"
+
+#~ msgid "Bluetooth is disabled"
+#~ msgstr "Bluetooth išjungtas"
+
+#~ msgid "Bluetooth is active"
+#~ msgstr "Bluetooth aktyvus"
+
+#, c-format
+#~ msgid "Connected to %d device"
+#~ msgid_plural "Connected to %d devices"
+#~ msgstr[0] "Prisijungta prie %d įrenginio"
+#~ msgstr[1] "Prisijungta prie %d įrenginių"
+#~ msgstr[2] "Prisijungta prie %d įrenginių"
+
+#~ msgid "Battery fully charged."
+#~ msgstr "Baterija pilnai įkrauta."
+
+#~ msgid "Battery charging"
+#~ msgstr "Baterija įkraunama"
+
+#~ msgid "Battery remaining"
+#~ msgstr "Liko baterijos"
+
+#~ msgid "Show battery percentage"
+#~ msgstr "Rodyti baterijos procentinę dalį"
+
+#~ msgid "Power settings"
+#~ msgstr "Energijos nustatymai"
+
+#~ msgid "Rename"
+#~ msgstr "Pervadinti"
+
+#~ msgid "Remove"
+#~ msgstr "Šalinti"
+
+#~ msgid "Timer (minutes)"
+#~ msgstr "Laikmatis (minutės)"
+
+#~ msgid "Only one instance of the System Tray can be active at a time."
+#~ msgstr ""
+#~ "Vienu metu gali būti aktyvus tik vienas sistemos dėklo egzempliorius."
+
+#~ msgid "Toggle the desktop"
+#~ msgstr "Perjungti darbalaukį"
+
+#~ msgid "All"
+#~ msgstr "Visos"
+
+#~ msgid "Sorry, no items found"
+#~ msgstr "Atleiskite, nerasta jokių elementų"
+
+#~ msgid "Time and date settings"
+#~ msgstr "Laiko ir datos nustatymai"
+
+#~ msgid "Show seconds"
+#~ msgstr "Rodyti sekundes"
+
+#~ msgid "Launch New Instance"
+#~ msgstr "Paleisti naują egzempliorių"
+
+#~ msgid "Close All Windows"
+#~ msgstr "Užverti visus langus"
+
+#~ msgid "Always On Top"
+#~ msgstr "Visada viršuje"
+
+#~ msgid "Maximize"
+#~ msgstr "Išskleisti"
+
+#~ msgid "Minimize"
+#~ msgstr "Suskleisti"
+
+#~ msgid "Unfavorite"
+#~ msgstr "Nebemėgstama"
+
+#~ msgid "Favorite"
+#~ msgstr "Mėgstama"
+
+#, c-format
+#~ msgid "Move To Workspace %i"
+#~ msgstr "Perkelti į darbo sritį %i"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Grąžinti iš išskleidimo"
+
+#~ msgid "Close Window"
+#~ msgstr "Užverti langą"
+
+#~ msgid "Show Window Controls"
+#~ msgstr "Rodyti langų valdiklius"
+
+#~ msgid "Authentication Required"
+#~ msgstr "Reikalingas tapatybės nustatymas"
+
+#~ msgid "Password:"
+#~ msgstr "Slaptažodis:"
+
+#~ msgid "Authentication is required"
+#~ msgstr "Reikalingas tapatybės nustatymas"
+
+#~ msgid "Authenticate"
+#~ msgstr "Nustatyti tapatybę"
+
+#~ msgid "Are you sure you want to end your session?"
+#~ msgstr "Ar tikrai norite užbaigti savo seansą?"
+
+#~ msgid "Show label"
+#~ msgstr "Rodyti etiketę"
+
+#~ msgid "Show places"
+#~ msgstr "Rodyti vietas"
+
+#~ msgid "Show network folders"
+#~ msgstr "Rodyti tinklo aplankus"
+
+#~ msgid "Show removable drives"
+#~ msgstr "Rodyti keičiamuosius diskus"
+
+#~ msgid "Always expand places"
+#~ msgstr "Visada išskleisti vietas"
+
+#~ msgid "Icon Spacing"
+#~ msgstr "Tarpai tarp piktogramų"
+
+#~ msgid "Spacer size"
+#~ msgstr "Tarpiklio dydis"
+
+#~ msgid "\"Add\" button visibility"
+#~ msgstr "\"Pridėti\" mygtuko matomumas"
+
+#~ msgid "Don't show"
+#~ msgstr "Nerodyti"
+
+#~ msgid "Show on mouseover"
+#~ msgstr "Rodyti, užvedus pelę"
+
+#~ msgid "Always show"
+#~ msgstr "Visada rodyti"
+
+#~ msgid "Enable notification"
+#~ msgstr "Įjungti pranešimą"
+
+#~ msgid "Maximize brightness"
+#~ msgstr "Padidinti ryškumą"
+
+#~ msgid "Brightness Level"
+#~ msgstr "Ryškumo lygis"
+
+#~ msgid "Night Light"
+#~ msgstr "Naktinis apšvietimas"
+
+#~ msgid "Schedule"
+#~ msgstr "Tvarkaraštis"
+
+#~ msgid "Sunset to Sunrise"
+#~ msgstr "Nuo saulėlydžio iki saulėtekio"
+
+#~ msgid "Manual"
+#~ msgstr "Rankinis"
+
+#~ msgid "Display Settings"
+#~ msgstr "Rodymo nustatymai"
+
+#~ msgid "Compact Mode"
+#~ msgstr "Kompaktiška veiksena"
+
+#~ msgid "Show Headers"
+#~ msgstr "Rodyti antraštes"
+
+#~ msgid "Show all windows on click"
+#~ msgstr "Spustelėjus, rodyti visus langus"
+
+#~ msgid "Only show favorited"
+#~ msgstr "Rodyti tik mėgstamas"
+
+#~ msgid "Lock icons"
+#~ msgstr "Užrakinti piktogramas"
+
+#~ msgid "Restrict to Workspace"
+#~ msgstr "Apriboti iki darbo srities"
+
+#~ msgid "Window grouping"
+#~ msgstr "Langų grupavimas"
+
+#~ msgid "Budgie Desktop"
+#~ msgstr "Budgie darbalaukis"
+
+#~ msgid "This session logs you into the Budgie Desktop"
+#~ msgstr "Šis seansas prijungs jus į Budgie darbalaukį"
+
+#~ msgid "Budgie Panel"
+#~ msgstr "Budgie skydelis"
+
+#~ msgid ""
+#~ "Launch other applications and provide various utilities to manage "
+#~ "windows, show the time, etc."
+#~ msgstr ""
+#~ "Paleisti kitas programas ir pateikti įvairius reikmenis, skirtus tvarkyti "
+#~ "langus, rodyti laiką ir t.t."
+
+#~ msgid "Change desktop appearance and behavior"
+#~ msgstr "Keisti darbalaukio išvaizdą ir elgseną"
+
+#~ msgid "User Indicator"
+#~ msgstr "Naudotojų indikatorius"
+
+#~ msgid "Lock Keys Indicator"
+#~ msgstr "Užrakintų klavišų indikatorius"
+
+#~ msgid "Status Indicator"
+#~ msgstr "Būsenos indikatorius"
+
+#~ msgid "Spacer"
+#~ msgstr "Tarpiklis"
+
+#~ msgid "Separator"
+#~ msgstr "Skirtuvas"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Darbo srities perjungiklis"
+
+#~ msgid "Keyboard Layout Indicator"
+#~ msgstr "Klaviatūros išdėstymo indikatorius"
+
+#~ msgid "Caffeine"
+#~ msgstr "Kofeinas"
+
+#~ msgid "System Tray"
+#~ msgstr "Sistemos dėklas"
+
+#~ msgid "Raven Sidebar Control"
+#~ msgstr "Raven parankinės valdymas"
+
+#~ msgid "Show Desktop Button"
+#~ msgstr "Mygtukas rodyti darbalaukį"
+
+#~ msgid "Budgie Menu"
+#~ msgstr "Budgie meniu"
+
+#~ msgid "Clock"
+#~ msgstr "Laikrodis"
+
+#~ msgid "Task List"
+#~ msgstr "Užduočių sąrašas"
+
+#~ msgid "Icon Task List"
+#~ msgstr "Piktogramų užduočių sąrašas"
+
+#~ msgid "Network"
+#~ msgstr "Tinklas"
+
+#~ msgid "Network indicator"
+#~ msgstr "Tinklo indikatorius"
+
+#~ msgid "Uninstall"
+#~ msgstr "Šalinti programą"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "Rodyti Programų centre"
+
+#, c-format
+#~ msgid "Search for %s in %s"
+#~ msgstr "Ieškoti %s, programoje %s"
+
+#~ msgid "Search the app store"
+#~ msgstr "Ieškoti programų parduotuvėje"
+
+#~ msgid "AppCenter"
+#~ msgstr "Programų centras"
+
+#~ msgid "Search for applications"
+#~ msgstr "Ieškoti programų"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "Programų centras nėra įdiegtas"
+
+#, c-format
+#~ msgid "Open %s settings"
+#~ msgstr "Atverti %s nustatymus"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "Rasti Switchboard kištukus ir juos atverti."
+
+#~ msgid "Lock this device"
+#~ msgstr "Užrakinti šį įrenginį"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "užrakinti;uzrakinti;rakinti"
+
+#~ msgid "Log Out"
+#~ msgstr "Atsijungti"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "Užverti visas atvertas programas ir išeiti"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "atsijungti"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "Įvesti kompiuterį į pristabdytą veikseną"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "pristabdyti;miego veiksena"
+
+#~ msgid "Hibernate"
+#~ msgstr "Užmigdyti"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "Įvesti kompiuterį į užmigdytą veikseną"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "užmigdyti"
+
+#~ msgid "Shut Down"
+#~ msgstr "Išjungti"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "Išjungti jūsų kompiuterį"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "išjungti"
+
+#~ msgid "Restart your computer"
+#~ msgstr "Paleisti jūsų kompiuterį iš naujo"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "paleisti iš naujo;restartuoti;perkrauti"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "Užrakinti seansą arba atsijungti nuo jo. Pristabdyti, užmigdyti, paleisti "
+#~ "iš naujo ar išjungti savo kompiuterį."
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit nebuvo rasta"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Programų meniu indikatorius"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Šalinti “%s”?"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr "Pašalinus šią programą gali būti ištrinti jos duomenys."
+
+#~ msgid "Open using default application"
+#~ msgstr "Atverti, naudojant numatytąją programą"
+
+#~ msgid "Open folder"
+#~ msgstr "Atverti aplanką"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Atverti aplanką, kuriame yra šis failas"
+
+#~ msgid "All Applications"
+#~ msgstr "Visos programos"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Sukurti naują filtrą"
+
+#~ msgid "Shift"
+#~ msgstr "Shift (Lyg2)"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl (Vald)"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "Aplinkui nėra jokių belaidžių prieigos taškų."
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "Belaidis ryšys išjungtas"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr ""
+#~ "Įjunkite belaidį ryšį, kad atrastumėte artimiausius belaidžius prieigos "
+#~ "taškus."
+
+#~ msgid "No VPN Available"
+#~ msgstr "Nėra prieinamų VPN"
+
+#~ msgid "Hotspot"
+#~ msgstr "Prieigos taškas"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "Prieigos taškas %s"
+
+#~ msgid "Disconnected"
+#~ msgstr "Atsijungta"
+
+#~ msgid "Connected"
+#~ msgstr "Prisijungta"
+
+#~ msgid "Failed"
+#~ msgstr "Nepavyko"
+
+#~ msgid "Connecting"
+#~ msgstr "Jungiamasi"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "Kabelis ištrauktas"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "Skrydžio veiksena įjungta"
+
+#~ msgid "Unknown"
+#~ msgstr "Nežinoma"
