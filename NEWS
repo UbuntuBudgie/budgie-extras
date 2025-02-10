@@ -6,38 +6,29 @@ Notes:
  * Stepping Stone
 
 Features:
-Primarily this release is a preparation for the v10.10.x release of budgie-desktop on wayland.
-
-The following updates for this release applies to both X11 and wayland desktops
-
-1. Latest translations thanks to our fantastic translation team
-2. Applications-menu supports displaying some terminal based apps such as htop via a applet settings options - thanks to  Sarah Leibbrand https://github.com/Azania
-
-The following updates applies to the X11 applets:
-
-1.  Fix crash in budgie-weather applet due to invalid icons sent via openweather
-2.  Make Showtime correctly display on all monitors - thanks to Danny  Trunk https://github.com/dtrunk90
-3.  Weathershow no longer includes hard-coded runtime and compile paths
-
-The following applets are available (via a meson_option) to be run on wayland:
-
- - budgie-applauncher
- - budgie-brightness-controller
- - budgie-applications-menu
- - budgie-clockworks
- - budgie-fuzzy-clock
- - budgie-kangaroo
- - budgie-network-manager
- - budgie-quicknote
- - budgie-recently-used
- - budgie-wallstreet
-
-More details here: https://github.com/UbuntuBudgie/budgie-extras/issues/474
-
-Other third-party applets that we (at the time of this release) recognise can be made wayland compatible 
-
- - budgie-indicator-applet
- - https://github.com/UbuntuBudgie/budgie-extras/issues/476
+* Primarily this release is a preparation for the v10.10.x release of budgie-desktop on wayland.
+* The following updates for this release applies to both X11 and wayland desktops
+    - 1. Latest translations thanks to our fantastic translation team
+    - 2. Applications-menu supports displaying some terminal based apps such as htop via a applet settings options - thanks to  Sarah Leibbrand https://github.com/Azania
+* The following updates applies to the X11 applets:
+    - 1.  Fix crash in budgie-weather applet due to invalid icons sent via openweather
+    - 2.  Make Showtime correctly display on all monitors - thanks to Danny  Trunk https://github.com/dtrunk90
+    - 3.  Weathershow no longer includes hard-coded runtime and compile paths
+* The following applets are available (via a meson_option) to be run on wayland:
+    - budgie-applauncher
+    - budgie-brightness-controller
+    - budgie-applications-menu
+    - budgie-clockworks
+    - budgie-fuzzy-clock
+    - budgie-kangaroo
+    - budgie-network-manager
+    - budgie-quicknote
+    - budgie-recently-used
+    - budgie-wallstreet
+* More details here: https://github.com/UbuntuBudgie/budgie-extras/issues/474
+  Other third-party applets that we (at the time of this release) recognise can be made wayland compatible 
+    - budgie-indicator-applet
+    - https://github.com/UbuntuBudgie/budgie-extras/issues/476
  
 Version 1.8.0
 ~~~~~~~~~~~~~
