@@ -1,27 +1,46 @@
+# #-#-#-#-#  ja.po (slingshot)  #-#-#-#-#
+# #-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Ryo Nakano, 2021
 # moru4_58, 2022
-# david mohammed <foss.freedom@gmail.com>, 2022
-# 
+# david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2022
+#
+# #-#-#-#-#  ja.po (slingshot)  #-#-#-#-#
+# Japanese translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: budgie-extras 10.4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2019-06-06 09:22+0000\n"
-"Last-Translator: david mohammed <foss.freedom@gmail.com>, 2022\n"
-"Language-Team: Japanese (https://app.transifex.com/ubuntu-budgie/teams/72251/ja/)\n"
+"PO-Revision-Date: 2018-12-02 06:55+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"Language-Team: Japanese <https://weblate.elementary.io/projects/wingpanel/"
+"wingpanel-indicator-network/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"#-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+"#-#-#-#-#  ja.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.0.1\n"
+"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -337,11 +356,15 @@ msgstr "完了"
 msgid "Cancel"
 msgstr "キャンセル"
 
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #. window stuff
+#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -364,8 +387,7 @@ msgstr "ウィンドウルールを名前を変更して保存する"
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as
-#. possible
+#. TRANSLATORS: it is important to keep these column headers as short as possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr "WMクラス"
@@ -446,8 +468,7 @@ msgid "General preferences"
 msgstr "全般設定"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
@@ -468,6 +489,7 @@ msgstr ""
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr "基本的なクオーターとハーフタイリング"
@@ -541,8 +563,10 @@ msgid "Swap windows"
 msgstr "ウィンドウを入れ替える"
 
 #. notification
+#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr "ウィンドウサイズが正しくない場合に通知を表示する"
@@ -646,8 +670,10 @@ msgstr "他のショートカット"
 msgid "Tile all windows to grid"
 msgstr "すべてのウィンドウをグリッドに並べる"
 
+#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr "レイアウトのクイックリストとマネージャーを切り替える"
@@ -725,10 +751,13 @@ msgstr "グリッドサイズを同期する"
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1874
 msgid "Update grid size for moving & resizing to latest picked layout"
-msgstr "グリッドサイズを更新して、最新の選択したレイアウトに移動し、サイズ変更する"
+msgstr ""
+"グリッドサイズを更新して、最新の選択したレイアウトに移動し、サイズ変更する"
 
+#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
+#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr "レイアウトプレビューサイズ（ピクセル単位）"
@@ -781,7 +810,9 @@ msgstr "ウィンドウやアプリケーションを起動するコマンド"
 msgid ""
 "Window name - optional, to distinguish multiple windows of the same "
 "application"
-msgstr "ウィンドウ名 - Optional, 同じアプリケーションの複数のウィンドウを区別するために使用します。"
+msgstr ""
+"ウィンドウ名 - Optional, 同じアプリケーションの複数のウィンドウを区別するため"
+"に使用します。"
 
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:621
@@ -807,8 +838,7 @@ msgid "Test"
 msgstr "テスト"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
-#. name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
@@ -862,7 +892,9 @@ msgstr "位置を保存"
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:166
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
-msgstr "スーパー＋ドラッグを有効にして、時間位置を設定します。保存する場合は、´位置を保存´をクリックします。"
+msgstr ""
+"スーパー＋ドラッグを有効にして、時間位置を設定します。保存する場合は、´位置を"
+"保存´をクリックします。"
 
 #. window content
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:172
@@ -1065,30 +1097,24 @@ msgid "quarter after %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr ""
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e.
-#. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour
-#. i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1134,8 +1160,7 @@ msgstr ""
 msgid "almost %s"
 msgstr ""
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
-#. and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "日付と時刻の設定"
@@ -1153,16 +1178,13 @@ msgstr "カレンダー"
 msgid "Preferences"
 msgstr "環境設定"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be
-#. displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "日付を表示"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
-#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
-#. ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "24時制を使用"
@@ -1211,23 +1233,37 @@ msgstr "ブックマーク"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/SearchItem.vala:58
 #: budgie-applications-menu/applications-menu/src/Backend/AppSystem.vala:154
+#, fuzzy
 msgid "Other"
-msgstr "その他"
+msgstr ""
+"#-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"その他\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"そのほか"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
 msgstr "%s グラフィックスを使用して開く"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:110
+#, fuzzy
 msgid "Remove from _Dock"
-msgstr "_Dock から削除する"
+msgstr ""
+"#-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"_Dock から削除する\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"ドックから削除(_D)"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:112
+#, fuzzy
 msgid "Add to _Dock"
-msgstr "_Dock に追加する"
+msgstr ""
+"#-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"_Dock に追加する\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"ドックに追加(_D)"
 
 #: budgie-applications-menu/applications-menu/src/Views/SearchView.vala:36
 msgid "Try changing search terms."
@@ -1341,8 +1377,13 @@ msgstr "bc がインストールされていません"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:120
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/calculator-plugin.vala:125
+#, fuzzy
 msgid "Click to copy result to clipboard"
-msgstr "クリックすると結果がクリップボードにコピーされます"
+msgstr ""
+"#-#-#-#-#  ja.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"クリックすると結果がクリップボードにコピーされます\n"
+"#-#-#-#-#  ja.po (slingshot)  #-#-#-#-#\n"
+"結果をクリップボードへコピーするにはクリックしてください"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/desktop-file-plugin.vala:116
 msgid "Search for and run applications on your computer."
@@ -1764,7 +1805,9 @@ msgstr ""
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
 
+#.
 #. TRANSLATORS: automatic dynamic workspace control
+#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr "自動"
@@ -1788,9 +1831,11 @@ msgstr "開始"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
-" per workspace"
-msgstr "背景ワークスペース自動切り替えでワークスペースごとに設定された壁紙を自動的に記憶する。"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
+"per workspace"
+msgstr ""
+"背景ワークスペース自動切り替えでワークスペースごとに設定された壁紙を自動的に"
+"記憶する。"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
@@ -1984,3 +2029,176 @@ msgstr "ワークスペース毎に背景を設定する"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "ネットワークアプレット"
+
+#~ msgid "Network"
+#~ msgstr "ネットワーク"
+
+#~ msgid "Network indicator"
+#~ msgstr "ネットワークインジケーター"
+
+#~ msgid "Uninstall"
+#~ msgstr "アンインストール"
+
+#~ msgid "View in AppCenter"
+#~ msgstr "AppCenter で表示"
+
+#, c-format
+#~ msgid "Search for %s in %s"
+#~ msgstr "%s を %s で検索"
+
+#~ msgid "Search the app store"
+#~ msgstr "アプリストアで検索します"
+
+#~ msgid "AppCenter"
+#~ msgstr "AppCenter"
+
+#~ msgid "Search for applications"
+#~ msgstr "アプリケーションを検索します"
+
+#~ msgid "AppCenter is not installed"
+#~ msgstr "AppCenter がインストールされていません"
+
+#, c-format
+#~ msgid "Open %s settings"
+#~ msgstr "%s の設定を開きます"
+
+#~ msgid "Find switchboard plugs and open them."
+#~ msgstr "システム設定の項目を検索して開きます。"
+
+#~ msgid "Lock this device"
+#~ msgstr "このデバイスをロックします"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "lock"
+#~ msgstr "ロック"
+
+#~ msgid "Log Out"
+#~ msgstr "ログアウト"
+
+#~ msgid "Close all open applications and quit"
+#~ msgstr "すべてのアプリケーションを閉じて終了します"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "logout"
+#~ msgstr "ログアウト"
+
+#~ msgid "Put your computer into suspend mode"
+#~ msgstr "コンピューターをサスペンドモードにします"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "suspend"
+#~ msgstr "サスペンド"
+
+#~ msgid "Hibernate"
+#~ msgstr "ハイバーネート"
+
+#~ msgid "Put your computer into hibernation mode"
+#~ msgstr "コンピューターをハイバーネートモードにします"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "hibernate"
+#~ msgstr "ハイバーネート"
+
+#~ msgid "Shut Down"
+#~ msgstr "シャットダウン"
+
+#~ msgid "Turn your computer off"
+#~ msgstr "コンピューターの電源を切ります"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "shutdown;turn off"
+#~ msgstr "シャットダウン;電源;切る;オフ"
+
+#~ msgid "Restart your computer"
+#~ msgstr "コンピューターを再起動します"
+
+#~ msgctxt "system_management_action_keyword"
+#~ msgid "restart;reboot"
+#~ msgstr "再起動;リブート"
+
+#~ msgid ""
+#~ "Lock the session or Log Out from it. Suspend, hibernate, restart or "
+#~ "shutdown your computer."
+#~ msgstr ""
+#~ "セッションをロックまたはログアウトします。お使いのコンピューターをサスペン"
+#~ "ド、ハイバーネート、再起動、およびシャットダウンします。"
+
+#~ msgid "ConsoleKit wasn't found"
+#~ msgstr "ConsoleKit が見つかりませんでした"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "アプリメニューインジケーター"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "“%s” をアンインストールしますか？"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr ""
+#~ "このアプリを削除すると、関連するデータも削除される可能性があります。"
+
+#~ msgid "Open using default application"
+#~ msgstr "デフォルトのアプリケーションで開きます"
+
+#~ msgid "Open folder"
+#~ msgstr "フォルダーを開く"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "このファイルを含むフォルダーを開きます"
+
+#~ msgid "All Applications"
+#~ msgstr "すべてのアプリケーション"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "新しいフィルタを作成"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"
+
+#~ msgid "There are no wireless access points within range."
+#~ msgstr "範囲内にワイヤレスアクセスポイントがありません。"
+
+#~ msgid "Wireless Is Disabled"
+#~ msgstr "無線は無効になっています"
+
+#~ msgid "Enable wireless to discover nearby wireless access points."
+#~ msgstr ""
+#~ "近くのワイヤレスアクセスポイントを見つけるため、無線を有効にしてください。"
+
+#~ msgid "No VPN Available"
+#~ msgstr "利用可能な VPN 接続がありません"
+
+#~ msgid "Hotspot"
+#~ msgstr "ホットスポット"
+
+#~ msgid "Hotspot %s"
+#~ msgstr "ホットスポット %s"
+
+#~ msgid "Disconnected"
+#~ msgstr "未接続"
+
+#~ msgid "Connected"
+#~ msgstr "接続済み"
+
+#~ msgid "Failed"
+#~ msgstr "失敗"
+
+#~ msgid "Connecting"
+#~ msgstr "接続中"
+
+#~ msgid "Cable unplugged"
+#~ msgstr "ケーブル未接続"
+
+#~ msgid "Airplane mode enabled"
+#~ msgstr "機内モードが有効"
+
+#~ msgid "Unknown"
+#~ msgstr "不明"
