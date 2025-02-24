@@ -25,7 +25,7 @@ endif
 
 WeatherShowDependencies = [
 dependency('gtk+-3.0'),
-dependency('budgie-1.0'),
+budgie_dep,
 dependency('gee-0.8'),
 dep_soup,
 dependency('libpeas-gtk-1.0'),

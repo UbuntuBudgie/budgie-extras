@@ -77,6 +77,10 @@ public class DesktopWeather : Gtk.Window {
             watchapplet(uuid);
             return false;
         });
+#if FOR_WAYLAND
+        GtkLayerShell.init_for_window(this);
+        GtkLayerShell.set_layer(this, GtkLayerShell.Layer.BOTTOM);
+#endif
         // this window monitors the datafile, maintained by the applet.
         this.set_decorated(false);
         this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
@@ -181,8 +185,13 @@ public class DesktopWeather : Gtk.Window {
 
     private void check_res() {
         /* see what is the resolution on the primary monitor */
+#if FOR_WAYLAND
+        var prim = libxfce4windowing.Screen.get_default().get_primary_monitor();
+        var geo = prim.get_physical_geometry();
+#else
         var prim = Gdk.Display.get_default().get_primary_monitor();
         var geo = prim.get_geometry();
+#endif
         int height = geo.height;
         if (height < 1100) {currscale = 1;}
         else if (height < 1600) {currscale = 2;}
@@ -190,11 +199,23 @@ public class DesktopWeather : Gtk.Window {
     }
 
     private void set_windowpos () {
+#if FOR_WAYLAND
+        var prim = libxfce4windowing.Screen.get_default().get_primary_monitor();
+        int currscale = (int) prim.get_scale();
+        int xpos = desktop_settings.get_int("xposition") / currscale;
+        int ypos = desktop_settings.get_int("yposition") / currscale;
+        GtkLayerShell.set_monitor(this, prim.gdk_monitor);
+        GtkLayerShell.set_margin(this, GtkLayerShell.Edge.LEFT, xpos);
+        GtkLayerShell.set_margin(this, GtkLayerShell.Edge.TOP, ypos);
+        GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.LEFT, true);
+        GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.TOP, true);
+#else
         var prim = Gdk.Display.get_default().get_primary_monitor();
         int currscale = prim.get_scale_factor();
         int xpos = desktop_settings.get_int("xposition") / currscale;
         int ypos = desktop_settings.get_int("yposition") / currscale;
         this.move(xpos, ypos);
+#endif
     }
 
     private new GLib.Settings get_settings(string path) {

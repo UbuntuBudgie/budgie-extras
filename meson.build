@@ -178,7 +178,7 @@ if build_recommended == true or build_kangaroo == true
 endif
 
 build_weathershow = get_option('build-weathershow')
-if for_wayland == false and (build_recommended == true or build_weathershow == true)
+if build_recommended == true or build_weathershow == true
 	subdir('budgie-weathershow')
 endif
 
