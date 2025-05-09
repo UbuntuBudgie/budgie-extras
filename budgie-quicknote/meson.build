@@ -18,16 +18,13 @@ dependency('gtk+-3.0'),
 budgie_dep,
 dependency('gio-2.0'),
 dependency('gdk-3.0'),
-dependency('libpeas-gtk-1.0'),
+peas_dep,
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
 QuickNoteValaArgs = [
     '--pkg=config',
     '--target-glib=2.38',
-    '--pkg', 'libpeas-1.0',
-    '--pkg', 'gtk+-3.0',
-    '--pkg', 'gio-unix-2.0',
     '--vapidir=' + VAPI_DIR,
 ]
 

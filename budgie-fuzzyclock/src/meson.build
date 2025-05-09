@@ -15,7 +15,7 @@ fuzzy_applet_deps = [
 dependency('gtk+-3.0'),
 budgie_dep,
 dependency('gdk-3.0'),
-dependency('libpeas-gtk-1.0'),
+peas_dep,
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
