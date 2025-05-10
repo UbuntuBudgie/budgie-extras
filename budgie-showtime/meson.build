@@ -1,21 +1,3 @@
-am_cflags = [
-    '-fstack-protector',
-    '-pedantic',
-    '-Wstrict-prototypes',
-    '-Wundef',
-    '-Werror-implicit-function-declaration',
-    '-Wformat',
-    '-Wformat-security',
-    '-Werror=format-security',
-    '-Wconversion',
-    '-Wunused-variable',
-    '-Wunreachable-code',
-    '-Wall',
-    '-W',
-]
-
-#add_global_arguments(am_cflags, language: 'c')
-
 PLUGIN = 'budgie-showtime'
 
 install_data('schema/org.ubuntubudgie.plugins.budgie-showtime.gschema.xml',

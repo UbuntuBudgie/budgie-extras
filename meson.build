@@ -16,7 +16,6 @@ am_cflags = [
 ]
 add_global_arguments(am_cflags, language: 'c')
 
-
 message('Looking for dependencies')
 
 vala_version_required = '0.40.0'
@@ -28,9 +27,6 @@ add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     language: 'c'
 )
-
-am_cflags = []
-add_global_arguments(am_cflags, language: 'c')
 
 # Global path variable
 intltool = find_program('intltool-merge')
