@@ -1,8 +1,15 @@
+configdata= configuration_data()
+configdata.set('PYTHON', python_loader)
+plugininstall = configure_file(
+    input: 'AppLauncher.plugin.in',
+    output: 'AppLauncher.plugin',
+    configuration: configdata
+)
 
 install_data(
     'App.py',
     'AppButton.py',
-    'AppLauncher.plugin',
+    plugininstall,
     'AppLauncher.py',
     'AppLauncherApplet.py',
     'ArrowButton.py',

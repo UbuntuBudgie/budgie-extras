@@ -2,8 +2,16 @@
 
 PLUGIN = 'budgie-countdown'
 
+configdata= configuration_data()
+configdata.set('PYTHON', python_loader)
+plugininstall = configure_file(
+    input: 'CountDown.plugin.in',
+    output: 'CountDown.plugin',
+    configuration: configdata
+)
+
 install_data(
-    'CountDown.plugin',
+    plugininstall,
     'budgie-countdown.py',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
 )
