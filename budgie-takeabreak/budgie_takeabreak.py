@@ -6,8 +6,10 @@ gi.require_version('Libxfce4windowing', '0.0')
 from gi.repository import Libxfce4windowing
 if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
     gi.require_version('Budgie', '2.0')
+    wayland = True
 else:
     gi.require_version('Budgie', '1.0')
+    wayland = False
 from gi.repository import Budgie, GObject, Gtk, Gio, GLib
 import os
 
@@ -98,12 +100,15 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
             "After a break, start count down when user is active"
         )
         maingrid.attach(smartres, 0, 7, 4, 1)
-        if Libxfce4windowing.windowing_get() != Libxfce4windowing.Windowing.WAYLAND:
+
+        if not wayland:
             # automatically unlock checkbox
             autounlock = Gtk.CheckButton("Automatically unlock after break")
             autounlock_set = tab_settings.get_boolean("unlockafterbreak")
             autounlock.set_active(autounlock_set)
-            autounlock.connect("toggled", self.update_setting, "unlockafterbreak")
+            autounlock.connect("toggled",
+                               self.update_setting,
+                               "unlockafterbreak")
             autounlock.set_tooltip_text(
                 "After a break, automatically unlock screen"
             )
@@ -114,7 +119,7 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
         breaktime_label = Gtk.Label("Effect:\n", xalign=0)
         maingrid.attach(breaktime_label, 0, 10, 1, 1)
         # dropdown
-        if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+        if wayland:
             self.effect_options = [
                 ["rotate", "Screen upside down"],
                 ["message", "Countdown message"],
@@ -129,8 +134,9 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
             ]
 
         effect_set = tab_settings.get_string("mode")
-        if effect_set == "dim" and Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
-            effect_set = "message" # hacky workaround for the lack of dim support in wayland
+        if effect_set == "dim" and wayland:
+            # hacky workaround for the lack of dim support in wayland
+            effect_set = "message"
 
         effect_index = [s[0] for s in self.effect_options].index(effect_set)
         effect_box = Gtk.Box()
