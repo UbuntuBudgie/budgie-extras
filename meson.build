@@ -198,7 +198,7 @@ if build_recommended == true or build_recentlyused == true
 endif
 
 build_takeabreak = get_option('build-takeabreak')
-if for_wayland == false and (build_recommended == true or build_takeabreak == true)
+if build_recommended == true or build_takeabreak == true
 	subdir('budgie-takeabreak')
 endif
 

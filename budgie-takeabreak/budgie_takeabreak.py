@@ -2,7 +2,12 @@ import gi.repository
 import time
 import subprocess
 import os
-gi.require_version('Budgie', '1.0')
+gi.require_version('Libxfce4windowing', '0.0')
+from gi.repository import Libxfce4windowing
+if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+    gi.require_version('Budgie', '2.0')
+else:
+    gi.require_version('Budgie', '1.0')
 from gi.repository import Budgie, GObject, Gtk, Gio, GLib
 import os
 
@@ -93,28 +98,40 @@ class BudgieTakeaBreakSettings(Gtk.Grid):
             "After a break, start count down when user is active"
         )
         maingrid.attach(smartres, 0, 7, 4, 1)
-        # automatically unlock checkbox
-        autounlock = Gtk.CheckButton("Automatically unlock after break")
-        autounlock_set = tab_settings.get_boolean("unlockafterbreak")
-        autounlock.set_active(autounlock_set)
-        autounlock.connect("toggled", self.update_setting, "unlockafterbreak")
-        autounlock.set_tooltip_text(
-            "After a break, automatically unlock screen"
-        )
-        maingrid.attach(autounlock, 0, 8, 4, 1)
+        if Libxfce4windowing.windowing_get() != Libxfce4windowing.Windowing.WAYLAND:
+            # automatically unlock checkbox
+            autounlock = Gtk.CheckButton("Automatically unlock after break")
+            autounlock_set = tab_settings.get_boolean("unlockafterbreak")
+            autounlock.set_active(autounlock_set)
+            autounlock.connect("toggled", self.update_setting, "unlockafterbreak")
+            autounlock.set_tooltip_text(
+                "After a break, automatically unlock screen"
+            )
+            maingrid.attach(autounlock, 0, 8, 4, 1)
         # sep below  section
         maingrid.attach(Gtk.Label("\n"), 0, 9, 1, 1)
         # option label
         breaktime_label = Gtk.Label("Effect:\n", xalign=0)
         maingrid.attach(breaktime_label, 0, 10, 1, 1)
         # dropdown
-        self.effect_options = [
-            ["rotate", "Screen upside down"],
-            ["dim", "Dim screen"],
-            ["message", "Countdown message"],
-            ["lock", "Lock screen"],
-        ]
+        if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+            self.effect_options = [
+                ["rotate", "Screen upside down"],
+                ["message", "Countdown message"],
+                ["lock", "Lock screen"],
+            ]
+        else:
+            self.effect_options = [
+                ["rotate", "Screen upside down"],
+                ["dim", "Dim screen"],
+                ["message", "Countdown message"],
+                ["lock", "Lock screen"],
+            ]
+
         effect_set = tab_settings.get_string("mode")
+        if effect_set == "dim" and Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+            effect_set = "message" # hacky workaround for the lack of dim support in wayland
+
         effect_index = [s[0] for s in self.effect_options].index(effect_set)
         effect_box = Gtk.Box()
         command_combo = Gtk.ComboBoxText()

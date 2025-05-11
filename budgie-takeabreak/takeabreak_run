@@ -6,7 +6,9 @@ import subprocess
 import time
 import os
 import psutil
-
+import re
+gi.require_version('Libxfce4windowing', '0.0')
+from gi.repository import Libxfce4windowing
 
 """
 Budgie TakeaBreak
@@ -30,9 +32,14 @@ user = os.environ["USER"]
 tab_settings = Gio.Settings.new(tab_key)
 # get current settings
 auto_unlock = tab_settings.get_boolean("unlockafterbreak")
+if auto_unlock and Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+    auto_unlock = False # hacky workaround for lack of unlock option in wayland
+
 awaketime = tab_settings.get_int("awaketime") * 60
 sleeptime = tab_settings.get_int("sleeptime") * 60
 mode = tab_settings.get_string("mode")
+if mode == "dim" and Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+    mode = "message" # hacky workaround for the lack of dim support in wayland
 notify_msg = tab_settings.get_boolean("showmessage")
 notify_time = 15
 from_unidle = tab_settings.get_boolean("smartresume")
@@ -85,6 +92,28 @@ def write_nextbreak():
 def sendmessage(title, message, icon=""):
     subprocess.Popen(["notify-send", "-i", icon, title, message])
 
+def get_wlr_randr_outputs():
+    try:
+        # Run wlr-randr and capture output
+        result = subprocess.run(['wlr-randr'], capture_output=True, text=True, check=True)
+        output = result.stdout
+
+        # Extract output names (lines starting with alphanumeric characters)
+        output_names = []
+        for line in output.splitlines():
+            # Match lines starting with an output name (e.g., HDMI-A-1, eDP-1)
+            match = re.match(r'^[a-zA-Z0-9\-]+', line)
+            if match:
+                output_names.append(match.group(0))
+
+        return output_names
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error running wlr-randr: {e}")
+        return []
+    except FileNotFoundError:
+        print("wlr-randr not found. Ensure it is installed and in your PATH.")
+        return []
 
 def take_a_break():
     gdkdisplay = Gdk.Display.get_default()
@@ -92,25 +121,44 @@ def take_a_break():
         gdkdisplay.get_monitor(n).get_model() for n in range(
             gdkdisplay.get_n_monitors()
         )]
+    output_name = ""
+    if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
+        wayland=True
+    else:
+        wayland=False
+
+    if wayland == True:
+        output_name = get_wlr_randr_outputs()[0]
     if mode == "message":
         command = tabcountdown_path + "/message_window"
         subprocess_tasks("run_async", [command, str(sleeptime)])
     else:
         for scr in screens:
             if mode == "rotate":
-                subprocess_tasks(
-                    "run_sync",
-                    ["xrandr", "--output", scr, "--rotate", "inverted"]
-                )
+                if wayland == True:
+                    subprocess_tasks(
+                        "run_sync",
+                        ["wlr-randr", "--output", output_name, "--transform", "180"]
+                    )
+                else:
+                    subprocess_tasks(
+                        "run_sync",
+                        ["xrandr", "--output", scr, "--rotate", "inverted"]
+                    )
             elif mode == "dim":
                 subprocess_tasks(
                     "run_sync",
                     ["xrandr", "--output", scr, "--brightness", "0.1"]
                 )
             elif mode == "lock":
-                subprocess_tasks(
-                    "run_async",
-                    ["gnome-screensaver-command", "-l"]
+                if wayland == True:
+                    subprocess_tasks(
+                        "run_async",
+                        ["dbus-send","--type=method_call","--dest=org.buddiesofbudgie.BudgieScreenlock","/org/buddiesofbudgie/Screenlock","org.buddiesofbudgie.BudgieScreenlock.Lock"])
+                else:
+                    subprocess_tasks(
+                        "run_async",
+                        ["gnome-screensaver-command", "-l"]
                 )
     time.sleep(sleeptime)
     for scr in screens:
@@ -121,10 +169,16 @@ def take_a_break():
             )
         time.sleep(2)
         if mode == "rotate":
-            subprocess_tasks(
-                "run_sync",
-                ["xrandr", "--output", scr, "--rotate", "normal"]
-            )
+            if wayland == True:
+                subprocess_tasks(
+                    "run_sync",
+                    ["wlr-randr", "--output", output_name, "--transform", "normal"]
+                )
+            else:
+                subprocess_tasks(
+                    "run_sync",
+                    ["xrandr", "--output", scr, "--rotate", "normal"]
+                )
             time.sleep(0.2)
         elif mode == "dim":
             subprocess_tasks(
@@ -146,7 +200,6 @@ def lockscreen_check():
         return lockproc in (p.name() for p in psutil.process_iter())
     except psutil.NoSuchProcess:
         return False
-
 
 while True:
     write_nextbreak()
