@@ -1,19 +1,3 @@
-am_cflags = [
-    '-fstack-protector',
-    '-pedantic',
-    '-Wstrict-prototypes',
-    '-Wundef',
-    '-Werror-implicit-function-declaration',
-    '-Wformat',
-    '-Wformat-security',
-    '-Werror=format-security',
-    '-Wconversion',
-    '-Wunused-variable',
-    '-Wunreachable-code',
-    '-Wall',
-    '-W',
-]
-
 substprog = find_program('subst.py')
 
 mytarget = custom_target('hotcorners_schema',

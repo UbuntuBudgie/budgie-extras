@@ -1,9 +1,15 @@
-#gnome = import('gnome')
-
 PLUGIN = 'budgie-clockworks'
 
+configdata= configuration_data()
+configdata.set('PYTHON', python_loader)
+plugininstall = configure_file(
+    input: 'BudgieClockWorks.plugin.in',
+    output: 'BudgieClockWorks.plugin',
+    configuration: configdata
+)
+
 install_data(
-    'BudgieClockWorks.plugin',
+    plugininstall,
     'cwtools.py',
     'budgie_clockworks.py',
     install_dir: join_paths(PLUGINS_INSTALL_DIR, PLUGIN)

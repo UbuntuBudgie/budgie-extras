@@ -28,9 +28,8 @@ dependency('gtk+-3.0'),
 budgie_dep,
 dependency('gee-0.8'),
 dep_soup,
-dependency('libpeas-gtk-1.0'),
+peas_dep,
 dependency('json-glib-1.0'),
-dependency('libpeas-gtk-1.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 

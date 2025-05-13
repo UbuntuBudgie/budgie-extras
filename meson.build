@@ -6,6 +6,16 @@ project('budgie-extras',
 
 i18n = import('i18n')
 
+# Vala generates bad C code and missing these on gcc 14 will cause FTBFS
+# Additionally, Meson 1.4 unhides warnings from valac-generated C code,
+# which causes unreadable logspam. Reenables prior behavior.
+am_cflags = [
+    '-w',
+    '-Wno-incompatible-pointer-types',
+    '-Wno-implicit-function-declaration',
+]
+add_global_arguments(am_cflags, language: 'c')
+
 message('Looking for dependencies')
 
 vala_version_required = '0.40.0'
@@ -17,9 +27,6 @@ add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     language: 'c'
 )
-
-am_cflags = []
-add_global_arguments(am_cflags, language: 'c')
 
 # Global path variable
 intltool = find_program('intltool-merge')
@@ -66,8 +73,12 @@ for_wayland = get_option('for-wayland')
 
 if for_wayland == false
 	budgie_dep = dependency('budgie-1.0')
+	peas_dep = dependency('libpeas-1.0')
+	python_loader = 'python3'
 else
 	budgie_dep = dependency('budgie-2.0')
+	peas_dep = dependency('libpeas-2')
+	python_loader = 'python' 
 endif
 
 SHUFFLER = 'budgie-window-shuffler'
