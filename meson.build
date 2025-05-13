@@ -159,7 +159,7 @@ if for_wayland == false and (build_recommended == true or build_showtime == true
 endif
 
 build_countdown = get_option('build-countdown')
-if for_wayland == false and (build_recommended == true or build_countdown == true)
+if build_recommended == true or build_countdown == true
 	subdir('budgie-countdown')
 endif
 
@@ -209,7 +209,7 @@ if build_recommended == true or build_recentlyused == true
 endif
 
 build_takeabreak = get_option('build-takeabreak')
-if for_wayland == false and (build_recommended == true or build_takeabreak == true)
+if build_recommended == true or build_takeabreak == true
 	subdir('budgie-takeabreak')
 endif
 
