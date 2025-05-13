@@ -2,8 +2,16 @@
 
 PLUGIN = 'budgie-takeabreak'
 
+configdata= configuration_data()
+configdata.set('PYTHON', python_loader)
+plugininstall = configure_file(
+    input: 'BudgieTakeaBreak.plugin.in',
+    output: 'BudgieTakeaBreak.plugin',
+    configuration: configdata
+)
+
 install_data(
-    'BudgieTakeaBreak.plugin',
+    plugininstall,
     'message_window',
     'takeabreak_run',
     'budgie_takeabreak.py',
