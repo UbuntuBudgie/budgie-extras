@@ -63,7 +63,7 @@ e.g. to build just the hotcorners and weathershow applets
 (remember to git clone and git submodule etc as above)
 
      mkdir build && cd build
-     meson --buildtype plain -Dbuild-recommendee=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
+     meson --buildtype plain -Dbuild-recommended=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
      ninja -v
      sudo ninja install
 
