@@ -5,5 +5,5 @@ install_data(
 )
 
 install_data('org.ubuntubudgie.wswitcher.metainfo.xml',
-    install_dir: join_paths(get_option('datadir'), 'metainfo')
+    install_dir: join_paths(datadir, 'metainfo')
 )
