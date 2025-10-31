@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Ubuntu Budgie Developers <admin@ubuntubudgie.org> -->
+<component type="addon">
+  <id>org.ubuntubudgie.weathershow</id>
+  <extends>com.solus-project.budgie-desktop</extends>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Budgie WeatherShow II</name>
+  <summary>A completely rewritten version of the existing python WeatherShow applet</summary>
+  <update_contact>admin@ubuntubudgie.org</update_contact>
+  <description>
+    <p>
+      WeatherShowII is a completely rewritten version of the existing python WeatherShow applet. It merges the functionality of Budgie Weather applet (showing weather in the panel) and WeatherShow. Each of the modules: weather forecast, weather in the panel and weather on the desktop can be switched on and of.
+    </p>
+    <p>
+      The applet includes many technical improvements under the hood. Weather forecast now has its own thread, therefore the panel should not suffer in any way from possible possible delays or issues in fetching the forecast (e.g. in case of network- related problems). Furthermore, the applet adapts (in three steps) to the monitor's size, for better scaling on high resolutions.
+    </p>
+    <p>
+      WeatherShow uses an OWM key with permission of Open Weather Map. Permission was granted to UbuntuBudgie developers. Please don't copy!
+    </p>
+  </description>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <icon type="stock">budgie-wticon-symbolic</icon>
+  <url type="homepage">https://github.com/UbuntuBudgie/budgie-extras</url>
+  <url type="bugtracker">https://github.com/UbuntuBudgie/budgie-extras/issues</url>
+  <url type="translate">https://www.transifex.com/ubuntu-budgie/ubuntu-budgie-extras</url>
+  <url type="donation">https://ubuntubudgie.org/donate</url>
+  <project_group>Ubuntu Budgie</project_group>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>

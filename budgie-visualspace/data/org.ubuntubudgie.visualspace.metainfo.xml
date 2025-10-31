@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Ubuntu Budgie Developers <admin@ubuntubudgie.org> -->
+<component type="addon">
+  <id>org.ubuntubudgie.visualspace</id>
+  <extends>com.solus-project.budgie-desktop</extends>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Budgie VisualSpace</name>
+  <summary>Shows the current workspaces, as bullets</summary>
+  <update_contact>admin@ubuntubudgie.org</update_contact>
+  <description>
+    <p>
+      Budgie VisualSpace shows the current workspace(s), as bullet(s). The applet includes a menu to navigate to either one of the windows or their corresponding workspace.
+    </p>
+  </description>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The main applet window</caption>
+      <image>https://github.com/UbuntuBudgie/budgie-extras/raw/master/budgie-visualspace/visualspace.png</image>
+    </screenshot>
+  </screenshots>
+  <icon type="stock">visualspace-symbolic</icon>
+  <url type="homepage">https://github.com/UbuntuBudgie/budgie-extras</url>
+  <url type="bugtracker">https://github.com/UbuntuBudgie/budgie-extras/issues</url>
+  <url type="translate">https://www.transifex.com/ubuntu-budgie/ubuntu-budgie-extras</url>
+  <url type="donation">https://ubuntubudgie.org/donate</url>
+  <project_group>Ubuntu Budgie</project_group>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>

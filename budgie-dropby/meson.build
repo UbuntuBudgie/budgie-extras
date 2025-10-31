@@ -25,4 +25,6 @@ install_data('schema/org.ubuntubudgie.plugins.budgie-dropby.gschema.xml',
     install_dir: '/usr/share/glib-2.0/schemas'
 )
 
+subdir('data')
+
 meson.add_install_script('meson_post_install.py')
