@@ -8,3 +8,4 @@ conf.set('PROJECT_NAME', meson.project_name())
 message('Installing applet...')
 
 subdir('src')
+subdir('data')

@@ -13,3 +13,5 @@ install_data(
     'budgie-rotation-lock-button-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
+
+subdir('data')

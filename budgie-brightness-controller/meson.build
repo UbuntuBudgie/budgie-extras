@@ -13,4 +13,5 @@ DEPENDENCY_BUDGIE = budgie_dep
 message('Installing applet...')
 
 subdir('src')
+subdir('data')
 subdir('icons')

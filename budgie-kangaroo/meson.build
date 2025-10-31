@@ -20,3 +20,5 @@ install_data(
     'budgie-foldertrack-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
+
+subdir('data')

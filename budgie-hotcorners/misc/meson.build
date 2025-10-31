@@ -38,3 +38,7 @@ custom_target('desktop-file-hotcorners',
     command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
     install : true,
     install_dir : join_paths(datadir, 'applications'))
+
+install_data('org.ubuntubudgie.hotcorners.metainfo.xml',
+    install_dir: join_paths(datadir, 'metainfo')
+)

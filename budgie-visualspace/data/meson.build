@@ -4,6 +4,10 @@ install_data(
     install_dir: PIXMAPS_DIR
 )
 
+install_data('org.ubuntubudgie.visualspace.metainfo.xml',
+    install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+
 substprog = find_program('subst.py')
 
 mytarget = custom_target('autoworkspace',

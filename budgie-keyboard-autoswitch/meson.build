@@ -12,3 +12,5 @@ install_data(
     'budgie-keyboard-autoswitch-symbolic.svg',
     install_dir: PIXMAPS_DIR
 )
+
+subdir('data')
