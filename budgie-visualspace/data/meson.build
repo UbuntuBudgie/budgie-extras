@@ -5,7 +5,7 @@ install_data(
 )
 
 install_data('org.ubuntubudgie.visualspace.metainfo.xml',
-    install_dir: join_paths(get_option('datadir'), 'metainfo')
+    install_dir: join_paths(datadir, 'metainfo')
 )
 
 substprog = find_program('subst.py')
