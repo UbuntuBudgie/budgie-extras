@@ -5,7 +5,7 @@ import os
 gi.require_version('Libxfce4windowing', '0.0')
 from gi.repository import Libxfce4windowing
 if Libxfce4windowing.windowing_get() == Libxfce4windowing.Windowing.WAYLAND:
-    gi.require_version('Budgie', '2.0')
+    gi.require_version('Budgie', '3.0')
     wayland = True
 else:
     gi.require_version('Budgie', '1.0')
