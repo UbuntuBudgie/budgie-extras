@@ -298,6 +298,7 @@ namespace QuickNoteApplet {
 
         private void do_copy (Button button) {
             view.copy_clipboard();
+            this.popdown();
         }
 
         private void do_paste (Button button) {
