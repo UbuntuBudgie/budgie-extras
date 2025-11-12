@@ -1,37 +1,26 @@
-# #-#-#-#-#  sq.po (PACKAGE VERSION)  #-#-#-#-#
-# #-#-#-#-#  sq.po (budgie-extras 10.4)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the budgie-extras package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2021
 # Algent Albrahimi <algent@protonmail.com>, 2022
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 12:11+0100\n"
-"PO-Revision-Date: 2015-11-03 19:49+0000\n"
-"Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-06-06 09:22+0000\n"
+"Last-Translator: Algent Albrahimi <algent@protonmail.com>, 2022\n"
+"Language-Team: Albanian (https://app.transifex.com/ubuntu-budgie/teams/72251/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  sq.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  sq.po (budgie-extras 10.4)  #-#-#-#-#\n"
+"Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"#-#-#-#-#  sq.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
-"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
-"#-#-#-#-#  sq.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"X-Launchpad-Export-Date: 2016-11-29 05:01+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
 
 #: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
 msgid "Restore all items"
@@ -348,15 +337,11 @@ msgstr "U krye"
 msgid "Cancel"
 msgstr "Anulo"
 
-#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
-#.
 #. window stuff
-#.
 #. / Window title. "Window Shuffler is the application name
 #. / and should not be translated, only the "Control" -part
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:728
 #: budgie-window-shuffler/src/shuffler_control.vala:994
 #: budgie-window-shuffler/data/org.ubuntubudgie.shufflercontrol.desktop.in.h:1
@@ -379,7 +364,8 @@ msgstr "Ruani ndryshimet ne rregull-dritaren e riemërtuar"
 
 #. update ruleslist
 #. headers
-#. TRANSLATORS: it is important to keep these column headers as short as possible
+#. TRANSLATORS: it is important to keep these column headers as short as
+#. possible
 #: budgie-window-shuffler/src/shuffler_control.vala:876
 msgid "WM-class"
 msgstr "klasa-WM"
@@ -460,7 +446,8 @@ msgid "General preferences"
 msgstr "Preferencat e përgjithshme"
 
 #. Use shuffler edge-tiling instead of built-in
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
+#. name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/shuffler_control.vala:1091
 msgid "Use Shuffler drag-snap advanced edge-tiling"
 msgstr ""
@@ -481,7 +468,6 @@ msgstr ""
 #. / Quarter & half = basic tiling.
 #. / Moving, resizing in a custom grid = advanced tiling.
 #. / The "basic" is to make the difference clear.
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1133
 msgid "Basic quarter & half tiling"
 msgstr "Çerek dhe gjysëm pllakëzimet bazë"
@@ -556,10 +542,8 @@ msgid "Swap windows"
 msgstr "Shkëmbe dritaret"
 
 #. notification
-#.
 #. / this is about toggling to show a notification when targeted window size
 #. / is smaller than minimum window size
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1218
 msgid "Show notification on incorrect window size"
 msgstr "Shfaq njoftimin për madhësinë e pasaktë të dritares"
@@ -664,10 +648,8 @@ msgstr "Shkurtoret e tjera"
 msgid "Tile all windows to grid"
 msgstr "Pllakëzo të gjitha dritaret në rrjetë"
 
-#.
 #. / This is a shortcut description/label. The shortcut toggles
 #. / the layout quicklist/manager.
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1361
 msgid "Toggle layouts quicklist & manager"
 msgstr "Ndrysho paraqitjet e listës së shpejtë dhe menaxherit"
@@ -749,10 +731,8 @@ msgstr ""
 "Përditëso madhësinë e rrjetës për lëvizjen dhe ndryshimin e madhësive në "
 "paraqitjen më të fundit të zgjedhur"
 
-#.
 #. / this is about the mini-representation of the
 #. / layout in the applet's popover
-#.
 #: budgie-window-shuffler/src/shuffler_control.vala:1881
 msgid "Layout preview size (width in px)"
 msgstr "Madhësia e pamjes paraprake (gjerësia në px)"
@@ -835,7 +815,8 @@ msgid "Test"
 msgstr "Test"
 
 #. text message
-#. TRANSLATORS: "drag-snap" does not need to be translated since it is the name of the window tiling mechanism for our window shuffler
+#. TRANSLATORS: "drag-snap" does not need to be translated since it is the
+#. name of the window tiling mechanism for our window shuffler
 #: budgie-window-shuffler/src/dragsnap.vala:915
 msgid ""
 "Drag-snap has replaced built-in edge-tiling. To choose built-in edge-tiling "
@@ -1095,24 +1076,30 @@ msgid "quarter after %s"
 msgstr "%s e një çerek"
 
 #. TRANSLATORS: times between (1:18:00 - 1:22:00) are 'twenty past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'twenty past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'twenty past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'twenty past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'twenty past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:205
 #, c-format
 msgid "twenty past %s"
 msgstr "%s e njëzet"
 
 #. TRANSLATORS: times between (1:23:00 - 1:27:00) are 'almost half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'almost half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'almost half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'almost half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'almost half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:210
 #, c-format
 msgid "almost half-past %s"
 msgstr "%s e njëzet e pesë"
 
 #. TRANSLATORS: times between (1:28:00 - 1:32:00) are 'half-past one'
-#. by adding the characters +1 you can add one hour to the current hour i.e. 'half-past two'
-#. by adding the characters -1 you can subtract one hour from the current hour i.e. 'half-past twelve'
+#. by adding the characters +1 you can add one hour to the current hour i.e.
+#. 'half-past two'
+#. by adding the characters -1 you can subtract one hour from the current hour
+#. i.e. 'half-past twelve'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:215
 #, c-format
 msgid "half-past %s"
@@ -1158,7 +1145,8 @@ msgstr "%s pa dhjetë"
 msgid "almost %s"
 msgstr "%s pa pesë"
 
-#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date and Time'
+#. TRANSLATORS: This Button Links to Gnome 'Settings' -> 'Details' -> 'Date
+#. and Time'
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:432
 msgid "Date and Time settings"
 msgstr "Cilësimet e Datës dhe Orës"
@@ -1176,13 +1164,16 @@ msgstr "Kalendari"
 msgid "Preferences"
 msgstr "Preferencat"
 
-#. TRANSLATORS: When this checkbox is enabled the current date will be displayed
+#. TRANSLATORS: When this checkbox is enabled the current date will be
+#. displayed
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:455
 msgid "Show date"
 msgstr "Shfaq datën"
 
-#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
-#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen' ...
+#. TRANSLATORS: When this checkbox is disabled, fuzzy clock will name hours
+#. 'midnight' to 'noon', then repeat 'one', 'two', 'three' ...
+#. When enabled, fuzzy clock will use the hour names 'thirteen', 'fourteen'
+#. ...
 #: budgie-fuzzyclock/src/FuzzyClockApplet.vala:462
 msgid "Use 24 hour time"
 msgstr "Përdor formatin 24 orë"
@@ -1234,7 +1225,8 @@ msgstr "Faqerojtësit"
 msgid "Other"
 msgstr "Tjetër"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
+#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
+#. 'Open with 'NVidia Graphics'
 #: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:79
 #, c-format
 msgid "Open with %s Graphics"
@@ -1742,7 +1734,7 @@ msgstr ""
 
 #: budgie-hotcorners/misc/entrynames.vala:4
 msgid "Budgie Desktop Settings"
-msgstr "Cilësimet e Desktopit Budgie"
+msgstr ""
 
 #: budgie-hotcorners/misc/entrynames.vala:5
 msgid "Lock screen"
@@ -1784,9 +1776,7 @@ msgstr ""
 msgid "Hotcorners settings is also available via the desktop menu"
 msgstr ""
 
-#.
 #. TRANSLATORS: automatic dynamic workspace control
-#.
 #: budgie-visualspace/src/visualspace.vala:72
 msgid "Auto"
 msgstr "Automatike"
@@ -1812,11 +1802,11 @@ msgstr "Fillo"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
 msgid ""
-"Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
-"per workspace"
+"Wallpaper Workspace Switcher automatically remembers which wallpaper was set"
+" per workspace"
 msgstr ""
-"Ndërruesi i Sfondit të Hapësirës së Punës kujton automatikisht se cili sfond "
-"është vendosur për çdo hapësirë e pune"
+"Ndërruesi i Sfondit të Hapësirës së Punës kujton automatikisht se cili sfond"
+" është vendosur për çdo hapësirë e pune"
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:30
 msgid "Applet runs without a panel icon"
@@ -2010,1035 +2000,3 @@ msgstr "Vendosni një sfond të ndryshëm për çdo hapësirë e pune"
 #: budgie-network-manager/budgie-network-applet/data/com.github.danielpinto8zz6.budgie-network-applet.plugin.in.h:1
 msgid "Network Applet"
 msgstr "Appleti i rrjetit"
-
-#~ msgid "Authentication failed"
-#~ msgstr "Vërtetimi dështoi"
-
-#~ msgid "Group:"
-#~ msgstr "Grupi:"
-
-#~ msgid "Configure applet"
-#~ msgstr "Konfiguro apletin"
-
-#~ msgid "Add applet"
-#~ msgstr "Shto aplete"
-
-#~ msgid "Choose a new applet to add to this panel"
-#~ msgstr "Zgjidhni një aplet të ri për ta shtuar në këtë panel"
-
-#~ msgid "No settings available"
-#~ msgstr "Nuk ka cilësime të disponueshme"
-
-#~ msgid "Center"
-#~ msgstr "Qëndër"
-
-#~ msgid "End"
-#~ msgstr "Fund"
-
-#~ msgid "Confirm panel removal"
-#~ msgstr "Konfirmoni heqjen e panelit"
-
-#~ msgid ""
-#~ "Do you really want to remove this panel? This action cannot be undone."
-#~ msgstr ""
-#~ "Dëshiron vërtet ta heqësh këtë panel? Ky veprim nuk mund të zhbëhet."
-
-#~ msgid "Remove panel"
-#~ msgstr "Hiq panelin"
-
-#~ msgid "Keep panel"
-#~ msgstr "Mbaj panelin"
-
-#~ msgid "Confirm applet removal"
-#~ msgstr "Konfirmoni heqjen e apletit"
-
-#~ msgid ""
-#~ "Do you really want to remove this applet? This action cannot be undone."
-#~ msgstr "A doni vërtet ta hiqni këtë aplet? Ky veprim nuk mund të zhbëhet."
-
-#~ msgid "Don't ask me again"
-#~ msgstr "Mos më pyet më"
-
-#~ msgid "Remove applet"
-#~ msgstr "Hiq apletin"
-
-#~ msgid "Keep applet"
-#~ msgstr "Mbani apletin"
-
-#~ msgid "Appearance"
-#~ msgstr "Paraqitje"
-
-#~ msgid "Panels"
-#~ msgstr "Panele"
-
-#~ msgid "Session"
-#~ msgstr "Seancë"
-
-#~ msgid "Create new panel"
-#~ msgstr "Krijoni panel të ri"
-
-#~ msgid "Windows"
-#~ msgstr "Dritaret"
-
-#~ msgid "Attach modal dialogs to windows"
-#~ msgstr "Bashkangjitni dialogët modalë në dritare"
-
-#~ msgid ""
-#~ "Modal dialogs will become attached to the parent window and move together "
-#~ "when dragged."
-#~ msgstr ""
-#~ "Dialogët modalë do të bashkangjiten në dritaren prind dhe do të lëvizin "
-#~ "së bashku kur tërhiqen."
-
-#~ msgid "Button layout"
-#~ msgstr "Paraqitja e butonit"
-
-#~ msgid "Change the layout of buttons in application titlebars."
-#~ msgstr "Ndryshoni paraqitjen e butonave në shiritat e aplikacioneve."
-
-#~ msgid "Center new windows on screen"
-#~ msgstr "Qendërso dritaret e reja në ekran"
-
-#~ msgid "Center newly launched windows on the current screen."
-#~ msgstr "Qendërso dritaret e sapohapura në ekranin aktual."
-
-#~ msgid "Disable Night Light mode when windows are fullscreen"
-#~ msgstr ""
-#~ "Çaktivizo modalitetin e Dritës së Natës kur dritaret janë në ekran të "
-#~ "plotë"
-
-#~ msgid ""
-#~ "Disables Night Light mode when a window is fullscreen. Re-enables when "
-#~ "leaving fullscreen."
-#~ msgstr ""
-#~ "Çaktivizon modalitetin e Dritës së Natës kur një dritare është në ekran "
-#~ "të plotë. Ri-aktivizon kur largoheni nga ekrani i plotë."
-
-#~ msgid "Pause notifications when windows are fullscreen"
-#~ msgstr "Ndalo njoftimet kur dritaret janë në ekran të plotë"
-
-#~ msgid ""
-#~ "Prevents notifications from appearing when a window is fullscreen. "
-#~ "Unpauses when leaving fullscreen."
-#~ msgstr ""
-#~ "Parandalon shfaqjen e njoftimeve kur një dritare është në ekran të plotë. "
-#~ "Shfaqja e njoftimeve rifillon kur largohet nga ekrani i plotë."
-
-#~ msgid "Automatic tiling"
-#~ msgstr "Pllakëzim automatik"
-
-#~ msgid ""
-#~ "Windows will automatically tile when dragged into the top of the screen "
-#~ "or the far corners."
-#~ msgstr ""
-#~ "Dritaret do të radhiten si pllaka automatikisht kur të tërhiqen në pjesën "
-#~ "e sipërme të ekranit ose në cepat e largët."
-
-#~ msgid "Enable window focus change on mouse enter and leave"
-#~ msgstr ""
-#~ "Aktivizoni ndryshimin e fokusit të dritares në hyrjen dhe largimin e "
-#~ "mausit"
-
-#~ msgid ""
-#~ "Enables window focus to apply when the mouse enters the window and "
-#~ "unfocus when the mouse leaves the window."
-#~ msgstr ""
-#~ "Aktivizon fokusimin e dritares të zbatohet kur miu hyn në dritare dhe "
-#~ "zhvendoset kur miu largohet nga dritarja."
-
-#~ msgid "Disable unredirection of windows"
-#~ msgstr "Çaktivizo mosdrejtimin e dritareve"
-
-#~ msgid ""
-#~ "This option is for advanced users. Use this if you are having graphical "
-#~ "or performance issues with dedicated GPUs."
-#~ msgstr ""
-#~ "Ky opsion është për përdoruesit e përparuar. Përdoreni këtë nëse keni "
-#~ "probleme grafike ose të performancës me GPU-të e dedikuara."
-
-#~ msgid "Show all windows in tab switcher"
-#~ msgstr "Shfaq të gjitha dritaret në ndërruesin e skedave"
-
-#~ msgid ""
-#~ "All tabs will be displayed in tab switcher regardless of the workspace in "
-#~ "use."
-#~ msgstr ""
-#~ "Të gjitha skedat do të shfaqen në ndërruesin e skedave, pavarësisht nga "
-#~ "hapësira e punës në përdorim."
-
-#~ msgid "Right (standard)"
-#~ msgstr "Djathtas (standard)"
-
-#~ msgid "Left"
-#~ msgstr "Majtas"
-
-#~ msgid "Style"
-#~ msgstr "Stilizo"
-
-#~ msgid "Widgets"
-#~ msgstr "Miniaplikacione"
-
-#~ msgid "Set the appearance of window decorations and controls"
-#~ msgstr "Vendosni pamjen e dekorimeve dhe kontrolleve të dritareve"
-
-#~ msgid "Icons"
-#~ msgstr "Ikonat"
-
-#~ msgid "Set the globally used icon theme"
-#~ msgstr "Vendosni temën e ikonës të përdorur globalisht"
-
-#~ msgid "Cursors"
-#~ msgstr "Kursorët"
-
-#~ msgid "Set the globally used mouse cursor theme"
-#~ msgstr "Vendosni temën e kursorit të mausit të përdorur globalisht"
-
-#~ msgid "Notification Position"
-#~ msgstr "Pozicioni i njoftimit"
-
-#~ msgid "Set the location for notification popups"
-#~ msgstr "Vendosni vendndodhjen për dritaret e reja të njoftimit"
-
-#~ msgid "Dark theme"
-#~ msgstr "Temë e errët"
-
-#~ msgid "Built-in theme"
-#~ msgstr "Temë e integruar"
-
-#~ msgid ""
-#~ "When enabled, the built-in theme will override the desktop component "
-#~ "styling"
-#~ msgstr ""
-#~ "Kur aktivizohet, tema e integruar do të mbishkruajë stilimin e përbërësve "
-#~ "të desktop"
-
-#~ msgid "Animations"
-#~ msgstr "Animacione"
-
-#~ msgid "Control whether windows and controls use animations"
-#~ msgstr "Kontrolloni nëse dritaret dhe kontrollet përdorin animacione"
-
-#~ msgid "Top Left"
-#~ msgstr "Lart majtas"
-
-#~ msgid "Bottom Left"
-#~ msgstr "Poshtë majtas"
-
-#~ msgid "Bottom Right"
-#~ msgstr "Poshtë djathtas"
-
-#~ msgid "Top Right"
-#~ msgstr "Lart djathtas"
-
-#~ msgid "Set Raven position"
-#~ msgstr "Vendos pozicionin e Raven"
-
-#~ msgid ""
-#~ "Set which side of the screen Raven will open on. If set to Automatic, "
-#~ "Raven will open where its parent panel is."
-#~ msgstr ""
-#~ "Vendosni në cilën anë të ekranit Raven do të hapet. Nëse vendoset "
-#~ "Automatike, Raven do të hapet aty ku është paneli i tij prind."
-
-#~ msgid "Allow raising volume above 100%"
-#~ msgstr "Lejo ngritjen e volumit mbi 100%"
-
-#~ msgid ""
-#~ "Allows raising the volume via Sound Settings as well as the Sound Output "
-#~ "Widget in Raven up to 150%."
-#~ msgstr ""
-#~ "Lejon ngritjen e volumit përmes Cilësimeve të Tingullit, si dhe "
-#~ "Miniaplikacionit të Daljes së Tingullit në Raven deri në 150%."
-
-#~ msgid "Enable display of week numbers in Calendar"
-#~ msgstr "Aktivizo shfaqjen e numrave të javës në Kalendar"
-
-#~ msgid ""
-#~ "This setting enables the display of week numbers in the Calendar widget."
-#~ msgstr ""
-#~ "Ky cilësim mundëson shfaqjen e numrave të javës në miniaplikacionin "
-#~ "Calendar."
-
-#~ msgid "Show Calendar Widget"
-#~ msgstr "Shfaq Miniaplikacionin e Kalendarit"
-
-#~ msgid "Shows or hides the Calendar Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Shfaq ose fsheh Miniaplikacionin e Kalendarit në seksionin Applets të "
-#~ "Raven."
-
-#~ msgid "Show Sound Output Widget"
-#~ msgstr "Shfaq Miniaplikacionin e Daljes së Tingullit"
-
-#~ msgid "Shows or hides the Sound Output Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Shfaq ose fsheh Miniaplikacionin e Daljes së Tingullit në seksionin "
-#~ "Applets të Raven."
-
-#~ msgid "Show Microphone Input Widget"
-#~ msgstr "Shfaq Miniaplikacionin e Hyrjes së Mikrofonit"
-
-#~ msgid ""
-#~ "Shows or hides the Microphone Input Widget in Raven's Applets section."
-#~ msgstr ""
-#~ "Shfaq ose fsheh Miniaplikacionin e Hyrjes së Mikrofonit në seksionin "
-#~ "Applets të Raven."
-
-#~ msgid "Show Media Playback Controls Widget"
-#~ msgstr "Shfaq Miniaplikacionin e Kontrolleve të Riprodhimit të Mediave"
-
-#~ msgid ""
-#~ "Shows or hides the Media Playback Controls (MPRIS) Widget in Raven's "
-#~ "Applets section."
-#~ msgstr ""
-#~ "Shfaq ose fsheh Miniaplikacionin e Kontrolleve të Riprodhimit të Mediave "
-#~ "(MPRIS) në seksionin Applets të Raven."
-
-#~ msgid "Show Power Strip"
-#~ msgstr "Shfaq Shiritin me Opsionet  e Energjisë"
-
-#~ msgid "Shows or hides the Power Strip in the bottom of Raven."
-#~ msgstr ""
-#~ "Shfaq ose fsheh Shiritin me Opsionet e energjisë në pjesën e poshtme të "
-#~ "Raven."
-
-#~ msgid "Choose an applet"
-#~ msgstr "Zgjidhni një aplet"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Ikonat e Desktopit"
-
-#~ msgid "Control whether to allow icons on the desktop."
-#~ msgstr "Kontrolloni nëse do të lejoni ikona në desktop."
-
-#~ msgid "Active Mounts"
-#~ msgstr "Montimet aktive"
-
-#~ msgid "Show all active mounts on the desktop."
-#~ msgstr "Shfaq të gjitha montimet aktive në desktop."
-
-#~ msgid "Home directory"
-#~ msgstr "Direktoria kryesore"
-
-#~ msgid "Add a shortcut to your home directory on the desktop."
-#~ msgstr "Shtoni një shkurtore të direktorisë tuaj kryesore në desktop."
-
-#~ msgid "Add a shortcut to the Trash directory on the desktop."
-#~ msgstr "Shtoni një shkurtore të direktorisë Kosh në desktop."
-
-#~ msgid "Icon Size"
-#~ msgstr "Madhësia e Ikonave"
-
-#~ msgid "Set the desired size of icons on the desktop."
-#~ msgstr "Vendosni madhësinë e dëshiruar të ikonave në desktop."
-
-#~ msgid "Number of virtual desktops"
-#~ msgstr "Numri i desktopëve virtualë"
-
-#~ msgid ""
-#~ "Number of virtual desktops / workspaces to create automatically on "
-#~ "startup."
-#~ msgstr ""
-#~ "Numri i desktopëve / hapësirave të punës virtuale për t'u krijuar "
-#~ "automatikisht gjatë nisjes së sistemit."
-
-#~ msgid "Single"
-#~ msgstr "I vetëm"
-
-#~ msgid "Double"
-#~ msgstr "I dyfishtë"
-
-#~ msgid "Click Policy"
-#~ msgstr "Rregulli i klikimit"
-
-#~ msgid ""
-#~ "Click Policy determines if we should open items on a single or double "
-#~ "click."
-#~ msgstr ""
-#~ "Rregulli i klikimit përcakton nëse duhet t'i hapim artikujt me një klik "
-#~ "të vetëm ose të dyfishtë."
-
-#~ msgid "Normal"
-#~ msgstr "Normale"
-
-#~ msgid "Small"
-#~ msgstr "Vogël"
-
-#~ msgid "Large"
-#~ msgstr "Gjërë"
-
-#~ msgid "Massive"
-#~ msgstr "Masive"
-
-#~ msgid "Applets"
-#~ msgstr "Applete"
-
-#~ msgid "Remove Panel"
-#~ msgstr "Hiq Panelin"
-
-#~ msgid "Remove this panel from the screen"
-#~ msgstr "Hiqni këtë panel nga ekrani"
-
-#~ msgid "Top Dock"
-#~ msgstr "Dok i Sipërm"
-
-#~ msgid "Right Dock"
-#~ msgstr "Dok i Djathtë"
-
-#~ msgid "Left Dock"
-#~ msgstr "Dok i Majtë"
-
-#~ msgid "Bottom Dock"
-#~ msgstr "Dok i Poshtëm"
-
-#~ msgid "Top Panel"
-#~ msgstr "Paneli Lart"
-
-#~ msgid "Right Panel"
-#~ msgstr "Paneli i Djathë"
-
-#~ msgid "Left Panel"
-#~ msgstr "Paneli i Majtë"
-
-#~ msgid "Bottom Panel"
-#~ msgstr "Paneli Poshtë"
-
-#~ msgid "Top"
-#~ msgstr "Lart"
-
-#~ msgid "Right"
-#~ msgstr "Djathtë"
-
-#~ msgid "Bottom"
-#~ msgstr "Poshtë"
-
-#~ msgid "Always"
-#~ msgstr "Gjithmonë"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dinamike"
-
-#~ msgid "None"
-#~ msgstr "Asnjë"
-
-#~ msgid "Intelligent"
-#~ msgstr "Inteligjent"
-
-#~ msgid "Never"
-#~ msgstr "Asnjëherë"
-
-#~ msgid "Position"
-#~ msgstr "Pozicioni"
-
-#~ msgid "Set the edge of the screen that this panel will stay on"
-#~ msgstr "Vendosni skajin e ekranit në të cilin do të qëndrojë ky panel"
-
-#~ msgid "Size"
-#~ msgstr "Madhësia"
-
-#~ msgid ""
-#~ "Set the size (width or height, depending on orientation) of this panel"
-#~ msgstr ""
-#~ "Vendosni madhësinë (gjerësinë ose lartësinë, në varësi të orientimit) të "
-#~ "këtij paneli"
-
-#~ msgid "Automatically hide"
-#~ msgstr "Fsheh automatikisht"
-
-#~ msgid "When set, this panel will hide from view to maximize screen estate"
-#~ msgstr ""
-#~ "Kur të vendoset, ky panel do të fshihet nga pamja për të maksimizuar "
-#~ "hapësirën e punës të ekranit"
-
-#~ msgid "Control when this panel should have a solid background"
-#~ msgstr "Kontrolloni kur ky panel duhet të ketë një sfond të fortë"
-
-#~ msgid "Shadow"
-#~ msgstr "Hije"
-
-#~ msgid "Adds a decorative drop-shadow, ideal for opaque panels"
-#~ msgstr "Shton një rënie-hije dekorative, ideale për panelet e errëta"
-
-#~ msgid "Stylize regions"
-#~ msgstr "Stilizoni rajonet"
-
-#~ msgid ""
-#~ "Adds a hint to the panel so that each of the panel's three main areas may "
-#~ "be themed differently."
-#~ msgstr ""
-#~ "Shton një shenjë ndihmëse në panel në mënyrë që secila prej tre fushave "
-#~ "kryesore të panelit të mund të ketë tema të ndryshme."
-
-#~ msgid "Dock mode"
-#~ msgstr "Modaliteti Dok"
-
-#~ msgid ""
-#~ "When in dock mode, the panel will use the minimal amount of space "
-#~ "possible, freeing up valuable screen estate"
-#~ msgstr ""
-#~ "Kur është në modalitetin dok, paneli do të përdorë hapësirën minimale të "
-#~ "mundshme, duke liruar pjesë hapësire të vlefshme të ekranit"
-
-#~ msgid "Untitled"
-#~ msgstr "Pa titull"
-
-#~ msgid "No description"
-#~ msgstr "Pa pershkrim"
-
-#~ msgid "running"
-#~ msgstr "në ekzekutim"
-
-#~ msgid "Add"
-#~ msgstr "Shto"
-
-#~ msgid "An entry with that title already exists"
-#~ msgstr "Një hyrje me atë titull tashmë ekziston"
-
-#~ msgid "Title"
-#~ msgstr "Titulli"
-
-#~ msgid "Required"
-#~ msgstr "Kërkohet"
-
-#~ msgid "Description"
-#~ msgstr "Përshkrimi"
-
-#~ msgid "Optional"
-#~ msgstr "Opsionale"
-
-#~ msgid "Autostart"
-#~ msgstr "Nisje Automatike"
-
-#~ msgid "Autostart apps"
-#~ msgstr "Aplikacionet me nisje automatike"
-
-#~ msgid "Add Application"
-#~ msgstr "Shto Aplikacion"
-
-#~ msgid "Add Command"
-#~ msgstr "Shto Komandë"
-
-#~ msgid "Fonts"
-#~ msgstr "Shkronjat"
-
-#~ msgid "Window Titles"
-#~ msgstr "Titujt e Dritareve"
-
-#~ msgid "Set the font used in the titlebars of applications."
-#~ msgstr ""
-#~ "Zgjidhni shkronjat që përdoren në shiritat e titujve të aplikacioneve."
-
-#~ msgid "Documents"
-#~ msgstr "Dokumentet"
-
-#~ msgid "Set the display font used by for documents."
-#~ msgstr "Vendosni shkronjat e ekranit që përdoren nga dokumentet."
-
-#~ msgid "Interface"
-#~ msgstr "Ndërfaqja"
-
-#~ msgid "Set the primary font used by application controls."
-#~ msgstr ""
-#~ "Vendosni shkronjat kryesore që përdoren nga kontrollet e aplikacionit."
-
-#~ msgid "Monospace"
-#~ msgstr "Hapësira fikse"
-
-#~ msgid "Set the fixed-width font used by text dominant applications."
-#~ msgstr ""
-#~ "Vendosni shkronjat me gjerësi fikse që përdoren nga aplikacionet "
-#~ "mbizotëruese të tekstit."
-
-#~ msgid "Text scaling"
-#~ msgstr "Shkallëzimi i tekstit"
-
-#~ msgid "Set the text scaling factor."
-#~ msgstr "Vendosni faktorin e shkallëzimit të tekstit."
-
-#~ msgid "Full"
-#~ msgstr "Plot"
-
-#~ msgid "Medium"
-#~ msgstr "Mesatare"
-
-#~ msgid "Slight"
-#~ msgstr "Lehtë"
-
-#~ msgid "Hinting"
-#~ msgstr "Sugjerime"
-
-#~ msgid "Set the type of hinting to use."
-#~ msgstr "Vendosni llojin e sugjerimit për t'u përdorur."
-
-#~ msgid "Subpixel (for LCD screens)"
-#~ msgstr "Nënpixel (për ekranet LCD)"
-
-#~ msgid "Standard (grayscale)"
-#~ msgstr "Standard (shkallë gri)"
-
-#~ msgid "Antialiasing"
-#~ msgstr "Antialising"
-
-#~ msgid "Set the type of antialiasing to use."
-#~ msgstr "Vendosni llojin e antialiasing për t'u përdorur."
-
-#~ msgid "No apps are currently playing audio."
-#~ msgstr "Asnjë aplikacion nuk po luan audio."
-
-#~ msgid "Play some music"
-#~ msgstr "Luaj disa muzikë"
-
-#~ msgid "Nothing to see here"
-#~ msgstr "Asgjë për të parë këtu"
-
-#, c-format
-#~ msgid "%u unread notifications"
-#~ msgstr "%u njoftime të palexuara"
-
-#~ msgid "1 unread notification"
-#~ msgstr "1 njoftim i palexuar"
-
-#~ msgid "No unread notifications"
-#~ msgstr "Asnjë njoftim i palexuar"
-
-#~ msgid "No new notifications"
-#~ msgstr "Asnjë njoftim i ri"
-
-#~ msgid "Apps"
-#~ msgstr "Aplikacionet"
-
-#~ msgid "Devices"
-#~ msgstr "Pajisjet"
-
-#~ msgid "Notifications"
-#~ msgstr "Njoftimet"
-
-#~ msgid "Caffeine Mode"
-#~ msgstr "Modaliteti Kafeinë"
-
-#~ msgid "System Settings"
-#~ msgstr "Cilësimet e sistemit"
-
-#~ msgid "Log out"
-#~ msgstr "Shkyçu"
-
-#~ msgid "Restart device"
-#~ msgstr "Rinisni pajisjen"
-
-#~ msgid "Power Off"
-#~ msgstr "Fikeni"
-
-#~ msgid "Turned on Caffeine Boost"
-#~ msgstr "Modaliteti Kafeinë aktivizohet"
-
-#~ msgid "Turned off Caffeine Boost"
-#~ msgstr "Modaliteti Kafeinë çaktivizohet"
-
-#~ msgid "Will turn off in a minute"
-#~ msgstr "Do të fiket për një minutë"
-
-#, c-format
-#~ msgid "Will turn off in %d minutes"
-#~ msgstr "Do të fiket pas %d minutash"
-
-#~ msgid "User"
-#~ msgstr "Përdorues"
-
-#~ msgid "Hibernate"
-#~ msgstr "Letargji"
-
-#~ msgid "Caps lock is active"
-#~ msgstr "Kyçi i kapitaleve është aktiv"
-
-#~ msgid "Caps lock is not active"
-#~ msgstr "Kyçi i kapitaleve nuk është aktiv"
-
-#~ msgid "Num lock is active"
-#~ msgstr "Kyçi i numrave është aktiv"
-
-#~ msgid "Num lock is not active"
-#~ msgstr "Kyçi i numrave nuk është aktiv"
-
-#~ msgid "Removable devices"
-#~ msgstr "Pajisjet e lëvizshme"
-
-#~ msgid "Local volumes"
-#~ msgstr "Disqet lokale"
-
-#~ msgid "Network folders"
-#~ msgstr "Dosjet e rrjetit"
-
-#~ msgid "Eject"
-#~ msgstr "Nxjerr"
-
-#~ msgid "Unmount"
-#~ msgstr "Çmontoni"
-
-#, c-format
-#~ msgid "Open \"%s\""
-#~ msgstr "Hap \"%s\""
-
-#~ msgid "You can now safely remove"
-#~ msgstr "Tani mund ta hiqni në mënyrë të sigurt"
-
-#~ msgid "Unknown Device"
-#~ msgstr "Pajisje e panjohur"
-
-#~ msgid "Error while ejecting device"
-#~ msgstr "Gabim gjatë nxjerrjes së pajisjes"
-
-#~ msgid "Error while unmounting volume"
-#~ msgstr "Gabim gjatë çmontimit së diskut"
-
-#, c-format
-#~ msgid "Mount and open \"%s\""
-#~ msgstr "Montoni dhe hapni \"%s\""
-
-#~ msgid "Enter the encryption passphrase to unlock this volume"
-#~ msgstr "Futni frazën e kalimit të kriptimit për të zhbllokuar këtë disk"
-
-#~ msgid "The password you entered is incorrect"
-#~ msgstr "Fjalëkalimi që keni futur është i pasaktë"
-
-#~ msgid "An unknown error occurred while attempting to mount this volume"
-#~ msgstr ""
-#~ "Ndodhi një gabim i panjohur gjatë përpjekjes për të montuar këtë disk"
-
-#~ msgid "Volume is in use by other processes"
-#~ msgstr "Volumi është në përdorim nga proceset e tjera"
-
-#~ msgid "Operation aborted"
-#~ msgstr "Operacioni u ndërpre"
-
-#~ msgid "Type your password"
-#~ msgstr "Shtypni fjalëkalimin tuaj"
-
-#~ msgid "Places"
-#~ msgstr "Vendet"
-
-#~ msgid "Nothing to display right now"
-#~ msgstr "Asgjë për të shfaqur tani"
-
-#~ msgid "Mount some drives"
-#~ msgstr "Montoni disa pajisje"
-
-#~ msgid "Enable more sections"
-#~ msgstr "Aktivizo më shumë seksione"
-
-#~ msgid "Bluetooth Settings"
-#~ msgstr "Cilësimet e Bluetooth"
-
-#~ msgid "Send Files"
-#~ msgstr "Dërgo Skedarë"
-
-#~ msgid "Bluetooth Airplane Mode"
-#~ msgstr "Modaliteti Aeroplan në Bluetooth"
-
-#~ msgid "Bluetooth is disabled"
-#~ msgstr "Bluetooth është çaktivizuar"
-
-#~ msgid "Bluetooth is active"
-#~ msgstr "Bluetooth është aktiv"
-
-#, c-format
-#~ msgid "Connected to %d device"
-#~ msgid_plural "Connected to %d devices"
-#~ msgstr[0] "Lidhur me pajisjen %d"
-#~ msgstr[1] "Lidhur me %d pajisje"
-
-#~ msgid "Battery fully charged."
-#~ msgstr "Bateria është plotësisht e ngarkuar."
-
-#~ msgid "Unknown"
-#~ msgstr "E panjohur"
-
-#~ msgid "Battery charging"
-#~ msgstr "Karikimi i baterisë"
-
-#~ msgid "Battery remaining"
-#~ msgstr "Bateria e mbetur"
-
-#~ msgid "Show battery percentage"
-#~ msgstr "Shfaq përqindjen e baterisë"
-
-#~ msgid "Power settings"
-#~ msgstr "Cilësimet e energjisë"
-
-#~ msgid "Rename"
-#~ msgstr "Riemërto"
-
-#~ msgid "Remove"
-#~ msgstr "Hiq"
-
-#~ msgid "Timer (minutes)"
-#~ msgstr "Kohëmatësi (minuta)"
-
-#~ msgid "Only one instance of the System Tray can be active at a time."
-#~ msgstr "Vetëm një instancë e Shiritit të Sistemit mund të jetë aktiv."
-
-#~ msgid "The System Tray failed to initialize."
-#~ msgstr "Shiriti i Sistemit dështoi të fillojë."
-
-#~ msgid "Toggle the desktop"
-#~ msgstr "Ndërro desktopin"
-
-#~ msgid "All"
-#~ msgstr "Të gjitha"
-
-#~ msgid "Sorry, no items found"
-#~ msgstr "Na vjen keq, nuk u gjet asnjë artikull"
-
-#~ msgid "Time and date settings"
-#~ msgstr "Cilësimet e orës dhe datës"
-
-#~ msgid "Show seconds"
-#~ msgstr "Shfaq sekondat"
-
-#~ msgid "Launch New Instance"
-#~ msgstr "Nisni një instancë të re"
-
-#~ msgid "Close All Windows"
-#~ msgstr "Mbyllni Të Gjitha Dritaret"
-
-#~ msgid "Always On Top"
-#~ msgstr "Gjithmonë Në Krye"
-
-#~ msgid "Maximize"
-#~ msgstr "Maksimizo"
-
-#~ msgid "Minimize"
-#~ msgstr "Minimizo"
-
-#~ msgid "Unfavorite"
-#~ msgstr "Hiq të preferuarën"
-
-#~ msgid "Favorite"
-#~ msgstr "I preferuar"
-
-#, c-format
-#~ msgid "Move To Workspace %i"
-#~ msgstr "Lëviz në Hapësirën e Punës %i"
-
-#~ msgid "Unmaximize"
-#~ msgstr "Hiq maksimizimin"
-
-#~ msgid "Close Window"
-#~ msgstr "Mbyll Dritaren"
-
-#~ msgid "Show Window Controls"
-#~ msgstr "Shfaq Kontrollet e Dritareve"
-
-#~ msgid "Authentication Required"
-#~ msgstr "Kërkohet vërtetimi"
-
-#~ msgid "Password:"
-#~ msgstr "Fjalëkalimi:"
-
-#~ msgid "Authentication is required"
-#~ msgstr "Kërkohet vërtetimi"
-
-#~ msgid "Authenticate"
-#~ msgstr "Vërtetoni"
-
-#~ msgid "Are you sure you want to end your session?"
-#~ msgstr "Je i sigurt që dëshiron ta përfundosh seancën tënde?"
-
-#~ msgid "Show label"
-#~ msgstr "Shfaq etiketën"
-
-#~ msgid "Show places"
-#~ msgstr "Shfaq vendet"
-
-#~ msgid "Show network folders"
-#~ msgstr "Shfaq dosjet e rrjetit"
-
-#~ msgid "Show removable drives"
-#~ msgstr "Shfaq disqet e lëvizshme"
-
-#~ msgid "Always expand places"
-#~ msgstr "Gjithmonë zgjeroni vendet"
-
-#~ msgid "Icon Spacing"
-#~ msgstr "Ndarja në hapësirë e ikonave"
-
-#~ msgid "Spacer size"
-#~ msgstr "Madhësia e Distancuesit"
-
-#~ msgid "\"Add\" button visibility"
-#~ msgstr "Dukshmëria e butonit \"Shto\""
-
-#~ msgid "Don't show"
-#~ msgstr "Mos shfaq"
-
-#~ msgid "Show on mouseover"
-#~ msgstr "Shfaq me vendosjen e mausit sipër"
-
-#~ msgid "Always show"
-#~ msgstr "Shfaq gjithmonë"
-
-#~ msgid "Enable notification"
-#~ msgstr "Aktivizo njoftimin"
-
-#~ msgid "Maximize brightness"
-#~ msgstr "Maksimizoni shkëlqimin"
-
-#~ msgid "Brightness Level"
-#~ msgstr "Niveli i shkëlqimit"
-
-#~ msgid "Night Light"
-#~ msgstr "Dritë Nate"
-
-#~ msgid "Schedule"
-#~ msgstr "Planifikimi"
-
-#~ msgid "Sunset to Sunrise"
-#~ msgstr "Nga Perëndimi në Agim"
-
-#~ msgid "Manual"
-#~ msgstr "Udhëzues"
-
-#~ msgid "Display Settings"
-#~ msgstr "Cilësimet e Ekranit"
-
-#~ msgid "Compact Mode"
-#~ msgstr "Modaliteti Kompakt"
-
-#~ msgid "Show Headers"
-#~ msgstr "Shfaq Krerët"
-
-#~ msgid "Show all windows on click"
-#~ msgstr "Shfaq të gjitha dritaret me klikim"
-
-#~ msgid "Only show favorited"
-#~ msgstr "Shfaq vetëm të favorizuarat"
-
-#~ msgid "Lock icons"
-#~ msgstr "Kyç ikonat"
-
-#~ msgid "Restrict to Workspace"
-#~ msgstr "Kufizo në hapësirën e punës"
-
-#~ msgid "Window grouping"
-#~ msgstr "Grupimi i dritareve"
-
-#~ msgid "Middle click to launch new window"
-#~ msgstr "Klikoni butonin e mesit për të hapur një dritare të re"
-
-#~ msgid "Require a double-click to launch new window"
-#~ msgstr "Kërkohet një klikim të dyfishtë për të filluar një dritare të re"
-
-#~ msgid "Budgie Desktop"
-#~ msgstr "Desktopi i Budgie"
-
-#~ msgid "This session logs you into the Budgie Desktop"
-#~ msgstr "Ky sesion ju regjistron në Desktopin Budgie"
-
-#~ msgid "Budgie Panel"
-#~ msgstr "Paneli Budgie"
-
-#~ msgid ""
-#~ "Launch other applications and provide various utilities to manage "
-#~ "windows, show the time, etc."
-#~ msgstr ""
-#~ "Nisni aplikacione të tjera dhe siguroni shërbime të ndryshme për të "
-#~ "menaxhuar dritaret, për të treguar kohën, etj."
-
-#~ msgid "Change desktop appearance and behavior"
-#~ msgstr "Ndryshoni pamjen dhe sjelljen e desktopit"
-
-#~ msgid "User Indicator"
-#~ msgstr "Treguesi i Përdoruesit"
-
-#~ msgid "Lock Keys Indicator"
-#~ msgstr "Treguesi i Kyçjes së Çelësave"
-
-#~ msgid "Status Indicator"
-#~ msgstr "Treguesi i Statusit"
-
-#~ msgid "Spacer"
-#~ msgstr "Distancues"
-
-#~ msgid "Separator"
-#~ msgstr "Ndarës"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Ndërruesi i Hapësirës së Punës"
-
-#~ msgid "Keyboard Layout Indicator"
-#~ msgstr "Treguesi i Paraqitjes së Tastierës"
-
-#~ msgid "Caffeine"
-#~ msgstr "Kafeina"
-
-#~ msgid "System Tray"
-#~ msgstr "Shiriti i Sistemit"
-
-#~ msgid "Raven Sidebar Control"
-#~ msgstr "Kontrolli i Shiritit të Raven"
-
-#~ msgid "Show Desktop Button"
-#~ msgstr "Shfaq Butonin Desktop"
-
-#~ msgid "Budgie Menu"
-#~ msgstr "Menuja e Budgie"
-
-#~ msgid "Clock"
-#~ msgstr "Ora"
-
-#~ msgid "Task List"
-#~ msgstr "Task Lista"
-
-#~ msgid "Icon Task List"
-#~ msgstr "Task Lista e Ikonave"
-
-#~ msgid "Network"
-#~ msgstr "Rrjeti"
-
-#, fuzzy
-#~ msgid "View in AppCenter"
-#~ msgstr "Paraqitje me kategori"
-
-#, c-format
-#~ msgid "Open %s settings"
-#~ msgstr "Hap parametrat e %s"
-
-#~ msgid "Log Out"
-#~ msgstr "Dil"
-
-#~ msgid "Put your computer into suspend mode"
-#~ msgstr "Vëre kompjuterin në modalitetin e pezullimit"
-
-#, fuzzy
-#~ msgctxt "system_management_action_keyword"
-#~ msgid "suspend"
-#~ msgstr "Pezullo"
-
-#~ msgid "Shut Down"
-#~ msgstr "Fik"
-
-#~ msgid "Turn your computer off"
-#~ msgstr "Fik kompjuterin"
-
-#~ msgid "Restart your computer"
-#~ msgstr "Rinis kompjuterin"
-
-#~ msgid "ConsoleKit wasn't found"
-#~ msgstr "ConsoleKit nuk u gjet."
-
-#~ msgid "Slingshot"
-#~ msgstr "Slingshot"
-
-#~ msgid "Open using default application"
-#~ msgstr "Hape me programin e parazgjedhur"
-
-#~ msgid "Open folder"
-#~ msgstr "Hape dosjen"
-
-#~ msgid "Open folder containing this file"
-#~ msgstr "Hape dosjen që përmban këtë skedar"
-
-#~ msgid "All Applications"
-#~ msgstr "Të gjitha programet"
-
-#~ msgid "Create a new Filter"
-#~ msgstr "Krijo një filtër të ri"
