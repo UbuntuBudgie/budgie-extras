@@ -1,0 +1,21 @@
+@import 'file-box.scss';
+@import 'info-revealer.scss';
+@import 'item.scss';
+@import 'list.scss';
+@import 'settings.scss';
+@import 'store.scss';
+@import 'vars.scss';
+
+.trash-applet-header {
+  border-bottom: 1px solid $border-color;
+  min-height: $header-height;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.trash-applet-footer {
+  border-top: 1px solid $border-color;
+  min-height: $header-height;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

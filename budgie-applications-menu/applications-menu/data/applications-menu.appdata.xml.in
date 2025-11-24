@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 elementary, Inc. <contact@elementary.io> -->
+<component type="addon">
+  <id>io.elementary.wingpanel.applications-menu</id>
+  <extends>io.elementary.wingpanel</extends>
+  <name>Applications Menu</name>
+  <summary>Open and search for apps</summary>
+  <releases>
+    <release version="2.10.2" date="2021-12-10" urgency="medium">
+      <description>
+      <p>Improvements:</p>
+      <ul>
+        <li>Searching settings always searches the full title</li>
+      </ul>
+      </description>
+    </release>
+    <release version="2.10.1" date="2021-11-24" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix a regression with settings search</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.10.0" date="2021-11-23" urgency="medium">
+      <description>
+        <p>New features:</p>
+        <ul>
+          <li>Show search results for bookmarked folders</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Prevent a potential crash on startup</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.9.1" date="2021-10-26" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Show secondary click menu for search results</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.9.0" date="2021-09-27" urgency="medium">
+      <description>
+        <p>New features:</p>
+        <ul>
+          <li>Launch apps selectively on integrated or dedicated graphics for systems with hybrid graphics</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.8.2" date="2021-08-30" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Show apps with no category under "Other"</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.8.1" date="2021-08-27" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fix an issue where Flatpak apps wouldn't show until after a restart</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.8.0" date="2021-07-14" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Sort app actions above AppCenter search</li>
+          <li>Always hide Terminal-based programs</li>
+          <li>Remove document viewer from block list</li>
+          <li>Support fractions without leading number in calculator</li>
+          <li>Show overlay key in tooltip when set</li>
+          <li>Performance improvements</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.7.1" date="2020-05-28" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.7.0" date="2020-04-29" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Smoother navigation gesture in grid view and touchscreen gesture support</li>
+          <li>Focus search when navigating up from the category view</li>
+          <li>Don't focus search when pressing modifier keys</li>
+          <li>Ensure categories are sorted alphabetically</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.6.0" date="2020-04-09" urgency="medium">
+      <description>
+        <p>Category view is now a list</p>
+        <p>Improved keyboard navigation</p>
+        <p>Performance improvements</p>
+        <p>Updated translations</p>
+      </description>
+    </release>
+    <release version="2.5.0" date="2019-11-25" urgency="medium">
+      <description>
+        <p>Improved keyboard navigation, including new tooltips and menu key support</p>
+        <p>Highlight action matches in the search view</p>
+        <p>Add a "View in AppCenter" menu item</p>
+        <p>Performance improvements</p>
+        <p>Updated translations</p>
+      </description>
+    </release>
+  </releases>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/elementary/applications-menu/master/data/screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/elementary/applications-menu/master/data/screenshot-dark.png</image>
+    </screenshot>
+  </screenshots>
+  <developer_name>elementary, Inc.</developer_name>
+  <url type="homepage">https://elementary.io/</url>
+  <url type="bugtracker">https://github.com/elementary/applications-menu/issues</url>
+  <url type="donation">https://elementary.io/get-involved#funding</url>
+  <url type="help">https://elementaryos.stackexchange.com/questions/tagged/applications-menu</url>
+  <url type="translate">https://l10n.elementary.io/projects/wingpanel/applications-menu/</url>
+  <update_contact>contact_AT_elementary.io</update_contact>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_group>elementary</project_group>
+  <project_license>GPL-3.0+</project_license>
+</component>

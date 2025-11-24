@@ -1,0 +1,420 @@
+# Japanese translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2022-01-04 06:43+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/ja/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "アプリケーション"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr "開いてアプリを検索します"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "グリット表示"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "カテゴリー表示"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "アプリを検索"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr "すべて消去"
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr "アクセサリー"
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr "ユニバーサルアクセス"
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr "プログラミング"
+
+#: src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr "教育"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr "科学"
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr "ゲーム"
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr "グラフィックス"
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "インターネット"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr "サウンドとビデオ"
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr "オフィス"
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr "システムツール"
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "そのほか"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "このコマンドを実行…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr "デフォルト"
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "検索用語を変更してみてください。"
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "“%s” という検索結果はありません"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr "%s グラフィックスを使用して開く"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "ドックから削除(_D)"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "ドックに追加(_D)"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "アンインストール"
+
+#: src/Widgets/AppContextMenu.vala:130
+msgid "View in AppCenter"
+msgstr "AppCenter で表示"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "テキスト"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "ファイル"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "操作"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "検索"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "連絡先"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "設定"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "アプリケーションの操作"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "クリップボードへコピー"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "選択範囲をクリップボードへコピーします"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "実行"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "アプリケーション、アクションやスクリプトを実行します"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "ターミナルで実行"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "ターミナルでアプリケーションまたはコマンドを実行します"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "%s を %s で検索"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "アプリストアで検索します"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "AppCenter"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "アプリケーションを検索します"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "AppCenter がインストールされていません"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "電卓"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "基本的な式を計算します。"
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc がインストールされていません"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+msgid "Click to copy result to clipboard"
+msgstr "結果をクリップボードへコピーするにはクリックしてください"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "'%s' を実行"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "コマンドを実行します"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "任意のコマンドを検索して実行します。"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "コンピューター上のアプリケーションを検索して実行します。"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "%s で開く"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "現在選択しているものを %s で開きます"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "デフォルトの Web ブラウザーで %s を開きます"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "%s を %s で開く"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "このリンクをデフォルトのブラウザーで開きます"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "リンク"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "リンクをデフォルトのブラウザーで開きます"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "%s の設定を開きます"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "システム設定の項目を検索して開きます。"
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "ロック"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "このデバイスをロックします"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr "ロック"
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "ログアウト"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "すべてのアプリケーションを閉じて終了します"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr "ログアウト"
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "サスペンド"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "コンピューターをサスペンドモードにします"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "サスペンド"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "ハイバーネート"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "コンピューターをハイバーネートモードにします"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "ハイバーネート"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "シャットダウン"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "コンピューターの電源を切ります"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr "シャットダウン;電源;切る;オフ"
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "再起動"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "コンピューターを再起動します"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr "再起動;リブート"
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"セッションをロックまたはログアウトします。お使いのコンピューターをサスペン"
+"ド、ハイバーネート、再起動、およびシャットダウンします。"
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit が見つかりませんでした"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "アプリメニューインジケーター"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "“%s” をアンインストールしますか？"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr ""
+#~ "このアプリを削除すると、関連するデータも削除される可能性があります。"
+
+#~ msgid "Open"
+#~ msgstr "開く"
+
+#~ msgid "Open using default application"
+#~ msgstr "デフォルトのアプリケーションで開きます"
+
+#~ msgid "Open folder"
+#~ msgstr "フォルダーを開く"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "このファイルを含むフォルダーを開きます"
+
+#~ msgid "All Applications"
+#~ msgstr "すべてのアプリケーション"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "新しいフィルタを作成"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

@@ -1,0 +1,22 @@
+@import 'vars.scss';
+
+.trash-file-box {
+  background: transparent;
+  border: 0.5px solid $border-color;
+  border-radius: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+
+  &.empty {
+    border-bottom: none;
+    border-top: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  & > row {
+    transition: opacity,
+      background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.02s;
+  }
+}

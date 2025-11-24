@@ -1,0 +1,425 @@
+# Lithuanian translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2019-09-29 04:23+0000\n"
+"Last-Translator: Moo <hazap@hotmail.com>\n"
+"Language-Team: Lithuanian <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/lt/>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 3.7.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Programos"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr "Atverti ir ieškoti programų"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Rodyti kaip tinklelį"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Rodyti pagal kategorijas"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Ieškoti programų"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr "Išvalyti viską"
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:102
+#, fuzzy
+#| msgid "Actions"
+msgid "Education"
+msgstr "Veiksmai"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "Internetas"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Kita"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "Vykdyti šią komandą…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Pabandykite pakeisti paieškos žodžius."
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "“%s” negrąžino jokių rezultatų"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, fuzzy, c-format
+#| msgid "Open with %s"
+msgid "Open with %s Graphics"
+msgstr "Atverti, naudojant %s"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Šalinti iš sky_delio"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Pridėti į sky_delį"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "Šalinti programą"
+
+#: src/Widgets/AppContextMenu.vala:130
+msgid "View in AppCenter"
+msgstr "Rodyti Programų centre"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "Tekstas"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Failai"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Veiksmai"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Ieškoti"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Kontaktai"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "Nustatymai"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "Programų veiksmai"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Kopijuoti į iškarpinę"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Kopijuoti žymėjimą į iškarpinę"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "Vykdyti"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "Vykdyti programą, veiksmą ar scenarijų"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Vykdyti terminale"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Vykdyti programą ar komandą terminale"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "Ieškoti %s, programoje %s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "Ieškoti programų parduotuvėje"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "Programų centras"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "Ieškoti programų"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "Programų centras nėra įdiegtas"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "Skaičiuotuvas"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "Apskaičiuoti pagrindinius reiškinius."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc nėra įdiegta"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Click to copy result to clipboard"
+msgstr "Kopijuoti žymėjimą į iškarpinę"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Vykdyti \"%s\""
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Vykdyti komandą"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Rasti ir vykdyti pasirinktines komandas."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "Ieškoti ir vykdyti programas jūsų kompiuteryje."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "Atverti, naudojant %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Atveria esamą pasirinkimą, naudojant %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Atverti %s numatytojoje saityno naršyklėje"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Atverti %s, naudojant %s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Atverti šią nuorodą numatytojoje naršyklėje"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Nuoroda"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Atverti nuorodą numatytojoje naršyklėje"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "Atverti %s nustatymus"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "Rasti Switchboard kištukus ir juos atverti."
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "Užrakinti"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "Užrakinti šį įrenginį"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr "užrakinti;uzrakinti;rakinti"
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Atsijungti"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "Užverti visas atvertas programas ir išeiti"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr "atsijungti"
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Pristabdyti"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "Įvesti kompiuterį į pristabdytą veikseną"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "pristabdyti;miego veiksena"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "Užmigdyti"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Įvesti kompiuterį į užmigdytą veikseną"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "užmigdyti"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "Išjungti"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "Išjungti jūsų kompiuterį"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr "išjungti"
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "Paleisti iš naujo"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "Paleisti jūsų kompiuterį iš naujo"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr "paleisti iš naujo;restartuoti;perkrauti"
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"Užrakinti seansą arba atsijungti nuo jo. Pristabdyti, užmigdyti, paleisti iš "
+"naujo ar išjungti savo kompiuterį."
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit nebuvo rasta"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Programų meniu indikatorius"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Šalinti “%s”?"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr "Pašalinus šią programą gali būti ištrinti jos duomenys."
+
+#~ msgid "Open"
+#~ msgstr "Atverti"
+
+#~ msgid "Open using default application"
+#~ msgstr "Atverti, naudojant numatytąją programą"
+
+#~ msgid "Open folder"
+#~ msgstr "Atverti aplanką"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Atverti aplanką, kuriame yra šis failas"
+
+#~ msgid "All Applications"
+#~ msgstr "Visos programos"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Sukurti naują filtrą"
+
+#~ msgid "Shift"
+#~ msgstr "Shift (Lyg2)"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl (Vald)"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

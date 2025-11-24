@@ -1,0 +1,417 @@
+# Hebrew translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2021-11-23 21:47+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/he/>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "יישומים"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr "פתיחה וחיפוש יישומים"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "הצגה כרשת"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "הצגה על פי קטגוריות"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "חיפוש יישומים"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr "לפנות הכול"
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr "עזרים"
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr "גישה אוניברסלית"
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr "תכנות"
+
+#: src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr "חינוך"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr "מדע"
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr "משחקים"
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr "גרפיקה"
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "אינטרנט"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr "שמע ווידאו"
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr "כלי משרד"
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr "כלי מערכת"
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "אחר"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "הרצת פקודה זו…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr "בררת מחדל"
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "נסו לשנות את מונחי החיפוש."
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "אין תוצאות עבור „%s”"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr "פתיחה באמצעות גרפיקת %s"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "הסרה מ_מעגן"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "הוספה ל_מעגן"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "הסרה"
+
+#: src/Widgets/AppContextMenu.vala:130
+msgid "View in AppCenter"
+msgstr "הצגה במרכז התכנה"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "טקסט"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "קבצים"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "פעולות"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "חיפוש"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "אנשי קשר"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "הגדרות"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "פעולות יישומים"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr "סימניות"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "העתקה ללוח הגזירים"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "העתקת הבחירה ללוח הגזירים"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "הפעלה"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "הפעלת יישום, פעולה או תסריט"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "הפעלה במסוף"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "הפעלת יישום או פקודה במסוף"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "חיפוש אחר %s תחת %s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "חיפוש בחנות היישומים"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "מרכז התכנה"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "חיפוש אחר יישומים"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "מרכז התכנה אינו מותקן"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "מחשבון"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "חישוב ביטויים בסיסיים."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc אינו מותקן"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+msgid "Click to copy result to clipboard"
+msgstr "לחיצה מעתיקה את הבחירה ללוח הגזירים"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "ביצוע '%s'"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "הפעלת פקודה"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "מציאת פקודות שרירותיות והפעלתן."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "חיפוש אחר יישומים והרצתם במחשב."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "פתיחה באמצעות %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "פתיחת הבחירה הנוכחית באמצעות %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "פתיחת %s בדפדפן בררת המחדל"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "פתיחת %s באמצעות %s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "פתיחת קישור זה בדפדפן בררת המחדל"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "קישור"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "פתיחת קישור בדפדפן בררת המחדל"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "פתיחת הגדרות %s"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "מצאו תוספים ללוח המתגים ופתחו אותם."
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "נעילה"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "נעילת ההתקן הזה"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr "נעילה"
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "יציאה"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "סגירת כל היישומים הפתוחים ויציאה"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr "יציאה"
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "השהיה"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "הכנסת המחשב למצב השהיה"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "השהיה"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "תרדמה"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "הכנסת המחשב למצב תרדמת"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "תרדמת"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "כיבוי"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "כיבוי המחשב"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr "כיבוי"
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "הפעלה מחדש"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "הפעלת המחשב מחדש"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr "הפעלה מחדש;ריבוט;ריסטארט;אתחול"
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"ניתן לנעול את ההפעלה או לצאת ממנה. להשהות, להרדים, להפעיל מחדש או לכבות את "
+"המחשב שלך."
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit לא נמצא"
+
+#~ msgid "Slingshot"
+#~ msgstr "קלע"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "מחוון תפריט היישומים"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "הסרה"
+
+#~ msgid "Open"
+#~ msgstr "פתיחה"
+
+#~ msgid "Open using default application"
+#~ msgstr "פתיחה באמצעות יישום בררת המחדל"
+
+#~ msgid "Open folder"
+#~ msgstr "פתיחת תיקייה"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "פתיחת התיקייה המכילה קובץ זה"
+
+#~ msgid "All Applications"
+#~ msgstr "כל היישומים"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "יצירת מסנן חדש"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

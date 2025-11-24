@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/budgie-recentlyused/"
+            id="org.ubuntubudgie.plugins.budgie-recentlyused">
+        <key type="b" name="showtooltips">
+            <summary>Show tooltips</summary>
+            <description>Whether to show tooltips on mouse-over in the menu</description>
+            <default>true</default>
+        </key>
+        <key type="b" name="hidepath">
+            <summary>Don't show file path</summary>
+            <description>Don't show full path in the menu</description>
+            <default>true</default>
+        </key>
+        <key type="i" name="nitems">
+            <summary>Number of items</summary>
+            <description>Number of recently used items to show</description>
+            <default>10</default>
+	    <range min="5" max="30"/>
+        </key> 
+    </schema>
+</schemalist>
+
+

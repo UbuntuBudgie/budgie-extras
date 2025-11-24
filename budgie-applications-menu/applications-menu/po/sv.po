@@ -1,0 +1,426 @@
+# Swedish translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2018-10-23 19:04+0000\n"
+"Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
+"Language-Team: Swedish <https://weblate.elementary.io/projects/wingpanel/"
+"applications-menu/sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.0.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Program"
+
+#: src/Indicator.vala:139
+#, fuzzy
+msgid "Open and search apps"
+msgstr "Öppna och sök i program (%s)"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Visa som rutnät"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Visa kategorivis"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Sök efter program"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:102
+#, fuzzy
+#| msgid "Actions"
+msgid "Education"
+msgstr "Åtgärder"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "Internet"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Övrigt"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "Kör detta kommando…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Försök med att ändra söktermer."
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Inga resultat för \"%s\""
+
+#: src/Widgets/AppContextMenu.vala:78
+#, fuzzy, c-format
+#| msgid "Open with %s"
+msgid "Open with %s Graphics"
+msgstr "Öppna med %s"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Ta bort från _dockan"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Lägg till i _dockan"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "Avinstallera"
+
+#: src/Widgets/AppContextMenu.vala:130
+#, fuzzy
+msgid "View in AppCenter"
+msgstr "AppCenter"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "Text"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Filer"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Sök"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Kontakter"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "Inställningar"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "Programfunktioner"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Kopiera till urklipp"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Kopiera markeringen till urklipp"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "Kör"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "Starta program, händelse eller skript"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Starta i terminalen"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Kör program eller kommando i terminalen"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "Sök efter %s i %s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "Sök i programbutiken"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "AppCenter"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "Sök efter program"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "AppCenter är inte installerat"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "Kalkylator"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "Beräkna enkla uttryck."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc är inte installerad"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Click to copy result to clipboard"
+msgstr "Kopiera markeringen till urklipp"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Kör '%s'"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Kör kommando"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Hitta och kör godtyckliga kommandon."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "Sök efter och kör program på din dator."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "Öppna med %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Öppna det markerade objektet med %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Öppna %s i standardwebbläsaren"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Öppna %s i %s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Öppna den här länken i standardwebbläsaren"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Länk"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Öppna länken i standardwebbläsaren"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "Öppna %s inställningar"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "Hitta switchboardmoduler och öppna dem."
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "Lås"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "Lås den här enheten"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Logga ut"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "Stäng alla program och avsluta"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Försätt i vänteläge"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "Försätt din dator i vänteläge"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "Försätt i vänteläge"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "Viloläge"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Försätt din dator i viloläge"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "Viloläge"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "Stäng av"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "Stäng av din dator"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "Starta om"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "Starta om din dator"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"Lås sessionen eller logga ut från den. Sätt i vänteläge/dvala, starta om "
+"eller stäng av din dator."
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit hittades inte"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "Programmenyindiktatorn"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Avinstallera"
+
+#~ msgid "Open"
+#~ msgstr "Öppna"
+
+#~ msgid "Open using default application"
+#~ msgstr "Öppna med förvalt program"
+
+#~ msgid "Open folder"
+#~ msgstr "Öppna mapp"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Öppna mappen som innehåller denna fil"
+
+#~ msgid "All Applications"
+#~ msgstr "Alla program"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Skapa ett nytt filter"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

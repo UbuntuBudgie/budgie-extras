@@ -1,0 +1,390 @@
+# Tagalog translation for slingshot
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2018-11-21 18:10+0000\n"
+"Last-Translator: Axel Philip Advento <badwolf.bloodseeker.rev@gmail.com>\n"
+"Language-Team: Tagalog <https://weblate.elementary.io/projects/wingpanel/"
+"applications-menu/tl/>\n"
+"Language: tl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 "
+"|| n % 10 == 6 || n % 10 == 9);\n"
+"X-Generator: Weblate 3.0.1\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Mga Application"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr ""
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Tignan bilang Grid"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Tignan sa kada Kategorya"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Maghanap ng mga App"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:102
+#, fuzzy
+#| msgid "Actions"
+msgid "Education"
+msgstr "Mga Aksyon"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Iba Pa"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "I-run ang command na ito..."
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr ""
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Walang Resulta para sa  “%s”"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr ""
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Tanggalin mula sa _Dock"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Idagdag sa _Dock"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr ""
+
+#: src/Widgets/AppContextMenu.vala:130
+#, fuzzy
+msgid "View in AppCenter"
+msgstr "Tignan sa kada Kategorya"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr ""
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Mga File"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Mga Aksyon"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Maghanap"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Mga Contact"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "Mga Setting"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr ""
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr ""
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr ""
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr ""
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr ""
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr ""
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr ""
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr ""
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr ""
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr ""
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+msgid "Click to copy result to clipboard"
+msgstr ""
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr ""
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr ""
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr ""
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr ""
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr ""
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr ""
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr ""
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "I-Lock"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr ""
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Mag-Log Out"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr ""
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Isuspinde"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr ""
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "Isuspinde"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "I-hibernate"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Ilagay ang iyong kompyuter sa hibernation mode"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "I-hibernate"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "I-Shut Down"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "Pataying ang iyong kompyuter"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "I-Restart"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "I-restart ang iyong kompyuter"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr ""
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "All Applications"
+#~ msgstr "Lahat ng mga Application"

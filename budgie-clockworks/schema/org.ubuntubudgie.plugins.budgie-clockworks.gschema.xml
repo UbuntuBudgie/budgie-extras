@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/budgie-clockworks/"
+            id="org.ubuntubudgie.plugins.budgie-clockworks">
+        <key type="s" name="background">
+            <summary>Set the color of the clock frame</summary>
+            <description>Hex color of the clock frame</description>
+            <default>"#404552"</default>
+        </key>
+        <key type="s" name="hour">
+            <summary>Set the color of the hours hand</summary>
+            <description>Hex color of the hours hand</description>
+            <default>"#5294e2"</default>
+        </key>
+        <key type="s" name="minute">
+            <summary>Set the color of the minutes hand</summary>
+            <description>Hex color of the minutes hand</description>
+            <default>"#fc4138"</default>
+        </key>
+    </schema>
+</schemalist>

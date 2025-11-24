@@ -1,0 +1,408 @@
+# Dutch translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2022-05-22 17:52+0000\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"Language-Team: Dutch <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/nl/>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Applicaties"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr "Open en zoek apps"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Bekijk als rooster"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Bekijk per categorie"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Zoek apps"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr "Wis alles"
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr "Accessoires"
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr "Universele Toegang"
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr "Programmeren"
+
+#: src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr "Educatie"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr "Wetenschap"
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr "Games"
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr "Grafisch"
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "Internet"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr "Geluid & Video"
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr "Kantoor"
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr "Systeemgereedschap"
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Overige"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "Voer deze opdracht uit…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr "Standaard"
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Probeer nog een keer met een ander zoekterm."
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Geen resultaat voor “%s”"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr "Openen met %s Graphics"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Verwijderen uit _dock"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Toevoegen aan _dock"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "Verwijderen"
+
+#: src/Widgets/AppContextMenu.vala:130
+msgid "View in AppCenter"
+msgstr "Bekijk in AppCenter"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "Tekst"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Bestanden"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Acties"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Zoeken"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Contacten"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "Applicatie Acties"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr "Bladwijzers"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Kopieer naar klembord"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Kopieer selectie naar het klembord"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "Uitvoeren"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "Voer een applicatie, actie of script uit"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Uitvoeren in terminal"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Voer applicatie of commando uit in terminal"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "Zoek voor %s in %s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "Zoek in de applicatiewinkel"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "AppCenter"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "Zoek voor applicaties"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "AppCenter is niet geïnstalleerd"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "Rekenmachine"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "Bereken eenvoudige expressies."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc is niet geïnstalleerd"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+msgid "Click to copy result to clipboard"
+msgstr "Klik om het resultaat naar het klembord te kopiëren"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Voer \"%s\" uit"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Voer commando uit"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Zoek en voer willekeurige opdrachten uit."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "Zoek naar applicaties en voer deze uit op uw computer."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "Openen met %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Open huidige selectie met %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Open %s in de standaard internetbrowser"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Open %s in %s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Open deze link in de standaard browser"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Link"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Open link in de standaard browser"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "open %s instellingen"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "Vind switchboard plugs en open ze."
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "Vergrendel"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "Vergrendel dit apparaat"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr "vergrendelen"
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Afmelden"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "Sluit all open applicaties en schakel uit"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr "uitloggen"
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Slaapstand"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "Zet je computer in slaapstand"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "slaapstand"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "Sluimerstand"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Zet je computer in Sluimerstand"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "sluimerstand"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "Afsluiten"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "De computer uitschakelen"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr "afsluiten;uitschakelen"
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "Opnieuw opstarten"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "Computer opnieuw opstarten"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr "herstarten;opnieuw opstarten"
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"Vergrendel deze sessie of meld af. Zet uw computer in slaapstand, "
+"sluimerstand, herstart de computer of schakel deze uit."
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit was niet gevonden"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "De applicatie-menu indicator"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "Verwijderen"
+
+#~ msgid "Open"
+#~ msgstr "Open"
+
+#~ msgid "Open using default application"
+#~ msgstr "Openen met de standaard applicatie"
+
+#~ msgid "Open folder"
+#~ msgstr "Open map"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Open de map waarin dit bestand zich bevindt"
+
+#~ msgid "All Applications"
+#~ msgstr "Alle apps"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Maak een nieuwe filter"

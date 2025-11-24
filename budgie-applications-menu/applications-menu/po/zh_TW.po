@@ -1,0 +1,424 @@
+# Chinese (Traditional) translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2018-03-13 02:52+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
+"wingpanel/applications-menu/zh_TW/>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.18\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:24+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "應用程式"
+
+#: src/Indicator.vala:139
+#, fuzzy
+msgid "Open and search apps"
+msgstr "開啟並搜尋程式 (%s)"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "格狀檢視"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "分類檢視"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "搜尋程式"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:102
+#, fuzzy
+#| msgid "Actions"
+msgid "Education"
+msgstr "動作"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "網際網路"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "其他"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "執行此指令…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "嘗試搜尋其他字詞。"
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "找不到「%s」的結果"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, fuzzy, c-format
+#| msgid "Open with %s"
+msgid "Open with %s Graphics"
+msgstr "以 %s 開啟"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "從 _Dock 移除"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "加到 _Dock 中"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "解除安裝"
+
+#: src/Widgets/AppContextMenu.vala:130
+#, fuzzy
+msgid "View in AppCenter"
+msgstr "AppCenter"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "文字"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "檔案"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "動作"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "搜尋"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "聯絡人"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "設定值"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "應用程式動作"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "複製到剪貼簿"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "將選擇內容複製到剪貼簿"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "執行"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "執行應用程式、動作或指令稿"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "在終端機中執行"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "執行應用程式或在終端機中執行指令"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "在 %2$s 中搜尋 %1$s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "搜尋應用商店"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "AppCenter"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "搜尋應用程式"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "AppCenter 尚未安裝"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "計算機"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "計算基本運算式。"
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "尚未安裝 bc"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Click to copy result to clipboard"
+msgstr "將選擇內容複製到剪貼簿"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "執行「%s」"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "執行指令"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "尋找並執行任意指令。"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "搜尋並執行電腦中的應用程式。"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "以 %s 開啟"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "以 %s 開啟目前的選項"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "在預設網路瀏覽器中開啟 %s"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "在 %2$s 中開啟 %1$s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "在預設瀏覽器中開啟此連結"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "連結"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "在預設瀏覽器中開啟連結"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "開啟 %s 設定值"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "尋找 swithcbard 插件並開啓之。"
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "鎖定"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "鎖定此裝置"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "登出"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "關閉所有開啟的程式並退出"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "暫停"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "讓電腦進入暫停模式"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "暫停"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "休眠"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "讓電腦進入休眠模式"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "休眠"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "關機"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "關閉您的電腦"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "重新啟動"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "重新啟動您的電腦"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr "鎖定作業階段或登出。暫停、休眠、重新啟動、或關閉您的電腦。"
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "找不到 ConsoleKit"
+
+#~ msgid "Slingshot"
+#~ msgstr "Slingshot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "程式選單指示器"
+
+#, fuzzy
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "解除安裝"
+
+#~ msgid "Open"
+#~ msgstr "開啟"
+
+#~ msgid "Open using default application"
+#~ msgstr "使用預設應用程式開啟"
+
+#~ msgid "Open folder"
+#~ msgstr "開啟資料夾"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "開啟此檔案所在的資料夾"
+
+#~ msgid "All Applications"
+#~ msgstr "所有應用程式"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "建立新的過慮器"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

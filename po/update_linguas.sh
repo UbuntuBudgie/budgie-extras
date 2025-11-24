@@ -1,0 +1,12 @@
+#!/bin/sh
+tx pull -f -a --minimum-perc=60
+#tx pull -f -a
+
+cd po
+rm LINGUAS
+
+for i in *.po ; do
+    echo `echo $i|sed 's/.po$//'` >> LINGUAS
+done
+
+sed -i 's/CHARSET/UTF-8/g' *.po

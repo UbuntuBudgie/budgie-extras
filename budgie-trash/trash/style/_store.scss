@@ -1,0 +1,25 @@
+@import 'vars.scss';
+
+.trash-store-header {
+  min-height: 48px;
+
+  & > box {
+    padding: 0 5px;
+  }
+
+  & > box > label {
+    padding-left: 5px;
+  }
+
+  & > box > revealer {
+    border-bottom: 0.5px solid $border-color;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.trash-store-widget {
+  &:hover {
+    background: transparent;
+  }
+}

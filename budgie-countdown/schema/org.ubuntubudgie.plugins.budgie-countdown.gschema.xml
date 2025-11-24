@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/ubuntubudgie/plugins/budgie-countdown/"
+            id="org.ubuntubudgie.plugins.budgie-countdown">
+        <key type="i" name="spacersize">
+            <summary>spacer around applet icon</summary>
+            <description>Space to be set on left and right of the applet icon</description>
+            <default>0</default>
+	    <range min="0" max="50"/>
+        </key> 
+    </schema>
+</schemalist>
+
+

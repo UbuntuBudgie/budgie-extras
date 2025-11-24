@@ -1,0 +1,442 @@
+#!/usr/bin/env python3
+import os
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version('Wnck', '3.0')
+from gi.repository import Gtk, Wnck, Gdk, Gio, GdkX11
+import subprocess
+import time
+import ast
+import charpaste
+import sys
+import dbus
+
+
+"""
+Budgie QuickChar
+Author: Jacob Vlijm
+Copyright © 2017-2019 Ubuntu Budgie Developers
+Website: https://ubuntubudgie.org
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or any later version. This
+program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details. You
+should have received a copy of the GNU General Public License along with this
+program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+
+# filepath = os.path.dirname(os.path.abspath(__file__))
+filepath = '/usr/share/quickchar'
+prefspath = os.path.join(
+    os.environ["HOME"], ".config", "quickchar"
+)
+os.makedirs(prefspath, exist_ok=True)
+
+
+css_data = """
+.instruction {
+  color: grey;
+  font-style: italic;
+}
+.button {
+  border-radius: 0px;
+}
+.entry {
+  min-width: 30px;
+  font-weight: bold;
+  color: blue;
+}
+"""
+
+
+class Window(Gtk.Window):
+
+    def __init__(self, settings, chardata, screendata):
+        self.settings = settings
+        self.chardata = chardata
+        self.screendata = screendata
+
+        Gtk.Window.__init__(self)
+        # clipboard
+        self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+        # window defs
+        self.set_decorated(False)
+        self.set_keep_above(True)
+        self.set_title("Charlookup")
+        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
+        self.connect("key-press-event", self.get_key)
+        self.set_skip_taskbar_hint(True)
+        # let's initiate a few things
+        self.tofocus = None
+        self.surpass_signal = False
+        self.currfamily = None
+        self.tail = None
+        self.currpage = 0
+        self.pages = []
+        self.previously_used = os.path.join(
+            prefspath, "previously_used",
+        )
+        self.previous_ison = None
+        self.pu_data = self.read_previous()
+        # gui stuff
+        self.maingrid = Gtk.Grid()
+        self.add(self.maingrid)
+        self.provider = Gtk.CssProvider.new()
+        self.provider.load_from_data(css_data.encode())
+        self.searchentry = Gtk.Entry()
+        self.maingrid.attach(self.searchentry, 0, 0, 1, 1)
+        self.instructionlabel = Gtk.Label(
+            label="\tType a character to access its derivatives\t"
+        )
+        self.set_style(self.instructionlabel, "instruction")
+        self.maingrid.attach(self.instructionlabel, 1, 0, 1, 1)
+        # set style
+        self.set_style(self.searchentry, "entry")
+        self.searchentry.set_width_chars(1)
+        self.searchentry.set_alignment(xalign=0.5)
+        # ...
+        self.searchentry.connect("changed", self.search_new)
+        self.show_all()
+
+    def read_previous(self):
+        try:
+            return ast.literal_eval(
+                open(self.previously_used).read()
+            )
+        except FileNotFoundError:
+            return []
+
+    def set_style(self, widget, style):
+        widget_context = widget.get_style_context()
+        widget_context.add_class(style)
+        Gtk.StyleContext.add_provider(
+            widget_context, self.provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        )
+
+    def remove_style(self, widget, style):
+        widget_context = widget.get_style_context()
+        widget_context.remove_class(style)
+
+    def search_new(self, entry):
+        self.instructionlabel.destroy()
+        currtext = entry.get_text()
+        if any([len(currtext) > 1, self.surpass_signal is False]):
+            search = currtext[-1]
+            entry.set_text(search)
+            self.set_row(search)
+            self.surpass_signal = True
+        else:
+            self.surpass_signal = False
+
+    def get_activewin(self):
+        winlist = []
+        winnames = []
+        wm_classes = []
+        self.screendata.force_update()
+        wlist = [
+            w for w in self.screendata.get_windows_stacked()
+        ]
+        for w in wlist:
+            if w.get_window_type() == Wnck.WindowType.NORMAL:
+                winlist.append(w.get_xid())
+                winnames.append(w.get_name())
+                wm_classes.append(w.get_class_group_name())
+        try:
+            index = winnames.index("Charlookup") - 1
+            subj = winlist[index]
+            subj_wmclass = wm_classes[index]
+            return [subj, subj_wmclass]
+        except IndexError:
+            pass
+
+    def get_key(self, button, val, string=None):
+        key = Gdk.keyval_name(val.keyval)
+        if key == "Escape":
+            self.settings.set_boolean("showapp", False)
+        elif all([key in ["Return", "KP_Enter", "Enter"], string]):
+            self.paste(button, string)
+
+    def mark_focussed(self, button, event, val):
+        button.grab_focus()
+        self.set_style(button, Gtk.STYLE_CLASS_SUGGESTED_ACTION)
+
+    def mark_unfocussed(self, button, event, val):
+        self.remove_style(button, Gtk.STYLE_CLASS_SUGGESTED_ACTION)
+
+    def makebutton(self, s, lastpicked, page=None):
+        button = Gtk.Button(label=s)
+        self.set_style(button, "button")
+        button.connect("key-press-event", self.get_key, s)
+        button.connect("pressed", self.paste, s)
+        button.connect("focus-in-event", self.mark_focussed, s)
+        button.connect("focus-out-event", self.mark_unfocussed, s)
+        if lastpicked:
+            self.tofocus = button
+            self.set_style(button, Gtk.STYLE_CLASS_SUGGESTED_ACTION)
+            if page:
+                self.currpage = page - 1
+        return button
+
+    def maketail(self):
+        # tail
+        buttontail = Gtk.HBox()
+        # browse buttons
+        right_icon = Gtk.Image.new_from_icon_name(
+            "go-next-symbolic", Gtk.IconSize.BUTTON
+        )
+        self.browseright = Gtk.Button()
+        self.browseright.set_image(right_icon)
+        self.browseright.set_relief(Gtk.ReliefStyle.NONE)
+        left_icon = Gtk.Image.new_from_icon_name(
+            "go-previous-symbolic", Gtk.IconSize.BUTTON
+        )
+        self.browseleft = Gtk.Button()
+        self.browseleft.set_image(left_icon)
+        self.browseleft.set_relief(Gtk.ReliefStyle.NONE)
+        buttontail.pack_start(Gtk.Label(label="  "), False, False, 0)
+        buttontail.pack_start(self.browseleft, False, False, 0)
+        buttontail.pack_start(self.browseright, False, False, 0)
+        self.browseright.connect("clicked", self.go_nextpage, "right")
+        self.browseleft.connect("clicked", self.go_nextpage, "left")
+        return buttontail
+
+    def go_nextpage(self, button, direction):
+        if direction == "right":
+            maxi = len(self.pages) - 1
+            self.currpage = self.currpage + 1
+            self.currpage = self.currpage if self.currpage <= maxi else maxi
+        elif direction == "left":
+            self.currpage = self.currpage - 1
+            self.currpage = self.currpage if self.currpage >= 0 else 0
+        if self.currpage is not None:
+            self.currfamily.set_visible_child_name(self.pages[self.currpage])
+            self.manage_browsbuttons_active()
+
+    def manage_browsbuttons_active(self):
+        if self.currpage >= len(self.pages) - 1:
+            set_browseright = False
+        else:
+            set_browseright = True
+        if self.currpage <= 0:
+            set_browseleft = False
+        else:
+            set_browseleft = True
+        self.browseright.set_sensitive(set_browseright)
+        self.browseleft.set_sensitive(set_browseleft)
+
+    def set_row(self, searchval):
+        row = []
+        self.tofocus = None
+        self.previous_ison = "Page1"
+        try:
+            self.maingrid.remove(self.currfamily)
+        except (TypeError, AttributeError):
+            pass
+        try:
+            self.tail.destroy()
+        except (TypeError, AttributeError):
+            pass
+        for r in self.chardata:
+            if r[0] == searchval:
+                self.currfamily = Gtk.HBox()
+                row = r[1:]
+                break
+        # get last used
+        last_used = None
+        for item in self.pu_data:
+            if item[0] == searchval:
+                last_used = item[1]
+                break
+        # create widget
+        if len(row) > 10:
+            self.currpage = 0
+            self.pages = []
+            # create stack
+            self.currfamily = Gtk.Stack()
+            self.currfamily.set_transition_type(
+                Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+            )
+            self.currfamily.set_transition_duration(500)
+            self.currfamily.set_vexpand(True)
+            self.currfamily.set_hexpand(True)
+            n = 1
+            rownumber = 1
+            newbox = Gtk.HBox()
+            for s in row:
+                button = self.makebutton(s, s == last_used, rownumber)
+                newbox.pack_start(button, False, False, 0)
+                if n == 10:
+                    pagename = "Page" + str(rownumber)
+                    self.pages.append(pagename)
+                    self.currfamily.add_named(newbox, pagename)
+                    n = 0
+                    rownumber = rownumber + 1
+                    newbox = Gtk.HBox()
+                n = n + 1
+            # last row
+            if n > 1:
+                pagename = "Page" + str(rownumber)
+                self.pages.append(pagename)
+                self.currfamily.add_named(newbox, pagename)
+                n = 1
+            # tail
+            self.tail = self.maketail()
+            # throw it on the window
+            self.maingrid.attach(self.currfamily, 1, 0, 1, 1)
+            self.maingrid.attach(self.tail, 100, 0, 1, 1)
+            self.manage_browsbuttons_active()
+            self.maingrid.show_all()
+            self.currfamily.set_visible_child_name(self.pages[self.currpage])
+        else:
+            self.currfamily = Gtk.HBox()
+            for s in row:
+                button = self.makebutton(s, s == last_used)
+                self.currfamily.pack_start(button, False, False, 0)
+            self.maingrid.attach(self.currfamily, 1, 0, 1, 1)
+        if self.tofocus:
+            self.tofocus.grab_focus()
+        self.maingrid.show_all()
+        self.resize(10, 10)
+
+    def paste(self, button, char, *args):
+        windata = self.get_activewin()
+        if windata:
+            win = windata[0]
+            wmclass = windata[1]
+            self.clipboard.set_text(char, -1)
+            subprocess.call(["/usr/bin/wmctrl", "-ia", str(win)])
+            time.sleep(0.05)
+            # set exception to the rule
+            if wmclass == "Tilix":
+                charpaste.paste_char("Shift_L", "Control_L", 'v')
+            # the default Ctrl-v
+            else:
+                charpaste.paste_char("Control_L", "v")
+            # update last-used
+            family = self.searchentry.get_text()
+            index = None
+            for item in self.pu_data:
+                if item[0] == family:
+                    index = self.pu_data.index(item)
+                    break
+            newdata = [family, char]
+            if index is not None:
+                self.pu_data[index] = newdata
+            else:
+                self.pu_data.append(newdata)
+            open(self.previously_used, "wt").write(str(self.pu_data))
+        self.settings.set_boolean("showapp", False)
+
+
+class QuickChar:
+
+    def __init__(self):
+        self.settings = Gio.Settings.new("org.ubuntubudgie.quickchar")
+        self.screendata = Wnck.Screen.get_default()
+        if not self.screendata:
+            print("This app only works on X11 based desktops")
+            return
+        self.screendata.force_update()
+        self.screendata.connect("window-opened", self.raise_quickchar)
+        self.settings.connect("changed::showapp", self.callwindow)
+        self.chardata = self.create_charlists()
+        self.window = None
+        Gtk.main()
+
+    def callwindow(self, setting, arg):
+        if self.settings.get_boolean(arg):
+            self.window = Window(self.settings, self.chardata, self.screendata)
+        else:
+            try:
+                self.window.destroy()
+            except AttributeError:
+                pass
+
+    def raise_quickchar(self, scr, window):
+        if window.get_name() == "Charlookup":
+            now = GdkX11.x11_get_server_time(self.window.get_window())
+            window.activate(now)
+
+    def create_charlists(self):
+        file = os.path.join(filepath, "chardata")
+        return [sl.strip().split() for sl in open(file).readlines()]
+
+
+class ControlWindow(Gtk.Window):
+
+    def __init__(self):
+        Gtk.Window.__init__(self, title="QuickChar Control")
+        self.settings = Gio.Settings.new("org.ubuntubudgie.quickchar")
+        self.runonstartup = self.settings.get_boolean("enable-quickchar")
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.maingrid = Gtk.Grid()
+        self.add(self.maingrid)
+        self.set_margins()
+        toggle_quickchar = Gtk.CheckButton.new_with_label(
+            "Run QuickChar"
+        )
+        toggle_quickchar.set_active(self.runonstartup)
+        ok_button = Gtk.Button.new_with_label("Close")
+        ok_button.connect("clicked", Gtk.main_quit)
+        self.get_instructions()
+        empty = Gtk.Label(label="")
+        self.maingrid.attach(toggle_quickchar, 1, 1, 1, 1)
+        self.maingrid.attach(empty, 1, 3, 1, 1)
+        toggle_quickchar.connect("toggled", self.apply_change)
+        self.maingrid.attach(ok_button, 99, 99, 1, 1)
+        self.connect("destroy", Gtk.main_quit)
+        self.show_all()
+        Gtk.main()
+
+    def get_instructions(self):
+        shortcut = 'Use shortcut key: '
+        keyname = ""
+        try:
+            interface = 'org.UbuntuBudgie.ExtrasDaemon'
+            path = '/org/ubuntubudgie/extrasdaemon'
+            obj = dbus.SessionBus().get_object(interface, path)
+            keyname = obj.GetShortcut(
+                "quickchar", dbus_interface=interface
+            )
+        except dbus.exceptions.DBusException:
+            print("BudgieExtrasDaemon error:")
+
+        if keyname != "":
+            instruction = Gtk.Label(label=shortcut + keyname)
+
+        else:
+            msg = "Logout/Login for changes to take effect"
+            instruction = Gtk.Label(label=msg)
+
+        self.maingrid.attach(instruction, 1, 4, 1, 1)
+
+    def apply_change(self, button):
+        self.settings.set_boolean("enable-quickchar", button.get_active())
+
+    def set_margins(self):
+        # I admit, lazy layout
+        corners = [
+            [0, 0], [100, 0], [2, 0], [0, 100], [100, 100],
+        ]
+        for c in corners:
+            spacelabel = Gtk.Label(label="\t")
+            self.maingrid.attach(
+                spacelabel, c[0], c[1], 1, 1,
+            )
+        self.maingrid.show_all()
+
+
+def makeupyourmind():
+    args = sys.argv[1:]
+    if len(args) == 0:
+        QuickChar()
+    elif "control" in args:
+        ControlWindow()
+
+
+if __name__ == "__main__":
+    makeupyourmind()

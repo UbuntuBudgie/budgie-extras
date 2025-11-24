@@ -1,0 +1,419 @@
+# Spanish translation for slingshot
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2022-02-18 07:13+0000\n"
+"Last-Translator: Jose Manuel Hernandez Farias <ing.josemhf@gmail.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/es/>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr "Abrir y buscar aplicaciones"
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Ver como cuadrícula"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Ver por categorías"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Buscar aplicaciones"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr "Vaciar"
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr "Accesorios"
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr "Accesibilidad"
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr "Programación"
+
+#: src/Backend/AppSystem.vala:102
+msgid "Education"
+msgstr "Educación"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr "Ciencia"
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr "Juegos"
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr "Imágenes"
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "Internet"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr "Sonido y vídeo"
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr "Oficina"
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr "Herramientas de sistema"
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Otro"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "Ejecutar esta orden…"
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr "Por defecto"
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr "Pruebe a cambiar los términos de búsqueda."
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr "Sin resultados para «%s»"
+
+#: src/Widgets/AppContextMenu.vala:78
+#, c-format
+msgid "Open with %s Graphics"
+msgstr "Abrir con los gráficos %s"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Quitar del _dock"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Añadir al _dock"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: src/Widgets/AppContextMenu.vala:130
+msgid "View in AppCenter"
+msgstr "Ver en el Centro de aplicaciones"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "Texto"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Archivos"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Acciones"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Buscar"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Contactos"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr "Configuración"
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr "Acciones de la aplicación"
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Copiar en el portapapeles"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Copiar selección en el portapapeles"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "Ejecutar"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "Ejecutar una aplicación, acción o secuencia de órdenes"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Ejecutar en un terminal"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Ejecutar una aplicación u orden en un terminal"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr "Buscar %s en %s"
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr "Buscar en la tienda"
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr "Centro de aplicaciones"
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr "Buscar aplicaciones"
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr "No se instaló el Centro de aplicaciones"
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "Calculadora"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "Calcular expresiones básicas."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc no está instalado"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+msgid "Click to copy result to clipboard"
+msgstr "Pulse para copiar el resultado en el portapapeles"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Ejecutar «%s»"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Ejecutar orden"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Encontrar y ejecutar órdenes arbitrarias."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "Buscar y ejecutar aplicaciones en su equipo."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "Abrir con %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Abrir la selección actual con %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr "Abrir %s en el navegador predeterminado"
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr "Abrir %s en %s"
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr "Abrir este enlace en el navegador predeterminado"
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr "Enlace"
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr "Abrir enlace en el navegador predeterminado"
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr "Abrir la configuración de %s"
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr "Encontrar conectores para switchboard y abrirlos."
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr "Bloquear"
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr "Bloquear este dispositivo"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr "bloqueo"
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Finalizar sesión"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr "Cerrar todas las aplicaciones y salir"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr "cerrar sesión;salir"
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Suspender"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "Poner el equipo en modo de suspensión"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "suspender"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "Hibernar"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Poner el equipo en modo de hibernación"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "hibernar"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "Apagar"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "Apagar el equipo"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr "apagar"
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "Reiniciar el equipo"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr "reiniciar"
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+"Bloquea la sesión o la finaliza. Suspenda, ponga a hibernar, reinicie o "
+"apague el equipo."
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "No se encontró ConsoleKit"
+
+#~ msgid "Slingshot"
+#~ msgstr "SlingShot"
+
+#~ msgid "The app-menu indicator"
+#~ msgstr "El indicador del menú de aplicaciones"
+
+#~ msgid "Uninstall “%s”?"
+#~ msgstr "¿Quiere desinstalar «%s»?"
+
+#~ msgid "Uninstalling this app may also delete its data."
+#~ msgstr "Desinstalar esta aplicación podría también eliminar sus datos."
+
+#~ msgid "Open"
+#~ msgstr "Abrir"
+
+#~ msgid "Open using default application"
+#~ msgstr "Abrir con la aplicación predeterminada"
+
+#~ msgid "Open folder"
+#~ msgstr "Abrir carpeta"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Abrir carpeta contenedora"
+
+#~ msgid "All Applications"
+#~ msgstr "Todas las aplicaciones"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Crear un filtro nuevo"
+
+#~ msgid "Shift"
+#~ msgstr "Shift"
+
+#~ msgid "Ctrl"
+#~ msgstr "Ctrl"
+
+#~ msgid "Alt"
+#~ msgstr "Alt"

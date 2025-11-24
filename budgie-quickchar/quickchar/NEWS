@@ -1,0 +1,131 @@
+Version 1.3.90
+~~~~~~~~~~~~~
+Released: 2022-02-19
+
+Notes:
+ * Beta 1
+
+Features:
+ * fix crash when Shuffler tries to move a window that has been just removed
+ * Shuffle windows according to which is the active monitor
+ * Shuffle animations match budgie cross-fade
+ * Dropby handle MMC (SD Cards) as well as USB
+ * Add ChromeOS based layout
+ * Update default Ubuntu Budgie layout
+ * Add delay option for Hot-corners; useful for touchpads that have difficulty measuring speed of movement
+ * Lots and lots of translations
+ * Handle stopping of capabilities more gracefully various applets when removed from the panel
+ * Wallstreet has metainfo added to display more meaningfully in GNOME Software
+ * Window Previews has metainfo added to display more meaningfully in GNOME Software
+ * Removed Window Mover applet since no longer supported
+ * Removed Workspace Overview applet since no longer supported
+ * Ejecting from Dropby is managed with modern API
+ * Fixed Dropby popup timing
+ * Replaced deprecated Notify2 based notifications with notify-send
+ * Desktop file icons moved to the recommended hicolor icon folder location
+ * Fixed missing QuickChar icon; new icon designed
+ * Network applet settings now opens in budgie-control-center if installed
+ * Network applet spinner icon handled correctly when connecting to VPNs
+ * Changed from ChangeLog to NEWS file for version history
+
+Version 1.3.0
+~~~~~~~~~~~~~
+Released: 2021-09-15
+
+Notes:
+ * Hustle and Shuffle
+
+Features:
+ * Lots of updated translations from our brilliant translators
+ * Fix for spamming the syslog when previews was enabled but end-user was logged into a wayland desktop session
+ * Budgie Window Shuffler applet to apply layouts visually
+   Fix for Window Shuffler layouts executable installation path to work on stateless distros
+   Window Shuffler Control has been completely revamped and redesigned
+   Shuffler now includes Window Rules
+   Shuffler Window rules now allow you to open application windows on specific workspaces
+   - note: GNOME 40 and later utilises the Shuffler super alt left/right keys. For Ubuntu Budgie we use a gsetting override to revert to wm keybindings prior to GNOME 40
+ * Applications Menu - Calculator now shows a visual hint how to copy the result to the clipboard. Try it - press Super then enter 2+2
+   Applications Menu - transition from Grid to List modes is now a fade rather than a slide animation
+   We no longer install the elementary gsettings schema - this ensures we don’t clash with a pantheon install. The elementary schema entry is now found in the budgie applications schema.
+   Some themes space the category list oddly. We now have a user configurable override (adjust category spacing) in the applet settings allowing you to control the spacing.
+ * Fuzzy Clock - always default to 12hr spoken clock format
+ * Network applet: Fix where after connecting to a VPN spinner cursor was still showing
+ * VisualSpace - we now display a hint when you open the popover - scrolling over the panel icon changes the workspace.
+ * Brightness Controller has now been reworked to use GNOMEs dbus control … so this should be all distro friendly and will reflect accurately the same Power slider in GNOME Settings.
+
+Version 1.2.91
+~~~~~~~~~~~~~~
+Released: 2021-09-03
+
+Notes:
+ * Beta release 2
+
+Version 1.2.90
+~~~~~~~~~~~~~~
+Released: 2021-08-15
+
+Notes:
+ * Beta release 1
+
+Version 1.2.0
+~~~~~~~~~~~~~
+Released: 2021-03-16
+
+Notes:
+ * Magic Windows
+
+Features:
+ * Window Shuffler - Window Rules: Add ability to set the position and size together with the monitor location to open an application on
+ * Window Shuffler - Layouts: Add the ability to launch and group together multiple applications
+ * Applications Menu:
+    - Cosmetic - labels on budgie-desktop-settings are left aligned.
+    from upstream
+    - Terminal apps are no-longer shown in the menu such as htop. They still can be searched for and run - ensure you have gnome-terminal or xterm to view.
+ * QuickChar installation is now easier on other on Debian based distro's - should not now need to patch your install locations
+ * Bug fix for the applications menu so that rollover menus settings is remembered on logon.
+ * The number of cities that our weather applet can now search has increased from 22.6k to 185k
+ * Applets now support stateless based distros and the XDG autostart path can both be defined at compilation time
+ * Bug fix for the brightness applet to not change the popup width when percentage changes between 100% and 0%
+ * Translations have been updated from all our Transifex translators
+ * Take-a-break applet now depends on libnotify-dev
+
+Version 1.1.90
+~~~~~~~~~~~~~~
+Released: 2021-02-21
+
+Notes:
+ * Beta release 1
+
+Version 1.1.0
+~~~~~~~~~~~~~
+Released: 2020-09-17
+
+Notes:
+ * Run Rabbit Run
+
+Features:
+ * Hotcorners: Option added to configure hotcorners via budgie-desktop-settings and therefore hide the icon from the panel
+ * Dropby: Applet settings now has the ability to display the USB window notification in any corner you define
+ * Dropby: Animation when copying media so that you now when copying is in progress/finished
+ * Application Menu: Touch Screen friendly - can now swipe on your touchscreen
+ * Application Menu: Better keyboard navigation from the search to categories etc.
+ * Application Menu: Search bar changes position to the bottom when on a bottom panel
+ * Application Menu: Hide the large number of Settings menu icons shown in the grid view and the System Tools category menu - its more elegant this way - use the search capabilities to find Settings options like bluetooth and sharing etc.
+ * Application Menu: In a similar fashion the logout/restart/suspend/shutdown icons have now been removed.  Search actions are now available for these + the ability to "lock" the screen when searching and "hibernate" if you have enabled hibernation separately
+ * Application Menu: Mouse rollover capability in the category view is now available via applet settings
+ * Application Menu: Handle fractions calculations correctly
+ * Previews: auto close when app loses focus
+ * Previews: enable/disabling the capability is now dynamic - there is no need to logout/login
+ * Previews: Multiple Libreoffice windows are previewed correctly to allow switching
+ * Previews: now displays a tooltip on mouse hover (configurable) to show the full window name
+ * Network: left/right panels do not have a large space when applet placed in end section.
+ * Window Shuffler - enable/disabling the capability is now dynamic - there is no need to logout/login
+ * Window Shuffler Sticky Neighbours - new capability to resize adjacent windows automatically
+ * Window Shuffler - feedback when trying to tile windows that have a minimum size bigger than the tile placement
+ * Window Shuffler - add CLI option to place apps to any tile position. This allows everyone to script their launch and placement setup
+ * WeatherShow - add the ability to display a custom location for the weather city
+ * Make distro friendly: Some distros don't use some stuff located in /usr/bin and other file locations.  We have now reworked the vala applets/mini apps to compile to user-defined system locations (i.e. via meson --bindir --sysconfdir --prefix --libdir)
+ * Countdown: This applet is now vertical panel friendly with icons and text respecting the space available on vertical panels
+ * General: Latest translations from the Transifex team
+ * budgie-workspace-wallpaper-applet has been rewritten in Vala.  This has been done primarily to ensure no inadvertent panel crashes.  In addition it takes into account the budgie desktop changes we made to switch wallpapers almost instantaneously (without animation) when switching workspaces.
+ * Keyboard Autoswitcher: Stop crash when gnome-screensaver starts before the panel starts

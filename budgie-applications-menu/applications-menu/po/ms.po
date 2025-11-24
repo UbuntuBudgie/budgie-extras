@@ -1,0 +1,404 @@
+# Malay translation for slingshot
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the slingshot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: slingshot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-11 05:35+0000\n"
+"PO-Revision-Date: 2021-01-19 22:56+0000\n"
+"Last-Translator: anonymous <noreply@weblate.org>\n"
+"Language-Team: Malay <https://l10n.elementary.io/projects/wingpanel/"
+"applications-menu/ms/>\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.4.2\n"
+"X-Launchpad-Export-Date: 2017-04-05 05:23+0000\n"
+
+#: src/Indicator.vala:82 src/Widgets/SearchItem.vala:39
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: src/Indicator.vala:139
+msgid "Open and search apps"
+msgstr ""
+
+#: src/SlingshotView.vala:60
+msgid "View as Grid"
+msgstr "Papar sebagai Grid"
+
+#: src/SlingshotView.vala:63
+msgid "View by Category"
+msgstr "Papar mengikut Kategori"
+
+#: src/SlingshotView.vala:75
+msgid "Search Apps"
+msgstr "Gelintar Aplikasi"
+
+#: src/SlingshotView.vala:78
+msgid "Clear all"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:77
+msgid "Accessories"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:87
+msgid "Universal Access"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:96
+msgid "Programming"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:102
+#, fuzzy
+#| msgid "Actions"
+msgid "Education"
+msgstr "Tindakan"
+
+#: src/Backend/AppSystem.vala:109
+msgid "Science"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:115
+msgid "Games"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:121
+msgid "Graphics"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:127 src/Widgets/SearchItem.vala:50
+msgid "Internet"
+msgstr "Internet"
+
+#: src/Backend/AppSystem.vala:133
+msgid "Sound & Video"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:139
+msgid "Office"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:145
+msgid "System Tools"
+msgstr ""
+
+#: src/Backend/AppSystem.vala:153 src/Widgets/SearchItem.vala:58
+msgid "Other"
+msgstr "Lain-lain"
+
+#: src/Backend/App.vala:88
+msgid "Run this command…"
+msgstr "Jalankan perintah ini..."
+
+#: src/Backend/SwitcherooControl.vala:81 src/Backend/SwitcherooControl.vala:109
+msgid "Default"
+msgstr ""
+
+#: src/Views/SearchView.vala:36
+msgid "Try changing search terms."
+msgstr ""
+
+#: src/Views/SearchView.vala:131
+#, c-format
+msgid "No Results for “%s”"
+msgstr ""
+
+#: src/Widgets/AppContextMenu.vala:78
+#, fuzzy, c-format
+#| msgid "Open with %s"
+msgid "Open with %s Graphics"
+msgstr "Buka dengan %s"
+
+#: src/Widgets/AppContextMenu.vala:109
+msgid "Remove from _Dock"
+msgstr "Buang dari _Labuh"
+
+#: src/Widgets/AppContextMenu.vala:111
+msgid "Add to _Dock"
+msgstr "Tambah ke _Labuh"
+
+#: src/Widgets/AppContextMenu.vala:125
+msgid "Uninstall"
+msgstr ""
+
+#: src/Widgets/AppContextMenu.vala:130
+#, fuzzy
+msgid "View in AppCenter"
+msgstr "Papar mengikut Kategori"
+
+#: src/Widgets/SearchItem.vala:37
+msgid "Text"
+msgstr "Teks"
+
+#: src/Widgets/SearchItem.vala:41
+msgid "Files"
+msgstr "Fail"
+
+#: src/Widgets/SearchItem.vala:44
+msgid "Actions"
+msgstr "Tindakan"
+
+#: src/Widgets/SearchItem.vala:46
+msgid "Search"
+msgstr "Gelintar"
+
+#: src/Widgets/SearchItem.vala:48
+msgid "Contacts"
+msgstr "Kenalan"
+
+#: src/Widgets/SearchItem.vala:52
+msgid "Settings"
+msgstr ""
+
+#: src/Widgets/SearchItem.vala:54
+msgid "Application Actions"
+msgstr ""
+
+#: src/Widgets/SearchItem.vala:56
+msgid "Bookmarks"
+msgstr ""
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:25
+msgid "Copy to Clipboard"
+msgstr "Salin ke Papan Keratan"
+
+#: src/synapse-core/Actions/ClipboardCopyAction.vala:26
+msgid "Copy selection to clipboard"
+msgstr "Salin pemilihan ke papan keratan"
+
+#: src/synapse-core/Actions/RunnerAction.vala:33
+msgid "Run"
+msgstr "Jalan"
+
+#: src/synapse-core/Actions/RunnerAction.vala:34
+msgid "Run an application, action or script"
+msgstr "Jalankan aplikasi, tindakan atau skrip"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:25
+msgid "Run in Terminal"
+msgstr "Jalankan dalam Terminal"
+
+#: src/synapse-core/Actions/TerminalRunnerAction.vala:26
+msgid "Run application or command in terminal"
+msgstr "Jalankan aplikasi atau perintah dalam terminal"
+
+#. TRANSLATORS: The first %s is what the user searched for,
+#. the second will be replaced with the localized name of AppCenter
+#: src/synapse-plugins/appcenter-plugin.vala:48
+#, c-format
+msgid "Search for %s in %s"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:54
+msgid "Search the app store"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:88
+msgid "AppCenter"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:89
+msgid "Search for applications"
+msgstr ""
+
+#: src/synapse-plugins/appcenter-plugin.vala:93
+msgid "AppCenter is not installed"
+msgstr ""
+
+#: src/synapse-plugins/calculator-plugin.vala:50
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: src/synapse-plugins/calculator-plugin.vala:51
+msgid "Calculate basic expressions."
+msgstr "Kira ungkapan asas."
+
+#: src/synapse-plugins/calculator-plugin.vala:55
+msgid "bc is not installed"
+msgstr "bc tidak dipasang"
+
+#: src/synapse-plugins/calculator-plugin.vala:119
+#, fuzzy
+#| msgid "Copy selection to clipboard"
+msgid "Click to copy result to clipboard"
+msgstr "Salin pemilihan ke papan keratan"
+
+#: src/synapse-plugins/command-plugin.vala:39
+#, c-format
+msgid "Execute '%s'"
+msgstr "Lakukan '%s'"
+
+#: src/synapse-plugins/command-plugin.vala:39
+msgid "Run command"
+msgstr "Jalankan perintah"
+
+#: src/synapse-plugins/command-plugin.vala:60
+msgid "Find and execute arbitrary commands."
+msgstr "Cari dan lakukan perintah arbitari."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:116
+msgid "Search for and run applications on your computer."
+msgstr "Gelintar dan jalankan aplikasi di dalam komputer anda."
+
+#: src/synapse-plugins/desktop-file-plugin.vala:319
+#, c-format
+msgid "Open with %s"
+msgstr "Buka dengan %s"
+
+#: src/synapse-plugins/desktop-file-plugin.vala:321
+#, c-format
+msgid "Opens current selection using %s"
+msgstr "Buka pemilihan semasa menggunakan %s"
+
+#: src/synapse-plugins/link-plugin.vala:39
+#, c-format
+msgid "Open %s in default web browser"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:44
+#, c-format
+msgid "Open %s in %s"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:50
+msgid "Open this link in default browser"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:72
+msgid "Link"
+msgstr ""
+
+#: src/synapse-plugins/link-plugin.vala:73
+msgid "Open link in default browser"
+msgstr ""
+
+#: src/synapse-plugins/switchboard-plugin.vala:49
+#, c-format
+msgid "Open %s settings"
+msgstr ""
+
+#: src/synapse-plugins/switchboard-plugin.vala:70
+msgid "Find switchboard plugs and open them."
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:110
+msgid "Lock"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:111
+msgid "Lock this device"
+msgstr ""
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:114
+msgctxt "system_management_action_keyword"
+msgid "lock"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:143
+msgid "Log Out"
+msgstr "Daftar Keluar"
+
+#: src/synapse-plugins/system-managment.vala:144
+msgid "Close all open applications and quit"
+msgstr ""
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:147
+msgctxt "system_management_action_keyword"
+msgid "logout"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:176
+msgid "Suspend"
+msgstr "Tangguh"
+
+#: src/synapse-plugins/system-managment.vala:177
+msgid "Put your computer into suspend mode"
+msgstr "Jadikan komputer anda dalam mod tangguh"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:180
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "suspend"
+msgstr "Tangguh"
+
+#: src/synapse-plugins/system-managment.vala:265
+msgid "Hibernate"
+msgstr "Hibernasi"
+
+#: src/synapse-plugins/system-managment.vala:266
+msgid "Put your computer into hibernation mode"
+msgstr "Jadikan komputer anda dalam mod hibernasi"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:269
+#, fuzzy
+msgctxt "system_management_action_keyword"
+msgid "hibernate"
+msgstr "Hibernasi"
+
+#: src/synapse-plugins/system-managment.vala:353
+msgid "Shut Down"
+msgstr "Matikan"
+
+#: src/synapse-plugins/system-managment.vala:354
+msgid "Turn your computer off"
+msgstr "Matikan komputer anda"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:357
+msgctxt "system_management_action_keyword"
+msgid "shutdown;turn off"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:429
+msgid "Restart"
+msgstr "Mula Semula"
+
+#: src/synapse-plugins/system-managment.vala:430
+msgid "Restart your computer"
+msgstr "Mulakan semula komputer anda"
+
+#. ; seperated list of keywords
+#: src/synapse-plugins/system-managment.vala:433
+msgctxt "system_management_action_keyword"
+msgid "restart;reboot"
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:507
+msgid ""
+"Lock the session or Log Out from it. Suspend, hibernate, restart or shutdown "
+"your computer."
+msgstr ""
+
+#: src/synapse-plugins/system-managment.vala:512
+msgid "ConsoleKit wasn't found"
+msgstr "ConsoleKit tidak ditemui"
+
+#~ msgid "Open"
+#~ msgstr "Buka"
+
+#~ msgid "Open using default application"
+#~ msgstr "Buka menggunakan aplikasi lalai"
+
+#~ msgid "Open folder"
+#~ msgstr "Buka folder"
+
+#~ msgid "Open folder containing this file"
+#~ msgstr "Buka folder yang mengandungi fail ini"
+
+#~ msgid "All Applications"
+#~ msgstr "Semua Applikasi"
+
+#~ msgid "Create a new Filter"
+#~ msgstr "Cipta Penapis baru"

@@ -1,0 +1,37 @@
+<schemalist>
+	<schema path="/org/ubuntubudgie/plugins/budgie-appmenu/" id="org.ubuntubudgie.plugins.budgie-appmenu">
+        <key name="rows" type="i">
+            <default>3</default>
+            <range min="2" max="10"/>
+            <summary>Number of rows for the grid view to display.</summary>
+        </key>
+        <key name="columns" type="i">
+            <default>5</default>
+            <range min="2" max="10"/>
+            <summary>Number of columns for the grid view to display.</summary>
+        </key>
+        <key name="enable-powerstrip" type="b">
+            <default>false</default>
+            <summary>Show Power-strip</summary>
+        </key>
+        <key name="rollover-menu" type="b">
+            <default>false</default>
+            <summary>Allow category view rollover menu</summary>
+        </key>
+        <key name="use-category" type="b">
+            <default>false</default>
+            <summary>Show the category view by default</summary>
+            <description>Save the current view of the launcher.</description>
+        </key>
+        <key name="category-spacing" type="i">
+            <default>6</default>
+            <range min="-15" max="15"/>
+            <summary>Spacing size around each category name</summary>
+        </key>
+        <key name="show-terminal-apps" type="b">
+            <default>false</default>
+            <summary>Show terminal applications</summary>
+            <description>Show applications whose .desktop file contains 'Terminal=true'.</description>
+        </key>
+	</schema>
+</schemalist>
