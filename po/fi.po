@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:11+0100\n"
+"POT-Creation-Date: 2025-11-12 20:35+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Tinde (Joke), 2024\n"
 "Language-Team: Finnish (https://app.transifex.com/ubuntu-budgie/teams/72251/fi/)\n"
@@ -22,149 +22,20 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "Palauta kaikki kohteet"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "Poista kaikki kohteet"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:347
-msgid "No"
-msgstr "Ei"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:351
-msgid "Yes"
-msgstr "Kyllä"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
-msgid "Really restore all items?"
-msgstr "Palautatko kaikki kohteet?"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
-msgid "Really delete all items?"
-msgstr "Poistatko kaikki kohteet?"
-
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#: budgie-trash/trash/src/TrashApplet.vala:106
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Roskakori"
-
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "Siirry appletin asetuksiin"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "Roskakorin asetukset"
-
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "Lajittele"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "Tyyppi"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A-Z"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Z-A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "Vanhimmasta uusimpaan"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "Uusin ensin"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "Palaa päänäkymään"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "Palauta kohteet"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "Poista kohteet"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "Polku: 1%s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr "Poistettu: 1%s"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "Palauta tämä kohde?"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "Poista tämä kohde?"
-
-#: budgie-trash/trash/src/TrashHandler.vala:63
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:829
-msgid "Desktop"
-msgstr "Työpöytä"
-
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "Roskakoriin '%s' ei pääse käsiksi: %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:165
-msgid "Error moving to trash:"
-msgstr "Virhe siirrettäessä roskakoriin:"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-msgid "Empty Trash"
-msgstr "Tyhjä roskakori"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "Ei voida poistaa pysyvästi '%s': %s"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-msgid "Restore"
-msgstr "Palauta"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "Ei pystytä palauttamaan %s tilaan %s: %s"
-
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Ei asetettu"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:347
+msgid "No"
+msgstr "Ei"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:351
+msgid "Yes"
+msgstr "Kyllä"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -1261,10 +1132,6 @@ msgstr "Etsi ohjelmia"
 msgid "Clear all"
 msgstr "Poista kaikki"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "Avaa ja etsi ohjelmia"
-
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "Sammuta"
@@ -1285,7 +1152,7 @@ msgstr "Lukitse"
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:90
 msgid "Run this command…"
 msgstr "Suorita komento…"
 
@@ -1422,6 +1289,10 @@ msgstr "Koti"
 msgid "Recent"
 msgstr "Käytetty"
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
+msgid "Trash"
+msgstr "Roskakori"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "Suorita päätteessä"
@@ -1515,7 +1386,7 @@ msgstr "Käytä"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:925
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
 msgid "Set text color"
 msgstr "Aseta tekstin väri"
 
@@ -1565,45 +1436,49 @@ msgstr "Lauantai"
 msgid "Sunday"
 msgstr "Sunnuntai"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:823
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "General"
 msgstr "Yleinen"
 
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+msgid "Desktop"
+msgstr "Työpöytä"
+
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "City"
 msgstr "Kaupunki"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:864
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "Show on desktop"
 msgstr "Näytä työpöytä"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:871
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
 msgid "Show dynamic panel icon"
 msgstr "Näytä dynaaminen paneelin kuvake"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:878
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
 msgid "Show forecast in popover"
 msgstr "Näytä ennuste popoverissa"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:899
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Transparency"
 msgstr "Läpinäkyvä"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:932
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
 msgid "Set custom position (px)"
 msgstr "Aseta mukautettu sijainti (PX)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:954
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
 msgid "Custom location name"
 msgstr "Mukautettu sijainnin nimi"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1111
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
 msgid "Please enter at least 3 characters"
 msgstr "Anna vähintään 3 merkkiä"
 
@@ -1918,15 +1793,19 @@ msgid "Menu Label"
 msgstr "Valikon otsikko"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Terminal Applications"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Show Power-strip"
 msgstr "Näytä Power-strip"
 
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:10
 msgid "Roll-over mouse"
 msgstr "Roll-over-hiiri"
 
 #. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:12
 msgid ""
 "Adjust Category\n"
 "Spacing"

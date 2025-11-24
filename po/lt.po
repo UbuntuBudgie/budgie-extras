@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:11+0100\n"
+"POT-Creation-Date: 2025-11-12 20:35+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Moo, 2023\n"
 "Language-Team: Lithuanian (https://app.transifex.com/ubuntu-budgie/teams/72251/lt/)\n"
@@ -21,149 +21,20 @@ msgstr ""
 "Language: lt\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "Atkurti visus elementus"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "Ištrinti visus elementus"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:347
-msgid "No"
-msgstr "Ne"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:351
-msgid "Yes"
-msgstr "Taip"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
-msgid "Really restore all items?"
-msgstr "Ar tikrai atkurti visus elementus?"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
-msgid "Really delete all items?"
-msgstr "Ar tikrai ištrinti visus elementus?"
-
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#: budgie-trash/trash/src/TrashApplet.vala:106
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Šiukšlinė"
-
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "Eiti į programėlės parametrus"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "Šiukšlinės nustatymai"
-
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "Rikiuoti"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "Tipas"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A–Ž"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Ž–A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "Pirma seniausi"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "Pirma naujausi"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "Grįžti į pagrindinį rodinį"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "Atkurti elementą"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "Ištrinti elementą"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "Kelias: %s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr "Ištrinta: %s"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "Atkurti šį elementą?"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "Ištrinti šį elementą?"
-
-#: budgie-trash/trash/src/TrashHandler.vala:63
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:829
-msgid "Desktop"
-msgstr "Darbalaukis"
-
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "Nepavyko pasiekti šiukšlinės, skirtos „%s“: %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:165
-msgid "Error moving to trash:"
-msgstr "Klaida perkeliant į šiukšlinę:"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-msgid "Empty Trash"
-msgstr "Išvalyti šiukšlinę"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "Nepavyko visam laikui ištrinti „%s“: %s"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-msgid "Restore"
-msgstr "Atkurti"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "Nepavyko atkurti „%s“ į %s: %s"
-
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Nenustatyta"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:347
+msgid "No"
+msgstr "Ne"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:351
+msgid "Yes"
+msgstr "Taip"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -1254,10 +1125,6 @@ msgstr "Ieškoti programų"
 msgid "Clear all"
 msgstr "Viską išvalyti"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "Atverti ir ieškoti programų"
-
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "Išjungti"
@@ -1278,7 +1145,7 @@ msgstr "Užrakinti"
 msgid "Logout"
 msgstr "Atsijungti"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:90
 msgid "Run this command…"
 msgstr "Paleisti šią komandą…"
 
@@ -1415,6 +1282,10 @@ msgstr ""
 msgid "Recent"
 msgstr ""
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
+msgid "Trash"
+msgstr "Šiukšlinė"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr ""
@@ -1508,7 +1379,7 @@ msgstr "Naudoti"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:925
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
 msgid "Set text color"
 msgstr "Nustatyti teksto spalvą"
 
@@ -1558,45 +1429,49 @@ msgstr "Šeštadienis"
 msgid "Sunday"
 msgstr "Sekmadienis"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:823
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "General"
 msgstr "Bendra"
 
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+msgid "Desktop"
+msgstr "Darbalaukis"
+
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "City"
 msgstr "Miestas"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:864
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "Show on desktop"
 msgstr "Rodyti darbalaukyje"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:871
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
 msgid "Show dynamic panel icon"
 msgstr "Rodyti dinaminę skydelio piktogramą"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:878
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
 msgid "Show forecast in popover"
 msgstr "Rodyti orų prognozę išskleidžiamajame lange"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:899
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Transparency"
 msgstr "Permatomumas"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:932
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
 msgid "Set custom position (px)"
 msgstr "Nustatyti tinkintą pozicija (piks.)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:954
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
 msgid "Custom location name"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1111
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
 msgid "Please enter at least 3 characters"
 msgstr "Įveskite bent 3 simbolius"
 
@@ -1909,15 +1784,19 @@ msgid "Menu Label"
 msgstr "Meniu etiketė"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
-msgid "Show Power-strip"
+msgid "Show Terminal Applications"
 msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+msgid "Show Power-strip"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:10
 msgid "Roll-over mouse"
 msgstr ""
 
 #. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:12
 msgid ""
 "Adjust Category\n"
 "Spacing"

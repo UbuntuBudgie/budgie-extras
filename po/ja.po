@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:11+0100\n"
+"POT-Creation-Date: 2025-11-12 20:35+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2022\n"
 "Language-Team: Japanese (https://app.transifex.com/ubuntu-budgie/teams/72251/ja/)\n"
@@ -23,149 +23,20 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "全て戻す"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "全て削除する"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:347
-msgid "No"
-msgstr "いいえ"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:351
-msgid "Yes"
-msgstr "はい"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
-msgid "Really restore all items?"
-msgstr "本当にすべて復元しますか？"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
-msgid "Really delete all items?"
-msgstr "本当にすべて削除しますか？"
-
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#: budgie-trash/trash/src/TrashApplet.vala:106
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "ゴミ箱"
-
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "アプレットの設定に移動する"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "ゴミ箱の設定"
-
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "並び替え"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "種類"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A-Z"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Z-A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "古いものから順に"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "新しいものから順に"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "メインビューに戻る"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "復元する"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "削除する"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "パス: %s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr "削除日時: %s"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "このアイテムを復元しますか？"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "このアイテムを削除しますか？"
-
-#: budgie-trash/trash/src/TrashHandler.vala:63
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:829
-msgid "Desktop"
-msgstr "デスクトップ"
-
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "\"%s\"のゴミ箱にアクセスできません: %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:165
-msgid "Error moving to trash:"
-msgstr "ゴミ箱への移動に失敗しました: "
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-msgid "Empty Trash"
-msgstr "ゴミ箱を空にする"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "\"%s\"を完全に削除できません: %s"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-msgid "Restore"
-msgstr "元に戻す"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "\"%s\"を%sに完全に復元できません: %s"
-
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "設定なし"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:347
+msgid "No"
+msgstr "いいえ"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:351
+msgid "Yes"
+msgstr "はい"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -1254,10 +1125,6 @@ msgstr "アプリを検索"
 msgid "Clear all"
 msgstr "すべて消去"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "開いてアプリを検索します"
-
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "シャットダウン"
@@ -1278,7 +1145,7 @@ msgstr "ロック"
 msgid "Logout"
 msgstr "ログアウト"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:90
 msgid "Run this command…"
 msgstr "このコマンドを実行…"
 
@@ -1415,6 +1282,10 @@ msgstr ""
 msgid "Recent"
 msgstr ""
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
+msgid "Trash"
+msgstr "ゴミ箱"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "ターミナルで実行"
@@ -1508,7 +1379,7 @@ msgstr "使う"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:925
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
 msgid "Set text color"
 msgstr "テキストの色を設定"
 
@@ -1558,45 +1429,49 @@ msgstr "土曜日"
 msgid "Sunday"
 msgstr "日曜日"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:823
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "General"
 msgstr "一般"
 
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+msgid "Desktop"
+msgstr "デスクトップ"
+
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "City"
 msgstr "市町村"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:864
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "Show on desktop"
 msgstr "デスクトップに表示"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:871
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
 msgid "Show dynamic panel icon"
 msgstr "動的なパネルアイコンを表示"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:878
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
 msgid "Show forecast in popover"
 msgstr "ポップオーバーに天気予報を表示"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:899
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Transparency"
 msgstr "透明度"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:932
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
 msgid "Set custom position (px)"
 msgstr "任意の位置を設定 (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:954
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
 msgid "Custom location name"
 msgstr "カスタムロケーション名"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1111
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
 msgid "Please enter at least 3 characters"
 msgstr "最低 3 文字を入力してください"
 
@@ -1909,15 +1784,19 @@ msgid "Menu Label"
 msgstr "メニューのラベル"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Terminal Applications"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Show Power-strip"
 msgstr "電源タップを表示する"
 
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:10
 msgid "Roll-over mouse"
 msgstr "マウスのロールオーバー"
 
 #. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:12
 msgid ""
 "Adjust Category\n"
 "Spacing"

@@ -8,7 +8,6 @@
 # roypen <roypen88@gmail.com>, 2021
 # david “fossfreedom” mohammed <foss.freedom@gmail.com>, 2022
 # 8d7ad07816bef373a8d82ee0246152ae_957749c <6cb213ca59d34a5613d69f608d46201d_382398>, 2022
-# Norbert, 2022
 # Kacper Otulak, 2024
 # 
 #, fuzzy
@@ -16,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:11+0100\n"
+"POT-Creation-Date: 2025-11-12 20:35+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Kacper Otulak, 2024\n"
 "Language-Team: Polish (https://app.transifex.com/ubuntu-budgie/teams/72251/pl/)\n"
@@ -26,149 +25,20 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "Przywróć wszystko"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "Usuń wszystko"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:347
-msgid "No"
-msgstr "Nie"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:351
-msgid "Yes"
-msgstr "Tak"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
-msgid "Really restore all items?"
-msgstr "Czy na pewno przywrócić wszystko?"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
-msgid "Really delete all items?"
-msgstr "Czy na pewno usunąć wszystko?"
-
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#: budgie-trash/trash/src/TrashApplet.vala:106
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Kosz"
-
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "Idź do opcji apletu"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "Ustawienia kosza"
-
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "Sortuj"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "Wpisz"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A-Z"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Z-A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "Od najstarszych"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "Od najnowszych"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "Przejdź do widoku głównego"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "Przywróć element"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "Usuń"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "Ścieżka %s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr ""
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "Przywrócić ten element?"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "Usunąć ten element?"
-
-#: budgie-trash/trash/src/TrashHandler.vala:63
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:829
-msgid "Desktop"
-msgstr "Pulpit"
-
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "Nie można uzyskać dostępu do kosza dla '%s': %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:165
-msgid "Error moving to trash:"
-msgstr "Błąd podczas przenoszenia do kosza:"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-msgid "Empty Trash"
-msgstr "Opróżnij Kosz"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "Nie można permanentnie usunąć '%s': %s"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-msgid "Restore"
-msgstr "Przywróć"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "Nie można przywrócić \"%s\" do \"%s\": %s"
-
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Nie ustawiono"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:347
+msgid "No"
+msgstr "Nie"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:351
+msgid "Yes"
+msgstr "Tak"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -1264,10 +1134,6 @@ msgstr "Wyszukaj programy"
 msgid "Clear all"
 msgstr "Wyczyść wszystko"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "Otwórz i wyszukaj programy"
-
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "Wyłącz"
@@ -1288,7 +1154,7 @@ msgstr "Zablokuj"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:90
 msgid "Run this command…"
 msgstr "Uruchom te polecenie…"
 
@@ -1425,6 +1291,10 @@ msgstr "Katalog Domowy"
 msgid "Recent"
 msgstr "Ostatnie"
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
+msgid "Trash"
+msgstr "Kosz"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "Uruchom w terminalu"
@@ -1518,7 +1388,7 @@ msgstr "Użyj"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:925
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
 msgid "Set text color"
 msgstr "Ustaw kolor tekstu"
 
@@ -1568,45 +1438,49 @@ msgstr "Sobota"
 msgid "Sunday"
 msgstr "Niedziela"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:823
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "General"
 msgstr "Ogólne"
 
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+msgid "Desktop"
+msgstr "Pulpit"
+
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "City"
 msgstr "Miasto"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:864
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "Show on desktop"
 msgstr "Pokaż na pulpicie"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:871
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
 msgid "Show dynamic panel icon"
 msgstr "Pokaż dynamiczną ikonę na panelu"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:878
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
 msgid "Show forecast in popover"
 msgstr "Pokaż prognozę pogody po kliknięciu"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:899
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Transparency"
 msgstr "Przezroczystość"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:932
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
 msgid "Set custom position (px)"
 msgstr "Ustaw własną pozycję (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:954
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
 msgid "Custom location name"
 msgstr "Własna nazwa lokalizacji"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1111
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
 msgid "Please enter at least 3 characters"
 msgstr "Wpisz co najmniej 3 litery"
 
@@ -1921,15 +1795,19 @@ msgid "Menu Label"
 msgstr "Etykieta menu"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Terminal Applications"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Show Power-strip"
 msgstr "Pokaż pasek zasilania"
 
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:10
 msgid "Roll-over mouse"
 msgstr "Najechanie myszką"
 
 #. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:12
 msgid ""
 "Adjust Category\n"
 "Spacing"

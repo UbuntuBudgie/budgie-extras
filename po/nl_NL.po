@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:11+0100\n"
+"POT-Creation-Date: 2025-11-12 20:35+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Stephan Paternotte <stephan@paternottes.net>, 2025\n"
 "Language-Team: Dutch (Netherlands) (https://app.transifex.com/ubuntu-budgie/teams/72251/nl_NL/)\n"
@@ -27,149 +27,20 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:66
-msgid "Restore all items"
-msgstr "Alles terugzetten"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:68
-msgid "Delete all items"
-msgstr "Alles verwijderen"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:81
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:119
-#: budgie-window-shuffler/src/shuffler_control.vala:347
-msgid "No"
-msgstr "Nee"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:82
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:120
-#: budgie-window-shuffler/src/shuffler_control.vala:351
-msgid "Yes"
-msgstr "Ja"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:229
-msgid "Really restore all items?"
-msgstr "Alle items terugzetten?"
-
-#: budgie-trash/trash/src/Widgets/TrashStoreWidget.vala:231
-msgid "Really delete all items?"
-msgstr "Alle items verwijderen?"
-
-#. I hate this and want to do this more programmaticly with libnotify.
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:59
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#: budgie-trash/trash/src/TrashApplet.vala:106
-#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
-#: budgie-trash/trash/src/Trash.plugin.in.h:1
-msgid "Trash"
-msgstr "Prullenbak"
-
-#: budgie-trash/trash/src/Widgets/MainPopover.vala:79
-msgid "Go to applet options"
-msgstr "Ga naar opties"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:61
-msgid "Trash Settings"
-msgstr "Prullenbak-instellingen"
-
-#. Sorting section
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:76
-msgid "Sort"
-msgstr "Sorteren"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:80
-msgid "Type"
-msgstr "Type"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:81
-msgid "A-Z"
-msgstr "A-Z"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:82
-msgid "Z-A"
-msgstr "Z-A"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:83
-msgid "Oldest First"
-msgstr "Oudste eerst"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:84
-msgid "Newest First"
-msgstr "Nieuwste eerst"
-
-#: budgie-trash/trash/src/Widgets/SettingsView.vala:105
-msgid "Return to main view"
-msgstr "Terug naar hoofdvenster"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:80
-msgid "Restore item"
-msgstr "Terugzetten"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:82
-msgid "Delete item"
-msgstr "Verwijderen"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:95
-#, c-format
-msgid "Path: %s"
-msgstr "Locatie: %s"
-
-#. TRANSLATORS: this is the time of when the file was deleted
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:103
-#, c-format
-msgid "Deleted on: %s"
-msgstr "Verwijderd op: %s"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:186
-msgid "Restore this item?"
-msgstr "Item terugzetten?"
-
-#: budgie-trash/trash/src/Widgets/TrashItem.vala:188
-msgid "Delete this item?"
-msgstr "Item verwijderen?"
-
-#: budgie-trash/trash/src/TrashHandler.vala:63
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:829
-msgid "Desktop"
-msgstr "Bureaublad"
-
-#: budgie-trash/trash/src/TrashHandler.vala:111
-#, c-format
-msgid "Unable to access trash for '%s': %s"
-msgstr "Kan geen toegang krijgen tot de prullenbak voor '%s': %s"
-
-#: budgie-trash/trash/src/TrashApplet.vala:165
-msgid "Error moving to trash:"
-msgstr "Fout bij het verwijderen:"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-msgid "Empty Trash"
-msgstr "Prullenbak legen"
-
-#: budgie-trash/trash/src/TrashStore.vala:134
-#: budgie-trash/trash/src/TrashStore.vala:145
-#: budgie-trash/trash/src/TrashStore.vala:152
-#, c-format
-msgid "Unable to permanently delete '%s': %s"
-msgstr "Kan '%s': %s niet definitief verwijderen"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-msgid "Restore"
-msgstr "Herstellen"
-
-#: budgie-trash/trash/src/TrashStore.vala:193
-#, c-format
-msgid "Unable to restore '%s' to %s: %s"
-msgstr "Kan '%s' niet terugzetten naar %s: %s"
-
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
 #: budgie-window-shuffler/src/shuffler_control.vala:281
 #: budgie-window-shuffler/src/layouts_popup.vala:82
 msgid "Not set"
 msgstr "Niet ingesteld"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:347
+msgid "No"
+msgstr "Nee"
+
+#: budgie-window-shuffler/src/shuffler_control.vala:351
+msgid "Yes"
+msgstr "Ja"
 
 #. just to skip first 'false' positive on window focus change
 #. if wm class is given, we obviously are updating existing rule
@@ -1269,10 +1140,6 @@ msgstr "Toepassingen zoeken"
 msgid "Clear all"
 msgstr "Alles wissen"
 
-#: budgie-applications-menu/applications-menu/src/AppMenu.vala:324
-msgid "Open and search apps"
-msgstr "Apps zoeken en openen"
-
 #: budgie-applications-menu/applications-menu/src/powerstrip.vala:97
 msgid "Shutdown"
 msgstr "Afsluiten"
@@ -1293,7 +1160,7 @@ msgstr "Vergrendelen"
 msgid "Logout"
 msgstr "Afmelden"
 
-#: budgie-applications-menu/applications-menu/src/Backend/App.vala:88
+#: budgie-applications-menu/applications-menu/src/Backend/App.vala:90
 msgid "Run this command…"
 msgstr "Voer deze opdracht uit…"
 
@@ -1430,6 +1297,10 @@ msgstr "Startscherm"
 msgid "Recent"
 msgstr "Recent"
 
+#: budgie-applications-menu/applications-menu/src/synapse-plugins/file-bookmarks-plugin.vala:227
+msgid "Trash"
+msgstr "Prullenbak"
+
 #: budgie-applications-menu/applications-menu/src/synapse-core/Actions/TerminalRunnerAction.vala:25
 msgid "Run in Terminal"
 msgstr "Uitvoeren in terminal"
@@ -1524,7 +1395,7 @@ msgstr "Toepassen"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:925
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
 msgid "Set text color"
 msgstr "Tekstleur instellen"
 
@@ -1574,45 +1445,49 @@ msgstr "Zaterdag"
 msgid "Sunday"
 msgstr "Zondag"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:823
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
 msgid "General"
 msgstr "Algemeen"
 
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+msgid "Desktop"
+msgstr "Bureaublad"
+
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:841
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
 msgid "City"
 msgstr "Plaats"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:864
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "Show on desktop"
 msgstr "Op bureaublad weergeven"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:871
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
 msgid "Show dynamic panel icon"
 msgstr "Dynamisch paneelpictogram weergeven"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:878
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
 msgid "Show forecast in popover"
 msgstr "Weersvoorspelling tonen in panelmenu"
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:899
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
 msgid "Transparency"
 msgstr "Transparantie"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:932
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
 msgid "Set custom position (px)"
 msgstr "Aangepaste positie instellen (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:954
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
 msgid "Custom location name"
 msgstr "Aangepaste plaatsnaam"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1111
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
 msgid "Please enter at least 3 characters"
 msgstr "Voer minimaal 3 tekens in"
 
@@ -1927,15 +1802,19 @@ msgid "Menu Label"
 msgstr "Menulabel"
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:8
+msgid "Show Terminal Applications"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
 msgid "Show Power-strip"
 msgstr "Energiebeheer tonen"
 
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:9
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:10
 msgid "Roll-over mouse"
 msgstr "Roll-over-muis"
 
 #. Spacing around each category name
-#: budgie-applications-menu/applications-menu/src/settings.ui.h:11
+#: budgie-applications-menu/applications-menu/src/settings.ui.h:12
 msgid ""
 "Adjust Category\n"
 "Spacing"
