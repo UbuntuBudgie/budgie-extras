@@ -154,7 +154,7 @@ if build_recommended == true or build_quicknote == true
 endif
 
 build_showtime = get_option('build-showtime')
-if for_wayland == false and (build_recommended == true or build_showtime == true)
+if build_recommended == true or build_showtime == true
 	subdir('budgie-showtime')
 endif
 
