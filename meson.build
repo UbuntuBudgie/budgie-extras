@@ -179,7 +179,7 @@ if for_wayland == false and (build_recommended == true or build_rotation_lock ==
 endif
 
 build_dropby = get_option('build-dropby')
-if for_wayland == false and (build_recommended == true or build_dropby == true)
+if build_recommended == true or build_dropby == true
 	subdir('budgie-dropby')
 endif
 
