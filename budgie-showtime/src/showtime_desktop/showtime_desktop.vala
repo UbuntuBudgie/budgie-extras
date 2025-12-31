@@ -217,8 +217,8 @@ namespace  ShowTime {
             maingrid.attach(datelabel, 0, 1, 1, 1);
             this.add(maingrid);
             string[] bind = {
-                "leftalign", "twelvehrs", "xposition",
-                "yposition", "linespacing", "timefontcolor", "linespacing",
+                "leftalign", "twelvehrs", /*"xposition",
+                "yposition", */"linespacing", "timefontcolor", "linespacing",
                 "datefontcolor", "timefont", "datefont"
             };
             foreach (string s in bind) {
@@ -235,7 +235,13 @@ namespace  ShowTime {
             this.show_all();
             set_windowposition();
             this.configure_event.connect(setcondition);
-            showtime_settings.changed["autoposition"].connect(set_windowposition);
+            string[] bindpos = {
+                "xposition", "yposition", "autoposition"
+            };
+            foreach (string s in bindpos) {
+                showtime_settings.changed[s].connect(set_windowposition);
+            }
+
             new Thread<bool> ("oldtimer", run_time);
             text_scaling = new GLib.Settings(
                 "org.gnome.desktop.interface"
@@ -315,14 +321,14 @@ namespace  ShowTime {
             return scaling;
         }
 
-public void set_windowposition () {
+        public void set_windowposition () {
 #if FOR_WAYLAND
             // Wayland positioning using GTK Layer Shell
             int scale = getscale();
             int setx;
             int sety;
             string anchor;
-            
+
             if (subwindow) {
                 setx = custom_posargs[0];
                 sety = custom_posargs[1];
@@ -341,25 +347,25 @@ public void set_windowposition () {
             }
 
             int[] winsize = get_windowsize();
-            
+
             // Reset all anchors first
             GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.TOP, false);
             GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.BOTTOM, false);
             GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.LEFT, false);
             GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.RIGHT, false);
-            
+
             // Set margins based on anchor position
             // GTK Layer Shell requires margins from edges, not absolute positioning
             int margin_left = 0;
             int margin_right = 0;
             int margin_top = 0;
             int margin_bottom = 0;
-            
+
             // Get screen dimensions
             int[] screendata = check_res();
             int screen_width = screendata[0];
             int screen_height = screendata[1];
-            
+
             if (anchor.contains("e")) {
                 // Right-aligned: use right margin
                 margin_right = screen_width - setx;
@@ -369,7 +375,7 @@ public void set_windowposition () {
                 margin_left = setx;
                 GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.LEFT, true);
             }
-            
+
             if (anchor.contains("s")) {
                 // Bottom-aligned: use bottom margin
                 margin_bottom = screen_height - sety;
@@ -379,12 +385,12 @@ public void set_windowposition () {
                 margin_top = sety;
                 GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.TOP, true);
             }
-            
+
             GtkLayerShell.set_margin(this, GtkLayerShell.Edge.LEFT, margin_left);
             GtkLayerShell.set_margin(this, GtkLayerShell.Edge.RIGHT, margin_right);
             GtkLayerShell.set_margin(this, GtkLayerShell.Edge.TOP, margin_top);
             GtkLayerShell.set_margin(this, GtkLayerShell.Edge.BOTTOM, margin_bottom);
-            
+
 #else
             int scale = getscale();
             int setx;
@@ -437,12 +443,28 @@ public void set_windowposition () {
 
         private int[] check_res() {
             // see what is the resolution on the primary monitor
+#if FOR_WAYLAND
+            var xfw_screen = libxfce4windowing.Screen.get_default();
+            var mon = xfw_screen.get_primary_monitor();
+            var width = 800;
+            var height = 600;
+            var screen_xpos = 0;
+            var screen_ypos = 0;
+            if (mon != null) {
+                var workarea = mon.get_workarea();
+                width = workarea.width;
+                height = workarea.height;
+                screen_xpos = workarea.x;
+                screen_ypos = workarea.y;
+            }
+#else
             var prim = Gdk.Display.get_default().get_primary_monitor();
             var geo = prim.get_geometry();
             int width = geo.width;
             int height = geo.height;
             int screen_xpos = geo.x;
             int screen_ypos = geo.y;
+#endif
             return {width, height, screen_xpos, screen_ypos};
         }
 
@@ -548,7 +570,7 @@ public void set_windowposition () {
 #endif
         }
 
-#if WAYLAND_SUPPORT
+#if FOR_WAYLAND
         // Call this after positioning and on configure events.
         private void report_position_to_settings() {
             // GTK Layer Shell doesn't give us actual screen coordinates
@@ -556,13 +578,13 @@ public void set_windowposition () {
             int[] screendata = check_res();
             int screen_width = screendata[0];
             int screen_height = screendata[1];
-            
+
             int[] winsize = get_windowsize();
-            
+
             // Calculate actual position from our anchor/margin setup
             int actual_x = showtime_settings.get_int("xposition");
             int actual_y = showtime_settings.get_int("yposition");
-            
+
             // Report back for applet to read
             showtime_settings.set_int("current-xposition", actual_x);
             showtime_settings.set_int("current-yposition", actual_y);
