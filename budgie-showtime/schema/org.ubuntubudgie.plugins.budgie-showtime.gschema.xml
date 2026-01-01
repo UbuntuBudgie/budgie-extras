@@ -78,36 +78,5 @@
             <description>The window can be dragged temporarily by Super + drag</description>
             <default>false</default>
         </key>
-
-        <key name="current-xposition" type="i">
-            <default>0</default>
-            <summary>Current window X position (reported by window)</summary>
-            <description>
-                Used on Wayland where window geometry can't be queried externally
-            </description>
-        </key>
-        <key name="current-yposition" type="i">
-            <default>0</default>
-            <summary>Current window Y position (reported by window)</summary>
-            <description>
-                Used on Wayland where window geometry can't be queried externally
-            </description>
-        </key>
-
-        <key name="current-width" type="i">
-            <default>0</default>
-            <summary>Current window width (reported by window)</summary>
-            <description>
-                Used on Wayland where window geometry can't be queried externally
-            </description>
-        </key>
-
-        <key name="current-height" type="i">
-            <default>0</default>
-            <summary>Current window height (reported by window)</summary>
-            <description>
-                Used on Wayland where window geometry can't be queried externally
-            </description>
-        </key>
     </schema>
 </schemalist>

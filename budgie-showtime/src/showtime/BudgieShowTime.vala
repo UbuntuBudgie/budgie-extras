@@ -62,23 +62,13 @@ namespace BudgieShowTimeApplet {
     }
 
     private int[] getwindata () {
-        // On Wayland, window geometry isn't available externally
-        // Read from GSettings instead (reported by window itself)
-        int x = showtime_settings.get_int("current-xposition");
-        int y = showtime_settings.get_int("current-yposition");
-        int w = showtime_settings.get_int("current-width");
-        int h = showtime_settings.get_int("current-height");
-
-        // Check if window exists by looking for it
-        bool exists = false;
-        unowned var windows = xfw_screen.get_windows();
-        foreach (var win in windows) {
-            if (win.get_name() == "Showtime") {
-                exists = true;
-                break;
-            }
-        }
-        return exists ? new int[] {x, y, w, h} : new int[] {0, 0, 0, 0};
+        // Can't query window geometry on Wayland
+        // Return settings + estimated dimensions
+        int x = showtime_settings.get_int("xposition");
+        int y = showtime_settings.get_int("yposition");
+        int w = 150;  // Estimated width
+        int h = 80;   // Estimated height
+        return {x, y, w, h};
     }
 #else
     // Keep existing X11 code
@@ -418,6 +408,22 @@ namespace BudgieShowTimeApplet {
             return -1;
         }
 
+#if FOR_WAYLAND
+        private void set_anchor (ToggleButton button) {
+            // Position Picker will handle full position setting
+            // Just update the anchor preference
+            int n = 0;
+            string newanchor = "se";
+            foreach (ToggleButton b in anchorbuttons) {
+                if (b == button) {
+                    newanchor = anchors[n];
+                }
+                n += 1;
+            }
+            // Just set anchor, don't recalculate position
+            showtime_settings.set_string("anchor", newanchor);
+        }
+#else
         private void set_anchor (ToggleButton button) {
             int n = 0;
             string newanchor = "se";
@@ -429,7 +435,9 @@ namespace BudgieShowTimeApplet {
             }
             update_xy_gsettings(newanchor);
         }
+#endif
 
+#if !FOR_WAYLAND
         private void update_xy_gsettings (string newanchor) {
             /*
             if anchor or dragged position changes,
@@ -450,7 +458,7 @@ namespace BudgieShowTimeApplet {
             showtime_settings.set_int("xposition", newx);
             showtime_settings.set_int("yposition", newy);
         }
-
+#endif
         private void set_newlinespacing (SpinButton button, string setting) {
             // get current settings from button, set gsetings
             int newval = (int)button.get_value();
@@ -555,6 +563,41 @@ namespace BudgieShowTimeApplet {
 #endif
         }
 
+#if FOR_WAYLAND
+        private void toggle_autopos (ToggleButton button) {
+            bool val = button.get_active();
+            bool curr_allmons = allmonitors.get_active();
+            if (!val) {
+                // Switching to manual positioning
+                // Can't read current window position on Wayland
+                // Use existing manual position or default to bottom-right
+                int curr_x = showtime_settings.get_int("xposition");
+                int curr_y = showtime_settings.get_int("yposition");
+
+                // If never set (0,0), use default bottom-right position
+                if (curr_x == 0 && curr_y == 0) {
+                    var mon = xfw_screen.get_primary_monitor();
+                    var workarea = mon.get_workarea();
+                    showtime_settings.set_int("xposition", workarea.width - 150);
+                    showtime_settings.set_int("yposition", workarea.height - 150);
+
+                }
+                showtime_settings.set_string("anchor", "se");
+            }
+            else {
+                create_windows(xfw_screen, surpass_primary = true);
+            }
+            if (n_monitors != 1) {
+                allmonitors.set_sensitive(val);
+            }
+            else {
+                allmonitors.set_sensitive(false);
+            }
+            anchorbuttons[2].set_active(true);
+            anchorgrid.set_sensitive(!val);
+            showtime_settings.set_boolean("autoposition", val);
+        }
+#else
         private void toggle_autopos (ToggleButton button) {
             bool val = button.get_active();
             bool curr_allmons = allmonitors.get_active();
@@ -578,11 +621,7 @@ namespace BudgieShowTimeApplet {
                 allmonitors.set_active(false);
             }
             else {
-#if FOR_WAYLAND
-                create_windows(xfw_screen, surpass_primary = true);
-#else
                 create_windows(gdkdisplay, surpass_primary = true);
-#endif
             }
             if (n_monitors != 1) {
                 allmonitors.set_sensitive(val);
@@ -594,7 +633,7 @@ namespace BudgieShowTimeApplet {
             anchorgrid.set_sensitive(!val);
             showtime_settings.set_boolean("autoposition", val);
         }
-
+#endif
         private void set_hexcolor(ColorButton button, string setting) {
             Gdk.RGBA c = button.get_rgba();
             string s =
@@ -649,16 +688,7 @@ namespace BudgieShowTimeApplet {
 
         private void toggle_drag () {
 #if FOR_WAYLAND
-            bool curr_draggable = showtime_settings.get_boolean("draggable");
-
-            if (!curr_draggable) {
-                // Show position picker dialog instead of enabling drag
-                show_position_picker();
-            }
-            else {
-                // Shouldn't reach here, but handle anyway
-                showtime_settings.set_boolean("draggable", false);
-            }
+           show_position_picker();
 #else
             // Original X11 drag behavior
             bool curr_draggable = showtime_settings.get_boolean("draggable");

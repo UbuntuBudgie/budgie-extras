@@ -570,28 +570,6 @@ namespace  ShowTime {
 #endif
         }
 
-#if FOR_WAYLAND
-        // Call this after positioning and on configure events.
-        private void report_position_to_settings() {
-            // GTK Layer Shell doesn't give us actual screen coordinates
-            // Report the logical position based on our settings
-            int[] screendata = check_res();
-            int screen_width = screendata[0];
-            int screen_height = screendata[1];
-
-            int[] winsize = get_windowsize();
-
-            // Calculate actual position from our anchor/margin setup
-            int actual_x = showtime_settings.get_int("xposition");
-            int actual_y = showtime_settings.get_int("yposition");
-
-            // Report back for applet to read
-            showtime_settings.set_int("current-xposition", actual_x);
-            showtime_settings.set_int("current-yposition", actual_y);
-            showtime_settings.set_int("current-width", winsize[0]);
-            showtime_settings.set_int("current-height", winsize[1]);
-        }
-#endif
         private void update_appearance_delay() {
             GLib.Timeout.add( 50, () => {
                 update_appearance();
