@@ -4,7 +4,8 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 gi.require_version('GtkLayerShell', '0.1')
 gi.require_version('Libxfce4windowing', '0.0')
-from gi.repository import Gtk, Gio, Gdk, GLib, GtkLayerShell, Libxfce4windowing as Xfw
+from gi.repository import Gtk, Gio, Gdk, GLib, GtkLayerShell
+from gi.repository Libxfce4windowing as Xfw
 import dropby_tools as db
 import subprocess
 import os
@@ -44,18 +45,18 @@ dropby_css = """
 
 class DropByDBusService(dbus.service.Object):
     """DBus service for communication with applet"""
-    
+
     def __init__(self, bus, watch_volumes):
         self.watch_volumes = watch_volumes
         bus_name = dbus.service.BusName(DBUS_NAME, bus=bus)
         dbus.service.Object.__init__(self, bus_name, DBUS_PATH)
-    
+
     @dbus.service.method(DBUS_NAME)
     def ShowWindow(self):
         """Show the popup window"""
         self.watch_volumes.actonconnect()
         return True
-    
+
     @dbus.service.method(DBUS_NAME)
     def Quit(self):
         """Quit the application"""
@@ -70,7 +71,7 @@ class WatchVolumes:
         DBusGMainLoop(set_as_default=True)
         self.bus = dbus.SessionBus()
         self.dbus_service = DropByDBusService(self.bus, self)
-        
+
         # setup watching connections
         self.uuid = uuid
         self.watchdrives = Gio.VolumeMonitor.get()
@@ -96,13 +97,13 @@ class WatchVolumes:
         self.copyscript = os.path.join(app_path, "copy_flash")
         self.tmp_path = os.getenv("XDG_RUNTIME_DIR") \
             if "XDG_RUNTIME_DIR" in os.environ else os.getenv("HOME")
-        
+
         # Timer for auto-hide
         self.hide_timer = None
-        
+
         # Get screen info for positioning
         self.xfw_screen = Xfw.Screen.get_default()
-        
+
         # setup watching applet presence
         self.currpanelsubject_settings = None
         GLib.timeout_add_seconds(1, self.watchout)
@@ -175,37 +176,40 @@ class WatchVolumes:
         window.connect("leave-notify-event", self.outofajob)
         window.set_title("DropBy")
         window.set_decorated(False)
-        
+
         # Initialize layer shell
         GtkLayerShell.init_for_window(window)
-        
+
         # Set layer to top
         GtkLayerShell.set_layer(window, GtkLayerShell.Layer.TOP)
-        
+
         # Set keyboard mode to none (don't steal focus)
-        GtkLayerShell.set_keyboard_mode(window, GtkLayerShell.KeyboardMode.NONE)
-        
+        GtkLayerShell.set_keyboard_mode(window,
+                                        GtkLayerShell.KeyboardMode.NONE)
+
         # Position window based on settings
         self.setup_layer_shell_position(window)
-        
+
         self.maingrid = Gtk.Grid()
         window.add(self.maingrid)
         window.connect("delete-event", lambda w, e: self.getridofwindow())
-        
+
         # Start auto-hide timer
         self.reset_hide_timer()
         return window
 
     def setup_layer_shell_position(self, window):
-        """Configure GTK Layer Shell anchors and margins based on corner position"""
-        # Clear all anchors first
-        for edge in [GtkLayerShell.Edge.LEFT, GtkLayerShell.Edge.RIGHT, 
-                     GtkLayerShell.Edge.TOP, GtkLayerShell.Edge.BOTTOM]:
+        # Configure GTK Layer Shell anchors and margins based on
+        # corner position - Clear all anchors first
+        for edge in [GtkLayerShell.Edge.LEFT,
+                     GtkLayerShell.Edge.RIGHT,
+                     GtkLayerShell.Edge.TOP,
+                     GtkLayerShell.Edge.BOTTOM]:
             GtkLayerShell.set_anchor(window, edge, False)
-        
+
         # Set margins
         margin = 80
-        
+
         # Configure based on corner setting
         if self.winpos == 1:  # top-left
             GtkLayerShell.set_anchor(window, GtkLayerShell.Edge.TOP, True)
@@ -227,7 +231,7 @@ class WatchVolumes:
             GtkLayerShell.set_anchor(window, GtkLayerShell.Edge.RIGHT, True)
             GtkLayerShell.set_margin(window, GtkLayerShell.Edge.BOTTOM, margin)
             GtkLayerShell.set_margin(window, GtkLayerShell.Edge.RIGHT, margin)
-        
+
         # Set monitor (primary monitor)
         monitors = self.xfw_screen.get_monitors()
         primary_monitor = None
@@ -235,16 +239,16 @@ class WatchVolumes:
             if monitor.is_primary():
                 primary_monitor = monitor
                 break
-        
+
         # If no primary monitor found, use the first one
         if primary_monitor is None and len(monitors) > 0:
             primary_monitor = monitors[0]
-        
+
         if primary_monitor:
             # Get the GdkMonitor from Xfw monitor
             gdk_display = Gdk.Display.get_default()
             gdk_monitor = None
-            
+
             # Match by connector name
             connector = primary_monitor.get_connector()
             for i in range(gdk_display.get_n_monitors()):
@@ -258,11 +262,11 @@ class WatchVolumes:
                     if mon.get_model() == connector:
                         gdk_monitor = mon
                         break
-            
+
             # Fallback to primary monitor from Gdk
             if gdk_monitor is None:
                 gdk_monitor = gdk_display.get_primary_monitor()
-            
+
             if gdk_monitor:
                 GtkLayerShell.set_monitor(window, gdk_monitor)
 

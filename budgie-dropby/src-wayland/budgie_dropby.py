@@ -135,11 +135,11 @@ class BudgieDropByApplet(Budgie.Applet):
         self.add(self.box)
         self.box.show_all()
         self.show_all()
-        
+
         # DBus proxy for communicating with popup
         self.popup_proxy = None
         self.setup_dbus_proxy()
-        
+
         self.setup_watching()
         GLib.idle_add(self.start_dropover)
         self.refresh_from_idle()
@@ -229,7 +229,7 @@ class BudgieDropByApplet(Budgie.Applet):
         """Show popup window via DBus"""
         if not self.popup_proxy:
             self.setup_dbus_proxy()
-        
+
         if self.popup_proxy:
             try:
                 self.popup_proxy.call_sync(
