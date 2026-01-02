@@ -240,7 +240,7 @@ if build_recommended == true or build_brightness_controller == true
 endif
 
 build_visualspace = get_option('build-visualspace')
-if for_wayland == false and (build_recommended == true or build_visualspace == true)
+if build_recommended == true or build_visualspace == true
 	subdir('budgie-visualspace')
 endif
 
