@@ -1,7 +1,13 @@
 using Gtk;
 using Math;
 using Cairo;
+
+#if FOR_WAYLAND
+using libxfce4windowing;
+using GtkLayerShell;
+#else
 using Wnck;
+#endif
 
 
 /*
@@ -41,6 +47,11 @@ namespace  ShowTime {
     bool subwindow;
     string win_name;
     int[] custom_posargs;
+#if FOR_WAYLAND
+    libxfce4windowing.Screen? xfw_screen;
+#else
+    Wnck.Screen? wnck_screen;
+#endif
 
     private class ShowTimeappearance {
 
@@ -78,7 +89,7 @@ namespace  ShowTime {
                 );
                 timelabel.get_style_context().add_class("linespacing");
             }
-            catch (Error e) {
+            catch (GLib.Error e) {
                 // not much to be done
                 print("Error loading css data\n");
             }
@@ -167,9 +178,18 @@ namespace  ShowTime {
             screen.monitors_changed.connect(() => {
                 consider_toleave();
             });
-            // ...and quit on creation of similarly named window
+#if FOR_WAYLAND
+            // Initialize libxfce4windowing for Wayland
+            xfw_screen = libxfce4windowing.Screen.get_default();
+            // Watch for new windows (Wayland)
+            xfw_screen.window_opened.connect(watchwins_wayland);
+#else
+            // Watch for new windows (X11)
             unowned Wnck.Screen scr = Wnck.Screen.get_default();
             scr.window_opened.connect(watchwins);
+            wnck_screen = scr;
+#endif
+
             // ok, finally we can start off with the real work
             dateformat = get_dateformat();
             appearance = new ShowTimeappearance();
@@ -177,6 +197,16 @@ namespace  ShowTime {
             this.title = win_name;
             this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
             this.resizable = false;
+
+#if FOR_WAYLAND
+            // Initialize GTK Layer Shell for Wayland
+            GtkLayerShell.init_for_window(this);
+            // Set to bottom layer (below normal windows)
+            GtkLayerShell.set_layer(this, GtkLayerShell.Layer.BOTTOM);
+            // Don't take keyboard input
+            GtkLayerShell.set_keyboard_mode(this, GtkLayerShell.KeyboardMode.NONE);
+#endif
+
             this.destroy.connect(Gtk.main_quit);
             this.set_decorated(false);
             var maingrid = new Grid();
@@ -187,8 +217,8 @@ namespace  ShowTime {
             maingrid.attach(datelabel, 0, 1, 1, 1);
             this.add(maingrid);
             string[] bind = {
-                "leftalign", "twelvehrs", "xposition",
-                "yposition", "linespacing", "timefontcolor", "linespacing",
+                "leftalign", "twelvehrs", /*"xposition",
+                "yposition", */"linespacing", "timefontcolor", "linespacing",
                 "datefontcolor", "timefont", "datefont"
             };
             foreach (string s in bind) {
@@ -205,7 +235,13 @@ namespace  ShowTime {
             this.show_all();
             set_windowposition();
             this.configure_event.connect(setcondition);
-            showtime_settings.changed["autoposition"].connect(set_windowposition);
+            string[] bindpos = {
+                "xposition", "yposition", "autoposition"
+            };
+            foreach (string s in bindpos) {
+                showtime_settings.changed[s].connect(set_windowposition);
+            }
+
             new Thread<bool> ("oldtimer", run_time);
             text_scaling = new GLib.Settings(
                 "org.gnome.desktop.interface"
@@ -233,7 +269,19 @@ namespace  ShowTime {
             }
         }
 
-        private void watchwins (Wnck.Window newwin) {;
+#if FOR_WAYLAND
+        private void watchwins_wayland (libxfce4windowing.Window newwin) {
+            // Watch new windows on Wayland
+            if (newwin.get_name() == win_name) {
+                if (close_onnew) {
+                    consider_toleave();
+                }
+                close_onnew = true;
+            }
+        }
+#else
+        private void watchwins (Wnck.Window newwin) {
+            ;
             // watch new windows, self-sacrifice if a new one appears
             if (newwin.get_name() == win_name) {
                 // surpass killing on self-generated signal...
@@ -243,6 +291,7 @@ namespace  ShowTime {
                 close_onnew = true;
             }
         }
+#endif
 
         private bool setcondition () {
             // act on window event
@@ -273,6 +322,76 @@ namespace  ShowTime {
         }
 
         public void set_windowposition () {
+#if FOR_WAYLAND
+            // Wayland positioning using GTK Layer Shell
+            int scale = getscale();
+            int setx;
+            int sety;
+            string anchor;
+
+            if (subwindow) {
+                setx = custom_posargs[0];
+                sety = custom_posargs[1];
+                anchor = "se";
+            }
+            else if (showtime_settings.get_boolean("autoposition")) {
+                int[] newpos = get_default_right();
+                setx = newpos[0];
+                sety = newpos[1];
+                anchor = "se";
+            }
+            else {
+                anchor = showtime_settings.get_string("anchor");
+                setx = showtime_settings.get_int("xposition") / scale;
+                sety = showtime_settings.get_int("yposition") / scale;
+            }
+
+            int[] winsize = get_windowsize();
+
+            // Reset all anchors first
+            GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.TOP, false);
+            GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.BOTTOM, false);
+            GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.LEFT, false);
+            GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.RIGHT, false);
+
+            // Set margins based on anchor position
+            // GTK Layer Shell requires margins from edges, not absolute positioning
+            int margin_left = 0;
+            int margin_right = 0;
+            int margin_top = 0;
+            int margin_bottom = 0;
+
+            // Get screen dimensions
+            int[] screendata = check_res();
+            int screen_width = screendata[0];
+            int screen_height = screendata[1];
+
+            if (anchor.contains("e")) {
+                // Right-aligned: use right margin
+                margin_right = screen_width - setx;
+                GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.RIGHT, true);
+            } else {
+                // Left-aligned: use left margin
+                margin_left = setx;
+                GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.LEFT, true);
+            }
+
+            if (anchor.contains("s")) {
+                // Bottom-aligned: use bottom margin
+                margin_bottom = screen_height - sety;
+                GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.BOTTOM, true);
+            } else {
+                // Top-aligned: use top margin
+                margin_top = sety;
+                GtkLayerShell.set_anchor(this, GtkLayerShell.Edge.TOP, true);
+            }
+
+            GtkLayerShell.set_margin(this, GtkLayerShell.Edge.LEFT, margin_left);
+            GtkLayerShell.set_margin(this, GtkLayerShell.Edge.RIGHT, margin_right);
+            GtkLayerShell.set_margin(this, GtkLayerShell.Edge.TOP, margin_top);
+            GtkLayerShell.set_margin(this, GtkLayerShell.Edge.BOTTOM, margin_bottom);
+
+#else
             int scale = getscale();
             int setx;
             int sety;
@@ -312,6 +431,7 @@ namespace  ShowTime {
                 usedy = sety - winsize[1];
             }
             this.move(usedx, usedy);
+#endif
         }
 
         private int[] get_default_right () {
@@ -323,12 +443,28 @@ namespace  ShowTime {
 
         private int[] check_res() {
             // see what is the resolution on the primary monitor
+#if FOR_WAYLAND
+            var xfw_screen = libxfce4windowing.Screen.get_default();
+            var mon = xfw_screen.get_primary_monitor();
+            var width = 800;
+            var height = 600;
+            var screen_xpos = 0;
+            var screen_ypos = 0;
+            if (mon != null) {
+                var workarea = mon.get_workarea();
+                width = workarea.width;
+                height = workarea.height;
+                screen_xpos = workarea.x;
+                screen_ypos = workarea.y;
+            }
+#else
             var prim = Gdk.Display.get_default().get_primary_monitor();
             var geo = prim.get_geometry();
             int width = geo.width;
             int height = geo.height;
             int screen_xpos = geo.x;
             int screen_ypos = geo.y;
+#endif
             return {width, height, screen_xpos, screen_ypos};
         }
 
@@ -412,12 +548,18 @@ namespace  ShowTime {
                 }
                 return builder.str;
             }
-            catch (Error e) {
+            catch (GLib.Error e) {
                 return "";
             }
         }
 
         private void toggle_draggable () {
+#if FOR_WAYLAND
+            // Dragging doesn't work the same way on Wayland with Layer Shell
+            // Could implement a position picker dialog instead
+            bool draggable = showtime_settings.get_boolean("draggable");
+            // Note: Layer shell windows can't be dragged interactively
+#else
             bool draggable = showtime_settings.get_boolean("draggable");
             if (draggable) {
                 this.set_type_hint(Gdk.WindowTypeHint.NORMAL);
@@ -425,6 +567,7 @@ namespace  ShowTime {
             else {
                 this.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
             }
+#endif
         }
 
         private void update_appearance_delay() {
