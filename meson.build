@@ -134,7 +134,7 @@ if build_recommended == true or build_applications_menu == true
 endif
 
 build_wswitcher = get_option('build-wswitcher')
-if for_wayland == false and (build_recommended == true or build_wswitcher == true)
+if build_recommended == true or build_wswitcher == true
 	subdir('budgie-wswitcher')
 endif
 
