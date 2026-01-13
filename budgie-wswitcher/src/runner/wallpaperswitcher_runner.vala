@@ -19,7 +19,7 @@ using Gtk;
 
 namespace NewWallPaperSwitcher {
 
-    Wnck.Screen wnck_scr;
+    libxfce4windowing.Screen xfw_scr;
     GLib.Settings wallsettings;
     GLib.Settings switchersettings;
     GLib.Settings animationsettings;
@@ -75,10 +75,19 @@ namespace NewWallPaperSwitcher {
 
     public static void main (string[] args) {
         Gtk.init (ref args);
-        wnck_scr = Wnck.Screen.get_default ();
-        wnck_scr.force_update();
-        wnck_scr.active_workspace_changed.connect (update_workspace);
-        wnck_scr.workspace_created.connect (update_workspace);
+        xfw_scr = libxfce4windowing.Screen.get_default();
+
+        // Get workspace manager and connect signals
+        var workspace_manager = xfw_scr.get_workspace_manager();
+        var group = workspace_manager.list_workspace_groups().nth_data(0);
+        group.active_workspace_changed.connect(update_workspace);
+        workspace_manager.workspace_created.connect(() => {
+            update_workspace();
+        });
+        workspace_manager.workspace_destroyed.connect(() => {
+            update_workspace();
+        });
+
         wallsettings = new GLib.Settings (
             "org.gnome.desktop.background"
         );
@@ -108,10 +117,16 @@ namespace NewWallPaperSwitcher {
     }
 
     private void update_workspace () {
-        // find out what workspace we land on
-        unowned GLib.List<Wnck.Workspace> currspaces = wnck_scr.get_workspaces ();
-        var curr_ws = wnck_scr.get_active_workspace ();
-        curr_wsindex = currspaces.index (curr_ws);
+        // Get workspace manager and current workspace
+        var workspace_manager = xfw_scr.get_workspace_manager();
+        var curr_ws = workspace_manager.list_workspace_groups().nth_data(0).get_active_workspace();
+
+        if (curr_ws == null) return;
+
+        // Get workspace index
+        unowned GLib.List<libxfce4windowing.Workspace> currspaces = workspace_manager.list_workspace_groups().nth_data(0).list_workspaces();
+        curr_wsindex = currspaces.index(curr_ws);
+
         // and make sure we've got enough image entries
         curr_wallist = switchersettings.get_strv("wallpapers");
         uint n_workspaces = currspaces.length ();
