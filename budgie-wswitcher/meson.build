@@ -9,12 +9,7 @@ message('Installing applet...')
 subdir('src')
 subdir('data')
 
-if for_wayland
-    SCHEMA = 'schema/org.ubuntubudgie.raven.widget.budgie-wswitcher.gschema.xml'
-else
-    SCHEMA = 'schema/org.ubuntubudgie.plugins.budgie-wswitcher.gschema.xml'
-endif
-
+SCHEMA = 'schema/org.ubuntubudgie.plugins.budgie-wswitcher.gschema.xml'
 install_data(SCHEMA, install_dir: '/usr/share/glib-2.0/schemas')
 
 meson.add_install_script('meson_post_install.py')

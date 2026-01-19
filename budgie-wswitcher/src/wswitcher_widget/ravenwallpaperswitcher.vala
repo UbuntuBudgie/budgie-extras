@@ -48,7 +48,7 @@ namespace WallpaperSwitcherWidget {
             }
 
         public bool supports_settings() {
-            return true;
+            return false;
         }
     }
 
@@ -56,24 +56,28 @@ namespace WallpaperSwitcherWidget {
 
         Gtk.Image icon;
         Gtk.Image stop_icon;
-        Gtk.Image running_icon;
+        Gtk.Image start_icon;
         Gtk.Box widget;
         Gtk.Label label;
         Gtk.Button action_button;
-        GLib.Settings? settings;
+        GLib.Settings? switchersettings;
+        const string SETTRUE = (_("Stop"));
+        const string SETFALSE = (_("Start"));
+        const string EXPLAIN = (_("Wallpaper Workspace Switcher automatically remembers which wallpaper was set per workspace"));
 
         public WallpaperSwitcherWidget(string uuid, GLib.Settings? settings) {
 
-            this.settings = settings;
             initialize(uuid, settings);
+            switchersettings = new GLib.Settings("org.ubuntubudgie.plugins.budgie-wswitcher");
 
             widget = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             add(widget);
             widget.get_style_context().add_class("raven-header");
 
             icon = new Gtk.Image.from_icon_name("budgie-wsw-symbolic", Gtk.IconSize.MENU);
+            icon.set_tooltip_text(EXPLAIN);
             stop_icon = new Gtk.Image.from_icon_name("media-playback-paused-symbolic", Gtk.IconSize.MENU);
-            running_icon = new Gtk.Image.from_icon_name("media-playback-start-symbolic", Gtk.IconSize.MENU);
+            start_icon = new Gtk.Image.from_icon_name("media-playback-start-symbolic", Gtk.IconSize.MENU);
 
             // Values used by built-in widgets for consistency
             icon.margin = 4;
@@ -85,7 +89,6 @@ namespace WallpaperSwitcherWidget {
             widget.add(label);
 
             action_button = new Gtk.Button();
-            action_button.set_image(stop_icon);
             action_button.get_style_context().add_class("flat");
             action_button.get_style_context().add_class("expander-button");
             action_button.margin = 4;
@@ -93,44 +96,30 @@ namespace WallpaperSwitcherWidget {
             widget.pack_end(action_button, false, false, 0);
 
             action_button.clicked.connect(() => {
-                bool running = !settings.get_boolean("runwswitcher");
+                bool running = !switchersettings.get_boolean("runwswitcher");
                 set_action_button_image(running);
-                settings.set_boolean("runwswitcher", running);
+                switchersettings.set_boolean("runwswitcher", running);
             });
 
-            set_action_button_image(settings.get_boolean("runwswitcher"));
+            set_action_button_image(switchersettings.get_boolean("runwswitcher"));
 
             show_all();
         }
 
         private void set_action_button_image(bool running) {
             if (running) {
-                action_button.set_image(running_icon);
+                action_button.set_image(stop_icon);
+                action_button.set_tooltip_text(SETTRUE);
+                label.get_style_context().remove_class ("dim-label");
+                icon.get_style_context().remove_class ("dim-label");
             } 
             else {
-                action_button.set_image(stop_icon);
+                action_button.set_image(start_icon);
+                action_button.set_tooltip_text(SETFALSE);
+                icon.get_style_context().add_class ("dim-label");
+                label.get_style_context().add_class ("dim-label");
             }
         }
-
-        public override Gtk.Widget build_settings_ui() {
-            return new WallpaperSwitcherSettings(get_instance_settings());
-        }
-    }
-
-
-    public class WallpaperSwitcherSettings : Gtk.Grid {
-
-            // strings
-            const string EXPLAIN = (_("Wallpaper Workspace Switcher automatically remembers which wallpaper was set per workspace"));
-
-            public WallpaperSwitcherSettings(GLib.Settings? settings) {
-                Gtk.Label explainlabel = new Gtk.Label(EXPLAIN);
-                explainlabel.set_xalign(0);
-                explainlabel.wrap = true;
-                this.attach (new Gtk.Label(""), 0, 0, 2, 1);
-                this.attach (explainlabel, 0, 1, 100, 1);
-                this.show_all ();
-            }
     }
 }
 

@@ -77,16 +77,11 @@ namespace NewWallPaperSwitcher {
         Gtk.init (ref args);
 
         string uuid = args.length > 1 ? args[1] : "";
-#if FOR_WAYLAND
         if (uuid == "") {
-            // Safety check - we NEED the UUID for the Raven widget's schema or this will crash
+            // Safety check - we NEED the UUID for the watcher
             return;
         }
-        switchersettings = new GLib.Settings.with_path ("org.ubuntubudgie.raven.widget.budgie-wswitcher",
-                                                        "/org/buddiesofbudgie/budgie-desktop/raven/widgets/instance-settings/" + uuid + "/");
-#else
         switchersettings = new GLib.Settings ("org.ubuntubudgie.plugins.budgie-wswitcher");
-#endif
 
         xfw_scr = libxfce4windowing.Screen.get_default();
 
