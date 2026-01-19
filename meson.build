@@ -77,6 +77,7 @@ if for_wayland == false
 	python_loader = 'python3'
 else
 	budgie_dep = dependency('budgie-3.0')
+	raven_dep = dependency('budgie-raven-plugin-3.0')
 	peas_dep = dependency('libpeas-2')
 	python_loader = 'python' 
 endif

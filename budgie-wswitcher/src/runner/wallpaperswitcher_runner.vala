@@ -75,6 +75,19 @@ namespace NewWallPaperSwitcher {
 
     public static void main (string[] args) {
         Gtk.init (ref args);
+
+        string uuid = args.length > 1 ? args[1] : "";
+#if FOR_WAYLAND
+        if (uuid == "") {
+            // Safety check - we NEED the UUID for the Raven widget's schema or this will crash
+            return;
+        }
+        switchersettings = new GLib.Settings.with_path ("org.ubuntubudgie.raven.widget.budgie-wswitcher",
+                                                        "/org/buddiesofbudgie/budgie-desktop/raven/widgets/instance-settings/" + uuid + "/");
+#else
+        switchersettings = new GLib.Settings ("org.ubuntubudgie.plugins.budgie-wswitcher");
+#endif
+
         xfw_scr = libxfce4windowing.Screen.get_default();
 
         // Get workspace manager and connect signals
@@ -95,17 +108,36 @@ namespace NewWallPaperSwitcher {
         animationsettings = new GLib.Settings(
                 "org.gnome.desktop.interface"
         );
-        switchersettings = new GLib.Settings (
-            "org.ubuntubudgie.plugins.budgie-wswitcher"
-        );
         runsornot = switchersettings.get_boolean("runwswitcher");
         switchersettings.changed["runwswitcher"].connect(() => {
             runsornot = switchersettings.get_boolean("runwswitcher");
         });
+#if FOR_WAYLAND
+        // Watch the Raven widget list and if our UUID is removed, exit
+        GLib.Settings widgetsettings = new GLib.Settings("org.buddiesofbudgie.budgie-desktop.raven.widgets");
+        Idle.add (() => {
+            watch_widget(widgetsettings, uuid);
+            return false;
+        });
+#else
         new WatchApplet (args[1]);
+#endif
         update_workspace();
         update_wallpaperlist();
         Gtk.main ();
+    }
+
+    private void watch_widget (GLib.Settings settings, string our_uuid) {
+        // Quits if our Raven widget is removed - significantly easier for Raven
+        settings.changed["uuids"].connect(() => {
+            var all_uuids = settings.get_strv("uuids");
+            foreach (string uuid in all_uuids) {
+                if (uuid == our_uuid) {
+                    return;
+                }
+            }
+            Gtk.main_quit();
+        });
     }
 
     private void update_wallpaperlist () {

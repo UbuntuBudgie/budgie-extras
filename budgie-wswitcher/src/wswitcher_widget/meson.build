@@ -1,18 +1,18 @@
 
 custom_target('plugin-file-wswitcher',
-    input : 'WallpaperSwitcher.plugin.in',
-    output : 'WallpaperSwitcher.plugin',
+    input : 'RavenWallpaperSwitcher.plugin.in',
+    output : 'RavenWallpaperSwitcher.plugin',
     command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
     install : true,
-    install_dir : LIB_INSTALL_DIR)
+    install_dir : RAVEN_LIB_INSTALL_DIR)
 
 BudgieWSwitcherSources = [
-'wallpaperswitcher.vala'
+'ravenwallpaperswitcher.vala'
 ]
 
 BudgieWSwitcherDependencies = [
 dependency('gtk+-3.0'),
-budgie_dep,
+raven_dep,
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
@@ -26,14 +26,14 @@ BudgieWSwitcherCArgs = [
 ]
 
 shared_library(
-    'wallpaperswitcher',
+    WIDGET,
     BudgieWSwitcherSources,
     dependencies: BudgieWSwitcherDependencies,
     vala_args: BudgieWSwitcherValaArgs,
     c_args: BudgieWSwitcherCArgs,
     include_directories: config_inc_dir,
     install: true,
-    install_dir: LIB_INSTALL_DIR
+    install_dir: RAVEN_LIB_INSTALL_DIR
 )
 
 

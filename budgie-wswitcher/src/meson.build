@@ -1,2 +1,6 @@
 subdir('runner')
-subdir('wswitcher')
+if for_wayland
+    subdir('wswitcher_widget')
+else
+    subdir('wswitcher')
+endif
