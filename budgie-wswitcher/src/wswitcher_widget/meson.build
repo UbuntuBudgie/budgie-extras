@@ -1,4 +1,3 @@
-
 custom_target('plugin-file-wswitcher',
     input : 'RavenWallpaperSwitcher.plugin.in',
     output : 'RavenWallpaperSwitcher.plugin',
@@ -35,7 +34,3 @@ shared_library(
     install: true,
     install_dir: RAVEN_LIB_INSTALL_DIR
 )
-
-
-
-
