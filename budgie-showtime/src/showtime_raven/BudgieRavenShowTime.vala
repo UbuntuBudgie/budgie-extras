@@ -111,11 +111,9 @@ namespace BudgieShowTimeWidget {
         }
 
         try {
-            print("TRIED \n");
             Process.spawn_command_line_async(cmd);
         }
         catch (SpawnError e) {
-            print("tried and failed\n");
             /* nothing to be done */
         }
     }
