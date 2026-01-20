@@ -11,6 +11,7 @@ showtime_deps = [
 budgie_display_vala_args = []
 # Conditional dependencies
 if for_wayland == true
+    DESKTOP_INSTALL_DIR = RAVEN_INSTALL_DIR
     showtime_deps += [
         dependency('gtk-layer-shell-0', version: '>= 0.6.0'),
         dependency('libxfce4windowing-0', version: '>= 4.19.1'),
@@ -20,6 +21,7 @@ if for_wayland == true
     '-lm',
     ]
 else
+    DESKTOP_INSTALL_DIR = LIB_INSTALL_DIR
     showtime_deps += [
         dependency('libwnck-3.0', version: '>= 3.20'),
     ]
@@ -51,5 +53,5 @@ executable(
     install: true,
     c_args: BudgieShowTimeCArgs,
     include_directories: config_inc_dir,
-    install_dir: LIB_INSTALL_DIR,
+    install_dir: DESKTOP_INSTALL_DIR,
 )

@@ -36,7 +36,7 @@ so:
 */
 
 
-namespace  ShowTime {
+namespace ShowTime {
 
     private string timefontcolor;
     private string datefontcolor;
@@ -114,6 +114,7 @@ namespace  ShowTime {
     public class TimeWindow : Gtk.Window {
 
         GLib.Settings? panel_settings;
+        GLib.Settings? raven_settings;
         GLib.Settings? currpanelsubject_settings;
         bool showtime_onpanel = true;
         int next_time;
@@ -123,7 +124,6 @@ namespace  ShowTime {
         bool bypass;
         GLib.Settings text_scaling;
         bool close_onnew;
-
 
         private bool find_applet (string uuid, string[] applets) {
             for (int i = 0; i < applets.length; i++) {
@@ -160,18 +160,43 @@ namespace  ShowTime {
             }
         }
 
+        void watchplugin (string uuid) {
+            // make loop end if raven widget is removed
+            string general_path = "org.buddiesofbudgie.budgie-desktop.raven.widgets";
+            raven_settings = new GLib.Settings(general_path);
+            raven_settings.changed["uuids"].connect(() => {
+                string[] allwidgets_list = raven_settings.get_strv("uuids");
+                foreach (string u in allwidgets_list) {
+                    if (u == uuid) {
+                        return;
+                    }
+                }
+                showtime_onpanel = false;
+                this.destroy();
+            });
+        }
+
         public TimeWindow (string uuid) {
             GLib.Timeout.add_seconds(1, ()=> {
+#if FOR_WAYLAND
+                watchplugin(uuid);
+#else
                 watchapplet(uuid);
+#endif
                 return false;
             });
             close_onnew = false;
             // define stuff
             bypass = false;
             // on allmonitors settings change, kill window
+#if FOR_WAYLAND
+            showtime_settings = new GLib.Settings.with_path("org.ubuntubudgie.raven.widget.budgie-showtime",
+                                                            "/org/buddiesofbudgie/budgie-desktop/raven/widgets/instance-settings/"+uuid+"/");
+#else
             showtime_settings = new GLib.Settings(
                 "org.ubuntubudgie.plugins.budgie-showtime"
             );
+#endif
             showtime_settings.changed["allmonitors"].connect(kill_onallmonitorschange);
             // same on resolution/connect monitor change; easier to recreate than move
             screen = this.get_screen();
