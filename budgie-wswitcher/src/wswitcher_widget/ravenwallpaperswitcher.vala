@@ -110,14 +110,12 @@ namespace WallpaperSwitcherWidget {
             if (running) {
                 action_button.set_image(stop_icon);
                 action_button.set_tooltip_text(SETTRUE);
-                label.get_style_context().remove_class ("dim-label");
                 icon.get_style_context().remove_class ("dim-label");
             } 
             else {
                 action_button.set_image(start_icon);
                 action_button.set_tooltip_text(SETFALSE);
                 icon.get_style_context().add_class ("dim-label");
-                label.get_style_context().add_class ("dim-label");
             }
         }
     }
