@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-15 19:48+0000\n"
+"POT-Creation-Date: 2026-01-29 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,6 +166,7 @@ msgstr ""
 #: budgie-window-shuffler/src/shuffler_control.vala:1066
 #: budgie-window-shuffler/src/layouts_popup.vala:745
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:340
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:252
 msgid "Miscellaneous"
 msgstr ""
 
@@ -196,6 +197,7 @@ msgstr ""
 #: budgie-window-shuffler/src/layouts_popup.vala:223
 #: budgie-window-shuffler/src/layouts_popup.vala:820
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:912
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:718
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
@@ -726,54 +728,67 @@ msgstr ""
 #. translated strings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:256
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:279
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:168
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:191
 msgid "Drag position"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:257
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:169
 msgid "Save position"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:260
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:172
 msgid ""
 "Enable Super + drag to set time position. Click ´Save position´ to save."
 msgstr ""
 
 #. window content
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:266
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:178
 msgid "Position & anchor"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:272
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:184
 msgid "Automatic"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:273
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:185
 msgid "On all monitors"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:307
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:219
 msgid "Anchor, time will expand/shrink in/from opposite direction."
 msgstr ""
 
 #. time font settings -> boxed!!
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:316
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:228
 msgid "Time font, size & color"
 msgstr ""
 
 #. date font settings
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:328
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:240
 msgid "Date font, size & color"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:343
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:255
 msgid "Left align text"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:345
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:257
 msgid "Use 12hr time format"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:353
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:265
 msgid "Linespacing"
 msgstr ""
 
@@ -782,78 +797,94 @@ msgid "Super + drag"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:745
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:560
 msgid "Choose ShowTime Position"
 msgstr ""
 
 #. Instructions
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:803
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:609
 msgid "Click on the preview below to position ShowTime.\n"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:804
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:610
 msgid "The blue rectangle represents your screen."
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:837
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:643
 #, c-format
 msgid "Screen: %d × %d | Click to select | ESC to cancel"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:848
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:654
 msgid "Anchor:"
 msgstr ""
 
 #. Anchor radio buttons
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:852
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:658
 msgid "↖ NW"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:853
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:659
 msgid "↗ NE"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:854
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:660
 msgid "↙ SW"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:855
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:661
 msgid "↘ SE"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:857
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:663
 msgid "Anchor top-left, ShowTime expands right/down"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:858
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:664
 msgid "Anchor top-right, ShowTime expands left/down"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:859
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:665
 msgid "Anchor bottom-left, ShowTime expands right/up"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:860
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:666
 msgid "Anchor bottom-right, ShowTime expands left/up"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:885
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:691
 msgid "X:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:896
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:702
 msgid "Y:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:916
+#: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:722
 msgid "Apply Position"
 msgstr ""
 
 #. hrs to double digits
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:505
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:530
 msgid "AM"
 msgstr ""
 
-#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:508
+#: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:533
 msgid "PM"
 msgstr ""
 
@@ -1098,52 +1129,63 @@ msgstr ""
 msgid "Use 24 hour time"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:48
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:47
 msgid "Power Options"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:117
+msgid "Shut Down"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:124
+#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:107
+msgid "Suspend"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:131
+#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:117
+msgid "Restart"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:138
+#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:128
+msgid "Lock"
+msgstr ""
+
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:145
+msgid "Log Out"
 msgstr ""
 
 #. Capture the desktop_id now, not in the callback
 #. Create menu manually to avoid duplicate "Remove from Favorites"
 #. Add "Remove from Favorites" first
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:138
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:140
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:171
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
 msgid "Remove from Favorites"
 msgstr ""
 
 #. TRANSLATORS: This will display as either 'Open with Intel Graphics' or 'Open with 'NVidia Graphics'
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:170
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:81
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:203
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:86
 #, c-format
 msgid "Open with %s Graphics"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:198
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:112
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:231
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:117
 msgid "Remove from _Dock"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:200
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:114
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:233
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:119
 msgid "Add to _Dock"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:96
+#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:97
 msgid "Shutdown"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:112
-msgid "Suspend"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:122
-msgid "Restart"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:133
-msgid "Lock"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:152
+#: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:147
 msgid "Logout"
 msgstr ""
 
@@ -1194,7 +1236,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:140
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
 msgid "Add to Favorites"
 msgstr ""
 
@@ -1737,14 +1779,17 @@ msgstr ""
 
 #. strings
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:27
+#: budgie-wswitcher/src/wswitcher_widget/ravenwallpaperswitcher.vala:64
 msgid "Stop"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:28
+#: budgie-wswitcher/src/wswitcher_widget/ravenwallpaperswitcher.vala:65
 msgid "Start"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/wallpaperswitcher.vala:29
+#: budgie-wswitcher/src/wswitcher_widget/ravenwallpaperswitcher.vala:66
 msgid ""
 "Wallpaper Workspace Switcher automatically remembers which wallpaper was set "
 "per workspace"
@@ -1942,6 +1987,7 @@ msgid "Workspace indicator and window list"
 msgstr ""
 
 #: budgie-wswitcher/src/wswitcher/WallpaperSwitcher.plugin.in.h:1
+#: budgie-wswitcher/src/wswitcher_widget/RavenWallpaperSwitcher.plugin.in.h:1
 msgid "Set a different wallpaper per workspace"
 msgstr ""
 
