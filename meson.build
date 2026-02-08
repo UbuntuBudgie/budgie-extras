@@ -215,7 +215,7 @@ if build_recommended == true or build_takeabreak == true
 endif
 
 build_extrasdaemon = get_option('build-extrasdaemon')
-if for_wayland == false and (build_recommended == true or build_extrasdaemon == true)
+if build_recommended == true or build_extrasdaemon == true
 	subdir('budgie-extras-daemon')
 endif
 

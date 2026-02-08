@@ -1,8 +1,8 @@
 [Panels]
-Panels=Top Panel;Bottom Panel
+Panels=Top Panel
 
 [Top Panel]
-Children=AppMenu;Spacer 1;Global Menu;AppIndicator;DropBy;Network;Spacer 2;Status;Clock;Notifications;;Raven Trigger;
+Children=AppMenu;Spacer 1;IconTaskList;AppIndicator;DropBy;Network;Spacer 2;Status;Clock;Notifications;;Raven Trigger;
 Position=Top
 Size=37
 Transparency=dynamic
@@ -13,8 +13,8 @@ ID=AppMenu
 [Spacer 1]
 ID=Spacer
 
-[Global Menu]
-ID=Global Menu
+[IconTaskList]
+ID=Icon Task List
 
 [Clock]
 ID=Clock
@@ -75,17 +75,3 @@ Alignment=end
 [Raven Trigger]
 ID=Raven Trigger
 Alignment=end
-
-[Bottom Panel]
-Children=Icon Task List;
-Position=Bottom
-Size=50
-Transparency=always
-Autohide=intelligent
-Shadow=false
-Spacing=2
-Dock=true
-
-[Icon Task List]
-ID=Icon Task List
-Alignment=start

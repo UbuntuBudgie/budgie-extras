@@ -2,7 +2,7 @@
 Panels=Top Panel;Side Panel;
 
 [Top Panel]
-Children=Spacer 1;GlobalMenu;AppIndicator;DropBy;Network;Notifications;Status;Clock; User Indicator;Raven Trigger;
+Children=Spacer 1;AppIndicator;DropBy;Network;Notifications;Status;Clock; User Indicator;Raven Trigger;
 Position=Top
 Size=37
 Transparency=dynamic
@@ -12,9 +12,6 @@ ID=AppMenu
 
 [Spacer 1]
 ID=Spacer
-
-[GlobalMenu]
-ID=Global Menu
 
 [Clock]
 ID=Clock
@@ -47,8 +44,6 @@ Alignment=end
 [Raven Trigger]
 ID=Raven Trigger
 Alignment=end
-
-
 
 [Side Panel]
 Children=Spacer 2;AppMenu;Spacer 3;Places;Recent;IconTaskList;Trash;Spacer 3;
