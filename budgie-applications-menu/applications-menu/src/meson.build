@@ -30,7 +30,6 @@ custom_target('plugin-appmenu',
     install_dir : wingpanel_indicatorsdir)
 
 sources = [
-    'powerstrip.vala',
     'AppMenu.vala',
     'IconChooser.vala',
     applet_appmenu_resources,
@@ -44,6 +43,8 @@ sources = [
     'Backend/RelevancyService.vala',
     'Backend/SynapseSearch.vala',
     'Backend/SwitcherooControl.vala',
+    'Backend/FavoritesManager.vala',
+    'Backend/SessionManager.vala',
 
     'Views/CategoryView.vala',
     'Views/GridView.vala',
@@ -56,6 +57,8 @@ sources = [
     'Widgets/Switcher.vala',
     'Widgets/SearchItem.vala',
     'Widgets/PageChecker.vala',
+    'Widgets/FavoritesSidebar.vala',
+    'Widgets/powerstrip.vala',
 
     'synapse-core/Actions/TerminalRunnerAction.vala',
     'synapse-core/Actions/RunnerAction.vala',

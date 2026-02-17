@@ -62,6 +62,9 @@ namespace AppMenuApplet {
         [GtkChild]
         private unowned Gtk.SpinButton spin_category_spacing;
 
+        [GtkChild]
+        private unowned Gtk.Switch? switch_favorites;
+
         private GLib.Settings? settings;
         private static GLib.Settings appmenu_settings { get; private set; default = null; }
 
@@ -81,6 +84,7 @@ namespace AppMenuApplet {
             appmenu_settings.bind("enable-powerstrip", switch_powerstrip, "active", SettingsBindFlags.DEFAULT);
             appmenu_settings.bind("rollover-menu", switch_rollover, "active", SettingsBindFlags.DEFAULT);
             appmenu_settings.bind("category-spacing", spin_category_spacing, "value", SettingsBindFlags.DEFAULT);
+            appmenu_settings.bind("enable-favorites", switch_favorites, "active", SettingsBindFlags.DEFAULT);
 
             this.button_icon_pick.clicked.connect(on_pick_click);
         }

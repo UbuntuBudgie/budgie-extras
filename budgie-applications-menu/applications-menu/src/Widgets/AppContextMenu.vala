@@ -26,9 +26,13 @@ public class Slingshot.AppContextMenu : Gtk.Menu {
     private bool has_system_item = false;
     //private string appstream_comp_id = "";
 
+    private static GLib.Settings appmenu_settings { get; private set; default = null; }
+
     private Slingshot.Backend.SwitcherooControl switcheroo_control;
     //private Gtk.MenuItem uninstall_menuitem;
     //private Gtk.MenuItem appcenter_menuitem;
+
+    private Slingshot.Backend.FavoritesManager favorites_manager;
 
 #if HAS_PLANK
     private static Plank.DBusClient plank_client;
@@ -47,12 +51,15 @@ public class Slingshot.AppContextMenu : Gtk.Menu {
         );
     }
 
-#if HAS_PLANK
     static construct {
+#if HAS_PLANK
         Plank.Paths.initialize ("plank", PKGDATADIR);
         plank_client = Plank.DBusClient.get_instance ();
-    }
 #endif
+        if (appmenu_settings == null) {
+            appmenu_settings = new GLib.Settings ("org.ubuntubudgie.plugins.budgie-appmenu");
+        }
+    }
 
     construct {
         switcheroo_control = new Slingshot.Backend.SwitcherooControl ();
@@ -128,6 +135,27 @@ public class Slingshot.AppContextMenu : Gtk.Menu {
         appcenter.notify["dbus"].connect (() => on_appcenter_dbus_changed.begin (appcenter));
         on_appcenter_dbus_changed.begin (appcenter);
         */
+
+        string captured_desktop_id = desktop_id;
+
+        // Only show favorites option if the feature is enabled
+        if (appmenu_settings.get_boolean ("enable-favorites")) {
+            favorites_manager = Backend.FavoritesManager.get_default();
+            var is_favorite = favorites_manager.is_favorite (desktop_id);
+            var favorites_item = new Gtk.MenuItem.with_label (
+                is_favorite ? _("Remove from Favorites") : _("Add to Favorites")
+            );
+            favorites_item.activate.connect (() => {
+                // Re-check at execution time
+                if (favorites_manager.is_favorite (captured_desktop_id)) {
+                    favorites_manager.remove_favorite (captured_desktop_id);
+                } else {
+                    favorites_manager.add_favorite (captured_desktop_id);
+                }
+            });
+            add (favorites_item);
+        }
+
         show_all ();
     }
 

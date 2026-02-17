@@ -46,6 +46,9 @@ public class Slingshot.SlingshotView : Gtk.Grid {
     private Gtk.Grid top;
     private Widgets.SearchView search_view;
     private Widgets.CategoryView category_view;
+    private Widgets.FavoritesSidebar? favorites_sidebar = null;
+    private Gtk.Separator? favorites_separator = null;
+    private Gtk.Grid content_grid;
 
     private static GLib.Settings settings { get; private set; default = null; }
 
@@ -108,11 +111,28 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         stack.add_named (category_view, "category");
         stack.add_named (search_view, "search");
 
+        // Create favorites sidebar
+        favorites_sidebar = new Widgets.FavoritesSidebar ();
+        favorites_sidebar.set_app_system (app_system);
+        favorites_sidebar.app_launched.connect (() => {
+            close_indicator ();
+        });
+        favorites_sidebar.no_show_all = true;
+
+        favorites_separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
+        favorites_separator.no_show_all = true;
+
+        // Create main content grid with favorites
+        content_grid = new Gtk.Grid ();
+        content_grid.attach (favorites_sidebar, 0, 0, 1, 1);
+        content_grid.attach (favorites_separator, 1, 0, 1, 1);
+        content_grid.attach (stack, 2, 0, 1, 1);
+
         container = new Gtk.Grid ();
         container.row_spacing = 12;
         container.margin_bottom = 12;
         container.attach (top, 0, 1);
-        container.attach (stack, 0, 0);
+        container.attach (content_grid, 0, 0);
 
         // This function must be after creating the page switcher
         grid_view.populate (app_system);
@@ -194,6 +214,13 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             close_indicator ();
         });
         powerstrip.set_visible(settings.get_boolean("enable-powerstrip"));
+
+        update_favorites_visibility ();
+        settings.changed["enable-favorites"].connect (() => {
+            update_favorites_visibility ();
+        });
+
+        content_grid.show_all();
     }
 
     public void panel_position_changed(Budgie.PanelPosition position) {
@@ -205,7 +232,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             container.remove_row(0);
 
             container.attach (top, 0, 1);
-            container.attach (stack, 0, 0);
+            container.attach (content_grid, 0, 0);
         }
         else {
             container.margin_bottom = 0;
@@ -215,9 +242,9 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             container.remove_row(0);
 
             container.attach (top, 0, 0);
-            container.attach (stack, 0, 1);
+            container.attach (content_grid, 0, 1);
         }
-        container.show_all();
+        content_grid.show_all();
     }
 
 #if HAS_PLANK
@@ -250,6 +277,18 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         }
     }
 #endif
+
+    private void update_favorites_visibility () {
+        bool show_favorites = settings.get_boolean ("enable-favorites");
+
+        if (favorites_sidebar != null) {
+            favorites_sidebar.visible = show_favorites;
+        }
+
+        if (favorites_separator != null) {
+            favorites_separator.visible = show_favorites;
+        }
+    }
 
     private void search_entry_activated () {
         if (modality == Modality.SEARCH_VIEW) {
@@ -394,6 +433,10 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         view_selector_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
         powerstrip.set_visible(settings.get_boolean("enable-powerstrip"));
         stack.transition_type = Gtk.StackTransitionType.CROSSFADE;
+
+        if (favorites_sidebar != null && settings.get_boolean ("enable-favorites")) {
+            favorites_sidebar.validate_and_populate ();
+        }
     }
 
     private void set_modality (Modality new_modality) {

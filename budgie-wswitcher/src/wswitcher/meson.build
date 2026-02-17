@@ -12,7 +12,7 @@ BudgieWSwitcherSources = [
 
 BudgieWSwitcherDependencies = [
 dependency('gtk+-3.0'),
-dependency('budgie-1.0'),
+budgie_dep,
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
@@ -21,7 +21,6 @@ BudgieWSwitcherValaArgs = [
 '--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
 ]
-
 
 BudgieWSwitcherCArgs = [
 ]
@@ -36,7 +35,3 @@ shared_library(
     install: true,
     install_dir: LIB_INSTALL_DIR
 )
-
-
-
-

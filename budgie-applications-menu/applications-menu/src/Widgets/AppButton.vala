@@ -155,21 +155,6 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
             return Gdk.EVENT_PROPAGATE;
         });
 
-        this.drag_begin.connect ((ctx) => {
-            this.dragging = true;
-            Gtk.drag_set_icon_gicon (ctx, app.icon, 16, 16);
-            //app_launched ();
-        });
-
-        this.drag_end.connect ( () => {
-            this.dragging = false;
-            app_launched ();
-        });
-
-        this.drag_data_get.connect ( (ctx, sel, info, time) => {
-            sel.set_uris ({File.new_for_path (app.desktop_path).get_uri ()});
-        });
-
 #if HAS_PLANK
         app.notify["current-count"].connect (update_badge_count);
         app.notify["count-visible"].connect (update_badge_visibility);

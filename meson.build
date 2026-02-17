@@ -1,6 +1,6 @@
 project('budgie-extras',
 	['vala', 'c'],
-	version: '2.0.0',
+	version: '2.1.0',
 	meson_version: '>= 0.40.0'
 )
 
@@ -77,6 +77,7 @@ if for_wayland == false
 	python_loader = 'python3'
 else
 	budgie_dep = dependency('budgie-3.0')
+	raven_dep = dependency('budgie-raven-plugin-3.0')
 	peas_dep = dependency('libpeas-2')
 	python_loader = 'python' 
 endif
@@ -134,7 +135,7 @@ if build_recommended == true or build_applications_menu == true
 endif
 
 build_wswitcher = get_option('build-wswitcher')
-if for_wayland == false and (build_recommended == true or build_wswitcher == true)
+if build_recommended == true or build_wswitcher == true
 	subdir('budgie-wswitcher')
 endif
 
@@ -154,7 +155,7 @@ if build_recommended == true or build_quicknote == true
 endif
 
 build_showtime = get_option('build-showtime')
-if for_wayland == false and (build_recommended == true or build_showtime == true)
+if build_recommended == true or build_showtime == true
 	subdir('budgie-showtime')
 endif
 
@@ -179,7 +180,7 @@ if for_wayland == false and (build_recommended == true or build_rotation_lock ==
 endif
 
 build_dropby = get_option('build-dropby')
-if for_wayland == false and (build_recommended == true or build_dropby == true)
+if build_recommended == true or build_dropby == true
 	subdir('budgie-dropby')
 endif
 
@@ -240,7 +241,7 @@ if build_recommended == true or build_brightness_controller == true
 endif
 
 build_visualspace = get_option('build-visualspace')
-if for_wayland == false and (build_recommended == true or build_visualspace == true)
+if build_recommended == true or build_visualspace == true
 	subdir('budgie-visualspace')
 endif
 

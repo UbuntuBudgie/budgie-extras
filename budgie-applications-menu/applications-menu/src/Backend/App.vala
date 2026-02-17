@@ -140,37 +140,74 @@ public class Slingshot.Backend.App : Object {
                 case AppType.APP:
                     launched (this); // Emit launched signal
                     var info = new DesktopAppInfo (desktop_id);
-                    //new DesktopAppInfo (desktop_id).launch (null, null);
-                    /*
-                    appinfo.launch has difficulty running pkexec
-                    based apps so lets spawn an async process instead
-                    */
-                    var commandline =  info.get_commandline();
-                    string[] spawn_args = {};
-                    const string checkstr = "pkexec";
-                    if (commandline.contains(checkstr)) {
-                        spawn_args = commandline.split(" ");
-                    }
-                    if (spawn_args.length >= 2 && spawn_args[0] == checkstr) {
-                        string[] spawn_env = Environ.get();
-                        Pid child_pid;
-                        Process.spawn_async("/",
-                            spawn_args,
-                            spawn_env,
-                            SpawnFlags.SEARCH_PATH | SpawnFlags.DO_NOT_REAP_CHILD,
-                            null, out child_pid);
-                        ChildWatch.add(child_pid, (pid, status) => {
-                            Process.close_pid(pid);
-                        });
-                    }
-                    else {
+
+                    var cmd  = info.get_commandline();
+
+                    string[] parsed_args;
+                    GLib.Shell.parse_argv(cmd, out parsed_args);
+
+                    // Non-pkexec path unchanged
+                    if (parsed_args.length == 0 || parsed_args[0] != "pkexec") {
+
                         var context = new AppLaunchContext ();
                         switcheroo_control.apply_gpu_environment (context, prefers_default_gpu);
 
                         new DesktopAppInfo (desktop_id).launch (null, context);
-
-                        debug (@"Launching application: $name");
+                        return true;
                     }
+
+                    // Scan pkexec options: pkexec [opts...] <command> [args...]
+                    int i = 1;
+                    while (i < parsed_args.length && parsed_args[i].has_prefix("-")) {
+                        i++;
+                    }
+
+                    // Gather Wayland info from the *user* environment
+                    var wayland_display = GLib.Environment.get_variable("WAYLAND_DISPLAY"); // e.g. "wayland-0"
+                    var xdg_runtime_dir = GLib.Environment.get_variable("XDG_RUNTIME_DIR"); // e.g. "/run/user/1000"
+
+                    // Build argv directly (no intermediate List<> needed)
+                    string[] argv = {};
+                    argv += "pkexec";
+
+                    // Append pkexec options (parsed_args[1..i-1])
+                    for (int j = 1; j < i; j++) {
+                        argv += parsed_args[j];
+                    }
+
+                    // Always invoke env under pkexec so we can inject vars
+                    argv += "env";
+
+                    // Only append variables if present
+                    if (wayland_display != null && wayland_display.length > 0) {
+                        argv += "WAYLAND_DISPLAY=%s".printf(wayland_display);
+                    }
+                    if (xdg_runtime_dir != null && xdg_runtime_dir.length > 0) {
+                        argv += "XDG_RUNTIME_DIR=%s".printf(xdg_runtime_dir);
+                    }
+
+                    // Append original executable + its arguments (parsed_args[i..end])
+                    for (int j = i; j < parsed_args.length; j++) {
+                        argv += parsed_args[j];
+                    }
+
+                    // Spawn async
+                    string[] envv = GLib.Environ.get();
+                    Pid child_pid;
+
+                    GLib.Process.spawn_async(
+                        "/",
+                        argv,
+                        envv,
+                        GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD,
+                        null,
+                        out child_pid
+                    );
+
+                    GLib.ChildWatch.add(child_pid, (pid, status) => {
+                        GLib.Process.close_pid(pid);
+                    });
+
                     break;
                 case AppType.SYNAPSE:
                     if (match.match_type == Synapse.MatchType.SEARCH) {

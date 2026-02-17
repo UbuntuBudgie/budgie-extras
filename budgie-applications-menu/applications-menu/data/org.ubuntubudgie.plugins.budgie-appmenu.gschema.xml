@@ -33,5 +33,13 @@
             <summary>Show terminal applications</summary>
             <description>Show applications whose .desktop file contains 'Terminal=true'.</description>
         </key>
+        <key type="b" name="enable-favorites">
+        <default>false</default>
+        <summary>Enable favorites sidebar</summary>
+        </key>
+        <key type="as" name="favorites">
+        <default>[]</default>
+        <summary>Favorite applications</summary>
+        </key>
 	</schema>
 </schemalist>

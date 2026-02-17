@@ -73,6 +73,57 @@ public class Slingshot.Backend.AppSystem : Object {
     private void update_categories_index () {
         categories_cache.clear ();
 
+        // Extra categories from .directory files
+        string[] dir_paths = {
+            Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".local", "share", "desktop-directories")
+        };
+        
+        string[] predefined = {
+            "Utility", "Accessibility", "Development", "Education", "Science",
+            "Game", "Graphics", "Network", "AudioVideo", "Office", "System",
+            "Administration", "Settings", "Core", "Screensaver"
+        };
+        
+        foreach (string dir in dir_paths) {
+            var folder = File.new_for_path(dir);
+            if (!folder.query_exists()) continue;
+            
+            try {
+                var enumerator = folder.enumerate_children(FileAttribute.STANDARD_NAME, 0);
+                FileInfo info;
+                while ((info = enumerator.next_file()) != null) {
+                    string name = info.get_name();
+                    if (!name.has_suffix(".directory")) continue;
+                    
+                    string cat_id = name[0:-10];
+                    
+                    bool skip = false;
+                    foreach (string pre in predefined) {
+                        if (pre.down() == cat_id.down()) {
+                            skip = true;
+                            break;
+                        }
+                    }
+                    if (skip) continue;
+                    
+                    string path = Path.build_path(Path.DIR_SEPARATOR_S, dir, name);
+                    try {
+                        var keyfile = new KeyFile();
+                        keyfile.load_from_file(path, KeyFileFlags.NONE);
+                        string cat_name = keyfile.get_locale_string("Desktop Entry", "Name");
+                        
+                        if (cat_name != null && cat_name != "") {
+                            categories_cache.add(
+                                new Category (cat_name) {
+                                    included_categories = { cat_id }
+                                }
+                            );
+                        }
+                    } catch (Error e) {}
+                }
+            } catch (Error e) {}
+        }
+
         categories_cache.add (
             new Category (_("Accessories")) {
                 included_categories = { "Utility" },
