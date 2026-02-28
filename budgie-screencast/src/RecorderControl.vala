@@ -32,7 +32,7 @@ namespace RecorderControl {
 
         private string[] build_argv (string output) {
             string timestamp = (new DateTime.now_local()).format("%Y-%m-%d-_%H-%M-%S");
-            string filename = "Recording_%s.mp4".printf(timestamp);
+            string filename = "recording_%s.mp4".printf(timestamp);
             var out_path = Path.build_filename(save_path, filename);
             string? wf_app = Environment.find_program_in_path("wf-recorder");
             return { wf_app, "-o", output, "-f", out_path, null };

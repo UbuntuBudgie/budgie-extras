@@ -32,7 +32,7 @@ namespace ScreencastApplet {
 
             set_column_spacing(10);
 
-            Gtk.Label select_label = new Gtk.Label("Output folder:");
+            Gtk.Label select_label = new Gtk.Label(_("Output folder:"));
             select_label.set_halign(Gtk.Align.START);
             attach(select_label, 0, 0, 2, 1);
 
@@ -49,13 +49,10 @@ namespace ScreencastApplet {
 
 
             folderbutton.clicked.connect(() => {
-                var folder_chooser = new Gtk.FileChooserDialog(
-                    "Select Recording Folder",
-                    null,
-                    Gtk.FileChooserAction.SELECT_FOLDER,
-                    "_Cancel", Gtk.ResponseType.CANCEL,
-                    "_Select", Gtk.ResponseType.ACCEPT
-                );
+                var folder_chooser = new Gtk.FileChooserDialog(_("Select Recording Folder"),
+                    null, Gtk.FileChooserAction.SELECT_FOLDER);
+                folder_chooser.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL);
+                folder_chooser.add_button(_("_Select"), Gtk.ResponseType.ACCEPT);
                 folder_chooser.set_modal(true);
                 folder_chooser.set_current_folder(save_path);
 
@@ -63,8 +60,8 @@ namespace ScreencastApplet {
                     string? chosen = folder_chooser.get_filename();
                     if (chosen != null && is_valid_folder(chosen)) {
                         settings.set_string("save-path", chosen);
-                        path_label.set_text(chosen);
-
+                        save_path = chosen;
+                        path_label.set_text(save_path);
                     }
                 }
                 folder_chooser.destroy();
@@ -112,7 +109,7 @@ namespace ScreencastApplet {
             });
 
             maingrid = new Gtk.Grid();
-            select_label = new Gtk.Label (" Record Display: ");
+            select_label = new Gtk.Label(_("Record Display:"));
             maingrid.attach(select_label, 0, 0, 1, 1);
             maingrid.attach(new Gtk.Separator(Gtk.Orientation.HORIZONTAL), 0, 1, 1, 1);
             output_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 5);
@@ -188,6 +185,7 @@ namespace ScreencastApplet {
         public ScreencastApplet(string uuid) {
             Object(uuid: uuid);
 
+            initialiseLocaleLanguageSupport();
             recorder_app = new Recorder();
 
             this.settings_schema = "org.ubuntubudgie.budgie-screencast";
@@ -246,6 +244,18 @@ namespace ScreencastApplet {
         public override void update_popovers(Budgie.PopoverManager? manager) {
             this.manager = manager;
             manager.register_popover(panel_widget, popover);
+        }
+
+        public void initialiseLocaleLanguageSupport() {
+            // Initialize gettext
+            GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+            GLib.Intl.bindtextdomain(
+                Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR
+            );
+            GLib.Intl.bind_textdomain_codeset(
+                Config.GETTEXT_PACKAGE, "UTF-8"
+            );
+            GLib.Intl.textdomain(Config.GETTEXT_PACKAGE);
         }
     }
 

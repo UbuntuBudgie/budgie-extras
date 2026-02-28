@@ -9,5 +9,6 @@ SCREENCAST_INSTALL_DIR = join_paths(PLUGINS_INSTALL_DIR, PLUGIN)
 message('Installing applet...')
 
 subdir('src')
+subdir('icons')
 
 meson.add_install_script('meson_post_install')

@@ -27,7 +27,7 @@ public class ScreencastIcon : Gtk.EventBox {
     private uint timeout_id = 0;
     private bool flash_state = true;
 
-    public ScreencastIcon (string icon_name = "camera-video-symbolic") {
+    public ScreencastIcon (string icon_name = "budgie-screencast-symbolic") {
         this.set_visible_window(false);
 
         overlay = new Gtk.Overlay();
