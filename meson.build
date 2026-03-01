@@ -260,6 +260,11 @@ if for_wayland == false and (build_recommended == true or build_window_shuffler 
 	subdir('budgie-window-shuffler')
 endif
 
+build_screencast = get_option('build-screencast')
+if for_wayland == true and (build_recommended == true or build_screencast == true)
+    subdir('budgie-screencast')
+endif
+
 with_default_schema = get_option('with-default-schema')
 if build_recommended == true and with_default_schema == true
 	subdir('default-schema')
