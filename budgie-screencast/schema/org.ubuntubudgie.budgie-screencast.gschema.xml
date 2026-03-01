@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="org.ubuntubudgie.budgie-screencast.CaptureMode">
+        <value nick="screen" value="0"/>
+        <value nick="area"   value="1"/>
+    </enum>
+
     <schema id="org.ubuntubudgie.budgie-screencast">
-        <key type="s" name="save-path">
+        <key name="save-path" type="s">
             <summary>Save Path</summary>
             <description>Path to save the screen recordings in</description>
+            <default>""</default>
+        </key>
+        <key name="capture-mode" enum="org.ubuntubudgie.budgie-screencast.CaptureMode">
+            <summary>Capture Mode</summary>
+            <description>Whether to record the whole display or a selected area</description>
+            <default>"screen"</default>
+        </key>
+        <key name="delay-seconds" type="i">
+            <summary>Start Delay</summary>
+            <description>Seconds to wait before starting the recording (0 = immediate)</description>
+            <default>0</default>
+            <range min="0" max="30"/>
+        </key>
+        <key name="duration-seconds" type="i">
+            <summary>Recording Duration</summary>
+            <description>Seconds to record for before stopping automatically (0 = unlimited)</description>
+            <default>0</default>
+            <range min="0" max="600"/>
+        </key>
+        <key name="audio-enabled" type="b">
+            <summary>Record Audio</summary>
+            <description>Whether to capture audio alongside the screen recording</description>
+            <default>false</default>
+        </key>
+        <key name="audio-device" type="s">
+            <summary>Audio Device</summary>
+            <description>PulseAudio/PipeWire source name to record from, or empty string for system default</description>
             <default>""</default>
         </key>
     </schema>
