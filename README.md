@@ -6,28 +6,28 @@ Additional enhancements for the user experience
 
 ## Plugins:
 
- - Hotcorners
+ - Hotcorners (X11 only)
  - Quicknote
  - Wallpaper Switcher
  - ShowTime
  - CountDown
  - Automatic Keyboard Layout Switcher
- - Screen Rotation Lock
+ - Screen Rotation Lock (X11 only)
  - ClockWorks
  - DropBy
  - Kangaroo
  - WeatherShow
- - Trash
+ - Trash (X11 only)
  - App-launcher
  - RecentlyUsed
  - Take-A-Break
- - Workspace Stopwatch
+ - Workspace Stopwatch (X11 only)
  - Fuzzy Clock
  - Brightness Controller
  - Visualspace
  - Applications Menu
  - Network Manager
- - Shuffler
+ - Shuffler (X11 only)
 
 Trash is replaced by the inbuilt version available in v10.8 budgie-desktop and as such is no longer part of the recommended build components.
 
@@ -63,17 +63,18 @@ e.g. to build just the hotcorners and weathershow applets
 (remember to git clone and git submodule etc as above)
 
      mkdir build && cd build
-     meson --buildtype plain -Dbuild-recommended=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
+     meson --buildtype -Dbuild-recommended=false -Dbuild-hotcorners=true -Dbuild-weathershow=true --prefix=/usr --libdir=/usr/lib
      ninja -v
      sudo ninja install
 
+For wayland use the build option `-Dfor-wayland=true`
 ## Distros
 
 We love Budgie-Extras to work across as many distros as possible.  Budgie Extras should be packaged as individual applets - NOT as one "budgie-extras" package, so that end users can install one or more applets.  Please let us know if your distro has packaged budgie-extras and how to install each applet.
 
  - Arch - https://www.archlinux.org/packages/community/x86_64/budgie-extras/ NOTE - this installs everything rather than allowing per applet installation
  - Ubuntu - use the ubuntu-budgie-welcome snap - and install via Menu - Budgie Applets
- - Debian - packages are available in Buster/Bullseye named "budgie-insertname-applet" https://goo.gl/R4eF7q
+ - Debian - packages are available in Buster and later named "budgie-insertname-applet" https://goo.gl/R4eF7q
  - Gentoo - Overlay for budgie desktop including budgie-extras https://gitlab.com/SarahMia/sarahmiaoverlay
  
  [![Packaging status](https://repology.org/badge/vertical-allrepos/budgie-extras.svg)](https://repology.org/project/budgie-extras/versions)
