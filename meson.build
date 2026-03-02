@@ -1,6 +1,6 @@
 project('budgie-extras',
 	['vala', 'c'],
-	version: '2.1.0',
+	version: '2.2.0',
 	meson_version: '>= 0.40.0'
 )
 
@@ -215,7 +215,7 @@ if build_recommended == true or build_takeabreak == true
 endif
 
 build_extrasdaemon = get_option('build-extrasdaemon')
-if for_wayland == false and (build_recommended == true or build_extrasdaemon == true)
+if build_recommended == true or build_extrasdaemon == true
 	subdir('budgie-extras-daemon')
 endif
 
@@ -258,6 +258,11 @@ endif
 build_window_shuffler = get_option('build-window-shuffler')
 if for_wayland == false and (build_recommended == true or build_window_shuffler == true)
 	subdir('budgie-window-shuffler')
+endif
+
+build_screencast = get_option('build-screencast')
+if for_wayland == true and (build_recommended == true or build_screencast == true)
+    subdir('budgie-screencast')
 endif
 
 with_default_schema = get_option('with-default-schema')

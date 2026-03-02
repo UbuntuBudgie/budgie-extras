@@ -1,33 +1,18 @@
 [Panels]
-Panels=Top Panel;Bottom Panel
+Panels=Top Panel
 
 [Top Panel]
-Children=AppMenu;ShowTime;Clock;DropBy;AppIndicator;VisualSpace;QuickNote;Places;Notifications;Network;Status;Separator;User Indicator;Raven Trigger;
+Children=AppMenu;AppIndicator;QuickNote;Places;Notifications;Network;Status;Clock;Raven Trigger;
 Position=Top
 Size=37
-Transparency=dynamic
+Transparency=none
 Spacing=10
 
 [AppMenu]
 ID=AppMenu
 
-[ShowTime]
-ID=ShowTime
-
-[Clock]
-ID=Clock
-Alignment=center
-
 [AppIndicator]
 ID=AppIndicator Applet
-Alignment=end
-
-[VisualSpace]
-ID=Visual Space
-Alignment=end
-
-[DropBy]
-ID=DropBy
 Alignment=end
 
 [QuickNote]
@@ -50,28 +35,10 @@ Alignment=end
 ID=Status Indicator
 Alignment=end
 
-[Separator]
-ID=Separator
-Alignment=end
-
-[User Indicator]
-ID=User Indicator
+[Clock]
+ID=Clock
 Alignment=end
 
 [Raven Trigger]
 ID=Raven Trigger
 Alignment=end
-
-[Bottom Panel]
-Children=Icon Task List;
-Position=Bottom
-Size=50
-Transparency=always
-Autohide=intelligent
-Shadow=false
-Spacing=2
-Dock=true
-
-[Icon Task List]
-ID=Icon Task List
-Alignment=start

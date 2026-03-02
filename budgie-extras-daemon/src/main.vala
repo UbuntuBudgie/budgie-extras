@@ -52,8 +52,6 @@ public static int main(string[] args) {
     Gtk.init(ref args);
     OptionContext ctx;
 
-    BudgieExtras.KeybinderManager? manager = null;
-
     ctx = new OptionContext("- Budgie Extras Daemon");
     ctx.set_help_enabled(true);
     ctx.add_main_entries(options, null);
@@ -66,13 +64,11 @@ public static int main(string[] args) {
         return 0;
     }
 
-    manager = new BudgieExtras.KeybinderManager(replace);
-
+    BudgieExtras.DbusManager dbus = new BudgieExtras.DbusManager();
+    dbus.setup_dbus(replace);
+    
     /* Enter main loop */
     Gtk.main();
-
-    /* Deref - clean */
-    manager = null;
 
     return 0;
 }

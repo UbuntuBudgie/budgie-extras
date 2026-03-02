@@ -15,12 +15,8 @@
 */
 
 namespace Layouts {
-
-    const string plank_schema="net.launchpad.plank";
-    const string plank_settings_schema="net.launchpad.plank.dock.settings";
-    const string plank_path="/net/launchpad/plank/docks/xyz/";
     const string panel_schema="com.solus-project.budgie-panel";
-    const string plank_global_path="/usr/share/applications/plank.desktop";
+    const string crystal_dock_global_path="/usr/share/applications/crystal-dock.desktop";
     const string appmenu_budgie_schema="org.ubuntubudgie.plugins.budgie-appmenu";
     const string budgiewm_schema="com.solus-project.budgie-wm";
     const string nemo_window_schema="org.nemo.window-state";
@@ -43,11 +39,11 @@ namespace Layouts {
 
         }
 
-        private void stop_plank () {
-            run_cmd("killall plank");
+        private void stop_crystal_dock () {
+            run_cmd("killall crystal-dock");
 
             string autostart_file = Environment.get_home_dir() +
-                "/.config/autostart/plank.desktop";
+                "/.config/autostart/crystal-dock.desktop";
 
             if (! FileUtils.test(autostart_file, FileTest.EXISTS)) {
                 debug("does not exist %s", autostart_file);
@@ -78,30 +74,12 @@ namespace Layouts {
             });
         }
 
-        private void start_plank(bool centered=false) {
-            stop_plank();
+        private void start_crystal_dock(bool centered=false) {
+            stop_crystal_dock();
 
-            if (! FileUtils.test(plank_global_path, FileTest.EXISTS)) {
-                debug("does not exist %s", plank_global_path);
+            if (! FileUtils.test(crystal_dock_global_path, FileTest.EXISTS)) {
+                debug("does not exist %s", crystal_dock_global_path);
                 return;
-            }
-
-            if (centered) {
-                var plank_settings = new GLib.Settings(plank_schema);
-                var docks = plank_settings.get_strv("enabled-docks");
-
-                foreach (string dock in docks) {
-                    var path = plank_path.replace("xyz", dock);
-                    var settings = new GLib.Settings.with_path(plank_settings_schema, path);
-
-                    settings.set_string("position", "bottom");
-                    settings.set_string("theme", "Transparent");
-                    settings.set_int("icon-size", 32);
-                    settings.set_int("hide-delay", 500);
-                    settings.set_string("hide-mode", "window-dodge");
-                    settings.set_boolean("zoom-enabled", true);
-                    break; // we assume the first dock is the primary
-                }
             }
 
             try {
@@ -113,15 +91,15 @@ namespace Layouts {
                     folder.make_directory();
                 }
 
-                File file = File.new_for_path(plank_global_path);
-                File dest = File.new_for_path(autostart_folder + "plank.desktop");
+                File file = File.new_for_path(crystal_dock_global_path);
+                File dest = File.new_for_path(autostart_folder + "crystal-dock.desktop");
                 file.copy(dest, FileCopyFlags.OVERWRITE);
             }
             catch (Error e) {
                 warning("Cannot copy: %s", e.message);
             }
 
-            run_cmd("nohup plank &>/dev/null", true);
+            run_cmd("nohup crystal-dock &>/dev/null", true);
         }
 
         private void appmenu_powerstrip(bool enable) {
@@ -130,6 +108,14 @@ namespace Layouts {
                 return;
             var settings = new GLib.Settings(appmenu_budgie_schema);
             settings.set_boolean("enable-powerstrip", enable);
+        }
+
+        private void appmenu_sidebar(bool enable) {
+            var schema = GLib.SettingsSchemaSource.get_default ().lookup (appmenu_budgie_schema, true);
+            if (schema == null)
+                return;
+            var settings = new GLib.Settings(appmenu_budgie_schema);
+            settings.set_boolean("enable-favorites", enable);
         }
 
         private void appmenu_categoryview(bool show_category) {
@@ -151,27 +137,30 @@ namespace Layouts {
         }
 
         private void reset_panel() {
-            run_cmd ("nohup budgie-panel --reset --replace &>/dev/null", true);
+            run_cmd ("nohup budgie-panel --reset --reset-raven --replace &>/dev/null", true);
         }
 
         public void reset(string layout_name) {
 
-            stop_plank();
+            stop_crystal_dock();
             appmenu_powerstrip(false);
             appmenu_categoryview(false);
+            appmenu_sidebar(false);
             leftside_buttons(false);
             show_nemo_menu(false);
 
             switch (layout_name) {
                 case "ubuntubudgie": {
-                    // no customisations needed
+                    start_crystal_dock(true);
+                    appmenu_sidebar(true);
                     break;
                 }
                 case "classicubuntubudgie": {
-                    // no customisations needed
+                    start_crystal_dock(true);
                     break;
                 }
                 case "cupertino": {
+                    start_crystal_dock(true);
                     appmenu_powerstrip(true);
                     appmenu_categoryview(true);
                     leftside_buttons();

@@ -35,13 +35,11 @@ public const string EXTRAS_DBUS_OBJECT_PATH = "/org/ubuntubudgie/extrasdaemon";
 [DBus (name = "org.UbuntuBudgie.ExtrasDaemon")]
 public class DbusManager : Object
 {
-    KeybinderManager keybinder;
     Layouts.LayoutsManager layoutmanager;
 
     [DBus (visible = false)]
-    public DbusManager(KeybinderManager km)
+    public DbusManager()
     {
-        keybinder = km;
         layoutmanager = new Layouts.LayoutsManager();
     }
 
@@ -73,22 +71,13 @@ public class DbusManager : Object
      */
 
      public bool ReloadShortcuts() throws Error {
-        return keybinder.reload();
+        return true;
      }
 
     /**
      * Find the shortcut key string for the bde file name key
      */
     public string GetShortcut(string key_name) throws Error {
-        string shortcut = "";
-
-        var ret = keybinder.get_shortcut(key_name, out shortcut);
-
-        if (ret)
-        {
-            debug("output %s", shortcut);
-            return shortcut;
-        }
 
         debug("nothing to return");
         return "";

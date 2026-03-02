@@ -1,16 +1,15 @@
 [Panels]
-Panels=Top Panel;Bottom Panel
+Panels=Top Panel
 
 [Top Panel]
-Children=Budgie Menu;Spacer 1;ShowTime;Clock;AppIndicator;Tray;DropBy;QuickNote;Spacer 2;Night;Places;Notifications;Status;Separator;Spacer 3;User Indicator;Raven Trigger;
+Children=AppMenu;ShowTime;Clock;DropBy;AppIndicator;VisualSpace;QuickNote;Places;Notifications;Network;Status;Separator;User Indicator;Raven Trigger;
 Position=Top
+Size=37
 Transparency=dynamic
+Spacing=10
 
-[Budgie Menu]
-ID=Budgie Menu
-
-[Spacer 1]
-ID=Spacer
+[AppMenu]
+ID=AppMenu
 
 [ShowTime]
 ID=ShowTime
@@ -23,8 +22,8 @@ Alignment=center
 ID=AppIndicator Applet
 Alignment=end
 
-[Tray]
-ID=System Tray
+[VisualSpace]
+ID=Visual Space
 Alignment=end
 
 [DropBy]
@@ -35,14 +34,6 @@ Alignment=end
 ID=QuickNote
 Alignment=end
 
-[Spacer 2]
-ID=Spacer
-Alignment=end
-
-[Night]
-ID=Night Light
-Alignment=end
-
 [Places]
 ID=Places
 Alignment=end
@@ -51,36 +42,22 @@ Alignment=end
 ID=Notifications
 Alignment=end
 
-[Status]
-ID=Status Indicator
+[Network]
+ID=Network
 Alignment=end
 
-[User Indicator]
-ID=User Indicator
+[Status]
+ID=Status Indicator
 Alignment=end
 
 [Separator]
 ID=Separator
 Alignment=end
 
-[Spacer 3]
-ID=Spacer
+[User Indicator]
+ID=User Indicator
 Alignment=end
 
 [Raven Trigger]
 ID=Raven Trigger
 Alignment=end
-
-[Bottom Panel]
-Children=Icon Task List;
-Position=Bottom
-Size=50
-Transparency=always
-Autohide=intelligent
-Shadow=false
-Spacing=2
-Dock=true
-
-[Icon Task List]
-ID=Icon Task List
-Alignment=start
