@@ -71,7 +71,7 @@ public class Slingshot.Widgets.SearchItem : Gtk.ListBoxRow {
     public Gtk.Image icon { public get; private set; }
     public string? app_uri { get; private set; }
 
-    private Slingshot.AppContextMenu menu;
+    private Slingshot.AppContextMenu? ctx_menu = null;
 
     private Gtk.Label name_label;
     private Cancellable? cancellable = null;
@@ -139,7 +139,6 @@ public class Slingshot.Widgets.SearchItem : Gtk.ListBoxRow {
             return MARKUP.printf (Markup.escape_text (text));
         }
 
-        // if no text found, use pattern
         if (text == "") {
             return MARKUP.printf (Markup.escape_text (pattern));
         }
@@ -183,28 +182,33 @@ public class Slingshot.Widgets.SearchItem : Gtk.ListBoxRow {
 
     public override void destroy () {
         base.destroy ();
-        if (cancellable != null)
+        if (cancellable != null) {
             cancellable.cancel ();
+        }
     }
 
+    // Called by SearchView for both right-click and Menu key
     public bool create_context_menu (Gdk.Event e) {
-
         if (result_type != APPLICATION) {
             return Gdk.EVENT_PROPAGATE;
         }
 
-        menu = new Slingshot.AppContextMenu (app.desktop_id, app.desktop_path);
+        ctx_menu = new Slingshot.AppContextMenu (app.desktop_id, app.desktop_path, this);
 
-        if (menu.get_children () != null) {
-            if (e.type == Gdk.EventType.KEY_PRESS) {
-                menu.popup_at_widget (this, Gdk.Gravity.EAST, Gdk.Gravity.CENTER, e);
-                return Gdk.EVENT_STOP;
-            } else if (e.type == Gdk.EventType.BUTTON_PRESS) {
-                menu.popup_at_pointer (e);
-                return Gdk.EVENT_STOP;
-            }
+        if (!ctx_menu.has_items) {
+            return Gdk.EVENT_PROPAGATE;
         }
 
-        return Gdk.EVENT_PROPAGATE;
+        if (e.type == Gdk.EventType.BUTTON_PRESS) {
+            double x, y;
+            e.get_coords (out x, out y);
+            ctx_menu.popup_at_pointer_coords (x, y);
+        } else {
+            // Keyboard – centre over the row
+            ctx_menu.position = Gtk.PositionType.RIGHT;
+            ctx_menu.popup ();
+        }
+
+        return Gdk.EVENT_STOP;
     }
 }

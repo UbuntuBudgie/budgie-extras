@@ -24,57 +24,55 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
 #if HAS_PLANK
     private static Plank.DBusClient plank_client;
 #endif
-    private static Slingshot.AppContextMenu menu;
 
     private const int ICON_SIZE = 64;
 
     private Gtk.Label badge;
-    private bool dragging = false; //prevent launching
+    private bool dragging = false;
 
+    // Tooltip popover
     private Gtk.Popover? tooltip_popover = null;
-    private string tooltip_text = "";
+    private string tooltip_text_str = "";
     private uint delay_ms = 500;
     private uint timeout_id = 0;
+
+    // Context-menu popover (one instance per button, created lazily)
+    private Slingshot.AppContextMenu? ctx_menu = null;
 
     public AppButton (Backend.App app) {
         Object (app: app);
 
-        this.tooltip_text = app.description;
+        tooltip_text_str = app.description;
 
-        this.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+        add_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
-        this.enter_notify_event.connect((ev) => {
-             if (timeout_id == 0) {
-                // schedule a one-shot timeout to show the popover after delay_ms
-                timeout_id = Timeout.add(this.delay_ms, () => {
-                    timeout_id = 0; // clear id, this source will not repeat
-                    // show popover if it's not already shown
+        enter_notify_event.connect ((ev) => {
+            if (timeout_id == 0) {
+                timeout_id = Timeout.add (delay_ms, () => {
+                    timeout_id = 0;
                     if (tooltip_popover == null) {
-                        tooltip_popover = new Gtk.Popover(this);
-                        tooltip_popover.set_position(Gtk.PositionType.BOTTOM);
-
-                        var msg = new Gtk.Label(this.tooltip_text);
-                        tooltip_popover.add(msg);
-                        msg.show();
-
-                        tooltip_popover.set_modal(false);
-
-                        tooltip_popover.show_all();
+                        tooltip_popover = new Gtk.Popover (this);
+                        tooltip_popover.position = Gtk.PositionType.BOTTOM;
+                        var msg = new Gtk.Label (tooltip_text_str);
+                        tooltip_popover.add (msg);
+                        msg.show ();
+                        tooltip_popover.modal = false;
+                        tooltip_popover.show_all ();
                     }
                     return false;
                 });
-             }
-             return false;
+            }
+            return false;
         });
 
-        this.leave_notify_event.connect((ev) => {
+        leave_notify_event.connect ((ev) => {
             if (timeout_id != 0) {
-                Source.remove(timeout_id);
+                Source.remove (timeout_id);
                 timeout_id = 0;
             }
             if (tooltip_popover != null) {
-                tooltip_popover.hide();
-                tooltip_popover.destroy();
+                tooltip_popover.hide ();
+                tooltip_popover.destroy ();
                 tooltip_popover = null;
             }
             return false;
@@ -90,10 +88,7 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
 
     construct {
         Gtk.TargetEntry dnd = {"text/uri-list", 0, 0};
-        Gtk.drag_source_set (this, Gdk.ModifierType.BUTTON1_MASK, {dnd},
-                             Gdk.DragAction.COPY);
-
-        //tooltip_text = app.description;
+        Gtk.drag_source_set (this, Gdk.ModifierType.BUTTON1_MASK, {dnd}, Gdk.DragAction.COPY);
 
         get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
@@ -137,28 +132,33 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
 
         add (grid);
 
-        this.clicked.connect (launch_app);
-
-        this.button_press_event.connect ((e) => {
-            if (e.button != Gdk.BUTTON_SECONDARY) {
-                return Gdk.EVENT_PROPAGATE;
+        // Use button_press_event for all mouse handling so we can precisely
+        // control which button does what.  Do NOT connect to clicked.connect()
+        // because Gtk.Button.clicked fires for any button including middle-click.
+        button_press_event.connect ((e) => {
+            switch (e.button) {
+                case 1: // left – launch
+                    launch_app ();
+                    return Gdk.EVENT_STOP;
+                case 3: // right – context menu
+                    show_context_menu_at (e.x, e.y);
+                    return Gdk.EVENT_STOP;
+                default: // middle or anything else – ignore
+                    return Gdk.EVENT_STOP;
             }
-
-            return create_context_menu (e);
         });
 
-        this.key_press_event.connect ((e) => {
+        key_press_event.connect ((e) => {
             if (e.keyval == Gdk.Key.Menu) {
-                return create_context_menu (e);
+                show_context_menu_at (0, 0);
+                return Gdk.EVENT_STOP;
             }
-
             return Gdk.EVENT_PROPAGATE;
         });
 
 #if HAS_PLANK
         app.notify["current-count"].connect (update_badge_count);
         app.notify["count-visible"].connect (update_badge_visibility);
-
         update_badge_count ();
 #endif
 
@@ -169,6 +169,30 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
         app.launch ();
         app_launched ();
     }
+
+    private void show_context_menu_at (double x, double y) {
+        // Dismiss tooltip first
+        if (tooltip_popover != null) {
+            tooltip_popover.hide ();
+            tooltip_popover.destroy ();
+            tooltip_popover = null;
+        }
+        if (timeout_id != 0) {
+            Source.remove (timeout_id);
+            timeout_id = 0;
+        }
+
+        // Re-create each time so favorite label stays fresh
+        ctx_menu = new Slingshot.AppContextMenu (app.desktop_id, app.desktop_path, this);
+        ctx_menu.app_launched.connect (() => app_launched ());
+
+        if (!ctx_menu.has_items) {
+            return;
+        }
+
+        ctx_menu.popup_at_pointer_coords (x, y);
+    }
+
 #if HAS_PLANK
     private void update_badge_count () {
         badge.label = "%lld".printf (app.current_count);
@@ -185,23 +209,4 @@ public class Slingshot.Widgets.AppButton : Gtk.Button {
         }
     }
 #endif
-
-    private bool create_context_menu (Gdk.Event e) {
-        menu = new Slingshot.AppContextMenu (app.desktop_id, app.desktop_path);
-        menu.app_launched.connect (() => {
-            app_launched ();
-        });
-
-        if (menu.get_children () != null) {
-            if (e.type == Gdk.EventType.KEY_PRESS) {
-                menu.popup_at_widget (this, Gdk.Gravity.EAST, Gdk.Gravity.CENTER, e);
-                return Gdk.EVENT_STOP;
-            } else if (e.type == Gdk.EventType.BUTTON_PRESS) {
-                menu.popup_at_pointer (e);
-                return Gdk.EVENT_STOP;
-            }
-        }
-
-        return Gdk.EVENT_PROPAGATE;
-    }
 }

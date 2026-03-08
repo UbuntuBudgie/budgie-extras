@@ -1,6 +1,6 @@
 project('budgie-extras',
 	['vala', 'c'],
-	version: '2.2.0',
+	version: '2.2.1',
 	meson_version: '>= 0.40.0'
 )
 
@@ -192,11 +192,6 @@ endif
 build_weathershow = get_option('build-weathershow')
 if build_recommended == true or build_weathershow == true
 	subdir('budgie-weathershow')
-endif
-
-build_trash = get_option('build-trash')
-if build_trash == true
-	subdir('budgie-trash')
 endif
 
 build_app_launcher = get_option('build-app-launcher')

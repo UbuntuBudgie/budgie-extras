@@ -48,7 +48,11 @@ public class Slingshot.SlingshotView : Gtk.Grid {
     private Widgets.CategoryView category_view;
     private Widgets.FavoritesSidebar? favorites_sidebar = null;
     private Gtk.Separator? favorites_separator = null;
+    private Gtk.Overlay content_overlay;
     private Gtk.Grid content_grid;
+
+    // The floating context menu shown over the main area when right-clicking a favourite
+    private Gtk.Box? ctx_menu_widget = null;
 
     private static GLib.Settings settings { get; private set; default = null; }
 
@@ -99,9 +103,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         top.add (powerstrip);
 
         grid_view = new Widgets.Grid ();
-
         category_view = new Widgets.CategoryView (this);
-
         search_view = new Widgets.SearchView ();
 
         stack = new Gtk.Stack () {
@@ -111,37 +113,59 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         stack.add_named (category_view, "category");
         stack.add_named (search_view, "search");
 
-        // Create favorites sidebar
+        // Favourites sidebar
         favorites_sidebar = new Widgets.FavoritesSidebar ();
         favorites_sidebar.set_app_system (app_system);
-        favorites_sidebar.app_launched.connect (() => {
-            close_indicator ();
-        });
+        favorites_sidebar.app_launched.connect (() => { close_indicator (); });
         favorites_sidebar.no_show_all = true;
 
         favorites_separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
         favorites_separator.no_show_all = true;
 
-        // Create main content grid with favorites
+        // content_grid holds sidebar | separator | stack (unchanged column layout)
         content_grid = new Gtk.Grid ();
         content_grid.attach (favorites_sidebar, 0, 0, 1, 1);
         content_grid.attach (favorites_separator, 1, 0, 1, 1);
         content_grid.attach (stack, 2, 0, 1, 1);
 
+        // Overlay sits on top of content_grid; context menus are added here
+        content_overlay = new Gtk.Overlay ();
+        content_overlay.add (content_grid);
+        content_overlay.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
+        content_overlay.button_press_event.connect (on_overlay_background_click);
+
         container = new Gtk.Grid ();
         container.row_spacing = 12;
         container.margin_bottom = 12;
         container.attach (top, 0, 1);
-        container.attach (content_grid, 0, 0);
+        container.attach (content_overlay, 0, 0);
 
-        // This function must be after creating the page switcher
         grid_view.populate (app_system);
 
         var event_box = new Gtk.EventBox ();
         event_box.add (container);
-
-        // Add the container to the dialog's content area
         this.add (event_box);
+
+        // ── Context menu overlay wiring ───────────────────────────────────
+        favorites_sidebar.show_context_menu.connect ((menu_widget, y_center) => {
+            dismiss_ctx_menu ();
+
+            ctx_menu_widget = menu_widget as Gtk.Box;
+            ctx_menu_widget.halign = Gtk.Align.START;
+            ctx_menu_widget.valign = Gtk.Align.START;
+            ctx_menu_widget.margin_start = 70;
+            ctx_menu_widget.margin_top = int.max (0, y_center - 20);
+
+            content_overlay.add_overlay (ctx_menu_widget);
+            content_overlay.show_all ();
+        });
+
+        favorites_sidebar.hide_context_menu.connect (() => {
+            dismiss_ctx_menu ();
+        });
+
+        event_box.key_press_event.connect (on_event_box_key_press);
+        search_entry.key_press_event.connect (on_search_view_key_press);
 
         if (settings.get_boolean ("use-category")) {
             view_selector.selected = 1;
@@ -151,19 +175,11 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             set_modality (Modality.NORMAL_VIEW);
         }
 
-        /*search_view.start_search.connect ((match, target) => {
-            search.begin (search_entry.text, match, target);
-        }); UB apparently unneccessary*/
-
         focus_in_event.connect (() => {
             search_entry.grab_focus ();
             return Gdk.EVENT_PROPAGATE;
         });
 
-        event_box.key_press_event.connect (on_event_box_key_press);
-        search_entry.key_press_event.connect (on_search_view_key_press);
-
-        // Showing a menu reverts the effect of the grab_device function.
         search_entry.search_changed.connect (() => {
             if (modality != Modality.SEARCH_VIEW) {
                 set_modality (Modality.SEARCH_VIEW);
@@ -178,49 +194,57 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             search_entry.grab_focus ();
         });
 
-        grid_view.app_launched.connect (() => {
-            close_indicator ();
-        });
-
-        search_view.app_launched.connect (() => {
-            close_indicator ();
-        });
+        grid_view.app_launched.connect (() => { close_indicator (); });
+        search_view.app_launched.connect (() => { close_indicator (); });
 
         view_selector.mode_changed.connect (() => {
             set_modality ((Modality) view_selector.selected);
         });
 
-        // Auto-update applications grid
         app_system.changed.connect (() => {
             grid_view.populate (app_system);
-
             category_view.setup_sidebar ();
         });
 
-        settings.changed["rows"].connect_after(() => {
-            grid_view.populate (app_system);
-        });
-
-        settings.changed["columns"].connect_after(() => {
-            grid_view.populate (app_system);
-        });
-
+        settings.changed["rows"].connect_after(() => { grid_view.populate (app_system); });
+        settings.changed["columns"].connect_after(() => { grid_view.populate (app_system); });
         settings.changed["show-terminal-apps"].connect_after(() => {
             grid_view.populate (app_system);
             category_view.setup_sidebar ();
         });
 
-        powerstrip.invoke_action.connect(() => {
-            close_indicator ();
-        });
+        powerstrip.invoke_action.connect(() => { close_indicator (); });
         powerstrip.set_visible(settings.get_boolean("enable-powerstrip"));
 
         update_favorites_visibility ();
-        settings.changed["enable-favorites"].connect (() => {
-            update_favorites_visibility ();
-        });
+        settings.changed["enable-favorites"].connect (() => { update_favorites_visibility (); });
 
         content_grid.show_all();
+    }
+
+    private void dismiss_ctx_menu () {
+        if (ctx_menu_widget != null) {
+            content_overlay.remove (ctx_menu_widget);
+            ctx_menu_widget = null;
+        }
+    }
+
+    // Called when the user clicks anywhere outside the context menu
+    private bool on_overlay_background_click (Gdk.EventButton ev) {
+        if (ctx_menu_widget != null) {
+            // Check if click was inside the menu widget bounds
+            int mx, my, mw, mh;
+            mx = ctx_menu_widget.margin_start;
+            my = ctx_menu_widget.margin_top;
+            mw = ctx_menu_widget.get_allocated_width ();
+            mh = ctx_menu_widget.get_allocated_height ();
+            if (ev.x < mx || ev.x > mx + mw || ev.y < my || ev.y > my + mh) {
+                favorites_sidebar.close_context_menu ();
+                dismiss_ctx_menu ();
+                return Gdk.EVENT_STOP;
+            }
+        }
+        return Gdk.EVENT_PROPAGATE;
     }
 
     public void panel_position_changed(Budgie.PanelPosition position) {
@@ -232,7 +256,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             container.remove_row(0);
 
             container.attach (top, 0, 1);
-            container.attach (content_grid, 0, 0);
+            container.attach (content_overlay, 0, 0);
         }
         else {
             container.margin_bottom = 0;
@@ -242,7 +266,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             container.remove_row(0);
 
             container.attach (top, 0, 0);
-            container.attach (content_grid, 0, 1);
+            container.attach (content_overlay, 0, 1);
         }
         content_grid.show_all();
     }
@@ -250,13 +274,10 @@ public class Slingshot.SlingshotView : Gtk.Grid {
 #if HAS_PLANK
     public void update_launcher_entry (string sender_name, GLib.Variant parameters, bool is_retry = false) {
         if (!is_retry) {
-            // Wait to let further update requests come in to catch the case where one application
-            // sends out multiple LauncherEntry-updates with different application-uris, e.g. Nautilus
             Idle.add (() => {
                 update_launcher_entry (sender_name, parameters, true);
                 return false;
             });
-
             return;
         }
 
@@ -296,9 +317,6 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         }
     }
 
-    /* These keys do not work if connect_after used; the rest of the key events
-     * are dealt with after the default handler in order that CJK input methods
-     * work properly */
     public bool on_search_view_key_press (Gdk.EventKey event) {
         var key = Gdk.keyval_name (event.keyval).replace ("KP_", "");
 
@@ -308,12 +326,17 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                 return Gdk.EVENT_STOP;
 
             case "Escape":
+                // Context menu takes priority — close it first
+                if (ctx_menu_widget != null) {
+                    favorites_sidebar.close_context_menu ();
+                    dismiss_ctx_menu ();
+                    return Gdk.EVENT_STOP;
+                }
                 if (search_entry.text.length > 0) {
                     search_entry.text = "";
                 } else {
                     close_indicator ();
                 }
-
                 return Gdk.EVENT_STOP;
         }
 
@@ -322,6 +345,14 @@ public class Slingshot.SlingshotView : Gtk.Grid {
 
     public bool on_event_box_key_press (Gdk.EventKey event) {
         var key = Gdk.keyval_name (event.keyval).replace ("KP_", "");
+
+        // Escape dismisses context menu first
+        if (key == "Escape" && ctx_menu_widget != null) {
+            favorites_sidebar.close_context_menu ();
+            dismiss_ctx_menu ();
+            return Gdk.EVENT_STOP;
+        }
+
         if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
             switch (key) {
                 case "1":
@@ -333,7 +364,6 @@ public class Slingshot.SlingshotView : Gtk.Grid {
             }
         }
 
-        // Alt accelerators
         if ((event.state & Gdk.ModifierType.MOD1_MASK) != 0) {
             switch (key) {
                 case "F4":
@@ -358,8 +388,6 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                             grid_view.go_to_number (page);
                         }
                     }
-
-                    // FIXME: Workaround to avoid losing focus completely
                     search_entry.grab_focus ();
                     return Gdk.EVENT_STOP;
             }
@@ -367,7 +395,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
 
         switch (key) {
             case "Down":
-            case "Enter": // "KP_Enter"
+            case "Enter":
             case "Home":
             case "KP_Enter":
             case "Left":
@@ -399,20 +427,19 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                     search_entry.move_cursor (Gtk.MovementStep.BUFFER_ENDS, 0, false);
                 }
                 return Gdk.EVENT_PROPAGATE;
+
             case "End":
                 if (modality == Modality.NORMAL_VIEW) {
                     grid_view.go_to_last ();
                 }
-
                 return Gdk.EVENT_PROPAGATE;
+
             default:
                 if (!search_entry.has_focus && event.is_modifier != 1) {
                     search_entry.grab_focus ();
                     search_entry.move_cursor (Gtk.MovementStep.BUFFER_ENDS, 0, false);
-                    //search_entry.key_press_event (event); causes double letter entry into the entry field under wayland
                 }
                 return Gdk.EVENT_PROPAGATE;
-
         }
 
         return Gdk.EVENT_STOP;
@@ -420,13 +447,7 @@ public class Slingshot.SlingshotView : Gtk.Grid {
 
     public void show_slingshot () {
         search_entry.text = "";
-
-    /* TODO
-        set_focus (null);
-    */
-
         search_entry.grab_focus ();
-        // This is needed in order to not animate if the previous view was the search view.
         view_selector_revealer.transition_type = Gtk.RevealerTransitionType.NONE;
         stack.transition_type = Gtk.StackTransitionType.NONE;
         set_modality ((Modality) view_selector.selected);
@@ -447,10 +468,8 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                 if (settings.get_boolean ("use-category")) {
                     settings.set_boolean ("use-category", false);
                 }
-
                 view_selector_revealer.set_reveal_child (true);
                 stack.set_visible_child_name ("normal");
-
                 search_entry.grab_focus ();
                 break;
 
@@ -458,10 +477,8 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                 if (!settings.get_boolean ("use-category")) {
                     settings.set_boolean ("use-category", true);
                 }
-
                 view_selector_revealer.set_reveal_child (true);
                 stack.set_visible_child_name ("category");
-
                 search_entry.grab_focus ();
                 break;
 
@@ -469,7 +486,6 @@ public class Slingshot.SlingshotView : Gtk.Grid {
                 view_selector_revealer.set_reveal_child (false);
                 stack.set_visible_child_name ("search");
                 break;
-
         }
     }
 
@@ -479,12 +495,6 @@ public class Slingshot.SlingshotView : Gtk.Grid {
         var stripped = text.strip ();
 
         if (stripped == "") {
-            // this code was making problems when selecting the currently searched text
-            // and immediately replacing it. In that case two async searches would be
-            // started and both requested switching from and to search view, which would
-            // result in a Gtk error and the first letter of the new search not being
-            // picked up. If we add an idle and recheck that the entry is indeed still
-            // empty before switching, this problem is gone.
             Idle.add (() => {
                 if (search_entry.text.strip () == "")
                     set_modality ((Modality) view_selector.selected);
