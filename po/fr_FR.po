@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 20:59+0000\n"
+"POT-Creation-Date: 2026-03-02 18:38+0000\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: roxfr, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/ubuntu-budgie/teams/72251/fr_FR/)\n"
@@ -27,6 +27,130 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. translators: tooltip for the "no time limit" duration button
+#: budgie-screencast/src/Screencast.vala:47
+msgid "No limit"
+msgstr ""
+
+#. translators: tooltip for the 15-second duration button; shown alongside
+#. social platform names
+#: budgie-screencast/src/Screencast.vala:49
+msgid "TikTok / Reels short"
+msgstr ""
+
+#. translators: tooltip for the 30-second duration button
+#: budgie-screencast/src/Screencast.vala:51
+msgid "Reels / Shorts standard"
+msgstr ""
+
+#. translators: tooltip for the 60-second duration button
+#: budgie-screencast/src/Screencast.vala:53
+msgid "TikTok / YouTube Shorts / Reels"
+msgstr ""
+
+#. translators: tooltip for the 90-second duration button; Instagram's maximum
+#. Reel length
+#: budgie-screencast/src/Screencast.vala:55
+msgid "Instagram max"
+msgstr ""
+
+#. translators: tooltip for the 3-minute duration button
+#: budgie-screencast/src/Screencast.vala:57
+msgid "LinkedIn / Facebook"
+msgstr ""
+
+#. translators: tooltip for the 10-minute duration button; TikTok's current
+#. maximum
+#: budgie-screencast/src/Screencast.vala:59
+msgid "TikTok max"
+msgstr ""
+
+#. translators: label for the output folder row in the settings panel
+#: budgie-screencast/src/Screencast.vala:82
+msgid "Output folder:"
+msgstr ""
+
+#. translators: title of the folder-chooser dialog
+#: budgie-screencast/src/Screencast.vala:99
+msgid "Select Recording Folder"
+msgstr ""
+
+#. translators: cancel button in the folder-chooser dialog (underscore =
+#. keyboard accelerator)
+#: budgie-screencast/src/Screencast.vala:102
+msgid "_Cancel"
+msgstr ""
+
+#. translators: confirm button in the folder-chooser dialog (underscore =
+#. keyboard accelerator)
+#: budgie-screencast/src/Screencast.vala:104
+msgid "_Select"
+msgstr ""
+
+#. Incremented each time a widget row is attached, keeping layout
+#. changes local to the relevant section rather than requiring
+#. renumbering of every subsequent row.
+#. ── Capture mode ───────────────────────────────────────────────
+#. translators: section label above the screen/area capture toggle buttons
+#: budgie-screencast/src/Screencast.vala:213
+msgid "Capture Mode:"
+msgstr ""
+
+#. translators: tooltip for the "record entire display" capture mode button
+#: budgie-screencast/src/Screencast.vala:228
+msgid "Record entire display"
+msgstr ""
+
+#. translators: tooltip for the "record selected area" capture mode button
+#: budgie-screencast/src/Screencast.vala:234
+msgid "Record selected area"
+msgstr ""
+
+#. ── Display list ───────────────────────────────────────────────
+#. Only meaningful in SCREEN mode; hidden via Revealer in AREA mode.
+#. translators: label above the list of connected display outputs to record
+#: budgie-screencast/src/Screencast.vala:276
+msgid "Record Display:"
+msgstr ""
+
+#. translators: tooltip for the microphone toggle button that enables/disables
+#. audio capture
+#: budgie-screencast/src/Screencast.vala:304
+msgid "Toggle audio capture"
+msgstr ""
+
+#. translators: label for the audio capture toggle row
+#: budgie-screencast/src/Screencast.vala:307
+msgid "Record Audio:"
+msgstr ""
+
+#. Device selector slides in below the toggle when audio is enabled
+#. translators: tooltip for the dropdown that selects the audio input device
+#. to record from
+#: budgie-screencast/src/Screencast.vala:317
+msgid "Audio source device"
+msgstr ""
+
+#. ── Start Delay ────────────────────────────────────────────────
+#. translators: label above the row of delay preset buttons (e.g. Off / 5s /
+#. 10s …)
+#: budgie-screencast/src/Screencast.vala:360
+msgid "Start Delay:"
+msgstr ""
+
+#. ── Record For (duration) ──────────────────────────────────────
+#. translators: label above the row of duration preset buttons (e.g. ∞ / 15s /
+#. 30s …)
+#: budgie-screencast/src/Screencast.vala:381
+msgid "Record For:"
+msgstr ""
+
+#. translators: first entry in the audio device dropdown; lets wf-recorder
+#. choose the default PulseAudio/PipeWire source
+#: budgie-screencast/src/Screencast.vala:514
+msgid "System default"
+msgstr ""
 
 #. This is about target monitor and - workspace for new windows
 #. string length is not particularly critical
@@ -1962,6 +2086,10 @@ msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/settings.ui.h:14
 msgid "Favorites"
+msgstr ""
+
+#: budgie-screencast/src/BudgieScreencast.plugin.in.h:1
+msgid "Record the screen under Wayland"
 msgstr ""
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
