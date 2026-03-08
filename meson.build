@@ -194,11 +194,6 @@ if build_recommended == true or build_weathershow == true
 	subdir('budgie-weathershow')
 endif
 
-build_trash = get_option('build-trash')
-if build_trash == true
-	subdir('budgie-trash')
-endif
-
 build_app_launcher = get_option('build-app-launcher')
 if build_recommended == true or build_app_launcher == true
 	subdir('budgie-app-launcher')
