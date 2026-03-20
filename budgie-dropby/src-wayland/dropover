@@ -5,7 +5,7 @@ gi.require_version("Gdk", "3.0")
 gi.require_version('GtkLayerShell', '0.1')
 gi.require_version('Libxfce4windowing', '0.0')
 from gi.repository import Gtk, Gio, Gdk, GLib, GtkLayerShell
-from gi.repository Libxfce4windowing as Xfw
+from gi.repository import Libxfce4windowing as Xfw
 import dropby_tools as db
 import subprocess
 import os
