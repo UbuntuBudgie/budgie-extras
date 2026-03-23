@@ -185,15 +185,6 @@ namespace BrightnessController.Helpers
             GLib.debug("LightHelper.SetBrightness: brightness_percentage=%d setArg=%s", brightness_percentage, setArg);
             subprocessHelper.Run({Config.PACKAGE_BINDIR + "/budgie-brightness-helper", setArg});
 
-            // Update the active light's stored brightness so Save() persists it
-            list.foreach((light) =>
-            {
-                if (light.IsActive)
-                {
-                    light.Brightness = (double)clamped;
-                }
-            });
-
             Save();
         }
 
