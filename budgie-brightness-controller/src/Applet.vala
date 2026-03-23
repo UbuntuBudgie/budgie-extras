@@ -108,7 +108,6 @@ public class Applet : Budgie.Applet
         else
         {
             string path = Config.PACKAGE_LIBDIR + "/gnome-settings-daemon";
-            var lightHelper = new LightHelper();
             path = Config.PACKAGE_LIBEXECDIR;
             gnomeSettingsDaemonsColorPluginConfigHelper.Write({
             "[Desktop Entry]",
