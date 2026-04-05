@@ -4,7 +4,7 @@ set -e
 git submodule init
 git submodule update
 
-VERSION="2.2.2"
+VERSION="2.2.3"
 NAME="budgie-extras"
 git-archive-all.sh --format tar --prefix ${NAME}-${VERSION}/ --verbose -t HEAD ${NAME}-${VERSION}.tar
 xz -9 "${NAME}-${VERSION}.tar"
