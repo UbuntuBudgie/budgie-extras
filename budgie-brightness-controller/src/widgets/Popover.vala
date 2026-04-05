@@ -180,12 +180,6 @@ public class Popover : Budgie.Popover
 
         });
 
-        Idle.add(()=> {
-            //lightHelper.SetBrightness(CurrentLight.Name, CurrentLight.Brightness);
-            lightHelper.SetBrightness((int)((double)CurrentLight.Brightness / (double)CurrentLight.MaxBrightness * 100.0));
-            return(false);
-        });
-
         grid.attach(menuButton, 0, 0, 1, 1);
         grid.attach(lightScale, 0, 1, 1, 1);
         grid.attach(lightLabel, 0, 2, 1, 1);
