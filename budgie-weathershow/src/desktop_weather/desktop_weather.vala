@@ -245,13 +245,30 @@ public class DesktopWeather : Gtk.Window {
     }
 
     private void update_content () {
+
+        /* check: icon arrays must be non-empty before we touch them */
         Pixbuf[] currimages = {};
-        // just for fun: let's use switch for a change
-        switch(currscale) {
+        switch (currscale) {
             case(1): currimages = iconpixbufs_1; break;
             case(2): currimages = iconpixbufs_2; break;
             case(3): currimages = iconpixbufs_3; break;
         }
+        if (currimages.length == 0) {
+            /* Nothing we can safely display; log and bail.               */
+            warning("update_content: icon array is empty - skipping update\n");
+            return;
+        }
+
+        /* Resolve the fallback index once, before any early returns.
+         * If even the error icon is absent we set a hard-coded 0 so we
+         * never pass a negative or out-of-range value to set_from_pixbuf. */
+        int fallback_index = get_stringindex("erro", iconnames);
+        if (fallback_index < 0 || fallback_index >= currimages.length) {
+            /* check 2: "erro" icon not installed; use first available */
+            warning("update_content: fallback 'erro' icon not found; using index 0\n");
+            fallback_index = 0;
+        }
+
         try {
             var dis = new DataInputStream (datasrc.read ());
             string line;
@@ -259,27 +276,62 @@ public class DesktopWeather : Gtk.Window {
             while ((line = dis.read_line (null)) != null) {
                 weatherlines += line;
             }
+
             int len_content = weatherlines.length;
-            if (len_content != 0) {
-                string newicon = find_mappedid(
-                    weatherlines[0]
-                ).concat(weatherlines[1]);
-                int ic_index = get_stringindex(newicon, iconnames);
-                if (ic_index < 0 || ic_index > currimages.length - 1) {
-                    ic_index = get_stringindex("erro", iconnames);
-                };
-                weather_image.set_from_pixbuf(currimages[ic_index]);
-                int n_lines = weatherlines.length;
-                string weathersection = string.joinv("\n", weatherlines[3:n_lines]);
-                locationlabel.set_label(weatherlines[2].strip());
-                weatherlabel.set_label(weathersection);
+
+            /* check: need at least lines[0] (id) and [1] (d/n)
+             * A partial file written during a race may yield 0 or 1 lines.
+             * Also require line[2] for the city name and line[3..] for body. */
+            if (len_content < 4) {
+                warning("update_content: incomplete data (%d lines); skipping\n",
+                      len_content);
+                return;
             }
+
+            /* check: validate the icon-key components are non-empty */
+            string raw_id     = weatherlines[0].strip();
+            string raw_suffix = weatherlines[1].strip();
+
+            if (raw_id == "" || raw_suffix == "") {
+                warning("update_content: empty id ('%s') or suffix ('%s'); " +
+                      "using fallback icon\n", raw_id, raw_suffix);
+                weather_image.set_from_pixbuf(currimages[fallback_index]);
+                /* Still update the text labels if city/weather are present. */
+                locationlabel.set_label(weatherlines[2].strip());
+                int n_lines = weatherlines.length;
+                weatherlabel.set_label(
+                    string.joinv("\n", weatherlines[3:n_lines])
+                );
+                return;
+            }
+
+            /* Normal path - build the icon key and look it up. */
+            string newicon = find_mappedid(raw_id).concat(raw_suffix);
+            int ic_index = get_stringindex(newicon, iconnames);
+
+            /* check: (normal path) - unknown icon key falls back safely */
+            if (ic_index < 0 || ic_index >= currimages.length) {
+                warning("update_content: icon key '%s' not found; using fallback\n",
+                      newicon);
+                ic_index = fallback_index;
+            }
+
+            weather_image.set_from_pixbuf(currimages[ic_index]);
+
+            int n_lines = weatherlines.length;
+            string weathersection = string.joinv("\n", weatherlines[3:n_lines]);
+            locationlabel.set_label(weatherlines[2].strip());
+            weatherlabel.set_label(weathersection);
         }
         catch (Error e) {
             /*
-            * on each refresh, the file is deleted by the applet
-            * just wait for next signal.
-            */
+             * File deleted by the applet between the monitor signal and our
+             * read - this is expected on every refresh cycle.  Just wait for
+             * the next signal.  We intentionally do NOT update the UI here so
+             * the last good data remains visible rather than going blank.
+             */
+            warning("update_content: read error (file in transition): %s\n",
+                  e.message);
         }
     }
 
