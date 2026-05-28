@@ -33,6 +33,15 @@ namespace WallStreetControls {
         ToggleButton toggle_random;
         ToggleButton toggle_synclockscreen;
         ToggleButton toggle_wprunner;
+        CheckButton toggle_timeofday;
+        Entry daytime_entry;
+        Entry nighttime_entry;
+        Button browse_daytime;
+        Button browse_nighttime;
+        SpinButton daytime_start_spin;
+        SpinButton nighttime_start_spin;
+        Grid timeofday_grid;
+        Grid rotation_grid;
         string runinstruction;
 
         public ControlsWindow () {
@@ -54,25 +63,34 @@ namespace WallStreetControls {
                 runinstruction
             );
             maingrid.attach(toggle_wprunner, 1, 1, 100, 1);
-            toggle_random = new Gtk.CheckButton.with_label(
-                (_("Use random wallpaper"))
-            );
-            maingrid.attach(toggle_random, 1, 2, 1, 1);
 
             toggle_synclockscreen = new Gtk.CheckButton.with_label(
                 (_("Sync to lock-screen"))
             );
-            maingrid.attach(toggle_synclockscreen, 1, 3, 1, 1);
+
+            maingrid.attach(toggle_synclockscreen, 1, 2, 1, 1);
+
+            // rotation-specific widgets in their own grid
+            rotation_grid = new Gtk.Grid();
+            rotation_grid.set_row_spacing(6);
+            maingrid.attach(rotation_grid, 1, 3, 99, 1);
+
+            var rotation_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+            rotation_grid.attach(rotation_separator, 0, 0, 99, 1);
+
+            toggle_random = new Gtk.CheckButton.with_label(
+                (_("Use random wallpaper"))
+            );
+            rotation_grid.attach(toggle_random, 0, 1, 1, 1);
+
             var toggle_defaultwalls = new Gtk.CheckButton.with_label(
                 (_("Use default wallpapers"))
             );
-            maingrid.attach(toggle_defaultwalls, 1, 4, 1, 1);
-            // spacer
-            var givemesomespace = new Gtk.Label("");
-            maingrid.attach(givemesomespace, 1, 10, 1, 1);
+            rotation_grid.attach(toggle_defaultwalls, 0, 2, 1, 1);
+
             // custom folder section
             Box box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            maingrid.attach(box, 1, 11, 99, 1);
+            rotation_grid.attach(box, 0, 3, 99, 1);
             set_customtwalls = new Gtk.Button.with_label(
                 (_("Browse"))
             );
@@ -83,15 +101,13 @@ namespace WallStreetControls {
             dir_entry.set_editable(false);
             box.pack_start(dir_entry, false, false, 0);
             box.pack_start(new Label("\t"), false, false, 0);
-            // spacer
-            var empty = new Label("");
-            maingrid.attach(empty, 1, 12, 1, 1);
+
             // time settings section
             var time_label = new Label("\n" + (_("Change interval")) + "\n");
             time_label.set_xalign(0);
-            maingrid.attach(time_label, 1, 13, 1, 1);
+            rotation_grid.attach(time_label, 0, 4, 1, 1);
             var timegrid = new Gtk.Grid();
-            maingrid.attach(timegrid, 1, 14, 2, 3);
+            rotation_grid.attach(timegrid, 0, 5, 2, 3);
             var hours_label = new Label((_("Hours")) + "\t");
             hours_label.set_xalign(0);
             timegrid.attach(hours_label, 0, 0, 1, 1);
@@ -107,6 +123,83 @@ namespace WallStreetControls {
             timegrid.attach(seconds_label, 0, 2, 1, 1);
             seconds_spin = new Gtk.SpinButton.with_range(0, 59, 1);
             timegrid.attach(seconds_spin, 1, 2, 1, 1);
+
+            // time of day section
+            var timeofday_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+            maingrid.attach(timeofday_separator, 1, 4, 99, 1);
+
+            toggle_timeofday = new Gtk.CheckButton.with_label(
+                (_("Use time of day wallpapers"))
+            );
+            maingrid.attach(toggle_timeofday, 1, 5, 99, 1);
+
+            timeofday_grid = new Gtk.Grid();
+            timeofday_grid.set_row_spacing(6);
+            timeofday_grid.set_column_spacing(10);
+            maingrid.attach(timeofday_grid, 1, 6, 99, 1);
+
+            var daytime_start_label = new Label((_("Daytime starts at hour")) + "\t");
+            daytime_start_label.set_xalign(0);
+            timeofday_grid.attach(daytime_start_label, 0, 0, 1, 1);
+            daytime_start_spin = new Gtk.SpinButton.with_range(0, 23, 1);
+            timeofday_grid.attach(daytime_start_spin, 1, 0, 1, 1);
+
+            var nighttime_start_label = new Label((_("Nighttime starts at hour")) + "\t");
+            nighttime_start_label.set_xalign(0);
+            timeofday_grid.attach(nighttime_start_label, 0, 1, 1, 1);
+            nighttime_start_spin = new Gtk.SpinButton.with_range(0, 23, 1);
+            timeofday_grid.attach(nighttime_start_spin, 1, 1, 1, 1);
+
+            var daytime_label = new Label((_("Daytime wallpaper")) + "\t");
+            daytime_label.set_xalign(0);
+            timeofday_grid.attach(daytime_label, 0, 2, 1, 1);
+            Box daytime_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            timeofday_grid.attach(daytime_box, 1, 2, 1, 1);
+            browse_daytime = new Gtk.Button.with_label((_("Browse")));
+            daytime_box.pack_start(browse_daytime, false, false, 0);
+            daytime_entry = new Gtk.Entry();
+            daytime_entry.set_width_chars(35);
+            daytime_entry.set_editable(false);
+            daytime_box.pack_start(daytime_entry, false, false, 10);
+
+            var nighttime_label = new Label((_("Nighttime wallpaper")) + "\t");
+            nighttime_label.set_xalign(0);
+            timeofday_grid.attach(nighttime_label, 0, 3, 1, 1);
+            Box nighttime_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            timeofday_grid.attach(nighttime_box, 1, 3, 1, 1);
+            browse_nighttime = new Gtk.Button.with_label((_("Browse")));
+            nighttime_box.pack_start(browse_nighttime, false, false, 0);
+            nighttime_entry = new Gtk.Entry();
+            nighttime_entry.set_width_chars(35);
+            nighttime_entry.set_editable(false);
+            nighttime_box.pack_start(nighttime_entry, false, false, 10);
+
+            // fetch initial values
+            bool timeofday_active = wallstreet_settings.get_boolean("timeofday-enabled");
+            toggle_timeofday.set_active(timeofday_active);
+            daytime_start_spin.set_value(wallstreet_settings.get_int("daytime-start"));
+            nighttime_start_spin.set_value(wallstreet_settings.get_int("nighttime-start"));
+            string dwall = wallstreet_settings.get_string("daytime-wallpaper");
+            if (dwall != "") daytime_entry.set_text(dwall);
+            string nwall = wallstreet_settings.get_string("nighttime-wallpaper");
+            if (nwall != "") nighttime_entry.set_text(nwall);
+            toggle_timeofday_widgets(timeofday_active);
+
+            // connect signals
+            toggle_timeofday.toggled.connect(manage_boolean);
+            browse_daytime.clicked.connect(get_daytime_wallpaper);
+            browse_nighttime.clicked.connect(get_nighttime_wallpaper);
+            daytime_start_spin.value_changed.connect(() => {
+                wallstreet_settings.set_int(
+                    "daytime-start", (int)daytime_start_spin.get_value()
+                );
+            });
+            nighttime_start_spin.value_changed.connect(() => {
+                wallstreet_settings.set_int(
+                    "nighttime-start", (int)nighttime_start_spin.get_value()
+                );
+            });
+
             var ok_button = new Button.with_label((_("Close")));
             maingrid.attach(ok_button, 99, 99, 1, 1);
             ok_button.clicked.connect(Gtk.main_quit);
@@ -173,6 +266,11 @@ namespace WallStreetControls {
                     "lockscreensync", button.get_active()
                 );
             }
+            else if (button == toggle_timeofday) {
+                bool active = button.get_active();
+                wallstreet_settings.set_boolean("timeofday-enabled", active);
+                toggle_timeofday_widgets(active);
+            }
             else if (button == toggle_wprunner) {
                 bool newsetting = button.get_active();
                 wallstreet_settings.set_boolean(
@@ -185,6 +283,11 @@ namespace WallStreetControls {
                     toggle_wprunner.set_label(runinstruction);
                 }
             }
+        }
+
+        private void toggle_timeofday_widgets (bool active) {
+            timeofday_grid.set_sensitive(active);
+            rotation_grid.set_sensitive(!active);
         }
 
         private void check_firstrunwarning() {
@@ -227,6 +330,43 @@ namespace WallStreetControls {
                 return false;
             }
             return false;
+        }
+
+        private void get_daytime_wallpaper (Button button) {
+            string? path = pick_image_file();
+            if (path != null) {
+                wallstreet_settings.set_string("daytime-wallpaper", path);
+               daytime_entry.set_text(path);
+            }
+        }
+
+        private void get_nighttime_wallpaper (Button button) {
+            string? path = pick_image_file();
+            if (path != null) {
+                wallstreet_settings.set_string("nighttime-wallpaper", path);
+                nighttime_entry.set_text(path);
+            }
+        }
+
+        private string? pick_image_file () {
+            string? result = null;
+            var chooser = new Gtk.FileChooserDialog(
+                (_("Select a wallpaper")),
+                null, Gtk.FileChooserAction.OPEN,
+                (_("Cancel")), Gtk.ResponseType.CANCEL,
+                (_("Use")), Gtk.ResponseType.ACCEPT
+            );
+            var filter = new Gtk.FileFilter();
+            filter.set_filter_name((_("Images")));
+            filter.add_mime_type("image/jpeg");
+            filter.add_mime_type("image/png");
+            filter.add_mime_type("image/svg+xml");
+            chooser.add_filter(filter);
+            if (chooser.run() == Gtk.ResponseType.ACCEPT) {
+                result = chooser.get_file().get_path();
+            }
+            chooser.close();
+            return result;
         }
 
         private void manage_direntry (ToggleButton button) {
