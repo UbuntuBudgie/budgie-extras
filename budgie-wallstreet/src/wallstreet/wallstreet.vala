@@ -24,6 +24,7 @@ namespace WallStreet {
     Settings settings;
     Settings wallpapersettings;
     Settings locksettings;
+    DBusConnection? system_bus;
     int n_images;
     string currwall;
     bool lockscreen_sync;
@@ -34,7 +35,12 @@ namespace WallStreet {
     int curr_seconds;
     int switchinterval;
     bool randomwall;
-
+    bool timeofday_enabled;
+    string daytime_wallpaper;
+    string nighttime_wallpaper;
+    int daytime_start;
+    int nighttime_start;
+    bool last_was_daytime;
 
     public static int main (string[] args) {
 
@@ -60,6 +66,12 @@ namespace WallStreet {
         wallpaperfolder = settings.get_string("wallpaperfolder");
         randomwall = settings.get_boolean("random");
         lockscreen_sync = settings.get_boolean("lockscreensync");
+        timeofday_enabled = settings.get_boolean("timeofday-enabled");
+        daytime_wallpaper = settings.get_string("daytime-wallpaper");
+        nighttime_wallpaper = settings.get_string("nighttime-wallpaper");
+        daytime_start = settings.get_int("daytime-start");
+        nighttime_start = settings.get_int("nighttime-start");
+        last_was_daytime = is_daytime();
 
         // loop start at zero
         curr_seconds = 0;
@@ -74,10 +86,20 @@ namespace WallStreet {
         walldir_monitor = getwallmonitor(wallpaperfolder);
         walldir_monitor.changed.connect(rescan_currdir);
 
-        GLib.Timeout.add_seconds(1, ()=> {
+        // apply time-of-day wallpaper after resume from suspend or on start
+        if (timeofday_enabled) {
+            apply_timeofday();
+            setup_sleep_monitor();
+        }
 
-            // after switchinterval, change wallpaper
-            if (curr_seconds >= switchinterval) {
+        GLib.Timeout.add_seconds(1, ()=> {
+            // check for time-of-day wallpaper transition
+            if (timeofday_enabled) {
+                check_timeofday();
+            }
+
+            // after switchinterval, change wallpaper (skip if timeofday is active)
+            if (!timeofday_enabled && curr_seconds >= switchinterval) {
                 if (randomwall) {
                     int random_int = Random.int_range(0, n_images);
                     currwall = getlist[random_int];
@@ -102,6 +124,25 @@ namespace WallStreet {
 
     private void update_settings (string path) {
         switch (path) {
+            case "timeofday-enabled":
+                timeofday_enabled = settings.get_boolean("timeofday-enabled");
+                if (timeofday_enabled) {
+                    apply_timeofday();
+                    setup_sleep_monitor();
+                }
+                break;
+            case "daytime-wallpaper":
+                daytime_wallpaper = settings.get_string("daytime-wallpaper");
+                break;
+            case "nighttime-wallpaper":
+                nighttime_wallpaper = settings.get_string("nighttime-wallpaper");
+                break;
+            case "daytime-start":
+                daytime_start = settings.get_int("daytime-start");
+                break;
+            case "nighttime-start":
+                nighttime_start = settings.get_int("nighttime-start");
+                break;
             case "wallpaperfolder":
                 wallpaperfolder = settings.get_string("wallpaperfolder");
                 update_wallpaperlist();
@@ -115,6 +156,63 @@ namespace WallStreet {
             case "lockscreensync":
                 lockscreen_sync = settings.get_boolean("lockscreensync");
                 break;
+        }
+    }
+
+    private void apply_timeofday () {
+        bool currently_daytime = is_daytime();
+        last_was_daytime = currently_daytime;
+        string target = currently_daytime ? daytime_wallpaper : nighttime_wallpaper;
+        if (target != "") {
+            set_wallpaper(target);
+            curr_seconds = 0;
+        }
+    }
+
+    private bool is_daytime () {
+        int hour = new DateTime.now_local().get_hour();
+        return hour >= daytime_start && hour < nighttime_start;
+    }
+
+    private void check_timeofday () {
+        bool currently_daytime = is_daytime();
+        if (currently_daytime == last_was_daytime) {
+            return;
+        }
+        apply_timeofday();
+    }
+
+    private void setup_sleep_monitor () {
+        try {
+            if (system_bus != null) {
+                return;
+            }
+            system_bus = Bus.get_sync(BusType.SYSTEM);
+            system_bus.signal_subscribe(
+                "org.freedesktop.login1",
+                "org.freedesktop.login1.Manager",
+                "PrepareForSleep",
+                "/org/freedesktop/login1",
+                null,
+                DBusSignalFlags.NONE,
+                on_prepare_for_sleep
+            );
+        } catch (Error e) {
+            warning("Could not subscribe to sleep signal: %s\n", e.message);
+        }
+    }
+
+    private void on_prepare_for_sleep (DBusConnection conn, string? sender,
+                                       string path, string iface, string signal,
+                                       Variant params) {
+        bool going_to_sleep;
+        params.get("(b)", out going_to_sleep);
+        if (!going_to_sleep && timeofday_enabled) {
+            // waking up — reapply after a short delay to let the desktop settle
+            GLib.Timeout.add(2000, () => {
+                apply_timeofday();
+                return false;
+            });
         }
     }
 
@@ -182,7 +280,7 @@ namespace WallStreet {
             }
         } catch (FileError err) {
             // on error (dir not found), reset wallpaperfolder
-            stderr.printf(err.message);
+            warning(err.message);
             settings.reset("wallpaperfolder");
             images = new GenericArray<string>();
         }

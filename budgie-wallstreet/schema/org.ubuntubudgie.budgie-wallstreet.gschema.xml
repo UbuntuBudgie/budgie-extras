@@ -33,6 +33,30 @@
             <description>In case there are no files in the used folder, a fallback image will be used</description>
             <default>"/usr/share/backgrounds/budgie/ubuntu_budgie_wallpaper1.jpg"</default>
         </key>
-
+        <key type="b" name="timeofday-enabled">
+            <summary>Enable time of day wallpapers</summary>
+            <description>Whether to use separate day and night wallpapers</description>
+            <default>false</default>
+        </key>
+        <key type="s" name="daytime-wallpaper">
+            <summary>Daytime wallpaper</summary>
+            <description>Wallpaper to use during daytime hours</description>
+            <default>""</default>
+        </key>
+        <key type="s" name="nighttime-wallpaper">
+            <summary>Nighttime wallpaper</summary>
+            <description>Wallpaper to use during nighttime hours</description>
+            <default>""</default>
+        </key>
+        <key type="i" name="daytime-start">
+            <summary>Daytime start hour</summary>
+            <description>Hour (0-23) when daytime wallpaper begins</description>
+            <default>7</default>
+        </key>
+        <key type="i" name="nighttime-start">
+            <summary>Nighttime start hour</summary>
+            <description>Hour (0-23) when nighttime wallpaper begins</description>
+            <default>20</default>
+        </key>
     </schema>
 </schemalist>
