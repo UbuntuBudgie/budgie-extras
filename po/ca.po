@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 18:38+0000\n"
+"POT-Creation-Date: 2026-05-28 19:09+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2026\n"
 "Language-Team: Catalan (https://app.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -333,7 +333,8 @@ msgstr "Fet"
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:356
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:437
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -1282,57 +1283,53 @@ msgid "Use 24 hour time"
 msgstr "Usa un rellotge de 24 hores."
 
 #: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:47
-msgid "Power Options"
-msgstr "Opcions d'energia"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:117
 msgid "Shut Down"
 msgstr "Atura't"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:124
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:50
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:107
 msgid "Suspend"
 msgstr "Atura temporalment"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:131
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:53
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:117
 msgid "Restart"
 msgstr "Reinicia"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:138
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:56
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:128
 msgid "Lock"
 msgstr "Bloqueja"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:145
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:59
 msgid "Log Out"
 msgstr "Surt"
 
-#. Capture the desktop_id now, not in the callback
-#. Create menu manually to avoid duplicate "Remove from Favorites"
-#. Add "Remove from Favorites" first
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:171
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:80
+msgid "Power Options"
+msgstr "Opcions d'energia"
+
+#. "context-menu" is the standard GTK style class for floating menus;
+#. it gives the box a themed background so it doesn't bleed into the
+#. content behind the overlay.
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:187
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Remove from Favorites"
 msgstr "Suprimeix dels preferits"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:203
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:86
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:209
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:88
 #, c-format
 msgid "Open with %s Graphics"
 msgstr "Obre amb els gràfics %s"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:231
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:117
-msgid "Remove from _Dock"
-msgstr "Suprimeix-la de l'acobla_dor"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Remove from Dock"
+msgstr "Suprimeix-la de l'acoblador"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:233
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:119
-msgid "Add to _Dock"
-msgstr "Afegeix-la a l'acobla_dor"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Add to Dock"
+msgstr "Afegeix-la a l'acoblador"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:97
 msgid "Shutdown"
@@ -1389,7 +1386,15 @@ msgstr "Marcadors"
 msgid "Other"
 msgstr "Altres"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Remove from _Dock"
+msgstr "Suprimeix-la de l'acobla_dor"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Add to _Dock"
+msgstr "Afegeix-la a l'acobla_dor"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Add to Favorites"
 msgstr "Afegeix als preferits"
 
@@ -1402,19 +1407,19 @@ msgstr "Proveu de canviar els termes de la cerca."
 msgid "No Results for “%s”"
 msgstr "Cap resultat per a “%s”"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:67
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
 msgid "View as Grid"
 msgstr "Visualitza com a graella"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:75
 msgid "View by Category"
 msgstr "Visualitza per categories"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:84
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:88
 msgid "Search Apps"
 msgstr "Cerca aplicacions"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:88
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:92
 msgid "Clear all"
 msgstr "Neteja-ho tot"
 
@@ -1648,13 +1653,14 @@ msgid "Choose directory"
 msgstr "Trieu un directori"
 
 #: budgie-quicknote/QuickNoteApplet.vala:203
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:357
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:437
 msgid "Use"
 msgstr "Ús"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:961
 msgid "Set text color"
 msgstr "Estableix el color del text"
 
@@ -1704,106 +1710,141 @@ msgstr "dissabte"
 msgid "Sunday"
 msgstr "diumenge"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
 msgid "General"
 msgstr "General"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:854
 msgid "Desktop"
 msgstr "Escriptori"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
 msgid "City"
 msgstr "Ciutat"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:889
 msgid "Show on desktop"
 msgstr "Mostra a l'escriptori"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:896
 msgid "Show dynamic panel icon"
 msgstr "Mostra la icona de plafó dinàmic"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:903
 msgid "Show forecast in popover"
 msgstr "Mostra la previsió meteorològica en una finestreta emergent"
 
+#. wind unit combo
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:917
+msgid "Wind speed unit"
+msgstr "Unitat de velocitat del vent"
+
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:935
 msgid "Transparency"
 msgstr "Transparència"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:968
 msgid "Set custom position (px)"
 msgstr "Estableix-ne una posició personalitzada (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:990
 msgid "Custom location name"
 msgstr "Nom de la ubicació personalitzada"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1143
 msgid "Please enter at least 3 characters"
 msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
 #. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:51
 #: budgie-wallstreet/data/org.ubuntubudgie.wallstreetcontrol.desktop.in.h:1
 msgid "WallStreet Control"
 msgstr "Control de WallStreet"
 
 #. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:61
 msgid "Run WallStreet"
 msgstr "Executa WallStreet"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr "Usa un fons de pantalla aleatori."
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:68
 msgid "Sync to lock-screen"
 msgstr "Sincronitza al bloqueig de pantalla"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:82
+msgid "Use random wallpaper"
+msgstr "Usa un fons de pantalla aleatori."
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:87
 msgid "Use default wallpapers"
 msgstr "Usa els fons per defecte"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:158
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:170
 msgid "Browse"
 msgstr "Navegueu"
 
 #. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:106
 msgid "Change interval"
 msgstr "Canvia l'interval"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:111
 msgid "Hours"
 msgstr "Hores"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:116
 msgid "Minutes"
 msgstr "Minuts"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:121
 msgid "Seconds"
 msgstr "Segons"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:132
+msgid "Use time of day wallpapers"
+msgstr "Usa un fons de pantalla de l'hora del dia"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:141
+msgid "Daytime starts at hour"
+msgstr "Inici de l'horari diürn"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:147
+msgid "Nighttime starts at hour"
+msgstr "Inici de l'horari nocturn"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:153
+msgid "Daytime wallpaper"
+msgstr "Fons de pantalla diürn"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:165
+msgid "Nighttime wallpaper"
+msgstr "Fons de pantalla nocturn"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:203
 msgid "Close"
 msgstr "Tanca"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:303
 msgid "Please log out/in to initialize"
 msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
 
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:354
+msgid "Select a wallpaper"
+msgstr "Seleccioneu un fons de pantalla"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:360
+msgid "Images"
+msgstr "Imatges"
+
 #. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:435
 msgid "Select a directory"
 msgstr "Seleccioneu un diectori"
 
