@@ -1,10 +1,13 @@
 #! /usr/bin/python3
 import os
 import gi
-gi.require_version('Budgie', '1.0')
-gi.require_version('Wnck', '3.0')
+try:
+    gi.require_version('Budgie', '1.0')
+except:
+    gi.require_version('Budgie', '3.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Budgie, GObject, Gtk, Wnck, Gio, GLib
+gi.require_version('Libxfce4windowing', '0.0')
+from gi.repository import Budgie, GObject, Gtk, Gio, GLib
 import time
 import ast
 
@@ -71,11 +74,19 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.provider = Gtk.CssProvider.new()
         self.provider.load_from_data(timer_css.encode())
         # setup general stuff
-        self.scr = Wnck.Screen.get_default()
-        # self.scr.force_update()
-        self.scr.connect("active-workspace-changed", self.act_on_change)
+        # Initialize libxfce4windowing screen
+        from gi.repository import Libxfce4windowing as Xfw
+        self.scr = Xfw.Screen.get_default()
+        
+        # Wait for screen to be ready
+        #if not self.scr.props.is_ready:
+        #    self.scr.connect("notify::is-ready", self._on_screen_ready)
+        #else:
+        self._setup_workspace_tracking()
+
         self.logfile = os.path.join(os.environ["HOME"], ".workspace_log")
         self.load_data()
+
         currws = self.scr.get_active_workspace()
         self.starttime = time.time()
         self.last_logged = self.starttime
@@ -95,6 +106,15 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.box.show_all()
         self.show_all()
         self.box.connect("button-press-event", self.on_press)
+
+    def _on_screen_ready(self, screen, pspec):
+        """Called when libxfce4windowing screen is ready"""
+        if screen.props.is_ready:
+            self._setup_workspace_tracking()
+    
+    def _setup_workspace_tracking(self):
+        """Setup workspace change monitoring"""
+        self.scr.connect("active-workspace-changed", self.act_on_change)
 
     def watchout(self):
         path = "com.solus-project.budgie-panel"
@@ -140,7 +160,14 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         return "%02d:%02d:%02d" % (h, m, s)
 
     def act_on_change(self, screen, workspace):
-        self.workspaces = screen.get_workspaces()
+        """Handle workspace changes - compatible with both Wnck and Xfw"""
+        # Get workspaces list
+        if hasattr(screen, 'get_workspaces'):
+            # Xfw returns a list directly
+            self.workspaces = screen.get_workspaces()
+        else:
+            self.workspaces = []
+    
         key = self.workspaces.index(workspace)
         currtime = time.time()
         span = currtime - self.starttime
@@ -178,6 +205,10 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         self.maingrid.destroy()
         self.maingrid = Gtk.Grid()
         self.popover.add(self.maingrid)
+        
+        # Ensure workspaces list is current
+        self.workspaces = self.scr.get_workspaces()
+    
         # update to latest
         currws = self.scr.get_active_workspace()
         self.act_on_change(self.scr, currws)
@@ -197,9 +228,13 @@ class BudgieWorkspaceStopwatchApplet(Budgie.Applet):
         time_header.set_xalign(0)
         for label in [workspace_header, time_header]:
             self.set_widgetstyle(label, "label")
+        
+        # Get current workspace index
+        currws_index = self.workspaces.index(currws) if currws in self.workspaces else -1
+  
         n = 2
         for k in sorted(self.workspace_data.keys()):
-            if n - 2 == self.workspaces.index(currws):
+            if n - 2 == currws_index:
                 bullet = Gtk.Label()
                 bullet.set_text("⮕ ")
                 self.maingrid.attach(bullet, 1, n, 1, 1)

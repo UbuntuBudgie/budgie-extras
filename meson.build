@@ -219,7 +219,7 @@ if for_wayland == false and (build_recommended == true or build_extrasdaemon == 
 endif
 
 build_workspacestopwatch = get_option('build-workspacestopwatch')
-if for_wayland == false and (build_recommended == true or build_workspacestopwatch == true)
+if build_recommended == true or build_workspacestopwatch == true
 	subdir('budgie-workspace-stopwatch')
 endif
 
