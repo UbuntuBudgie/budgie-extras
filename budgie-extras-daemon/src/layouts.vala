@@ -16,7 +16,9 @@
 
 namespace Layouts {
     const string panel_schema="com.solus-project.budgie-panel";
-    const string crystal_dock_global_path="/usr/share/applications/crystal-dock.desktop";
+    const string crystal_dock_autostart_source="/etc/xdg/autostart/crystal-dock-autostart.desktop";
+    const string crystal_dock_legacy_autostart_file =
+        "/.config/autostart/crystal-dock.desktop"; // wrong filename used by old logic
     const string appmenu_budgie_schema="org.ubuntubudgie.plugins.budgie-appmenu";
     const string budgiewm_schema="com.solus-project.budgie-wm";
     const string nemo_window_schema="org.nemo.window-state";
@@ -39,23 +41,54 @@ namespace Layouts {
 
         }
 
-        private void stop_crystal_dock () {
-            run_cmd("killall crystal-dock");
+        private void ensure_autostart_folder() throws Error {
+            string autostart_folder = Environment.get_home_dir() + "/.config/autostart/";
+            if (! FileUtils.test (autostart_folder, FileTest.IS_DIR)) {
+                File folder = File.new_for_path(autostart_folder);
+                folder.make_directory_with_parents();
+            }
+        }
 
-            string autostart_file = Environment.get_home_dir() +
-                "/.config/autostart/crystal-dock.desktop";
+        private void remove_legacy_crystal_dock_autostart() {
+            string legacy_file = Environment.get_home_dir() + crystal_dock_legacy_autostart_file;
 
-            if (! FileUtils.test(autostart_file, FileTest.EXISTS)) {
-                debug("does not exist %s", autostart_file);
+            if (! FileUtils.test(legacy_file, FileTest.EXISTS)) {
                 return;
             }
 
             try {
-                File file = File.new_for_path(autostart_file);
+                File file = File.new_for_path(legacy_file);
                 file.delete();
+                debug("removed legacy autostart file %s", legacy_file);
             }
             catch (Error e) {
-                warning("Cannot delete: %s", e.message);
+                warning("Cannot delete legacy autostart file: %s", e.message);
+            }
+        }
+
+        private void stop_crystal_dock () {
+            run_cmd("killall crystal-dock");
+            remove_legacy_crystal_dock_autostart();
+
+            if (! FileUtils.test(crystal_dock_autostart_source, FileTest.EXISTS)) {
+                debug("does not exist %s", crystal_dock_autostart_source);
+                return;
+            }
+
+            string autostart_file = Environment.get_home_dir() +
+                "/.config/autostart/crystal-dock-autostart.desktop";
+
+            try {
+                ensure_autostart_folder();
+
+                var keyfile = new GLib.KeyFile();
+                keyfile.load_from_file(crystal_dock_autostart_source, GLib.KeyFileFlags.KEEP_TRANSLATIONS);
+                keyfile.set_boolean("Desktop Entry", "Hidden", true);
+                keyfile.set_boolean("Desktop Entry", "X-GNOME-Autostart-enabled", false);
+                keyfile.save_to_file(autostart_file);
+            }
+            catch (Error e) {
+                warning("Cannot write autostart override: %s", e.message);
             }
         }
 
@@ -75,24 +108,22 @@ namespace Layouts {
         }
 
         private void start_crystal_dock(bool centered=false) {
-            stop_crystal_dock();
+            run_cmd("killall crystal-dock");
+            remove_legacy_crystal_dock_autostart();
 
-            if (! FileUtils.test(crystal_dock_global_path, FileTest.EXISTS)) {
-                debug("does not exist %s", crystal_dock_global_path);
+            if (! FileUtils.test(crystal_dock_autostart_source, FileTest.EXISTS)) {
+                debug("does not exist %s", crystal_dock_autostart_source);
                 return;
             }
 
             try {
-                string autostart_folder = Environment.get_home_dir() +
-                    "/.config/autostart/";
+                ensure_autostart_folder();
 
-                if (! FileUtils.test (autostart_folder, FileTest.IS_DIR)) {
-                    File folder = File.new_for_path(autostart_folder);
-                    folder.make_directory();
-                }
+                string autostart_file = Environment.get_home_dir() +
+                    "/.config/autostart/crystal-dock-autostart.desktop";
 
-                File file = File.new_for_path(crystal_dock_global_path);
-                File dest = File.new_for_path(autostart_folder + "crystal-dock.desktop");
+                File file = File.new_for_path(crystal_dock_autostart_source);
+                File dest = File.new_for_path(autostart_file);
                 file.copy(dest, FileCopyFlags.OVERWRITE);
             }
             catch (Error e) {
