@@ -58,5 +58,30 @@
             <description>Hour (0-23) when nighttime wallpaper begins</description>
             <default>20</default>
         </key>
+        <key type="b" name="potd-wikipedia-enabled">
+            <summary>Fetch Wikipedia picture of the day</summary>
+            <description>Whether to download the daily featured image from Wikipedia</description>
+            <default>false</default>
+        </key>
+        <key type="b" name="potd-bing-enabled">
+            <summary>Fetch Bing picture of the day</summary>
+            <description>Whether to download the daily Bing homepage image</description>
+            <default>false</default>
+        </key>
+        <key type="s" name="potd-folder-name">
+            <summary>Picture of the day folder name</summary>
+            <description>Name of the subfolder, created inside the user's Pictures folder, that downloaded pictures of the day are stored in</description>
+            <default>"Picture of the Day"</default>
+        </key>
+        <key type="s" name="potd-wikipedia-last-fetch">
+            <summary>Last Wikipedia picture of the day fetch date</summary>
+            <description>Internal bookkeeping: the date (YYYY-MM-DD) the Wikipedia picture of the day was last downloaded, used to avoid re-fetching more than once a day</description>
+            <default>""</default>
+        </key>
+        <key type="s" name="potd-bing-last-fetch">
+            <summary>Last Bing picture of the day fetch date</summary>
+            <description>Internal bookkeeping: the date (YYYY-MM-DD) the Bing picture of the day was last downloaded, used to avoid re-fetching more than once a day</description>
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>

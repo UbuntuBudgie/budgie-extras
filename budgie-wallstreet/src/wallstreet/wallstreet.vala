@@ -1,3 +1,5 @@
+using Json;
+
 /*
 Budgie WallStreet
 Author: Jacob Vlijm
@@ -41,6 +43,12 @@ namespace WallStreet {
     int daytime_start;
     int nighttime_start;
     bool last_was_daytime;
+    bool potd_wikipedia_enabled;
+    bool potd_bing_enabled;
+    string potd_folder_name;
+    string potd_wikipedia_last_fetch;
+    string potd_bing_last_fetch;
+    const string POTD_USER_AGENT = "budgie-wallstreet/1.0 (https://ubuntubudgie.org)";
 
     public static int main (string[] args) {
 
@@ -72,6 +80,11 @@ namespace WallStreet {
         daytime_start = settings.get_int("daytime-start");
         nighttime_start = settings.get_int("nighttime-start");
         last_was_daytime = is_daytime();
+        potd_wikipedia_enabled = settings.get_boolean("potd-wikipedia-enabled");
+        potd_bing_enabled = settings.get_boolean("potd-bing-enabled");
+        potd_folder_name = settings.get_string("potd-folder-name");
+        potd_wikipedia_last_fetch = settings.get_string("potd-wikipedia-last-fetch");
+        potd_bing_last_fetch = settings.get_string("potd-bing-last-fetch");
 
         // loop start at zero
         curr_seconds = 0;
@@ -91,6 +104,16 @@ namespace WallStreet {
             apply_timeofday();
             setup_sleep_monitor();
         }
+
+        // fetch picture(s) of the day now if due, then recheck hourly
+        // N.B. actual network fetch only happens on a
+        // date change, so hourly is just to catch the day rolling over
+        // while the daemon keeps running)
+        check_potd();
+        GLib.Timeout.add_seconds(3600, ()=> {
+            check_potd();
+            return true;
+        });
 
         GLib.Timeout.add_seconds(1, ()=> {
             // check for time-of-day wallpaper transition
@@ -155,6 +178,23 @@ namespace WallStreet {
                 break;
             case "lockscreensync":
                 lockscreen_sync = settings.get_boolean("lockscreensync");
+                break;
+            case "potd-wikipedia-enabled":
+                potd_wikipedia_enabled = settings.get_boolean("potd-wikipedia-enabled");
+                check_potd();
+                if (!timeofday_enabled) {
+                    rescan_currdir();
+                }
+                break;
+            case "potd-bing-enabled":
+                potd_bing_enabled = settings.get_boolean("potd-bing-enabled");
+                check_potd();
+                if (!timeofday_enabled) {
+                    rescan_currdir();
+                }
+                break;
+            case "potd-folder-name":
+                potd_folder_name = settings.get_string("potd-folder-name");
                 break;
         }
     }
@@ -268,6 +308,22 @@ namespace WallStreet {
         return index;
     }
 
+    private GenericArray<string> list_images_in_dir (string directory) {
+        // plain directory lister, no fallback/error-reset side effects -
+        // used to fold the picture-of-the-day folder into the rotation
+        var images = new GenericArray<string>();
+        try {
+            var dr = Dir.open(directory);
+            string ? filename = null;
+            while ((filename = dr.read_name()) != null) {
+                images.add(GLib.Path.build_filename(directory, filename));
+            }
+        } catch (FileError err) {
+            // folder not there (yet) - nothing to add
+        }
+        return images;
+    }
+
     private GenericArray<string> walls(string directory) {
         // get wallpapers from dir
         var images=new GenericArray<string>();
@@ -275,7 +331,7 @@ namespace WallStreet {
             var dr = Dir.open(directory);
             string ? filename = null;
             while ((filename = dr.read_name()) != null) {
-              string addpic = Path.build_filename(directory, filename);
+              string addpic = GLib.Path.build_filename(directory, filename);
               images.add(addpic);
             }
         } catch (FileError err) {
@@ -283,6 +339,16 @@ namespace WallStreet {
             warning(err.message);
             settings.reset("wallpaperfolder");
             images = new GenericArray<string>();
+        }
+        // fold picture-of-the-day images into rotation when rotation mode
+        // (not time-of-day) is active and at least one source is enabled
+        if (!timeofday_enabled && (potd_wikipedia_enabled || potd_bing_enabled)) {
+            string? potddir = get_potd_directory();
+            if (potddir != null) {
+                foreach (string img in list_images_in_dir(potddir)) {
+                    images.add(img);
+                }
+            }
         }
         n_images = images.length;
         if (n_images == 0) {
@@ -292,5 +358,211 @@ namespace WallStreet {
             images.sort(strcmp);
         }
         return images;
+    }
+
+    private string get_today_string () {
+        return new DateTime.now_local().format("%Y-%m-%d");
+    }
+
+    private void check_potd () {
+        // each source is fetched independently, gated on its own
+        // last-fetch date, so enabling one source doesn't get skipped
+        // just because the other already ran today
+        if (!potd_wikipedia_enabled && !potd_bing_enabled) {
+            return;
+        }
+        string? potddir = get_potd_directory();
+        if (potddir == null) {
+            return;
+        }
+        string today = get_today_string();
+        string? new_wikipedia_path = null;
+        string? new_bing_path = null;
+        if (potd_wikipedia_enabled && potd_wikipedia_last_fetch != today) {
+            new_wikipedia_path = fetch_wikipedia_potd(potddir, today);
+            if (new_wikipedia_path != null) {
+                potd_wikipedia_last_fetch = today;
+                settings.set_string("potd-wikipedia-last-fetch", today);
+            }
+        }
+        if (potd_bing_enabled && potd_bing_last_fetch != today) {
+            new_bing_path = fetch_bing_potd(potddir, today);
+            if (new_bing_path != null) {
+                potd_bing_last_fetch = today;
+                settings.set_string("potd-bing-last-fetch", today);
+            }
+        }
+        if (new_wikipedia_path == null && new_bing_path == null) {
+            return;
+        }
+        if (!timeofday_enabled) {
+            // rotation mode is active - fold the new picture(s) into
+            // the rotation pool rather than switching immediately
+            rescan_currdir();
+        }
+        else {
+            // not rotating - show the freshest picture right away
+            // (set_wallpaper() already syncs the lock screen too, if
+            // that option is enabled)
+            string newest = new_bing_path != null ? new_bing_path : new_wikipedia_path;
+            set_wallpaper(newest);
+            curr_seconds = 0;
+        }
+    }
+
+    private string? get_potd_directory () {
+        // resolves to the user's *actual* Pictures folder
+        string? picturesdir = Environment.get_user_special_dir(
+            UserDirectory.PICTURES
+        );
+        if (picturesdir == null) {
+            warning("Could not determine the user's Pictures folder\n");
+            return null;
+        }
+        string potddir = GLib.Path.build_filename(picturesdir, potd_folder_name);
+        File dir = File.new_for_path(potddir);
+        try {
+            if (!dir.query_exists()) {
+                dir.make_directory_with_parents();
+            }
+        } catch (Error e) {
+            warning(
+                "Could not create picture of the day folder: %s\n", e.message
+            );
+            return null;
+        }
+        return potddir;
+    }
+
+    private string? fetch_wikipedia_potd (string potddir, string today) {
+        string url = "https://en.wikipedia.org/api/rest_v1/feed/featured/" +
+            new DateTime.now_local().format("%Y/%m/%d");
+        string? body = http_get_text(url);
+        if (body == null) {
+            return null;
+        }
+        try {
+            var parser = new Json.Parser();
+            parser.load_from_data(body);
+            Json.Object root = parser.get_root().get_object();
+            if (!root.has_member("image")) {
+                // no featured image today for this wiki/date
+                return null;
+            }
+            Json.Object potd_image = root.get_object_member("image");
+            if (!potd_image.has_member("image")) {
+                return null;
+            }
+            string imgurl = potd_image.get_object_member(
+                "image"
+            ).get_string_member("source");
+            string destpath = GLib.Path.build_filename(
+                potddir, "wikipedia-" + today + get_extension_from_url(imgurl)
+            );
+            return download_to_file(imgurl, destpath) ? destpath : null;
+        } catch (Error e) {
+            warning(
+                "Could not parse Wikipedia picture of the day: %s\n", e.message
+            );
+            return null;
+        }
+    }
+
+    private string? fetch_bing_potd (string potddir, string today) {
+        string url =
+            "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US";
+        string? body = http_get_text(url);
+        if (body == null) {
+            return null;
+        }
+        try {
+            var parser = new Json.Parser();
+            parser.load_from_data(body);
+            Json.Object root = parser.get_root().get_object();
+            Json.Array images = root.get_array_member("images");
+            if (images.get_length() == 0) {
+                return null;
+            }
+            Json.Object first = images.get_element(0).get_object();
+            string imgurl = "https://www.bing.com" +
+                first.get_string_member("url");
+            string destpath = GLib.Path.build_filename(
+                potddir, "bing-" + today + get_extension_from_url(imgurl)
+            );
+            return download_to_file(imgurl, destpath) ? destpath : null;
+        } catch (Error e) {
+            warning("Could not parse Bing picture of the day: %s\n", e.message);
+            return null;
+        }
+    }
+
+    private string get_extension_from_url (string url) {
+        // Bing/Wikimedia URLs can carry query strings after the
+        // extension, so match on known extensions rather than trusting
+        // Path/basename splitting
+        string lowered = url.down();
+        string[] known = {".png", ".jpeg", ".jpg"};
+        foreach (string ext in known) {
+            if (lowered.contains(ext)) {
+                return ext == ".jpeg" ? ".jpg" : ext;
+            }
+        }
+        return ".jpg";
+    }
+
+    private string? http_get_text (string url) {
+        var session = new Soup.Session();
+        var message = new Soup.Message("GET", url);
+        message.request_headers.append("User-Agent", POTD_USER_AGENT);
+#if HAVE_SOUP_3
+        message.add_flags(Soup.MessageFlags.NO_REDIRECT);
+        try {
+            var retbytes = session.send_and_read(message);
+            if (retbytes.length == 0 || message.status_code != 200) {
+                return null;
+            }
+            return (string) retbytes.get_data();
+        } catch (Error e) {
+            return null;
+        }
+#else
+        session.send_message(message);
+        if (message.status_code != 200) {
+            return null;
+        }
+        return (string) message.response_body.flatten().data;
+#endif
+    }
+
+    private bool download_to_file (string url, string destpath) {
+        var session = new Soup.Session();
+        var message = new Soup.Message("GET", url);
+        message.request_headers.append("User-Agent", POTD_USER_AGENT);
+#if HAVE_SOUP_3
+        message.add_flags(Soup.MessageFlags.NO_REDIRECT);
+        try {
+            var retbytes = session.send_and_read(message);
+            if (retbytes.length == 0 || message.status_code != 200) {
+                return false;
+            }
+            return GLib.FileUtils.set_data(destpath, retbytes.get_data());
+        } catch (Error e) {
+            warning("Could not download picture of the day: %s\n", e.message);
+            return false;
+        }
+#else
+        session.send_message(message);
+        if (message.status_code != 200) {
+            return false;
+        }
+        try {
+            return GLib.FileUtils.set_data(
+                destpath, message.response_body.flatten().data
+            );
+        } catch (Error e) {
+            warning("Could not download picture of the day: %s\n", e.message);
+            return false;
+        }
+#endif
     }
 }

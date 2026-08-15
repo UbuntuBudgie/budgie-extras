@@ -43,6 +43,8 @@ namespace WallStreetControls {
         Grid timeofday_grid;
         Grid rotation_grid;
         string runinstruction;
+        CheckButton toggle_potd_wikipedia;
+        CheckButton toggle_potd_bing;
 
         public ControlsWindow () {
             initialiseLocaleLanguageSupport();
@@ -200,6 +202,39 @@ namespace WallStreetControls {
                 );
             });
 
+            // picture of the day section
+            var potd_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+            maingrid.attach(potd_separator, 1, 7, 99, 1);
+
+            var potd_label = new Label("\n" + (_("Picture of the day")) + "\n");
+            potd_label.set_xalign(0);
+            maingrid.attach(potd_label, 1, 8, 99, 1);
+
+            toggle_potd_wikipedia = new Gtk.CheckButton.with_label(
+                (_("Fetch Wikipedia picture of the day"))
+            );
+            maingrid.attach(toggle_potd_wikipedia, 1, 9, 99, 1);
+
+            toggle_potd_bing = new Gtk.CheckButton.with_label(
+                (_("Fetch Bing picture of the day"))
+            );
+            maingrid.attach(toggle_potd_bing, 1, 10, 99, 1);
+
+            string? picturesdir = Environment.get_user_special_dir(
+                UserDirectory.PICTURES
+            );
+            string potdfolder = wallstreet_settings.get_string(
+                "potd-folder-name"
+            );
+            string potdpath = picturesdir != null ?
+                Path.build_filename(picturesdir, potdfolder) : potdfolder;
+            var potd_path_label = new Label(
+                (_("Saved to:")) + " " + potdpath
+            );
+            potd_path_label.set_xalign(0);
+            potd_path_label.get_style_context().add_class("dim-label");
+            maingrid.attach(potd_path_label, 1, 11, 99, 1);
+
             var ok_button = new Button.with_label((_("Close")));
             maingrid.attach(ok_button, 99, 99, 1, 1);
             ok_button.clicked.connect(Gtk.main_quit);
@@ -237,6 +272,15 @@ namespace WallStreetControls {
                 wallstreet_settings.get_boolean("lockscreensync")
             );
             toggle_synclockscreen.toggled.connect(manage_boolean);
+            // fetch potd toggles
+            toggle_potd_wikipedia.set_active(
+                wallstreet_settings.get_boolean("potd-wikipedia-enabled")
+            );
+            toggle_potd_wikipedia.toggled.connect(manage_boolean);
+            toggle_potd_bing.set_active(
+                wallstreet_settings.get_boolean("potd-bing-enabled")
+            );
+            toggle_potd_bing.toggled.connect(manage_boolean);
         }
 
         /**
@@ -270,6 +314,16 @@ namespace WallStreetControls {
                 bool active = button.get_active();
                 wallstreet_settings.set_boolean("timeofday-enabled", active);
                 toggle_timeofday_widgets(active);
+            }
+            else if (button == toggle_potd_wikipedia) {
+                wallstreet_settings.set_boolean(
+                    "potd-wikipedia-enabled", button.get_active()
+                );
+            }
+            else if (button == toggle_potd_bing) {
+                wallstreet_settings.set_boolean(
+                    "potd-bing-enabled", button.get_active()
+                );
             }
             else if (button == toggle_wprunner) {
                 bool newsetting = button.get_active();
