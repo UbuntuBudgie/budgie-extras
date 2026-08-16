@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-28 19:09+0100\n"
+"POT-Creation-Date: 2026-08-15 19:57+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>, 2026\n"
 "Language-Team: Catalan (https://app.transifex.com/ubuntu-budgie/teams/72251/ca/)\n"
@@ -332,8 +332,8 @@ msgstr "Fet"
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:356
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:437
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:410
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -1652,8 +1652,8 @@ msgid "Choose directory"
 msgstr "Trieu un directori"
 
 #: budgie-quicknote/QuickNoteApplet.vala:203
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:357
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:437
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:411
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Use"
 msgstr "Ús"
 
@@ -1761,89 +1761,105 @@ msgid "Please enter at least 3 characters"
 msgstr "Si us plau, escriviu com a mínim 3 caràcters."
 
 #. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:51
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:53
 #: budgie-wallstreet/data/org.ubuntubudgie.wallstreetcontrol.desktop.in.h:1
 msgid "WallStreet Control"
 msgstr "Control de WallStreet"
 
 #. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:61
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
 msgid "Run WallStreet"
 msgstr "Executa WallStreet"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:68
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:70
 msgid "Sync to lock-screen"
 msgstr "Sincronitza al blocatge de la pantalla"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:82
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:84
 msgid "Use random wallpaper"
 msgstr "Usa un fons de pantalla aleatori."
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:87
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:89
 msgid "Use default wallpapers"
 msgstr "Usa els fons per defecte"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:158
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:170
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:97
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:160
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:172
 msgid "Browse"
 msgstr "Navegueu"
 
 #. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:106
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:108
 msgid "Change interval"
 msgstr "Canvia'n l'interval"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:111
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:113
 msgid "Hours"
 msgstr "Hores"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:116
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:118
 msgid "Minutes"
 msgstr "Minuts"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:121
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:123
 msgid "Seconds"
 msgstr "Segons"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:132
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:134
 msgid "Use time of day wallpapers"
 msgstr "Usa un fons de pantalla de l'hora del dia"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:141
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:143
 msgid "Daytime starts at hour"
 msgstr "Inici de l'horari diürn"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:147
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:149
 msgid "Nighttime starts at hour"
 msgstr "Inici de l'horari nocturn"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:153
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:155
 msgid "Daytime wallpaper"
 msgstr "Fons de pantalla diürn"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:165
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:167
 msgid "Nighttime wallpaper"
 msgstr "Fons de pantalla nocturn"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:203
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:209
+msgid "Picture of the day"
+msgstr "La imatge del dia"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:214
+msgid "Fetch Wikipedia picture of the day"
+msgstr "Obtén la imatge del dia de la Viquipèdia."
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:219
+msgid "Fetch Bing picture of the day"
+msgstr "Obtén la imatge del dia de Bing."
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:232
+msgid "Saved to:"
+msgstr "Es desa a:"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:238
 msgid "Close"
 msgstr "Tanca"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:303
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:357
 msgid "Please log out/in to initialize"
 msgstr "Si us plau, sortiu i torneu a entrar per iniciar-ho."
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:354
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:408
 msgid "Select a wallpaper"
 msgstr "Seleccioneu un fons de pantalla"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:360
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:414
 msgid "Images"
 msgstr "Imatges"
 
 #. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:435
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:489
 msgid "Select a directory"
 msgstr "Seleccioneu un diectori"
 
