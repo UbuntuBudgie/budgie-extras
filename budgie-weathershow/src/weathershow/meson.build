@@ -9,7 +9,8 @@ custom_target('plugin-file-weather',
 #install_data('WeatherShow.plugin', install_dir: LIB_INSTALL_DIR)
 
 WeatherShowSources = [
-'WeatherShow.vala'
+'WeatherShow.vala',
+'position_picker.vala'
 ]
 
 budgie_soup_vala_args = []
@@ -33,11 +34,19 @@ dependency('json-glib-1.0'),
 meson.get_compiler('c').find_library('m', required: false)
 ]
 
+budgie_weathershow_vala_args = []
+if for_wayland == true
+    WeatherShowDependencies += dependency('libxfce4windowing-0', version: '>= 4.19.7')
+    budgie_weathershow_vala_args += ['-D', 'FOR_WAYLAND']
+endif
+
+
 WeatherShowValaArgs = [
 '--pkg=config',
 '--vapidir=' + VAPI_DIR,
 '--target-glib=2.38',
-budgie_soup_vala_args
+budgie_soup_vala_args,
+budgie_weathershow_vala_args
 ]
 
 WeatherShowCArgs = [

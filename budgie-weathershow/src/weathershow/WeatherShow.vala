@@ -798,6 +798,7 @@ namespace WeatherShowApplet {
         private Gtk.CheckButton setposbutton;
         private Gtk.Entry xpos;
         private Gtk.Entry ypos;
+        private Gtk.Button choose_pos_button;
         private Gtk.Label xpos_label;
         private Gtk.Label ypos_label;
         private Gtk.Button apply;
@@ -984,6 +985,9 @@ namespace WeatherShowApplet {
             apply = new Gtk.Button.with_label("OK");
             apply.clicked.connect(update_xysetting);
             posholder.pack_end(apply, false, false, 0);
+            choose_pos_button = new Gtk.Button.with_label(_("Choose visually…"));
+            choose_pos_button.clicked.connect(show_position_picker);
+            posholder.pack_end(choose_pos_button, false, false, 0);
             subgrid_desktop.attach(posholder, 0, 51, 1, 1);
             var spacelabel8 = new Gtk.Label("\n");
             customcity_checkbox = new Gtk.CheckButton.with_label(
@@ -1053,6 +1057,7 @@ namespace WeatherShowApplet {
             apply.set_sensitive(currcustom);
             xpos_label.set_sensitive(currcustom);
             ypos_label.set_sensitive(currcustom);
+            choose_pos_button.set_sensitive(currcustom);
         }
 
         private void set_initialcustom () {
@@ -1062,6 +1067,20 @@ namespace WeatherShowApplet {
             customcity_entry.set_sensitive(use_custom_cityname);
             customcity_entry.set_text(customcityname);
             apply_cityname.set_sensitive(use_custom_cityname);
+        }
+
+        private void show_position_picker (Button button) {
+            var picker = new WeatherShowPositionPicker(ws_settings);
+            picker.set_transient_for(this.get_toplevel() as Gtk.Window);
+
+            picker.position_selected.connect((x, y) => {
+                ws_settings.set_int("xposition", x);
+                ws_settings.set_int("yposition", y);
+                xpos.set_text(x.to_string());
+                ypos.set_text(y.to_string());
+            });
+
+            picker.show();
         }
 
         private void update_xysetting (Button button) {
@@ -1247,6 +1266,7 @@ namespace WeatherShowApplet {
                 xpos.set_sensitive(newsetting);
                 ypos.set_sensitive(newsetting);
                 apply.set_sensitive(newsetting);
+                choose_pos_button.set_sensitive(newsetting);
                 if (newsetting == false) {
                     xpos.set_text("");
                     ypos.set_text("");
