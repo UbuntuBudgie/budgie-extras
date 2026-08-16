@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-15 19:57+0100\n"
+"POT-Creation-Date: 2026-08-16 22:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,6 +315,7 @@ msgstr ""
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
+#: budgie-weathershow/src/weathershow/position_picker.vala:211
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:410
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Cancel"
@@ -924,11 +925,13 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:804
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:610
+#: budgie-weathershow/src/weathershow/position_picker.vala:138
 msgid "The blue rectangle represents your screen."
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:837
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:643
+#: budgie-weathershow/src/weathershow/position_picker.vala:171
 #, c-format
 msgid "Screen: %d × %d | Click to select | ESC to cancel"
 msgstr ""
@@ -981,16 +984,19 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:885
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:691
+#: budgie-weathershow/src/weathershow/position_picker.vala:182
 msgid "X:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:896
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:702
+#: budgie-weathershow/src/weathershow/position_picker.vala:194
 msgid "Y:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:916
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:722
+#: budgie-weathershow/src/weathershow/position_picker.vala:215
 msgid "Apply Position"
 msgstr ""
 
@@ -1620,7 +1626,7 @@ msgstr ""
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:961
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:962
 msgid "Set text color"
 msgstr ""
 
@@ -1639,6 +1645,15 @@ msgstr ""
 
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/position_picker.vala:69
+msgid "Choose WeatherShow Position"
+msgstr ""
+
+#. Instructions
+#: budgie-weathershow/src/weathershow/position_picker.vala:137
+msgid "Click on the preview below to position WeatherShow.\n"
 msgstr ""
 
 #. get weekday by index
@@ -1670,54 +1685,58 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:848
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:849
 msgid "General"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:854
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
 msgid "Desktop"
 msgstr ""
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:867
 msgid "City"
 msgstr ""
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:889
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:890
 msgid "Show on desktop"
 msgstr ""
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:896
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:897
 msgid "Show dynamic panel icon"
 msgstr ""
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:903
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:904
 msgid "Show forecast in popover"
 msgstr ""
 
 #. wind unit combo
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:917
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:918
 msgid "Wind speed unit"
 msgstr ""
 
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:935
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:936
 msgid "Transparency"
 msgstr ""
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:968
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:969
 msgid "Set custom position (px)"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:990
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:988
+msgid "Choose visually…"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:994
 msgid "Custom location name"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1143
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1162
 msgid "Please enter at least 3 characters"
 msgstr ""
 
