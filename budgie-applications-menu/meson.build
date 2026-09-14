@@ -17,6 +17,8 @@ glib_dep = dependency('glib-2.0')
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0')
 gtk_dep = dependency('gtk+-3.0')
+gtk_layer_shell_dep = dependency('gtk-layer-shell-0', version: '>= 0.8.0')
+
 granite_dep = dependency('granite')
 if granite_dep.version().version_compare('>=5.2')
     add_project_arguments('--define=GRANITE5', language: 'vala')
