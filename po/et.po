@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 18:38+0000\n"
+"POT-Creation-Date: 2026-08-16 22:52+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2026\n"
 "Language-Team: Estonian (https://app.transifex.com/ubuntu-budgie/teams/72251/et/)\n"
@@ -67,7 +67,7 @@ msgstr "Väljundkaust"
 #. translators: title of the folder-chooser dialog
 #: budgie-screencast/src/Screencast.vala:99
 msgid "Select Recording Folder"
-msgstr "Val kaust salvestiste jaoks"
+msgstr "Vali kaust salvestiste jaoks"
 
 #. translators: cancel button in the folder-chooser dialog (underscore =
 #. keyboard accelerator)
@@ -329,7 +329,9 @@ msgstr "Valmis"
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/weathershow/position_picker.vala:211
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:410
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Cancel"
 msgstr "Katkesta"
 
@@ -731,7 +733,7 @@ msgstr ""
 
 #: budgie-window-shuffler/src/shuffler_control.vala:1896
 msgid "The applet needs to be on the panel to see the changes"
-msgstr ""
+msgstr "Muudatuste nägemiseks peab rakend asuma ribal"
 
 #. buttons of mastergrid, corresponcing to stack "picklayout"
 #. since this is the "home" page
@@ -770,7 +772,7 @@ msgstr "Lisa ülesanne"
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:597
 msgid "Command to launch window or application"
-msgstr ""
+msgstr "Käsk akna või rakenduse käivitamiseks"
 
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:605
@@ -782,7 +784,7 @@ msgstr ""
 #. tooltip, so string length is not particularly critical
 #: budgie-window-shuffler/src/layouts_popup.vala:621
 msgid "Try to move an existing window before launching a new instance"
-msgstr ""
+msgstr "Enne uue käivitamist proovi liigutada olemasolevat akent"
 
 #: budgie-window-shuffler/src/layouts_popup.vala:633
 msgid "Task name"
@@ -919,21 +921,23 @@ msgstr ""
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:745
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:560
 msgid "Choose ShowTime Position"
-msgstr ""
+msgstr "Vali „ShowTime“ asukoht"
 
 #. Instructions
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:803
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:609
 msgid "Click on the preview below to position ShowTime.\n"
-msgstr ""
+msgstr "„ShowTime“ paigutamiseks klõpsa alljärgnevat eelvaadet.\n"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:804
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:610
+#: budgie-weathershow/src/weathershow/position_picker.vala:138
 msgid "The blue rectangle represents your screen."
-msgstr ""
+msgstr "Sinine ristkülik märgib sinu ekraani"
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:837
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:643
+#: budgie-weathershow/src/weathershow/position_picker.vala:171
 #, c-format
 msgid "Screen: %d × %d | Click to select | ESC to cancel"
 msgstr "Ekraan: %d × %d | Valimiseks klõpsa | Katkestamiseks vajuta ESC"
@@ -986,18 +990,21 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:885
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:691
+#: budgie-weathershow/src/weathershow/position_picker.vala:182
 msgid "X:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:896
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:702
+#: budgie-weathershow/src/weathershow/position_picker.vala:194
 msgid "Y:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:916
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:722
+#: budgie-weathershow/src/weathershow/position_picker.vala:215
 msgid "Apply Position"
-msgstr ""
+msgstr "Kasuta asukohta"
 
 #. hrs to double digits
 #: budgie-showtime/src/showtime_desktop/showtime_desktop.vala:530
@@ -1260,57 +1267,53 @@ msgid "Use 24 hour time"
 msgstr "Kasuta 24-tunnist kella"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:47
-msgid "Power Options"
-msgstr "Toitehaldus"
-
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:117
 msgid "Shut Down"
 msgstr "Seiska"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:124
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:50
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:107
 msgid "Suspend"
 msgstr "Unne"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:131
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:53
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:117
 msgid "Restart"
 msgstr "Taaskäivita"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:138
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:56
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:128
 msgid "Lock"
 msgstr "Lukusta"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:145
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:59
 msgid "Log Out"
 msgstr "Logi välja"
 
-#. Capture the desktop_id now, not in the callback
-#. Create menu manually to avoid duplicate "Remove from Favorites"
-#. Add "Remove from Favorites" first
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:171
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:80
+msgid "Power Options"
+msgstr "Toitehaldus"
+
+#. "context-menu" is the standard GTK style class for floating menus;
+#. it gives the box a themed background so it doesn't bleed into the
+#. content behind the overlay.
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:187
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Remove from Favorites"
 msgstr "Eemalda lemmikute seast"
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:203
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:86
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:209
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:88
 #, c-format
 msgid "Open with %s Graphics"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:231
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:117
-msgid "Remove from _Dock"
-msgstr "Eemalda _dokist"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Remove from Dock"
+msgstr "Eemalda dokist"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:233
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:119
-msgid "Add to _Dock"
-msgstr "Lisa _dokki"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Add to Dock"
+msgstr "Lisa dokki"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:97
 msgid "Shutdown"
@@ -1367,7 +1370,15 @@ msgstr "Järjehoidjad"
 msgid "Other"
 msgstr "Muud"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Remove from _Dock"
+msgstr "Eemalda _dokist"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Add to _Dock"
+msgstr "Lisa _dokki"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Add to Favorites"
 msgstr "Lisa lemmikute hulka"
 
@@ -1380,19 +1391,19 @@ msgstr "Proovi muuta otsingusõnu."
 msgid "No Results for “%s”"
 msgstr "Otsingusõnal „%s“ pole tulemusi"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:67
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
 msgid "View as Grid"
 msgstr "Vaata ruudustikuna"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:75
 msgid "View by Category"
 msgstr "Vaata kategooriate kaupa"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:84
-msgid "Search Apps"
-msgstr ""
-
 #: budgie-applications-menu/applications-menu/src/SlingshotView.vala:88
+msgid "Search Apps"
+msgstr "Otsi rakendusi"
+
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:92
 msgid "Clear all"
 msgstr "Eemalda kõik"
 
@@ -1493,7 +1504,7 @@ msgstr "Ava see link vaikimisi veebibrauseris"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:72
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: budgie-applications-menu/applications-menu/src/synapse-plugins/link-plugin.vala:73
 msgid "Open link in default browser"
@@ -1624,13 +1635,14 @@ msgid "Choose directory"
 msgstr "Vali kaust"
 
 #: budgie-quicknote/QuickNoteApplet.vala:203
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:411
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Use"
 msgstr "Kasuta"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:962
 msgid "Set text color"
 msgstr "Vali tekstivärv"
 
@@ -1650,6 +1662,15 @@ msgstr "Sinine"
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
 msgstr "Vali"
+
+#: budgie-weathershow/src/weathershow/position_picker.vala:69
+msgid "Choose WeatherShow Position"
+msgstr "Vali „WeatherShow“ asukoht"
+
+#. Instructions
+#: budgie-weathershow/src/weathershow/position_picker.vala:137
+msgid "Click on the preview below to position WeatherShow.\n"
+msgstr "„WeatherShow“ paigutamiseks klõpsa alljärgnevat eelvaadet.\n"
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:145
@@ -1680,106 +1701,161 @@ msgstr "Laupäev"
 msgid "Sunday"
 msgstr "Pühapäev"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:849
 msgid "General"
 msgstr "Üldine"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
 msgid "Desktop"
 msgstr "Töölaud"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:867
 msgid "City"
 msgstr "Linn"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:890
 msgid "Show on desktop"
 msgstr "Näita töölaual"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:897
 msgid "Show dynamic panel icon"
 msgstr "Näita dünaamilist riba ikooni"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:904
 msgid "Show forecast in popover"
 msgstr "Näita ennustust hüpikaknas"
 
+#. wind unit combo
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:918
+msgid "Wind speed unit"
+msgstr "Tuulekiiruse ühik"
+
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:936
 msgid "Transparency"
 msgstr "Läbipaistvus"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:969
 msgid "Set custom position (px)"
 msgstr "Määra sulle sobilik asukoht (pikslites)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:988
+msgid "Choose visually…"
+msgstr "Vali visuaalselt…"
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:994
 msgid "Custom location name"
 msgstr ""
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1162
 msgid "Please enter at least 3 characters"
-msgstr ""
+msgstr "Palun sisesta 3 viimast tähemärki"
 
 #. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:53
 #: budgie-wallstreet/data/org.ubuntubudgie.wallstreetcontrol.desktop.in.h:1
 msgid "WallStreet Control"
-msgstr ""
+msgstr "WallStreeti juhtnupud"
 
 #. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
-msgid "Run WallStreet"
-msgstr ""
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr ""
-
 #: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
-msgid "Sync to lock-screen"
-msgstr ""
+msgid "Run WallStreet"
+msgstr "Käivita WallStreet"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:70
+msgid "Sync to lock-screen"
+msgstr "Sünkrooni lukustusvaatesse"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:84
+msgid "Use random wallpaper"
+msgstr "Kasuta juhuslikku taustapilti"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:89
 msgid "Use default wallpapers"
 msgstr "Kasuta vaikimisi taustapilte"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:97
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:160
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:172
 msgid "Browse"
 msgstr "Sirvi"
 
 #. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:108
 msgid "Change interval"
 msgstr "Muuda välpa"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:113
 msgid "Hours"
 msgstr "Tunnid"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:118
 msgid "Minutes"
 msgstr "Minutid"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:123
 msgid "Seconds"
 msgstr "Sekundid"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:134
+msgid "Use time of day wallpapers"
+msgstr "Kasuta päevaajale vastavaid taustapilte"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:143
+msgid "Daytime starts at hour"
+msgstr "Päevaaja algustund"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:149
+msgid "Nighttime starts at hour"
+msgstr "Ööaja algustund"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:155
+msgid "Daytime wallpaper"
+msgstr "Päevane taustapilt"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:167
+msgid "Nighttime wallpaper"
+msgstr "Öine taustapilt"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:209
+msgid "Picture of the day"
+msgstr "Päevapilt"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:214
+msgid "Fetch Wikipedia picture of the day"
+msgstr "Laadi päevapilt Vikipeediast"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:219
+msgid "Fetch Bing picture of the day"
+msgstr "Laadi päevapilt Bingist"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:232
+msgid "Saved to:"
+msgstr "Salvestatud asukohta:"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:238
 msgid "Close"
 msgstr "Sulge"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:357
 msgid "Please log out/in to initialize"
 msgstr "Kasutuselevõtmiseks palun logi välja siis sisse"
 
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:408
+msgid "Select a wallpaper"
+msgstr "Vali taustapilt"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:414
+msgid "Images"
+msgstr "Pildid"
+
 #. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:489
 msgid "Select a directory"
 msgstr "Vali kaust"
 
@@ -1812,7 +1888,7 @@ msgstr "Viivitus"
 #. Pressure section
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:226
 msgid "Pressure"
-msgstr ""
+msgstr "Surve/rõhk"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:539
 msgid "Enter a command here"
@@ -1828,7 +1904,7 @@ msgstr "Lisa sulle vajalik käsk"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:714
 msgid "Available dropdown items changed"
-msgstr ""
+msgstr "Rippmenüü valikud on muutunud"
 
 #: budgie-hotcorners/src/budgie-hotcorners-settingswindow.vala:715
 msgid "please restart settingswindow"
@@ -2067,7 +2143,7 @@ msgstr "Lemmikud"
 
 #: budgie-screencast/src/BudgieScreencast.plugin.in.h:1
 msgid "Record the screen under Wayland"
-msgstr ""
+msgstr "Ekraanisalvestus Waylandi kasutamisel"
 
 #: budgie-window-shuffler/applet/src/ShufflerApplet.plugin.in.h:1
 msgid "Place a window in a predefined layout"
