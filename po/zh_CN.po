@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: budgie-extras 10.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-02 18:38+0000\n"
+"POT-Creation-Date: 2026-08-16 22:52+0100\n"
 "PO-Revision-Date: 2019-06-06 09:22+0000\n"
 "Last-Translator: Yazi Tian, 2022\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/ubuntu-budgie/teams/72251/zh_CN/)\n"
@@ -332,7 +332,9 @@ msgstr "完成"
 #: budgie-applications-menu/applications-menu/src/IconChooser.vala:58
 #: budgie-quicknote/QuickNoteApplet.vala:203
 #: budgie-weathershow/src/get_color/get_color.vala:88
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-weathershow/src/weathershow/position_picker.vala:211
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:410
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Cancel"
 msgstr "取消"
 
@@ -932,11 +934,13 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:804
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:610
+#: budgie-weathershow/src/weathershow/position_picker.vala:138
 msgid "The blue rectangle represents your screen."
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:837
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:643
+#: budgie-weathershow/src/weathershow/position_picker.vala:171
 #, c-format
 msgid "Screen: %d × %d | Click to select | ESC to cancel"
 msgstr ""
@@ -989,16 +993,19 @@ msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:885
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:691
+#: budgie-weathershow/src/weathershow/position_picker.vala:182
 msgid "X:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:896
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:702
+#: budgie-weathershow/src/weathershow/position_picker.vala:194
 msgid "Y:"
 msgstr ""
 
 #: budgie-showtime/src/showtime/BudgieShowTime.vala:916
 #: budgie-showtime/src/showtime_raven/BudgieRavenShowTime.vala:722
+#: budgie-weathershow/src/weathershow/position_picker.vala:215
 msgid "Apply Position"
 msgstr ""
 
@@ -1263,57 +1270,53 @@ msgid "Use 24 hour time"
 msgstr "用24格式时间"
 
 #: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:47
-msgid "Power Options"
-msgstr ""
-
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:117
 msgid "Shut Down"
 msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:124
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:50
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:107
 msgid "Suspend"
 msgstr "挂起"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:131
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:53
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:117
 msgid "Restart"
 msgstr "重启"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:138
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:56
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:128
 msgid "Lock"
 msgstr "锁定"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:145
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:59
 msgid "Log Out"
 msgstr ""
 
-#. Capture the desktop_id now, not in the callback
-#. Create menu manually to avoid duplicate "Remove from Favorites"
-#. Add "Remove from Favorites" first
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:171
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:80
+msgid "Power Options"
+msgstr ""
+
+#. "context-menu" is the standard GTK style class for floating menus;
+#. it gives the box a themed background so it doesn't bleed into the
+#. content behind the overlay.
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:187
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Remove from Favorites"
 msgstr ""
 
-#. TRANSLATORS: This will display as either 'Open with Intel Graphics' or
-#. 'Open with 'NVidia Graphics'
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:203
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:86
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:209
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:88
 #, c-format
 msgid "Open with %s Graphics"
 msgstr "打开 %s 图形"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:231
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:117
-msgid "Remove from _Dock"
-msgstr "从 Dock 移除"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Remove from Dock"
+msgstr ""
 
-#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:233
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:119
-msgid "Add to _Dock"
-msgstr "固定至 Dock"
+#: budgie-applications-menu/applications-menu/src/Widgets/FavoritesSidebar.vala:227
+msgid "Add to Dock"
+msgstr ""
 
 #: budgie-applications-menu/applications-menu/src/Widgets/powerstrip.vala:97
 msgid "Shutdown"
@@ -1370,7 +1373,15 @@ msgstr "收藏夹"
 msgid "Other"
 msgstr "其它"
 
-#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:146
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Remove from _Dock"
+msgstr "从 Dock 移除"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:113
+msgid "Add to _Dock"
+msgstr "固定至 Dock"
+
+#: budgie-applications-menu/applications-menu/src/Widgets/AppContextMenu.vala:141
 msgid "Add to Favorites"
 msgstr ""
 
@@ -1383,19 +1394,19 @@ msgstr "尝试更改搜索内容。"
 msgid "No Results for “%s”"
 msgstr "没有结果 “%s”"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:67
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
 msgid "View as Grid"
 msgstr "网格视图"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:71
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:75
 msgid "View by Category"
 msgstr "分类视图"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:84
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:88
 msgid "Search Apps"
 msgstr "搜索应用"
 
-#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:88
+#: budgie-applications-menu/applications-menu/src/SlingshotView.vala:92
 msgid "Clear all"
 msgstr "清除所有"
 
@@ -1627,13 +1638,14 @@ msgid "Choose directory"
 msgstr "选择目录"
 
 #: budgie-quicknote/QuickNoteApplet.vala:203
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:297
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:411
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:491
 msgid "Use"
 msgstr "使用"
 
 #. window props
 #: budgie-weathershow/src/get_color/get_color.vala:50
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:927
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:962
 msgid "Set text color"
 msgstr "选择文字颜色"
 
@@ -1653,6 +1665,15 @@ msgstr "蓝色"
 #: budgie-weathershow/src/get_color/get_color.vala:84
 msgid "Choose"
 msgstr "选择"
+
+#: budgie-weathershow/src/weathershow/position_picker.vala:69
+msgid "Choose WeatherShow Position"
+msgstr ""
+
+#. Instructions
+#: budgie-weathershow/src/weathershow/position_picker.vala:137
+msgid "Click on the preview below to position WeatherShow.\n"
+msgstr ""
 
 #. get weekday by index
 #: budgie-weathershow/src/weathershow/WeatherShow.vala:145
@@ -1683,106 +1704,161 @@ msgstr "周六"
 msgid "Sunday"
 msgstr "周日"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:825
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:849
 msgid "General"
 msgstr "常规"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:831
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:855
 msgid "Desktop"
 msgstr "桌面"
 
 #. set city section
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:843
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:867
 msgid "City"
 msgstr "城市"
 
 #. show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:866
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:890
 msgid "Show on desktop"
 msgstr "显示到桌面"
 
 #. dynamic icon
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:873
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:897
 msgid "Show dynamic panel icon"
 msgstr "显示动态面板图标"
 
 #. forecast
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:880
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:904
 msgid "Show forecast in popover"
 msgstr "在弹窗中显示预报"
 
+#. wind unit combo
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:918
+msgid "Wind speed unit"
+msgstr ""
+
 #. optional settings: show on desktop
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:901
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:936
 msgid "Transparency"
 msgstr "透明度"
 
 #. checkbox custom position
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:934
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:969
 msgid "Set custom position (px)"
 msgstr "设置自定义位置 (px)"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:956
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:988
+msgid "Choose visually…"
+msgstr ""
+
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:994
 msgid "Custom location name"
 msgstr "自定义位置名称"
 
-#: budgie-weathershow/src/weathershow/WeatherShow.vala:1109
+#: budgie-weathershow/src/weathershow/WeatherShow.vala:1162
 msgid "Please enter at least 3 characters"
 msgstr "请输入最少 3 个字符"
 
 #. define the name of the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:42
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:53
 #: budgie-wallstreet/data/org.ubuntubudgie.wallstreetcontrol.desktop.in.h:1
 msgid "WallStreet Control"
 msgstr "WallStreet 控制"
 
 #. instruction to autostart the application
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:52
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
 msgid "Run WallStreet"
 msgstr "运行 WallStreet"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:58
-msgid "Use random wallpaper"
-msgstr "使用随机壁纸"
-
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:63
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:70
 msgid "Sync to lock-screen"
 msgstr "同步到锁屏"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:67
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:84
+msgid "Use random wallpaper"
+msgstr "使用随机壁纸"
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:89
 msgid "Use default wallpapers"
 msgstr "使用默认壁纸"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:77
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:97
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:160
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:172
 msgid "Browse"
 msgstr "浏览"
 
 #. time settings section
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:90
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:108
 msgid "Change interval"
 msgstr "改变时间段"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:95
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:113
 msgid "Hours"
 msgstr "小时"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:100
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:118
 msgid "Minutes"
 msgstr "分钟"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:105
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:123
 msgid "Seconds"
 msgstr "秒"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:110
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:134
+msgid "Use time of day wallpapers"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:143
+msgid "Daytime starts at hour"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:149
+msgid "Nighttime starts at hour"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:155
+msgid "Daytime wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:167
+msgid "Nighttime wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:209
+msgid "Picture of the day"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:214
+msgid "Fetch Wikipedia picture of the day"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:219
+msgid "Fetch Bing picture of the day"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:232
+msgid "Saved to:"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:238
 msgid "Close"
 msgstr "关闭"
 
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:200
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:357
 msgid "Please log out/in to initialize"
 msgstr "请登出/登录初始化"
 
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:408
+msgid "Select a wallpaper"
+msgstr ""
+
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:414
+msgid "Images"
+msgstr ""
+
 #. filechooser to set new wallpaper dir
-#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:295
+#: budgie-wallstreet/src/wallstreet_control/wallstreet_control.vala:489
 msgid "Select a directory"
 msgstr "选择目录"
 
